@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -11,12 +12,10 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 module.exports = env => {
-  // const isProduction = env === 'production';
-
   return {
     entry: ['@babel/polyfill', './src/app.jsx'],
     output: {
-      path: path.join(__dirname, 'public', 'dist'),
+      path: path.join(__dirname, 'dist'),
       filename: 'bundle.js',
     },
     watchOptions: {
@@ -52,6 +51,14 @@ module.exports = env => {
             ],
           }),
         },
+        {
+          test: /\.(png|jp(e*)g|svg|gif)$/,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
       ],
     },
     plugins: [
@@ -68,13 +75,16 @@ module.exports = env => {
         'process.env.FIREBASE_APP_ID': JSON.stringify(process.env.FIREBASE_APP_ID),
         'process.env.FIREBASE_MEASUREMENT_ID': JSON.stringify(process.env.FIREBASE_MEASUREMENT_ID),
       }),
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        favicon: './src/images/favicon.png',
+      }),
     ],
     devtool: env === 'production' ? 'source-map' : 'inline-source-map',
     devServer: {
-      contentBase: path.join(__dirname, 'public'),
+      contentBase: path.join(__dirname, 'dist'),
       historyApiFallback: true,
       hot: true,
-      publicPath: '/dist/',
     },
   };
 };
