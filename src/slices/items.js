@@ -1,30 +1,34 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { v4 as uuid } from 'uuid';
 import db from '../firebase/firebase';
 
 // todo check if all exports are used
 
-export const addItem = createAsyncThunk('users/addItem', async item => {
-  const docRef = await db.collection('items').add({ ...item });
+export const addItem = createAsyncThunk('users/addItem', async (item, { getState }) => {
+  const docRef = await db.collection(`users/${getState().auth.uid}/items`).add({ ...item });
   return { id: docRef.id, ...item };
 });
 
-export const loadItems = createAsyncThunk('users/addItem', async () => {
-  const docRef = await db.collection('items').get();
-  const items = docRef.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  return items;
+export const loadItems = createAsyncThunk('users/addItem', async (dummy, { getState }) => {
+  const docRef = await db.collection(`users/${getState().auth.uid}/items`).get();
+  return docRef.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 });
+
+const initialState = [];
 
 export const itemsSlice = createSlice({
   name: 'items',
-  initialState: [],
+  initialState,
   reducers: {
-    // todo remove?
-    addItemLocal: (state, action) => {
-      state.push({ id: uuid(), ...action.payload });
-    },
+    // reset function to be called on logout
+    // todo might need to refactor when have several slices
+    resetItemsState: () => initialState,
   },
   extraReducers: {
+    // Redux Toolkit allows us to write "mutating" logic in reducers. It
+    // doesn't actually mutate the state because it uses the immer library,
+    // which detects changes to a "draft state" and produces a brand new
+    // immutable state based off those changes
+    // more info https://redux.js.org/tutorials/essentials/part-2-app-structure
     [addItem.fulfilled]: (state, action) => {
       state.push({ ...action.payload });
     },
@@ -34,5 +38,5 @@ export const itemsSlice = createSlice({
   },
 });
 
-export const { addItemLocal } = itemsSlice.actions;
+export const { resetItemsState } = itemsSlice.actions;
 export default itemsSlice.reducer;

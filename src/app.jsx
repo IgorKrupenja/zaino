@@ -3,21 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider, useDispatch } from 'react-redux';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 import store from './store/store';
 import { addItem, loadItems } from './slices/items';
-
-// todo temp to add sample items to inventory
-// store.dispatch(
-//   addItem({
-//     name: 'Heavy backpack',
-//     category: 'Backpacks',
-//     tags: ['Female', 'Grey case'],
-//     weight: 1380,
-//     size: 'S',
-//     quantity: 1,
-//   })
-// );
+import { setUid } from './slices/auth';
+import { firebase } from './firebase/firebase';
 
 const jsx = (
   <Provider store={store}>
@@ -25,10 +15,37 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
-renderApp();
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
+  }
+};
 
-async function renderApp() {
-  await store.dispatch(loadItems());
-  ReactDOM.render(jsx, document.getElementById('app'));
-}
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+
+firebase.auth().onAuthStateChanged(async user => {
+  if (user) {
+    store.dispatch(setUid(user.uid));
+    // todo temp to add sample item to inventory
+    // store.dispatch(
+    //   addItem({
+    //     name: 'Heavy backpack',
+    //     category: 'Backpacks',
+    //     tags: ['Female', 'Grey case'],
+    //     weight: 1380,
+    //     size: 'S',
+    //     quantity: 1,
+    //   })
+    // );
+    await store.dispatch(loadItems());
+    renderApp();
+    if (history.location.pathname === '/') {
+      history.push('/dashboard');
+    }
+  } else {
+    renderApp();
+    history.push('/');
+  }
+});
