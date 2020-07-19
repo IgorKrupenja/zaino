@@ -2,7 +2,7 @@ import React from 'react';
 import TagsList from './TagsList';
 import Placeholder from '../images/categories/backpacks.svg';
 
-const InventoryListItem = ({ name, category, tags, weight, quantity }) => {
+const InventoryListItem = ({ name, category, tags, weight, size, quantity }) => {
   // function importAll(r) {
   //   const images = {};
   //   r.keys().map((item, index) => {
@@ -17,11 +17,11 @@ const InventoryListItem = ({ name, category, tags, weight, quantity }) => {
   return (
     <article>
       <h3>{name}</h3>
-      <img src={Placeholder} />
+      <img src={Placeholder} className="list-item__image" />
       {/* <img src={images['backpacks.svg']} /> */}
       <p>{category}</p>
       <p>
-        {weight}g {quantity > 1 && `Qty: ${quantity}`}
+        {weight}g {quantity > 1 && `Qty: ${quantity}`} {size && `Size: ${size}`}
       </p>
       <TagsList tags={tags} />
       <button>Add to pack</button>

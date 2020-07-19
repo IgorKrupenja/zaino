@@ -1,29 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider, useDispatch } from 'react-redux';
 import 'normalize.css/normalize.css';
 
 import './styles/styles.scss';
 import AppRouter from './routers/AppRouter';
-import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
-import { addItem } from './actions/items';
+import store from './store/store';
+import { addItem, itemsSlice } from './slices/items';
+// import { addItem } from './actions/items';
 
 // todo temp to add sample items to inventory
-const store = configureStore();
 store.dispatch(
   addItem({
     name: 'Heavy backpack',
     category: 'Backpacks',
     tags: ['Female', 'Grey case'],
     weight: 1380,
+    size: 'S',
     quantity: 1,
   })
 );
 
-const app = (
+// store.dispatch(
+//   itemsSlice.actions.addItem({
+//     name: 'Heavy backpack',
+//     category: 'Backpacks',
+//     tags: ['Female', 'Grey case'],
+//     weight: 1380,
+//     size: 'S',
+//     quantity: 1,
+//   })
+// );
+
+ReactDOM.render(
   <Provider store={store}>
     <AppRouter />
-  </Provider>
+  </Provider>,
+  document.getElementById('app')
 );
-
-ReactDOM.render(app, document.getElementById('app'));

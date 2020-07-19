@@ -14,8 +14,7 @@ const InventoryList = ({ items }) => (
 );
 
 const mapStateToProps = state => {
-  // todo this would need changes after filters reducer is added
-  return { items: state };
+  return { items: state.items };
 };
 
 export default connect(mapStateToProps)(InventoryList);
