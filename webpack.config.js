@@ -56,6 +56,10 @@ module.exports = env => {
           use: [
             {
               loader: 'file-loader',
+              options: {
+                // needed to support dynamic image import
+                esModule: false,
+              },
             },
           ],
         },

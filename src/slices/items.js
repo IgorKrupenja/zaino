@@ -18,7 +18,6 @@ export const itemsSlice = createSlice({
   ],
   reducers: {
     addItem: (state, action) => {
-      console.log('reducing!');
       state.push({ id: uuid(), ...action.payload });
     },
   },
