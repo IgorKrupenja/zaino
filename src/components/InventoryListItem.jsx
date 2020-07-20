@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import TagsList from './TagsList';
 
-const InventoryListItem = ({ name, category, tags, weight, size, quantity }) => {
+const InventoryListItem = ({ id, name, category, tags, weight, size, quantity }) => {
   return (
     <article>
-      <h3>{name}</h3>
+      <h3>
+        <Link to={`/edit/${id}`}>{name}</Link>
+      </h3>
       <img
         src={require(`../images/categories/${category.toLowerCase()}.svg`)}
         className="list-item__image"

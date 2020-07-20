@@ -9,6 +9,15 @@ import { addItem, loadItems } from './slices/items';
 import { setUid } from './slices/auth';
 import { firebase } from './firebase/firebase';
 
+const testItem = {
+  name: 'Heavy backpack',
+  category: 'Backpacks',
+  tags: ['Female', 'Grey case'],
+  weight: 1380,
+  size: 'S',
+  quantity: 1,
+};
+
 const jsx = (
   <Provider store={store}>
     <AppRouter />
@@ -29,16 +38,7 @@ firebase.auth().onAuthStateChanged(async user => {
   if (user) {
     store.dispatch(setUid(user.uid));
     // todo temp to add sample item to inventory
-    // store.dispatch(
-    //   addItem({
-    //     name: 'Heavy backpack',
-    //     category: 'Backpacks',
-    //     tags: ['Female', 'Grey case'],
-    //     weight: 1380,
-    //     size: 'S',
-    //     quantity: 1,
-    //   })
-    // );
+    // store.dispatch(addItem(testItem));
     await store.dispatch(loadItems());
     renderApp();
     if (history.location.pathname === '/') {

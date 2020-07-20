@@ -3,16 +3,25 @@ import db from '../firebase/firebase';
 
 // todo check if all exports are used
 
-export const addItem = createAsyncThunk('users/addItem', async (item, { getState }) => {
+// dummy argument needed as ThunkAPI is always the second argument
+// https://github.com/reduxjs/redux-toolkit/issues/605
+export const loadItems = createAsyncThunk('items/loadItems', async (dummy, { getState }) => {
+  const docRef = await db.collection(`users/${getState().auth.uid}/items`).get();
+  return docRef.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+});
+
+export const addItem = createAsyncThunk('items/addItem', async (item, { getState }) => {
   const docRef = await db.collection(`users/${getState().auth.uid}/items`).add({ ...item });
   return { id: docRef.id, ...item };
 });
 
-// dummy argument needed as ThunkAPI is always the second argument
-// https://github.com/reduxjs/redux-toolkit/issues/605
-export const loadItems = createAsyncThunk('users/addItem', async (dummy, { getState }) => {
-  const docRef = await db.collection(`users/${getState().auth.uid}/items`).get();
-  return docRef.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+export const editItem = createAsyncThunk('items/editItem', async (item, { getState }) => {
+  // console.log(item);
+  await db
+    .collection(`users/${getState().auth.uid}/items`)
+    .doc(item.id)
+    .update({ ...item });
+  return { id: item.id, ...item };
 });
 
 const initialState = [];
@@ -31,11 +40,21 @@ export const itemsSlice = createSlice({
     // which detects changes to a "draft state" and produces a brand new
     // immutable state based off those changes
     // more info https://redux.js.org/tutorials/essentials/part-2-app-structure
+    [loadItems.fulfilled]: (state, action) => {
+      action.payload.forEach(item => state.push(item));
+    },
     [addItem.fulfilled]: (state, action) => {
       state.push({ ...action.payload });
     },
-    [loadItems.fulfilled]: (state, action) => {
-      action.payload.forEach(item => state.push(item));
+    [editItem.fulfilled]: (state, action) => {
+      // perhaps there is a more elegant way?
+      state.forEach(item => {
+        if (item.id === action.payload.id) {
+          for (const property in item) {
+            item[property] = action.payload[property];
+          }
+        }
+      });
     },
   },
 });

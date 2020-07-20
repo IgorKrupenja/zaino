@@ -1,8 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { withRouter, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import InventoryListItem from './InventoryListItem';
 
 const InventoryList = () => {
+  const location = useLocation();
+  if (location.pathname.match(/add|edit/)) {
+    return null;
+  }
+
   const items = useSelector(state => state.items);
   return (
     <section>
@@ -12,6 +19,7 @@ const InventoryList = () => {
       ) : (
         items.map(item => <InventoryListItem key={item.id} {...item} />)
       )}
+      <Link to="/add">Add item</Link>
     </section>
   );
 };

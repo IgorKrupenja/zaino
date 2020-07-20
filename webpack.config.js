@@ -17,6 +17,8 @@ module.exports = env => {
     output: {
       path: path.join(__dirname, 'dist'),
       filename: 'bundle.js',
+      // makes dev server work with nested paths
+      publicPath: '/',
     },
     watchOptions: {
       // needed for WebPack to attempt recompiling periodically after a failure
@@ -59,6 +61,9 @@ module.exports = env => {
               options: {
                 // needed to support dynamic image import
                 esModule: false,
+                // output images with proper names to dist/images dir
+                context: path.resolve(__dirname, 'src'),
+                name: '[path][name].[ext]',
               },
             },
           ],
