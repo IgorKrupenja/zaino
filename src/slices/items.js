@@ -8,6 +8,8 @@ export const addItem = createAsyncThunk('users/addItem', async (item, { getState
   return { id: docRef.id, ...item };
 });
 
+// dummy argument needed as ThunkAPI is always the second argument
+// https://github.com/reduxjs/redux-toolkit/issues/605
 export const loadItems = createAsyncThunk('users/addItem', async (dummy, { getState }) => {
   const docRef = await db.collection(`users/${getState().auth.uid}/items`).get();
   return docRef.docs.map(doc => ({ id: doc.id, ...doc.data() }));

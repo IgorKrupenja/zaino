@@ -8,7 +8,8 @@ export const authSlice = createSlice({
   initialState: { uid: '' },
   reducers: {
     login: () => {
-      firebase.auth().signInWithPopup(googleAuthProvider);
+      firebase.auth().signInWithRedirect(googleAuthProvider);
+      // firebase.auth().signInWithPopup(googleAuthProvider);
     },
     // called from app.jsx where onAuthStateChanged can provide uid
     setUid: (state, action) => {
