@@ -16,7 +16,6 @@ export const addItem = createAsyncThunk('items/addItem', async (item, { getState
 });
 
 export const editItem = createAsyncThunk('items/editItem', async (item, { getState }) => {
-  // console.log(item);
   await db
     .collection(`users/${getState().auth.uid}/items`)
     .doc(item.id)

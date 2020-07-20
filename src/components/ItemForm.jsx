@@ -3,7 +3,6 @@ import { history } from '../routers/AppRouter';
 import { useParams } from 'react-router-dom';
 
 const ItemForm = props => {
-  // console.log(props.item);
   const onSubmit = e => {
     e.preventDefault();
 
