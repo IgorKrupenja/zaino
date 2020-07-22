@@ -1,4 +1,5 @@
 {
+  // todo likely not needed if disable js check
   "compilerOptions": {
     "checkJs": true,
     "jsx": "react"

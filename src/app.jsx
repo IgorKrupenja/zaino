@@ -18,7 +18,7 @@ const testItem = {
   quantity: 1,
 };
 
-const jsx = (
+const app = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
@@ -27,7 +27,7 @@ const jsx = (
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
-    ReactDOM.render(jsx, document.getElementById('app'));
+    ReactDOM.render(app, document.getElementById('app'));
     hasRendered = true;
   }
 };

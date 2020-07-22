@@ -1,14 +1,14 @@
 import React from 'react';
 import InventoryList from './InventoryList';
-import AddItemPage from './AddItemPage';
+import AddItemModal from './AddItemModal';
 import PackList from './PackList';
-import EditItemPage from './EditItemPage';
+import EditItemModal from './EditItemModal';
 
 const DashboardPage = () => (
   <>
     <InventoryList />
-    <AddItemPage />
-    <EditItemPage />
+    <AddItemModal />
+    <EditItemModal />
     <PackList />
   </>
 );

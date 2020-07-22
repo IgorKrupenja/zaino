@@ -6,7 +6,9 @@ import DashboardPage from '../components/DashboardPage';
 import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
 
-// custom history is needed for log in login in app.jsx to work
+// custom history is needed for login in app.jsx to work
+// as history is accessed there not from React component
+// but inside firebase.auth().onAuthStateChanged()
 export const history = createBrowserHistory();
 
 const AppRouter = () => (

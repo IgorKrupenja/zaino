@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 import InventoryListItem from './InventoryListItem';
 
 const InventoryList = () => {
-  const location = useLocation();
-  if (location.pathname.match(/add|edit/)) {
-    return null;
-  }
-
   const items = useSelector(state => state.items);
   return (
     <section>

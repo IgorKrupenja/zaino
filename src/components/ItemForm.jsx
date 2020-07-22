@@ -8,7 +8,7 @@ const ItemForm = props => {
 
     // todo temporary
     props.onSubmit({
-      name: 'cccc backpack',
+      name: 'LEMON backpack',
       category: 'Backpacks',
       tags: ['Female', 'Grey case'],
       weight: 1660,
