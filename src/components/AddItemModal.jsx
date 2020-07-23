@@ -1,14 +1,13 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { withRouter, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import Modal from 'react-modal';
-
 import { addItem } from '../slices/items';
 import ItemForm from './ItemForm';
 import { history } from '../routers/AppRouter';
 
 const AddItemModal = () => {
-  // hide  modal if location is not 'add'
+  // hide modal if location is not 'add'
   const location = useLocation();
   if (location.pathname.match(/dashboard|edit/)) {
     return null;

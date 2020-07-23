@@ -18,6 +18,7 @@ const AppRouter = () => (
       <PrivateRoute path="/dashboard" component={DashboardPage} />
       <PrivateRoute path="/add" component={DashboardPage} />
       <PrivateRoute path="/edit/:id" component={DashboardPage} />
+      {/* todo replace this with simple redirect */}
       <Route component={NotFoundPage} />
     </Switch>
   </Router>

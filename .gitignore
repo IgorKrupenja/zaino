@@ -3,3 +3,4 @@ dist/
 .env.development
 .env.test
 sandbox/
+stats.json

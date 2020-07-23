@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import LabelSelect from './LabelSelect';
 
 const ItemForm = props => {
   const item = props.item;
 
-  // set page title
+  // set page title once when component is first rendered
   useEffect(() => {
     document.title = `${item ? item.name : 'Add item'} | Zaino`;
   }, []);
 
-  // todo perhaps store Categories in Redux store?
+  // a fix list of categories for now - later should make them editable and store them in DB
   const categories = ['Backpacks', 'Tents'];
   const [values, setValues] = useState(
     item ? item : { name: '', category: 'Backpacks', weight: 100, size: '', quantity: 1, notes: '' }
@@ -37,8 +38,7 @@ const ItemForm = props => {
       if (values.quantity < 1) errors.quantity = 'Please enter a positive quantity';
       setErrors(errors);
     } else {
-      // todo temp tags
-      props.onSubmit({ ...values, tags: ['Female', 'Grey case'] });
+      props.onSubmit({ ...values });
     }
   };
 
@@ -98,7 +98,10 @@ const ItemForm = props => {
         value={values.notes}
         onChange={onChange}
       ></textarea>
-      {/* todo tags */}
+      <LabelSelect
+        selectedLabelIds={values.labels}
+        setLabels={labels => setValues(values => ({ ...values, labels }))}
+      />
       <button>Save item</button>
     </form>
   );

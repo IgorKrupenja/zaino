@@ -3,12 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../slices/auth';
 import { resetItemsState } from '../slices/items';
+import { resetLabelsState } from '../slices/labels';
 
 const Header = () => {
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
     dispatch(resetItemsState());
+    dispatch(resetLabelsState());
   };
   return (
     <header>

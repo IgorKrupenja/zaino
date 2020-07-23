@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useLocation, Redirect, withRouter, Link } from 'react-router-dom';
+import { useLocation, Redirect, withRouter } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import { editItem } from '../slices/items';
+import { editItem, deleteItem } from '../slices/items';
 import ItemForm from './ItemForm';
+
 import { history } from '../routers/AppRouter';
 
-const EditItemModal = () => {
+const EditItemModal = props => {
   // hide modal if location is not 'edit'
   const location = useLocation();
   if (location.pathname.match(/add|dashboard/)) {
@@ -21,11 +22,11 @@ const EditItemModal = () => {
     history.push('/dashboard');
   };
 
-  const selectedItem = useSelector(state => state.items.find(item => item.id === useParams().id));
   // redirect to Dashboard if item id is invalid
   // Redirect is better than history.push here
   // as history stack will not be populated with edit/invalid-id
-  if (!selectedItem) return <Redirect to="/dashboard" />;
+  if (!props.location.state) return <Redirect to="/dashboard" />;
+  const item = props.location.state.item;
 
   const dispatch = useDispatch();
   return (
@@ -33,15 +34,24 @@ const EditItemModal = () => {
     <Modal isOpen onRequestClose={closeModal} contentLabel="Edit item">
       <h2>Edit item</h2>
       <ItemForm
-        item={selectedItem}
+        item={item}
         onSubmit={updates => {
           closeModal();
-          dispatch(editItem({ id: selectedItem.id, ...updates }));
+          dispatch(editItem({ id: item.id, ...updates }));
         }}
       />
+      <button
+        onClick={() => {
+          closeModal();
+          dispatch(deleteItem(item.id));
+        }}
+      >
+        Delete item
+      </button>
       <button onClick={closeModal}>close</button>
     </Modal>
   );
 };
 
-export default EditItemModal;
+// wrapping in withRouter HOC to access props.location.state passed from list item
+export default withRouter(EditItemModal);

@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { firebase, googleAuthProvider } from '../firebase/firebase';
 
-// todo check if all exports are used
-
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: 'items',
   initialState: { uid: '' },
   reducers: {
