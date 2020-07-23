@@ -1,26 +1,105 @@
-import React from 'react';
-import { history } from '../routers/AppRouter';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 const ItemForm = props => {
+  const item = props.item;
+
+  // set page title
+  useEffect(() => {
+    document.title = `${item ? item.name : 'Add item'} | Zaino`;
+  }, []);
+
+  // todo perhaps store Categories in Redux store?
+  const categories = ['Backpacks', 'Tents'];
+  const [values, setValues] = useState(
+    item ? item : { name: '', category: 'Backpacks', weight: 100, size: '', quantity: 1, notes: '' }
+  );
+  const [errors, setErrors] = useState({});
+
+  const onChange = e => {
+    e.persist();
+
+    const name = e.target.name;
+    const value = e.target.value;
+    // prevent entering non-numeric characters into weight or quantity
+    if ((name === 'weight' || name === 'quantity') && !value.match(/^\d{1,}$/)) {
+      return;
+    }
+    setValues(values => ({ ...values, [name]: value }));
+  };
+
   const onSubmit = e => {
     e.preventDefault();
 
-    // todo temporary
-    props.onSubmit({
-      name: 'LEMON backpack',
-      category: 'Backpacks',
-      tags: ['Female', 'Grey case'],
-      weight: 1660,
-      size: 'S',
-      quantity: 1,
-    });
-    history.push('/dashboard');
+    if (!values.name || values.weight < 1 || values.quantity < 1) {
+      const errors = {};
+      if (!values.name) errors.name = 'Please enter a name';
+      if (values.weight < 1) errors.weight = 'Please enter a positive weight';
+      if (values.quantity < 1) errors.quantity = 'Please enter a positive quantity';
+      setErrors(errors);
+    } else {
+      // todo temp tags
+      props.onSubmit({ ...values, tags: ['Female', 'Grey case'] });
+    }
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <button>Save item (submit form)</button>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        className={`text-input ${errors.name && 'text-input__error'}`}
+        value={values.name}
+        onChange={onChange}
+      />
+      {errors.name && <p>{errors.name}</p>}
+      <select name="category" value={values.category} onChange={onChange}>
+        {categories.map((category, index) => (
+          <option key={index}>{category}</option>
+        ))}
+      </select>
+      <img
+        src={require(`../images/categories/${values.category.toLowerCase()}.svg`)}
+        className="list-item__image"
+      />
+      <label>
+        <input
+          type="text"
+          name="weight"
+          placeholder="Weight"
+          className={`text-input ${errors.weight && 'text-input__error'}`}
+          value={values.weight}
+          onChange={onChange}
+        />
+        grams
+      </label>
+      {errors.weight && <p>{errors.weight}</p>}
+      <input
+        type="text"
+        name="size"
+        placeholder="Size"
+        className="text-input"
+        value={values.size}
+        onChange={onChange}
+      />
+      <input
+        type="text"
+        name="quantity"
+        placeholder="Quantity"
+        className={`text-input ${errors.quantity && 'text-input__error'}`}
+        value={values.quantity}
+        onChange={onChange}
+      />
+      {errors.quantity && <p>{errors.quantity}</p>}
+      <textarea
+        placeholder="Add notes here"
+        name="notes"
+        className="textarea"
+        value={values.notes}
+        onChange={onChange}
+      ></textarea>
+      {/* todo tags */}
+      <button>Save item</button>
     </form>
   );
 };

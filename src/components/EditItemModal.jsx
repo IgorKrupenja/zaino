@@ -15,20 +15,29 @@ const EditItemModal = () => {
   }
 
   Modal.setAppElement('#app');
-  const closeModal = () => history.push('/dashboard');
+  const closeModal = () => {
+    // restore title after closing
+    document.title = 'Zaino';
+    history.push('/dashboard');
+  };
 
   const selectedItem = useSelector(state => state.items.find(item => item.id === useParams().id));
   // redirect to Dashboard if item id is invalid
+  // Redirect is better than history.push here
+  // as history stack will not be populated with edit/invalid-id
   if (!selectedItem) return <Redirect to="/dashboard" />;
 
   const dispatch = useDispatch();
   return (
     // treat modal as always open (if location is 'edit')
-    <Modal isOpen={true} onRequestClose={closeModal} contentLabel="Edit item">
+    <Modal isOpen onRequestClose={closeModal} contentLabel="Edit item">
       <h2>Edit item</h2>
       <ItemForm
         item={selectedItem}
-        onSubmit={updates => dispatch(editItem({ id: selectedItem.id, ...updates }))}
+        onSubmit={updates => {
+          closeModal();
+          dispatch(editItem({ id: selectedItem.id, ...updates }));
+        }}
       />
       <button onClick={closeModal}>close</button>
     </Modal>

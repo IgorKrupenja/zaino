@@ -16,6 +16,7 @@ export const addItem = createAsyncThunk('items/addItem', async (item, { getState
 });
 
 export const editItem = createAsyncThunk('items/editItem', async (item, { getState }) => {
+  console.log(item);
   await db
     .collection(`users/${getState().auth.uid}/items`)
     .doc(item.id)
@@ -46,6 +47,7 @@ export const itemsSlice = createSlice({
       state.push({ ...action.payload });
     },
     [editItem.fulfilled]: (state, action) => {
+      console.log('edit item success!');
       // perhaps there is a more elegant way?
       state.forEach(item => {
         if (item.id === action.payload.id) {
@@ -54,6 +56,9 @@ export const itemsSlice = createSlice({
           }
         }
       });
+    },
+    [editItem.rejected]: (state, action) => {
+      console.log(action);
     },
   },
 });

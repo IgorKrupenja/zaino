@@ -15,14 +15,23 @@ const AddItemModal = () => {
   }
 
   Modal.setAppElement('#app');
-  const closeModal = () => history.push('/dashboard');
+  const closeModal = () => {
+    // restore title after closing
+    document.title = 'Zaino';
+    history.push('/dashboard');
+  };
 
   const dispatch = useDispatch();
   return (
     // treat modal as always open (if location is 'add')
-    <Modal isOpen={true} onRequestClose={closeModal} contentLabel="Add item">
+    <Modal isOpen onRequestClose={closeModal} contentLabel="Add item">
       <h2>Add item</h2>
-      <ItemForm onSubmit={item => dispatch(addItem(item))} />
+      <ItemForm
+        onSubmit={item => {
+          closeModal();
+          dispatch(addItem(item));
+        }}
+      />
       <button onClick={closeModal}>close</button>
     </Modal>
   );
