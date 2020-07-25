@@ -2,8 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { editItem } from '../slices/items';
+import { Item, Label } from '../types/types';
+import { RootState } from '../store/store';
 
-const ListItem = ({ item, children }) => {
+type ListItemProps = {
+  item: Item;
+  children?: React.ReactNode;
+};
+
+const ListItem = ({ item, children }: ListItemProps) => {
   const { id, name, category, labels, weight, size, quantity } = item;
   return (
     <article>
@@ -22,20 +29,23 @@ const ListItem = ({ item, children }) => {
       </p>
       <ul>
         {/* get all labels from store with all the needed details (id's in addition to names) */}
-        {useSelector(state => state.labels)
-          // filter to get only selected labels for a particular item
-          .filter(label => labels.includes(label.id))
-          // render
-          .map(label => (
-            <li key={label.id}>{label.name}</li>
-          ))}
+        {useSelector((state: RootState) => state.labels).reduce(
+          // get only selected labels for a particular item
+          (accumulator: React.ReactChild[], currentLabel: Label) => {
+            if (labels.includes(currentLabel.id)) {
+              accumulator.push(<li key={currentLabel.id}>{currentLabel.name}</li>);
+            }
+            return accumulator;
+          },
+          []
+        )}
       </ul>
       {children}
     </article>
   );
 };
 
-export const InventoryListItem = item => {
+export const InventoryListItem = (item: Item) => {
   const dispatch = useDispatch();
   return (
     <ListItem item={item}>
@@ -50,7 +60,7 @@ export const InventoryListItem = item => {
   );
 };
 
-export const PackListItem = item => {
+export const PackListItem = (item: Item) => {
   const dispatch = useDispatch();
   return (
     <ListItem item={item}>

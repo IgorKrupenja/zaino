@@ -1,8 +1,0 @@
-{
-  // todo likely not needed if disable js check
-  "compilerOptions": {
-    // "checkJs": true,
-    "jsx": "react"
-  },
-  "exclude": ["node_modules", "**/node_modules/*"]
-}

@@ -4,19 +4,22 @@ import LabelSelect from './LabelSelect';
 const ItemForm = props => {
   const item = props.item;
 
-  // a fix list of categories for now - later should make them editable and store them in DB
+  // a fixed list of categories for now - later should make them editable and store them in DB
+  // todo move to a separate file?
   const categories = ['Backpacks', 'Tents'];
   const [values, setValues] = useState(
     item
       ? item
-      : {
+      : // todo likely move to separate const
+        // todo could be default props?
+        {
           name: '',
           category: 'Backpacks',
           weight: 100,
           size: '',
           quantity: 1,
           notes: '',
-          quantityInPack: false,
+          quantityInPack: 0,
         }
   );
   const [errors, setErrors] = useState({});

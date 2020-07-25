@@ -1,0 +1,3 @@
+{
+  "watch": ["webpack.config.js", "tsconfig.json"]
+}

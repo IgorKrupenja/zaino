@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import ItemForm from './ItemForm';
 import { history } from '../routers/AppRouter';
+import { Item, NewItemEvent } from '../types/types';
 
 export const closeModal = () => {
   // restore title after closing
@@ -10,10 +11,18 @@ export const closeModal = () => {
   history.push('/dashboard');
 };
 
-const ItemModal = ({ item, title, onSubmit, children }) => {
+type ItemModalProps = {
+  item?: Item | NewItemEvent;
+  title: string;
+  // todo TS any
+  onSubmit: (item: any) => void;
+  children?: React.ReactChild;
+};
+
+const ItemModal = ({ item, title, onSubmit, children }: ItemModalProps) => {
   // set appropriate page title once when component is first rendered
   useEffect(() => {
-    document.title = `${item ? item.name : title} | Zaino`;
+    document.title = title;
   }, []);
 
   Modal.setAppElement('#app');
@@ -25,7 +34,7 @@ const ItemModal = ({ item, title, onSubmit, children }) => {
       <h2>{title}</h2>
       <ItemForm
         item={item}
-        onSubmit={item => {
+        onSubmit={(item: Item | NewItemEvent) => {
           closeModal();
           dispatch(onSubmit(item));
         }}

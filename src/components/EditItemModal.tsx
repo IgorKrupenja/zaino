@@ -1,15 +1,20 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation, Redirect, withRouter } from 'react-router-dom';
-import { editItem, deleteItem } from '../slices/items';
+import { useLocation, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
+import { editItem, deleteItem, editItemThunkAction } from '../slices/items';
 import ItemModal, { closeModal } from './ItemModal';
+import { Item, NewItemEvent } from '../types/types';
 
-const EditItemModal = props => {
+type EditItemModalProps = RouteComponentProps<
+  any, // this.props.match.params.myParamProp, not used
+  any, // history, not used
+  { item: Item } // this.props.location.state.item
+>;
+
+const EditItemModal = (props: EditItemModalProps) => {
+  const dispatch = useDispatch();
   // hide modal if location is not 'edit'
-  const location = useLocation();
-  if (location.pathname.match(/add|dashboard/)) {
-    return null;
-  }
+  if (useLocation().pathname.match(/add|dashboard/)) return null;
 
   // redirect to Dashboard if item id is invalid
   // Redirect is better than history.push here
@@ -17,9 +22,12 @@ const EditItemModal = props => {
   if (!props.location.state) return <Redirect to="/dashboard" />;
   const item = props.location.state.item;
 
-  const dispatch = useDispatch();
   return (
-    <ItemModal item={item} onSubmit={updates => editItem({ id: item.id, ...updates })}>
+    <ItemModal
+      item={item}
+      title={`${item.name} | Zaino`}
+      onSubmit={(item: Item) => editItem({ ...item })}
+    >
       <button
         onClick={() => {
           closeModal();

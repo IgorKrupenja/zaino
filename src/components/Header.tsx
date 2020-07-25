@@ -7,7 +7,7 @@ import { resetLabelsState } from '../slices/labels';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     dispatch(logout());
     dispatch(resetItemsState());
     dispatch(resetLabelsState());

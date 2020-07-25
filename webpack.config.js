@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'test') {
 
 module.exports = env => {
   return {
-    entry: ['@babel/polyfill', './src/app.jsx'],
+    entry: ['./src/app.tsx'],
     output: {
       path: path.join(__dirname, 'dist'),
       filename: 'bundle.js',
@@ -27,11 +27,11 @@ module.exports = env => {
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
-          loader: 'babel-loader',
+          test: /\.(t|j)sx?$/,
+          use: { loader: 'ts-loader' },
           exclude: /node_modules/,
           resolve: {
-            extensions: ['.js', '.jsx'],
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
           },
         },
         {

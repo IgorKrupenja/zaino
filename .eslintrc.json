@@ -3,35 +3,45 @@
     "browser": true,
     "es6": true,
     "node": true,
-    "jest/globals": true
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    // todo likely re-enable later
+    // "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:jest/recommended",
     "plugin:jest/style"
   ],
-  "plugins": ["jest"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
-  "parser": "babel-eslint",
+  "plugins": ["react", "react-hooks", "jest"],
+  // "globals": {
+  //   "Atomics": "readonly",
+  //   "SharedArrayBuffer": "readonly"
+  // },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
     // Allows for the use of imports
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    // needed for @typescript-eslint/recommended-requiring-type-checking to work
+    "project": "./tsconfig.json"
   },
   "rules": {
-    "no-unused-vars": "warn",
-    "no-extra-semi": "warn",
-    "prefer-const": "warn",
-    "no-empty": "warn",
-    // new React stuff below
+    // custom rules
     "react/prop-types": "warn",
-    "react/display-name": "warn"
+    "react/display-name": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/ban-ts-comment": "warn"
   }
 }

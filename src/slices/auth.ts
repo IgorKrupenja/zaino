@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { firebase, googleAuthProvider } from '../firebase/firebase';
 
 const authSlice = createSlice({
@@ -9,7 +9,7 @@ const authSlice = createSlice({
       firebase.auth().signInWithRedirect(googleAuthProvider);
       // firebase.auth().signInWithPopup(googleAuthProvider);
     },
-    // called from app.jsx where onAuthStateChanged can provide uid
+    // called from app.tsx where onAuthStateChanged can provide uid
     setUid: (state, action) => {
       state.uid = action.payload;
     },

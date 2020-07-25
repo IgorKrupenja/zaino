@@ -2,14 +2,18 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
+import { RootState } from '../store/store';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isAuthenticated = useSelector(state => !!state.auth.uid);
+type PrivateRouteProps = {
+  component: () => JSX.Element;
+  path: string;
+};
 
+const PrivateRoute = ({ component: Component, path }: PrivateRouteProps) => {
+  const isAuthenticated = useSelector((state: RootState) => !!state.auth.uid);
   return (
     <Route
-      // passing stuff like path and exact
-      {...rest}
+      path={path}
       component={() =>
         isAuthenticated ? (
           <div>
