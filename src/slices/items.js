@@ -13,7 +13,9 @@ export const addItem = createAsyncThunk('items/addItem', async (item, { getState
   return { id: docRef.id, ...item };
 });
 
+// todo maybe rename to updateItem
 export const editItem = createAsyncThunk('items/editItem', async (item, { getState }) => {
+  // todo attempts to also update id which does not exist as a property in Firestore
   await db
     .collection(`users/${getState().auth.uid}/items`)
     .doc(item.id)
@@ -26,17 +28,12 @@ export const deleteItem = createAsyncThunk('items/deleteItem', async (id, { getS
   return { id };
 });
 
-// todo move to slice
-const initialState = [];
-
 const itemsSlice = createSlice({
   name: 'items',
-  initialState,
+  initialState: [],
   reducers: {
-    // reset action to be executed on logout
-    // todo might need to refactor when have several slices
-    // todo https://stackoverflow.com/questions/59061161/how-to-reset-state-of-redux-store-when-using-configurestore-from-reduxjs-toolki
-    resetItemsState: () => initialState,
+    // reset state action to be executed on logout
+    resetItemsState: () => [],
   },
   extraReducers: {
     // Redux Toolkit allows us to write "mutating" logic in reducers. It

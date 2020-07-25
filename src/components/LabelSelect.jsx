@@ -19,11 +19,7 @@ const LabelSelect = props => {
 
   // update ItemForm state on item labels change
   useEffect(() => {
-    if (values) {
-      props.setLabels(values.map(label => label.value));
-    } else {
-      props.setLabels([]);
-    }
+    values ? props.setLabels(values.map(label => label.value)) : props.setLabels([]);
   }, [values]);
 
   const handleCreate = async inputValue => {

@@ -16,7 +16,7 @@ const ItemForm = props => {
           size: '',
           quantity: 1,
           notes: '',
-          // isInPack: false,
+          quantityInPack: false,
         }
   );
   const [errors, setErrors] = useState({});
@@ -36,6 +36,7 @@ const ItemForm = props => {
   const onSubmit = e => {
     e.preventDefault();
 
+    // todo can this be improved? use effect?
     if (!values.name || values.weight < 1 || values.quantity < 1) {
       const errors = {};
       if (!values.name) errors.name = 'Please enter a name';

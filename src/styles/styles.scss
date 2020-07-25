@@ -1,4 +1,6 @@
+// settings and base
 @import './base/settings';
 @import './base/base';
+// components
+@import './components/dashboard';
 @import './components/list';
-@import './components/modal';
