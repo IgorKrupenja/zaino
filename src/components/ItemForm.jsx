@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LabelSelect from './LabelSelect';
 
 const ItemForm = props => {
   const item = props.item;
 
-  // set page title once when component is first rendered
-  useEffect(() => {
-    document.title = `${item ? item.name : 'Add item'} | Zaino`;
-  }, []);
-
   // a fix list of categories for now - later should make them editable and store them in DB
   const categories = ['Backpacks', 'Tents'];
   const [values, setValues] = useState(
-    item ? item : { name: '', category: 'Backpacks', weight: 100, size: '', quantity: 1, notes: '' }
+    item
+      ? item
+      : {
+          name: '',
+          category: 'Backpacks',
+          weight: 100,
+          size: '',
+          quantity: 1,
+          notes: '',
+          // isInPack: false,
+        }
   );
   const [errors, setErrors] = useState({});
 

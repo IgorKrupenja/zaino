@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation, Redirect, withRouter } from 'react-router-dom';
-import Modal from 'react-modal';
-
 import { editItem, deleteItem } from '../slices/items';
-import ItemForm from './ItemForm';
-
-import { history } from '../routers/AppRouter';
+import ItemModal, { closeModal } from './ItemModal';
 
 const EditItemModal = props => {
   // hide modal if location is not 'edit'
@@ -14,13 +10,6 @@ const EditItemModal = props => {
   if (location.pathname.match(/add|dashboard/)) {
     return null;
   }
-
-  Modal.setAppElement('#app');
-  const closeModal = () => {
-    // restore title after closing
-    document.title = 'Zaino';
-    history.push('/dashboard');
-  };
 
   // redirect to Dashboard if item id is invalid
   // Redirect is better than history.push here
@@ -30,16 +19,7 @@ const EditItemModal = props => {
 
   const dispatch = useDispatch();
   return (
-    // treat modal as always open (if location is 'edit')
-    <Modal isOpen onRequestClose={closeModal} contentLabel="Edit item">
-      <h2>Edit item</h2>
-      <ItemForm
-        item={item}
-        onSubmit={updates => {
-          closeModal();
-          dispatch(editItem({ id: item.id, ...updates }));
-        }}
-      />
+    <ItemModal item={item} onSubmit={updates => editItem({ id: item.id, ...updates })}>
       <button
         onClick={() => {
           closeModal();
@@ -48,8 +28,7 @@ const EditItemModal = props => {
       >
         Delete item
       </button>
-      <button onClick={closeModal}>close</button>
-    </Modal>
+    </ItemModal>
   );
 };
 
