@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import db from '../firebase/firebase';
-import { Item, NewItemEvent } from '../types/types';
+import { Item } from '../types/types';
 import { RootState } from '../store/store';
 
 export const loadItems = createAsyncThunk('items/loadItems', async (uid: string) => {
@@ -10,19 +10,20 @@ export const loadItems = createAsyncThunk('items/loadItems', async (uid: string)
 
 export const addItem = createAsyncThunk<
   // Return type of the payload creator
-  Item,
+  void,
   // First argument to the payload creator
-  NewItemEvent,
+  Item,
   // Types for ThunkAPI
   { state: RootState }
 >('items/addItem', async (item, { getState }) => {
-  const docRef = await db.collection(`users/${getState().auth.uid}/items`).add({ ...item });
-  // adding newly-created id from DB
-  return { id: docRef.id, ...item } as Item;
+  await db
+    .collection(`users/${getState().auth.uid}/items`)
+    .doc(item.id)
+    .set({ ...item });
 });
 
 // todo maybe rename to updateItem
-export const editItem = createAsyncThunk<Item, Item, { state: RootState }>(
+export const editItem = createAsyncThunk<void, Item, { state: RootState }>(
   'items/editItem',
   async (item, { getState }) => {
     // separate idd from other item props as id's are not stored as document keys in Firestore
@@ -31,17 +32,13 @@ export const editItem = createAsyncThunk<Item, Item, { state: RootState }>(
       .collection(`users/${getState().auth.uid}/items`)
       .doc(id)
       .update({ ...firestoreItem });
-    return item as Item;
   }
 );
 
-export type editItemThunkAction = typeof editItem;
-
-export const deleteItem = createAsyncThunk<string, string, { state: RootState }>(
+export const deleteItem = createAsyncThunk<void, string, { state: RootState }>(
   'items/deleteItem',
   async (id, { getState }) => {
     await db.collection(`users/${getState().auth.uid}/items`).doc(id).delete();
-    return id;
   }
 );
 
@@ -67,23 +64,24 @@ const itemsSlice = createSlice({
         state.push(item);
       });
     });
-    builder.addCase(addItem.fulfilled, (state, action) => {
-      state.push(action.payload);
+    builder.addCase(addItem.pending, (state, action) => {
+      state.push(action.meta.arg);
     });
-    builder.addCase(editItem.fulfilled, (state, action) => {
+    builder.addCase(editItem.pending, (state, action) => {
       // todo this is sub-optimal, see #75
+      const update = action.meta.arg;
       state.forEach(item => {
-        if (item.id === action.payload.id) {
+        if (item.id === update.id) {
           for (const property in item) {
             // @ts-ignore
-            item[property] = action.payload[property];
+            item[property] = update[property];
           }
         }
       });
     });
-    builder.addCase(deleteItem.fulfilled, (state, action) => {
+    builder.addCase(deleteItem.pending, (state, action) => {
       state.splice(
-        state.findIndex(item => item.id === action.payload),
+        state.findIndex(item => item.id === action.meta.arg),
         1
       );
     });

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LabelSelect from './LabelSelect';
+import { v4 as uuid } from 'uuid';
 
 const ItemForm = props => {
   const item = props.item;
@@ -13,6 +14,7 @@ const ItemForm = props => {
       : // todo likely move to separate const
         // todo could be default props?
         {
+          id: uuid(),
           name: '',
           category: 'Backpacks',
           weight: 100,

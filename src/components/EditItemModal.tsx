@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
-import { editItem, deleteItem, editItemThunkAction } from '../slices/items';
+import { editItem, deleteItem } from '../slices/items';
 import ItemModal, { closeModal } from './ItemModal';
-import { Item, NewItemEvent } from '../types/types';
+import { Item } from '../types/types';
 
 type EditItemModalProps = RouteComponentProps<
   any, // this.props.match.params.myParamProp, not used

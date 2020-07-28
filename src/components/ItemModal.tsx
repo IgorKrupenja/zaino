@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import ItemForm from './ItemForm';
 import { history } from '../routers/AppRouter';
-import { Item, NewItemEvent } from '../types/types';
+import { Item } from '../types/types';
 
 export const closeModal = () => {
   // restore title after closing
@@ -12,10 +12,10 @@ export const closeModal = () => {
 };
 
 type ItemModalProps = {
-  item?: Item | NewItemEvent;
+  item?: Item;
   title: string;
   // todo TS any
-  onSubmit: (item: any) => void;
+  onSubmit: (item: Item) => void;
   children?: React.ReactChild;
 };
 
@@ -34,7 +34,7 @@ const ItemModal = ({ item, title, onSubmit, children }: ItemModalProps) => {
       <h2>{title}</h2>
       <ItemForm
         item={item}
-        onSubmit={(item: Item | NewItemEvent) => {
+        onSubmit={(item: Item) => {
           closeModal();
           dispatch(onSubmit(item));
         }}

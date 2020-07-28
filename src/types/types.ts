@@ -1,5 +1,5 @@
-// new item event for with no id item about to be created in Firestore
-export type NewItemEvent = {
+export type Item = {
+  id: string;
   name: string;
   category: string;
   labels: string[];
@@ -9,9 +9,6 @@ export type NewItemEvent = {
   notes: string;
   quantityInPack: number;
 };
-
-// item with id that is already added to Firestore
-export type Item = NewItemEvent & { id: string };
 
 export type Label = {
   id: string;
