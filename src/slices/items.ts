@@ -16,22 +16,22 @@ export const addItem = createAsyncThunk<
   // Types for ThunkAPI
   { state: RootState }
 >('items/addItem', async (item, { getState }) => {
+  // separate id from other item properties as id's are not stored as document keys in Firestore
+  const { id, ...firestoreData } = item;
   await db
     .collection(`users/${getState().auth.uid}/items`)
-    .doc(item.id)
-    .set({ ...item });
+    .doc(id)
+    .set({ ...firestoreData });
 });
 
-// todo maybe rename to updateItem
-export const editItem = createAsyncThunk<void, Item, { state: RootState }>(
+export const updateItem = createAsyncThunk<void, Item, { state: RootState }>(
   'items/editItem',
   async (item, { getState }) => {
-    // separate idd from other item props as id's are not stored as document keys in Firestore
-    const { id, ...firestoreItem } = item;
+    const { id, ...firestoreData } = item;
     await db
       .collection(`users/${getState().auth.uid}/items`)
       .doc(id)
-      .update({ ...firestoreItem });
+      .update({ ...firestoreData });
   }
 );
 
@@ -59,15 +59,12 @@ const itemsSlice = createSlice({
     // immutable state based off those changes
     // more info https://redux.js.org/tutorials/essentials/part-2-app-structure
     builder.addCase(loadItems.fulfilled, (state, action) => {
-      action.payload.forEach(item => {
-        typeof item;
-        state.push(item);
-      });
+      action.payload.forEach(item => state.push(item));
     });
     builder.addCase(addItem.pending, (state, action) => {
       state.push(action.meta.arg);
     });
-    builder.addCase(editItem.pending, (state, action) => {
+    builder.addCase(updateItem.pending, (state, action) => {
       // todo this is sub-optimal, see #75
       const update = action.meta.arg;
       state.forEach(item => {
@@ -85,6 +82,7 @@ const itemsSlice = createSlice({
         1
       );
     });
+    // todo possibly add rejected handling here, #78
   },
 });
 

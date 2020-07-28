@@ -1,24 +1,24 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { firebase, googleAuthProvider } from '../firebase/firebase';
+
+export const login = createAsyncThunk('items/login', async () => {
+  await firebase.auth().signInWithRedirect(googleAuthProvider);
+});
+
+export const logout = createAsyncThunk('items/login', async () => {
+  await firebase.auth().signOut();
+});
 
 const authSlice = createSlice({
   name: 'items',
   initialState: { uid: '' },
   reducers: {
-    login: () => {
-      firebase.auth().signInWithRedirect(googleAuthProvider);
-      // firebase.auth().signInWithPopup(googleAuthProvider);
-    },
     // called from app.tsx where onAuthStateChanged can provide uid
     setUid: (state, action) => {
-      state.uid = action.payload;
-    },
-    logout: state => {
-      firebase.auth().signOut();
-      state.uid = '';
+      state.uid = action.payload as string;
     },
   },
 });
 
-export const { login, setUid, logout } = authSlice.actions;
+export const { setUid } = authSlice.actions;
 export default authSlice.reducer;

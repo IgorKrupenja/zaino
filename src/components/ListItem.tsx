@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { editItem } from '../slices/items';
+import { useSelector } from 'react-redux';
 import { Item, Label } from '../types/types';
 import { RootState } from '../store/store';
 
@@ -32,7 +31,7 @@ const ListItem = ({ item, children }: ListItemProps) => {
         {useSelector((state: RootState) => state.labels).reduce(
           // get only selected labels for a particular item
           (accumulator: React.ReactChild[], currentLabel: Label) => {
-            if (labels.includes(currentLabel.id)) {
+            if (labels && labels.includes(currentLabel.id)) {
               accumulator.push(<li key={currentLabel.id}>{currentLabel.name}</li>);
             }
             return accumulator;
@@ -45,30 +44,4 @@ const ListItem = ({ item, children }: ListItemProps) => {
   );
 };
 
-export const InventoryListItem = (item: Item) => {
-  const dispatch = useDispatch();
-  return (
-    <ListItem item={item}>
-      {item.quantityInPack < 1 ? (
-        <button onClick={() => dispatch(editItem({ ...item, id: item.id, quantityInPack: 1 }))}>
-          Add to pack
-        </button>
-      ) : (
-        <button>Already in pack</button>
-      )}
-    </ListItem>
-  );
-};
-
-export const PackListItem = (item: Item) => {
-  const dispatch = useDispatch();
-  return (
-    <ListItem item={item}>
-      {item.quantityInPack > 0 && (
-        <button onClick={() => dispatch(editItem({ ...item, id: item.id, quantityInPack: 0 }))}>
-          Remove from pack
-        </button>
-      )}
-    </ListItem>
-  );
-};
+export default ListItem;

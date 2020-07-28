@@ -1,5 +1,6 @@
 import React from 'react';
-import { PackList, InventoryList } from './List';
+import PackList from './PackList';
+import InventoryList from './InventoryList';
 import AddItemModal from './AddItemModal';
 import EditItemModal from './EditItemModal';
 

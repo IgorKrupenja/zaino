@@ -14,7 +14,6 @@ export const closeModal = () => {
 type ItemModalProps = {
   item?: Item;
   title: string;
-  // todo TS any
   onSubmit: (item: Item) => void;
   children?: React.ReactChild;
 };

@@ -2,6 +2,11 @@ node_modules/
 dist/
 .env.development
 .env.test
+# playground/sandbox folder
 sandbox/
+# Webpack stats
 stats.json
+# Firebasse hosting cache
 .firebase/
+# produced by firebase serve
+.firebase-debug.log

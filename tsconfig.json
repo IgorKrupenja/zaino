@@ -4,7 +4,6 @@
     "outDir": "./dist/",
     // allow sourcemap support
     "sourceMap": true,
-    // todo consider changing to null only if too strict
     "strict": true,
     // specify module code generation
     "module": "esnext",
@@ -13,7 +12,7 @@
     // specify ECMAScript target version
     "target": "es5",
     // allow a partial TypeScript and JavaScript codebase
-    "allowJs": true,
+    // "allowJs": true,
     // needed for typings to work properly e.g. with Redux toolkit
     "moduleResolution": "node",
     // Report error when not all code paths in function return a value.

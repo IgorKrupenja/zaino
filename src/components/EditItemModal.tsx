@@ -1,12 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
-import { editItem, deleteItem } from '../slices/items';
+import { updateItem, deleteItem } from '../slices/items';
 import ItemModal, { closeModal } from './ItemModal';
 import { Item } from '../types/types';
 
+// somewhat unclear how to use typings here properly
+// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/17355
 type EditItemModalProps = RouteComponentProps<
-  any, // this.props.match.params.myParamProp, not used
+  undefined, // this.props.match.params.myParamProp, not used
   any, // history, not used
   { item: Item } // this.props.location.state.item
 >;
@@ -14,7 +16,7 @@ type EditItemModalProps = RouteComponentProps<
 const EditItemModal = (props: EditItemModalProps) => {
   const dispatch = useDispatch();
   // hide modal if location is not 'edit'
-  if (useLocation().pathname.match(/add|dashboard/)) return null;
+  if (useLocation().pathname.match(/add|dashboard/g)) return null;
 
   // redirect to Dashboard if item id is invalid
   // Redirect is better than history.push here
@@ -26,7 +28,7 @@ const EditItemModal = (props: EditItemModalProps) => {
     <ItemModal
       item={item}
       title={`${item.name} | Zaino`}
-      onSubmit={(item: Item) => editItem({ ...item })}
+      onSubmit={(item: Item) => updateItem({ ...item })}
     >
       <button
         onClick={() => {
@@ -40,5 +42,5 @@ const EditItemModal = (props: EditItemModalProps) => {
   );
 };
 
-// wrapping in withRouter HOC to access props.location.state passed from list item
+// wrapping in withRouter HOC to access props.location.state passed from ListItem
 export default withRouter(EditItemModal);

@@ -1,60 +1,65 @@
-import React, { useState } from 'react';
-import LabelSelect from './LabelSelect';
+import React, { useState, ChangeEvent } from 'react';
 import { v4 as uuid } from 'uuid';
+import LabelSelect from './LabelSelect';
+import { Item } from '../types/types';
 
-const ItemForm = props => {
-  const item = props.item;
+type ItemFormProps = {
+  item: Item;
+  onSubmit: (item: Item) => void;
+};
+const newItem: Item = {
+  id: uuid(),
+  name: '',
+  category: 'Backpacks',
+  weight: 100,
+  quantity: 1,
+  quantityInPack: 0,
+};
 
+// todo do I need to store empty values in Firestore???
+
+const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   // a fixed list of categories for now - later should make them editable and store them in DB
-  // todo move to a separate file?
   const categories = ['Backpacks', 'Tents'];
-  const [values, setValues] = useState(
-    item
-      ? item
-      : // todo likely move to separate const
-        // todo could be default props?
-        {
-          id: uuid(),
-          name: '',
-          category: 'Backpacks',
-          weight: 100,
-          size: '',
-          quantity: 1,
-          notes: '',
-          quantityInPack: 0,
-        }
-  );
-  const [errors, setErrors] = useState({});
+  const [values, setValues] = useState(item);
+  const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
 
-  const onChange = e => {
+  // SyntheticEvent as used for different HTMLElements
+  const onChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | ChangeEvent<HTMLTextAreaElement>
+      | ChangeEvent<HTMLSelectElement>
+  ) => {
     e.persist();
 
     const name = e.target.name;
     const value = e.target.value;
     // prevent entering non-numeric characters into weight or quantity
-    if ((name === 'weight' || name === 'quantity') && !value.match(/^\d{1,}$/)) {
+    if ((name === 'weight' || name === 'quantity') && !value.match(/^\d{1,}$/g)) {
       return;
     }
     setValues(values => ({ ...values, [name]: value }));
   };
 
-  const onSubmit = e => {
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // todo can this be improved? use effect?
+    // todo can this be improved? useEffect?
+    // todo see e.g. https://stackoverflow.com/questions/41296668/reactjs-form-input-validation
     if (!values.name || values.weight < 1 || values.quantity < 1) {
-      const errors = {};
+      const errors = { name: '', weight: '', quantity: '' };
       if (!values.name) errors.name = 'Please enter a name';
       if (values.weight < 1) errors.weight = 'Please enter a positive weight';
       if (values.quantity < 1) errors.quantity = 'Please enter a positive quantity';
       setErrors(errors);
     } else {
-      props.onSubmit({ ...values });
+      onSubmit({ ...values });
     }
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onFormSubmit}>
       <input
         type="text"
         name="name"
@@ -110,12 +115,14 @@ const ItemForm = props => {
         onChange={onChange}
       ></textarea>
       <LabelSelect
-        selectedLabelIds={values.labels}
-        setLabels={labels => setValues(values => ({ ...values, labels }))}
+        selectedLabelIds={values.labels ? values.labels : []}
+        setLabels={(labels: string[]) => setValues(values => ({ ...values, labels: labels }))}
       />
       <button>Save item</button>
     </form>
   );
 };
+
+ItemForm.defaultProps = { item: newItem };
 
 export default ItemForm;
