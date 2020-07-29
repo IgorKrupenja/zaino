@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 import LabelSelect from './LabelSelect';
 import { Item } from '../types/types';
@@ -15,8 +15,6 @@ const newItem: Item = {
   quantity: 1,
   quantityInPack: 0,
 };
-
-// todo do I need to store empty values in Firestore???
 
 const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   // a fixed list of categories for now - later should make them editable and store them in DB
@@ -42,20 +40,35 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     setValues(values => ({ ...values, [name]: value }));
   };
 
+  const setLabels = useCallback(
+    (labels: string[]) => setValues(values => ({ ...values, labels })),
+    [setValues]
+  );
+
+  const validate = () => {
+    let isFormValid = true;
+    const errors = { name: '', weight: '', quantity: '' };
+
+    if (!values.name) {
+      errors.name = 'Please enter a name';
+      isFormValid = false;
+    }
+    if (values.weight < 1) {
+      errors.weight = 'Please enter a positive weight';
+      isFormValid = false;
+    }
+    if (values.quantity < 1) {
+      errors.quantity = 'Please enter a positive quantity';
+      isFormValid = false;
+    }
+
+    setErrors(errors);
+    return isFormValid;
+  };
+
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // todo can this be improved? useEffect?
-    // todo see e.g. https://stackoverflow.com/questions/41296668/reactjs-form-input-validation
-    if (!values.name || values.weight < 1 || values.quantity < 1) {
-      const errors = { name: '', weight: '', quantity: '' };
-      if (!values.name) errors.name = 'Please enter a name';
-      if (values.weight < 1) errors.weight = 'Please enter a positive weight';
-      if (values.quantity < 1) errors.quantity = 'Please enter a positive quantity';
-      setErrors(errors);
-    } else {
-      onSubmit({ ...values });
-    }
+    if (validate()) onSubmit({ ...values });
   };
 
   return (
@@ -68,7 +81,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         value={values.name}
         onChange={onChange}
       />
-      {errors.name && <p>{errors.name}</p>}
+      {errors.name && <span>{errors.name}</span>}
       <select name="category" value={values.category} onChange={onChange}>
         {categories.map((category, index) => (
           <option key={index}>{category}</option>
@@ -89,7 +102,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         />
         grams
       </label>
-      {errors.weight && <p>{errors.weight}</p>}
+      {errors.weight && <span>{errors.weight}</span>}
       <input
         type="text"
         name="size"
@@ -106,7 +119,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         value={values.quantity}
         onChange={onChange}
       />
-      {errors.quantity && <p>{errors.quantity}</p>}
+      {errors.quantity && <span>{errors.quantity}</span>}
       <textarea
         placeholder="Add notes here"
         name="notes"
@@ -114,10 +127,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         value={values.notes}
         onChange={onChange}
       ></textarea>
-      <LabelSelect
-        selectedLabelIds={values.labels ? values.labels : []}
-        setLabels={(labels: string[]) => setValues(values => ({ ...values, labels: labels }))}
-      />
+      <LabelSelect selectedLabelIds={values.labels ? values.labels : []} setLabels={setLabels} />
       <button>Save item</button>
     </form>
   );

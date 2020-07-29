@@ -30,7 +30,7 @@ const LabelSelect = ({ selectedLabelIds, setLabels }: LabelSelectProps) => {
   // update ItemForm state on item labels change
   useEffect(() => {
     values ? setLabels(values.map(label => label.value)) : setLabels([]);
-  }, [values]);
+  }, [values, setLabels]);
 
   const handleCreate = (inputValue: string) => {
     //todo temporary color
