@@ -4,22 +4,23 @@ import LabelSelect from './LabelSelect';
 import { Item } from '../types/types';
 
 type ItemFormProps = {
-  item: Item;
+  item?: Item;
   onSubmit: (item: Item) => void;
-};
-const newItem: Item = {
-  id: uuid(),
-  name: '',
-  category: 'Backpacks',
-  weight: 100,
-  quantity: 1,
-  quantityInPack: 0,
 };
 
 const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   // a fixed list of categories for now - later should make them editable and store them in DB
   const categories = ['Backpacks', 'Tents'];
-  const [values, setValues] = useState(item);
+  const newItem: Item = {
+    // todo creates dupes #84
+    id: uuid(),
+    name: '',
+    category: 'Backpacks',
+    weight: 100,
+    quantity: 1,
+    quantityInPack: 0,
+  };
+  const [values, setValues] = useState(item ? item : newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
 
   // SyntheticEvent as used for different HTMLElements
@@ -40,6 +41,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     setValues(values => ({ ...values, [name]: value }));
   };
 
+  // useCallback to prevent performance issues in LabelSelect
   const setLabels = useCallback(
     (labels: string[]) => setValues(values => ({ ...values, labels })),
     [setValues]
@@ -108,7 +110,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         name="size"
         placeholder="Size"
         className="text-input"
-        value={values.size}
+        value={values.size || ''}
         onChange={onChange}
       />
       <input
@@ -132,7 +134,5 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     </form>
   );
 };
-
-ItemForm.defaultProps = { item: newItem };
 
 export default ItemForm;
