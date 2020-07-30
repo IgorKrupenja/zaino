@@ -16,33 +16,22 @@ const app = (
   </Provider>
 );
 
-let hasRendered = false;
-const renderApp = (): void => {
-  if (!hasRendered) {
-    ReactDOM.render(app, document.getElementById('app'));
-    hasRendered = true;
-  }
+const renderApp = () => {
+  ReactDOM.render(app, document.getElementById('app'));
 };
 
-// ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
-
-firebase.auth().onAuthStateChanged(
-  async (user): Promise<void> => {
-    if (user) {
-      // using store.dispatch as useDispatch cannot be used outside of functional components
-      store.dispatch(setUid(user.uid));
-      // todo get rid of await and paint just the header while items are loading?
-      await Promise.all([
-        store.dispatch(loadLabels(user.uid)),
-        store.dispatch(loadItems(user.uid)),
-      ]);
-      renderApp();
-      if (history.location.pathname === '/') {
-        history.push('/dashboard');
-      }
-    } else {
-      renderApp();
-      history.push('/');
+firebase.auth().onAuthStateChanged(async user => {
+  if (user) {
+    // using store.dispatch as useDispatch cannot be used outside of functional components
+    store.dispatch(setUid(user.uid));
+    // todo get rid of await and paint just the header while items are loading?
+    await Promise.all([store.dispatch(loadLabels(user.uid)), store.dispatch(loadItems(user.uid))]);
+    renderApp();
+    if (history.location.pathname === '/') {
+      history.push('/dashboard');
     }
+  } else {
+    renderApp();
+    history.push('/');
   }
-);
+});
