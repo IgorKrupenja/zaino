@@ -10,7 +10,7 @@ const PackList = () => (
     // reduce is more efficient than .filter() + .map() as it traverses the array only once
     items={useSelector((state: RootState) => state.items).reduce(
       (accumulator: React.ReactChild[], currentItem: Item) => {
-        if (currentItem.quantityInPack && currentItem.quantityInPack > 0) {
+        if (currentItem.packQuantity && currentItem.packQuantity > 0) {
           accumulator.push(<PackListItem key={currentItem.id} {...currentItem} />);
         }
         return accumulator;

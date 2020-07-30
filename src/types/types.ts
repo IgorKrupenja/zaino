@@ -3,7 +3,7 @@ export type Item = {
   name: string;
   category: string;
   quantity: number;
-  quantityInPack: number;
+  packQuantity: number;
   labels?: string[];
   weight: number;
   size?: string;

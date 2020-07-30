@@ -12,13 +12,12 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   // a fixed list of categories for now - later should make them editable and store them in DB
   const categories = ['Backpacks', 'Tents'];
   const newItem: Item = {
-    // todo creates dupes #84
     id: uuid(),
     name: '',
     category: 'Backpacks',
     weight: 100,
     quantity: 1,
-    quantityInPack: 0,
+    packQuantity: 0,
   };
   const [values, setValues] = useState(item ? item : newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
@@ -47,10 +46,11 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     [setValues]
   );
 
-  const validate = () => {
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     let isFormValid = true;
     const errors = { name: '', weight: '', quantity: '' };
-
     if (!values.name) {
       errors.name = 'Please enter a name';
       isFormValid = false;
@@ -65,12 +65,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     }
 
     setErrors(errors);
-    return isFormValid;
-  };
-
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (validate()) onSubmit({ ...values });
+    if (isFormValid) onSubmit({ ...values });
   };
 
   return (

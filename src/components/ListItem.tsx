@@ -6,11 +6,12 @@ import { RootState } from '../store/store';
 
 type ListItemProps = {
   item: Item;
-  children?: React.ReactNode;
+  quantityElement?: React.ReactNode;
+  button?: React.ReactNode;
 };
 
-const ListItem = ({ item, children }: ListItemProps) => {
-  const { id, name, category, labels, weight, size, quantity } = item;
+const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
+  const { id, name, category, labels, weight, size } = item;
   return (
     <article>
       <h3>
@@ -22,9 +23,7 @@ const ListItem = ({ item, children }: ListItemProps) => {
       />
       <p>{category}</p>
       <p>
-        {/* todo quantity elements need to be passed as props.quantitySomething */}
-        {/* todo https://reactjs.org/docs/composition-vs-inheritance.html */}
-        {weight}g {quantity > 1 && `Qty: ${quantity}`} {size && `Size: ${size}`}
+        {weight}g {quantityElement} {size && `Size: ${size}`}
       </p>
       <ul>
         {/* get all labels from store with all the needed details (id's in addition to names) */}
@@ -39,7 +38,7 @@ const ListItem = ({ item, children }: ListItemProps) => {
           []
         )}
       </ul>
-      {children}
+      {button}
     </article>
   );
 };

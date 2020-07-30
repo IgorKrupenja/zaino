@@ -9,4 +9,4 @@ stats.json
 # Firebasse hosting cache
 .firebase/
 # produced by firebase serve
-.firebase-debug.log
+firebase-debug.log

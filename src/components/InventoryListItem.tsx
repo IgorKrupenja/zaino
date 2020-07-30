@@ -7,15 +7,19 @@ import ListItem from './ListItem';
 const InventoryListItem = (item: Item) => {
   const dispatch = useDispatch();
   return (
-    <ListItem item={item}>
-      {item.quantityInPack < 1 ? (
-        <button onClick={() => dispatch(updateItem({ ...item, id: item.id, quantityInPack: 1 }))}>
-          Add to pack
-        </button>
-      ) : (
-        <button>Already in pack</button>
-      )}
-    </ListItem>
+    <ListItem
+      item={item}
+      quantityElement={item.quantity > 1 && `Qty: ${item.quantity}`}
+      button={
+        item.packQuantity < 1 ? (
+          <button onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 1 }))}>
+            Add to pack
+          </button>
+        ) : (
+          <button>Already in pack</button>
+        )
+      }
+    />
   );
 };
 

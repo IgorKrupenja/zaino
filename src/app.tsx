@@ -24,7 +24,6 @@ firebase.auth().onAuthStateChanged(async user => {
   if (user) {
     // using store.dispatch as useDispatch cannot be used outside of functional components
     store.dispatch(setUid(user.uid));
-    // todo get rid of await and paint just the header while items are loading?
     await Promise.all([store.dispatch(loadLabels(user.uid)), store.dispatch(loadItems(user.uid))]);
     renderApp();
     if (history.location.pathname === '/') {
