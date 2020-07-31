@@ -6,19 +6,13 @@ import InventoryListItem from './InventoryListItem';
 import { Item, Category } from '../types/types';
 import { RootState } from '../store/store';
 import selectItems from '../selectors/items';
-import {
-  setLabelsFilter,
-  setTextFilter,
-  setCategoryFilter,
-  setSizeFilter,
-} from '../slices/filters';
+import { setLabelsFilter, setTextFilter, setCategoryFilter } from '../slices/filters';
 
 const InventoryList = () => {
   const dispatch = useDispatch();
   // dispatch(setLabelsFilter(['f0ab8ed6-2a70-4cfc-8a68-6a6c4f94ff55']));
   // dispatch(setTextFilter('blah'));
   // dispatch(setCategoryFilter(Category.tents));
-  // dispatch(setSizeFilter('6'));
 
   return (
     <List

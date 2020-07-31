@@ -5,7 +5,6 @@ const initialState: Filters = {
   text: '',
   // todo hz how to handle in UI
   category: undefined,
-  size: '',
   labels: [],
 };
 
@@ -19,20 +18,12 @@ const filtersSlice = createSlice({
     setCategoryFilter(state, action: PayloadAction<Category | undefined>) {
       state.category = action.payload;
     },
-    setSizeFilter(state, action: PayloadAction<string>) {
-      state.size = action.payload;
-    },
     setLabelsFilter(state, action: PayloadAction<string[]>) {
       state.labels = action.payload;
     },
   },
 });
 
-export const {
-  setTextFilter,
-  setCategoryFilter,
-  setSizeFilter,
-  setLabelsFilter,
-} = filtersSlice.actions;
+export const { setTextFilter, setCategoryFilter, setLabelsFilter } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

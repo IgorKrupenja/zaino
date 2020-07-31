@@ -11,7 +11,7 @@ type ListItemProps = {
 };
 
 const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
-  const { id, name, category, labels, weight, size } = item;
+  const { id, name, category, labels, weight } = item;
   return (
     <article>
       <h3>
@@ -23,7 +23,7 @@ const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
       />
       <p>{category}</p>
       <p>
-        {weight}g {quantityElement} {size && `Size: ${size}`}
+        {weight}g {quantityElement}
       </p>
       <ul>
         {/* get all labels from store with all the needed details (id's in addition to names) */}

@@ -101,14 +101,6 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       {errors.weight && <span>{errors.weight}</span>}
       <input
         type="text"
-        name="size"
-        placeholder="Size"
-        className="text-input"
-        value={values.size ?? ''}
-        onChange={onChange}
-      />
-      <input
-        type="text"
         name="quantity"
         placeholder="Quantity"
         className={`text-input ${errors.quantity && 'text-input__error'}`}

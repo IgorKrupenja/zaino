@@ -6,7 +6,6 @@ export type Item = {
   packQuantity: number;
   weight: number;
   labels?: string[];
-  size?: string;
   notes?: string;
 };
 
@@ -26,6 +25,5 @@ export enum Category {
 export type Filters = {
   text: string;
   category: Category | undefined;
-  size: string;
   labels: string[];
 };
