@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 import LabelSelect from './LabelSelect';
-import { Item } from '../types/types';
+import { Item, Category } from '../types/types';
 
 type ItemFormProps = {
   item?: Item;
@@ -10,7 +10,6 @@ type ItemFormProps = {
 
 const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   // a fixed list of categories for now - later should make them editable and store them in DB
-  const categories = ['Backpacks', 'Tents'];
   const newItem: Item = {
     id: uuid(),
     name: '',
@@ -19,7 +18,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     quantity: 1,
     packQuantity: 0,
   };
-  const [values, setValues] = useState(item ? item : newItem);
+  const [values, setValues] = useState(item ?? newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
 
   // SyntheticEvent as used for different HTMLElements
@@ -80,7 +79,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       />
       {errors.name && <span>{errors.name}</span>}
       <select name="category" value={values.category} onChange={onChange}>
-        {categories.map((category, index) => (
+        {Object.values(Category).map((category, index) => (
           <option key={index}>{category}</option>
         ))}
       </select>
@@ -105,7 +104,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         name="size"
         placeholder="Size"
         className="text-input"
-        value={values.size || ''}
+        value={values.size ?? ''}
         onChange={onChange}
       />
       <input
@@ -124,7 +123,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         value={values.notes}
         onChange={onChange}
       ></textarea>
-      <LabelSelect selectedLabelIds={values.labels ? values.labels : []} setLabels={setLabels} />
+      <LabelSelect selectedLabelIds={values.labels ?? []} setLabels={setLabels} />
       <button>Save item</button>
     </form>
   );

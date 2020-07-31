@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import ItemForm from './ItemForm';
@@ -19,11 +19,8 @@ type ItemModalProps = {
 };
 
 const ItemModal = ({ item, title, onSubmit, children }: ItemModalProps) => {
-  // set appropriate page title once when component is first rendered
-  useEffect(() => {
-    document.title = title;
-  }, []);
-
+  // set appropriate page title when component is mounted
+  document.title = title;
   Modal.setAppElement('#app');
 
   const dispatch = useDispatch();

@@ -4,8 +4,8 @@ export type Item = {
   category: string;
   quantity: number;
   packQuantity: number;
-  labels?: string[];
   weight: number;
+  labels?: string[];
   size?: string;
   notes?: string;
 };
@@ -14,4 +14,18 @@ export type Label = {
   id: string;
   name: string;
   color: string;
+};
+
+export enum Category {
+  backpacks = 'Backpacks',
+  tents = 'Tents',
+}
+
+// todo maybe another enum CategoryAll? https://github.com/microsoft/TypeScript/issues/17592
+
+export type Filters = {
+  text: string;
+  category: Category | undefined;
+  size: string;
+  labels: string[];
 };
