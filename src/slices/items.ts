@@ -65,16 +65,9 @@ const itemsSlice = createSlice({
       state.push(action.meta.arg);
     });
     builder.addCase(updateItem.pending, (state, action) => {
-      // todo this is sub-optimal, see #75
       const update = action.meta.arg;
-      state.forEach(item => {
-        if (item.id === update.id) {
-          for (const property in item) {
-            // @ts-ignore
-            item[property] = update[property];
-          }
-        }
-      });
+      const index = state.findIndex(item => item.id === update.id);
+      state[index] = update;
     });
     builder.addCase(deleteItem.pending, (state, action) => {
       state.splice(
