@@ -29,6 +29,8 @@ const LabelSelect = ({ selectedLabelIds, setLabels }: LabelSelectProps) => {
 
   // update ItemForm state on item labels change
   useEffect(() => {
+    console.log('label select useEffect hook');
+
     values ? setLabels(values.map(label => label.value)) : setLabels([]);
   }, [values, setLabels]);
 

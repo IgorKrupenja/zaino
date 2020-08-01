@@ -26,11 +26,12 @@ const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
         {weight}g {quantityElement}
       </p>
       <ul>
+        {/* note that reduce is faster than filter + map as it traverses the array only once*/}
         {/* get all labels from store with all the needed details (id's in addition to names) */}
         {useSelector((state: RootState) => state.labels).reduce(
           // get only selected labels for a particular item
           (accumulator: React.ReactChild[], currentLabel: Label) => {
-            if (labels && labels.includes(currentLabel.id)) {
+            if (labels?.includes(currentLabel.id)) {
               accumulator.push(<li key={currentLabel.id}>{currentLabel.name}</li>);
             }
             return accumulator;

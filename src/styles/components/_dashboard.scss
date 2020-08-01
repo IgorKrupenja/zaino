@@ -1,4 +1,10 @@
 .dashboard {
   display: flex;
+  flex-wrap: wrap;
   max-width: 130rem;
+}
+
+.list-filters {
+  width: 100%;
+  // background: greenyellow;
 }

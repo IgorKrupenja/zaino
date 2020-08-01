@@ -12,6 +12,7 @@ const Header = () => {
     dispatch(resetItemsState());
     dispatch(resetLabelsState());
   };
+
   return (
     <header>
       <h1>

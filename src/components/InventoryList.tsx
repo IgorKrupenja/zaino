@@ -1,24 +1,23 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useMemo, useEffect, ReactChild } from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import List from './List';
-import InventoryListItem from './InventoryListItem';
-import { Item, Category } from '../types/types';
-import { RootState } from '../store/store';
 import selectItems from '../selectors/items';
-import { setLabelsFilter, setTextFilter, setCategoryFilter } from '../slices/filters';
+import { RootState } from '../store/store';
+import { Item } from '../types/types';
+import InventoryListItem from './InventoryListItem';
+import List from './List';
 
 const InventoryList = () => {
-  const dispatch = useDispatch();
-  // dispatch(setLabelsFilter(['f0ab8ed6-2a70-4cfc-8a68-6a6c4f94ff55']));
-  // dispatch(setTextFilter('blah'));
-  // dispatch(setCategoryFilter(Category.tents));
-
   return (
     <List
-      items={useSelector((state: RootState) => selectItems(state)).map((item: Item) => (
-        <InventoryListItem key={item.id} {...item} />
-      ))}
+      // a bit of a hack: shallowEqual prevents re-renders when items do not change
+      // (i.e. new filter conditions result in the same matching items)
+      // https://react-redux.js.org/api/hooks#equality-comparisons-and-updates
+      items={useSelector((state: RootState) => selectItems(state), shallowEqual).map(
+        (item: Item) => (
+          <InventoryListItem key={item.id} {...item} />
+        )
+      )}
       title="inventory"
     >
       <Link to="/add">Add item</Link>

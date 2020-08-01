@@ -1,5 +1,4 @@
 import React from 'react';
-import { RootState } from '../store/store';
 
 type ListProps = {
   items: React.ReactChild[];

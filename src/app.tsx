@@ -1,13 +1,13 @@
+import 'normalize.css/normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import 'normalize.css/normalize.css';
-import AppRouter, { history } from './routers/AppRouter';
-import store from './store/store';
-import { loadItems } from './slices/items';
-import { setUid } from './slices/auth';
 import { firebase } from './firebase/firebase';
+import AppRouter, { history } from './routers/AppRouter';
+import { setUid } from './slices/auth';
+import { loadItems } from './slices/items';
 import { loadLabels } from './slices/labels';
+import store from './store/store';
 import './styles/styles.scss';
 
 const app = (

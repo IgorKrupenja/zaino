@@ -13,10 +13,11 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const newItem: Item = {
     id: uuid(),
     name: '',
-    category: 'Backpacks',
+    category: Category.backpacks,
     weight: 100,
     quantity: 1,
     packQuantity: 0,
+    addedAt: '',
   };
   const [values, setValues] = useState(item ?? newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
@@ -32,13 +33,15 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
 
     const name = e.target.name;
     const value = e.target.value;
+
     // prevent entering non-numeric characters into weight or quantity
     if ((name === 'weight' || name === 'quantity') && !value.match(/^\d{1,}$/g)) {
       return;
     }
-    setValues(values => ({ ...values, [name]: value }));
+    setValues({ ...values, [name]: value });
   };
 
+  // todo this whole logic looks fishy
   // useCallback to prevent performance issues in LabelSelect
   const setLabels = useCallback(
     (labels: string[]) => setValues(values => ({ ...values, labels })),
@@ -64,7 +67,11 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     }
 
     setErrors(errors);
-    if (isFormValid) onSubmit({ ...values });
+    if (isFormValid) {
+      // do not overwrite date when editing item
+      const addedAt = values.addedAt || new Date().toISOString();
+      onSubmit({ ...values, addedAt });
+    }
   };
 
   return (
@@ -79,8 +86,10 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       />
       {errors.name && <span>{errors.name}</span>}
       <select name="category" value={values.category} onChange={onChange}>
-        {Object.values(Category).map((category, index) => (
-          <option key={index}>{category}</option>
+        {Object.values(Category).map(value => (
+          <option value={value} key={value}>
+            {value}
+          </option>
         ))}
       </select>
       <img

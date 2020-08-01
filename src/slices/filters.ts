@@ -1,11 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Filters, Category } from '../types/types';
+import { Category, SortOption } from '../types/types';
+
+type Filters = {
+  text: string;
+  category?: Category;
+  labels: string[];
+  sortBy: SortOption;
+};
 
 const initialState: Filters = {
   text: '',
-  // todo hz how to handle in UI
   category: undefined,
   labels: [],
+  sortBy: SortOption.added,
 };
 
 const filtersSlice = createSlice({
@@ -21,9 +28,12 @@ const filtersSlice = createSlice({
     setLabelsFilter(state, action: PayloadAction<string[]>) {
       state.labels = action.payload;
     },
+    sortBy(state, action: PayloadAction<SortOption>) {
+      state.sortBy = action.payload;
+    },
   },
 });
 
-export const { setTextFilter, setCategoryFilter, setLabelsFilter } = filtersSlice.actions;
+export const { setTextFilter, setCategoryFilter, setLabelsFilter, sortBy } = filtersSlice.actions;
 
 export default filtersSlice.reducer;
