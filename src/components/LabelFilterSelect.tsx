@@ -1,31 +1,28 @@
 import React, { useState } from 'react';
-import ReactSelect, { ValueType, OptionTypeBase } from 'react-select';
+import Select, { ValueType } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { setLabelsFilter } from '../slices/filters';
+import { LabelOption } from '../types/types';
 
 const LabelFilterSelect = () => {
-  interface LabelOption extends OptionTypeBase {
-    value: string;
-    label: string;
-  }
+  const dispatch = useDispatch();
+  const animatedComponents = makeAnimated<LabelOption>();
   // get all labels from store
-  const options: LabelOption[] = useSelector((state: RootState) => state.labels).map(label => ({
+  const options = useSelector((state: RootState) => state.labels).map(label => ({
     value: label.id,
     label: label.name,
   }));
   const [values, setValues] = useState<ValueType<LabelOption>>([]);
-  const dispatch = useDispatch();
 
   const handleChange = (newValues: ValueType<LabelOption>) => {
-    dispatch(setLabelsFilter(newValues ? newValues.map((label: LabelOption) => label.value) : []));
     setValues(newValues);
+    dispatch(setLabelsFilter(newValues ? newValues.map((label: LabelOption) => label.value) : []));
   };
-  const animatedComponents = makeAnimated<LabelOption>();
 
   return (
-    <ReactSelect
+    <Select
       isMulti
       // todo is this ok?
       components={animatedComponents}

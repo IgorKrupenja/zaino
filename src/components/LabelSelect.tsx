@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import makeAnimated from 'react-select/animated';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { addLabel } from '../slices/labels';
 import { RootState } from '../store/store';
+import { Item, LabelOption } from '../types/types';
+import { ValueType } from 'react-select';
 
 type LabelSelectProps = {
   selectedLabelIds: string[];
-  setLabels: (labels: string[]) => void;
+  itemValues: Item;
+  setItemValues: (item: Item) => void;
 };
 
-const LabelSelect = ({ selectedLabelIds, setLabels }: LabelSelectProps) => {
+const LabelSelect = ({ selectedLabelIds, itemValues, setItemValues }: LabelSelectProps) => {
   const dispatch = useDispatch();
   // allows for animation on clearing a label
-  const animatedComponents = makeAnimated();
+  const animatedComponents = makeAnimated<LabelOption>();
   // get all labels from store and assign to options
   const [options, setOptions] = useState(
     useSelector((state: RootState) => state.labels).map(label => ({
@@ -23,16 +26,15 @@ const LabelSelect = ({ selectedLabelIds, setLabels }: LabelSelectProps) => {
     }))
   );
   // get selected label id's for the item and assign to values
-  const [values, setValues] = useState(
+  const [values, setValues] = useState<ValueType<LabelOption>>(
     selectedLabelIds ? options.filter(label => selectedLabelIds.includes(label.value)) : []
   );
 
-  // update ItemForm state on item labels change
-  useEffect(() => {
-    console.log('label select useEffect hook');
-
-    values ? setLabels(values.map(label => label.value)) : setLabels([]);
-  }, [values, setLabels]);
+  const handleChange = (newValues: ValueType<LabelOption>) => {
+    setValues(newValues);
+    const labels = newValues ? newValues.map((label: LabelOption) => label.value) : [];
+    setItemValues({ ...itemValues, labels });
+  };
 
   const handleCreate = (inputValue: string) => {
     //todo temporary color
@@ -43,7 +45,7 @@ const LabelSelect = ({ selectedLabelIds, setLabels }: LabelSelectProps) => {
       value: id,
     };
     setOptions([...options, newOption]);
-    setValues([...values, newOption]);
+    setValues([...(values as LabelOption[]), newOption]);
   };
   return (
     <>
@@ -55,8 +57,7 @@ const LabelSelect = ({ selectedLabelIds, setLabels }: LabelSelectProps) => {
         components={animatedComponents}
         // todo can I style this well?
         hideSelectedOptions={false}
-        // recommendation to use 'any' here from react-select docs
-        onChange={(newValues: any) => setValues(newValues)}
+        onChange={handleChange}
         onCreateOption={handleCreate}
         value={values}
         options={options}

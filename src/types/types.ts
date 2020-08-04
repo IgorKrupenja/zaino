@@ -1,3 +1,5 @@
+import { OptionTypeBase } from 'react-select';
+
 export type Item = {
   id: string;
   name: string;
@@ -17,6 +19,12 @@ export type Label = {
   name: string;
   color: string;
 };
+
+// used in components based on react-select
+export type LabelOption = {
+  value: string;
+  label: string;
+} & OptionTypeBase;
 
 export enum Category {
   backpacks = 'Backpacks',

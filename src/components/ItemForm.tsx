@@ -41,13 +41,6 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     setValues({ ...values, [name]: value });
   };
 
-  // todo this whole logic looks fishy
-  // useCallback to prevent performance issues in LabelSelect
-  const setLabels = useCallback(
-    (labels: string[]) => setValues(values => ({ ...values, labels })),
-    [setValues]
-  );
-
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -124,7 +117,11 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         value={values.notes}
         onChange={onChange}
       ></textarea>
-      <LabelSelect selectedLabelIds={values.labels ?? []} setLabels={setLabels} />
+      <LabelSelect
+        selectedLabelIds={values.labels ?? []}
+        itemValues={values}
+        setItemValues={setValues}
+      />
       <button>Save item</button>
     </form>
   );
