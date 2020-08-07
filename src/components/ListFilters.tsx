@@ -38,7 +38,6 @@ const ListFilters = () => {
         <input
           type="text"
           placeholder="Search"
-          autoFocus
           className="text-input"
           value={filters.text}
           onChange={onTextChange}
@@ -56,7 +55,6 @@ const ListFilters = () => {
       <label>
         Sort by
         <select className="select" name="sortBy" value={filters.sortBy} onChange={onSortChange}>
-          {/* create options from SortOptions enum */}
           {Object.values(SortOption).map(value => (
             <option value={value} key={value}>
               {value}
