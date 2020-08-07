@@ -9,9 +9,9 @@ const DashboardPage = () => (
   <div className="dashboard">
     <ListFilters />
     <InventoryList />
+    <PackList />
     <AddItemModal />
     <EditItemModal />
-    <PackList />
   </div>
 );
 

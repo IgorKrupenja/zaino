@@ -18,7 +18,7 @@ const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
         <Link to={{ pathname: `/edit/${id}`, state: { item } }}>{name}</Link>
       </h3>
       <img
-        src={require(`../images/categories/${category.toLowerCase()}.svg`)}
+        src={`../images/categories/${category.toLowerCase()}.svg`}
         className="list-item__image"
       />
       <p>{category}</p>

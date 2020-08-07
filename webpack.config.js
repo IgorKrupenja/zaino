@@ -35,6 +35,7 @@ module.exports = {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
         use: [
+          // todo this actually breaks production bundle, see #93
           isDevelopment && {
             loader: 'babel-loader',
             options: { plugins: ['react-refresh/babel'] },
