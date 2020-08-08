@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import ItemForm from './ItemForm';
-import { history } from '../routers/AppRouter';
-import { Item } from '../types/types';
+import { history } from '../../routers/AppRouter';
+import { Item } from '../../types/types';
 
 export const closeModal = () => {
   // restore title after closing

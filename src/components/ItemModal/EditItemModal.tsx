@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
-import { updateItem, deleteItem } from '../slices/items';
+import { updateItem, deleteItem } from '../../slices/items';
 import ItemModal, { closeModal } from './ItemModal';
-import { Item } from '../types/types';
+import { Item } from '../../types/types';
 
 // somewhat unclear how to use typings here properly
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/17355

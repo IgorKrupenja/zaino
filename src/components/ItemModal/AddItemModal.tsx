@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { addItem } from '../slices/items';
-import { Item } from '../types/types';
+import { addItem } from '../../slices/items';
+import { Item } from '../../types/types';
 import ItemModal from './ItemModal';
 
 export const AddItemModal = () => {

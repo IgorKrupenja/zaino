@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { updateItem } from '../slices/items';
-import { Item } from '../types/types';
+import { updateItem } from '../../slices/items';
+import { Item } from '../../types/types';
 import ListItem from './ListItem';
 
 const InventoryListItem = (item: Item) => {

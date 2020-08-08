@@ -3,9 +3,9 @@ import CreatableSelect from 'react-select/creatable';
 import makeAnimated from 'react-select/animated';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { addLabel } from '../slices/labels';
-import { RootState } from '../store/store';
-import { Item, LabelOption } from '../types/types';
+import { addLabel } from '../../slices/labels';
+import { RootState } from '../../store/store';
+import { Item, LabelOption } from '../../types/types';
 import { ValueType } from 'react-select';
 
 type LabelSelectProps = {

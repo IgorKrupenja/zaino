@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store/store';
-import { setTextFilter, sortBy, setCategoryFilter } from '../slices/filters';
-import { SortOption, Category } from '../types/types';
+import { RootState } from '../../store/store';
+import { setTextFilter, sortBy, setCategoryFilter } from '../../slices/filters';
+import { SortOption, Category } from '../../types/types';
 import LabelFilterSelect from './LabelFilterSelect';
 
 const ListFilters = () => {
