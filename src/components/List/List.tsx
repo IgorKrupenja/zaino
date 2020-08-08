@@ -3,15 +3,24 @@ import React from 'react';
 type ListProps = {
   items: React.ReactChild[];
   title: string;
-  children?: React.ReactChild;
+  filteredItemCount: number;
+  totalItemCount: number;
+  children?: React.ReactNode;
 };
 
-const List = ({ items, title, children }: ListProps) => (
-  <section className={`list list--${title}`}>
-    <h2>{title.toUpperCase()}</h2>
-    {items.length === 0 ? <p>No items in {title}</p> : items}
-    {children}
-  </section>
-);
+const List = ({ items, filteredItemCount, totalItemCount, title, children }: ListProps) => {
+  if (totalItemCount === 0) {
+    return (
+      <>
+        <p>No items in {title}</p>
+        {children}
+      </>
+    );
+  } else if (filteredItemCount === 0) {
+    return <p>No matching items in {title}</p>;
+  } else {
+    return <div>{items}</div>;
+  }
+};
 
 export default List;

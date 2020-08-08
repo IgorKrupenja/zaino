@@ -1,12 +1,15 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store/store';
-import { SortOption } from '../types/types';
+import { SortOption, Item } from '../types/types';
 
-const selectAllItems = (state: RootState) => state.items;
+const filterPackItems = (items: Item[]) => items.filter(item => item.packQuantity > 0);
+
+export const selectAllInventoryItems = (state: RootState) => state.items;
+export const selectAllPackItems = (state: RootState) => filterPackItems(state.items);
 const selectFilters = (state: RootState) => state.filters;
 
-const selectItems = createSelector(
-  [selectAllItems, selectFilters],
+const selectFilteredInventoryItems = createSelector(
+  [selectAllInventoryItems, selectFilters],
   (items, { text, category, labels, sortBy }) => {
     // filter out items not matching set filters
     return items
@@ -34,9 +37,9 @@ const selectItems = createSelector(
 );
 
 // use selectItems with filters already applied to compose
-export const selectPackItems = createSelector([selectItems], items => {
+export const selectFilteredPackItems = createSelector([selectFilteredInventoryItems], items => {
   // filter out items not in Pack
-  return items.filter(item => item.packQuantity > 0);
+  return filterPackItems(items);
 });
 
-export default selectItems;
+export default selectFilteredInventoryItems;
