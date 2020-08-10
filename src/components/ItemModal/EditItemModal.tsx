@@ -4,6 +4,7 @@ import { useLocation, Redirect, withRouter, RouteComponentProps } from 'react-ro
 import { updateItem, deleteItem } from '../../slices/items';
 import ItemModal, { closeModal } from './ItemModal';
 import { Item } from '../../types/types';
+import { decrementItemCount } from '../../slices/labels';
 
 // somewhat unclear how to use typings here properly
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/17355
@@ -33,6 +34,7 @@ const EditItemModal = (props: EditItemModalProps) => {
       <button
         onClick={() => {
           closeModal();
+          item.labels?.forEach(label => dispatch(decrementItemCount(label)));
           dispatch(deleteItem(item.id));
         }}
       >
@@ -42,5 +44,5 @@ const EditItemModal = (props: EditItemModalProps) => {
   );
 };
 
-// wrapping in withRouter HOC to access props.location.state passed from ListItem
+// wrapping in withRouter HOC to access props.location.state
 export default withRouter(EditItemModal);

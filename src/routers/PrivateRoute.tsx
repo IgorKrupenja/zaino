@@ -9,6 +9,10 @@ type PrivateRouteProps = {
   path: string;
 };
 
+/**
+ * Private route for routes that are accessible for authenticated users only.
+ * Header is shown for all such routes.
+ */
 const PrivateRoute = ({ component: Component, path }: PrivateRouteProps) => {
   const isAuthenticated = useSelector((state: RootState) => !!state.auth.uid);
   return (
@@ -16,10 +20,10 @@ const PrivateRoute = ({ component: Component, path }: PrivateRouteProps) => {
       path={path}
       component={() =>
         isAuthenticated ? (
-          <div>
+          <>
             <Header />
             <Component />
-          </div>
+          </>
         ) : (
           <Redirect to="/" />
         )

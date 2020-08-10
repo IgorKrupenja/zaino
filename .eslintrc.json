@@ -28,7 +28,7 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
+    }
     // needed for @typescript-eslint/recommended-requiring-type-checking to work
     "project": "./tsconfig.json"
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../slices/auth';
 import { resetItemsState } from '../slices/items';
@@ -16,10 +16,14 @@ const Header = () => {
   return (
     <header>
       <h1>
-        <NavLink to="/dashboard" activeClassName="is-active">
-          Zaino
-        </NavLink>
+        <Link to="/dashboard">Zaino</Link>
       </h1>
+      <NavLink to="/dashboard" activeClassName="is-active">
+        Dashboard
+      </NavLink>
+      <NavLink to="/labels" activeClassName="is-active">
+        Labels
+      </NavLink>
       <button onClick={handleLogout}>Sign out</button>
     </header>
   );

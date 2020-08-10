@@ -74,7 +74,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               // needed to support dynamic image import with require
-              esModule: false,
+              // esModule: false,
               // output images with proper names to dist/images dir
               context: path.resolve(__dirname, 'src'),
               name: '[path][name].[ext]',

@@ -4,7 +4,7 @@ import { RootState } from '../../store/store';
 import { selectFilteredPackItems } from '../../selectors/items';
 import { Item } from '../../types/types';
 import PackListItem from './PackListItem';
-import { selectPackItemsStats } from '../../selectors/items-stats';
+import { selectPackItemsStats } from '../../selectors/itemsStats';
 import React from 'react';
 import ListStats from './ListStats';
 

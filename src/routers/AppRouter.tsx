@@ -4,6 +4,7 @@ import { createBrowserHistory } from 'history';
 import PrivateRoute from './PrivateRoute';
 import DashboardPage from '../components/DashboardPage';
 import LoginPage from '../components/LoginPage';
+import LabelsPage from '../components/LabelsPage';
 
 // custom history is needed for login in app.jsx to work
 // as history is accessed there not from React component
@@ -17,6 +18,7 @@ const AppRouter = () => (
       <PrivateRoute path="/dashboard" component={DashboardPage} />
       <PrivateRoute path="/add" component={DashboardPage} />
       <PrivateRoute path="/edit/:id" component={DashboardPage} />
+      <PrivateRoute path="/labels" component={LabelsPage} />
       <Redirect to="/" />
     </Switch>
   </Router>

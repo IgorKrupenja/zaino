@@ -3,7 +3,7 @@ import { RootState } from '../../store/store';
 import selectFilteredInventoryItems from '../../selectors/items';
 import { Item } from '../../types/types';
 import InventoryListItem from './InventoryListItem';
-import { selectInventoryItemsStats } from '../../selectors/items-stats';
+import { selectInventoryItemsStats } from '../../selectors/itemsStats';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import List from './List';

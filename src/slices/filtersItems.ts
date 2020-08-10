@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Category, SortOption } from '../types/types';
+import { Category, ItemSortOption } from '../types/types';
 
 type Filters = {
   text: string;
   category?: Category;
   labels: string[];
-  sortBy: SortOption;
+  sortBy: ItemSortOption;
 };
 
 const initialState: Filters = {
   text: '',
   category: undefined,
   labels: [],
-  sortBy: SortOption.added,
+  sortBy: ItemSortOption.added,
 };
 
-const filtersSlice = createSlice({
-  name: 'filters',
+const itemFiltersSlice = createSlice({
+  name: 'filters-items',
   initialState,
   reducers: {
     setTextFilter(state, action: PayloadAction<string>) {
@@ -28,12 +28,17 @@ const filtersSlice = createSlice({
     setLabelsFilter(state, action: PayloadAction<string[]>) {
       state.labels = action.payload;
     },
-    sortBy(state, action: PayloadAction<SortOption>) {
+    sortBy(state, action: PayloadAction<ItemSortOption>) {
       state.sortBy = action.payload;
     },
   },
 });
 
-export const { setTextFilter, setCategoryFilter, setLabelsFilter, sortBy } = filtersSlice.actions;
+export const {
+  setTextFilter,
+  setCategoryFilter,
+  setLabelsFilter,
+  sortBy,
+} = itemFiltersSlice.actions;
 
-export default filtersSlice.reducer;
+export default itemFiltersSlice.reducer;

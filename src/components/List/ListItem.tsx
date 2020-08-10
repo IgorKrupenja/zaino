@@ -30,7 +30,7 @@ const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
         {/* get all labels from store with all the needed details (id's in addition to names) */}
         {useSelector((state: RootState) => state.labels).reduce(
           // get only selected labels for a particular item
-          (accumulator: React.ReactChild[], currentLabel: Label) => {
+          (accumulator: React.ReactChild[], currentLabel) => {
             if (labels?.includes(currentLabel.id)) {
               accumulator.push(<li key={currentLabel.id}>{currentLabel.name}</li>);
             }

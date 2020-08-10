@@ -1,12 +1,12 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
-import { setTextFilter, sortBy, setCategoryFilter } from '../../slices/filters';
-import { SortOption, Category } from '../../types/types';
+import { setTextFilter, sortBy, setCategoryFilter } from '../../slices/filtersItems';
+import { ItemSortOption, Category } from '../../types/types';
 import LabelFilterSelect from './LabelFilterSelect';
 
 const ListFilters = () => {
-  const [filters, setFilters] = useState(useSelector((state: RootState) => state.filters));
+  const [filters, setFilters] = useState(useSelector((state: RootState) => state.itemsFilters));
   const dispatch = useDispatch();
 
   const allCategoryText = 'All';
@@ -26,7 +26,7 @@ const ListFilters = () => {
   };
   const onSortChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.persist();
-    const option = e.target.value as SortOption;
+    const option = e.target.value as ItemSortOption;
     setFilters({ ...filters, sortBy: option });
     dispatch(sortBy(option));
   };
@@ -55,7 +55,7 @@ const ListFilters = () => {
       <label>
         Sort by
         <select className="select" name="sortBy" value={filters.sortBy} onChange={onSortChange}>
-          {Object.values(SortOption).map(value => (
+          {Object.values(ItemSortOption).map(value => (
             <option value={value} key={value}>
               {value}
             </option>

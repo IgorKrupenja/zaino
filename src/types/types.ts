@@ -18,6 +18,7 @@ export type Label = {
   id: string;
   name: string;
   color: string;
+  itemCount: number;
 };
 
 // used in components based on react-select
@@ -31,8 +32,13 @@ export enum Category {
   tents = 'Tents',
 }
 
-export enum SortOption {
+export enum ItemSortOption {
   added = 'Recently added',
   name = 'Name',
   weight = 'Weight',
+}
+
+export enum LabelSortOption {
+  name = 'Name',
+  itemCount = 'Number of items',
 }

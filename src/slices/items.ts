@@ -1,12 +1,26 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import db from '../firebase/firebase';
-import { Item } from '../types/types';
+import { Item, Label } from '../types/types';
 import { RootState } from '../store/store';
+import { loadLabels } from './labels';
 
-export const loadItems = createAsyncThunk('items/loadItems', async (uid: string) => {
-  const docRef = await db.collection(`users/${uid}/items`).get();
-  return docRef.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Item[];
-});
+export const loadItems = createAsyncThunk<Item[], string, { state: RootState }>(
+  'items/loadItems',
+  async (uid, { dispatch }) => {
+    // get item and label refs from Firestore asynchronously
+    const refs = await Promise.all([
+      db.collection(`users/${uid}/items`).get(),
+      db.collection(`users/${uid}/labels`).get(),
+    ]);
+    const [items, labels] = refs.map(ref =>
+      ref.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    ) as [Item[], Label[]];
+
+    // share data with labels reducer
+    dispatch(loadLabels({ labels, items }));
+    return items;
+  }
+);
 
 export const addItem = createAsyncThunk<
   // Return type of the payload creator
@@ -25,7 +39,7 @@ export const addItem = createAsyncThunk<
 });
 
 export const updateItem = createAsyncThunk<void, Item, { state: RootState }>(
-  'items/editItem',
+  'items/updateItem',
   async (item, { getState }) => {
     const { id, ...firestoreData } = item;
     await db

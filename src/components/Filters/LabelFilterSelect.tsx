@@ -3,7 +3,7 @@ import Select, { ValueType } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
-import { setLabelsFilter } from '../../slices/filters';
+import { setLabelsFilter } from '../../slices/filtersItems';
 import { LabelOption } from '../../types/types';
 
 const LabelFilterSelect = () => {

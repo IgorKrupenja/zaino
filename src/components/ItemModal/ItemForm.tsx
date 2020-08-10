@@ -2,6 +2,8 @@ import React, { useState, ChangeEvent, useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 import LabelSelect from './LabelSelect';
 import { Item, Category } from '../../types/types';
+import { useDispatch } from 'react-redux';
+import { incrementItemCount, decrementItemCount } from '../../slices/labels';
 
 type ItemFormProps = {
   item?: Item;
@@ -21,6 +23,9 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   };
   const [values, setValues] = useState(item ?? newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
+  // used in onFormSubmit to set label item counts
+  const initialLabels = item?.labels;
+  const dispatch = useDispatch();
 
   // SyntheticEvent as used for different HTMLElements
   const onChange = (
@@ -41,9 +46,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     setValues({ ...values, [name]: value });
   };
 
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const validateForm = () => {
     let isFormValid = true;
     const errors = { name: '', weight: '', quantity: '' };
     if (!values.name) {
@@ -58,10 +61,22 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       errors.quantity = 'Please enter a positive quantity';
       isFormValid = false;
     }
-
     setErrors(errors);
-    if (isFormValid) {
-      // do not overwrite date when editing item
+
+    return isFormValid;
+  };
+
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      // update item counts for labels
+      const newLabels = values.labels;
+      const addedLabels = newLabels?.filter(label => !initialLabels?.includes(label));
+      addedLabels?.forEach(label => dispatch(incrementItemCount(label)));
+      const removedLabels = initialLabels?.filter(label => !newLabels?.includes(label));
+      removedLabels?.forEach(label => dispatch(decrementItemCount(label)));
+      // do not overwrite date/time added when editing item
       const addedAt = values.addedAt || new Date().toISOString();
       onSubmit({ ...values, addedAt });
     }

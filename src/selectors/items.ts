@@ -1,12 +1,12 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store/store';
-import { SortOption, Item } from '../types/types';
+import { ItemSortOption, Item } from '../types/types';
 
 const filterPackItems = (items: Item[]) => items.filter(item => item.packQuantity > 0);
 
 export const selectAllInventoryItems = (state: RootState) => state.items;
 export const selectAllPackItems = (state: RootState) => filterPackItems(state.items);
-const selectFilters = (state: RootState) => state.filters;
+const selectFilters = (state: RootState) => state.itemsFilters;
 
 const selectFilteredInventoryItems = createSelector(
   [selectAllInventoryItems, selectFilters],
@@ -25,11 +25,11 @@ const selectFilteredInventoryItems = createSelector(
       })
       .sort((a, b) => {
         switch (sortBy) {
-          case SortOption.added:
+          case ItemSortOption.added:
             return a.addedAt > b.addedAt ? 1 : -1;
-          case SortOption.name:
+          case ItemSortOption.name:
             return a.name > b.name ? 1 : -1;
-          case SortOption.weight:
+          case ItemSortOption.weight:
             return a.weight < b.weight ? 1 : -1;
         }
       });

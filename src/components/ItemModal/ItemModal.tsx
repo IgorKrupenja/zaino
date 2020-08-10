@@ -5,6 +5,7 @@ import ItemForm from './ItemForm';
 import { history } from '../../routers/AppRouter';
 import { Item } from '../../types/types';
 
+// todo could this be a hook?
 export const closeModal = () => {
   // restore title after closing
   document.title = 'Zaino';

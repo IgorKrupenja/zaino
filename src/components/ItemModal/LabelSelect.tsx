@@ -30,23 +30,41 @@ const LabelSelect = ({ selectedLabelIds, itemValues, setItemValues }: LabelSelec
     selectedLabelIds ? options.filter(label => selectedLabelIds.includes(label.value)) : []
   );
 
+  const updateItemLabels = (newValues: LabelOption[]) => {
+    const labels: string[] = newValues ? newValues.map((label: LabelOption) => label.value) : [];
+    setItemValues({ ...itemValues, labels });
+  };
+
   const handleChange = (newValues: ValueType<LabelOption>) => {
     setValues(newValues);
-    const labels = newValues ? newValues.map((label: LabelOption) => label.value) : [];
-    setItemValues({ ...itemValues, labels });
+    updateItemLabels(newValues as LabelOption[]);
   };
 
   const handleCreate = (inputValue: string) => {
     //todo temporary color
     const id = uuid();
-    dispatch(addLabel({ id, name: inputValue, color: '#DF7A03' }));
+    dispatch(addLabel({ id, name: inputValue, color: '#DF7A03', itemCount: 0 }));
     const newOption = {
       label: inputValue,
       value: id,
     };
+
     setOptions([...options, newOption]);
-    setValues([...(values as LabelOption[]), newOption]);
+    try {
+      // todo #110, sometimes values are null?
+      const newValues = [...(values as LabelOption[]), newOption];
+      setValues(newValues);
+      // also update item labels
+      updateItemLabels(newValues);
+    } catch (e) {
+      console.log('diagnostics for #110');
+      console.log(`values: ${values}`);
+      console.log(`values length: ${values?.length}`);
+      console.log(`newOption: ${newOption}`);
+      throw new Error(e);
+    }
   };
+
   return (
     <>
       <h3>Labels</h3>
