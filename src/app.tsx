@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routers/AppRouter';
 import { setUid } from './slices/auth';
-import { loadItems } from './slices/items';
+import { loadItems, addItem } from './slices/items';
 import store from './store/store';
 import './styles/styles.scss';
 
@@ -17,6 +17,20 @@ const app = (
 
 const renderApp = () => {
   ReactDOM.render(app, document.getElementById('app'));
+  // for (let index = 0; index < 125; index++) {
+  //   // const element = array[index];
+  //   store.dispatch(
+  //     addItem({
+  //       id: uuid(),
+  //       name: 'mass item',
+  //       category: Category.backpacks,
+  //       weight: 100,
+  //       quantity: 1,
+  //       packQuantity: 0,
+  //       addedAt: new Date().toISOString(),
+  //     })
+  //   );
+  // }
 };
 
 firebase.auth().onAuthStateChanged(async user => {

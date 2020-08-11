@@ -4,7 +4,29 @@
 }
 
 .list--inventory {
+  // height: 100vh;
+  // overflow: scroll;
 }
+
+// todo temp remove
+
+// .ReactModal__Overlay {
+//   opacity: 0;
+//   transform: translateX(-100px);
+//   transition: all 100ms ease-in-out;
+// }
+
+// .ReactModal__Overlay--after-open {
+//   opacity: 1;
+//   transform: translateX(0px);
+// }
+
+// .ReactModal__Overlay--before-close {
+//   opacity: 0;
+//   transform: translateX(-100px);
+// }
+
+// todo temp end
 
 .list--pack {
 }

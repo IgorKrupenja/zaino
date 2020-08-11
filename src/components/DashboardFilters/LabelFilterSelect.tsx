@@ -4,7 +4,7 @@ import makeAnimated from 'react-select/animated';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import { setLabelsFilter } from '../../slices/filtersItems';
-import { LabelOption } from '../../types/types';
+import { LabelOption } from '../../types/labels';
 
 const LabelFilterSelect = () => {
   const dispatch = useDispatch();

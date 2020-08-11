@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import { setTextFilter, sortBy, setCategoryFilter } from '../../slices/filtersItems';
-import { ItemSortOption, Category } from '../../types/types';
+import { ItemSortOption, Category } from '../../types/items';
 import LabelFilterSelect from './LabelFilterSelect';
 
 const ListFilters = () => {

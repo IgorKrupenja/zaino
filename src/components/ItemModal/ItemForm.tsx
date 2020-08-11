@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 import LabelSelect from './LabelSelect';
-import { Item, Category } from '../../types/types';
+import { Item, Category } from '../../types/items';
 import { useDispatch } from 'react-redux';
 import { incrementItemCount, decrementItemCount } from '../../slices/labels';
 

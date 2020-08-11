@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import ListItem from './ListItem';
+import ListItemDetails from './ListItemDetails';
 import { updateItem } from '../../slices/items';
-import { Item } from '../../types/types';
+import { Item } from '../../types/items';
 
 const PackListItem = (item: Item) => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const PackListItem = (item: Item) => {
   };
 
   return (
-    <ListItem
+    <ListItemDetails
       item={item}
       quantityElement={
         item.quantity > 1 && (

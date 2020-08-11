@@ -1,18 +1,22 @@
 import React from 'react';
-import ListFilters from './Filters/ListFilters';
+import ListFilters from './DashboardFilters/ListFilters';
 import AddItemModal from './ItemModal/AddItemModal';
 import EditItemModal from './ItemModal/EditItemModal';
-import InventoryList from './List/InventoryList';
-import PackList from './List/PackList';
+import Inventory from './DashboardLists/Inventory';
+import Pack from './DashboardLists/Pack';
 
-const DashboardPage = () => (
-  <div className="dashboard">
-    <ListFilters />
-    <InventoryList />
-    <PackList />
-    <AddItemModal />
-    <EditItemModal />
-  </div>
-);
+const DashboardPage = () => {
+  console.log('render dashboard');
+
+  return (
+    <main className="dashboard">
+      <AddItemModal />
+      <EditItemModal />
+      <ListFilters />
+      <Inventory />
+      <Pack />
+    </main>
+  );
+};
 
 export default DashboardPage;

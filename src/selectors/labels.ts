@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store/store';
-import { LabelSortOption, Label } from '../types/types';
+import { LabelSortOption, Label } from '../types/labels';
 import { selectAllInventoryItems } from './items';
 
 const selectLabels = (state: RootState) => state.labels;
@@ -10,8 +10,8 @@ const selectFilteredLabels = createSelector(
   [selectLabels, selectAllInventoryItems, selectFilters],
   (labels, items, { text, sortBy }) => {
     return labels.filter(label => label.name.toLowerCase().includes(text.toLowerCase()));
+    // todo not ready
     // .sort((a, b) => {
-    //   // todo needs new field in DB?
     //   const itemCountA = '';
     //   switch (sortBy) {
     //     case LabelSortOption.name:

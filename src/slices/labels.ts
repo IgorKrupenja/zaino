@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import db from '../firebase/firebase';
-import { Label, Item } from '../types/types';
+import { Item } from '../types/items';
 import { RootState } from '../store/store';
+import { Label } from '../types/labels';
 
 export const addLabel = createAsyncThunk<
   // Return type of the payload creator

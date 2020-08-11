@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Item, Label } from '../../types/types';
+import { Item } from '../../types/items';
 import { RootState } from '../../store/store';
 
 type ListItemProps = {
@@ -10,7 +10,7 @@ type ListItemProps = {
   button?: React.ReactNode;
 };
 
-const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
+const ListItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
   const { id, name, category, labels, weight } = item;
   return (
     <article>
@@ -26,6 +26,7 @@ const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
         {weight}g {quantityElement}
       </p>
       <ul>
+        {/* todo is this slow? see #113 */}
         {/* note that reduce is faster than filter + map as it traverses the array only once*/}
         {/* get all labels from store with all the needed details (id's in addition to names) */}
         {useSelector((state: RootState) => state.labels).reduce(
@@ -44,4 +45,4 @@ const ListItem = ({ item, quantityElement, button }: ListItemProps) => {
   );
 };
 
-export default ListItem;
+export default ListItemDetails;

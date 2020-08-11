@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store/store';
-import { ItemSortOption, Item } from '../types/types';
+import { ItemSortOption, Item } from '../types/items';
 
 const filterPackItems = (items: Item[]) => items.filter(item => item.packQuantity > 0);
 

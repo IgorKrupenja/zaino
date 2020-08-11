@@ -2,13 +2,13 @@ import List from './List';
 import { useSelector, shallowEqual } from 'react-redux';
 import { RootState } from '../../store/store';
 import { selectFilteredPackItems } from '../../selectors/items';
-import { Item } from '../../types/types';
+import { Item } from '../../types/items';
 import PackListItem from './PackListItem';
 import { selectPackItemsStats } from '../../selectors/itemsStats';
 import React from 'react';
-import ListStats from './ListStats';
+import Stats from './Stats';
 
-const PackList = () => {
+const Pack = () => {
   const items = useSelector(
     (state: RootState) => selectFilteredPackItems(state),
     shallowEqual
@@ -19,7 +19,7 @@ const PackList = () => {
   return (
     <section className={`list list--pack`}>
       <h2>Pack</h2>
-      <ListStats
+      <Stats
         filteredItemCount={items.length}
         totalItemCount={itemStats.totalItemCount}
         weight={itemStats.weight}
@@ -35,4 +35,4 @@ const PackList = () => {
   );
 };
 
-export default PackList;
+export default Pack;

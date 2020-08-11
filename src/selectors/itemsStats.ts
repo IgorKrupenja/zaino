@@ -3,7 +3,7 @@ import selectFilteredInventoryItems, {
   selectFilteredPackItems,
   selectAllInventoryItems,
 } from './items';
-import { Item } from '../types/types';
+import { Item } from '../types/items';
 
 const getItemStats = (filteredItems: Item[], allItems: Item[]) => {
   const getWeight = (items: Item[]) => items.reduce((sum, item) => sum + item.weight, 0);

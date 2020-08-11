@@ -1,18 +1,13 @@
 import React from 'react';
 
-type ListStatsProps = {
+type Stats = {
   weight: number;
   percentageOfTotal: number;
   filteredItemCount: number;
   totalItemCount: number;
 };
 
-const ListStats = ({
-  filteredItemCount,
-  weight,
-  percentageOfTotal,
-  totalItemCount,
-}: ListStatsProps) => {
+const Stats = ({ filteredItemCount, weight, percentageOfTotal, totalItemCount }: Stats) => {
   if (totalItemCount === 0 || filteredItemCount === 0) {
     return null;
   } else if (totalItemCount === filteredItemCount) {
@@ -32,4 +27,4 @@ const ListStats = ({
   }
 };
 
-export default ListStats;
+export default Stats;

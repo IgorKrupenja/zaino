@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { addLabel } from '../../slices/labels';
 import { RootState } from '../../store/store';
-import { Item, LabelOption } from '../../types/types';
+import { Item } from '../../types/items';
 import { ValueType } from 'react-select';
+import { LabelOption } from '../../types/labels';
 
 type LabelSelectProps = {
   selectedLabelIds: string[];

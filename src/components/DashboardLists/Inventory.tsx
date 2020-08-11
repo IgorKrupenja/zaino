@@ -1,15 +1,16 @@
 import { useSelector, shallowEqual } from 'react-redux';
 import { RootState } from '../../store/store';
 import selectFilteredInventoryItems from '../../selectors/items';
-import { Item } from '../../types/types';
+import { Item } from '../../types/items';
 import InventoryListItem from './InventoryListItem';
 import { selectInventoryItemsStats } from '../../selectors/itemsStats';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import List from './List';
-import ListStats from './ListStats';
+import Stats from './Stats';
 
-const InventoryList = () => {
+// todo perhaps rename to InventoryContainer
+const Inventory = () => {
   // a bit of a hack: shallowEqual prevents re-renders when items in store do not change
   // (i.e. new filter conditions result in the same matching items)
   // https://react-redux.js.org/api/hooks#equality-comparisons-and-updates
@@ -27,7 +28,7 @@ const InventoryList = () => {
   return (
     <section className={`list list--inventory`}>
       <h2>Inventory</h2>
-      <ListStats
+      <Stats
         weight={itemStats.weight}
         percentageOfTotal={itemStats.percentageOfTotal}
         filteredItemCount={filteredItemCount}
@@ -50,4 +51,4 @@ const InventoryList = () => {
   );
 };
 
-export default InventoryList;
+export default Inventory;

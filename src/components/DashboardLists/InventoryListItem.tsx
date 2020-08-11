@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateItem } from '../../slices/items';
-import { Item } from '../../types/types';
-import ListItem from './ListItem';
+import { Item } from '../../types/items';
+import ListItemDetails from './ListItemDetails';
 
 const InventoryListItem = (item: Item) => {
   const dispatch = useDispatch();
   return (
-    <ListItem
+    <ListItemDetails
       item={item}
       quantityElement={item.quantity > 1 && `Qty: ${item.quantity}`}
       button={
