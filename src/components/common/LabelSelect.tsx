@@ -31,7 +31,6 @@ const LabelSelect = ({ itemValues, onChange, isClearable, isCreatable }: LabelSe
   );
 
   const handleChange = (newValues: ValueType<LabelOption>) => {
-    console.log('handleChange called');
     setValues(newValues);
     onChange(newValues as LabelOption[]);
   };

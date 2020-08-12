@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { logout } from '../slices/auth';
-import { resetItemsState } from '../slices/items';
-import { resetLabelsState } from '../slices/labels';
+import { logout } from '../../slices/auth';
+import { resetItemsState } from '../../slices/items';
+import { resetLabelsState } from '../../slices/labels';
 
 const Header = () => {
   const dispatch = useDispatch();

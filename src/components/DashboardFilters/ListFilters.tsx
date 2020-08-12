@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ValueType } from 'react-select';
 import {
   setCategoryFilter,
   setLabelsFilter,
@@ -70,7 +69,7 @@ const ListFilters = () => {
         </select>
       </label>
       <LabelSelect
-        onChange={(newValues: ValueType<LabelOption>) => {
+        onChange={newValues => {
           // set labels filter based on new values received from LabelSelect
           dispatch(
             setLabelsFilter(newValues ? newValues.map((label: LabelOption) => label.value) : [])

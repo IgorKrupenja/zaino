@@ -17,8 +17,7 @@ const Inventory = () => {
   const items = useSelector(
     (state: RootState) => selectFilteredInventoryItems(state),
     shallowEqual
-  ).map((item: Item) => <InventoryListItem key={item.id} {...item} />);
-
+  );
   const itemStats = useSelector(
     (state: RootState) => selectInventoryItemsStats(state),
     shallowEqual
@@ -28,6 +27,7 @@ const Inventory = () => {
   return (
     <section className={`list list--inventory`}>
       <h2>Inventory</h2>
+      <Link to="/add">Add {filteredItemCount === 0 ? 'an' : 'another'} item</Link>
       <Stats
         weight={itemStats.weight}
         percentageOfTotal={itemStats.percentageOfTotal}
@@ -35,18 +35,14 @@ const Inventory = () => {
         totalItemCount={itemStats.totalItemCount}
       />
       <List
-        items={items}
         title={'inventory'}
         filteredItemCount={filteredItemCount}
         totalItemCount={itemStats.totalItemCount}
       >
-        {filteredItemCount === 0 && (
-          <p>
-            <Link to="/add">Add an item</Link> or load some demo items.
-          </p>
-        )}
+        {items.map((item: Item) => (
+          <InventoryListItem key={item.id} {...item} />
+        ))}
       </List>
-      <Link to="/add">Add {filteredItemCount === 0 ? 'an' : 'another'} item</Link>
     </section>
   );
 };

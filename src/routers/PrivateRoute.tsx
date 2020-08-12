@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
-import Header from '../components/Header';
+import { Redirect, Route } from 'react-router-dom';
+import Header from '../components/common/Header';
 import { RootState } from '../store/store';
 
 type PrivateRouteProps = {

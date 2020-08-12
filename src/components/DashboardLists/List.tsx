@@ -1,14 +1,14 @@
 import React from 'react';
 
 type ListProps = {
-  items: React.ReactChild[];
+  // items: React.ReactChild[];
   title: string;
   filteredItemCount: number;
   totalItemCount: number;
   children?: React.ReactNode;
 };
 
-const List = ({ items, filteredItemCount, totalItemCount, title, children }: ListProps) => {
+const List = ({ filteredItemCount, totalItemCount, title, children }: ListProps) => {
   if (totalItemCount === 0) {
     return (
       <>
@@ -19,7 +19,7 @@ const List = ({ items, filteredItemCount, totalItemCount, title, children }: Lis
   } else if (filteredItemCount === 0) {
     return <p>No matching items in {title}</p>;
   } else {
-    return <div>{items}</div>;
+    return <>{children}</>;
   }
 };
 

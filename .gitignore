@@ -2,6 +2,7 @@ node_modules/
 dist/
 .env.development
 .env.test
+.env.production
 # playground/sandbox folder
 sandbox/
 # Webpack stats

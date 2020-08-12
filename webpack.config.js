@@ -10,6 +10,8 @@ if (process.env.NODE_ENV === 'test') {
   require('dotenv').config({ path: '.env.test' });
 } else if (process.env.NODE_ENV === 'development') {
   require('dotenv').config({ path: '.env.development' });
+} else if (process.env.NODE_ENV === 'production') {
+  require('dotenv').config({ path: '.env.production' });
 }
 
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -41,7 +43,7 @@ module.exports = {
             options: { plugins: ['react-refresh/babel'] },
           },
           'ts-loader',
-        ],
+        ].filter(Boolean),
       },
       {
         test: /\.s?css$/,
@@ -103,7 +105,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
-  ],
+  ].filter(Boolean),
   devtool: isDevelopment ? 'inline-source-map' : 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),

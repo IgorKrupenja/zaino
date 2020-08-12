@@ -9,11 +9,7 @@ import PackListItem from './PackListItem';
 import Stats from './Stats';
 
 const Pack = () => {
-  const items = useSelector(
-    (state: RootState) => selectFilteredPackItems(state),
-    shallowEqual
-  ).map((item: Item) => <PackListItem key={item.id} {...item} />);
-
+  const items = useSelector((state: RootState) => selectFilteredPackItems(state), shallowEqual);
   const itemStats = useSelector((state: RootState) => selectPackItemsStats(state), shallowEqual);
 
   return (
@@ -26,11 +22,14 @@ const Pack = () => {
         percentageOfTotal={itemStats.percentageOfTotal}
       />
       <List
-        items={items}
         title={'pack'}
         filteredItemCount={items.length}
         totalItemCount={itemStats.totalItemCount}
-      />
+      >
+        {items.map((item: Item) => (
+          <PackListItem key={item.id} {...item} />
+        ))}
+      </List>
     </section>
   );
 };
