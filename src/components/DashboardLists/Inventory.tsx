@@ -1,11 +1,11 @@
-import { useSelector, shallowEqual } from 'react-redux';
-import { RootState } from '../../store/store';
+import React from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import selectFilteredInventoryItems from '../../selectors/items';
+import { selectInventoryItemsStats } from '../../selectors/itemsStats';
+import { RootState } from '../../store/store';
 import { Item } from '../../types/items';
 import InventoryListItem from './InventoryListItem';
-import { selectInventoryItemsStats } from '../../selectors/itemsStats';
-import { Link } from 'react-router-dom';
-import React from 'react';
 import List from './List';
 import Stats from './Stats';
 

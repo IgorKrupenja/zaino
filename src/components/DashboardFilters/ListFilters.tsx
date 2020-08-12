@@ -1,9 +1,16 @@
 import React, { ChangeEvent, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ValueType } from 'react-select';
+import {
+  setCategoryFilter,
+  setLabelsFilter,
+  setTextFilter,
+  sortBy,
+} from '../../slices/filtersItems';
 import { RootState } from '../../store/store';
-import { setTextFilter, sortBy, setCategoryFilter } from '../../slices/filtersItems';
-import { ItemSortOption, Category } from '../../types/items';
-import LabelFilterSelect from './LabelFilterSelect';
+import { Category, ItemSortOption } from '../../types/items';
+import { LabelOption } from '../../types/labels';
+import LabelSelect from '../common/LabelSelect';
 
 const ListFilters = () => {
   const [filters, setFilters] = useState(useSelector((state: RootState) => state.itemsFilters));
@@ -54,7 +61,7 @@ const ListFilters = () => {
       </label>
       <label>
         Sort by
-        <select className="select" name="sortBy" value={filters.sortBy} onChange={onSortChange}>
+        <select name="sortBy" value={filters.sortBy} onChange={onSortChange}>
           {Object.values(ItemSortOption).map(value => (
             <option value={value} key={value}>
               {value}
@@ -62,10 +69,15 @@ const ListFilters = () => {
           ))}
         </select>
       </label>
-      <label>
-        Labels
-        <LabelFilterSelect />
-      </label>
+      <LabelSelect
+        onChange={(newValues: ValueType<LabelOption>) => {
+          // set labels filter based on new values received from LabelSelect
+          dispatch(
+            setLabelsFilter(newValues ? newValues.map((label: LabelOption) => label.value) : [])
+          );
+        }}
+        isClearable
+      />
     </section>
   );
 };

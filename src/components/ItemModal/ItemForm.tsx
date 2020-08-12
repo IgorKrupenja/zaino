@@ -1,9 +1,10 @@
-import React, { useState, ChangeEvent, useCallback } from 'react';
-import { v4 as uuid } from 'uuid';
-import LabelSelect from './LabelSelect';
-import { Item, Category } from '../../types/items';
+import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { incrementItemCount, decrementItemCount } from '../../slices/labels';
+import { v4 as uuid } from 'uuid';
+import { decrementItemCount, incrementItemCount } from '../../slices/labels';
+import { Category, Item } from '../../types/items';
+import { LabelOption } from '../../types/labels';
+import LabelSelect from '../common/LabelSelect';
 
 type ItemFormProps = {
   item?: Item;
@@ -44,6 +45,13 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       return;
     }
     setValues({ ...values, [name]: value });
+  };
+
+  const onLabelChange = (newValues: LabelOption[]) => {
+    // process new values for labels from LabelSelect
+    const labels: string[] = newValues ? newValues.map((label: LabelOption) => label.value) : [];
+    // and set those as labels for item
+    setValues({ ...values, labels });
   };
 
   const validateForm = () => {
@@ -132,11 +140,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         value={values.notes}
         onChange={onChange}
       ></textarea>
-      <LabelSelect
-        selectedLabelIds={values.labels ?? []}
-        itemValues={values}
-        setItemValues={setValues}
-      />
+      <LabelSelect itemValues={values} onChange={onLabelChange} isClearable={false} isCreatable />
       <button>Save item</button>
     </form>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Item } from '../../types/items';
+import { Link } from 'react-router-dom';
 import { RootState } from '../../store/store';
+import { Item } from '../../types/items';
 
 type ListItemProps = {
   item: Item;

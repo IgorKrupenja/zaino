@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 import { logout } from '../slices/auth';
 import { resetItemsState } from '../slices/items';
 import { resetLabelsState } from '../slices/labels';

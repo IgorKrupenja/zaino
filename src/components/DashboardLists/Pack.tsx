@@ -1,11 +1,11 @@
-import List from './List';
-import { useSelector, shallowEqual } from 'react-redux';
-import { RootState } from '../../store/store';
-import { selectFilteredPackItems } from '../../selectors/items';
-import { Item } from '../../types/items';
-import PackListItem from './PackListItem';
-import { selectPackItemsStats } from '../../selectors/itemsStats';
 import React from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
+import { selectFilteredPackItems } from '../../selectors/items';
+import { selectPackItemsStats } from '../../selectors/itemsStats';
+import { RootState } from '../../store/store';
+import { Item } from '../../types/items';
+import List from './List';
+import PackListItem from './PackListItem';
 import Stats from './Stats';
 
 const Pack = () => {

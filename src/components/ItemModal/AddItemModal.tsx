@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { addItem } from '../../slices/items';
 import { Item } from '../../types/items';
-import ItemForm from './ItemForm';
 import { closeModal } from '../../utils/closeModal';
+import ItemForm from './ItemForm';
 
 export const AddItem = () => {
   // hide modal if location is not 'add'

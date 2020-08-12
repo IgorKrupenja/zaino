@@ -1,12 +1,12 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
-import { useLocation, Redirect } from 'react-router-dom';
-import { updateItem, deleteItem } from '../../slices/items';
-import ItemForm from './ItemForm';
-import { Item } from '../../types/items';
+import { Redirect, useLocation } from 'react-router-dom';
+import { deleteItem, updateItem } from '../../slices/items';
 import { decrementItemCount } from '../../slices/labels';
+import { Item } from '../../types/items';
 import { closeModal } from '../../utils/closeModal';
+import ItemForm from './ItemForm';
 
 type LocationState = {
   item: Item;
