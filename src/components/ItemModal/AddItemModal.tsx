@@ -7,11 +7,11 @@ import { Item } from '../../types/items';
 import { closeModal } from '../../utils/closeModal';
 import ItemForm from './ItemForm';
 
-export const AddItem = () => {
+export const AddItemModal = () => {
+  const dispatch = useDispatch();
   // hide modal if location is not 'add'
   if (useLocation().pathname.match(/edit|dashboard/g)) return null;
 
-  const dispatch = useDispatch();
   const title = 'Add item';
   document.title = title;
   Modal.setAppElement('#app');
@@ -31,4 +31,4 @@ export const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default AddItemModal;

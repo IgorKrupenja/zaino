@@ -8,21 +8,22 @@ type Stats = {
 };
 
 const Stats = ({ filteredItemCount, weight, percentageOfTotal, totalItemCount }: Stats) => {
+  // todo likely refactor when doing styles
   if (totalItemCount === 0 || filteredItemCount === 0) {
     return null;
   } else if (totalItemCount === filteredItemCount) {
     return (
-      <p>
+      <div className="stats">
         {filteredItemCount} {filteredItemCount > 1 ? 'items with total' : 'item with'} weight{' '}
         {weight}g
-      </p>
+      </div>
     );
   } else {
     return (
-      <p>
+      <div className="stats">
         {filteredItemCount} {filteredItemCount > 1 ? 'items with combined' : 'item with'} weight{' '}
         {weight}g, {percentageOfTotal}% of total
-      </p>
+      </div>
     );
   }
 };

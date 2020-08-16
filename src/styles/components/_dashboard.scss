@@ -1,10 +1,8 @@
 .dashboard {
   display: flex;
   flex-wrap: wrap;
-  max-width: 130rem;
-}
 
-.list-filters {
-  width: 100%;
-  // background: greenyellow;
+  max-width: 130rem;
+  // needed for overflow scroll to work
+  height: calc(100% - #{$header-height});
 }

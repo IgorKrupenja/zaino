@@ -1,0 +1,8 @@
+// todo should be common class for inv and pack
+.inventory {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  height: calc(100% - #{$list-filters-height});
+}

@@ -2,5 +2,34 @@
 @import './base/settings';
 @import './base/base';
 // components
+@import './components/list-filters';
+@import './components/header';
 @import './components/dashboard';
 @import './components/list';
+@import './components/inventory';
+@import './components/pack';
+@import './components/stats';
+
+// todo move somewhere appropriate and rename class
+.list-item__image {
+  width: 6rem;
+  height: 6rem;
+}
+
+// todo temp modal animation
+
+// .ReactModal__Overlay {
+//   opacity: 0;
+//   transform: translateX(-100px);
+//   transition: all 100ms ease-in-out;
+// }
+
+// .ReactModal__Overlay--after-open {
+//   opacity: 1;
+//   transform: translateX(0px);
+// }
+
+// .ReactModal__Overlay--before-close {
+//   opacity: 0;
+//   transform: translateX(-100px);
+// }

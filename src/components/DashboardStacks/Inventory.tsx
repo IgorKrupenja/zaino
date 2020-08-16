@@ -25,9 +25,8 @@ const Inventory = () => {
   const filteredItemCount = items.length;
 
   return (
-    <section className={`list list--inventory`}>
+    <section className="inventory">
       <h2>Inventory</h2>
-      <Link to="/add">Add {filteredItemCount === 0 ? 'an' : 'another'} item</Link>
       <Stats
         weight={itemStats.weight}
         percentageOfTotal={itemStats.percentageOfTotal}
@@ -35,7 +34,7 @@ const Inventory = () => {
         totalItemCount={itemStats.totalItemCount}
       />
       <List
-        title={'inventory'}
+        title="inventory"
         filteredItemCount={filteredItemCount}
         totalItemCount={itemStats.totalItemCount}
       >
@@ -43,6 +42,9 @@ const Inventory = () => {
           <InventoryListItem key={item.id} {...item} />
         ))}
       </List>
+      <div>
+        <Link to="/add">Add {filteredItemCount === 0 ? 'an' : 'another'} item</Link>
+      </div>
     </section>
   );
 };

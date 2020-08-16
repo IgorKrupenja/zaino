@@ -9,18 +9,20 @@ type ListProps = {
 };
 
 const List = ({ filteredItemCount, totalItemCount, title, children }: ListProps) => {
+  let emptyString = '';
+
   if (totalItemCount === 0) {
-    return (
-      <>
-        <p>No items in {title}</p>
-        {children}
-      </>
-    );
+    emptyString = `No items in ${title}`;
   } else if (filteredItemCount === 0) {
-    return <p>No matching items in {title}</p>;
-  } else {
-    return <>{children}</>;
+    emptyString = `No matching items in ${title}`;
   }
+
+  return (
+    <div className={emptyString ? 'list list--empty' : 'list'}>
+      {emptyString}
+      {children}
+    </div>
+  );
 };
 
 export default List;

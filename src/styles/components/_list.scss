@@ -1,38 +1,19 @@
 .list {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
 }
 
-.list--inventory {
-  // height: 900px;
-  // width: 800px;
-  // overflow: auto;
-}
-
-// todo temp remove
-
-// .ReactModal__Overlay {
-//   opacity: 0;
-//   transform: translateX(-100px);
-//   transition: all 100ms ease-in-out;
-// }
-
-// .ReactModal__Overlay--after-open {
-//   opacity: 1;
-//   transform: translateX(0px);
-// }
-
-// .ReactModal__Overlay--before-close {
-//   opacity: 0;
-//   transform: translateX(-100px);
-// }
-
-// todo temp end
-
-.list--pack {
-}
-
-// todo move to category component?
-.list-item__image {
-  width: 6rem;
-  height: 6rem;
+.list--empty {
+  height: 200px;
 }

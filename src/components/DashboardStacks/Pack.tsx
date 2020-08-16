@@ -13,7 +13,7 @@ const Pack = () => {
   const itemStats = useSelector((state: RootState) => selectPackItemsStats(state), shallowEqual);
 
   return (
-    <section className={`list list--pack`}>
+    <section className="pack">
       <h2>Pack</h2>
       <Stats
         filteredItemCount={items.length}
@@ -21,11 +21,7 @@ const Pack = () => {
         weight={itemStats.weight}
         percentageOfTotal={itemStats.percentageOfTotal}
       />
-      <List
-        title={'pack'}
-        filteredItemCount={items.length}
-        totalItemCount={itemStats.totalItemCount}
-      >
+      <List title="pack" filteredItemCount={items.length} totalItemCount={itemStats.totalItemCount}>
         {items.map((item: Item) => (
           <PackListItem key={item.id} {...item} />
         ))}

@@ -12,7 +12,7 @@ type LocationState = {
   item: Item;
 };
 
-const EditItem = () => {
+const EditItemModal = () => {
   const location = useLocation<LocationState>();
   // hide modal if location is not 'edit'
   if (location.pathname.match(/add|dashboard/g)) return null;
@@ -21,7 +21,7 @@ const EditItem = () => {
   // Redirect is better than history.push here
   // as history stack will not be populated with edit/invalid-id
   if (!location.state) return <Redirect to="/dashboard" />;
-  const item: Item = location.state.item as Item;
+  const item: Item = location.state.item;
 
   const dispatch = useDispatch();
   const title = `${item.name} | Zaino`;
@@ -54,4 +54,4 @@ const EditItem = () => {
 };
 
 // wrapping in withRouter HOC to access props.location.state
-export default EditItem;
+export default EditItemModal;
