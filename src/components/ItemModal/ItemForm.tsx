@@ -109,7 +109,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         ))}
       </select>
       <img
-        src={`../images/categories/${values.category.toLowerCase()}.svg`}
+        src={`../../images/categories/${values.category.toLowerCase()}.svg`}
         className="list-item__image"
       />
       <label>

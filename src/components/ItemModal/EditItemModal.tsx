@@ -14,22 +14,19 @@ type LocationState = {
 
 const EditItemModal = () => {
   const location = useLocation<LocationState>();
-  // hide modal if location is not 'edit'
-  if (location.pathname.match(/add|dashboard/g)) return null;
+  const dispatch = useDispatch();
 
   // redirect to Dashboard if item id is invalid
   // Redirect is better than history.push here
   // as history stack will not be populated with edit/invalid-id
   if (!location.state) return <Redirect to="/dashboard" />;
-  const item: Item = location.state.item;
 
-  const dispatch = useDispatch();
+  const item = location.state.item;
   const title = `${item.name} | Zaino`;
   document.title = title;
   Modal.setAppElement('#app');
 
   return (
-    // treat modal as always open (if location is 'edit')
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
       <h2>{title}</h2>
       <ItemForm
@@ -53,5 +50,4 @@ const EditItemModal = () => {
   );
 };
 
-// wrapping in withRouter HOC to access props.location.state
 export default EditItemModal;

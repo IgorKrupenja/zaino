@@ -1,7 +1,6 @@
 import React from 'react';
 
 type ListProps = {
-  // items: React.ReactChild[];
   title: string;
   filteredItemCount: number;
   totalItemCount: number;

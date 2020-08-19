@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { selectFilteredPackItems } from '../../selectors/items';
 import { selectPackItemsStats } from '../../selectors/itemsStats';
@@ -22,9 +22,9 @@ const Pack = () => {
         percentageOfTotal={itemStats.percentageOfTotal}
       />
       <List title="pack" filteredItemCount={items.length} totalItemCount={itemStats.totalItemCount}>
-        {items.map((item: Item) => (
-          <PackListItem key={item.id} {...item} />
-        ))}
+        {useMemo(() => items.map((item: Item) => <PackListItem key={item.id} {...item} />), [
+          items,
+        ])}
       </List>
     </section>
   );

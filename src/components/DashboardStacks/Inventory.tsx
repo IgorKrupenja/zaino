@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import selectFilteredInventoryItems from '../../selectors/items';
@@ -38,12 +38,16 @@ const Inventory = () => {
         filteredItemCount={filteredItemCount}
         totalItemCount={itemStats.totalItemCount}
       >
-        {items.map((item: Item) => (
-          <InventoryListItem key={item.id} {...item} />
-        ))}
+        {/* useMemo to prevent re-rendering when only location changes (e.g. on opening modal)
+            - improves performance when opening.closing modals
+            - preserves list scroll location
+        */}
+        {useMemo(() => items.map((item: Item) => <InventoryListItem key={item.id} {...item} />), [
+          items,
+        ])}
       </List>
       <div>
-        <Link to="/add">Add {filteredItemCount === 0 ? 'an' : 'another'} item</Link>
+        <Link to="/dashboard/add">Add {filteredItemCount === 0 ? 'an' : 'another'} item</Link>
       </div>
     </section>
   );

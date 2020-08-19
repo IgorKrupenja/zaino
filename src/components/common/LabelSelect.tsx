@@ -34,7 +34,6 @@ const LabelSelect = ({ itemValues, onChange, isClearable, isCreatable }: LabelSe
     setValues(newValues);
     onChange(newValues as LabelOption[]);
   };
-
   const handleCreate = (inputValue: string) => {
     const id = uuid();
     //todo temporary color
