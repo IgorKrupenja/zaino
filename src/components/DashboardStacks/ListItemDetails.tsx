@@ -15,12 +15,7 @@ const ListItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
   return (
     <article>
       <h3>
-        <Link
-          to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}
-          onClick={() => console.log('tada')}
-        >
-          {name}
-        </Link>
+        <Link to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}>{name}</Link>
       </h3>
       <img
         src={`../../images/categories/${category.toLowerCase()}.svg`}

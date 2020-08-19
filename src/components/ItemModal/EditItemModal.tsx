@@ -5,7 +5,7 @@ import { Redirect, useLocation } from 'react-router-dom';
 import { deleteItem, updateItem } from '../../slices/items';
 import { decrementItemCount } from '../../slices/labels';
 import { Item } from '../../types/items';
-import { closeModal } from '../../utils/closeModal';
+import setupModal from '../../utils/setupModal';
 import ItemForm from './ItemForm';
 
 type LocationState = {
@@ -22,9 +22,7 @@ const EditItemModal = () => {
   if (!location.state) return <Redirect to="/dashboard" />;
 
   const item = location.state.item;
-  const title = `${item.name} | Zaino`;
-  document.title = title;
-  Modal.setAppElement('#app');
+  const [title, closeModal] = setupModal(item);
 
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>

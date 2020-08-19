@@ -3,15 +3,13 @@ import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../slices/items';
 import { Item } from '../../types/items';
-import { closeModal } from '../../utils/closeModal';
+import setupModal from '../../utils/setupModal';
 import ItemForm from './ItemForm';
 
 export const AddItemModal = () => {
   const dispatch = useDispatch();
 
-  const title = 'Add item';
-  document.title = title;
-  Modal.setAppElement('#app');
+  const [title, closeModal] = setupModal();
 
   return (
     <Modal isOpen closeTimeoutMS={500} onRequestClose={closeModal} contentLabel={title}>

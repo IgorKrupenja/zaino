@@ -1,9 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
-import selectFilteredInventoryItems, {
-  selectFilteredPackItems,
-  selectAllInventoryItems,
-} from './items';
 import { Item } from '../types/items';
+import selectFilteredInventoryItems, {
+  selectAllInventoryItems,
+  selectAllPackItems,
+  selectFilteredPackItems,
+} from './items';
 
 const getItemStats = (filteredItems: Item[], allItems: Item[]) => {
   const getWeight = (items: Item[]) => items.reduce((sum, item) => sum + item.weight, 0);
@@ -24,7 +25,7 @@ export const selectInventoryItemsStats = createSelector(
 );
 
 export const selectPackItemsStats = createSelector(
-  [selectFilteredPackItems, selectAllInventoryItems],
+  [selectFilteredPackItems, selectAllPackItems],
   (filteredItems, allItems) => {
     return getItemStats(filteredItems, allItems);
   }

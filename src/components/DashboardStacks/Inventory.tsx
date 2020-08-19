@@ -9,7 +9,7 @@ import InventoryListItem from './InventoryListItem';
 import List from './List';
 import Stats from './Stats';
 
-// todo perhaps rename to InventoryContainer
+// todo perhaps rename to InventoryStack
 const Inventory = () => {
   // a bit of a hack: shallowEqual prevents re-renders when items in store do not change
   // (i.e. new filter conditions result in the same matching items)
@@ -23,6 +23,8 @@ const Inventory = () => {
     shallowEqual
   );
   const filteredItemCount = items.length;
+
+  // console.log(itemStats);
 
   return (
     <section className="inventory">

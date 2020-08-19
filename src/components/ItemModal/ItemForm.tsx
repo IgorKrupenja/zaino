@@ -38,11 +38,13 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     e.persist();
 
     const name = e.target.name;
-    const value = e.target.value;
+    let value: string | number = e.target.value;
 
-    // prevent entering non-numeric characters into weight or quantity
-    if ((name === 'weight' || name === 'quantity') && !value.match(/^\d{1,}$/g)) {
-      return;
+    if (name === 'weight' || name === 'quantity') {
+      // prevent entering non-numeric characters
+      if (!value.match(/^\d{1,}$/g)) return;
+      // convert to number
+      value = Number(value);
     }
     setValues({ ...values, [name]: value });
   };
@@ -86,7 +88,12 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       removedLabels?.forEach(label => dispatch(decrementItemCount(label)));
       // do not overwrite date/time added when editing item
       const addedAt = values.addedAt || new Date().toISOString();
-      onSubmit({ ...values, addedAt });
+      onSubmit({
+        ...values,
+        addedAt,
+        weight: Number(values.weight),
+        quantity: Number(values.quantity),
+      });
     }
   };
 
