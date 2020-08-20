@@ -6,13 +6,19 @@ import selectFilteredInventoryItems, {
   selectFilteredPackItems,
 } from './items';
 
-const getItemStats = (filteredItems: Item[], allItems: Item[]) => {
-  const getWeight = (items: Item[]) => items.reduce((sum, item) => sum + item.weight, 0);
-  const weight = getWeight(filteredItems);
+const getWeight = (items: Item[], isPack?: boolean) => {
+  return items.reduce((sum, item) => {
+    const quantity = isPack ? item.packQuantity : item.quantity;
+    return sum + item.weight * quantity;
+  }, 0);
+};
+
+const getItemStats = (filteredItems: Item[], allItems: Item[], isPack?: boolean) => {
+  const weight = getWeight(filteredItems, isPack);
   // + below drops any "extra" zeroes at the end
   // It changes the result (which is a string) into a number again (e.g. "0 + foo"),
   // which means that it uses only as many digits as necessary
-  const percentageOfTotal = +((weight * 100) / getWeight(allItems)).toFixed(2);
+  const percentageOfTotal = +((weight * 100) / getWeight(allItems, isPack)).toFixed(2);
   const totalItemCount = allItems.length;
   return { weight, percentageOfTotal, totalItemCount };
 };
@@ -27,6 +33,6 @@ export const selectInventoryItemsStats = createSelector(
 export const selectPackItemsStats = createSelector(
   [selectFilteredPackItems, selectAllPackItems],
   (filteredItems, allItems) => {
-    return getItemStats(filteredItems, allItems);
+    return getItemStats(filteredItems, allItems, true);
   }
 );

@@ -1,5 +1,3 @@
-import { OptionTypeBase } from 'react-select';
-
 export type Item = {
   id: string;
   name: string;

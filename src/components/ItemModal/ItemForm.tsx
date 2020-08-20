@@ -29,12 +29,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const dispatch = useDispatch();
 
   // SyntheticEvent as used for different HTMLElements
-  const onChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | ChangeEvent<HTMLTextAreaElement>
-      | ChangeEvent<HTMLSelectElement>
-  ) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     e.persist();
 
     const name = e.target.name;
