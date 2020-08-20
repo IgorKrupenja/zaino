@@ -141,7 +141,12 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         value={values.notes}
         onChange={onChange}
       ></textarea>
-      <LabelSelect itemValues={values} onChange={onLabelChange} isClearable={false} isCreatable />
+      <LabelSelect
+        labelIds={values.labelIds}
+        onChange={onLabelChange}
+        isClearable={false}
+        isCreatable
+      />
       <button>Save item</button>
     </form>
   );

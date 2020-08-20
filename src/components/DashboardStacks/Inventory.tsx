@@ -24,8 +24,6 @@ const Inventory = () => {
   );
   const filteredItemCount = items.length;
 
-  // console.log(itemStats);
-
   return (
     <section className="inventory">
       <h2>Inventory</h2>
@@ -41,7 +39,7 @@ const Inventory = () => {
         totalItemCount={itemStats.totalItemCount}
       >
         {/* useMemo to prevent re-rendering when only location changes (e.g. on opening modal)
-            - improves performance when opening.closing modals
+            - improves performance when opening/closing modals
             - preserves list scroll location
         */}
         {useMemo(() => items.map((item: Item) => <InventoryListItem key={item.id} {...item} />), [

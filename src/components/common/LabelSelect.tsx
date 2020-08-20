@@ -6,17 +6,16 @@ import CreatableSelect from 'react-select/creatable';
 import { v4 as uuid } from 'uuid';
 import { addLabel } from '../../state/slices/labels';
 import { RootState } from '../../state/store';
-import { Item } from '../../types/items';
 import { Label, LabelOption } from '../../types/labels';
 
 type LabelSelectProps = {
-  itemValues?: Item;
+  labelIds?: string[];
   onChange: (newValues: LabelOption[]) => void;
   isClearable?: boolean;
   isCreatable?: boolean;
 };
 
-const LabelSelect = ({ itemValues, onChange, isClearable, isCreatable }: LabelSelectProps) => {
+const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSelectProps) => {
   const dispatch = useDispatch();
   // labels and getMappedLabels need to be separate to prevent exceeding max depth with ItemForm
   const labels = useSelector((state: RootState) => state.labels);
@@ -30,7 +29,7 @@ const LabelSelect = ({ itemValues, onChange, isClearable, isCreatable }: LabelSe
   const [options, setOptions] = useState(getMappedLabels(labels));
   // get selected label id's for the item and assign to values
   const [values, setValues] = useState<ValueType<LabelOption>>(
-    itemValues?.labelIds ? options.filter(label => itemValues.labelIds?.includes(label.value)) : []
+    labelIds ? options.filter(label => labelIds.includes(label.value)) : []
   );
 
   // update options in DashboardFilters when new ones are created in ItemForm

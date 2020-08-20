@@ -19,26 +19,26 @@ const itemFiltersSlice = createSlice({
   name: 'filters-items',
   initialState,
   reducers: {
-    setTextFilter(state, action: PayloadAction<string>) {
+    setItemsTextFilter(state, action: PayloadAction<string>) {
       state.text = action.payload;
     },
-    setCategoryFilter(state, action: PayloadAction<Category | undefined>) {
+    setItemsCategoryFilter(state, action: PayloadAction<Category | undefined>) {
       state.category = action.payload;
     },
-    setLabelsFilter(state, action: PayloadAction<string[]>) {
+    setItemsLabelsFilter(state, action: PayloadAction<string[]>) {
       state.labels = action.payload;
     },
-    sortBy(state, action: PayloadAction<ItemSortOption>) {
+    sortItemsBy(state, action: PayloadAction<ItemSortOption>) {
       state.sortBy = action.payload;
     },
   },
 });
 
 export const {
-  setTextFilter,
-  setCategoryFilter,
-  setLabelsFilter,
-  sortBy,
+  setItemsTextFilter,
+  setItemsCategoryFilter,
+  setItemsLabelsFilter,
+  sortItemsBy,
 } = itemFiltersSlice.actions;
 
 export default itemFiltersSlice.reducer;
