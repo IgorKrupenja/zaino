@@ -11,7 +11,7 @@ type ListItemProps = {
 };
 
 const ListItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
-  const { id, name, category, labels, weight } = item;
+  const { id, name, category, labelIds: labels, weight } = item;
   return (
     <article>
       <h3>

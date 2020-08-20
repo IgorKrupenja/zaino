@@ -37,7 +37,7 @@ const EditItemModal = () => {
       <button
         onClick={() => {
           closeModal();
-          item.labels?.forEach(label => dispatch(decrementItemCount(label)));
+          item.labelIds?.forEach(label => dispatch(decrementItemCount(label)));
           dispatch(deleteItem(item.id));
         }}
       >

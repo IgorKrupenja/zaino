@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import db from '../firebase/firebase';
-import { Item } from '../types/items';
 import { RootState } from '../store/store';
+import { Item } from '../types/items';
 import { Label } from '../types/labels';
 
 export const addLabel = createAsyncThunk<
@@ -44,12 +44,16 @@ const labelsSlice = createSlice({
       // compute item counts for each label as these are not stored in Firestore
       // these counts are used on LabelsPage
       action.payload.items.forEach(item => {
-        item.labels?.forEach(labelName => {
-          const label = labels.find(label => label.id === labelName);
+        item.labelIds?.forEach(labelId => {
+          const label = labels.find(label => label.id === labelId);
           if (label) label.itemCount = label.itemCount ? (label.itemCount += 1) : 1;
         });
       });
-      labels.forEach(label => state.push(label));
+      labels.forEach(label => {
+        // set 0 count for labels w/o items
+        if (!label.itemCount) label.itemCount = 0;
+        return state.push(label);
+      });
     },
     // increment and decrement separate from update in order not to write to Firestore
     // each time items count is changed for a label

@@ -25,7 +25,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const [values, setValues] = useState(item ?? newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
   // used in onFormSubmit to set label item counts
-  const initialLabels = item?.labels;
+  const initialLabels = item?.labelIds;
   const dispatch = useDispatch();
 
   // SyntheticEvent as used for different HTMLElements
@@ -48,7 +48,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     // process new values for labels from LabelSelect
     const labels: string[] = newValues ? newValues.map((label: LabelOption) => label.value) : [];
     // and set those as labels for item
-    setValues({ ...values, labels });
+    setValues({ ...values, labelIds: labels });
   };
 
   const validateForm = () => {
@@ -76,7 +76,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
 
     if (validateForm()) {
       // update item counts for labels
-      const newLabels = values.labels;
+      const newLabels = values.labelIds;
       const addedLabels = newLabels?.filter(label => !initialLabels?.includes(label));
       addedLabels?.forEach(label => dispatch(incrementItemCount(label)));
       const removedLabels = initialLabels?.filter(label => !newLabels?.includes(label));
