@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateItem } from '../../slices/items';
 import { Item } from '../../types/items';
@@ -7,6 +7,10 @@ import ListItemDetails from './ListItemDetails';
 const PackListItem = (item: Item) => {
   const dispatch = useDispatch();
   const [packQuantity, setPackQuantity] = useState(item.packQuantity);
+
+  // update pack quantity on prop change
+  // e.g. when lowering inventory quantity below current pack quantity in ItemForm
+  useEffect(() => setPackQuantity(item.packQuantity), [item.packQuantity]);
 
   const decreasePackQuantity = () => {
     setPackQuantity(packQuantity - 1);

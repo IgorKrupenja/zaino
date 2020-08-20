@@ -81,13 +81,12 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       addedLabels?.forEach(label => dispatch(incrementItemCount(label)));
       const removedLabels = initialLabels?.filter(label => !newLabels?.includes(label));
       removedLabels?.forEach(label => dispatch(decrementItemCount(label)));
-      // do not overwrite date/time added when editing item
-      const addedAt = values.addedAt || new Date().toISOString();
       onSubmit({
         ...values,
-        addedAt,
-        weight: Number(values.weight),
-        quantity: Number(values.quantity),
+        // do not overwrite date/time added when editing item
+        addedAt: values.addedAt || new Date().toISOString(),
+        // lower pack quantity if it exceeds new quantity
+        packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
       });
     }
   };
