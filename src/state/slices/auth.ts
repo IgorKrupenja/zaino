@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { firebase, googleAuthProvider } from '../firebase/firebase';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { firebase, googleAuthProvider } from '../../firebase/firebase';
 
 export const login = createAsyncThunk('items/login', async () => {
   await firebase.auth().signInWithRedirect(googleAuthProvider);

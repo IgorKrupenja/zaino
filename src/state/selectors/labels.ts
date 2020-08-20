@@ -1,6 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '../store/store';
-import { LabelSortOption, Label } from '../types/labels';
+import { RootState } from '../store';
 import { selectAllInventoryItems } from './items';
 
 const selectLabels = (state: RootState) => state.labels;

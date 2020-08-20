@@ -4,8 +4,8 @@ import Select, { ValueType } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
 import { v4 as uuid } from 'uuid';
-import { addLabel } from '../../slices/labels';
-import { RootState } from '../../store/store';
+import { addLabel } from '../../state/slices/labels';
+import { RootState } from '../../state/store';
 import { Item } from '../../types/items';
 import { Label, LabelOption } from '../../types/labels';
 

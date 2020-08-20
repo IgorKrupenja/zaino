@@ -5,13 +5,13 @@ import {
   setLabelsFilter,
   setTextFilter,
   sortBy,
-} from '../../slices/filtersItems';
-import { RootState } from '../../store/store';
+} from '../../state/slices/itemsFilters';
+import { RootState } from '../../state/store';
 import { Category, ItemSortOption } from '../../types/items';
 import { LabelOption } from '../../types/labels';
 import LabelSelect from '../common/LabelSelect';
 
-const ListFilters = () => {
+const DashboardFilters = () => {
   const [filters, setFilters] = useState(useSelector((state: RootState) => state.itemsFilters));
   const dispatch = useDispatch();
 
@@ -81,4 +81,4 @@ const ListFilters = () => {
   );
 };
 
-export default ListFilters;
+export default DashboardFilters;

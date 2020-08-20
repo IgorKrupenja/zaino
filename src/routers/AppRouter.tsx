@@ -1,9 +1,9 @@
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
-import DashboardPage from '../components/DashboardPage';
-import LabelsPage from '../components/LabelsPage';
-import LoginPage from '../components/LoginPage';
+import DashboardPage from '../pages/DashboardPage';
+import LabelsPage from '../pages/LabelsPage';
+import LoginPage from '../pages/LoginPage';
 
 // custom history is needed for login in app.jsx to work
 // as history is accessed there not from React component

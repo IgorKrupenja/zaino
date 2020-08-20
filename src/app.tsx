@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routers/AppRouter';
-import { setUid } from './slices/auth';
-import { addItem, loadItems } from './slices/items';
-import store from './store/store';
+import { setUid } from './state/slices/auth';
+import { addItem, loadItems } from './state/slices/items';
+import store from './state/store';
 import './styles/styles.scss';
 import { Category } from './types/items';
 

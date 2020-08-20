@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import Header from './common/Header';
+import Header from '../components/common/Header';
+import { RootState } from '../state/store';
 
 const LabelsPage = () => {
   const labels = useSelector((state: RootState) => state.labels);

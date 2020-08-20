@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { Item } from '../types/items';
+import { Item } from '../../types/items';
 import selectFilteredInventoryItems, {
   selectAllInventoryItems,
   selectAllPackItems,

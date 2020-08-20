@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
-import { selectFilteredPackItems } from '../../selectors/items';
-import { selectPackItemsStats } from '../../selectors/itemsStats';
-import { RootState } from '../../store/store';
+import { selectFilteredPackItems } from '../../state/selectors/items';
+import { selectPackItemsStats } from '../../state/selectors/itemsStats';
+import { RootState } from '../../state/store';
 import { Item } from '../../types/items';
 import List from './List';
 import PackListItem from './PackListItem';

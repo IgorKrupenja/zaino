@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LabelSortOption } from '../types/labels';
+import { LabelSortOption } from '../../types/labels';
 
 type Filters = {
   text: string;

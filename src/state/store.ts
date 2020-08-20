@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../slices/auth';
-import itemsReducer from '../slices/items';
-import labelsReducer from '../slices/labels';
-import itemsFiltersReducer from '../slices/filtersItems';
-import labelsFiltersReducer from '../slices/filtersLabels';
+import authReducer from './slices/auth';
+import itemsReducer from './slices/items';
+import itemsFiltersReducer from './slices/itemsFilters';
+import labelsReducer from './slices/labels';
+import labelsFiltersReducer from './slices/labelsFilters';
 
 const store = configureStore({
   reducer: {

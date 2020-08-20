@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateItem } from '../../slices/items';
+import { updateItem } from '../../state/slices/items';
 import { Item } from '../../types/items';
 import ListItemDetails from './ListItemDetails';
 

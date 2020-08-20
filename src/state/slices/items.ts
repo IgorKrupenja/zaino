@@ -1,9 +1,9 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import db from '../firebase/firebase';
-import { Item } from '../types/items';
-import { RootState } from '../store/store';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import db from '../../firebase/firebase';
+import { Item } from '../../types/items';
+import { Label } from '../../types/labels';
+import { RootState } from '../store';
 import { loadLabels } from './labels';
-import { Label } from '../types/labels';
 
 export const loadItems = createAsyncThunk<Item[], string, { state: RootState }>(
   'items/loadItems',
