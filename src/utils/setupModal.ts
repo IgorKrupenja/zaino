@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import { history } from '../routers/AppRouter';
-import { Item } from '../types/items';
+import { Item } from '../types/Item';
 
 export default (item?: Item): [string, () => void] => {
   const title = item ? `${item.name} | Zaino` : 'Add item';

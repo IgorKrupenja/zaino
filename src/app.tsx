@@ -9,7 +9,7 @@ import { setUid } from './state/slices/auth';
 import { addItem, loadItems } from './state/slices/items';
 import store from './state/store';
 import './styles/styles.scss';
-import { Category } from './types/items';
+import { Category } from './types/Item';
 
 // import all images beforehand so that dynamic references can be used in img src values
 const importAll = (context: __WebpackModuleApi.RequireContext) => context.keys().map(context);

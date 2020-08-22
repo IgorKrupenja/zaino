@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import selectFilteredInventoryItems from '../../state/selectors/items';
 import { selectInventoryItemsStats } from '../../state/selectors/itemsStats';
 import { RootState } from '../../state/store';
-import { Item } from '../../types/items';
+import { Item } from '../../types/Item';
 import InventoryListItem from './InventoryListItem';
 import List from './List';
 import Stats from './Stats';

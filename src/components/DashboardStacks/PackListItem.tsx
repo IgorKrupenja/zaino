@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateItem } from '../../state/slices/items';
-import { Item } from '../../types/items';
+import { Item } from '../../types/Item';
 import ListItemDetails from './ListItemDetails';
 
 const PackListItem = (item: Item) => {

@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
-import { ItemSortOption } from '../../types/items';
-import { LabelSortOption } from '../../types/labels';
+import { ItemSortOption } from '../../state/slices/itemsFilters';
+import { LabelSortOption } from '../../state/slices/labelsFilters';
 
 type SortBySelectProps = {
   options: typeof LabelSortOption | typeof ItemSortOption;
@@ -9,7 +9,7 @@ type SortBySelectProps = {
 };
 
 const SortBySelect = ({ options, onSortChange, sortBy }: SortBySelectProps) => {
-  const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.persist();
     onSortChange(e.target.value);
   };
@@ -17,7 +17,7 @@ const SortBySelect = ({ options, onSortChange, sortBy }: SortBySelectProps) => {
   return (
     <label>
       Sort by
-      <select name="sortBy" value={sortBy} onChange={onChange}>
+      <select name="sortBy" value={sortBy} onChange={handleChange}>
         {Object.values(options).map((value: typeof sortBy) => (
           <option value={value} key={value}>
             {value}

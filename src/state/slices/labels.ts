@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import db from '../../firebase/firebase';
-import { Item } from '../../types/items';
-import { Label } from '../../types/labels';
+import { Item } from '../../types/Item';
+import { Label } from '../../types/Label';
 import { RootState } from '../store';
 
 export const addLabel = createAsyncThunk<
@@ -12,28 +12,27 @@ export const addLabel = createAsyncThunk<
   // Types for ThunkAPI
   { state: RootState }
 >('labels/addLabel', async (label, { getState }) => {
-  // separate id from other item properties as id's are not stored as document keys in Firestore
-  // also not including itemCount as it is not stored in DB
-  const { id, itemCount, ...firestoreData } = label;
   await db
     .collection(`users/${getState().auth.uid}/labels`)
-    .doc(id)
-    .set({ ...firestoreData });
+    .doc(label.id)
+    .set({ label: label.name, color: label.color });
 });
 
 export const updateLabel = createAsyncThunk<void, Label, { state: RootState }>(
   'labels/updateLabel',
-  async (item, { getState }) => {
-    const { id, itemCount, ...firestoreData } = item;
+  async (label, { getState }) => {
     await db
       .collection(`users/${getState().auth.uid}/labels`)
-      .doc(id)
-      .update({ ...firestoreData });
+      .doc(label.id)
+      .update({ label: label.name, color: label.color });
   }
 );
 
 // separate variable to annotate type
 const initialState: Label[] = [];
+const findLabelIndexById = (state: Label[], id: string) => {
+  return state.findIndex(label => label.id === id);
+};
 
 const labelsSlice = createSlice({
   name: 'labels',
@@ -58,12 +57,15 @@ const labelsSlice = createSlice({
     // increment and decrement separate from update in order not to write to Firestore
     // each time items count is changed for a label
     incrementItemCount: (state, action: PayloadAction<string>) => {
-      const index = state.findIndex(label => label.id === action.payload);
-      state[index].itemCount = state[index].itemCount += 1;
+      state[findLabelIndexById(state, action.payload)].itemCount += 1;
     },
     decrementItemCount: (state, action: PayloadAction<string>) => {
-      const index = state.findIndex(label => label.id === action.payload);
-      state[index].itemCount = state[index].itemCount -= 1;
+      state[findLabelIndexById(state, action.payload)].itemCount -= 1;
+    },
+    saveSortOrder: (state, action: PayloadAction<Label[]>) => {
+      action.payload.forEach((filteredLabel, filteredIndex) => {
+        state[findLabelIndexById(state, filteredLabel.id)].lastSortIndex = filteredIndex;
+      });
     },
     // reset action to be executed on logout
     resetLabelsState: () => [],
@@ -86,5 +88,6 @@ export const {
   incrementItemCount,
   decrementItemCount,
   resetLabelsState,
+  saveSortOrder,
 } = labelsSlice.actions;
 export default labelsSlice.reducer;

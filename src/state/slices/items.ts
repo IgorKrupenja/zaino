@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import db from '../../firebase/firebase';
-import { Item } from '../../types/items';
-import { Label } from '../../types/labels';
+import { Item } from '../../types/Item';
+import { Label } from '../../types/Label';
 import { RootState } from '../store';
 import { loadLabels } from './labels';
 
 export const loadItems = createAsyncThunk<Item[], string, { state: RootState }>(
   'items/loadItems',
   async (uid, { dispatch }) => {
-    // get item and label refs from Firestore asynchronously
+    // get item and label refs from Firestore asynchronously for faster data loading
     const refs = await Promise.all([
       db.collection(`users/${uid}/items`).get(),
       db.collection(`users/${uid}/labels`).get(),

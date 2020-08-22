@@ -5,8 +5,8 @@ type TextFilterInputProps = {
   text: string;
 };
 
-const TextFilterInput = ({ onTextChange, text }: TextFilterInputProps) => {
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+const FilterTextInput = ({ onTextChange, text }: TextFilterInputProps) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
     onTextChange(e.target.value);
   };
@@ -19,10 +19,10 @@ const TextFilterInput = ({ onTextChange, text }: TextFilterInputProps) => {
         placeholder="Search"
         className="text-input"
         value={text}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </label>
   );
 };
 
-export default TextFilterInput;
+export default FilterTextInput;

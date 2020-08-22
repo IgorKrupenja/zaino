@@ -3,7 +3,7 @@ import { shallowEqual, useSelector } from 'react-redux';
 import { selectFilteredPackItems } from '../../state/selectors/items';
 import { selectPackItemsStats } from '../../state/selectors/itemsStats';
 import { RootState } from '../../state/store';
-import { Item } from '../../types/items';
+import { Item } from '../../types/Item';
 import List from './List';
 import PackListItem from './PackListItem';
 import Stats from './Stats';

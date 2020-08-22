@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLabelsTextFilter, sortLabelsBy } from '../../state/slices/labelsFilters';
+import {
+  LabelSortOption,
+  setLabelsTextFilter,
+  sortLabelsBy,
+} from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import { LabelSortOption } from '../../types/labels';
+import FilterTextInput from '../common/FilterTextInput';
 import SortBySelect from '../common/SortBySelect';
-import TextFilterInput from '../common/TextFilterInput';
 
 const LabelFilters = () => {
   const dispatch = useDispatch();
@@ -12,7 +15,7 @@ const LabelFilters = () => {
 
   return (
     <section className="label-filters">
-      <TextFilterInput
+      <FilterTextInput
         onTextChange={text => {
           setFilters({ ...filters, text });
           dispatch(setLabelsTextFilter(text));

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Redirect, useLocation } from 'react-router-dom';
 import { deleteItem, updateItem } from '../../state/slices/items';
 import { decrementItemCount } from '../../state/slices/labels';
-import { Item } from '../../types/items';
+import { Item } from '../../types/Item';
 import setupModal from '../../utils/setupModal';
 import ItemForm from './ItemForm';
 
@@ -37,7 +37,7 @@ const EditItemModal = () => {
       <button
         onClick={() => {
           closeModal();
-          item.labelIds?.forEach(label => dispatch(decrementItemCount(label)));
+          item.labelIds?.forEach(labelId => dispatch(decrementItemCount(labelId)));
           dispatch(deleteItem(item.id));
         }}
       >

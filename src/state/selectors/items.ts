@@ -1,5 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { Item, ItemSortOption } from '../../types/items';
+import { Item } from '../../types/Item';
+import { ItemSortOption } from '../slices/itemsFilters';
 import { RootState } from '../store';
 
 const filterPackItems = (items: Item[]) => items.filter(item => item.packQuantity > 0);
@@ -28,7 +29,7 @@ const selectFilteredInventoryItems = createSelector(
           case ItemSortOption.added:
             return a.addedAt > b.addedAt ? 1 : -1;
           case ItemSortOption.name:
-            return a.name > b.name ? 1 : -1;
+            return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
           case ItemSortOption.weight:
             return a.weight < b.weight ? 1 : -1;
         }

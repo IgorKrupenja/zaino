@@ -12,13 +12,8 @@ export type Item = {
   notes?: string;
 };
 
+// todo either constants or DB
 export enum Category {
   backpacks = 'Backpacks',
   tents = 'Tents',
-}
-
-export enum ItemSortOption {
-  added = 'Recently added',
-  name = 'Name',
-  weight = 'Weight',
 }

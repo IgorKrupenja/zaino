@@ -1,10 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LabelSortOption } from '../../types/labels';
 
 type Filters = {
   text: string;
   sortBy: LabelSortOption;
 };
+
+// todo check what works best with react-select
+export enum LabelSortOption {
+  name = 'Name',
+  itemCount = 'Number of items',
+  lastSortOrder = 'TEST last sort order TEST',
+}
 
 const initialState: Filters = {
   text: '',

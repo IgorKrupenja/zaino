@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../state/slices/items';
-import { Item } from '../../types/items';
+import { Item } from '../../types/Item';
 import setupModal from '../../utils/setupModal';
 import ItemForm from './ItemForm';
 

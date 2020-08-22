@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Header from '../components/common/Header';
-import Filters from '../components/DashboardFilters/DashboardFilters';
-import Inventory from '../components/DashboardStacks/Inventory';
-import Pack from '../components/DashboardStacks/Pack';
-import AddItemModal from '../components/ItemModal/AddItemModal';
-import EditItemModal from '../components/ItemModal/EditItemModal';
+import Header from '../common/Header';
+import Filters from '../DashboardFilters/DashboardFilters';
+import Inventory from '../DashboardStacks/Inventory';
+import Pack from '../DashboardStacks/Pack';
+import AddItemModal from '../ItemModal/AddItemModal';
+import EditItemModal from '../ItemModal/EditItemModal';
 
 const DashboardPage = () => {
   return (

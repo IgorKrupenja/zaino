@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Category, ItemSortOption } from '../../types/items';
+import { Category } from '../../types/Item';
 
 type Filters = {
   text: string;
@@ -7,6 +7,13 @@ type Filters = {
   labels: string[];
   sortBy: ItemSortOption;
 };
+
+// todo check what works best with react-select
+export enum ItemSortOption {
+  added = 'Recently added',
+  name = 'Name',
+  weight = 'Weight',
+}
 
 const initialState: Filters = {
   text: '',

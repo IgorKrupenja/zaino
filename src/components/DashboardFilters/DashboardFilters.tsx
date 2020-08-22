@@ -1,17 +1,17 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  ItemSortOption,
   setItemsCategoryFilter,
   setItemsLabelsFilter,
   setItemsTextFilter,
   sortItemsBy,
 } from '../../state/slices/itemsFilters';
 import { RootState } from '../../state/store';
-import { Category, ItemSortOption } from '../../types/items';
-import { LabelOption } from '../../types/labels';
-import LabelSelect from '../common/LabelSelect';
+import { Category } from '../../types/Item';
+import FilterTextInput from '../common/FilterTextInput';
+import LabelSelect, { LabelOption } from '../common/LabelSelect';
 import SortBySelect from '../common/SortBySelect';
-import TextFilterInput from '../common/TextFilterInput';
 
 const DashboardFilters = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const DashboardFilters = () => {
 
   const allCategoryText = 'All';
 
-  const onCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.persist();
     // set filter to undefined to show all items if All option is chosen
     const category = e.target.value === allCategoryText ? undefined : (e.target.value as Category);
@@ -29,16 +29,17 @@ const DashboardFilters = () => {
 
   return (
     <section className="list-filters">
-      <TextFilterInput
+      <FilterTextInput
         onTextChange={text => {
           setFilters({ ...filters, text });
           dispatch(setItemsTextFilter(text));
         }}
         text={filters.text}
       />
+      {/* todo Category select */}
       <label>
         Category
-        <select name="category" value={filters.category} onChange={onCategoryChange}>
+        <select name="category" value={filters.category} onChange={handleCategoryChange}>
           <option value={allCategoryText}>{allCategoryText}</option>
           {Object.values(Category).map(value => (
             <option key={value}>{value}</option>

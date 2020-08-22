@@ -2,9 +2,10 @@ import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
-import { Category, Item } from '../../types/items';
-import { LabelOption } from '../../types/labels';
-import LabelSelect from '../common/LabelSelect';
+import { Category, Item } from '../../types/Item';
+import getArrayDifference from '../../utils/getArrayDifference';
+import FormTextInput from '../common/FormTextInput';
+import LabelSelect, { LabelOption } from '../common/LabelSelect';
 
 type ItemFormProps = {
   item?: Item;
@@ -29,7 +30,9 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const dispatch = useDispatch();
 
   // SyntheticEvent as used for different HTMLElements
-  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     e.persist();
 
     const name = e.target.name;
@@ -44,11 +47,11 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     setValues({ ...values, [name]: value });
   };
 
-  const onLabelChange = (newValues: LabelOption[]) => {
+  const handleLabelChange = (newValues: LabelOption[]) => {
     // process new values for labels from LabelSelect
-    const labels: string[] = newValues ? newValues.map((label: LabelOption) => label.value) : [];
+    const labelIds: string[] = newValues ? newValues.map((label: LabelOption) => label.value) : [];
     // and set those as labels for item
-    setValues({ ...values, labelIds: labels });
+    setValues({ ...values, labelIds });
   };
 
   const validateForm = () => {
@@ -71,19 +74,20 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     return isFormValid;
   };
 
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (validateForm()) {
       // update item counts for labels
       const newLabels = values.labelIds;
-      const addedLabels = newLabels?.filter(label => !initialLabels?.includes(label));
+      const addedLabels = getArrayDifference(newLabels, initialLabels);
       addedLabels?.forEach(label => dispatch(incrementItemCount(label)));
-      const removedLabels = initialLabels?.filter(label => !newLabels?.includes(label));
+      const removedLabels = getArrayDifference(initialLabels, newLabels);
       removedLabels?.forEach(label => dispatch(decrementItemCount(label)));
+
       onSubmit({
         ...values,
-        // do not overwrite date/time added when editing item
+        // do not overwrite addedAt when editing item
         addedAt: values.addedAt || new Date().toISOString(),
         // lower pack quantity if it exceeds new quantity
         packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
@@ -92,27 +96,22 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        className={`text-input ${errors.name && 'text-input__error'}`}
-        value={values.name}
-        onChange={onChange}
-      />
-      {errors.name && <span>{errors.name}</span>}
-      <select name="category" value={values.category} onChange={onChange}>
+    <form onSubmit={handleSubmit}>
+      <FormTextInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
+      {/* todo category here */}
+      <select name="category" value={values.category} onChange={handleChange}>
         {Object.values(Category).map(value => (
           <option value={value} key={value}>
             {value}
           </option>
         ))}
       </select>
+      {/* category image */}
       <img
         src={`../../images/categories/${values.category.toLowerCase()}.svg`}
         className="list-item__image"
       />
+      {/* weight */}
       <label>
         <input
           type="text"
@@ -120,30 +119,33 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
           placeholder="Weight"
           className={`text-input ${errors.weight && 'text-input__error'}`}
           value={values.weight}
-          onChange={onChange}
+          onChange={handleChange}
         />
         grams
       </label>
       {errors.weight && <span>{errors.weight}</span>}
+      {/* quantity */}
       <input
         type="text"
         name="quantity"
         placeholder="Quantity"
         className={`text-input ${errors.quantity && 'text-input__error'}`}
         value={values.quantity}
-        onChange={onChange}
+        onChange={handleChange}
       />
       {errors.quantity && <span>{errors.quantity}</span>}
+      {/* notes */}
       <textarea
         placeholder="Add notes here"
         name="notes"
         className="textarea"
         value={values.notes}
-        onChange={onChange}
+        onChange={handleChange}
       ></textarea>
+      {/* labels */}
       <LabelSelect
         labelIds={values.labelIds}
-        onChange={onLabelChange}
+        onChange={handleLabelChange}
         isClearable={false}
         isCreatable
       />
