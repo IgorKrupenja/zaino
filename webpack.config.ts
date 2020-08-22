@@ -1,22 +1,17 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import dotenv from 'dotenv';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path';
+import webpack from 'webpack';
 
+// set NODE_ENV to dev if not set in a npm script that launches webpack
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
-if (process.env.NODE_ENV === 'test') {
-  require('dotenv').config({ path: '.env.test' });
-} else if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config({ path: '.env.development' });
-} else if (process.env.NODE_ENV === 'production') {
-  require('dotenv').config({ path: '.env.production' });
-}
-
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-module.exports = {
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+
+const config: webpack.Configuration = {
   entry: ['./src/app.tsx'],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -37,13 +32,12 @@ module.exports = {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
         use: [
-          // todo this actually breaks production bundle, see #93
           isDevelopment && {
             loader: 'babel-loader',
             options: { plugins: ['react-refresh/babel'] },
           },
           'ts-loader',
-        ].filter(Boolean),
+        ].filter(Boolean) as webpack.RuleSetUseItem[],
       },
       {
         test: /\.s?css$/,
@@ -75,8 +69,6 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              // needed to support dynamic image import with require
-              // esModule: false,
               // output images with proper names to dist/images dir
               context: path.resolve(__dirname, 'src'),
               name: '[path][name].[ext]',
@@ -87,25 +79,23 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
-      'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
-      'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL),
-      'process.env.FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
-      'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
-      'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(
-        process.env.FIREBASE_MESSAGING_SENDER_ID
-      ),
-      'process.env.FIREBASE_APP_ID': JSON.stringify(process.env.FIREBASE_APP_ID),
-      'process.env.FIREBASE_MEASUREMENT_ID': JSON.stringify(process.env.FIREBASE_MEASUREMENT_ID),
-    }),
+    new webpack.EnvironmentPlugin([
+      'FIREBASE_API_KEY',
+      'FIREBASE_AUTH_DOMAIN',
+      'FIREBASE_DATABASE_URL',
+      'FIREBASE_PROJECT_ID',
+      'FIREBASE_STORAGE_BUCKET',
+      'FIREBASE_MESSAGING_SENDER_ID',
+      'FIREBASE_APP_ID',
+      'FIREBASE_MEASUREMENT_ID',
+    ]),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       favicon: './src/images/favicon.png',
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
-  ].filter(Boolean),
+  ].filter(Boolean) as webpack.Plugin[],
   devtool: isDevelopment ? 'inline-source-map' : 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -113,3 +103,5 @@ module.exports = {
     hot: true,
   },
 };
+
+export default config;

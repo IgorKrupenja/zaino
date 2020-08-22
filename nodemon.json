@@ -1,3 +1,8 @@
 {
-  "watch": ["webpack.config.js", "tsconfig.json"]
+  "watch": [
+    "webpack.config.js",
+    "tsconfig.json",
+    "tsconfig-for-webpack-config.json",
+    "nodemon.json"
+  ]
 }

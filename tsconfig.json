@@ -18,5 +18,5 @@
     // allow default and named imports in one line, e.g.: import React, { useEffect } from 'react';
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "webpack.config.js", "sandbox"]
+  "include": ["src", "webpack.config.ts", "sandbox"]
 }

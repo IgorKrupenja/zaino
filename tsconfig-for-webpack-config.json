@@ -1,0 +1,10 @@
+{
+  // separate tsconfig for webpack-config.ts
+  // needed as ts-node does not support any module syntax other than commonjs
+  // more info https://webpack.js.org/configuration/configuration-languages/
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "esModuleInterop": true
+  }
+}
