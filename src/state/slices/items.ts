@@ -50,6 +50,20 @@ export const updateItem = createAsyncThunk<void, Item, { state: RootState }>(
   }
 );
 
+export const batchUpdateItems = createAsyncThunk<void, Item[], { state: RootState }>(
+  'items/batchRemoveLabel',
+  async (items, { getState }) => {
+    // use batch to write to DB as can have a significant number of items here
+    const batch = db.batch();
+    items.forEach(item => {
+      const { id, ...firestoreData } = item;
+      const ref = db.collection(`users/${getState().auth.uid}/items`).doc(id);
+      batch.update(ref, { ...firestoreData });
+    });
+    await batch.commit();
+  }
+);
+
 export const deleteItem = createAsyncThunk<void, string, { state: RootState }>(
   'items/deleteItem',
   async (id, { getState }) => {
@@ -89,6 +103,12 @@ const itemsSlice = createSlice({
         state.findIndex(item => item.id === action.meta.arg),
         1
       );
+    });
+    builder.addCase(batchUpdateItems.pending, (state, action) => {
+      action.meta.arg.forEach(update => {
+        const index = state.findIndex(item => item.id === update.id);
+        state[index] = update;
+      });
     });
     // todo possibly add rejected handling here, #78
   },

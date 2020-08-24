@@ -3,6 +3,7 @@ import db from '../../firebase/firebase';
 import { Item } from '../../types/Item';
 import { Label } from '../../types/Label';
 import { RootState } from '../store';
+import { batchUpdateItems } from './items';
 
 export const addLabel = createAsyncThunk<
   // Return type of the payload creator
@@ -15,7 +16,7 @@ export const addLabel = createAsyncThunk<
   await db
     .collection(`users/${getState().auth.uid}/labels`)
     .doc(label.id)
-    .set({ label: label.name, color: label.color });
+    .set({ name: label.name, color: label.color });
 });
 
 export const updateLabel = createAsyncThunk<void, Label, { state: RootState }>(
@@ -24,12 +25,33 @@ export const updateLabel = createAsyncThunk<void, Label, { state: RootState }>(
     await db
       .collection(`users/${getState().auth.uid}/labels`)
       .doc(label.id)
-      .update({ label: label.name, color: label.color });
+      .update({ name: label.name, color: label.color });
+  }
+);
+
+export const deleteLabel = createAsyncThunk<void, string, { state: RootState }>(
+  'labels/deleteLabel',
+  async (id, { getState, dispatch }) => {
+    const updatedItems = getState()
+      .items.filter(item => item.labelIds?.includes(id))
+      .map(item => {
+        // immutably remove labelId from item
+        const labelIds = [...(item.labelIds as string[])];
+        labelIds?.splice(labelIds?.indexOf(id), 1);
+        return { ...item, labelIds };
+      });
+    await Promise.all([
+      // delete labels
+      db.collection(`users/${getState().auth.uid}/labels`).doc(id).delete(),
+      // update labels with removed label
+      dispatch(batchUpdateItems(updatedItems)),
+    ]);
   }
 );
 
 // separate variable to annotate type
 const initialState: Label[] = [];
+
 const findLabelIndexById = (state: Label[], id: string) => {
   return state.findIndex(label => label.id === id);
 };
@@ -78,6 +100,12 @@ const labelsSlice = createSlice({
       const update = action.meta.arg;
       const index = state.findIndex(label => label.id === update.id);
       state[index] = update;
+    });
+    builder.addCase(deleteLabel.pending, (state, action) => {
+      state.splice(
+        state.findIndex(label => label.id === action.meta.arg),
+        1
+      );
     });
     // todo possibly add rejected handling here, #78
   },

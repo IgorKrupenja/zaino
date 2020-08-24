@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
 import { setItemsLabelsFilter } from '../../state/slices/itemsFilters';
-import { updateLabel } from '../../state/slices/labels';
+import { deleteLabel, updateLabel } from '../../state/slices/labels';
 import { Label as LabelEntry } from '../../types/Label';
 import LabelForm from './LabelForm';
 
@@ -40,6 +40,7 @@ const LabelEntry = (label: LabelEntry) => {
         </span>
       )}
       {!isFormOpen && <button onClick={toggleForm}>Edit</button>}
+      <button onClick={() => dispatch(deleteLabel(label.id))}>Delete</button>
       {isFormOpen && (
         <LabelForm
           label={label}

@@ -36,8 +36,6 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   ) => {
     e.persist();
 
-    // console.log(e.target.value);
-
     const name = e.target.name;
     let value: string | number = e.target.value;
 
@@ -47,9 +45,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       // convert to number
       value = Number(value);
     }
-    console.log(name, value);
     setValues({ ...values, [name]: value });
-    console.log(values);
   };
 
   const handleLabelChange = (newValues: LabelOption[]) => {
