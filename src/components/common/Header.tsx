@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { batch, useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { logout } from '../../state/slices/auth';
 import { resetItemsState } from '../../state/slices/items';
@@ -8,10 +8,11 @@ import { resetLabelsState } from '../../state/slices/labels';
 const Header = () => {
   const dispatch = useDispatch();
   const handleLogout = (): void => {
-    // todo maybe use batch?
-    dispatch(logout());
-    dispatch(resetItemsState());
-    dispatch(resetLabelsState());
+    batch(() => {
+      dispatch(logout());
+      dispatch(resetItemsState());
+      dispatch(resetLabelsState());
+    });
   };
 
   return (
