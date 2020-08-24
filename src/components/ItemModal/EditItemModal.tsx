@@ -6,6 +6,7 @@ import { deleteItem, updateItem } from '../../state/slices/items';
 import { decrementItemCount } from '../../state/slices/labels';
 import { Item } from '../../types/Item';
 import setupModal from '../../utils/setupModal';
+import PopoverContainer from '../common/PopoverContainer';
 import ItemForm from './ItemForm';
 
 type LocationState = {
@@ -34,16 +35,18 @@ const EditItemModal = () => {
           dispatch(updateItem({ ...item }));
         }}
       />
-      <button
-        onClick={() => {
+      <button onClick={closeModal}>close</button>
+      <PopoverContainer
+        heading="Delete item?"
+        text={`The item will be deleted from inventory${
+          item.packQuantity > 0 ? ' and pack' : ''
+        }. There is no undo.`}
+        buttonAction={() => {
           closeModal();
           item.labelIds?.forEach(labelId => dispatch(decrementItemCount(labelId)));
           dispatch(deleteItem(item.id));
         }}
-      >
-        Delete item
-      </button>
-      <button onClick={closeModal}>close</button>
+      />
     </Modal>
   );
 };

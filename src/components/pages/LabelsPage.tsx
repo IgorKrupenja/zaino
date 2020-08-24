@@ -5,7 +5,7 @@ import selectFilteredLabels, { selectLabelCount } from '../../state/selectors/la
 import { addLabel, saveSortOrder } from '../../state/slices/labels';
 import { RootState } from '../../state/store';
 import Header from '../common/Header';
-import LabelEntry from '../Labels/LabelEntry';
+import LabelDetails from '../Labels/LabelDetails';
 import LabelFilters from '../Labels/LabelFilters';
 import LabelForm from '../Labels/LabelForm';
 
@@ -33,7 +33,7 @@ const LabelsPage = () => {
         <div>
           <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
           {labels.length > 0
-            ? labels.map(label => <LabelEntry key={label.id} {...label} />)
+            ? labels.map(label => <LabelDetails key={label.id} {...label} />)
             : `No ${isFiltering ? '' : 'matching'} labels`}
         </div>
       </main>

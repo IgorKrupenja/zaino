@@ -4,16 +4,14 @@ import { Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
 import { setItemsLabelsFilter } from '../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../state/slices/labels';
-import { Label as LabelEntry } from '../../types/Label';
+import { Label as LabelDetails } from '../../types/Label';
+import PopoverContainer from '../common/PopoverContainer';
 import LabelForm from './LabelForm';
 
-const LabelEntry = (label: LabelEntry) => {
+const LabelDetails = (label: LabelDetails) => {
   const dispatch = useDispatch();
   const [isFormOpen, toggleForm] = useToggle();
   const [name, setName] = useState(label.name);
-  const setItemsFilter = () => {
-    dispatch(setItemsLabelsFilter([label.id]));
-  };
 
   // extracted from render for clarity
   let nameElement: React.ReactNode;
@@ -21,9 +19,10 @@ const LabelEntry = (label: LabelEntry) => {
     // show label name (or 'Label preview') if form is open
     nameElement = name.length > 0 ? name : 'Label preview';
   } else {
-    // show link if label form is not open for edits
+    // show link to dashboard if label form is not open for edits
     nameElement = (
-      <Link to="/dashboard" onClick={setItemsFilter}>
+      // set label filter on Dashboard
+      <Link to="/dashboard" onClick={() => dispatch(setItemsLabelsFilter([label.id]))}>
         {name}
       </Link>
     );
@@ -33,14 +32,18 @@ const LabelEntry = (label: LabelEntry) => {
   return (
     <div key={label.id}>
       {nameElement}
-      {/* todo remove this space later */}{' '}
+      {/* todo remove this space after styling */}{' '}
       {itemCount > 0 && (
         <span>
           {itemCount} item{itemCount > 1 && 's'}
         </span>
       )}
       {!isFormOpen && <button onClick={toggleForm}>Edit</button>}
-      <button onClick={() => dispatch(deleteLabel(label.id))}>Delete</button>
+      <PopoverContainer
+        heading="Delete label?"
+        text="Deleting a label will remove it from all items. There is no undo."
+        buttonAction={() => dispatch(deleteLabel(label.id))}
+      />
       {isFormOpen && (
         <LabelForm
           label={label}
@@ -53,4 +56,4 @@ const LabelEntry = (label: LabelEntry) => {
   );
 };
 
-export default LabelEntry;
+export default LabelDetails;

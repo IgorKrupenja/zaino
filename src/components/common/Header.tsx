@@ -8,6 +8,7 @@ import { resetLabelsState } from '../../state/slices/labels';
 const Header = () => {
   const dispatch = useDispatch();
   const handleLogout = (): void => {
+    // potentially faster perf with batch
     batch(() => {
       dispatch(logout());
       dispatch(resetItemsState());
