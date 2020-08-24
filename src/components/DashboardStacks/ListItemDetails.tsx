@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { categories } from '../../constants/categories';
 import { RootState } from '../../state/store';
 import { Item } from '../../types/Item';
+import CategoryImage from '../common/CategoryImage';
 
 type ListItemProps = {
   item: Item;
@@ -12,17 +12,14 @@ type ListItemProps = {
 };
 
 const ListItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
-  const { id, name, categoryName: category, labelIds: labels, weight } = item;
+  const { id, name, categoryName, labelIds, weight } = item;
   return (
     <article>
       <h3>
         <Link to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}>{name}</Link>
       </h3>
-      <img
-        src={`../../images/categories/${categories.find(cat => cat.name === category)?.imagePath}`}
-        className="list-item__image"
-      />
-      <p>{category}</p>
+      <CategoryImage categoryName={categoryName} />
+      <p>{categoryName}</p>
       <p>
         {weight}g {quantityElement}
       </p>
@@ -33,7 +30,7 @@ const ListItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
         {useSelector((state: RootState) => state.labels).reduce(
           // get only selected labels for a particular item
           (accumulator: React.ReactChild[], currentLabel) => {
-            if (labels?.includes(currentLabel.id)) {
+            if (labelIds?.includes(currentLabel.id)) {
               accumulator.push(<li key={currentLabel.id}>{currentLabel.name}</li>);
             }
             return accumulator;

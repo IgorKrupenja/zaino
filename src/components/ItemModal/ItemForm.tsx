@@ -5,6 +5,7 @@ import { categories, CategoryName } from '../../constants/categories';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
 import { Item } from '../../types/Item';
 import getArrayDifference from '../../utils/getArrayDifference';
+import CategoryImage from '../common/CategoryImage';
 import FormTextInput from '../common/FormTextInput';
 import LabelSelect, { LabelOption } from '../common/LabelSelect';
 
@@ -48,6 +49,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     setValues({ ...values, [name]: value });
   };
 
+  // todo merge with above?
   const handleLabelChange = (newValues: LabelOption[]) => {
     // process new values for labels from LabelSelect
     const labelIds: string[] = newValues ? newValues.map((label: LabelOption) => label.value) : [];
@@ -108,14 +110,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         ))}
       </select>
       {/* category image */}
-      <img
-        src={`../../images/categories/${
-          categories.find(category => {
-            return category.name === values.categoryName;
-          })?.imagePath
-        }`}
-        className="list-item__image"
-      />
+      <CategoryImage categoryName={values.categoryName} />
       {/* weight */}
       <label>
         <input
