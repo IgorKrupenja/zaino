@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { categories } from '../../constants/categories';
 import { RootState } from '../../state/store';
 import { Item } from '../../types/Item';
 
@@ -11,14 +12,14 @@ type ListItemProps = {
 };
 
 const ListItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
-  const { id, name, category, labelIds: labels, weight } = item;
+  const { id, name, categoryName: category, labelIds: labels, weight } = item;
   return (
     <article>
       <h3>
         <Link to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}>{name}</Link>
       </h3>
       <img
-        src={`../../images/categories/${category.toLowerCase()}.svg`}
+        src={`../../images/categories/${categories.find(cat => cat.name === category)?.imagePath}`}
         className="list-item__image"
       />
       <p>{category}</p>

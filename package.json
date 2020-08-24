@@ -10,6 +10,7 @@
     "test": "NODE_ENV=test jest --config=jest.config.json --watch",
     "build:prod": "rm -rf ./dist && NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -p",
     "serve": "firebase serve",
+    "publish": "firebase deploy",
     "stats": "NODE_ENV=production webpack --json > stats.json",
     "analyze": "NODE_ENV=production webpack --json > stats.json && webpack-bundle-analyzer stats.json"
   },

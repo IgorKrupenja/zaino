@@ -1,7 +1,10 @@
+import { CategoryName } from '../constants/categories';
+
 export type Item = {
   id: string;
   name: string;
-  category: Category;
+  // todo perhaps name categoryName
+  categoryName: CategoryName;
   quantity: number;
   packQuantity: number;
   weight: number;
@@ -11,9 +14,3 @@ export type Item = {
   labelIds?: string[];
   notes?: string;
 };
-
-// todo either constants or DB
-export enum Category {
-  backpacks = 'Backpacks',
-  tents = 'Tents',
-}

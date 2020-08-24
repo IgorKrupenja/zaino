@@ -17,7 +17,7 @@ const selectFilteredInventoryItems = createSelector(
       .filter(item => {
         const textMatch = item.name.toLowerCase().includes(text.toLowerCase());
         // check if category filter is set ? if so, check if item category matches : true otherwise
-        const categoryMatch = category ? item.category === category : true;
+        const categoryMatch = category ? item.categoryName === category : true;
         // check that item labels contain EVERY label from labels filter
         const labelMatch = labels.every(label => item.labelIds?.includes(label));
 

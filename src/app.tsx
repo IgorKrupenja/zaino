@@ -3,13 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import { CategoryName } from './constants/categories';
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routers/AppRouter';
 import { setUid } from './state/slices/auth';
 import { addItem, loadItems } from './state/slices/items';
 import store from './state/store';
 import './styles/styles.scss';
-import { Category } from './types/Item';
 
 // import all images beforehand so that dynamic references can be used in img src values
 const importAll = (context: __WebpackModuleApi.RequireContext) => context.keys().map(context);
@@ -21,13 +21,14 @@ const app = (
   </Provider>
 );
 
+// todo remove after doing demo data
 const generateSampleData = async () => {
   for (let index = 0; index < 125; index++) {
     await store.dispatch(
       addItem({
         id: uuid(),
         name: 'mass item',
-        category: Category.backpacks,
+        categoryName: CategoryName.backpacks,
         weight: 100,
         quantity: 1,
         packQuantity: 0,

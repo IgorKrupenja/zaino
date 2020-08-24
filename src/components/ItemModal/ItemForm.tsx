@@ -1,8 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import { categories, CategoryName } from '../../constants/categories';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
-import { Category, Item } from '../../types/Item';
+import { Item } from '../../types/Item';
 import getArrayDifference from '../../utils/getArrayDifference';
 import FormTextInput from '../common/FormTextInput';
 import LabelSelect, { LabelOption } from '../common/LabelSelect';
@@ -17,7 +18,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const newItem: Item = {
     id: uuid(),
     name: '',
-    category: Category.backpacks,
+    categoryName: CategoryName.backpacks,
     weight: 100,
     quantity: 1,
     packQuantity: 0,
@@ -35,6 +36,8 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   ) => {
     e.persist();
 
+    // console.log(e.target.value);
+
     const name = e.target.name;
     let value: string | number = e.target.value;
 
@@ -44,7 +47,9 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       // convert to number
       value = Number(value);
     }
+    console.log(name, value);
     setValues({ ...values, [name]: value });
+    console.log(values);
   };
 
   const handleLabelChange = (newValues: LabelOption[]) => {
@@ -98,17 +103,21 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   return (
     <form onSubmit={handleSubmit}>
       <FormTextInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
-      {/* todo category here */}
-      <select name="category" value={values.category} onChange={handleChange}>
-        {Object.values(Category).map(value => (
-          <option value={value} key={value}>
-            {value}
+      {/* category */}
+      <select name="categoryName" value={values.categoryName} onChange={handleChange}>
+        {categories.map(category => (
+          <option value={category.name} key={category.name}>
+            {category.name}
           </option>
         ))}
       </select>
       {/* category image */}
       <img
-        src={`../../images/categories/${values.category.toLowerCase()}.svg`}
+        src={`../../images/categories/${
+          categories.find(category => {
+            return category.name === values.categoryName;
+          })?.imagePath
+        }`}
         className="list-item__image"
       />
       {/* weight */}
