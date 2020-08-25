@@ -4,7 +4,6 @@ export type LabelColorOption = {
   color: string;
 };
 
-// todo might need refactor to use on dashboard
 export const labelColorOptions: LabelColorOption[] = [
   { value: 'sky', label: 'Sky', color: '#00BDFE' },
   { value: 'sea', label: 'Sea', color: '#0052CC' },

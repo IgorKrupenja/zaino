@@ -1,5 +1,8 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import dotenv from 'dotenv';
+// html-replace-webpack-plugin does not have types :(
+// @ts-ignore
+import HtmlReplaceWebpackPlugin from 'html-replace-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -63,19 +66,6 @@ const config: webpack.Configuration = {
           },
         ],
       },
-      {
-        test: /\.(png|jp(e*)g|svg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              // output images with proper names to dist/images dir
-              context: path.resolve(__dirname, 'src'),
-              name: '[path][name].[ext]',
-            },
-          },
-        ],
-      },
     ],
   },
   plugins: [
@@ -88,11 +78,19 @@ const config: webpack.Configuration = {
       'FIREBASE_MESSAGING_SENDER_ID',
       'FIREBASE_APP_ID',
       'FIREBASE_MEASUREMENT_ID',
+      'GCP_STORAGE_URL',
     ]),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       favicon: './src/images/favicon.png',
+      title: 'https://storage.googleapis.com/zaino-2e6cf.appspot.com/mountain.svg',
     }),
+    new HtmlReplaceWebpackPlugin([
+      {
+        pattern: '$gcp-storage-url$',
+        replacement: process.env.GCP_STORAGE_URL,
+      },
+    ]),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean) as webpack.Plugin[],

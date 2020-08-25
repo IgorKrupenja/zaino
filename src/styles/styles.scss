@@ -9,12 +9,7 @@
 @import './components/inventory';
 @import './components/pack';
 @import './components/stats';
-
-// todo move somewhere appropriate and rename class
-.list-item__image {
-  width: 6rem;
-  height: 6rem;
-}
+@import './components/category-image';
 
 // todo temp modal animation
 

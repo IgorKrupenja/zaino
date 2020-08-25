@@ -8,13 +8,13 @@ type CategoryImageProps = {
 const CategoryImage = ({ categoryName }: CategoryImageProps) => {
   return (
     <img
-      src={`../../images/categories/${
+      src={`${process.env.GCP_STORAGE_URL}/categories/${
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         categories.find(category => {
           return category.name === categoryName;
         })?.imagePath
       }`}
-      className="list-item__image"
+      className="category-image"
     />
   );
 };

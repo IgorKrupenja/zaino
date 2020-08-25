@@ -1,6 +1,6 @@
 {
   "watch": [
-    "webpack.config.js",
+    "webpack.config.ts",
     "tsconfig.json",
     "tsconfig-for-webpack-config.json",
     "nodemon.json"

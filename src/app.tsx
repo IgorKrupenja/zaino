@@ -11,10 +11,6 @@ import { addItem, loadItems } from './state/slices/items';
 import store from './state/store';
 import './styles/styles.scss';
 
-// import all images beforehand so that dynamic references can be used in img src values
-const importAll = (context: __WebpackModuleApi.RequireContext) => context.keys().map(context);
-importAll(require.context('./images', true, /\.(png|jpe?g|svg)$/));
-
 const app = (
   <Provider store={store}>
     <AppRouter />
