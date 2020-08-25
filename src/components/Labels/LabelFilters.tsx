@@ -7,11 +7,17 @@ import {
 } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
 import FilterTextInput from '../common/FilterTextInput';
-import SortBySelect from '../common/SortBySelect';
+import SortSelect, { SortSelectOption } from '../common/SortSelect';
 
 const LabelFilters = () => {
   const dispatch = useDispatch();
   const [filters, setFilters] = useState(useSelector((state: RootState) => state.labelsFilters));
+
+  const handleSortChange = (value: SortSelectOption) => {
+    const sortBy = value.label as LabelSortOption;
+    setFilters({ ...filters, sortBy });
+    dispatch(sortLabelsBy(sortBy));
+  };
 
   return (
     <section className="label-filters">
@@ -22,15 +28,7 @@ const LabelFilters = () => {
         }}
         text={filters.text}
       />
-      <SortBySelect
-        options={LabelSortOption}
-        onSortChange={value => {
-          const sortBy = value as LabelSortOption;
-          setFilters({ ...filters, sortBy });
-          dispatch(sortLabelsBy(sortBy));
-        }}
-        sortBy={filters.sortBy}
-      />
+      <SortSelect onChange={handleSortChange} sortBy={filters.sortBy} />
     </section>
   );
 };

@@ -5,11 +5,10 @@ type Filters = {
   sortBy: LabelSortOption;
 };
 
-// todo check what works best with react-select
 export enum LabelSortOption {
   name = 'Name',
   itemCount = 'Number of items',
-  lastSortOrder = 'TEST last sort order TEST',
+  lastSortOrder = 'Last sort order',
 }
 
 const initialState: Filters = {

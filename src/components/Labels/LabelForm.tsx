@@ -21,6 +21,7 @@ type LabelFormProps = {
 const LabelForm = ({ label, onSubmit, toggleForm, setLabelEntryName }: LabelFormProps) => {
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectAllLabels(state));
+  const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
   const newLabel: Label = {
     id: uuid(),
     name: '',
@@ -38,7 +39,9 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelEntryName }: LabelForm
     } else if (labels.map(label => label.name).includes(values.name)) {
       setNameError('Label with this name already exists');
     } else {
-      dispatch(sortLabelsBy(LabelSortOption.lastSortOrder));
+      // allows for in-place rename if sort options is set to name
+      labelSortOption === LabelSortOption.name &&
+        dispatch(sortLabelsBy(LabelSortOption.lastSortOrder));
       onSubmit({ ...values });
       toggleForm();
     }

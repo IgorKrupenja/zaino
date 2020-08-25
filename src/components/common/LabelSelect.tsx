@@ -45,6 +45,7 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
     setValues(newValues);
     onChange(newValues as LabelOption[]);
   };
+
   const handleCreate = (inputValue: string) => {
     const id = uuid();
     dispatch(addLabel({ id, name: inputValue, color: getRandomLabelColor(), itemCount: 0 }));
