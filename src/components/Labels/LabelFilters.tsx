@@ -14,9 +14,9 @@ const LabelFilters = () => {
   const [filters, setFilters] = useState(useSelector((state: RootState) => state.labelsFilters));
 
   const handleSortChange = (value: SortSelectOption) => {
-    const sortBy = value.label as LabelSortOption;
-    setFilters({ ...filters, sortBy });
-    dispatch(sortLabelsBy(sortBy));
+    const sortOption = value.label as LabelSortOption;
+    setFilters({ ...filters, sortBy: sortOption });
+    dispatch(sortLabelsBy(sortOption));
   };
 
   return (

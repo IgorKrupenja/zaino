@@ -9,14 +9,14 @@ import { RootState } from '../../state/store';
 import { Label } from '../../types/Label';
 import getRandomLabelColor from '../../utils/getRandomLabelColor';
 
-export type LabelOption = {
+export type LabelSelectOption = {
   value: string;
   label: string;
 } & OptionTypeBase;
 
 type LabelSelectProps = {
   labelIds?: string[];
-  onChange: (newValues: LabelOption[]) => void;
+  onChange: (labelIds: string[]) => void;
   isClearable?: boolean;
   isCreatable?: boolean;
 };
@@ -34,16 +34,21 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
       .sort((a, b) => (a.label > b.label ? 1 : -1));
   const [options, setOptions] = useState(getMappedLabels(labels));
   // get selected label id's for the item and assign to values
-  const [values, setValues] = useState<ValueType<LabelOption>>(
+  const [values, setValues] = useState<ValueType<LabelSelectOption>>(
     labelIds ? options.filter(label => labelIds.includes(label.value)) : []
   );
 
   // update options in DashboardFilters when new ones are created in ItemForm
   useEffect(() => setOptions(getMappedLabels(labels)), [labels]);
 
-  const handleChange = (newValues: ValueType<LabelOption>) => {
+  const handleChange = (newValues: ValueType<LabelSelectOption>) => {
     setValues(newValues);
-    onChange(newValues as LabelOption[]);
+    const valueArray = newValues as LabelSelectOption[];
+    // turn values into labelIds
+    const labelIds: string[] = valueArray
+      ? valueArray.map((label: LabelSelectOption) => label.value)
+      : [];
+    onChange(labelIds);
   };
 
   const handleCreate = (inputValue: string) => {
@@ -56,14 +61,15 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
     };
     setOptions([...options, newOption]);
 
-    handleChange(values ? values.concat(newOption) : [newOption]);
+    const valueArray = values as LabelSelectOption[];
+    handleChange(valueArray ? [...valueArray, newOption] : [newOption]);
   };
 
   const selectProps = {
     isMulti: true,
     isClearable,
     // allows for animation on clearing a label
-    components: makeAnimated<LabelOption>(),
+    components: makeAnimated<LabelSelectOption>(),
     // todo does this work well?
     hideSelectedOptions: false,
     onChange: handleChange,

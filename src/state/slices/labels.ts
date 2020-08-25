@@ -84,6 +84,13 @@ const labelsSlice = createSlice({
     decrementItemCount: (state, action: PayloadAction<string>) => {
       state[findLabelIndexById(state, action.payload)].itemCount -= 1;
     },
+    // allows to save existing sort order of labels on Labels page
+    // this order is used in sortLabelsBy(lastSortOrder) of slices/labelsFilters
+    // sortLabelsBy(lastSortOrder) prevents re-sorting the list of labels by name after edit
+    // this is useful to prevent labels jumping around if name changes affecting by name sort order
+    // this solution feels a bit hacky but could not come up with a better one
+    // this also potentially has perf implications as it needs to run each time
+    // a labels is added/deleted/edited on LabelsPage but so far perf looks good
     saveSortOrder: (state, action: PayloadAction<Label[]>) => {
       action.payload.forEach((filteredLabel, filteredIndex) => {
         state[findLabelIndexById(state, filteredLabel.id)].lastSortIndex = filteredIndex;

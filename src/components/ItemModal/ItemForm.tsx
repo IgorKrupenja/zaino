@@ -7,7 +7,7 @@ import { Item } from '../../types/Item';
 import getArrayDifference from '../../utils/getArrayDifference';
 import CategoryImage from '../common/CategoryImage';
 import FormTextInput from '../common/FormTextInput';
-import LabelSelect, { LabelOption } from '../common/LabelSelect';
+import LabelSelect from '../common/LabelSelect';
 
 type ItemFormProps = {
   item?: Item;
@@ -15,7 +15,6 @@ type ItemFormProps = {
 };
 
 const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
-  // a fixed list of categories for now - later should make them editable and store them in DB
   const newItem: Item = {
     id: uuid(),
     name: '',
@@ -31,7 +30,6 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const initialLabels = item?.labelIds;
   const dispatch = useDispatch();
 
-  // SyntheticEvent as used for different HTMLElements
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -47,14 +45,6 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       value = Number(value);
     }
     setValues({ ...values, [name]: value });
-  };
-
-  // todo merge with above?
-  const handleLabelChange = (newValues: LabelOption[]) => {
-    // process new values for labels from LabelSelect
-    const labelIds: string[] = newValues ? newValues.map((label: LabelOption) => label.value) : [];
-    // and set those as labels for item
-    setValues({ ...values, labelIds });
   };
 
   const validateForm = () => {
@@ -145,7 +135,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       {/* labels */}
       <LabelSelect
         labelIds={values.labelIds}
-        onChange={handleLabelChange}
+        onChange={labelIds => setValues({ ...values, labelIds })}
         isClearable={false}
         isCreatable
       />

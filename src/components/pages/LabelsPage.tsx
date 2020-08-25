@@ -30,12 +30,12 @@ const LabelsPage = () => {
         {isFormOpen && (
           <LabelForm onSubmit={label => dispatch(addLabel(label))} toggleForm={toggleForm} />
         )}
-        <div>
+        <section>
           <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
           {labels.length > 0
             ? labels.map(label => <LabelDetails key={label.id} {...label} />)
             : `No ${isFiltering ? '' : 'matching'} labels`}
-        </div>
+        </section>
       </main>
     </>
   );

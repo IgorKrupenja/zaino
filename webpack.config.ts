@@ -19,7 +19,7 @@ const config: webpack.Configuration = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    // makes dev server work with nested paths
+    // prevent favicon errors on nested paths with dev server
     publicPath: '/',
   },
   watchOptions: {
@@ -37,6 +37,7 @@ const config: webpack.Configuration = {
         use: [
           isDevelopment && {
             loader: 'babel-loader',
+            // HMR for JS/TS
             options: { plugins: ['react-refresh/babel'] },
           },
           'ts-loader',
@@ -85,6 +86,7 @@ const config: webpack.Configuration = {
       favicon: './src/images/favicon.png',
       title: 'https://storage.googleapis.com/zaino-2e6cf.appspot.com/mountain.svg',
     }),
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     new HtmlReplaceWebpackPlugin([
       {
         pattern: '$gcp-storage-url$',

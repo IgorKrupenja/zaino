@@ -15,10 +15,10 @@ type LabelFormProps = {
   label?: Label;
   onSubmit: (label: Label) => void;
   toggleForm: () => void;
-  setLabelEntryName?: (labelName: string) => void;
+  setLabelDetailsName?: (labelName: string) => void;
 };
 
-const LabelForm = ({ label, onSubmit, toggleForm, setLabelEntryName }: LabelFormProps) => {
+const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFormProps) => {
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectAllLabels(state));
   const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
@@ -60,7 +60,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelEntryName }: LabelForm
             const name = e.target.value;
             setValues({ ...values, name });
             // update label name preview on typing if editing a label
-            setLabelEntryName && setLabelEntryName(name);
+            setLabelDetailsName && setLabelDetailsName(name);
           }}
         />
         <Select
@@ -78,7 +78,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelEntryName }: LabelForm
           onClick={() => {
             toggleForm();
             // reset label name preview on typing if cancelling edit
-            setLabelEntryName && setLabelEntryName(initialName.current);
+            setLabelDetailsName && setLabelDetailsName(initialName.current);
           }}
         >
           Cancel

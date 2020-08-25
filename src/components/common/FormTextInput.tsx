@@ -6,20 +6,18 @@ type TextFormInputProps = {
   errorText: string;
 };
 
-const FormTextInput = ({ name, onChange, errorText: error }: TextFormInputProps) => {
-  return (
-    <>
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        className={`text-input ${error && 'text-input__error'}`}
-        value={name}
-        onChange={onChange}
-      />
-      {error && <span>{error}</span>}
-    </>
-  );
-};
+const FormTextInput = ({ name, onChange, errorText: error }: TextFormInputProps) => (
+  <>
+    <input
+      type="text"
+      name="name"
+      placeholder="Name"
+      className={`text-input ${error && 'text-input__error'}`}
+      value={name}
+      onChange={onChange}
+    />
+    {error && <span>{error}</span>}
+  </>
+);
 
 export default FormTextInput;

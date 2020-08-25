@@ -10,7 +10,7 @@ import {
 } from '../../state/slices/itemsFilters';
 import { RootState } from '../../state/store';
 import FilterTextInput from '../common/FilterTextInput';
-import LabelSelect, { LabelOption } from '../common/LabelSelect';
+import LabelSelect from '../common/LabelSelect';
 import SortBySelect from '../common/SortBySelect';
 
 const DashboardFilters = () => {
@@ -58,13 +58,9 @@ const DashboardFilters = () => {
       />
       <LabelSelect
         labelIds={filters.labels}
-        onChange={newValues => {
+        onChange={labelIds => {
           // set labels filter based on new values received from LabelSelect
-          dispatch(
-            setItemsLabelsFilter(
-              newValues ? newValues.map((label: LabelOption) => label.value) : []
-            )
-          );
+          dispatch(setItemsLabelsFilter(labelIds));
         }}
         isClearable
       />

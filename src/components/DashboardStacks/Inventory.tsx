@@ -27,6 +27,9 @@ const Inventory = () => {
   return (
     <section className="inventory">
       <h2>Inventory</h2>
+      <div>
+        <Link to="/dashboard/add">Add item</Link>
+      </div>
       <Stats
         weight={itemStats.weight}
         percentageOfTotal={itemStats.percentageOfTotal}
@@ -46,9 +49,6 @@ const Inventory = () => {
           items,
         ])}
       </List>
-      <div>
-        <Link to="/dashboard/add">Add {filteredItemCount === 0 ? 'an' : 'another'} item</Link>
-      </div>
     </section>
   );
 };

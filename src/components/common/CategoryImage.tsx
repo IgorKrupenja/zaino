@@ -1,19 +1,18 @@
 import React from 'react';
-import { categories } from '../../constants/categories';
+import { categories, CategoryName } from '../../constants/categories';
 
 type CategoryImageProps = {
-  categoryName: string;
+  categoryName: CategoryName;
 };
 
 const CategoryImage = ({ categoryName }: CategoryImageProps) => {
+  const imageFileName = categories.find(category => {
+    return category.name === categoryName;
+  })?.imageFileName as string;
+
   return (
     <img
-      src={`${process.env.GCP_STORAGE_URL}/categories/${
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        categories.find(category => {
-          return category.name === categoryName;
-        })?.imagePath
-      }`}
+      src={`${process.env.GCP_STORAGE_URL as string}/categories/${imageFileName}`}
       className="category-image"
     />
   );

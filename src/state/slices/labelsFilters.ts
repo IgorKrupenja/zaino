@@ -8,6 +8,7 @@ type Filters = {
 export enum LabelSortOption {
   name = 'Name',
   itemCount = 'Number of items',
+  // see comments in slices/labels for saveSortOrder
   lastSortOrder = 'Last sort order',
 }
 

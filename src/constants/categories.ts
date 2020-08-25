@@ -3,9 +3,7 @@ export enum CategoryName {
   tents = 'Tents',
 }
 
-type Categories = Array<{ name: CategoryName; imagePath: string }>;
-
-export const categories: Categories = [
-  { name: CategoryName.backpacks, imagePath: 'backpack.svg' },
-  { name: CategoryName.tents, imagePath: 'tent.svg' },
+export const categories: { name: CategoryName; imageFileName: string }[] = [
+  { name: CategoryName.backpacks, imageFileName: 'backpack.svg' },
+  { name: CategoryName.tents, imageFileName: 'tent.svg' },
 ];

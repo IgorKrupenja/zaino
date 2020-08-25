@@ -24,8 +24,6 @@ const SortBySelect = ({ options, onSortChange, sortBy }: SortBySelectProps) => {
           </option>
         ))}
       </select>
-      {/* @ts-ignore */}
-      {/* <Select defaultValue={options[0]} isSearchable={false} name="sortBy" options={options} /> */}
     </label>
   );
 };

@@ -1,11 +1,11 @@
 {
   "name": "zaino",
   "version": "0.1.0",
-  "main": "app.jsx",
+  "main": "app.tsx",
   "author": "Igor Krupenja",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec 'TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack-dev-server'",
+    "dev": "nodemon --exec 'TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack-dev-server --host 0.0.0.0'",
     "build-dev": "rm -rf ./dist && TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
     "test": "NODE_ENV=test jest --config=jest.config.json --watch",
     "build-prod": "rm -rf ./dist && NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -p",

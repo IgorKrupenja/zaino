@@ -19,14 +19,14 @@ const PopoverContainer = ({ heading, text, buttonAction }: PopoverContainerProps
       onClickOutside={togglePopover}
       // in seconds
       transitionDuration={0.1}
-      content={() => (
+      content={
         <>
           <h3>{heading}</h3>
           <button onClick={togglePopover}>X</button>
           <p>{text}</p>
           <button onClick={buttonAction}>Delete</button>
         </>
-      )}
+      }
     >
       <button onClick={togglePopover}>Delete</button>
     </Popover>

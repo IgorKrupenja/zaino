@@ -30,9 +30,8 @@ const LabelDetails = (label: LabelDetails) => {
 
   const itemCount = label.itemCount;
   return (
-    <div key={label.id}>
+    <article key={label.id}>
       {nameElement}
-      {/* todo remove this space after styling */}{' '}
       {itemCount > 0 && (
         <span>
           {itemCount} item{itemCount > 1 && 's'}
@@ -49,10 +48,10 @@ const LabelDetails = (label: LabelDetails) => {
           label={label}
           onSubmit={label => dispatch(updateLabel(label))}
           toggleForm={toggleForm}
-          setLabelEntryName={setName}
+          setLabelDetailsName={setName}
         />
       )}
-    </div>
+    </article>
   );
 };
 

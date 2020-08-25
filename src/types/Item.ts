@@ -3,7 +3,6 @@ import { CategoryName } from '../constants/categories';
 export type Item = {
   id: string;
   name: string;
-  // todo perhaps name categoryName
   categoryName: CategoryName;
   quantity: number;
   packQuantity: number;

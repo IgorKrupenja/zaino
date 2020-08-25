@@ -5,9 +5,9 @@ import { login } from '../../state/slices/auth';
 export const LoginPage = () => {
   const dispatch = useDispatch();
   return (
-    <div>
+    <main>
       <button onClick={() => dispatch(login())}>Sign in with Google</button>
-    </div>
+    </main>
   );
 };
 
