@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Select, { OptionTypeBase, ValueType } from 'react-select';
+import Select, { ValueType } from 'react-select';
 import { ItemSortOption } from '../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../state/slices/labelsFilters';
 
 export type SortSelectOption = {
   value: string;
   label: string;
-} & OptionTypeBase;
+};
 
 type SortSelectProps = {
   sortOptions: typeof LabelSortOption | typeof ItemSortOption;
@@ -28,8 +28,7 @@ const SortSelect = ({ sortOptions, onChange, selectedOption, hiddenOption }: Sor
 
   const handleChange = (newValue: ValueType<SortSelectOption>) => {
     setValue(newValue);
-    const option = newValue as SortSelectOption;
-    onChange(option.value);
+    onChange((newValue as SortSelectOption).value);
   };
 
   return (

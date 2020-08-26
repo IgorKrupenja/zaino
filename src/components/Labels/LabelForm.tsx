@@ -6,7 +6,7 @@ import { LabelColorOption, labelColorOptions } from '../../constants/labelColorO
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import { labelColorStyles } from '../../styles/labels/labelColor';
+import colorSelectStyles from '../../styles/labels/colorSelect';
 import { Label } from '../../types/Label';
 import getRandomColor from '../../utils/getRandomLabelColor';
 import FormTextInput from '../common/FormTextInput';
@@ -63,14 +63,14 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
             setLabelDetailsName && setLabelDetailsName(name);
           }}
         />
+        {/* todo maybe separate ColorSelect component? */}
         <Select
           defaultValue={labelColorOptions.find(color => color.value === values.color)}
           isSearchable={false}
           options={labelColorOptions}
-          styles={labelColorStyles}
+          styles={colorSelectStyles}
           onChange={colorOption => {
-            const temp = colorOption as LabelColorOption;
-            setValues({ ...values, color: temp.value });
+            setValues({ ...values, color: (colorOption as LabelColorOption).value });
           }}
         />
         <button

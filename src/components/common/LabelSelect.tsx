@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Select, { OptionTypeBase, ValueType } from 'react-select';
+import Select, { ValueType } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
 import { v4 as uuid } from 'uuid';
+import { labelColorOptions } from '../../constants/labelColorOptions';
 import { addLabel } from '../../state/slices/labels';
 import { RootState } from '../../state/store';
+import LabelSelectStyles from '../../styles/labels/LabelSelect';
 import { Label } from '../../types/Label';
 import getRandomLabelColor from '../../utils/getRandomLabelColor';
 
 export type LabelSelectOption = {
   value: string;
   label: string;
-} & OptionTypeBase;
+};
 
 type LabelSelectProps = {
   labelIds?: string[];
@@ -30,6 +32,7 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
       .map(label => ({
         value: label.id,
         label: label.name,
+        color: labelColorOptions.find(colorOption => colorOption.value === label.color)?.color,
       }))
       .sort((a, b) => (a.label > b.label ? 1 : -1));
   const [options, setOptions] = useState(getMappedLabels(labels));
@@ -53,11 +56,13 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
 
   const handleCreate = (inputValue: string) => {
     const id = uuid();
-    dispatch(addLabel({ id, name: inputValue, color: getRandomLabelColor(), itemCount: 0 }));
+    const color = getRandomLabelColor();
+    dispatch(addLabel({ id, name: inputValue, color, itemCount: 0 }));
 
     const newOption = {
       label: inputValue,
       value: id,
+      color,
     };
     setOptions([...options, newOption]);
 
@@ -74,6 +79,7 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
     hideSelectedOptions: false,
     onChange: handleChange,
     onCreateOption: handleCreate,
+    styles: LabelSelectStyles,
     options,
     value: values,
   };
