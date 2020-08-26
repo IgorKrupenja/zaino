@@ -4,40 +4,43 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "type": "npm",
+      "script": "dev",
+      "label": "dev",
+      "presentation": {
+        "panel": "shared",
+        "reveal": "always",
+        "group": "main"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
       "type": "process",
-      "label": "Terminal",
+      "label": "zsh",
       "command": "/bin/zsh",
       "presentation": {
         "echo": false,
         "focus": true,
-        "panel": "dedicated",
-        "reveal": "silent"
+        "panel": "shared",
+        "reveal": "always",
+        "group": "main"
       },
       "runOptions": {
         "runOn": "folderOpen"
-      }
-    },
-    {
-      "type": "npm",
-      "script": "dev",
-      "label": "Dev server",
-      "presentation": {
-        "reveal": "silent"
-      },
-      "runOptions": {
-        "runOn": "folderOpen"
-      }
-    },
-    {
-      "type": "npm",
-      "script": "test",
-      "label": "Jest tests",
-      "presentation": {
-        "reveal": "silent"
-      },
-      "runOptions": {
-        // "runOn": "folderOpen"
       }
     }
+    // {
+    //   "type": "npm",
+    //   "script": "test",
+    //   "label": "Jest tests",
+    //   "presentation": {
+    //     "reveal": "silent"
+    //   },
+    //   "runOptions": {
+    //     "runOn": "folderOpen"
+    //   }
+    // }
   ]
 }
