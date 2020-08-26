@@ -16,7 +16,7 @@ export const addLabel = createAsyncThunk<
   await db
     .collection(`users/${getState().auth.uid}/labels`)
     .doc(label.id)
-    .set({ name: label.name, color: label.color });
+    .set({ name: label.name, colorName: label.colorName });
 });
 
 export const updateLabel = createAsyncThunk<void, Label, { state: RootState }>(
@@ -25,7 +25,7 @@ export const updateLabel = createAsyncThunk<void, Label, { state: RootState }>(
     await db
       .collection(`users/${getState().auth.uid}/labels`)
       .doc(label.id)
-      .update({ name: label.name, color: label.color });
+      .update({ name: label.name, colorName: label.colorName });
   }
 );
 

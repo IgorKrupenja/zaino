@@ -1,4 +1,4 @@
-export type Category = { name: string; imageFileName: string };
+type Category = { name: string; imageFileName: string };
 
 // todo exd
 export const categories: Category[] = [

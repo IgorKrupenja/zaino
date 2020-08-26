@@ -25,7 +25,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
   const newLabel: Label = {
     id: uuid(),
     name: '',
-    color: getRandomColor(),
+    colorName: getRandomColor().value,
     itemCount: 0,
   };
   const [values, setValues] = useState(label ?? newLabel);
@@ -65,12 +65,12 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
         />
         {/* todo maybe separate ColorSelect component? */}
         <Select
-          defaultValue={labelColorOptions.find(color => color.value === values.color)}
+          defaultValue={labelColorOptions.find(color => color.value === values.colorName)}
           isSearchable={false}
           options={labelColorOptions}
           styles={colorSelectStyles}
           onChange={colorOption => {
-            setValues({ ...values, color: (colorOption as LabelColorOption).value });
+            setValues({ ...values, colorName: (colorOption as LabelColorOption).value });
           }}
         />
         <button

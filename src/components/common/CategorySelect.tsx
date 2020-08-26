@@ -1,17 +1,16 @@
 import React from 'react';
-import Select from 'react-select';
 
-type CategorySelectProps = {};
+// type CategorySelectProps = {};
 
 const CategorySelect = () => {
-  const options = Object.entries(sortOptions).map(([key, value]: [string, string]) => ({
-    value: key,
-    label: value,
-  }));
+  // const options = Object.entries(sortOptions).map(([key, value]: [string, string]) => ({
+  //   value: key,
+  //   label: value,
+  // }));
   return (
     <label>
       Category
-      <Select />
+      {/* <Select /> */}
     </label>
   );
 };

@@ -25,6 +25,7 @@ const dot = (color = '#ccc') => ({
 
 // todo move to another file?
 export type OptionArguments = {
+  // for some reason react-select requires this key to be named data, breaks otherwise
   data: LabelColorOption;
   isFocused?: boolean;
   isSelected?: boolean;
@@ -33,13 +34,13 @@ export type OptionArguments = {
 // todo code dupe
 const colorSelectStyles: Partial<Styles> = {
   option: (styles, { data, isFocused, isSelected }: OptionArguments) => {
-    const color = chroma(data.color);
+    const color = chroma(data.hexValue);
     return {
       ...styles,
-      backgroundColor: isSelected ? data.color : isFocused ? color.alpha(0.1).css() : 'white',
-      color: isSelected ? 'white' : data.color,
+      backgroundColor: isSelected ? data.hexValue : isFocused ? color.alpha(0.1).css() : 'white',
+      color: isSelected ? 'white' : data.hexValue,
       ':active': {
-        backgroundColor: isSelected ? data.color : color.alpha(0.3).css(),
+        backgroundColor: isSelected ? data.hexValue : color.alpha(0.3).css(),
       },
     };
   },
@@ -47,7 +48,7 @@ const colorSelectStyles: Partial<Styles> = {
   placeholder: styles => ({ ...styles, ...dot() }),
   singleValue: (styles, { data }: { data: LabelColorOption }) => ({
     ...styles,
-    ...dot(data.color),
+    ...dot(data.hexValue),
   }),
 };
 
