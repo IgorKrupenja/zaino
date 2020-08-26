@@ -1,8 +1,8 @@
 import React from 'react';
-import { categories, CategoryName } from '../../constants/categories';
+import { categories } from '../../constants/categories';
 
 type CategoryImageProps = {
-  categoryName: CategoryName;
+  categoryName: string;
 };
 
 const CategoryImage = ({ categoryName }: CategoryImageProps) => {

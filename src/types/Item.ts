@@ -1,9 +1,7 @@
-import { CategoryName } from '../constants/categories';
-
 export type Item = {
   id: string;
   name: string;
-  categoryName: CategoryName;
+  categoryName: string;
   quantity: number;
   packQuantity: number;
   weight: number;

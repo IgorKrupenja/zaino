@@ -1,9 +1,7 @@
-export enum CategoryName {
-  backpacks = 'Backpacks & bags',
-  tents = 'Tents',
-}
+export type Category = { name: string; imageFileName: string };
 
-export const categories: { name: CategoryName; imageFileName: string }[] = [
-  { name: CategoryName.backpacks, imageFileName: 'backpack.svg' },
-  { name: CategoryName.tents, imageFileName: 'tent.svg' },
+// todo exd
+export const categories: Category[] = [
+  { name: 'Backpacks & bags', imageFileName: 'backpack.svg' },
+  { name: 'Tents', imageFileName: 'tent.svg' },
 ];

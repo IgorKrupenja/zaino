@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CategoryName } from '../../constants/categories';
 
 type Filters = {
   text: string;
-  category?: CategoryName;
+  category?: string;
   labels: string[];
   sortBy: ItemSortOption;
 };
@@ -29,7 +28,7 @@ const itemFiltersSlice = createSlice({
     setItemsTextFilter(state, action: PayloadAction<string>) {
       state.text = action.payload;
     },
-    setItemsCategoryFilter(state, action: PayloadAction<CategoryName | undefined>) {
+    setItemsCategoryFilter(state, action: PayloadAction<string | undefined>) {
       state.category = action.payload;
     },
     setItemsLabelsFilter(state, action: PayloadAction<string[]>) {

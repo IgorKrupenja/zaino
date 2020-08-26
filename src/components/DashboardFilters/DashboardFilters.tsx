@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CategoryName } from '../../constants/categories';
+import { categories } from '../../constants/categories';
 import {
   ItemSortOption,
   setItemsCategoryFilter,
@@ -23,8 +23,7 @@ const DashboardFilters = () => {
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.persist();
     // set filter to undefined to show all items if All option is chosen
-    const category =
-      e.target.value === allCategoryText ? undefined : (e.target.value as CategoryName);
+    const category = e.target.value === allCategoryText ? undefined : e.target.value;
     setFilters({ ...filters, category });
     dispatch(setItemsCategoryFilter(category));
   };
@@ -43,8 +42,8 @@ const DashboardFilters = () => {
         Category
         <select name="category" value={filters.category} onChange={handleCategoryChange}>
           <option value={allCategoryText}>{allCategoryText}</option>
-          {Object.values(CategoryName).map(value => (
-            <option key={value}>{value}</option>
+          {categories.map(category => (
+            <option key={category.name}>{category.name}</option>
           ))}
         </select>
       </label>

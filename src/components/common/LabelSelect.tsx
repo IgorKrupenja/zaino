@@ -48,9 +48,7 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
     setValues(newValues);
     const valueArray = newValues as LabelSelectOption[];
     // turn values into labelIds
-    const labelIds: string[] = valueArray
-      ? valueArray.map((label: LabelSelectOption) => label.value)
-      : [];
+    const labelIds: string[] = valueArray ? valueArray.map(label => label.value) : [];
     onChange(labelIds);
   };
 
