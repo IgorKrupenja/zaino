@@ -8,10 +8,11 @@ import {
   setItemsTextFilter,
   sortItemsBy,
 } from '../../state/slices/itemsFilters';
+import { LabelSortOption } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
 import FilterTextInput from '../common/FilterTextInput';
 import LabelSelect from '../common/LabelSelect';
-import SortBySelect from '../common/SortBySelect';
+import SortSelect from '../common/SortSelect';
 
 const DashboardFilters = () => {
   const dispatch = useDispatch();
@@ -47,21 +48,19 @@ const DashboardFilters = () => {
           ))}
         </select>
       </label>
-      <SortBySelect
-        options={ItemSortOption}
-        onSortChange={value => {
+      <SortSelect
+        sortOptions={ItemSortOption}
+        onChange={value => {
           const sortBy = value as ItemSortOption;
           setFilters({ ...filters, sortBy });
           dispatch(sortItemsBy(sortBy));
         }}
-        sortBy={filters.sortBy}
+        selectedOption={filters.sortBy}
+        hiddenOption={LabelSortOption.lastSortOrder}
       />
       <LabelSelect
         labelIds={filters.labels}
-        onChange={labelIds => {
-          // set labels filter based on new values received from LabelSelect
-          dispatch(setItemsLabelsFilter(labelIds));
-        }}
+        onChange={labelIds => dispatch(setItemsLabelsFilter(labelIds))}
         isClearable
       />
     </section>

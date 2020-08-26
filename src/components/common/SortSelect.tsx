@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Select, { OptionTypeBase, ValueType } from 'react-select';
+import { ItemSortOption } from '../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../state/slices/labelsFilters';
 
 export type SortSelectOption = {
@@ -8,34 +9,40 @@ export type SortSelectOption = {
 } & OptionTypeBase;
 
 type SortSelectProps = {
-  onChange: (value: SortSelectOption) => void;
-  sortBy: LabelSortOption;
+  sortOptions: typeof LabelSortOption | typeof ItemSortOption;
+  selectedOption: LabelSortOption | ItemSortOption;
+  hiddenOption?: LabelSortOption | ItemSortOption;
+  onChange: (sortBy: string) => void;
 };
 
-const SortSelect = ({ onChange, sortBy }: SortSelectProps) => {
-  const options = Object.entries(LabelSortOption)
+const SortSelect = ({ sortOptions, onChange, selectedOption, hiddenOption }: SortSelectProps) => {
+  const options = Object.entries(sortOptions)
     .map(([key, value]) => ({
       value: key,
       label: value,
     }))
-    .filter(option => option.label !== LabelSortOption.lastSortOrder);
+    .filter(option => option.label !== hiddenOption);
   const [value, setValue] = useState<ValueType<SortSelectOption>>(
-    options.find(option => option.label === sortBy)
+    options.find(option => option.label === selectedOption)
   );
 
   const handleChange = (newValue: ValueType<SortSelectOption>) => {
     setValue(newValue);
-    onChange(newValue as SortSelectOption);
+    const option = newValue as SortSelectOption;
+    onChange(option.value);
   };
 
   return (
-    <Select
-      defaultValue={value}
-      isSearchable={false}
-      name="sortBy"
-      options={options}
-      onChange={handleChange}
-    />
+    <label>
+      Sort
+      <Select
+        defaultValue={value}
+        isSearchable={false}
+        name="sortBy"
+        options={options}
+        onChange={handleChange}
+      />
+    </label>
   );
 };
 
