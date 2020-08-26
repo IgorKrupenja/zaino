@@ -6,6 +6,7 @@ import { OptionArguments } from './colorSelect';
 const LabelSelectStyles: Partial<Styles> = {
   control: styles => ({ ...styles, backgroundColor: 'white' }),
   option: (styles, { data, isFocused, isSelected }: OptionArguments) => {
+    // todo bug #187
     const color = chroma(data.color);
     return {
       ...styles,

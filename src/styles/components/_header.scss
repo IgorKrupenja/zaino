@@ -7,3 +7,11 @@ header {
 
   height: $header-height;
 }
+
+.header-logo {
+  // todo should be var
+  background: #038759;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+}

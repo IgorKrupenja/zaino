@@ -21,9 +21,7 @@ const Header = () => {
 
   return (
     <header>
-      <Link to="/dashboard">
-        <img src="favicon.png" />
-      </Link>
+      <Link className="header-logo" to="/dashboard"></Link>
       <NavLink to="/dashboard" activeClassName="is-active">
         Dashboard
       </NavLink>
