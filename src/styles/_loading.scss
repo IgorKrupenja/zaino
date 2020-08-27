@@ -24,19 +24,20 @@
   0% {
     transform: scale(1, 1) translateY(0);
   }
-  10% {
+  14% {
     transform: scale(1.1, 0.9) translateY(0);
   }
-  20% {
-    transform: scale(0.9, 1.1) translateY(-6rem);
+  42% {
+    transform: scale(0.9, 1.1) translateY(-4rem);
   }
-  50% {
+  70% {
     transform: scale(1.05, 0.95) translateY(0);
   }
-  57% {
+  80% {
     transform: scale(1, 1) translateY(-0.7rem);
   }
-  64% {
+  90% {
+    // todo was 64%
     transform: scale(1, 1) translateY(0);
   }
   100% {
