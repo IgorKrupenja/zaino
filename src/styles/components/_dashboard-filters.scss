@@ -1,0 +1,19 @@
+// todo this is all temp
+
+$list-filters-height: 2 * $xl-size;
+
+.dashboard-filters {
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 100%;
+
+  height: $list-filters-height;
+}
+
+.single-select {
+  width: 20rem;
+}
+
+.label-select {
+  width: 50rem;
+}

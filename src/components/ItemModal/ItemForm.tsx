@@ -6,6 +6,7 @@ import { decrementItemCount, incrementItemCount } from '../../state/slices/label
 import { Item } from '../../types/Item';
 import getArrayDifference from '../../utils/getArrayDifference';
 import CategoryImage from '../common/CategoryImage';
+import CategorySelect from '../common/CategorySelect';
 import FormTextInput from '../common/FormTextInput';
 import LabelSelect from '../common/LabelSelect';
 
@@ -92,13 +93,10 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     <form onSubmit={handleSubmit}>
       <FormTextInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
       {/* category */}
-      <select name="categoryName" value={values.categoryName} onChange={handleChange}>
-        {categories.map(category => (
-          <option value={category.name} key={category.name}>
-            {category.name}
-          </option>
-        ))}
-      </select>
+      <CategorySelect
+        selectedCategoryName={values.categoryName}
+        onChange={categoryName => setValues({ ...values, categoryName })}
+      />
       {/* category image */}
       <CategoryImage categoryName={values.categoryName} />
       {/* weight */}
@@ -115,23 +113,29 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       </label>
       {errors.weight && <span>{errors.weight}</span>}
       {/* quantity */}
-      <input
-        type="text"
-        name="quantity"
-        placeholder="Quantity"
-        className={`text-input ${errors.quantity && 'text-input__error'}`}
-        value={values.quantity}
-        onChange={handleChange}
-      />
+      <label>
+        Quantity
+        <input
+          type="text"
+          name="quantity"
+          placeholder="Quantity"
+          className={`text-input ${errors.quantity && 'text-input__error'}`}
+          value={values.quantity}
+          onChange={handleChange}
+        />
+      </label>
       {errors.quantity && <span>{errors.quantity}</span>}
       {/* notes */}
-      <textarea
-        placeholder="Add notes here"
-        name="notes"
-        className="textarea"
-        value={values.notes}
-        onChange={handleChange}
-      ></textarea>
+      <label>
+        Notes
+        <textarea
+          placeholder="Add notes here"
+          name="notes"
+          className="textarea"
+          value={values.notes}
+          onChange={handleChange}
+        ></textarea>
+      </label>
       {/* labels */}
       <LabelSelect
         labelIds={values.labelIds}

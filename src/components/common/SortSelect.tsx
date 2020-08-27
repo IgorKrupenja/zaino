@@ -17,6 +17,7 @@ const SortSelect = ({ sortOptions, onChange, selectedOption, hiddenOption }: Sor
       label: value,
     }))
     .filter(option => option.label !== hiddenOption);
+  // todo simplify
   const [value, setValue] = useState<ValueType<OptionTypeBase>>(
     options.find(option => option.label === selectedOption)
   );
@@ -30,6 +31,7 @@ const SortSelect = ({ sortOptions, onChange, selectedOption, hiddenOption }: Sor
     <label>
       Sort
       <Select
+        className="single-select"
         defaultValue={value}
         isSearchable={false}
         name="sortBy"

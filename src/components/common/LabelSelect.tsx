@@ -70,6 +70,7 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
   };
 
   const selectProps = {
+    className: 'label-select',
     isMulti: true,
     isClearable,
     // allows for animation on clearing a label

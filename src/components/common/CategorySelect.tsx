@@ -1,16 +1,34 @@
 import React from 'react';
+import Select, { OptionTypeBase, ValueType } from 'react-select';
+import { categories } from '../../constants/categories';
 
-// type CategorySelectProps = {};
+type SortSelectProps = {
+  selectedCategoryName: string | undefined;
+  onChange: (categoryName: string) => void;
+  isClearable?: boolean;
+};
 
-const CategorySelect = () => {
-  // const options = Object.entries(sortOptions).map(([key, value]: [string, string]) => ({
-  //   value: key,
-  //   label: value,
-  // }));
+const CategorySelect = ({ selectedCategoryName, onChange, isClearable }: SortSelectProps) => {
+  const options = categories.map(category => ({
+    value: category.name,
+    label: category.name,
+  }));
+  const handleChange = (newValue: ValueType<OptionTypeBase>) => {
+    onChange((newValue as OptionTypeBase)?.label);
+  };
+
   return (
     <label>
       Category
-      {/* <Select /> */}
+      <Select
+        className="single-select"
+        defaultValue={options.find(options => options.label === selectedCategoryName)}
+        isClearable={isClearable}
+        isSearchable={false}
+        name="categoryName"
+        options={options}
+        onChange={handleChange}
+      />
     </label>
   );
 };

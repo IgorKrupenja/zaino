@@ -1,6 +1,5 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { categories } from '../../constants/categories';
 import {
   ItemSortOption,
   setItemsCategoryFilter,
@@ -10,6 +9,7 @@ import {
 } from '../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
+import CategorySelect from '../common/CategorySelect';
 import FilterTextInput from '../common/FilterTextInput';
 import LabelSelect from '../common/LabelSelect';
 import SortSelect from '../common/SortSelect';
@@ -18,18 +18,9 @@ const DashboardFilters = () => {
   const dispatch = useDispatch();
   const [filters, setFilters] = useState(useSelector((state: RootState) => state.itemsFilters));
 
-  const allCategoryText = 'All';
-
-  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    e.persist();
-    // set filter to undefined to show all items if All option is chosen
-    const category = e.target.value === allCategoryText ? undefined : e.target.value;
-    setFilters({ ...filters, category });
-    dispatch(setItemsCategoryFilter(category));
-  };
-
   return (
-    <section className="list-filters">
+    <section className="dashboard-filters">
+      {/* name */}
       <FilterTextInput
         onTextChange={text => {
           setFilters({ ...filters, text });
@@ -37,16 +28,16 @@ const DashboardFilters = () => {
         }}
         text={filters.text}
       />
-      {/* todo Category select */}
-      <label>
-        Category
-        <select name="category" value={filters.category} onChange={handleCategoryChange}>
-          <option value={allCategoryText}>{allCategoryText}</option>
-          {categories.map(category => (
-            <option key={category.name}>{category.name}</option>
-          ))}
-        </select>
-      </label>
+      {/* categories */}
+      <CategorySelect
+        selectedCategoryName={filters.category}
+        isClearable={true}
+        onChange={category => {
+          setFilters({ ...filters, category });
+          dispatch(setItemsCategoryFilter(category));
+        }}
+      />
+      {/* sort */}
       <SortSelect
         sortOptions={ItemSortOption}
         onChange={value => {
@@ -57,6 +48,7 @@ const DashboardFilters = () => {
         selectedOption={filters.sortBy}
         hiddenOption={LabelSortOption.lastSortOrder}
       />
+      {/* label */}
       <LabelSelect
         labelIds={filters.labels}
         onChange={labelIds => dispatch(setItemsLabelsFilter(labelIds))}
