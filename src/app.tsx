@@ -2,10 +2,12 @@ import 'normalize.css/normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { v4 as uuid } from 'uuid';
+import { categories } from './constants/categories';
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routers/AppRouter';
 import { setUid } from './state/slices/auth';
-import { loadItems } from './state/slices/items';
+import { addItem, loadItems } from './state/slices/items';
 import store from './state/store';
 import './styles/styles.scss';
 
@@ -15,8 +17,26 @@ const app = (
   </Provider>
 );
 
+// todo remove after doing demo data
+const generateSampleData = async () => {
+  for (let index = 0; index < 125; index++) {
+    await store.dispatch(
+      addItem({
+        id: uuid(),
+        name: 'mass item',
+        categoryName: categories[0].name,
+        weight: 100,
+        quantity: 1,
+        packQuantity: 0,
+        addedAt: new Date().toISOString(),
+      })
+    );
+  }
+};
+
 const renderApp = () => {
   ReactDOM.render(app, document.getElementById('app'));
+  // generateSampleData();
 };
 
 firebase.auth().onAuthStateChanged(async user => {

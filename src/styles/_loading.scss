@@ -1,0 +1,45 @@
+// based on https://css-tricks.com/making-css-animations-feel-natural/
+
+// todo move elsewhere?
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-image {
+  align-self: center;
+
+  margin: auto 0 auto 0;
+  width: 8rem;
+  height: 8rem;
+
+  transform-origin: bottom;
+  animation-name: loading-bounce;
+  animation-duration: 1.7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+@keyframes loading-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  20% {
+    transform: scale(0.9, 1.1) translateY(-6rem);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-0.7rem);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
