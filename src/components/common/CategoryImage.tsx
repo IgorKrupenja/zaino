@@ -1,12 +1,12 @@
 import React from 'react';
-import { categories } from '../../constants/categories';
+import Categories from '../../constants/categories';
 
 type CategoryImageProps = {
   categoryName: string;
 };
 
 const CategoryImage = ({ categoryName }: CategoryImageProps) => {
-  const imageFileName = categories.find(category => {
+  const imageFileName = Categories.find(category => {
     return category.name === categoryName;
   })?.imageFileName as string;
 

@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { categories } from '../../constants/categories';
+import Categories from '../../constants/categories';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
 import { Item } from '../../types/Item';
 import getArrayDifference from '../../utils/getArrayDifference';
@@ -19,7 +19,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const newItem: Item = {
     id: uuid(),
     name: '',
-    categoryName: categories[0].name,
+    categoryName: Categories[0].name,
     weight: 100,
     quantity: 1,
     packQuantity: 0,

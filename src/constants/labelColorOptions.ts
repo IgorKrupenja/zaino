@@ -6,7 +6,7 @@ export type LabelColorOption = {
   __isNew__?: boolean;
 };
 
-export const labelColorOptions: LabelColorOption[] = [
+const LabelColorOptions: LabelColorOption[] = [
   { value: 'sky', label: 'Sky', hexValue: '#00BDFE' },
   { value: 'sea', label: 'Sea', hexValue: '#0052CC' },
   { value: 'sunset', label: 'Sunset', hexValue: '#FF5630' },
@@ -19,3 +19,5 @@ export const labelColorOptions: LabelColorOption[] = [
   { value: 'storm', label: 'Storm', hexValue: '#253858' },
   { value: 'winter', label: 'Winter', hexValue: '#666666' },
 ];
+
+export default LabelColorOptions;

@@ -1,5 +1,5 @@
-import { labelColorOptions } from '../constants/labelColorOptions';
+import LabelColorOptions from '../constants/labelColorOptions';
 
 export default () => {
-  return labelColorOptions[Math.floor(Math.random() * labelColorOptions.length)];
+  return LabelColorOptions[Math.floor(Math.random() * LabelColorOptions.length)];
 };

@@ -2,7 +2,7 @@ import React, { ChangeEvent, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import { v4 as uuid } from 'uuid';
-import { LabelColorOption, labelColorOptions } from '../../constants/labelColorOptions';
+import LabelColorOptions, { LabelColorOption } from '../../constants/labelColorOptions';
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
@@ -65,9 +65,9 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
         />
         {/* todo maybe separate ColorSelect component? */}
         <Select
-          defaultValue={labelColorOptions.find(color => color.value === values.colorName)}
+          defaultValue={LabelColorOptions.find(color => color.value === values.colorName)}
           isSearchable={false}
-          options={labelColorOptions}
+          options={LabelColorOptions}
           styles={colorSelectStyles}
           onChange={colorOption => {
             setValues({ ...values, colorName: (colorOption as LabelColorOption).value });

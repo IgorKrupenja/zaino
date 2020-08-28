@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { categories } from './constants/categories';
+import Categories from './constants/categories';
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routers/AppRouter';
 import { setUid } from './state/slices/auth';
@@ -24,7 +24,7 @@ const generateSampleData = async () => {
       addItem({
         id: uuid(),
         name: 'mass item',
-        categoryName: categories[0].name,
+        categoryName: Categories[0].name,
         weight: 100,
         quantity: 1,
         packQuantity: 0,

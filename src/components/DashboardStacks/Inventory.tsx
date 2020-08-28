@@ -40,9 +40,9 @@ const Inventory = () => {
         filteredItemCount={itemStats.filteredItemCount}
         totalItemCount={itemStats.allItemCount}
       >
-        {/* useMemo to prevent re-rendering when only location changes (e.g. on opening modal)
+        {/* useMemo to prevent re-rendering when only location changes (i.e. on opening modal)
             - improves performance when opening/closing modals
-            - preserves list scroll location
+            - preserves list scroll position when opening/closing modals
         */}
         {useMemo(() => items.map((item: Item) => <InventoryListItem key={item.id} {...item} />), [
           items,

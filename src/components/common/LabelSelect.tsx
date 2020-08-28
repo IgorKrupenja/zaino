@@ -4,7 +4,7 @@ import Select, { ValueType } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
 import { v4 as uuid } from 'uuid';
-import { labelColorOptions } from '../../constants/labelColorOptions';
+import LabelColorOptions from '../../constants/labelColorOptions';
 import { addLabel } from '../../state/slices/labels';
 import { RootState } from '../../state/store';
 import LabelSelectStyles from '../../styles/labels/LabelSelect';
@@ -32,7 +32,7 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
       .map(label => ({
         value: label.id,
         label: label.name,
-        hexValue: labelColorOptions.find(colorOption => colorOption.value === label.colorName)
+        hexValue: LabelColorOptions.find(colorOption => colorOption.value === label.colorName)
           ?.hexValue,
       }))
       .sort((a, b) => (a.label > b.label ? 1 : -1));

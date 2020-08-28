@@ -1,6 +1,6 @@
 import React from 'react';
 import Select, { OptionTypeBase, ValueType } from 'react-select';
-import { categories } from '../../constants/categories';
+import Categories from '../../constants/categories';
 
 type SortSelectProps = {
   selectedCategoryName: string | undefined;
@@ -9,7 +9,7 @@ type SortSelectProps = {
 };
 
 const CategorySelect = ({ selectedCategoryName, onChange, isClearable }: SortSelectProps) => {
-  const options = categories.map(category => ({
+  const options = Categories.map(category => ({
     value: category.name,
     label: category.name,
   }));
