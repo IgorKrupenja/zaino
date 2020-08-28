@@ -24,7 +24,8 @@ const CategorySelect = ({ selectedCategoryName, onChange, isClearable }: SortSel
         className="single-select"
         defaultValue={options.find(options => options.label === selectedCategoryName)}
         isClearable={isClearable}
-        isSearchable={false}
+        // todo
+        // isSearchable={false}
         name="categoryName"
         options={options}
         onChange={handleChange}
