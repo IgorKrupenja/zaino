@@ -22,7 +22,6 @@ const Inventory = () => {
     (state: RootState) => selectInventoryItemsStats(state),
     shallowEqual
   );
-  const filteredItemCount = items.length;
 
   return (
     <section className="inventory">
@@ -33,13 +32,13 @@ const Inventory = () => {
       <Stats
         weight={itemStats.weight}
         percentageOfTotal={itemStats.percentageOfTotal}
-        filteredItemCount={filteredItemCount}
-        totalItemCount={itemStats.totalItemCount}
+        filteredItemCount={itemStats.filteredItemCount}
+        totalItemCount={itemStats.allItemCount}
       />
       <List
         title="inventory"
-        filteredItemCount={filteredItemCount}
-        totalItemCount={itemStats.totalItemCount}
+        filteredItemCount={itemStats.filteredItemCount}
+        totalItemCount={itemStats.allItemCount}
       >
         {/* useMemo to prevent re-rendering when only location changes (e.g. on opening modal)
             - improves performance when opening/closing modals

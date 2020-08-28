@@ -84,7 +84,6 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       favicon: './src/images/favicon.png',
-      title: 'https://storage.googleapis.com/zaino-2e6cf.appspot.com/mountain.svg',
     }),
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     new HtmlReplaceWebpackPlugin([
