@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import Categories from '../../constants/categories';
+import Categories from '../../constants/Categories';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
 import { Item } from '../../types/Item';
 import getArrayDifference from '../../utils/getArrayDifference';

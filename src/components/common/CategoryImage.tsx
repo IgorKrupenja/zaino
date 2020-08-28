@@ -1,5 +1,5 @@
 import React from 'react';
-import Categories from '../../constants/categories';
+import Categories from '../../constants/Categories';
 
 type CategoryImageProps = {
   categoryName: string;

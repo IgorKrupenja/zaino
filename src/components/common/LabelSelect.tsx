@@ -4,13 +4,13 @@ import Select, { ValueType } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
 import { v4 as uuid } from 'uuid';
-import LabelColorOptions from '../../constants/labelColorOptions';
+import Colors, { getRandomColor } from '../../constants/Colors';
 import { addLabel } from '../../state/slices/labels';
 import { RootState } from '../../state/store';
 import LabelSelectStyles from '../../styles/labels/LabelSelect';
 import { Label } from '../../types/Label';
-import getRandomLabelColor from '../../utils/getRandomLabelColor';
 
+// todo common with other selects?
 export type LabelSelectOption = {
   value: string;
   label: string;
@@ -32,8 +32,7 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
       .map(label => ({
         value: label.id,
         label: label.name,
-        hexValue: LabelColorOptions.find(colorOption => colorOption.value === label.colorName)
-          ?.hexValue,
+        hexValue: Colors.find(color => color.name === label.colorName)?.hexValue,
       }))
       .sort((a, b) => (a.label > b.label ? 1 : -1));
   const [options, setOptions] = useState(getMappedLabels(labels));
@@ -55,8 +54,8 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
 
   const handleCreate = (inputValue: string) => {
     const id = uuid();
-    const color = getRandomLabelColor();
-    dispatch(addLabel({ id, name: inputValue, colorName: color.value, itemCount: 0 }));
+    const color = getRandomColor();
+    dispatch(addLabel({ id, name: inputValue, colorName: color.name, itemCount: 0 }));
 
     const newOption = {
       label: inputValue,

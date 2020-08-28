@@ -20,7 +20,6 @@ const LabelSelectStyles: Partial<Styles> = {
     };
   },
   multiValue: (styles, { data }: OptionArguments) => {
-    console.log(data);
     const color = chroma(data.hexValue);
     return {
       ...styles,

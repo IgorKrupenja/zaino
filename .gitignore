@@ -11,3 +11,6 @@ stats.json
 .firebase/
 # produced by firebase serve
 firebase-debug.log
+# demo data processing output
+src/demo-data/processDemoData.js
+src/demo-data/output-data.json

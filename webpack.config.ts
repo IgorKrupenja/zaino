@@ -83,7 +83,7 @@ const config: webpack.Configuration = {
     ]),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      favicon: './src/images/favicon.png',
+      favicon: 'src/images/favicon.png',
     }),
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     new HtmlReplaceWebpackPlugin([

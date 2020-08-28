@@ -35,7 +35,7 @@ const selectFilteredInventoryItems = createSelector(
             if (a.weight === undefined || b.weight === undefined) {
               return 1;
             } else {
-              return a.weight > b.weight ? 1 : -1;
+              return a.weight < b.weight ? 1 : -1;
             }
         }
       });

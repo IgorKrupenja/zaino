@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 import { Styles } from 'react-select';
-import { LabelColorOption } from '../../constants/labelColorOptions';
+import { Color } from '../../constants/Colors';
 
 // CSS-in-JS is used here as this is the recommended method for react-select
 
@@ -26,7 +26,7 @@ const dot = (color = '#ccc') => ({
 // todo move to another file?
 export type OptionArguments = {
   // for some reason react-select requires this key to be named data, breaks otherwise
-  data: LabelColorOption;
+  data: Color;
   isFocused?: boolean;
   isSelected?: boolean;
 };
@@ -47,7 +47,7 @@ const colorSelectStyles: Partial<Styles> = {
   },
   input: styles => ({ ...styles, ...dot() }),
   placeholder: styles => ({ ...styles, ...dot() }),
-  singleValue: (styles, { data }: { data: LabelColorOption }) => ({
+  singleValue: (styles, { data }: { data: Color }) => ({
     ...styles,
     ...dot(data.hexValue),
   }),

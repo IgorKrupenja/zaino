@@ -1,14 +1,12 @@
 import React, { ChangeEvent, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Select from 'react-select';
 import { v4 as uuid } from 'uuid';
-import LabelColorOptions, { LabelColorOption } from '../../constants/labelColorOptions';
+import { ColorName, getRandomColor } from '../../constants/Colors';
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import colorSelectStyles from '../../styles/labels/colorSelect';
 import { Label } from '../../types/Label';
-import getRandomColor from '../../utils/getRandomLabelColor';
+import ColorSelect from '../common/ColorSelect';
 import FormTextInput from '../common/FormTextInput';
 
 type LabelFormProps = {
@@ -25,7 +23,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
   const newLabel: Label = {
     id: uuid(),
     name: '',
-    colorName: getRandomColor().value,
+    colorName: getRandomColor().name,
     itemCount: 0,
   };
   const [values, setValues] = useState(label ?? newLabel);
@@ -36,7 +34,10 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
     e.preventDefault();
     if (!values.name) {
       setNameError('Please enter a name');
-    } else if (labels.map(label => label.name).includes(values.name)) {
+    } else if (
+      labels.map(label => label.name).includes(values.name) &&
+      initialName.current !== values.name
+    ) {
       setNameError('Label with this name already exists');
     } else {
       // allows for in-place rename if sort options is set to name
@@ -63,14 +64,10 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
             setLabelDetailsName && setLabelDetailsName(name);
           }}
         />
-        {/* todo maybe separate ColorSelect component? */}
-        <Select
-          defaultValue={LabelColorOptions.find(color => color.value === values.colorName)}
-          isSearchable={false}
-          options={LabelColorOptions}
-          styles={colorSelectStyles}
-          onChange={colorOption => {
-            setValues({ ...values, colorName: (colorOption as LabelColorOption).value });
+        <ColorSelect
+          selectedColorName={values.colorName as ColorName}
+          onChange={colorName => {
+            setValues({ ...values, colorName });
           }}
         />
         <button

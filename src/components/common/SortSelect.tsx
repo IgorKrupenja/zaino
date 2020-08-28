@@ -17,11 +17,9 @@ const SortSelect = ({ sortOptions, onChange, selectedOption, hiddenOption }: Sor
       label: value,
     }))
     .filter(option => option.label !== hiddenOption);
-  // todo simplify
   const [value, setValue] = useState<ValueType<OptionTypeBase>>(
     options.find(option => option.label === selectedOption)
   );
-
   const handleChange = (newValue: ValueType<OptionTypeBase>) => {
     setValue(newValue);
     onChange((newValue as OptionTypeBase).label);

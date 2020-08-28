@@ -1,6 +1,6 @@
 import React from 'react';
 import Select, { OptionTypeBase, ValueType } from 'react-select';
-import Categories from '../../constants/categories';
+import Categories from '../../constants/Categories';
 
 type SortSelectProps = {
   selectedCategoryName: string | undefined;

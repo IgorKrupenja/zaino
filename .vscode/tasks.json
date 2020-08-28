@@ -8,6 +8,7 @@
       "script": "dev",
       "label": "dev",
       "presentation": {
+        // open in split terminal
         "panel": "shared",
         "reveal": "always",
         "group": "main"
@@ -23,6 +24,7 @@
       "presentation": {
         "echo": false,
         "focus": true,
+        // open in split terminal
         "panel": "shared",
         "reveal": "always",
         "group": "main"

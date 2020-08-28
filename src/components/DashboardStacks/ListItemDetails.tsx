@@ -11,6 +11,7 @@ type ListItemProps = {
   button?: React.ReactNode;
 };
 
+// todo rename to just ItemDetails
 const ListItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
   const { id, name, categoryName, labelIds, weight } = item;
   return (
