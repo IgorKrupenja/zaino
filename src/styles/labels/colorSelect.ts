@@ -37,6 +37,7 @@ const colorSelectStyles: Partial<Styles> = {
     const color = chroma(data.hexValue);
     return {
       ...styles,
+      // todo make more readable
       backgroundColor: isSelected ? data.hexValue : isFocused ? color.alpha(0.1).css() : 'white',
       color: isSelected ? 'white' : data.hexValue,
       ':active': {

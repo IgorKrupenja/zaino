@@ -31,7 +31,12 @@ const selectFilteredInventoryItems = createSelector(
           case ItemSortOption.name:
             return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
           case ItemSortOption.weight:
-            return a.weight < b.weight ? 1 : -1;
+            // do not sort if weight is not set
+            if (a.weight === undefined || b.weight === undefined) {
+              return 1;
+            } else {
+              return a.weight > b.weight ? 1 : -1;
+            }
         }
       });
   }

@@ -9,7 +9,8 @@ import selectFilteredInventoryItems, {
 const getWeight = (items: Item[], isPack?: boolean) => {
   return items.reduce((sum, item) => {
     const quantity = isPack ? item.packQuantity : item.quantity;
-    return sum + item.weight * quantity;
+    // take into account items that have no weight
+    return item.weight ? sum + item.weight * quantity : sum;
   }, 0);
 };
 

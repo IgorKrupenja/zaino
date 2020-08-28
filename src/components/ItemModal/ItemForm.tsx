@@ -37,14 +37,13 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     e.persist();
 
     const name = e.target.name;
-    let value: string | number = e.target.value;
+    const value: string | number = e.target.value;
 
-    if (name === 'weight' || name === 'quantity') {
-      // prevent entering non-numeric characters
-      if (!value.match(/^\d{1,}$/g)) return;
-      // convert to number
-      value = Number(value);
-    }
+    // prevent entering non-numeric characters
+    if (name === 'quantity' && !value.match(/^\d{1,}$/g)) return;
+    // allow entering only numbers or empty string
+    if (name === 'weight' && !value.match(/^[0-9]+$|^$/g)) return;
+
     setValues({ ...values, [name]: value });
   };
 
@@ -55,8 +54,8 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       errors.name = 'Please enter a name';
       isFormValid = false;
     }
-    if (values.weight < 1) {
-      errors.weight = 'Please enter a positive weight';
+    if (values.weight && values.weight < 1) {
+      errors.weight = 'Please enter a positive weight or leave empty';
       isFormValid = false;
     }
     if (values.quantity < 1) {
@@ -79,10 +78,18 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       const removedLabels = getArrayDifference(initialLabels, newLabels);
       removedLabels?.forEach(label => dispatch(decrementItemCount(label)));
 
+      // todo ugly but could not think of something better that does not produce TS errors
+      // tracked in #197
+      const { weight, ...temp } = values;
+      const submitValues: Item = temp;
+      if (weight) submitValues.weight = Number(weight);
+
       onSubmit({
-        ...values,
+        ...temp,
         // do not overwrite addedAt when editing item
         addedAt: values.addedAt || new Date().toISOString(),
+        // convert to number
+        quantity: Number(values.quantity),
         // lower pack quantity if it exceeds new quantity
         packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
       });
@@ -92,13 +99,13 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   return (
     <form onSubmit={handleSubmit}>
       <FormTextInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
+      {/* category image */}
+      <CategoryImage categoryName={values.categoryName} />
       {/* category */}
       <CategorySelect
         selectedCategoryName={values.categoryName}
         onChange={categoryName => setValues({ ...values, categoryName })}
       />
-      {/* category image */}
-      <CategoryImage categoryName={values.categoryName} />
       {/* weight */}
       <label>
         <input

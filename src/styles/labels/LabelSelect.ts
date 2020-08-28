@@ -10,6 +10,7 @@ const LabelSelectStyles: Partial<Styles> = {
     const color = chroma(!data.__isNew__ ? data.hexValue : '#00BDFE');
     return {
       ...styles,
+      // todo make more readable
       backgroundColor: isSelected ? data.hexValue : isFocused ? color.alpha(0.1).css() : 'white',
       color: isSelected ? (chroma.contrast(color, 'white') > 2 ? 'white' : 'black') : data.hexValue,
 

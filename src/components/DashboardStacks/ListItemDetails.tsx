@@ -21,7 +21,7 @@ const ListItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
       <CategoryImage categoryName={categoryName} />
       <p>{categoryName}</p>
       <p>
-        {weight}g {quantityElement}
+        {weight ? `${weight}g` : ''} {quantityElement}
       </p>
       <ul>
         {/* todo is this slow? see #113 */}
