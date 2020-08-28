@@ -39,10 +39,8 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     const name = e.target.name;
     const value: string | number = e.target.value;
 
-    // prevent entering non-numeric characters
-    if (name === 'quantity' && !value.match(/^\d{1,}$/g)) return;
     // allow entering only numbers or empty string
-    if (name === 'weight' && !value.match(/^[0-9]+$|^$/g)) return;
+    if ((name === 'quantity' || name === 'weight') && !value.match(/^[0-9]+$|^$/g)) return;
 
     setValues({ ...values, [name]: value });
   };
