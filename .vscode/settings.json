@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "Beal",
+    "Kopbt",
     "Quickdraws",
     "Serializers",
     "Suunto",
@@ -10,6 +11,8 @@
     "immer",
     "multiport",
     "pmmmwh",
+    "preanalyze",
+    "predeploy",
     "reduxjs"
   ]
 }

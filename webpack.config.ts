@@ -14,8 +14,10 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
+const appRoot = 'src/web-app';
+
 const config: webpack.Configuration = {
-  entry: ['./src/app.tsx'],
+  entry: [`./${appRoot}/app.tsx`],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -82,8 +84,8 @@ const config: webpack.Configuration = {
       'GCP_STORAGE_URL',
     ]),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      favicon: 'src/images/favicon.png',
+      template: `${appRoot}/index.html`,
+      favicon: `${appRoot}/images/favicon.png`,
     }),
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     new HtmlReplaceWebpackPlugin([

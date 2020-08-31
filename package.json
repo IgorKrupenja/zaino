@@ -1,19 +1,26 @@
 {
   "name": "zaino",
   "version": "0.1.0",
-  "main": "app.tsx",
+  "main": "src/web-app/app.tsx",
   "author": "Igor Krupenja",
   "license": "MIT",
+  "engines": {
+    "node": "12"
+  },
   "scripts": {
-    "process-demo-data": "npx tsc src/demo-data/processDemoData.ts && node src/demo-data/processDemoData.js",
-    "dev": "nodemon --exec 'TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack-dev-server --host 0.0.0.0'",
-    "build-dev": "rm -rf ./dist && TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
-    "test": "NODE_ENV=test jest --config=jest.config.json --watch",
-    "build-prod": "rm -rf ./dist && NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -p",
-    "serve": "firebase serve",
-    "publish": "firebase deploy",
+    "process-demo-data": "node --loader ts-node/esm src/common/demo-data/processDemoData.ts",
+    "start": "nodemon --exec 'TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack-dev-server --host 0.0.0.0'",
+    "build": "rm -rf ./dist && NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -p",
+    "build-dev": "rm -rf ./dist && TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -p",
+    "preserve": "npm run build",
+    "serve": "firebase serve -P prod --only hosting",
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy -P prod --only hosting,firestore",
+    "deploy-fn": "firebase deploy -P prod --only functions",
+    "deploy-fn-dev": "firebase deploy -P dev --only functions",
     "stats": "TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=production webpack --json > stats.json",
-    "analyze": "TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=production webpack --json > stats.json && webpack-bundle-analyzer stats.json",
+    "preanalyze": "npm run stats",
+    "analyze": "webpack-bundle-analyzer stats.json",
     "cloc": "cloc . --exclude-dir=node_modules,dist,package-lock.json,stats.json"
   },
   "dependencies": {
@@ -85,6 +92,7 @@
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-dev-server": "^3.11.0"
   },
+  "private": true,
   "comments": {
     "scripts/dev": "uses nodemon to restart server on config changes"
   }

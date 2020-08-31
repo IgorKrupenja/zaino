@@ -5,8 +5,8 @@
   "tasks": [
     {
       "type": "npm",
-      "script": "dev",
-      "label": "dev",
+      "script": "start",
+      "label": "start",
       "presentation": {
         // open in split terminal
         "panel": "shared",

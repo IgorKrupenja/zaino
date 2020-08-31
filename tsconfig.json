@@ -16,7 +16,9 @@
     // Report error when not all code paths in function return a value.
     "noImplicitReturns": true,
     // allow default and named imports in one line, e.g.: import React, { useEffect } from 'react';
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    // directly import JSON
+    "resolveJsonModule": true
   },
   "include": ["src", "webpack.config.ts", "sandbox"]
 }
