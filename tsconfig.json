@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    // path to output directory
-    "outDir": "./dist/",
     // allow sourcemap support
     "sourceMap": true,
     "strict": true,
@@ -16,9 +14,7 @@
     // Report error when not all code paths in function return a value.
     "noImplicitReturns": true,
     // allow default and named imports in one line, e.g.: import React, { useEffect } from 'react';
-    "allowSyntheticDefaultImports": true,
-    // directly import JSON
-    "resolveJsonModule": true
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "webpack.config.ts", "sandbox"]
+  "include": ["sandbox"]
 }

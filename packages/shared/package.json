@@ -1,0 +1,13 @@
+{
+  "name": "@zaino/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "process-demo-data": "node --loader ts-node/esm src/demo-data/processDemoData.ts"
+  },
+  "dependencies": {
+    "typescript": "^4.0.2",
+    "uuid": "^8.3.0"
+  }
+}

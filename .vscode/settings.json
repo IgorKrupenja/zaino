@@ -8,11 +8,16 @@
     "Zaino",
     "carb",
     "cloc",
+    "dedupe",
     "immer",
     "multiport",
+    "nohoist",
     "pmmmwh",
     "preanalyze",
     "predeploy",
     "reduxjs"
-  ]
+  ],
+  "npm.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
+  "prettier.packageManager": "yarn"
 }
