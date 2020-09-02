@@ -9,6 +9,7 @@
     "build": "yarn --cwd ./packages/web-app/ run build",
     "serve": "yarn --cwd ./packages/web-app/ run serve",
     "deploy": "yarn --cwd ./packages/web-app/ run deploy",
+    "deploy-rules-dev": "firebase deploy -P dev --only firestore",
     "deploy-fn": "yarn --cwd ./packages/cloud-functions/ run deploy",
     "deploy-fn-dev": "yarn --cwd ./packages/cloud-functions/ run deploy-dev",
     "analyze": "yarn --cwd ./packages/web-app/ analyze",

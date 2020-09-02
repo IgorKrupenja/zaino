@@ -9,7 +9,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 // set NODE_ENV to dev if not set in a npm script that launches webpack
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.NODE_ENV = process.env.NODE_ENV ?? 'development';
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 dotenv.config({ path: `../../.env.${process.env.NODE_ENV}` });
