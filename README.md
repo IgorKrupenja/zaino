@@ -1,9 +1,25 @@
 <!-- todo later also include logo -->
 
+<!-- # Slogan
+
+Hiking, mountaineering and ultra running inventory management app for the meticulous adventurer
+
+Hiking, mountaineering and ultra running equipment management app for the meticulous adventurer
+
+or drop ultra running?
+
+Hiking and mountaineering inventory management app for the meticulous adventurer
+
+Hiking and mountaineering equipment management app for the meticulous adventurer
+
+Hiking and mountaineering equipment app for the meticulous adventurer
+
+Hiking, mountaineering and ultrarunning equipment app for the meticulous adventurer -->
+
 <!-- Todo at least a screenshot here, maybe gif -->
 <!-- todo or mb 2 screens -->
 
-<!-- todo maybe centered Zaino text for now first line  -->
+<!-- todo maybe centered Zaino text for now first line -->
 <!-- todo then line -->
 <!-- todo then project description -->
 <!-- todo maybe live demo link -->
@@ -12,15 +28,22 @@
 
 ## Overview
 
+<!-- todo backpack in Italian -->
+
 <!-- todo mention not working on mobiles yet -->
 
 - **Log-in with Google account**.
+
+<!-- todo mention SECURE login  -->
+
 - **Data storage with Firestore**.
 - **Efficient packing for your trips and activities**.
 - **Robust search and filtering**.
 - **Flexible label system**.
 - **Demo data**.
 - **Self-hosting support**.
+
+<!-- todo in self hosting refer to development section below -->
 
 <!-- todo mention privacy in self-hosting -->
 
@@ -34,7 +57,7 @@
 - SCSS (no frameworks)
 - Yarn workspaces
 - Webpack
-- Firestore, Firebase functions, Google Cloud Storage, Firebase Hosting
+- Firestore, Firebase Authentication, Firebase Functions, Google Cloud Storage, Firebase Hosting
 
 ## Live Demo
 
@@ -113,7 +136,7 @@ Zaino is a serverless app that uses Firestore as a database. To use Firestore, y
 ```js
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: 'AIzaSyD_GYhIIBfdFHUDFpuIHQdSK7nio-dLM',
+  apiKey: 'AIzaSyD_GYhIIBfdFHvUDFpuIHQdSK7nio-dLM',
   authDomain: 'zaino-12345.firebaseapp.com',
   databaseURL: 'https://zaino-12345.firebaseio.com',
   projectId: 'zaino-12345',
@@ -127,7 +150,7 @@ var firebaseConfig = {
 4. In the root of the repository, create a file named `.env.development` and populate it with your Firebase configuration data from the previous step according to a template shown below. Make sure that you use the same variable names (`FIREBASE_API_KEY` etc.), this is important.
 
 ```env
-FIREBASE_API_KEY="AIzaSyD_GYhIIBfdFHUDFpuIHQdSK7nio-dLM"
+FIREBASE_API_KEY="AIzaSyD_GYhIIBfdFHvUDFpuIHQdSK7nio-dLM"
 FIREBASE_AUTH_DOMAIN="zaino-12345.firebaseapp.com"
 FIREBASE_DATABASE_URL="https://zaino-12345.firebaseio.com"
 FIREBASE_PROJECT_ID="zaino-12345"
@@ -230,4 +253,4 @@ If you opt to use a separate Firebase project in production, there are some addi
 
 ## License
 
-Zaino is licensed under [MIT license](LICENSE). However, this does not apply to the images I use the [live demo](#live-demo). I have purchased these images (from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/)) but obviously do not hold copyright for them and cannot include them in this repository.
+Zaino is licensed under the [MIT license](LICENSE). However, this does not apply to the images I use in the [live demo](#live-demo). I have purchased these images (from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/)) but obviously do not hold copyright for them and cannot include them in this repository.

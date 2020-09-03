@@ -8,9 +8,11 @@
     "Serializers",
     "Suunto",
     "Zaino",
+    "appspot",
     "carb",
     "cloc",
     "dedupe",
+    "firebaseapp",
     "gcloud",
     "immer",
     "multiport",
@@ -19,7 +21,8 @@
     "pmmmwh",
     "preanalyze",
     "predeploy",
-    "reduxjs"
+    "reduxjs",
+    "ultrarunning"
   ],
   "npm.packageManager": "yarn",
   "eslint.packageManager": "yarn",
