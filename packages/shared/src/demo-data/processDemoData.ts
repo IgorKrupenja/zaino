@@ -27,7 +27,7 @@ const createItems = async (lineReader: Interface) => {
   for await (const line of lineReader) {
     const csvEntry = line.split(';');
 
-    let name = csvEntry[2].split(' (pair)').join();
+    let name = csvEntry[2].split(' (pair)')[0];
     const categoryName = csvEntry[0];
     const weight = csvEntry[5];
     // set 10 quantity for 'Refill' items
@@ -130,10 +130,13 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
   if (['L', 'XL', 'M/L', 'L/XL', '13'].includes(size)) {
     assignLabel(`size ${size}`, 'Autumn', labelIds);
   } else if (item.name === 'Black Diamond Venom Adze with leash') {
-    item.name += '64cm';
+    item.name = 'Black Diamond Venom Adze 64cm with leash';
     item.notes = size;
   } else if (item.name === 'Mountain House Salmon and Potato in Dill Sauce') {
     item.name += ` (${size})`;
+  } else if (item.name === 'Liberty Mountain Stuff Sack') {
+    item.name = `${item.name} (9x20 inch)`;
+    assignLabel(`size L`, 'Autumn', labelIds);
   } else if (
     item.categoryName === 'Climbing' ||
     item.categoryName === 'Kitchen & nutrition' ||
