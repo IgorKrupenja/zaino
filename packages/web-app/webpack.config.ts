@@ -39,7 +39,7 @@ const config: webpack.Configuration = {
         use: [
           isDevelopment && {
             loader: 'babel-loader',
-            // HMR for JS/TS
+            // HMR for React components
             options: { plugins: ['react-refresh/babel'] },
           },
           'ts-loader',

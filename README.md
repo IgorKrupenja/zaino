@@ -225,8 +225,8 @@ If you opt to use a separate Firebase project in production, there are some addi
 
 <!-- todo Add Dima for data -->
 
-- The development community for writing all those blog posts and Stack Overflow answers.
 - Patrick Gillespie for his [Text to ASCII Art Generator](http://patorjk.com/software/taag/).
+- The development community for writing all those blog posts and Stack Overflow answers.
 
 ## License
 

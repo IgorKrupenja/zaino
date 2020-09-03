@@ -13,3 +13,5 @@ stats.json
 .firebaserc
 # produced by firebase serve
 firebase-debug.log
+# yarn error logs, e.g. when package not found in npm DB
+yarn-error.log
