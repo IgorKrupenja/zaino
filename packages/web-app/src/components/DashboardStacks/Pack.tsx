@@ -16,12 +16,17 @@ const Pack = () => {
     <section className="pack">
       <h2>Pack</h2>
       <Stats
-        filteredItemCount={itemStats.filteredItemCount}
-        totalItemCount={itemStats.allItemCount}
         weight={itemStats.weight}
         percentageOfTotal={itemStats.percentageOfTotal}
+        filteredItemTotalCount={itemStats.filteredItemTotalCount}
+        filteredItemUniqueCount={itemStats.filteredItemUniqueCount}
+        allItemUniqueCount={itemStats.allItemUniqueCount}
       />
-      <List title="pack" filteredItemCount={items.length} totalItemCount={itemStats.allItemCount}>
+      <List
+        title="pack"
+        filteredItemCount={items.length}
+        allItemCount={itemStats.allItemUniqueCount}
+      >
         {useMemo(() => items.map((item: Item) => <PackListItem key={item.id} {...item} />), [
           items,
         ])}

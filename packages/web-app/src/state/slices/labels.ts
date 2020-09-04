@@ -62,34 +62,49 @@ const labelsSlice = createSlice({
     loadLabels: (state, action: PayloadAction<{ labels: Label[]; items: Item[] }>) => {
       const labels = action.payload.labels;
       // compute item counts for each label as these are not stored in Firestore
-      // these counts are used on LabelsPage
+      // these counts are used on LabelsPage, including in sort
       action.payload.items.forEach(item => {
         item.labelIds?.forEach(labelId => {
           const label = labels.find(label => label.id === labelId);
-          if (label) label.itemCount = label.itemCount ? (label.itemCount += 1) : 1;
+          if (label) {
+            label.itemUniqueCount = label.itemUniqueCount ? (label.itemUniqueCount += 1) : 1;
+            label.itemTotalCount = label.itemTotalCount
+              ? label.itemTotalCount + item.quantity
+              : item.quantity;
+          }
         });
       });
       labels.forEach(label => {
         // set 0 count for labels w/o items
-        if (!label.itemCount) label.itemCount = 0;
+        if (!label.itemUniqueCount) label.itemUniqueCount = 0;
         return state.push(label);
       });
     },
     // increment and decrement separate from update in order not to write to Firestore
     // each time items count is changed for a label
-    incrementItemCount: (state, action: PayloadAction<string>) => {
-      state[findLabelIndexById(state, action.payload)].itemCount += 1;
+    incrementItemCount: (
+      state,
+      action: PayloadAction<{ labelId: string; itemQuantity: number }>
+    ) => {
+      const index = findLabelIndexById(state, action.payload.labelId);
+      state[index].itemUniqueCount += 1;
+      state[index].itemTotalCount += action.payload.itemQuantity;
     },
-    decrementItemCount: (state, action: PayloadAction<string>) => {
-      state[findLabelIndexById(state, action.payload)].itemCount -= 1;
+    decrementItemCount: (
+      state,
+      action: PayloadAction<{ labelId: string; itemQuantity: number }>
+    ) => {
+      const index = findLabelIndexById(state, action.payload.labelId);
+      state[index].itemUniqueCount -= 1;
+      state[index].itemTotalCount -= action.payload.itemQuantity;
     },
     // allows to save existing sort order of labels on Labels page
     // this order is used in sortLabelsBy(lastSortOrder) of slices/labelsFilters
     // sortLabelsBy(lastSortOrder) prevents re-sorting the list of labels by name after edit
-    // this is useful to prevent labels jumping around if name changes affecting by name sort order
-    // this solution feels a bit hacky but could not come up with a better one
-    // this also potentially has perf implications as it needs to run each time
-    // a labels is added/deleted/edited on LabelsPage but so far perf looks good
+    // this is needed to prevent labels jumping around if name change affects name sort order
+    // feels a bit hacky but could not come up with anything better
+    // also potentially has perf implications as it needs to run each time
+    // a label is added/deleted/edited on LabelsPage but so far perf looks good
     saveSortOrder: (state, action: PayloadAction<Label[]>) => {
       action.payload.forEach((filteredLabel, filteredIndex) => {
         state[findLabelIndexById(state, filteredLabel.id)].lastSortIndex = filteredIndex;

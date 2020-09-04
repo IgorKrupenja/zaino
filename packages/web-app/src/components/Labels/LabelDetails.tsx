@@ -28,13 +28,13 @@ const LabelDetails = (label: Label) => {
     );
   }
 
-  const itemCount = label.itemCount;
+  const itemTotalCount = label.itemTotalCount;
   return (
     <article key={label.id}>
       {nameElement}
-      {itemCount > 0 && (
+      {itemTotalCount > 0 && (
         <span>
-          {itemCount} item{itemCount > 1 && 's'}
+          {itemTotalCount} item{itemTotalCount > 1 && 's'} ({label.itemUniqueCount} unique)
         </span>
       )}
       {!isFormOpen && <button onClick={toggleForm}>Edit</button>}

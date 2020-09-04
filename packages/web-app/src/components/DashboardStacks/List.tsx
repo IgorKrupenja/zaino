@@ -3,14 +3,14 @@ import React from 'react';
 type ListProps = {
   title: string;
   filteredItemCount: number;
-  totalItemCount: number;
+  allItemCount: number;
   children?: React.ReactNode;
 };
 
-const List = ({ filteredItemCount, totalItemCount, title, children }: ListProps) => {
+const List = ({ filteredItemCount, allItemCount, title, children }: ListProps) => {
   let emptyString = '';
 
-  if (totalItemCount === 0) {
+  if (allItemCount === 0) {
     emptyString = `No items in ${title}`;
   } else if (filteredItemCount === 0) {
     emptyString = `No matching items in ${title}`;

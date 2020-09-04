@@ -2,8 +2,7 @@ export type Label = {
   id: string;
   name: string;
   colorName: string;
-  itemCount: number;
+  itemUniqueCount: number;
+  itemTotalCount: number;
   lastSortIndex?: number;
 };
-
-// export default Label;

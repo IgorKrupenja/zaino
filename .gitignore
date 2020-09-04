@@ -15,3 +15,8 @@ stats.json
 firebase-debug.log
 # yarn error logs, e.g. when package not found in npm DB
 yarn-error.log
+# macOS
+.DS_Store
+.Trashes
+.fseventsd
+.Spotlight-V100

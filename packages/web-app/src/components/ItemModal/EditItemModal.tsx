@@ -43,7 +43,9 @@ const EditItemModal = () => {
         }. There is no undo.`}
         buttonAction={() => {
           closeModal();
-          item.labelIds?.forEach(labelId => dispatch(decrementItemCount(labelId)));
+          item.labelIds?.forEach(labelId =>
+            dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
+          );
           dispatch(deleteItem(item.id));
         }}
       />

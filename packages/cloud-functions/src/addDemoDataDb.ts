@@ -17,7 +17,7 @@ export const addDemoDataDb = functions
     const labels: Label[] = demoData.labels;
     const db = admin.firestore();
 
-    // delete existing data
+    // delete previously added demo data
     await tools.firestore.delete(root, {
       project: process.env.GCLOUD_PROJECT,
       recursive: true,

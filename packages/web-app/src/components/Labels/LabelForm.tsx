@@ -23,7 +23,8 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
     id: uuid(),
     name: '',
     colorName: getRandomColor().name,
-    itemCount: 0,
+    itemUniqueCount: 0,
+    itemTotalCount: 0,
   };
   const [values, setValues] = useState(label ?? newLabel);
   const [nameError, setNameError] = useState('');

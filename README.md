@@ -28,16 +28,15 @@ Hiking, mountaineering and ultrarunning equipment app for the meticulous adventu
 
 ## Overview
 
-<!-- todo backpack in Italian -->
-
 <!-- todo mention not working on mobiles yet -->
+<!-- todo add WIP notice, maybe tie with mobile -->
 
 - **Log-in with Google account**.
 
 <!-- todo mention SECURE login  -->
 
 - **Data storage with Firestore**.
-- **Efficient packing for your trips and activities**.
+- **Efficient packing for your next adventure**.
 - **Robust search and filtering**.
 - **Flexible label system**.
 - **Demo data**.
@@ -126,6 +125,8 @@ Please note that the development setup has only been tested on macOS and Ubuntu 
 4. In the root of your cloned repo folder, run `yarn install`.
 
 #### Firestore
+
+<!-- todo mention git ignore for obvious reasons -->
 
 Zaino is a serverless app that uses Firestore as a database. To use Firestore, you need to create a Firebase project and add its configuration to the repo:
 

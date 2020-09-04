@@ -17,7 +17,7 @@ const selectFilteredLabels = createSelector(
           case LabelSortOption.name:
             return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
           case LabelSortOption.itemCount:
-            return a.itemCount < b.itemCount ? 1 : -1;
+            return a.itemTotalCount < b.itemTotalCount ? 1 : -1;
           case LabelSortOption.lastSortOrder:
             // do not sort if lastSortIndex is not set
             if (a.lastSortIndex === undefined || b.lastSortIndex === undefined) {

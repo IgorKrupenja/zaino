@@ -53,7 +53,15 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
   const handleCreate = (inputValue: string) => {
     const id = uuid();
     const color = getRandomColor();
-    dispatch(addLabel({ id, name: inputValue, colorName: color.name, itemCount: 0 }));
+    dispatch(
+      addLabel({
+        id,
+        name: inputValue,
+        colorName: color.name,
+        itemUniqueCount: 0,
+        itemTotalCount: 0,
+      })
+    );
 
     const newOption = {
       label: inputValue,

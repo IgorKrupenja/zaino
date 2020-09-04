@@ -32,13 +32,14 @@ const Inventory = () => {
       <Stats
         weight={itemStats.weight}
         percentageOfTotal={itemStats.percentageOfTotal}
-        filteredItemCount={itemStats.filteredItemCount}
-        totalItemCount={itemStats.allItemCount}
+        filteredItemTotalCount={itemStats.filteredItemTotalCount}
+        filteredItemUniqueCount={itemStats.filteredItemUniqueCount}
+        allItemUniqueCount={itemStats.allItemUniqueCount}
       />
       <List
         title="inventory"
-        filteredItemCount={itemStats.filteredItemCount}
-        totalItemCount={itemStats.allItemCount}
+        filteredItemCount={items.length}
+        allItemCount={itemStats.allItemUniqueCount}
       >
         {/* useMemo to prevent re-rendering when only location changes (i.e. on opening modal)
             - improves performance when opening/closing modals

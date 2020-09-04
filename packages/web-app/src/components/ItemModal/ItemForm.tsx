@@ -28,7 +28,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const [values, setValues] = useState(item ?? newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
   // used in onFormSubmit to set label item counts
-  const initialLabels = item?.labelIds;
+  const initialLabelIds = item?.labelIds;
   const dispatch = useDispatch();
 
   const handleChange = (
@@ -70,20 +70,25 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
 
     if (validateForm()) {
       // update item counts for labels
-      const newLabels = values.labelIds;
-      const addedLabels = getArrayDifference(newLabels, initialLabels);
-      addedLabels?.forEach(label => dispatch(incrementItemCount(label)));
-      const removedLabels = getArrayDifference(initialLabels, newLabels);
-      removedLabels?.forEach(label => dispatch(decrementItemCount(label)));
+      const newLabelIds = values.labelIds;
+      const addedLabelIds = getArrayDifference(newLabelIds, initialLabelIds);
+      addedLabelIds?.forEach(label =>
+        dispatch(incrementItemCount({ labelId: label, itemQuantity: values.quantity }))
+      );
+      const removedLabelIds = getArrayDifference(initialLabelIds, newLabelIds);
+      removedLabelIds?.forEach(label =>
+        dispatch(decrementItemCount({ labelId: label, itemQuantity: values.quantity }))
+      );
 
       // todo ugly but could not think of something better that does not produce TS errors
       // todo tracked in #197
       const { weight, ...temp } = values;
       const submitValues: Item = temp;
+      // add weight only if weight not empty
       if (weight) submitValues.weight = Number(weight);
 
       onSubmit({
-        ...temp,
+        ...submitValues,
         // do not overwrite addedAt when editing item
         addedAt: values.addedAt || new Date().toISOString(),
         // convert to number

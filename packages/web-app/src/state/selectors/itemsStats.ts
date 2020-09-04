@@ -14,10 +14,17 @@ const getWeight = (items: Item[], isPack?: boolean) => {
   }, 0);
 };
 
-const getItemCount = (items: Item[], isPack?: boolean) => {
-  return items.reduce((sum, item) => {
-    return sum + (isPack ? item.packQuantity : item.quantity);
+const getItemCounts = (items: Item[], isPack?: boolean) => {
+  const itemCounts = {
+    // unique item count, each item counts as one regardless of quantity
+    unique: items.length,
+    // total items count, taking quantity into consideration
+    total: 0,
+  };
+  itemCounts.total = items.reduce((sum, item) => {
+    return (sum += isPack ? item.packQuantity : item.quantity);
   }, 0);
+  return itemCounts;
 };
 
 const getItemStats = (filteredItems: Item[], allItems: Item[], isPack?: boolean) => {
@@ -26,9 +33,18 @@ const getItemStats = (filteredItems: Item[], allItems: Item[], isPack?: boolean)
   // It changes the result (which is a string) into a number again (e.g. "0 + foo"),
   // which means that it uses only as many digits as necessary
   const percentageOfTotal = +((weight * 100) / getWeight(allItems, isPack)).toFixed(2);
-  const allItemCount = getItemCount(allItems, isPack);
-  const filteredItemCount = getItemCount(filteredItems, isPack);
-  return { weight, percentageOfTotal, allItemCount, filteredItemCount };
+  const { unique: allItemUniqueCount } = getItemCounts(allItems, isPack);
+  const { total: filteredItemTotalCount, unique: filteredItemUniqueCount } = getItemCounts(
+    filteredItems,
+    isPack
+  );
+  return {
+    weight,
+    percentageOfTotal,
+    allItemUniqueCount,
+    filteredItemTotalCount,
+    filteredItemUniqueCount,
+  };
 };
 
 export const selectInventoryItemsStats = createSelector(

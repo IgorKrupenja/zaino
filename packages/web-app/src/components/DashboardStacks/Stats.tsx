@@ -3,26 +3,27 @@ import React from 'react';
 type Stats = {
   weight: number;
   percentageOfTotal: number;
-  filteredItemCount: number;
-  totalItemCount: number;
+  allItemUniqueCount: number;
+  filteredItemTotalCount: number;
+  filteredItemUniqueCount: number;
 };
 
-const Stats = ({ filteredItemCount, weight, percentageOfTotal, totalItemCount }: Stats) => {
-  // todo likely refactor when doing styles
-  if (totalItemCount === 0 || filteredItemCount === 0) {
+const Stats = ({
+  weight,
+  percentageOfTotal,
+  allItemUniqueCount,
+  filteredItemTotalCount,
+  filteredItemUniqueCount,
+}: Stats) => {
+  if (allItemUniqueCount === 0) {
     return null;
-  } else if (totalItemCount === filteredItemCount) {
-    return (
-      <div className="stats">
-        {filteredItemCount} {filteredItemCount > 1 ? 'items with total' : 'item with'} weight{' '}
-        {weight}g
-      </div>
-    );
+  } else if (filteredItemUniqueCount === 0) {
+    return <div className="stats">0 items</div>;
   } else {
     return (
       <div className="stats">
-        {filteredItemCount} {filteredItemCount > 1 ? 'items with combined' : 'item with'} weight{' '}
-        {weight}g, {percentageOfTotal}% of total
+        {filteredItemTotalCount} item{filteredItemTotalCount > 1 ? 's' : ''} (
+        {filteredItemUniqueCount} unique), weight {weight}g: {percentageOfTotal}% of total
       </div>
     );
   }
