@@ -32,16 +32,15 @@ const getItemStats = (filteredItems: Item[], allItems: Item[], isPack?: boolean)
   // + below drops any "extra" zeroes at the end
   // It changes the result (which is a string) into a number again (e.g. "0 + foo"),
   // which means that it uses only as many digits as necessary
-  const percentageOfTotal = +((weight * 100) / getWeight(allItems, isPack)).toFixed(2);
-  const { unique: allItemUniqueCount } = getItemCounts(allItems, isPack);
+  const percentage = +((weight * 100) / getWeight(allItems, isPack)).toFixed(2);
   const { total: filteredItemTotalCount, unique: filteredItemUniqueCount } = getItemCounts(
     filteredItems,
     isPack
   );
   return {
     weight,
-    percentageOfTotal,
-    allItemUniqueCount,
+    percentageOfTotal: isNaN(percentage) ? 0 : percentage,
+    allItemUniqueCount: getItemCounts(allItems, isPack).unique,
     filteredItemTotalCount,
     filteredItemUniqueCount,
   };

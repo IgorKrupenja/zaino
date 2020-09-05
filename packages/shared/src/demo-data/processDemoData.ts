@@ -29,7 +29,7 @@ const createItems = async (lineReader: Interface) => {
 
     let name = csvEntry[2].split(' (pair)')[0];
     const categoryName = csvEntry[0];
-    const weight = csvEntry[5];
+    const weight = csvEntry[5] ? Number(csvEntry[5]) : 0;
     // set 10 quantity for 'Refill' items
     const quantity = csvEntry[6] === 'R' ? 10 : Number(csvEntry[6]);
     let notes = csvEntry[10].trim();
@@ -46,20 +46,17 @@ const createItems = async (lineReader: Interface) => {
       notes = '';
       name = 'OnePlus 3 phone with cover';
     }
-    // convert 0 weight (< 1g) to undefined to fit app logic
-    if (name === 'Memory cards 64 Gb micro-SD') quantity === undefined;
 
     let item: Item = {
       id: uuid(),
       name,
       categoryName,
+      weight,
       quantity,
       packQuantity: 0,
       addedAt: '',
       notes,
     };
-    // set weight and labels ids only if present in data
-    if (weight) item.weight = Number(weight);
 
     item = createLabelsForItem(item, csvEntry[4], csvEntry[1], csvEntry[3]);
 

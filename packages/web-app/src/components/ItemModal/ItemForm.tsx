@@ -52,8 +52,9 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
       errors.name = 'Please enter a name';
       isFormValid = false;
     }
-    if (values.weight && values.weight < 1) {
-      errors.weight = 'Please enter a positive weight or leave empty';
+    // allow zero weight for items weighing less than a gram
+    if (values.weight && values.weight < 0) {
+      errors.weight = 'Please enter a non-negative weight or leave empty';
       isFormValid = false;
     }
     if (values.quantity < 1) {
@@ -80,15 +81,10 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
         dispatch(decrementItemCount({ labelId: label, itemQuantity: values.quantity }))
       );
 
-      // todo ugly but could not think of something better that does not produce TS errors
-      // todo tracked in #197
-      const { weight, ...temp } = values;
-      const submitValues: Item = temp;
-      // add weight only if weight not empty
-      if (weight) submitValues.weight = Number(weight);
-
       onSubmit({
-        ...submitValues,
+        ...values,
+        // preserve empty string for weight
+        weight: values.weight === '' ? '' : Number(values.weight),
         // do not overwrite addedAt when editing item
         addedAt: values.addedAt || new Date().toISOString(),
         // convert to number
