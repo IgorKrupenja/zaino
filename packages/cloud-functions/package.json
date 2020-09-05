@@ -2,7 +2,7 @@
   "name": "@zaino/cloud-functions",
   "version": "0.1.0",
   "scripts": {
-    "build": "NODE_ENV=production firebase functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getRegion.ts) && rm -rf ./dist && tsc",
+    "build": "NODE_ENV=production firebase functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getEnvRegion.ts) && rm -rf ./dist && tsc",
     "build-dev": "firebase functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getRegion.ts) && rm -rf ./dist && tsc",
     "serve": "yarn run build && firebase emulators:start --only functions",
     "shell": "yarn run build && firebase functions:shell",

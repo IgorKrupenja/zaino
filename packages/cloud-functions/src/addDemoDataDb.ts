@@ -7,9 +7,10 @@ import * as tools from 'firebase-tools';
 // two below should have been import from @zaino/shared but that is broken in Firebase, see #223
 import { Item, Label } from '../../shared/';
 import demoData from '../../shared/src/demo-data/output-data.json';
+import functionsRegion from './utils/functionsRegion';
 
 export const addDemoDataDb = functions
-  .region(functions.config().settings.region)
+  .region(functionsRegion)
   .pubsub.topic('add-demo-data-db')
   .onPublish(async () => {
     const root = '/common/demo-data';
