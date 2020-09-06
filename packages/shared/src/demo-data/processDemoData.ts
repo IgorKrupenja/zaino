@@ -55,8 +55,9 @@ const createItems = async (lineReader: Interface) => {
       quantity,
       packQuantity: 0,
       addedAt: '',
-      notes,
     };
+    // only add notes if not empty
+    if (notes) item.notes = notes;
 
     item = createLabelsForItem(item, csvEntry[4], csvEntry[1], csvEntry[3]);
 

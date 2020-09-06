@@ -37,7 +37,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     e.persist();
 
     const name = e.target.name;
-    const value: string | number = e.target.value;
+    const value: string = e.target.value;
 
     // allow entering only numbers or empty string
     if ((name === 'quantity' || name === 'weight') && !value.match(/^[0-9]+$|^$/g)) return;
