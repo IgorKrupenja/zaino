@@ -8,6 +8,10 @@ import AddItemModal from '../ItemModal/AddItemModal';
 import EditItemModal from '../ItemModal/EditItemModal';
 
 const DashboardPage = () => {
+  // useEffect(() => {
+  //   console.log('dashboard loaded');
+  // }, []);
+
   return (
     <>
       <Header />

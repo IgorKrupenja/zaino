@@ -55,6 +55,7 @@ const createItems = async (lineReader: Interface) => {
       quantity,
       packQuantity: 0,
       addedAt: '',
+      isFromDemoData: true,
     };
     // only add notes if not empty
     if (notes) item.notes = notes;
@@ -160,8 +161,12 @@ const assignLabel = (name: string, colorName: ColorName, labelIds: string[]) => 
   if (labelId) {
     labelIds.push(labelId);
   } else {
-    // maybe make itemCount optional in Label
-    const label: Label = { id: uuid(), name, colorName, itemUniqueCount: 0, itemTotalCount: 0 };
+    const label: Label = {
+      id: uuid(),
+      name,
+      colorName,
+      isFromDemoData: true,
+    };
     labels.push(label);
     labelIds.push(label.id);
   }

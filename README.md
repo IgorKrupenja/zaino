@@ -30,6 +30,7 @@ Hiking, mountaineering and ultrarunning equipment app for the meticulous adventu
 
 <!-- todo mention not working on mobiles yet -->
 <!-- todo add WIP notice, maybe tie with mobile -->
+<!-- todo mention that features below are implemented SO FAR -->
 
 - **Log-in with Google account**.
 
@@ -79,6 +80,7 @@ Already have some document or spreadsheet with your hiking/climbing/running gear
 <!-- todo add date -->
 
 - Initial release 🚀
+- **Known issue**: Constant 3-4% CPU usage when idle [#247](https://github.com/krupenja/zaino/issues/247)
 
 [See full changelog](CHANGELOG.md).
 
@@ -204,6 +206,8 @@ Due to licensing restrictions (see [below](#license)), the images I use i the [l
 - Another option would be to add your own image assets and import then with `file-loader` for Webpack. In addition to [CategoryImage.tsx](packages/web-app/src/components/common/CategoryImage.tsx) and [index.html](packages/web-app/src/index.html), check out [Categories.ts](packages/web-app/src/constants/Categories.ts) as well.
 
 #### Demo data and Firebase functions
+
+<!-- todo add notice that not necessary if do not use demo data and backup -->
 
 Unfortunately, Firestore apparently does not a have a meaningful way to import data, so to add the demo data to the app, I created a Firebase cloud function [addDemoDataDb.ts](packages/cloud-functions/src/addDemoDataDb.ts). There are extra steps necessary to use Firebase functions:
 

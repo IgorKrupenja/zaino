@@ -17,11 +17,14 @@ const selectFilteredLabels = createSelector(
           case LabelSortOption.name:
             return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
           case LabelSortOption.itemCount:
-            return a.itemTotalCount < b.itemTotalCount ? 1 : -1;
+            if (a.itemTotalCount === undefined || b.itemTotalCount === undefined) {
+              return 0;
+            } else {
+              return a.itemTotalCount < b.itemTotalCount ? 1 : -1;
+            }
           case LabelSortOption.lastSortOrder:
-            // do not sort if lastSortIndex is not set
             if (a.lastSortIndex === undefined || b.lastSortIndex === undefined) {
-              return 1;
+              return 0;
             } else {
               return a.lastSortIndex > b.lastSortIndex ? 1 : -1;
             }
@@ -29,5 +32,9 @@ const selectFilteredLabels = createSelector(
       });
   }
 );
+
+export const selectDemoLabels = createSelector([selectAllLabels], labels => {
+  return labels.filter(label => label.isFromDemoData === true);
+});
 
 export default selectFilteredLabels;

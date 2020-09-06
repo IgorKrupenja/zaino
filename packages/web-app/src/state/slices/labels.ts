@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Item, Label } from '@zaino/shared/';
+import deleteDocuments from '../../firebase/deleteDocuments';
 import db from '../../firebase/firebase';
 import { RootState } from '../store';
 import { batchUpdateItems } from './items';
@@ -48,6 +49,18 @@ export const deleteLabel = createAsyncThunk<void, string, { state: RootState }>(
   }
 );
 
+// at the moment it is only used in conjunction with batchDeleteItems
+// so removing item-label associations is not implemented like in deleteLabel
+export const batchDeleteLabels = createAsyncThunk<void, Label[], { state: RootState }>(
+  'items/batchDeleteLabels',
+  async (labels, { getState }) => {
+    await deleteDocuments(
+      `users/${getState().auth.uid}/labels`,
+      labels.map(label => label.id)
+    );
+  }
+);
+
 // separate variable to annotate type
 const initialState: Label[] = [];
 
@@ -74,11 +87,8 @@ const labelsSlice = createSlice({
           }
         });
       });
-      labels.forEach(label => {
-        // set 0 count for labels w/o items
-        if (!label.itemUniqueCount) label.itemUniqueCount = 0;
-        return state.push(label);
-      });
+
+      labels.forEach(label => state.push(label));
     },
     // increment and decrement separate from update in order not to write to Firestore
     // each time items count is changed for a label
@@ -87,16 +97,29 @@ const labelsSlice = createSlice({
       action: PayloadAction<{ labelId: string; itemQuantity: number }>
     ) => {
       const index = findLabelIndexById(state, action.payload.labelId);
-      state[index].itemUniqueCount += 1;
-      state[index].itemTotalCount += action.payload.itemQuantity;
+      const itemQuantity = action.payload.itemQuantity;
+      const itemUniqueCount = state[index].itemUniqueCount;
+      const itemTotalCount = state[index].itemTotalCount;
+
+      state[index].itemUniqueCount = itemUniqueCount ? itemUniqueCount + 1 : 1;
+      state[index].itemTotalCount = itemTotalCount ? itemTotalCount + itemQuantity : itemQuantity;
     },
     decrementItemCount: (
       state,
       action: PayloadAction<{ labelId: string; itemQuantity: number }>
     ) => {
       const index = findLabelIndexById(state, action.payload.labelId);
-      state[index].itemUniqueCount -= 1;
-      state[index].itemTotalCount -= action.payload.itemQuantity;
+      const itemUniqueCount = state[index].itemUniqueCount;
+      const itemTotalCount = state[index].itemTotalCount;
+
+      if (itemUniqueCount && itemTotalCount) {
+        state[index].itemUniqueCount = itemUniqueCount - 1;
+        state[index].itemTotalCount = itemTotalCount - action.payload.itemQuantity;
+      } else {
+        throw new Error(
+          `decrementItemCount: attempting to increment item counts for label ${action.payload.labelId} that has no items`
+        );
+      }
     },
     // allows to save existing sort order of labels on Labels page
     // this order is used in sortLabelsBy(lastSortOrder) of slices/labelsFilters
@@ -127,6 +150,14 @@ const labelsSlice = createSlice({
         state.findIndex(label => label.id === action.meta.arg),
         1
       );
+    });
+    builder.addCase(batchDeleteLabels.pending, (state, action) => {
+      action.meta.arg.forEach(labelToDelete => {
+        state.splice(
+          state.findIndex(label => label.id === labelToDelete.id),
+          1
+        );
+      });
     });
     // todo possibly add rejected handling here, #78
   },

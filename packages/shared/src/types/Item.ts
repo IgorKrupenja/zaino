@@ -13,4 +13,5 @@ export type Item = {
   addedAt: string;
   labelIds?: string[];
   notes?: string;
+  isFromDemoData?: boolean;
 };

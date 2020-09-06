@@ -3,10 +3,10 @@ import { Item } from '@zaino/shared/';
 import { ItemSortOption } from '../slices/itemsFilters';
 import { RootState } from '../store';
 
-const filterPackItems = (items: Item[]) => items.filter(item => item.packQuantity > 0);
+const getPackItems = (items: Item[]) => items.filter(item => item.packQuantity > 0);
 
 export const selectAllInventoryItems = (state: RootState) => state.items;
-export const selectAllPackItems = (state: RootState) => filterPackItems(state.items);
+export const selectAllPackItems = (state: RootState) => getPackItems(state.items);
 const selectFilters = (state: RootState) => state.itemsFilters;
 
 const selectFilteredInventoryItems = createSelector(
@@ -40,7 +40,11 @@ const selectFilteredInventoryItems = createSelector(
 // use selectItems with filters already applied to compose
 export const selectFilteredPackItems = createSelector([selectFilteredInventoryItems], items => {
   // filter out items not in Pack
-  return filterPackItems(items);
+  return getPackItems(items);
+});
+
+export const selectDemoItems = createSelector([selectAllInventoryItems], items => {
+  return items.filter(item => item.isFromDemoData === true);
 });
 
 export default selectFilteredInventoryItems;

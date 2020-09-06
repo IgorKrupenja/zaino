@@ -32,11 +32,11 @@ const LabelDetails = (label: Label) => {
   return (
     <article key={label.id}>
       {nameElement}
-      {itemTotalCount > 0 && (
+      {itemTotalCount ? (
         <span>
           {itemTotalCount} item{itemTotalCount > 1 && 's'} ({label.itemUniqueCount} unique)
         </span>
-      )}
+      ) : null}
       {!isFormOpen && <button onClick={toggleForm}>Edit</button>}
       <PopoverContainer
         heading="Delete label?"

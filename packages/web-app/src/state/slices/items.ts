@@ -1,21 +1,49 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Item, Label } from '@zaino/shared/';
+import deleteDocuments from '../../firebase/deleteDocuments';
 import db from '../../firebase/firebase';
+import processBatchIncrement from '../../firebase/processBatchIncrement';
 import { RootState } from '../store';
 import { loadLabels } from './labels';
+
+// todo processDbData, loadItems and loadDemoItems should be in a root reducer, see #244
+
+/**
+ * Process Firestore data to get Items and Labels as used in the app.
+ *
+ * @param snapshots Two snapshots with item and label data from Firestore.
+ */
+const processDbData = (
+  snapshots: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>[]
+) => {
+  return snapshots.map(collection =>
+    collection.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  ) as [Item[], Label[]];
+};
 
 export const loadItems = createAsyncThunk<Item[], string, { state: RootState }>(
   'items/loadItems',
   async (uid, { dispatch }) => {
     // get item and label refs from Firestore asynchronously for faster data loading
-    const refs = await Promise.all([
+    const snapshots = await Promise.all([
       db.collection(`users/${uid}/items`).get(),
       db.collection(`users/${uid}/labels`).get(),
     ]);
-    const [items, labels] = refs.map(ref =>
-      ref.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-    ) as [Item[], Label[]];
+    const [items, labels] = processDbData(snapshots);
+    // share data with labels reducer
+    dispatch(loadLabels({ labels, items }));
+    return items;
+  }
+);
 
+export const loadDemoItems = createAsyncThunk<Item[], string, { state: RootState }>(
+  'items/loadDemoItems',
+  async (uid, { dispatch }) => {
+    const snapshots = await Promise.all([
+      db.collection(`users/${uid}/items`).where('isFromDemoData', '==', true).get(),
+      db.collection(`users/${uid}/labels`).where('isFromDemoData', '==', true).get(),
+    ]);
+    const [items, labels] = processDbData(snapshots);
     // share data with labels reducer
     dispatch(loadLabels({ labels, items }));
     return items;
@@ -50,16 +78,20 @@ export const updateItem = createAsyncThunk<void, Item, { state: RootState }>(
 );
 
 export const batchUpdateItems = createAsyncThunk<void, Item[], { state: RootState }>(
-  'items/batchRemoveLabel',
+  'items/batchUpdateItems',
   async (items, { getState }) => {
     // use batch to write to DB as can have a significant number of items here
-    const batch = db.batch();
-    items.forEach(item => {
+    let batch = db.batch();
+
+    let i = 0;
+    for (const item of items) {
       const { id, ...firestoreData } = item;
       const ref = db.collection(`users/${getState().auth.uid}/items`).doc(id);
       batch.update(ref, { ...firestoreData });
-    });
-    await batch.commit();
+      ({ i, batch } = await processBatchIncrement(i, batch));
+    }
+
+    if (i > 0) await batch.commit();
   }
 );
 
@@ -67,6 +99,16 @@ export const deleteItem = createAsyncThunk<void, string, { state: RootState }>(
   'items/deleteItem',
   async (id, { getState }) => {
     await db.collection(`users/${getState().auth.uid}/items`).doc(id).delete();
+  }
+);
+
+export const batchDeleteItems = createAsyncThunk<void, Item[], { state: RootState }>(
+  'items/batchDeleteItems',
+  async (items, { getState }) => {
+    await deleteDocuments(
+      `users/${getState().auth.uid}/items`,
+      items.map(item => item.id)
+    );
   }
 );
 
@@ -89,6 +131,9 @@ const itemsSlice = createSlice({
     builder.addCase(loadItems.fulfilled, (state, action) => {
       action.payload.forEach(item => state.push(item));
     });
+    builder.addCase(loadDemoItems.fulfilled, (state, action) => {
+      action.payload.forEach(item => state.push(item));
+    });
     builder.addCase(addItem.pending, (state, action) => {
       state.push(action.meta.arg);
     });
@@ -107,6 +152,14 @@ const itemsSlice = createSlice({
       action.meta.arg.forEach(update => {
         const index = state.findIndex(item => item.id === update.id);
         state[index] = update;
+      });
+    });
+    builder.addCase(batchDeleteItems.pending, (state, action) => {
+      action.meta.arg.forEach(itemToDelete => {
+        state.splice(
+          state.findIndex(item => item.id === itemToDelete.id),
+          1
+        );
       });
     });
     // todo possibly add rejected handling here, #78

@@ -23,6 +23,10 @@ const Inventory = () => {
     shallowEqual
   );
 
+  // useEffect(() => {
+  //   console.log('inventory loaded');
+  // }, []);
+
   return (
     <section className="inventory">
       <h2>Inventory</h2>

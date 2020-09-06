@@ -1,7 +1,7 @@
 // function deployment fails if using synthetic import here
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
-// firebase-tools do not have types
+// firebase-tools do not have type definitions
 // @ts-ignore
 import * as tools from 'firebase-tools';
 // two below should have been import from @zaino/shared but that is broken in Firebase, see #223
