@@ -1,7 +1,8 @@
 import { Item } from '@zaino/shared/';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setItemsCategoryFilter, setItemsLabelsFilter } from '../../state/slices/itemsFilters';
 import { RootState } from '../../state/store';
 import CategoryImage from '../common/CategoryImage';
 
@@ -12,6 +13,7 @@ type ListItemProps = {
 };
 
 const ItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
+  const dispatch = useDispatch();
   const { id, name, categoryName, labelIds, weight } = item;
   return (
     <article>
@@ -19,19 +21,23 @@ const ItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
         <Link to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}>{name}</Link>
       </h3>
       <CategoryImage categoryName={categoryName} />
-      <p>{categoryName}</p>
+      <p onClick={() => dispatch(setItemsCategoryFilter(categoryName))}>{categoryName}</p>
       <p>
         {weight ? `${weight}g` : ''} {quantityElement}
       </p>
       <ul>
-        {/* todo is this slow? see #113 */}
         {/* note that reduce is faster than filter + map as it traverses the array only once*/}
         {/* get all labels from store with all the needed details (id's in addition to names) */}
+        {/* todo is this still slow though? see #113 */}
         {useSelector((state: RootState) => state.labels).reduce(
           // get only selected labels for a particular item
-          (accumulator: React.ReactChild[], currentLabel) => {
-            if (labelIds?.includes(currentLabel.id)) {
-              accumulator.push(<li key={currentLabel.id}>{currentLabel.name}</li>);
+          (accumulator: React.ReactChild[], label) => {
+            if (labelIds?.includes(label.id)) {
+              accumulator.push(
+                <li key={label.id} onClick={() => dispatch(setItemsLabelsFilter([label.id]))}>
+                  {label.name}
+                </li>
+              );
             }
             return accumulator;
           },

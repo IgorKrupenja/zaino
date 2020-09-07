@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   ItemSortOption,
@@ -16,7 +16,12 @@ import SortSelect from '../common/SortSelect';
 
 const DashboardFilters = () => {
   const dispatch = useDispatch();
-  const [filters, setFilters] = useState(useSelector((state: RootState) => state.itemsFilters));
+  // better name?
+  const selectedFilters = useSelector((state: RootState) => state.itemsFilters);
+  const [filters, setFilters] = useState(selectedFilters);
+
+  // set filters if changed externally by clicking on label/category inside ItemDetails
+  useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
   return (
     <section className="dashboard-filters">

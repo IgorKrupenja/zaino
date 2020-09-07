@@ -17,12 +17,12 @@ const app = (
 
 const showConsoleLogo = () => {
   // ;)
-  console.log('               .__');
+  console.log('               .__               ');
   console.log('_____________  |__| ____   ____  ');
   console.log('\\___   /\\__  \\ |  |/    \\ /  _ \\ ');
   console.log(' /    /  / __ \\|  |   |  (  <_> )');
   console.log('/_____ \\(____  /__|___|  /\\____/ ');
-  console.log('      \\/     \\/        \\/       ');
+  console.log('      \\/     \\/        \\/        ');
 };
 
 const renderApp = () => {
@@ -35,8 +35,9 @@ firebase.auth().onAuthStateChanged(async user => {
     // using store.dispatch as useDispatch cannot be used outside of functional components
     store.dispatch(setUid(user.uid));
     await store.dispatch(loadUserData(user.uid));
-    showConsoleLogo();
     renderApp();
+    showConsoleLogo();
+    // only redirect to dashboard from root, not e.g from /labels
     if (history.location.pathname === '/') {
       history.push('/dashboard');
     }

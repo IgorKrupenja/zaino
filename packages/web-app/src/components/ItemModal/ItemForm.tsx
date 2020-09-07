@@ -28,6 +28,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const [values, setValues] = useState(item ?? newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
   // used in onFormSubmit to set label item counts
+  // todo useRef?
   const initialLabelIds = item?.labelIds;
   const dispatch = useDispatch();
 
