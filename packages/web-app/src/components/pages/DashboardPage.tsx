@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { RootState } from '../../state/store';
-import Header from '../common/Header';
 import Loader from '../common/Loader';
 import Filters from '../DashboardFilters/DashboardFilters';
 import Inventory from '../DashboardStacks/Inventory';
@@ -15,7 +14,6 @@ const DashboardPage = () => {
 
   return (
     <>
-      <Header />
       <main className="dashboard">
         <Filters />
         {isLoading ? (

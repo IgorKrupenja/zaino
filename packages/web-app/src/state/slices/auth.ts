@@ -18,6 +18,12 @@ const authSlice = createSlice({
       state.uid = action.payload as string;
     },
   },
+  extraReducers: builder => {
+    // need to clear uid on logout for the PrivateRoute to work correctly
+    builder.addCase(logout.fulfilled, state => {
+      state.uid = '';
+    });
+  },
 });
 
 export const { setUid } = authSlice.actions;
