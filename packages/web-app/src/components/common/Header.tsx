@@ -11,7 +11,7 @@ import DemoData from './DemoData';
 const Header = () => {
   const dispatch = useDispatch();
   const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
-  const handleLogout = (): void => {
+  const handleLogout = () => {
     // potentially faster perf with batch
     batch(() => {
       dispatch(logout());

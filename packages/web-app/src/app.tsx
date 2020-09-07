@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routers/AppRouter';
 import { setUid } from './state/slices/auth';
-import { loadItems } from './state/slices/items';
+import { loadUserData } from './state/slices/dataLoader';
 import store from './state/store';
 import './styles/styles.scss';
 
@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged(async user => {
     // on log in
     // using store.dispatch as useDispatch cannot be used outside of functional components
     store.dispatch(setUid(user.uid));
-    await store.dispatch(loadItems(user.uid));
+    await store.dispatch(loadUserData(user.uid));
     showConsoleLogo();
     renderApp();
     if (history.location.pathname === '/') {

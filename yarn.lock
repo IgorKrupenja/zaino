@@ -5815,11 +5815,6 @@ html-minifier-terser@^5.0.1:
     relateurl "^0.2.7"
     terser "^4.6.3"
 
-html-replace-webpack-plugin@^2.5.6:
-  version "2.5.6"
-  resolved "https://registry.yarnpkg.com/html-replace-webpack-plugin/-/html-replace-webpack-plugin-2.5.6.tgz#cc2bc4629fc984967801f9e81b0b1e9907012dd3"
-  integrity sha512-McyP6qwQQJ01TyyRaVi7uLGXNXHVx5SqC53dPdByzB5JrQHXkzE2qMxQOewqaLl70ITmaDp+HhfJRWcB/7pbwA==
-
 html-webpack-plugin@^4.4.1:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-4.4.1.tgz#61ab85aa1a84ba181443345ebaead51abbb84149"

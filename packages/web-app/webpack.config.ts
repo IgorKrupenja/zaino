@@ -1,8 +1,5 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import dotenv from 'dotenv';
-// html-replace-webpack-plugin does not have types :(
-// @ts-ignore
-import HtmlReplaceWebpackPlugin from 'html-replace-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -65,6 +62,7 @@ const config: webpack.Configuration = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
+              additionalData: `$gcp-storage-url: "${process.env.GCP_STORAGE_URL as string}";`,
             },
           },
         ],
@@ -87,13 +85,6 @@ const config: webpack.Configuration = {
       template: `${appRoot}/index.html`,
       favicon: `${appRoot}/images/favicon.png`,
     }),
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    new HtmlReplaceWebpackPlugin([
-      {
-        pattern: '$gcp-storage-url$',
-        replacement: process.env.GCP_STORAGE_URL,
-      },
-    ]),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean) as webpack.Plugin[],
