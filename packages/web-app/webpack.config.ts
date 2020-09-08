@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import webpack from 'webpack';
+import getSharedStyleVars from './src/utils/getSharedStyleVars';
 
 // set NODE_ENV to dev if not set in a npm script that launches webpack
 process.env.NODE_ENV = process.env.NODE_ENV ?? 'development';
@@ -62,7 +63,8 @@ const config: webpack.Configuration = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              additionalData: `$gcp-storage-url: "${process.env.GCP_STORAGE_URL as string}";`,
+              additionalData: getSharedStyleVars(),
+              // additionalData: `$gcp-storage-url: '${process.env.GCP_STORAGE_URL as string}';`,
             },
           },
         ],

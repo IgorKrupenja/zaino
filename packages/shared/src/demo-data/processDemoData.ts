@@ -75,21 +75,21 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
   // todo under consideration
   switch (originalCategory) {
     case 'Gear':
-      assignLabel('misc gear', 'Autumn', labelIds);
+      assignLabel('misc gear', 'orange', labelIds);
       break;
     case 'Ropes/Slings':
-      assignLabel('ropes/slings', 'Flower', labelIds);
+      assignLabel('ropes/slings', 'purple', labelIds);
       break;
     case 'Quickdraws/carbs':
-      assignLabel('quickdraws/carbs', 'Mountain', labelIds);
+      assignLabel('quickdraws/carbs', 'brown', labelIds);
       break;
     case 'Protection':
-      assignLabel('protection', 'Storm', labelIds);
+      assignLabel('protection', 'dark-blue', labelIds);
       break;
   }
 
   // year labels
-  year && assignLabel(`year ${year}`, 'Sky', labelIds);
+  year && assignLabel(`year ${year}`, 'light-blue', labelIds);
 
   // misc labels based on  comments
   if (
@@ -97,11 +97,11 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
     item.notes === 'Need new laces' ||
     item.notes === 'The lace needs adjusting / replacing'
   ) {
-    assignLabel('repair/adjust', 'Sunset', labelIds);
+    assignLabel('repair/adjust', 'red', labelIds);
   }
 
   if (item.notes === 'Damaged – need replacing' || item.name === 'Beal Joker Golden Dry rope') {
-    assignLabel('replace', 'Beach', labelIds);
+    assignLabel('replace', 'yellow', labelIds);
   }
 
   if (
@@ -110,24 +110,24 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
     item.notes === 'buy and weigh' ||
     item.notes === 'Needs weighing'
   ) {
-    assignLabel('weigh', 'Grass', labelIds);
+    assignLabel('weigh', 'green', labelIds);
   }
 
   if (item.notes === 'Something else now' || item.notes === 'Lost – new one need re-weighting') {
-    assignLabel('update', 'Forest', labelIds);
+    assignLabel('update', 'dark-green', labelIds);
   }
 
-  item.notes === 'lost?' && assignLabel('lost?', 'Autumn', labelIds);
-  item.notes === 'buy and weigh' && assignLabel('buy', 'Beach', labelIds);
-  item.notes === 'Borrowed from Huw' && assignLabel('borrowed', 'Sky', labelIds);
-  item.notes == 'Locking carb' && assignLabel('carb: locking', 'Sky', labelIds);
-  item.notes == 'Non-locking carb' && assignLabel('carb: non-locking', 'Sky', labelIds);
-  item.notes?.includes('Static single') && assignLabel('rope: static', 'Forest', labelIds);
-  item.notes?.includes('Dynamic single') && assignLabel('rope: dynamic', 'Grass', labelIds);
+  item.notes === 'lost?' && assignLabel('lost?', 'orange', labelIds);
+  item.notes === 'buy and weigh' && assignLabel('buy', 'yellow', labelIds);
+  item.notes === 'Borrowed from Huw' && assignLabel('borrowed', 'light-blue', labelIds);
+  item.notes == 'Locking carb' && assignLabel('carb: locking', 'light-blue', labelIds);
+  item.notes == 'Non-locking carb' && assignLabel('carb: non-locking', 'light-blue', labelIds);
+  item.notes?.includes('Static single') && assignLabel('rope: static', 'dark-green', labelIds);
+  item.notes?.includes('Dynamic single') && assignLabel('rope: dynamic', 'green', labelIds);
 
   // size labels and related name changes
   if (['L', 'XL', 'M/L', 'L/XL', '13'].includes(size)) {
-    assignLabel(`size ${size}`, 'Autumn', labelIds);
+    assignLabel(`size ${size}`, 'orange', labelIds);
   } else if (item.name === 'Black Diamond Venom Adze with leash') {
     item.name = 'Black Diamond Venom Adze 64cm with leash';
     item.notes = size;
@@ -135,7 +135,7 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
     item.name += ` (${size})`;
   } else if (item.name === 'Liberty Mountain Stuff Sack') {
     item.name = `${item.name} (9x20 inch)`;
-    assignLabel(`size L`, 'Autumn', labelIds);
+    assignLabel(`size L`, 'orange', labelIds);
   } else if (
     item.categoryName === 'Climbing' ||
     item.categoryName === 'Kitchen & nutrition' ||
@@ -146,7 +146,7 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
   } else if (item.categoryName === 'Backpacks & bags' && size.includes('(')) {
     const sizeParts = size.split(' ');
     item.name += ` ${sizeParts[1]}`;
-    assignLabel(`size ${sizeParts[0]}`, 'Autumn', labelIds);
+    assignLabel(`size ${sizeParts[0]}`, 'orange', labelIds);
   }
 
   // only add to item object if there are labels

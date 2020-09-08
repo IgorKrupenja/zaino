@@ -15,8 +15,8 @@ const DashboardPage = () => {
 
   return (
     <>
+      <Header />
       <main className="dashboard">
-        <Header />
         <Filters />
         {isLoading ? (
           <Loader />

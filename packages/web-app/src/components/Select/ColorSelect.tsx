@@ -11,7 +11,7 @@ type ColorSelectProps = {
 const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {
   const options = Colors.map(color => ({
     value: color.name,
-    label: color.name,
+    label: color.fancyName,
     hexValue: color.hexValue,
   }));
   const handleChange = (newValue: ValueType<OptionTypeBase>) => {

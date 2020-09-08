@@ -24,27 +24,29 @@ const LabelsPage = () => {
   }, [labels, dispatch]);
 
   return (
-    <main className="labels-page">
+    <>
       <Header />
-      <LabelFilters />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <section>
-          {/* heading */}
-          <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
-          {/* add label */}
-          <button onClick={toggleForm}>Add label</button>
-          {isFormOpen && (
-            <LabelForm onSubmit={label => dispatch(addLabel(label))} toggleForm={toggleForm} />
-          )}
-          {/* label list */}
-          {labels.length > 0
-            ? labels.map(label => <LabelDetails key={label.id} {...label} />)
-            : `No ${isFiltering ? '' : 'matching'} labels`}
-        </section>
-      )}
-    </main>
+      <main className="labels-page">
+        <LabelFilters />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <section>
+            {/* heading */}
+            <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
+            {/* add label */}
+            <button onClick={toggleForm}>Add label</button>
+            {isFormOpen && (
+              <LabelForm onSubmit={label => dispatch(addLabel(label))} toggleForm={toggleForm} />
+            )}
+            {/* label list */}
+            {labels.length > 0
+              ? labels.map(label => <LabelDetails key={label.id} {...label} />)
+              : `No ${isFiltering ? '' : 'matching'} labels`}
+          </section>
+        )}
+      </main>
+    </>
   );
 };
 
