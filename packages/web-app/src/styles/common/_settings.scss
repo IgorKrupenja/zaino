@@ -1,10 +1,21 @@
 // todo remove anything unused
 // Colors
 $dark-grey: #333;
-// $grey: #666;
-// $blue: #1c88bf;
-// $dark-blue: #364051;
 $off-white: #f7f7f7;
+
+// re-assign shared variables passed with additionalData
+// this is needed to get color Intellisense in SCSS
+$light-blue: $light-blue-shared;
+$blue: $blue-shared;
+$red: $red-shared;
+$orange: $orange-shared;
+$yellow: $yellow-shared;
+$purple: $purple-shared;
+$green: $green-shared;
+$dark-green: $dark-green-shared;
+$brown: $brown-shared;
+$dark-blue: $dark-blue-shared;
+$grey: $grey-shared;
 
 // Font sizes
 $font-size-large: 1.8rem;

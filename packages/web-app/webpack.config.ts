@@ -1,10 +1,10 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import { Colors } from '@zaino/shared';
 import dotenv from 'dotenv';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import webpack from 'webpack';
-import getSharedStyleVars from './src/utils/getSharedStyleVars';
 
 // set NODE_ENV to dev if not set in a npm script that launches webpack
 process.env.NODE_ENV = process.env.NODE_ENV ?? 'development';
@@ -63,8 +63,16 @@ const config: webpack.Configuration = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              additionalData: getSharedStyleVars(),
-              // additionalData: `$gcp-storage-url: '${process.env.GCP_STORAGE_URL as string}';`,
+              additionalData: (content: string) => {
+                const colorVars = Colors.map(color => `$${color.name}-shared: ${color.hexValue}`);
+                return (
+                  // storage url for images
+                  `$gcp-storage-url: '${process.env.GCP_STORAGE_URL as string}';` +
+                  // shared color variables
+                  `${colorVars.join(';')};` +
+                  content
+                );
+              },
             },
           },
         ],
