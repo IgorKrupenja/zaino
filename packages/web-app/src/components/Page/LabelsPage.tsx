@@ -4,11 +4,11 @@ import useToggle from '../../hooks/useToggle';
 import selectFilteredLabels, { selectLabelCount } from '../../state/selectors/labels';
 import { addLabel, saveSortOrder } from '../../state/slices/labels';
 import { RootState } from '../../state/store';
-import Header from '../common/Header';
-import Loader from '../common/Loader';
+import Header from '../Header/Header';
+import LabelFilters from '../Labels/Filters';
 import LabelDetails from '../Labels/LabelDetails';
-import LabelFilters from '../Labels/LabelFilters';
 import LabelForm from '../Labels/LabelForm';
+import Loader from '../misc/Loader';
 
 const LabelsPage = () => {
   const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
 import { setItemsLabelsFilter } from '../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../state/slices/labels';
-import PopoverContainer from '../common/PopoverContainer';
+import PopoverContainer from '../misc/PopoverContainer';
 import LabelForm from './LabelForm';
 
 const LabelDetails = (label: Label) => {

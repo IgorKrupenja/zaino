@@ -6,7 +6,7 @@ import { Redirect, useLocation } from 'react-router-dom';
 import { deleteItem, updateItem } from '../../state/slices/items';
 import { decrementItemCount } from '../../state/slices/labels';
 import setupModal from '../../utils/setupModal';
-import PopoverContainer from '../common/PopoverContainer';
+import PopoverContainer from '../misc/PopoverContainer';
 import ItemForm from './ItemForm';
 
 type LocationState = {

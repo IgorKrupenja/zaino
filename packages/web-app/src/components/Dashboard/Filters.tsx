@@ -9,12 +9,12 @@ import {
 } from '../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import CategorySelect from '../common/CategorySelect';
-import FilterTextInput from '../common/FilterTextInput';
-import LabelSelect from '../common/LabelSelect';
-import SortSelect from '../common/SortSelect';
+import FilterInput from '../Input/FilterInput';
+import CategorySelect from '../Select/CategorySelect';
+import LabelSelect from '../Select/LabelSelect';
+import SortSelect from '../Select/SortSelect';
 
-const DashboardFilters = () => {
+const Filters = () => {
   const dispatch = useDispatch();
   // better name?
   const selectedFilters = useSelector((state: RootState) => state.itemsFilters);
@@ -26,7 +26,7 @@ const DashboardFilters = () => {
   return (
     <section className="dashboard-filters">
       {/* name */}
-      <FilterTextInput
+      <FilterInput
         onTextChange={text => {
           setFilters({ ...filters, text });
           dispatch(setItemsTextFilter(text));
@@ -63,4 +63,4 @@ const DashboardFilters = () => {
   );
 };
 
-export default DashboardFilters;
+export default Filters;

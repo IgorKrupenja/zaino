@@ -5,8 +5,8 @@ import { v4 as uuid } from 'uuid';
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import ColorSelect from '../common/ColorSelect';
-import FormTextInput from '../common/FormTextInput';
+import FormInput from '../Input/FormInput';
+import ColorSelect from '../Select/ColorSelect';
 
 type LabelFormProps = {
   label?: Label;
@@ -53,7 +53,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
       {/* show label name preview if adding a new label */}
       {!label && <span>{values.name ? values.name : 'Label preview'}</span>}
       <form onSubmit={handleSubmit}>
-        <FormTextInput
+        <FormInput
           name={values.name}
           errorText={nameError}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {

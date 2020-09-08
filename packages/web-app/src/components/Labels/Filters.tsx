@@ -6,8 +6,8 @@ import {
   sortLabelsBy,
 } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import FilterTextInput from '../common/FilterTextInput';
-import SortSelect from '../common/SortSelect';
+import FilterInput from '../Input/FilterInput';
+import SortSelect from '../Select/SortSelect';
 
 const LabelFilters = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const LabelFilters = () => {
 
   return (
     <section className="label-filters">
-      <FilterTextInput
+      <FilterInput
         onTextChange={text => {
           setFilters({ ...filters, text });
           dispatch(setLabelsTextFilter(text));

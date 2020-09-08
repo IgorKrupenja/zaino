@@ -6,7 +6,7 @@ type TextFormInputProps = {
   errorText: string;
 };
 
-const FormTextInput = ({ name, onChange, errorText: error }: TextFormInputProps) => (
+const FormInput = ({ name, onChange, errorText: error }: TextFormInputProps) => (
   <>
     <input
       type="text"
@@ -20,4 +20,4 @@ const FormTextInput = ({ name, onChange, errorText: error }: TextFormInputProps)
   </>
 );
 
-export default FormTextInput;
+export default FormInput;

@@ -5,7 +5,7 @@ type TextFilterInputProps = {
   text: string;
 };
 
-const FilterTextInput = ({ onTextChange, text }: TextFilterInputProps) => {
+const FilterInput = ({ onTextChange, text }: TextFilterInputProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
     onTextChange(e.target.value);
@@ -25,4 +25,4 @@ const FilterTextInput = ({ onTextChange, text }: TextFilterInputProps) => {
   );
 };
 
-export default FilterTextInput;
+export default FilterInput;

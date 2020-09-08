@@ -5,10 +5,10 @@ import { v4 as uuid } from 'uuid';
 import Categories from '../../constants/Categories';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
 import getArrayDifference from '../../utils/getArrayDifference';
-import CategoryImage from '../common/CategoryImage';
-import CategorySelect from '../common/CategorySelect';
-import FormTextInput from '../common/FormTextInput';
-import LabelSelect from '../common/LabelSelect';
+import FormInput from '../Input/FormInput';
+import CategoryImage from '../misc/CategoryImage';
+import CategorySelect from '../Select/CategorySelect';
+import LabelSelect from '../Select/LabelSelect';
 
 type ItemFormProps = {
   item?: Item;
@@ -97,7 +97,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <FormTextInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
+      <FormInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
       {/* category image */}
       <CategoryImage categoryName={values.categoryName} />
       {/* category */}

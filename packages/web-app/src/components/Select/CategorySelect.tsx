@@ -18,7 +18,6 @@ const CategorySelect = ({ selectedCategoryName, onChange, isClearable }: SortSel
   // logic similar to LabelSelect
   const prepareValue = useCallback(
     (selectedCategoryName: string | undefined) => {
-      console.log('prepare value runs');
       return options.find(option => option.label === selectedCategoryName);
     },
     [options]
