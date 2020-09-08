@@ -1,5 +1,5 @@
 import { Item } from '@zaino/shared/';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import Categories from '../../constants/Categories';
@@ -28,8 +28,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   const [values, setValues] = useState(item ?? newItem);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
   // used in onFormSubmit to set label item counts
-  // todo useRef?
-  const initialLabelIds = item?.labelIds;
+  const initialLabelIds = useRef(values.labelIds).current;
   const dispatch = useDispatch();
 
   const handleChange = (

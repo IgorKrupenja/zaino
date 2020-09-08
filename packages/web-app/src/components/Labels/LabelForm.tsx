@@ -28,7 +28,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
   };
   const [values, setValues] = useState(label ?? newLabel);
   const [nameError, setNameError] = useState('');
-  const initialName = useRef(values.name);
+  const initialName = useRef(values.name).current;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
       setNameError('Please enter a name');
     } else if (
       labels.map(label => label.name).includes(values.name) &&
-      initialName.current !== values.name
+      initialName !== values.name
     ) {
       setNameError('Label with this name already exists');
     } else {
@@ -75,7 +75,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
           onClick={() => {
             toggleForm();
             // reset label name preview on typing if cancelling edit
-            setLabelDetailsName && setLabelDetailsName(initialName.current);
+            setLabelDetailsName && setLabelDetailsName(initialName);
           }}
         >
           Cancel
