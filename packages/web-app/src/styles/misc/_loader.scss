@@ -1,13 +1,9 @@
 // adapted from https://css-tricks.com/making-css-animations-feel-natural/
 
-// todo move elsewhere?
-#app,
 .loader-container {
   display: flex;
   flex-direction: column;
-}
 
-.loader-container {
   width: 100%;
   height: 100%;
 }

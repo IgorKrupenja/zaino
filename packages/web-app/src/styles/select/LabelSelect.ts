@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 import { Styles } from 'react-select';
-import { OptionArguments } from './colorSelect';
+import { OptionArguments } from './ColorSelect';
 
 // todo code dupe
 const LabelSelectStyles: Partial<Styles> = {

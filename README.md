@@ -110,6 +110,8 @@ Main web app with the following code structure:
 
 <!-- todo add web app structure when finalised -->
 
+<!-- todo SCSS mention BEM naming convention -->
+
 - `src/components/`
 - `src/state`
 

@@ -1,7 +1,7 @@
 import { ColorName, Colors } from '@zaino/shared';
 import React from 'react';
 import Select, { OptionTypeBase, ValueType } from 'react-select';
-import colorSelectStyles from '../../styles/labels/colorSelect';
+import colorSelectStyles from '../../styles/select/ColorSelect';
 
 type ColorSelectProps = {
   selectedColorName: ColorName;

@@ -1,32 +1,14 @@
-// settings and base
-@import './base/settings';
-@import './base/base';
-// components
-@import './components/dashboard-filters';
-@import './components/header';
-@import './components/dashboard';
-@import './components/labels-page';
-@import './components/list';
-@import './components/inventory';
-@import './components/pack';
-@import './components/stats';
-@import './components/category-image';
-@import './loader';
-
-// todo temp modal animation
-
-// .ReactModal__Overlay {
-//   opacity: 0;
-//   transform: translateX(-100px);
-//   transition: all 300ms ease-in-out;
-// }
-
-// .ReactModal__Overlay--after-open {
-//   opacity: 1;
-//   transform: translateX(0px);
-// }
-
-// .ReactModal__Overlay--before-close {
-//   opacity: 0;
-//   transform: translateX(-100px);
-// }
+// common, settings and base -- these are used across several React components
+@import './common/settings';
+@import './common/base';
+// styles for individual components
+@import './dashboard/dashboard-filters';
+@import './header/header';
+@import './dashboard/dashboard';
+@import './page/labels-page';
+@import './dashboard/list';
+@import './dashboard/inventory';
+@import './dashboard/pack';
+@import './dashboard/stats';
+@import './misc/category-image';
+@import './misc/loader';
