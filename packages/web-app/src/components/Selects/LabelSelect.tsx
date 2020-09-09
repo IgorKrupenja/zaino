@@ -7,7 +7,7 @@ import CreatableSelect from 'react-select/creatable';
 import { v4 as uuid } from 'uuid';
 import { addLabel } from '../../state/slices/labels';
 import { RootState } from '../../state/store';
-import LabelSelectStyles from '../../styles/select/LabelSelect';
+import LabelSelectStyles from '../../styles/selects/LabelSelect';
 
 export type LabelSelectOption = {
   value: string;

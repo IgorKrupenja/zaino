@@ -9,10 +9,10 @@ import {
 } from '../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import FilterInput from '../Input/FilterInput';
-import CategorySelect from '../Select/CategorySelect';
-import LabelSelect from '../Select/LabelSelect';
-import SortSelect from '../Select/SortSelect';
+import FilterInput from '../Inputs/FilterInput';
+import CategorySelect from '../Selects/CategorySelect';
+import LabelSelect from '../Selects/LabelSelect';
+import SortSelect from '../Selects/SortSelect';
 
 const Filters = () => {
   const dispatch = useDispatch();

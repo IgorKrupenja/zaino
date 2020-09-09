@@ -22,8 +22,8 @@ const Stats = ({
   } else {
     return (
       <div className="stats">
-        {filteredItemTotalCount} item{filteredItemTotalCount > 1 ? 's' : ''} (
-        {filteredItemUniqueCount} unique), weight {weight}g: {percentageOfTotal}% of total
+        {filteredItemTotalCount} item{filteredItemTotalCount > 1 && 's'} ({filteredItemUniqueCount}{' '}
+        unique), weight {weight}g: {percentageOfTotal}% of total
       </div>
     );
   }

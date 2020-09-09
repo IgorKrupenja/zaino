@@ -1,3 +1,4 @@
+import { v4 as uuid } from 'uuid';
 import db from './firebase';
 import processBatchIncrement from './processBatchIncrement';
 
@@ -17,7 +18,8 @@ export default async (srcCollectionPath: string, destCollectionPath: string, add
   let i = 0;
   for (const doc of documents.docs) {
     const data = addedAt ? { ...doc.data(), addedAt } : doc.data();
-    batch.set(destCollection.doc(doc.id), data);
+    // create new uuids for copied items just in case
+    batch.set(destCollection.doc(uuid()), data);
     ({ i, batch } = await processBatchIncrement(i, batch));
   }
 

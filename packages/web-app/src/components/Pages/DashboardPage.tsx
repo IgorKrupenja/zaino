@@ -28,6 +28,7 @@ const DashboardPage = () => {
         )}
       </main>
 
+      {/* specific routes for item modals specific to Dashboard page */}
       <Route path="/dashboard/edit/:id" component={EditItemModal} />
       <Route path="/dashboard/add" component={AddItemModal} />
     </>

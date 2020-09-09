@@ -6,8 +6,8 @@ import {
   sortLabelsBy,
 } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import FilterInput from '../Input/FilterInput';
-import SortSelect from '../Select/SortSelect';
+import FilterInput from '../Inputs/FilterInput';
+import SortSelect from '../Selects/SortSelect';
 
 const LabelFilters = () => {
   const dispatch = useDispatch();

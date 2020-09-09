@@ -5,10 +5,10 @@ import { v4 as uuid } from 'uuid';
 import Categories from '../../constants/Categories';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
 import getArrayDifference from '../../utils/getArrayDifference';
-import FormInput from '../Input/FormInput';
+import FormInput from '../Inputs/FormInput';
 import CategoryImage from '../misc/CategoryImage';
-import CategorySelect from '../Select/CategorySelect';
-import LabelSelect from '../Select/LabelSelect';
+import CategorySelect from '../Selects/CategorySelect';
+import LabelSelect from '../Selects/LabelSelect';
 
 type ItemFormProps = {
   item?: Item;

@@ -4,9 +4,9 @@ import Media from 'react-media';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import CategoryImage from '../components/misc/CategoryImage';
-import DashboardPage from '../components/Page/DashboardPage';
-import LabelsPage from '../components/Page/LabelsPage';
-import LoginPage from '../components/Page/LoginPage';
+import DashboardPage from '../components/Pages/DashboardPage';
+import LabelsPage from '../components/Pages/LabelsPage';
+import LoginPage from '../components/Pages/LoginPage';
 import { RootState } from '../state/store';
 
 // custom history is needed for login in app.tsx to work

@@ -29,6 +29,7 @@ const ItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
         {/* note that reduce is faster than filter + map as it traverses the array only once*/}
         {/* get all labels from store with all the needed details (id's in addition to names) */}
         {/* todo is this still slow though? see #113 */}
+        {/* todo de-uglify */}
         {useSelector((state: RootState) => state.labels).reduce(
           // get only selected labels for a particular item
           (accumulator: React.ReactChild[], label) => {

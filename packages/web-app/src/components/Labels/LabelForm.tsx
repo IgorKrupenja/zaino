@@ -5,8 +5,8 @@ import { v4 as uuid } from 'uuid';
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import FormInput from '../Input/FormInput';
-import ColorSelect from '../Select/ColorSelect';
+import FormInput from '../Inputs/FormInput';
+import ColorSelect from '../Selects/ColorSelect';
 
 type LabelFormProps = {
   label?: Label;

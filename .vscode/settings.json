@@ -22,7 +22,8 @@
     "preanalyze",
     "predeploy",
     "reduxjs",
-    "ultrarunning"
+    "ultrarunning",
+    "uuids"
   ],
   "npm.packageManager": "yarn",
   "eslint.packageManager": "yarn",
