@@ -7,8 +7,8 @@ import { decrementItemCount, incrementItemCount } from '../../state/slices/label
 import getArrayDifference from '../../utils/getArrayDifference';
 import FormInput from '../Inputs/FormInput';
 import CategoryImage from '../misc/CategoryImage';
-import CategorySelect from '../Selects/CategorySelect';
-import LabelSelect from '../Selects/LabelSelect';
+import { CategorySelect } from '../Selects/CategorySelect/';
+import { LabelSelect } from '../Selects/LabelSelect/LabelSelect';
 
 type ItemFormProps = {
   item?: Item;
@@ -96,61 +96,64 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
-      {/* category image */}
-      <CategoryImage categoryName={values.categoryName} />
-      {/* category */}
-      <CategorySelect
-        selectedCategoryName={values.categoryName}
-        onChange={categoryName => setValues({ ...values, categoryName })}
-      />
-      {/* weight */}
-      <label>
-        <input
-          type="text"
-          name="weight"
-          placeholder="Weight"
-          className={`text-input ${errors.weight && 'text-input__error'}`}
-          value={values.weight}
-          onChange={handleChange}
+    <>
+      <form onSubmit={handleSubmit}>
+        <FormInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
+        {/* category image */}
+        <CategoryImage categoryName={values.categoryName} />
+        {/* weight */}
+        <label>
+          <input
+            type="text"
+            name="weight"
+            placeholder="Weight"
+            className={`text-input ${errors.weight && 'text-input__error'}`}
+            value={values.weight}
+            onChange={handleChange}
+          />
+          grams
+        </label>
+        {errors.weight && <span>{errors.weight}</span>}
+        {/* quantity */}
+        <label>
+          Quantity
+          <input
+            type="text"
+            name="quantity"
+            placeholder="Quantity"
+            className={`text-input ${errors.quantity && 'text-input__error'}`}
+            value={values.quantity}
+            onChange={handleChange}
+          />
+        </label>
+        {errors.quantity && <span>{errors.quantity}</span>}
+        {/* notes */}
+        <label>
+          Notes
+          <textarea
+            placeholder="Add notes here"
+            name="notes"
+            className="textarea"
+            value={values.notes}
+            onChange={handleChange}
+          ></textarea>
+        </label>
+        {/* labels */}
+        {/* todo renders creatable select */}
+        <LabelSelect
+          labelIds={values.labelIds}
+          onChange={labelIds => setValues({ ...values, labelIds })}
+          isCreatable
         />
-        grams
-      </label>
-      {errors.weight && <span>{errors.weight}</span>}
-      {/* quantity */}
-      <label>
-        Quantity
-        <input
-          type="text"
-          name="quantity"
-          placeholder="Quantity"
-          className={`text-input ${errors.quantity && 'text-input__error'}`}
-          value={values.quantity}
-          onChange={handleChange}
+        {/* category */}
+        <CategorySelect
+          selectedCategoryName={values.categoryName}
+          onChange={categoryName => setValues({ ...values, categoryName })}
         />
-      </label>
-      {errors.quantity && <span>{errors.quantity}</span>}
-      {/* notes */}
-      <label>
-        Notes
-        <textarea
-          placeholder="Add notes here"
-          name="notes"
-          className="textarea"
-          value={values.notes}
-          onChange={handleChange}
-        ></textarea>
-      </label>
-      {/* labels */}
-      <LabelSelect
-        labelIds={values.labelIds}
-        onChange={labelIds => setValues({ ...values, labelIds })}
-        isClearable={false}
-        isCreatable
-      />
-      <button>Save item</button>
-    </form>
+        <button>Save item</button>
+      </form>
+      {/* labels and categories moved outside of form as toggling them was broken inside */}
+    </>
   );
 };
 

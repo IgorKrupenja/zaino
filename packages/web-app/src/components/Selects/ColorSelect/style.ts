@@ -23,8 +23,9 @@ const dot = (color = '#ccc') => ({
   },
 });
 
+// todo perhaps move elsewhere
 export type OptionArguments = {
-  // for some reason react-select requires this key to be named data, breaks otherwise
+  // for some reason react-select requires this key to be named "data", breaks otherwise
   data: Color;
   isFocused?: boolean;
   isSelected?: boolean;
@@ -42,6 +43,7 @@ const colorSelectStyles: Partial<Styles> = {
       ':active': {
         backgroundColor: isSelected ? data.hexValue : color.alpha(0.3).css(),
       },
+      ...dot(data.hexValue),
     };
   },
   input: styles => ({ ...styles, ...dot() }),

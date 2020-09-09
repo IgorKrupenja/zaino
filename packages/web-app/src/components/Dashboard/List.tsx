@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type ListProps = {
   title: string;
   filteredItemCount: number;
   allItemCount: number;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const List = ({ filteredItemCount, allItemCount, title, children }: ListProps) => {

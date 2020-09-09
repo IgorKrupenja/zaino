@@ -3,10 +3,10 @@ import React from 'react';
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 import { Redirect, useLocation } from 'react-router-dom';
+import useToggle from '../../hooks/useToggle';
+import { history } from '../../routers/AppRouter';
 import { deleteItem, updateItem } from '../../state/slices/items';
-import { decrementItemCount } from '../../state/slices/labels';
-import setupModal from '../../utils/setupModal';
-import PopoverContainer from '../misc/PopoverContainer';
+import { Popover } from '../misc/Popover';
 import ItemForm from './ItemForm';
 
 type LocationState = {
@@ -16,6 +16,7 @@ type LocationState = {
 const EditItemModal = () => {
   const location = useLocation<LocationState>();
   const dispatch = useDispatch();
+  const [isPopoverOpen, togglePopover] = useToggle();
 
   // redirect to Dashboard if item id is invalid
   // Redirect is better than history.push here
@@ -23,7 +24,10 @@ const EditItemModal = () => {
   if (!location.state) return <Redirect to="/dashboard" />;
 
   const item = location.state.item;
-  const [title, closeModal] = setupModal(item);
+  const title = `${item.name} | Zaino`;
+  document.title = title;
+  Modal.setAppElement('#app');
+  const closeModal = () => history.push('/dashboard');
 
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
@@ -36,19 +40,30 @@ const EditItemModal = () => {
         }}
       />
       <button onClick={closeModal}>close</button>
-      <PopoverContainer
-        heading="Delete item?"
-        text={`The item will be deleted from inventory${
-          item.packQuantity > 0 ? ' and pack' : ''
-        }. There is no undo.`}
-        buttonAction={() => {
-          closeModal();
-          item.labelIds?.forEach(labelId =>
-            dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
-          );
-          dispatch(deleteItem(item.id));
-        }}
-      />
+      <Popover
+        isOpen={isPopoverOpen}
+        onClickOutside={togglePopover}
+        content={
+          <>
+            <h3>Delete item?</h3>
+            <button onClick={togglePopover}>X</button>
+            <p>
+              The item will be deleted from inventory{item.packQuantity > 0 ? ' and pack' : ''}.
+              There is no undo.
+            </p>
+            <button
+              onClick={() => {
+                closeModal();
+                dispatch(deleteItem(item));
+              }}
+            >
+              Delete
+            </button>
+          </>
+        }
+      >
+        <button onClick={togglePopover}>Delete</button>
+      </Popover>
     </Modal>
   );
 };

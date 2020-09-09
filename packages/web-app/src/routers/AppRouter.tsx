@@ -3,6 +3,7 @@ import React from 'react';
 import Media from 'react-media';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
+import Header from '../components/Header/Header';
 import CategoryImage from '../components/misc/CategoryImage';
 import DashboardPage from '../components/Pages/DashboardPage';
 import LabelsPage from '../components/Pages/LabelsPage';
@@ -39,6 +40,7 @@ const AppRouter = () => {
               {/* prevent showing empty Dashboard/Labels if users presses back after logout */}
               {isAuthenticated && (
                 <>
+                  <Header />
                   <Route path="/dashboard" component={DashboardPage} />
                   <Route path="/labels" component={LabelsPage} />
                 </>

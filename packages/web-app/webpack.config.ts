@@ -75,6 +75,13 @@ const config: webpack.Configuration = {
               },
             },
           },
+          {
+            // make variables accessible in every SCSS file without explicit import
+            loader: 'sass-resources-loader',
+            options: {
+              resources: ['src/styles/common/_settings.scss', 'src/styles/common/_base.scss'],
+            },
+          },
         ],
       },
     ],

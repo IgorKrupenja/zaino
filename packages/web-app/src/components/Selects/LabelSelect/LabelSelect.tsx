@@ -1,13 +1,14 @@
 import { Colors, getRandomColor, Label } from '@zaino/shared';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Select, { ValueType } from 'react-select';
-import makeAnimated from 'react-select/animated';
-import CreatableSelect from 'react-select/creatable';
+import { ValueType } from 'react-select';
 import { v4 as uuid } from 'uuid';
-import { addLabel } from '../../state/slices/labels';
-import { RootState } from '../../state/store';
-import LabelSelectStyles from '../../styles/selects/LabelSelect';
+import useToggle from '../../../hooks/useToggle';
+import { addLabel } from '../../../state/slices/labels';
+import { RootState } from '../../../state/store';
+import { Popover } from '../../misc/Popover';
+import { Select } from '../Select';
+import LabelSelectStyles from './style';
 
 export type LabelSelectOption = {
   value: string;
@@ -17,15 +18,13 @@ export type LabelSelectOption = {
 type LabelSelectProps = {
   labelIds?: string[];
   onChange: (labelIds: string[]) => void;
-  isClearable?: boolean;
   isCreatable?: boolean;
 };
 
-const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSelectProps) => {
+export const LabelSelect = ({ labelIds, onChange, isCreatable }: LabelSelectProps) => {
   const dispatch = useDispatch();
   // labels and prepareOptions need to be separate to prevent exceeding max depth with ItemForm
   const labels = useSelector((state: RootState) => state.labels);
-  // todo also think on variable/fn names
   const prepareOptions = (labels: Label[]) =>
     labels
       .map(label => ({
@@ -52,6 +51,7 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
   useEffect(() => setOptions(prepareOptions(labels)), [labels]);
 
   const handleChange = (newValues: ValueType<LabelSelectOption>) => {
+    !isCreatable && togglePopover();
     setValues(newValues);
     const valueArray = newValues as LabelSelectOption[];
     // turn values into labelIds
@@ -84,26 +84,36 @@ const LabelSelect = ({ labelIds, onChange, isClearable, isCreatable }: LabelSele
   };
 
   const selectProps = {
-    className: 'label-select',
     isMulti: true,
-    isClearable,
-    // allows for animation on clearing a label
-    components: makeAnimated<LabelSelectOption>(),
-    // todo does this work well?
-    hideSelectedOptions: false,
+    styles: LabelSelectStyles,
+    placeholder: 'Search labels',
     onChange: handleChange,
     onCreateOption: handleCreate,
-    styles: LabelSelectStyles,
     options,
     value: values,
+    isCreatable,
   };
 
+  const [isPopoverOpen, togglePopover] = useToggle();
+
   return (
-    <label>
-      Labels
-      {isCreatable ? <CreatableSelect {...selectProps} /> : <Select {...selectProps} />}
-    </label>
+    <Popover
+      isOpen={isPopoverOpen}
+      onClickOutside={togglePopover} // handle click events outside of the popover/target here!
+      content={
+        <>
+          <h3>Filter by label</h3>
+          {/* type button to prevent submitting when inside form */}
+          <button type="button" onClick={togglePopover}>
+            X
+          </button>
+          <Select {...selectProps} />
+        </>
+      }
+    >
+      <button type="button" onClick={togglePopover}>
+        Labels
+      </button>
+    </Popover>
   );
 };
-
-export default LabelSelect;

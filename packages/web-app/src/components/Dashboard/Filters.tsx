@@ -10,9 +10,9 @@ import {
 import { LabelSortOption } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
 import FilterInput from '../Inputs/FilterInput';
-import CategorySelect from '../Selects/CategorySelect';
-import LabelSelect from '../Selects/LabelSelect';
-import SortSelect from '../Selects/SortSelect';
+import { CategorySelect } from '../Selects/CategorySelect/';
+import { LabelSelect } from '../Selects/LabelSelect';
+import { SortSelect } from '../Selects/SortSelect/';
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -36,7 +36,6 @@ const Filters = () => {
       {/* categories */}
       <CategorySelect
         selectedCategoryName={filters.category}
-        isClearable={true}
         onChange={category => {
           setFilters({ ...filters, category });
           dispatch(setItemsCategoryFilter(category));
@@ -57,7 +56,6 @@ const Filters = () => {
       <LabelSelect
         labelIds={filters.labels}
         onChange={labelIds => dispatch(setItemsLabelsFilter(labelIds))}
-        isClearable
       />
     </section>
   );

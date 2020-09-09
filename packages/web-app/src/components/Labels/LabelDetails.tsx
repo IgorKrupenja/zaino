@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
 import { setItemsLabelsFilter } from '../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../state/slices/labels';
-import PopoverContainer from '../misc/PopoverContainer';
+import { Popover } from '../misc/Popover';
 import LabelForm from './LabelForm';
 
 const LabelDetails = (label: Label) => {
   const dispatch = useDispatch();
   const [isFormOpen, toggleForm] = useToggle();
   const [name, setName] = useState(label.name);
+  const [isPopoverOpen, togglePopover] = useToggle();
 
   // extracted from render for clarity
   let nameElement: React.ReactNode;
@@ -38,11 +39,20 @@ const LabelDetails = (label: Label) => {
         </span>
       ) : null}
       {!isFormOpen && <button onClick={toggleForm}>Edit</button>}
-      <PopoverContainer
-        heading="Delete label?"
-        text="Deleting a label will remove it from all items. There is no undo."
-        buttonAction={() => dispatch(deleteLabel(label.id))}
-      />
+      <Popover
+        isOpen={isPopoverOpen}
+        onClickOutside={togglePopover}
+        content={
+          <>
+            <h3>Delete label?</h3>
+            <button onClick={togglePopover}>X</button>
+            <p>Deleting a label will remove it from all items. There is no undo.</p>
+            <button onClick={() => dispatch(deleteLabel(label.id))}>Delete</button>
+          </>
+        }
+      >
+        <button onClick={togglePopover}>Delete</button>
+      </Popover>
       {isFormOpen && (
         <LabelForm
           label={label}

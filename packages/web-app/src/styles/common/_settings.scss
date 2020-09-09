@@ -3,8 +3,7 @@
 $dark-grey: #333;
 $off-white: #f7f7f7;
 
-// re-assign shared variables passed with additionalData
-// this is needed to get color Intellisense in SCSS
+// re-assign variables imported from TS in WebPack -- needed to get color Intellisense in SCSS
 $light-blue: $light-blue-shared;
 $blue: $blue-shared;
 $red: $red-shared;
@@ -22,8 +21,15 @@ $font-size-large: 1.8rem;
 $font-size-small: 1.4rem;
 
 // Spacing
+$xs-size: 0.6rem;
 $s-size: 1.2rem;
 $m-size: 1.6rem;
 $l-size: 3.2rem;
 $xl-size: 4.8rem;
 $desktop-breakpoint: 45rem;
+
+// export size variables to use in TS
+:export {
+  // darkGrey: $dark-grey;
+  xsSize: $xs-size;
+}

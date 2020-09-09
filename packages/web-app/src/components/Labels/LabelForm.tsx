@@ -6,7 +6,7 @@ import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
 import FormInput from '../Inputs/FormInput';
-import ColorSelect from '../Selects/ColorSelect';
+import { ColorSelect } from '../Selects/ColorSelect';
 
 type LabelFormProps = {
   label?: Label;

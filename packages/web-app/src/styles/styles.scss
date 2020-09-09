@@ -2,6 +2,8 @@
 @import './common/settings';
 @import './common/base';
 // styles for individual components
+// @import '../components/misc/Dropdown/style.scss';
+// todo move these
 @import './dashboard/dashboard-filters';
 @import './header/header';
 @import './dashboard/dashboard';
@@ -12,3 +14,7 @@
 @import './dashboard/stats';
 @import './misc/category-image';
 @import './misc/loader';
+
+.popover {
+  overflow: unset;
+}

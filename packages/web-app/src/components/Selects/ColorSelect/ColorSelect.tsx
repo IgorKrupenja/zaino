@@ -1,14 +1,14 @@
 import { ColorName, Colors } from '@zaino/shared';
 import React from 'react';
 import Select, { OptionTypeBase, ValueType } from 'react-select';
-import colorSelectStyles from '../../styles/selects/ColorSelect';
+import colorSelectStyles from './style';
 
 type ColorSelectProps = {
   selectedColorName: ColorName;
   onChange: (colorName: ColorName) => void;
 };
 
-const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {
+export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {
   const options = Colors.map(color => ({
     value: color.name,
     label: color.fancyName,
@@ -33,5 +33,3 @@ const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {
     </label>
   );
 };
-
-export default ColorSelect;

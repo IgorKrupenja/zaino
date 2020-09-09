@@ -4,7 +4,6 @@ import useToggle from '../../hooks/useToggle';
 import selectFilteredLabels, { selectLabelCount } from '../../state/selectors/labels';
 import { addLabel, saveSortOrder } from '../../state/slices/labels';
 import { RootState } from '../../state/store';
-import Header from '../Header/Header';
 import LabelFilters from '../Labels/Filters';
 import LabelDetails from '../Labels/LabelDetails';
 import LabelForm from '../Labels/LabelForm';
@@ -19,18 +18,19 @@ const LabelsPage = () => {
   const [isFormOpen, toggleForm] = useToggle();
   const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
 
+  document.title = 'Labels | Zaino';
+
   useEffect(() => {
     dispatch(saveSortOrder(labels));
   }, [labels, dispatch]);
 
   return (
     <>
-      <Header />
-      <main className="labels-page">
-        <LabelFilters />
-        {isLoading ? (
-          <Loader />
-        ) : (
+      <LabelFilters />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <main className="labels-page">
           <section>
             {/* heading */}
             <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
@@ -44,8 +44,8 @@ const LabelsPage = () => {
               ? labels.map(label => <LabelDetails key={label.id} {...label} />)
               : `No ${isFiltering ? '' : 'matching'} labels`}
           </section>
-        )}
-      </main>
+        </main>
+      )}
     </>
   );
 };

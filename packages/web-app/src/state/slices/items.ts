@@ -4,6 +4,7 @@ import deleteDocuments from '../../firebase/deleteDocuments';
 import db from '../../firebase/firebase';
 import processBatchIncrement from '../../firebase/processBatchIncrement';
 import { RootState } from '../store';
+import { decrementItemCount } from './labels';
 
 export const addItem = createAsyncThunk<
   // Return type of the payload creator
@@ -50,10 +51,14 @@ export const batchUpdateItems = createAsyncThunk<void, Item[], { state: RootStat
   }
 );
 
-export const deleteItem = createAsyncThunk<void, string, { state: RootState }>(
+export const deleteItem = createAsyncThunk<void, Item, { state: RootState }>(
   'items/deleteItem',
-  async (id, { getState }) => {
-    await db.collection(`users/${getState().auth.uid}/items`).doc(id).delete();
+  async (item, { getState, dispatch }) => {
+    // also decrement counts for related labels
+    item.labelIds?.forEach(labelId =>
+      dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
+    );
+    await db.collection(`users/${getState().auth.uid}/items`).doc(item.id).delete();
   }
 );
 
@@ -96,7 +101,7 @@ const itemsSlice = createSlice({
     });
     builder.addCase(deleteItem.pending, (state, action) => {
       state.splice(
-        state.findIndex(item => item.id === action.meta.arg),
+        state.findIndex(item => item.id === action.meta.arg.id),
         1
       );
     });
