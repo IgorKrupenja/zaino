@@ -1,6 +1,5 @@
 import chroma from 'chroma-js';
 import { Styles } from 'react-select';
-import cssSettings from '../../../styles/common/_settings.scss';
 import { OptionArguments } from '../ColorSelect/style';
 
 const dot = (color = '#ccc') => ({
@@ -14,20 +13,13 @@ const dot = (color = '#ccc') => ({
     display: 'block',
     marginLeft: 24,
     marginRight: 8,
-    height: 10,
-    width: 10,
+    height: 12,
+    width: 12,
   },
 });
 
 // todo code dupe
 const LabelSelectStyles: Partial<Styles> = {
-  control: styles => ({
-    ...styles,
-    backgroundColor: 'white',
-    minWidth: 240,
-    margin: cssSettings.xsSize,
-  }),
-  menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
   option: (styles, { data, isFocused, isSelected }: OptionArguments) => {
     // todo #00BDFE is temp color (sky)
     const color = chroma(!data.__isNew__ ? data.hexValue : '#00BDFE');
@@ -35,10 +27,8 @@ const LabelSelectStyles: Partial<Styles> = {
       ...styles,
       backgroundColor: isFocused ? color.alpha(0.1).css() : 'white',
       color: data.hexValue,
-      // todo checkbox
-      backgroundImage: isSelected
-        ? 'url("https://storage.googleapis.com/zaino-2e6cf.appspot.com/categories/knife.svg")'
-        : '',
+      // todo need to overwrite
+      backgroundImage: isSelected ? 'url("../../../../images/ui/done.svg")' : '',
       backgroundRepeat: 'no-repeat',
       ':active': {
         backgroundColor: color.alpha(0.3).css(),

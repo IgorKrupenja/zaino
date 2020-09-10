@@ -258,6 +258,8 @@ If you opt to use a separate Firebase project in production, there are some addi
 - Patrick Gillespie for his [Text to ASCII Art Generator](http://patorjk.com/software/taag/).
 - The development community for writing all those blog posts and Stack Overflow answers.
 
+<!-- todo material icons -->
+
 ## License
 
 Zaino is licensed under the [MIT license](LICENSE). However, this does not apply to the images I use in the [live demo](#live-demo). I have purchased these images (from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/)) but obviously do not hold copyright for them and cannot include them in this repository.

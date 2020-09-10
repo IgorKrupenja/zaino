@@ -32,7 +32,7 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable }: LabelSelectProp
         label: label.name,
         hexValue: Colors.find(color => color.name === label.colorName)?.hexValue,
       }))
-      .sort((a, b) => (a.label > b.label ? 1 : -1));
+      .sort((a, b) => (a.label.toLowerCase() > b.label.toLowerCase() ? 1 : -1));
   const [options, setOptions] = useState(prepareOptions(labels));
   // prepare select values based on passed selected labelIds
   // had to use useCallback to prevent prepareValues running on every re-render

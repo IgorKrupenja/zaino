@@ -1,6 +1,7 @@
 import React from 'react';
 import { batch, useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+import Image from '../../images/ui/done.svg';
 import { logout } from '../../state/slices/auth';
 import { resetItemsState } from '../../state/slices/items';
 import { resetLabelsState } from '../../state/slices/labels';
@@ -22,6 +23,7 @@ const Header = () => {
 
   return (
     <header>
+      <Image fill="red" />
       <Link className="header-logo" to="/dashboard"></Link>
       <nav>
         <NavLink to="/dashboard" activeClassName="is-active">

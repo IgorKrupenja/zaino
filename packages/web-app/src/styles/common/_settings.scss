@@ -1,7 +1,8 @@
 // todo remove anything unused
 // Colors
+// dark grey used for text color
 $dark-grey: #333;
-$off-white: #f7f7f7;
+$light-grey: #ccc;
 
 // re-assign variables imported from TS in WebPack -- needed to get color Intellisense in SCSS
 $light-blue: $light-blue-shared;
@@ -30,6 +31,6 @@ $desktop-breakpoint: 45rem;
 
 // export size variables to use in TS
 :export {
-  // darkGrey: $dark-grey;
   xsSize: $xs-size;
+  lightGrey: $light-grey;
 }

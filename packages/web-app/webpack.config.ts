@@ -12,10 +12,8 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 dotenv.config({ path: `../../.env.${process.env.NODE_ENV}` });
 
-const appRoot = 'src';
-
 const config: webpack.Configuration = {
-  entry: [`./${appRoot}/app.tsx`],
+  entry: [`./src/app.tsx`],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -84,6 +82,31 @@ const config: webpack.Configuration = {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        issuer: {
+          // load svg files as React components in TSX files
+          test: /\.tsx$/,
+        },
+        use: ['@svgr/webpack'],
+      },
+      {
+        test: /\.svg$/,
+        issuer: {
+          // load svg files with file loader in SCSS and TS style files
+          test: /(style\.ts|\.scss)$/,
+        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              // output images with proper names to dist/images dir
+              context: path.resolve(__dirname, 'src'),
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -99,8 +122,8 @@ const config: webpack.Configuration = {
       'GCP_STORAGE_URL',
     ]),
     new HtmlWebpackPlugin({
-      template: `${appRoot}/index.html`,
-      favicon: `${appRoot}/images/favicon.png`,
+      template: `src/index.html`,
+      favicon: `src/images/favicon.png`,
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),

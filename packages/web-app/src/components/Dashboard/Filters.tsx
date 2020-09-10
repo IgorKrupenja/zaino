@@ -37,8 +37,15 @@ const Filters = () => {
       <CategorySelect
         selectedCategoryName={filters.category}
         onChange={category => {
-          setFilters({ ...filters, category });
-          dispatch(setItemsCategoryFilter(category));
+          if (category === filters.category) {
+            // reset category filter if user
+            setFilters({ ...filters, category: undefined });
+            dispatch(setItemsCategoryFilter(undefined));
+          } else {
+            // set category filter normally
+            setFilters({ ...filters, category });
+            dispatch(setItemsCategoryFilter(category));
+          }
         }}
       />
       {/* sort */}

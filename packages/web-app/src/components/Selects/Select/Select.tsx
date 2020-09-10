@@ -1,19 +1,11 @@
 import React from 'react';
 import SelectDefault, { Props } from 'react-select';
 import CreatableSelectDefault from 'react-select/creatable';
-
-// type SelectProps = {
-//   isMulti: boolean;
-//   onChange: (newValues: ValueType<LabelSelectOption>) => void;
-//   styles: Partial<Styles>;
-//   value: ValueType<LabelSelectOption>;
-//   placeholder: string;
-//   onCreateOption: (inputValue: string) => void;
-// };
+import SelectStyles from './style';
 
 // todo prop types #267
 export const Select = (props: Props<any>) => {
-  const { isCreatable, ...rest } = props;
+  const { isCreatable, styles, ...rest } = props;
   const mergedProps = {
     autoFocus: true,
     hideSelectedOptions: false,
@@ -21,6 +13,8 @@ export const Select = (props: Props<any>) => {
     components: { IndicatorSeparator: null },
     menuIsOpen: true,
     isClearable: false,
+    // merge default select styles and styles passed as props
+    styles: { ...SelectStyles, ...styles },
     ...rest,
   };
 
