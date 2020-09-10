@@ -64,7 +64,12 @@ export const deleteItem = createAsyncThunk<void, Item, { state: RootState }>(
 
 export const batchDeleteItems = createAsyncThunk<void, Item[], { state: RootState }>(
   'items/batchDeleteItems',
-  async (items, { getState }) => {
+  async (items, { getState, dispatch }) => {
+    items.forEach(item =>
+      item.labelIds?.forEach(labelId =>
+        dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
+      )
+    );
     await deleteDocuments(
       `users/${getState().auth.uid}/items`,
       items.map(item => item.id)

@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { OptionTypeBase, ValueType } from 'react-select';
 import Categories from '../../../constants/Categories';
 import useToggle from '../../../hooks/useToggle';
+import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
+import { PopoverHeading } from '../../misc/PopoverHeading';
 import { Select } from '../Select';
 
 type CategorySelectProps = {
@@ -44,16 +46,14 @@ export const CategorySelect = ({ selectedCategoryName, onChange }: CategorySelec
       onClickOutside={togglePopover}
       content={
         <>
-          <h3>Filter by category</h3>
-          <button type="button" onClick={togglePopover}>
-            X
-          </button>
+          <PopoverHeading text="Filter by category">
+            <CloseButton onClick={togglePopover} />
+          </PopoverHeading>
           <Select
             value={value}
             // todo not decided yet
             // isSearchable={false}
             name="categoryName"
-            components={{ IndicatorSeparator: null }}
             options={options}
             onChange={handleChange}
             placeholder="Search"

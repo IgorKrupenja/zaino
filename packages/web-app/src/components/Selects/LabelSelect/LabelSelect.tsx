@@ -6,7 +6,9 @@ import { v4 as uuid } from 'uuid';
 import useToggle from '../../../hooks/useToggle';
 import { addLabel } from '../../../state/slices/labels';
 import { RootState } from '../../../state/store';
+import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
+import { PopoverHeading } from '../../misc/PopoverHeading';
 import { Select } from '../Select';
 import LabelSelectStyles from './style';
 
@@ -92,6 +94,7 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable }: LabelSelectProp
     options,
     value: values,
     isCreatable,
+    noOptionsMessage: () => 'No matching labels',
   };
 
   const [isPopoverOpen, togglePopover] = useToggle();
@@ -102,11 +105,9 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable }: LabelSelectProp
       onClickOutside={togglePopover} // handle click events outside of the popover/target here!
       content={
         <>
-          <h3>Filter by label</h3>
-          {/* type button to prevent submitting when inside form */}
-          <button type="button" onClick={togglePopover}>
-            X
-          </button>
+          <PopoverHeading text="Filter by label">
+            <CloseButton onClick={togglePopover} />
+          </PopoverHeading>
           <Select {...selectProps} />
         </>
       }

@@ -33,6 +33,17 @@ button:disabled {
   cursor: default;
 }
 
+// input,
+button,
+submit {
+  border: none;
+  background: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
 .is-active {
   font-weight: bold;
 }

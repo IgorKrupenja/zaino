@@ -6,7 +6,9 @@ import { Redirect, useLocation } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
 import { history } from '../../routers/AppRouter';
 import { deleteItem, updateItem } from '../../state/slices/items';
+import { CloseButton } from '../misc/CloseButton';
 import { Popover } from '../misc/Popover';
+import { PopoverHeading } from '../misc/PopoverHeading';
 import ItemForm from './ItemForm';
 
 type LocationState = {
@@ -39,14 +41,15 @@ const EditItemModal = () => {
           dispatch(updateItem({ ...item }));
         }}
       />
-      <button onClick={closeModal}>close</button>
+      <CloseButton onClick={closeModal} />
       <Popover
         isOpen={isPopoverOpen}
         onClickOutside={togglePopover}
         content={
           <>
-            <h3>Delete item?</h3>
-            <button onClick={togglePopover}>X</button>
+            <PopoverHeading text="Delete item?">
+              <CloseButton onClick={togglePopover} />
+            </PopoverHeading>
             <p>
               The item will be deleted from inventory{item.packQuantity > 0 ? ' and pack' : ''}.
               There is no undo.

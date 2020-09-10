@@ -1,5 +1,5 @@
-import chroma from 'chroma-js';
 import { Styles } from 'react-select';
+import settings from '../../../styles/common/_settings.scss';
 import { OptionArguments } from '../ColorSelect/style';
 
 const dot = (color = '#ccc') => ({
@@ -11,50 +11,37 @@ const dot = (color = '#ccc') => ({
     borderRadius: 10,
     content: '" "',
     display: 'block',
-    marginLeft: 24,
+    marginLeft: 22,
     marginRight: 8,
     height: 12,
-    width: 12,
+    minWidth: 12,
   },
 });
 
-// todo code dupe
 const LabelSelectStyles: Partial<Styles> = {
   option: (styles, { data, isFocused, isSelected }: OptionArguments) => {
-    // todo #00BDFE is temp color (sky)
-    const color = chroma(!data.__isNew__ ? data.hexValue : '#00BDFE');
     return {
       ...styles,
-      backgroundColor: isFocused ? color.alpha(0.1).css() : 'white',
-      color: data.hexValue,
-      // todo need to overwrite
-      backgroundImage: isSelected ? 'url("../../../../images/ui/done.svg")' : '',
-      backgroundRepeat: 'no-repeat',
-      ':active': {
-        backgroundColor: color.alpha(0.3).css(),
-      },
       ...dot(data.hexValue),
+      paddingTop: settings.xsSize,
+      paddingBottom: settings.xsSize,
+      backgroundColor: isFocused ? settings.offWhite : 'white',
+      // todo need to overwrite
+      backgroundImage: isSelected ? 'url("../../../../images/ui/check-mark.svg")' : '',
+      backgroundRepeat: 'no-repeat',
+      backgroundPositionY: 'center',
+      backgroundPositionX: '1rem',
+      backgroundSize: settings.lSize,
+      color: data.hexValue,
+      fontSize: settings.sSize,
+      // overflow: 'hidden',
+      // whiteSpace: 'nowrap',
+      cursor: 'pointer',
+      ':active': {
+        backgroundColor: settings.extraLightGrey,
+      },
     };
   },
-  multiValue: (styles, { data }: OptionArguments) => {
-    const color = chroma(data.hexValue);
-    return {
-      ...styles,
-      backgroundColor: color.alpha(0.1).css(),
-    };
-  },
-  multiValueLabel: (styles, { data }: OptionArguments) => ({
-    ...styles,
-    color: data.hexValue,
-  }),
-  multiValueRemove: (styles, { data }: OptionArguments) => ({
-    ...styles,
-    color: data.hexValue,
-    ':hover': {
-      backgroundColor: data.hexValue,
-      color: 'white',
-    },
-  }),
 };
 
 export default LabelSelectStyles;

@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 import { history } from '../../routers/AppRouter';
 import { addItem } from '../../state/slices/items';
+import { CloseButton } from '../misc/CloseButton';
 import ItemForm from './ItemForm';
 
 export const AddItemModal = () => {
@@ -23,7 +24,7 @@ export const AddItemModal = () => {
           dispatch(addItem(item));
         }}
       />
-      <button onClick={closeModal}>close</button>
+      <CloseButton onClick={closeModal} />
     </Modal>
   );
 };

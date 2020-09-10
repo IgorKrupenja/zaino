@@ -1,0 +1,21 @@
+.close-button {
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.close-button__icon {
+  padding-right: 0.1rem;
+
+  height: $l-size;
+  width: $l-size;
+  fill: $light-grey;
+
+  &:hover {
+    fill: $dark-grey;
+  }
+  &:active {
+    fill: $grey;
+  }
+}

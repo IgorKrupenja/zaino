@@ -1,10 +1,22 @@
-// todo remove anything unused
 // Colors
+// for backgrounds and hovers
+$off-white: #f6f6f6;
+// for actives
+$extra-light-grey: #eee;
 // dark grey used for text color
 $dark-grey: #333;
+// including for borders
 $light-grey: #ccc;
+// useful for border hovers
+$mid-grey: #aaa;
 
-// re-assign variables imported from TS in WebPack -- needed to get color Intellisense in SCSS
+// for shadows
+$shadow: rgba($light-grey, 0.8);
+
+$border: 0.1rem $light-grey solid;
+
+// todo note #270
+// re-assign variables imported from Color.ts in WebPack -- needed to get color Intellisense in SCSS
 $light-blue: $light-blue-shared;
 $blue: $blue-shared;
 $red: $red-shared;
@@ -15,6 +27,7 @@ $green: $green-shared;
 $dark-green: $dark-green-shared;
 $brown: $brown-shared;
 $dark-blue: $dark-blue-shared;
+// 666
 $grey: $grey-shared;
 
 // Font sizes
@@ -23,14 +36,24 @@ $font-size-small: 1.4rem;
 
 // Spacing
 $xs-size: 0.6rem;
-$s-size: 1.2rem;
-$m-size: 1.6rem;
-$l-size: 3.2rem;
-$xl-size: 4.8rem;
+$s-size: 1.3rem;
+$m-size: 1.4rem;
+$l-size: 1.8rem;
+$xl-size: 3.2rem;
 $desktop-breakpoint: 45rem;
 
 // export size variables to use in TS
 :export {
   xsSize: $xs-size;
+  sSize: $s-size;
+  lSize: $l-size;
+  xlSize: $xl-size;
+  offWhite: $off-white;
+  extraLightGrey: $extra-light-grey;
   lightGrey: $light-grey;
+  grey: $grey;
+  midGrey: $mid-grey;
+  lightBlue: $light-blue;
+  shadow: $shadow;
+  border: $border;
 }

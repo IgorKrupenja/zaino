@@ -3,7 +3,9 @@ import { OptionTypeBase, ValueType } from 'react-select';
 import useToggle from '../../../hooks/useToggle';
 import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
+import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
+import { PopoverHeading } from '../../misc/PopoverHeading';
 import { Select } from '../Select';
 
 type SortSelectProps = {
@@ -42,13 +44,11 @@ export const SortSelect = ({
       onClickOutside={togglePopover}
       content={
         <>
-          <h3>Sort by</h3>
-          <button type="button" onClick={togglePopover}>
-            X
-          </button>
+          <PopoverHeading text="Sort by">
+            <CloseButton onClick={togglePopover} />
+          </PopoverHeading>
           <Select
             value={value}
-            // defaultValue={value}
             name="sortBy"
             options={options}
             onChange={handleChange}
