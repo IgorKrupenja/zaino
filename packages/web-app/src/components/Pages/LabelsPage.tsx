@@ -37,7 +37,12 @@ const LabelsPage = () => {
             {/* add label */}
             <button onClick={toggleForm}>Add label</button>
             {isFormOpen && (
-              <LabelForm onSubmit={label => dispatch(addLabel(label))} toggleForm={toggleForm} />
+              <LabelForm
+                // lastSortIndex to keep newly-created label at the top of the list
+                // if sorting by name
+                onSubmit={label => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
+                toggleForm={toggleForm}
+              />
             )}
             {/* label list */}
             {labels.length > 0
