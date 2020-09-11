@@ -1,7 +1,12 @@
 import { ColorName, Colors } from '@zaino/shared';
-import React from 'react';
-import Select, { OptionTypeBase, ValueType } from 'react-select';
-import colorSelectStyles from './style';
+import React, { useState } from 'react';
+import { OptionTypeBase, ValueType } from 'react-select';
+import useToggle from '../../../hooks/useToggle';
+import { CloseButton } from '../../misc/CloseButton';
+import { Popover } from '../../misc/Popover';
+import { PopoverHeading } from '../../misc/PopoverHeading';
+import { Select } from '../Select';
+import styles from './style';
 
 type ColorSelectProps = {
   selectedColorName: ColorName;
@@ -14,22 +19,42 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
     label: color.fancyName,
     hexValue: color.hexValue,
   }));
+  const [value, setValue] = useState<ValueType<OptionTypeBase>>(
+    options.find(color => color.value === selectedColorName)
+  );
   const handleChange = (newValue: ValueType<OptionTypeBase>) => {
-    onChange((newValue as OptionTypeBase)?.label);
+    console.log(newValue);
+    togglePopover();
+    setValue(newValue);
+    onChange((newValue as OptionTypeBase)?.value);
   };
 
+  const [isPopoverOpen, togglePopover] = useToggle();
+
   return (
-    <label>
-      Color
-      <Select
-        className="single-select"
-        isSearchable={false}
-        defaultValue={options.find(color => color.value === selectedColorName)}
-        name="categoryName"
-        options={options}
-        styles={colorSelectStyles}
-        onChange={handleChange}
-      />
-    </label>
+    <Popover
+      isOpen={isPopoverOpen}
+      onClickOutside={togglePopover}
+      content={
+        <>
+          <PopoverHeading text="Select color">
+            <CloseButton onClick={togglePopover} />
+          </PopoverHeading>
+          <Select
+            className="single-select"
+            value={value}
+            name="categoryName"
+            options={options}
+            styles={styles}
+            onChange={handleChange}
+            components={{ IndicatorSeparator: null, Control: () => null }}
+          />
+        </>
+      }
+    >
+      <button type="button" onClick={togglePopover}>
+        Color
+      </button>
+    </Popover>
   );
 };

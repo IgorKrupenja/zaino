@@ -7,6 +7,7 @@ export type settings = {
   lightGrey: string;
   grey: string;
   midGrey: string;
+  darkGrey: string;
   lightBlue: string;
   offWhite: string;
   extraLightGrey: string;

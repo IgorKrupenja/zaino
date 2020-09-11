@@ -7,6 +7,7 @@ import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
 import { PopoverHeading } from '../../misc/PopoverHeading';
 import { Select } from '../Select';
+import styles from './style';
 
 type SortSelectProps = {
   sortOptions: typeof LabelSortOption | typeof ItemSortOption;
@@ -55,6 +56,7 @@ export const SortSelect = ({
             components={{
               Control: () => null,
             }}
+            styles={styles}
           />
         </>
       }

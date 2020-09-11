@@ -1,46 +1,78 @@
+import { Color } from '@zaino/shared';
 import { Styles } from 'react-select';
 import checkbox from '../../../images/ui/check-mark.svg';
-import settings from '../../../styles/common/_settings.scss';
-import { OptionArguments } from '../ColorSelect/style';
+import styles from '../../../styles/common/_settings.scss';
 
-// todo code dupe
-const SelectStyles: Partial<Styles> = {
-  control: (styles, { isFocused }) => ({
-    ...styles,
-    margin: settings.xsSize,
-    minHeight: settings.xlSize,
-    height: settings.xlSize,
-    width: '30rem',
+// CSS-in-JS is used here as this is the recommended method for react-select
+
+const commonSelectStyles: Partial<Styles> = {
+  control: (base, { isFocused }) => ({
+    ...base,
+    margin: styles.xsSize,
+    minHeight: styles.xlSize,
+    height: styles.xlSize,
     overflow: 'hidden',
-    borderColor: isFocused ? settings.lightBlue : styles.borderColor,
+    borderColor: isFocused ? styles.lightBlue : base.borderColor,
     '&:hover': {
-      borderColor: isFocused ? settings.lightBlue : settings.midGrey,
+      borderColor: isFocused ? styles.lightBlue : styles.midGrey,
     },
   }),
   valueContainer: () => ({
-    paddingLeft: settings.xsSize,
-    fontSize: settings.sSize,
+    paddingLeft: styles.xsSize,
+    fontSize: styles.sSize,
   }),
   menu: () => ({
-    borderTop: settings.border,
-    width: '31.2rem',
+    borderTop: styles.border,
   }),
-  input: styles => ({
-    ...styles,
+  input: base => ({
+    ...base,
   }),
-  noOptionsMessage: styles => ({
-    ...styles,
-    padding: `${settings.xsSize} 0 0 0`,
+  noOptionsMessage: base => ({
+    ...base,
+    padding: `${styles.xsSize} 0 0 0`,
   }),
-  // todo this is overwritten
-  option: (styles, { data, isFocused, isSelected }: OptionArguments) => {
-    return {
-      ...styles,
-      // todo checkbox
-      backgroundImage: isSelected ? `url("${checkbox}")` : '',
-      backgroundRepeat: 'no-repeat',
-    };
-  },
+  option: (base, { isFocused, isSelected }) => ({
+    ...base,
+    backgroundImage: isSelected ? `url("${checkbox as string}")` : '',
+    backgroundRepeat: 'no-repeat',
+    paddingTop: styles.xsSize,
+    paddingBottom: styles.xsSize,
+    paddingLeft: styles.xlSize,
+    backgroundColor: isFocused ? styles.offWhite : 'white',
+    backgroundPositionX: '1rem',
+    backgroundPositionY: 'center',
+    backgroundSize: styles.lSize,
+    fontSize: styles.sSize,
+    color: styles.darkGrey,
+    cursor: 'pointer',
+
+    ':active': {
+      backgroundColor: styles.extraLightGrey,
+    },
+  }),
 };
 
-export default SelectStyles;
+export type OptionStyleArguments = {
+  // for some reason react-select requires this key to be named "data", breaks otherwise
+  data: Color;
+  isFocused?: boolean;
+  isSelected?: boolean;
+};
+
+export const colorDot = (color = styles.lightGrey, marginLeft = '2.2rem') => ({
+  alignItems: 'center',
+  display: 'flex',
+
+  ':before': {
+    backgroundColor: color,
+    borderRadius: '1rem',
+    content: '" "',
+    display: 'block',
+    marginLeft,
+    marginRight: '0.7rem',
+    height: '1.2rem',
+    minWidth: '1.2rem',
+  },
+});
+
+export default commonSelectStyles;

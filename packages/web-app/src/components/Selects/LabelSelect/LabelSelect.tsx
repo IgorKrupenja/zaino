@@ -10,7 +10,7 @@ import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
 import { PopoverHeading } from '../../misc/PopoverHeading';
 import { Select } from '../Select';
-import LabelSelectStyles from './style';
+import styles from './style';
 
 export type LabelSelectOption = {
   value: string;
@@ -87,7 +87,7 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable }: LabelSelectProp
 
   const selectProps = {
     isMulti: true,
-    styles: LabelSelectStyles,
+    styles,
     placeholder: 'Search labels',
     onChange: handleChange,
     onCreateOption: handleCreate,
@@ -102,7 +102,7 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable }: LabelSelectProp
   return (
     <Popover
       isOpen={isPopoverOpen}
-      onClickOutside={togglePopover} // handle click events outside of the popover/target here!
+      onClickOutside={togglePopover}
       content={
         <>
           <PopoverHeading text="Filter by label">

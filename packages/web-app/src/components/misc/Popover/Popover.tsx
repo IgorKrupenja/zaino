@@ -15,9 +15,10 @@ export const Popover = ({ isOpen, onClickOutside, content, children }: PopoverPr
       isOpen={isOpen}
       // styling with containerClassName broken with this component
       containerStyle={defaultContainerStyle}
+      // in seconds
       transitionDuration={0.15}
-      position={['bottom']} // if you'd like, supply an array of preferred positions ordered by priority
-      onClickOutside={onClickOutside} // handle click events outside of the popover/target here!
+      position={['bottom', 'right']}
+      onClickOutside={onClickOutside}
       content={content}
     >
       {children}

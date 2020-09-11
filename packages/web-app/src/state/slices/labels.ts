@@ -64,10 +64,6 @@ export const batchDeleteLabels = createAsyncThunk<void, Label[], { state: RootSt
 // separate variable to annotate type
 const initialState: Label[] = [];
 
-const findLabelIndexById = (state: Label[], id: string) => {
-  return state.findIndex(label => label.id === id);
-};
-
 const labelsSlice = createSlice({
   name: 'labels',
   initialState,
@@ -96,8 +92,8 @@ const labelsSlice = createSlice({
       state,
       action: PayloadAction<{ labelId: string; itemQuantity: number }>
     ) => {
-      const index = findLabelIndexById(state, action.payload.labelId);
       const itemQuantity = action.payload.itemQuantity;
+      const index = state.findIndex(label => label.id === action.payload.labelId);
       const itemUniqueCount = state[index].itemUniqueCount;
       const itemTotalCount = state[index].itemTotalCount;
 
@@ -108,7 +104,7 @@ const labelsSlice = createSlice({
       state,
       action: PayloadAction<{ labelId: string; itemQuantity: number }>
     ) => {
-      const index = findLabelIndexById(state, action.payload.labelId);
+      const index = state.findIndex(label => label.id === action.payload.labelId);
       const itemUniqueCount = state[index].itemUniqueCount;
       const itemTotalCount = state[index].itemTotalCount;
 
@@ -130,7 +126,9 @@ const labelsSlice = createSlice({
     // a label is added/deleted/edited on LabelsPage but so far perf looks good
     saveSortOrder: (state, action: PayloadAction<Label[]>) => {
       action.payload.forEach((filteredLabel, filteredIndex) => {
-        state[findLabelIndexById(state, filteredLabel.id)].lastSortIndex = filteredIndex;
+        console.log(filteredLabel, filteredIndex);
+        const index = state.findIndex(label => label.id === filteredLabel.id);
+        state[index].lastSortIndex = filteredIndex;
       });
     },
     // reset action to be executed on logout

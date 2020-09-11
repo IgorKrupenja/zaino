@@ -39,7 +39,7 @@ $xs-size: 0.6rem;
 $s-size: 1.3rem;
 $m-size: 1.4rem;
 $l-size: 1.8rem;
-$xl-size: 3.2rem;
+$xl-size: 3.3rem;
 $desktop-breakpoint: 45rem;
 
 // export size variables to use in TS
@@ -53,6 +53,7 @@ $desktop-breakpoint: 45rem;
   lightGrey: $light-grey;
   grey: $grey;
   midGrey: $mid-grey;
+  darkGrey: $dark-grey;
   lightBlue: $light-blue;
   shadow: $shadow;
   border: $border;

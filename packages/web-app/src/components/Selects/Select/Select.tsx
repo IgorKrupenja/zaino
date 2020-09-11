@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import SelectDefault, { InputActionMeta, Props } from 'react-select';
-import CreatableSelectDefault from 'react-select/creatable';
-// import SearchIcon from '../../../images/ui/search.svg';
-import SelectStyles from './style';
+import DefaultSelect, { InputActionMeta, mergeStyles, Props } from 'react-select';
+import DefaultCreatableSelect from 'react-select/creatable';
+import commonSelectStyles from './style';
 
+/**
+ * Core select component used in actual re-usable selects.
+ * Provides some core functionality and styles.
+ */
 // todo prop types #267
 export const Select = (props: Props<any>) => {
   const [inputValue, setInputValue] = useState('');
@@ -32,14 +35,14 @@ export const Select = (props: Props<any>) => {
     backspaceRemovesValue: false,
     onInputChange: handleInputChange,
     inputValue,
-    // merge default select styles and styles passed as props
-    styles: { ...SelectStyles, ...styles },
+    // merge common select styles and styles passed as props
+    styles: styles ? mergeStyles(commonSelectStyles, styles) : commonSelectStyles,
     ...rest,
   };
 
   return isCreatable ? (
-    <CreatableSelectDefault {...mergedProps} />
+    <DefaultCreatableSelect {...mergedProps} />
   ) : (
-    <SelectDefault {...mergedProps} />
+    <DefaultSelect {...mergedProps} />
   );
 };
