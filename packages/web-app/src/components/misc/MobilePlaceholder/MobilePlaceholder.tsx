@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryImage from '../CategoryImage';
+import { CategoryImage } from '../CategoryImage';
 import './style.scss';
 
 export const MobilePlaceholder = () => {

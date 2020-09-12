@@ -26,12 +26,3 @@ $opacity: 0.8;
 .button--red:hover {
   background-color: rgba($bright-red, 1);
 }
-
-// todo temp
-
-.popover__container {
-  // background: red;
-  box-shadow: 0 0 0 0.1rem $shadow, 0 0.4rem 1.1rem $shadow;
-  background-color: white;
-  border-radius: $xs-size;
-}

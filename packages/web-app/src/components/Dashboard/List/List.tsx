@@ -1,13 +1,15 @@
 import React, { ReactNode } from 'react';
+import './style.scss';
 
 type ListProps = {
   title: string;
+  // todo perhaps rename is empty and move part of the logic to inv/pack
   filteredItemCount: number;
   allItemCount: number;
   children?: ReactNode;
 };
 
-const List = ({ filteredItemCount, allItemCount, title, children }: ListProps) => {
+export const List = ({ filteredItemCount, allItemCount, title, children }: ListProps) => {
   let emptyString = '';
 
   if (allItemCount === 0) {
@@ -23,5 +25,3 @@ const List = ({ filteredItemCount, allItemCount, title, children }: ListProps) =
     </div>
   );
 };
-
-export default List;

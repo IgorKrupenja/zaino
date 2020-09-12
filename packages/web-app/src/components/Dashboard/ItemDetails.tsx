@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setItemsCategoryFilter, setItemsLabelsFilter } from '../../state/slices/itemsFilters';
 import { RootState } from '../../state/store';
-import CategoryImage from '../misc/CategoryImage';
+import { CategoryImage } from '../misc/CategoryImage';
 
 type ListItemProps = {
   item: Item;

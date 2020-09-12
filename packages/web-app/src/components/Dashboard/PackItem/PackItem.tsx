@@ -1,10 +1,11 @@
 import { Item } from '@zaino/shared/';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateItem } from '../../state/slices/items';
-import ItemDetails from './ItemDetails';
+import { updateItem } from '../../../state/slices/items';
+import ItemDetails from '../ItemDetails';
+import './style.scss';
 
-const PackListItem = (item: Item) => {
+export const PackItem = (item: Item) => {
   const dispatch = useDispatch();
   const [packQuantity, setPackQuantity] = useState(item.packQuantity);
 
@@ -45,5 +46,3 @@ const PackListItem = (item: Item) => {
     />
   );
 };
-
-export default PackListItem;

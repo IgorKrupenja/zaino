@@ -1,10 +1,11 @@
 import { Item } from '@zaino/shared/';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { updateItem } from '../../state/slices/items';
-import ItemDetails from './ItemDetails';
+import { updateItem } from '../../../state/slices/items';
+import ItemDetails from '../ItemDetails';
+import './style.scss';
 
-const InventoryListItem = (item: Item) => {
+export const InventoryItem = (item: Item) => {
   const dispatch = useDispatch();
   return (
     <ItemDetails
@@ -22,5 +23,3 @@ const InventoryListItem = (item: Item) => {
     />
   );
 };
-
-export default InventoryListItem;

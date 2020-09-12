@@ -1,13 +1,3 @@
 // common, settings and base -- these are used across several React components
 @import './common/settings';
 @import './common/base';
-// styles for individual components
-// todo
-@import './dashboard/dashboard-filters';
-@import './header/header';
-@import './dashboard/dashboard';
-@import './dashboard/list';
-@import './dashboard/inventory';
-@import './dashboard/pack';
-@import './misc/category-image';
-@import './misc/loader';

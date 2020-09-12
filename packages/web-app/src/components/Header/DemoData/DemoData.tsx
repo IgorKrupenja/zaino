@@ -1,20 +1,21 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import Popover from 'react-tiny-popover';
-import copyCollection from '../../firebase/copyCollection';
-import useToggle from '../../hooks/useToggle';
-import { selectDemoItems } from '../../state/selectors/items';
-import { selectDemoLabels } from '../../state/selectors/labels';
-import { loadDemoData, setIsLoading } from '../../state/slices/dataLoader';
-import { batchDeleteItems } from '../../state/slices/items';
-import { batchDeleteLabels } from '../../state/slices/labels';
-import { RootState } from '../../state/store';
-import { Button } from '../misc/Button';
-import { CloseButton } from '../misc/CloseButton';
-import { Popover } from '../misc/Popover';
-import { PopoverHeader } from '../misc/PopoverHeader';
+import copyCollection from '../../../firebase/copyCollection';
+import useToggle from '../../../hooks/useToggle';
+import { selectDemoItems } from '../../../state/selectors/items';
+import { selectDemoLabels } from '../../../state/selectors/labels';
+import { loadDemoData, setIsLoading } from '../../../state/slices/dataLoader';
+import { batchDeleteItems } from '../../../state/slices/items';
+import { batchDeleteLabels } from '../../../state/slices/labels';
+import { RootState } from '../../../state/store';
+import { Button } from '../../misc/Button';
+import { CloseButton } from '../../misc/CloseButton';
+import { Popover } from '../../misc/Popover';
+import { PopoverHeader } from '../../misc/PopoverHeader';
+import './style.scss';
 
-const DemoData = () => {
+export const DemoData = () => {
   const uid = useSelector((state: RootState) => state.auth.uid);
   const dispatch = useDispatch();
   const demoItems = useSelector((state: RootState) => selectDemoItems(state));
@@ -84,5 +85,3 @@ const DemoData = () => {
     </section>
   );
 };
-
-export default DemoData;

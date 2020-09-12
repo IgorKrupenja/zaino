@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
 import getArrayDifference from '../../utils/getArrayDifference';
 import { Input } from '../Input/';
-import CategoryImage from '../misc/CategoryImage';
+import { CategoryImage } from '../misc/CategoryImage';
 import { TextArea } from '../misc/TextArea';
 import { CategorySelect } from '../Selects/CategorySelect/';
 import { LabelSelect } from '../Selects/LabelSelect/LabelSelect';

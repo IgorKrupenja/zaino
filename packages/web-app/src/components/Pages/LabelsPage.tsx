@@ -7,7 +7,7 @@ import { RootState } from '../../state/store';
 import LabelFilters from '../Labels/Filters';
 import LabelDetails from '../Labels/LabelDetails';
 import LabelForm from '../Labels/LabelForm';
-import Loader from '../misc/Loader';
+import { Loader } from '../misc/Loader';
 
 const LabelsPage = () => {
   const dispatch = useDispatch();

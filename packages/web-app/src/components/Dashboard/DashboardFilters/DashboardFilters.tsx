@@ -6,15 +6,16 @@ import {
   setItemsLabelsFilter,
   setItemsTextFilter,
   sortItemsBy,
-} from '../../state/slices/itemsFilters';
-import { LabelSortOption } from '../../state/slices/labelsFilters';
-import { RootState } from '../../state/store';
-import { Input } from '../Input';
-import { CategorySelect } from '../Selects/CategorySelect/';
-import { LabelSelect } from '../Selects/LabelSelect';
-import { SortSelect } from '../Selects/SortSelect/';
+} from '../../../state/slices/itemsFilters';
+import { LabelSortOption } from '../../../state/slices/labelsFilters';
+import { RootState } from '../../../state/store';
+import { Input } from '../../Input';
+import { CategorySelect } from '../../Selects/CategorySelect';
+import { LabelSelect } from '../../Selects/LabelSelect';
+import { SortSelect } from '../../Selects/SortSelect';
+import './style.scss';
 
-const Filters = () => {
+export const DashboardFilters = () => {
   const dispatch = useDispatch();
   // better name?
   const selectedFilters = useSelector((state: RootState) => state.itemsFilters);
@@ -23,8 +24,8 @@ const Filters = () => {
   // set filters if changed externally by clicking on label/category inside ItemDetails
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
+  // prevent UI freezes when typing in name filter
   useEffect(() => {
-    // setTimeout prevents UI freezes when typing
     const textFilterTimeout = setTimeout(() => dispatch(setItemsTextFilter(filters.text)), 200);
     return () => clearTimeout(textFilterTimeout);
   }, [filters.text, dispatch]);
@@ -78,5 +79,3 @@ const Filters = () => {
     </section>
   );
 };
-
-export default Filters;

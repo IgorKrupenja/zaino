@@ -1,11 +1,12 @@
 import React from 'react';
-import Categories from '../../constants/Categories';
+import Categories from '../../../constants/Categories';
+import './style.scss';
 
 type CategoryImageProps = {
   categoryName: string;
 };
 
-const CategoryImage = ({ categoryName }: CategoryImageProps) => {
+export const CategoryImage = ({ categoryName }: CategoryImageProps) => {
   const imageFileName = Categories.find(category => {
     return category.name === categoryName;
   })?.imageFileName as string;
@@ -17,5 +18,3 @@ const CategoryImage = ({ categoryName }: CategoryImageProps) => {
     />
   );
 };
-
-export default CategoryImage;

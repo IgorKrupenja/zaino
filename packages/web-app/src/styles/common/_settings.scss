@@ -17,7 +17,7 @@ $shadow: rgba($light-grey, 0.8);
 
 $border: 0.1rem $light-grey solid;
 
-// todo note #270
+// todo this is ugly, see #270
 // re-assign variables imported from Color.ts in WebPack -- needed to get color Intellisense in SCSS
 $light-blue: $light-blue-shared;
 $blue: $blue-shared;
@@ -39,6 +39,10 @@ $m-size: 1.4rem;
 $l-size: 1.8rem;
 $xl-size: 3.3rem;
 $desktop-breakpoint: 45rem;
+
+// todo maybe rethink this
+$header-height: 2 * $xl-size;
+$list-filters-height: 2 * $xl-size;
 
 // Font sizes
 $font-size-small: $s-size;

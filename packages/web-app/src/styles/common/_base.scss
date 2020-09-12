@@ -1,5 +1,3 @@
-// todo remove anything unused
-
 // needed for overflow scroll to work on Dashboard
 html,
 body,
@@ -20,19 +18,19 @@ body {
   line-height: 1.6;
 }
 
+// input,
+button,
+submit {
+  border: none;
+  background: none;
+}
+
 button {
   cursor: pointer;
 }
 
 button:disabled {
   cursor: default;
-}
-
-// input,
-button,
-submit {
-  border: none;
-  background: none;
 }
 
 button:focus {

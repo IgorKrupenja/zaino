@@ -1,14 +1,15 @@
 import React from 'react';
 import { batch, useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { logout } from '../../state/slices/auth';
-import { resetItemsState } from '../../state/slices/items';
-import { resetLabelsState } from '../../state/slices/labels';
-import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
-import { RootState } from '../../state/store';
-import DemoData from './DemoData';
+import { logout } from '../../../state/slices/auth';
+import { resetItemsState } from '../../../state/slices/items';
+import { resetLabelsState } from '../../../state/slices/labels';
+import { LabelSortOption, sortLabelsBy } from '../../../state/slices/labelsFilters';
+import { RootState } from '../../../state/store';
+import { DemoData } from '../DemoData';
+import './style.scss';
 
-const Header = () => {
+export const Header = () => {
   const dispatch = useDispatch();
   const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
   const handleLogout = () => {
@@ -45,5 +46,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

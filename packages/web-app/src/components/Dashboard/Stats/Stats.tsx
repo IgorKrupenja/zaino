@@ -1,20 +1,25 @@
 import React from 'react';
+import './style.scss';
 
-type Stats = {
-  weight: number;
-  percentageOfTotal: number;
-  allItemUniqueCount: number;
-  filteredItemTotalCount: number;
-  filteredItemUniqueCount: number;
+type StatsProps = {
+  stats: {
+    weight: number;
+    percentageOfTotal: number;
+    allItemUniqueCount: number;
+    filteredItemTotalCount: number;
+    filteredItemUniqueCount: number;
+  };
 };
 
-const Stats = ({
-  weight,
-  percentageOfTotal,
-  allItemUniqueCount,
-  filteredItemTotalCount,
-  filteredItemUniqueCount,
-}: Stats) => {
+export const Stats = ({ stats }: StatsProps) => {
+  const {
+    weight,
+    percentageOfTotal,
+    allItemUniqueCount,
+    filteredItemTotalCount,
+    filteredItemUniqueCount,
+  } = stats;
+
   if (allItemUniqueCount === 0) {
     return null;
   } else if (filteredItemUniqueCount === 0) {
@@ -28,5 +33,3 @@ const Stats = ({
     );
   }
 };
-
-export default Stats;

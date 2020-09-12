@@ -34,10 +34,13 @@ const EditItemModal = () => {
 
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
+      {/* todo possibly a common component */}
+      {/* header */}
       <h2>
         {title}
         <CloseButton onClick={closeModal} />
       </h2>
+      {/* item form */}
       <ItemForm
         item={item}
         onSubmit={(item: Item) => {
@@ -47,36 +50,36 @@ const EditItemModal = () => {
         setTitle={setTitle}
       >
         <Button submit>Save changes</Button>
+        {/* delete button with popover */}
+        <Popover
+          isOpen={isPopoverOpen}
+          onClickOutside={togglePopover}
+          content={
+            <>
+              <PopoverHeader text="Delete item?">
+                <CloseButton onClick={togglePopover} />
+              </PopoverHeader>
+              <p>
+                The item will be deleted from inventory{item.packQuantity > 0 ? ' and pack' : ''}.
+                There is no undo.
+              </p>
+              <Button
+                className="button--red"
+                onClick={() => {
+                  closeModal();
+                  dispatch(deleteItem(item));
+                }}
+              >
+                Delete
+              </Button>
+            </>
+          }
+        >
+          <Button className="button--red" onClick={togglePopover}>
+            Delete
+          </Button>
+        </Popover>
       </ItemForm>
-      {/* delete button with popover */}
-      <Popover
-        isOpen={isPopoverOpen}
-        onClickOutside={togglePopover}
-        content={
-          <>
-            <PopoverHeader text="Delete item?">
-              <CloseButton onClick={togglePopover} />
-            </PopoverHeader>
-            <p>
-              The item will be deleted from inventory{item.packQuantity > 0 ? ' and pack' : ''}.
-              There is no undo.
-            </p>
-            <Button
-              className="button--red"
-              onClick={() => {
-                closeModal();
-                dispatch(deleteItem(item));
-              }}
-            >
-              Delete
-            </Button>
-          </>
-        }
-      >
-        <Button className="button--red" onClick={togglePopover}>
-          Delete
-        </Button>
-      </Popover>
     </Modal>
   );
 };
