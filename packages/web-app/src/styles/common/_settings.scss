@@ -9,6 +9,8 @@ $dark-grey: #333;
 $light-grey: #ccc;
 // useful for border hovers
 $mid-grey: #aaa;
+// delete buttons etc
+$bright-red: #e20000;
 
 // for shadows
 $shadow: rgba($light-grey, 0.8);
@@ -30,10 +32,6 @@ $dark-blue: $dark-blue-shared;
 // 666
 $grey: $grey-shared;
 
-// Font sizes
-$font-size-large: 1.8rem;
-$font-size-small: 1.4rem;
-
 // Spacing
 $xs-size: 0.6rem;
 $s-size: 1.3rem;
@@ -42,12 +40,18 @@ $l-size: 1.8rem;
 $xl-size: 3.3rem;
 $desktop-breakpoint: 45rem;
 
+// Font sizes
+$font-size-small: $s-size;
+$font-size-medium: $m-size;
+$font-size-large: 1.8rem;
+
 // export size variables to use in TS
 :export {
   xsSize: $xs-size;
   sSize: $s-size;
   lSize: $l-size;
   xlSize: $xl-size;
+  fontSizeSmall: $s-size;
   offWhite: $off-white;
   extraLightGrey: $extra-light-grey;
   lightGrey: $light-grey;

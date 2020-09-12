@@ -9,9 +9,13 @@ header {
 }
 
 .header-logo {
-  // todo should be var
-  background: #038759;
+  background: $dark-green;
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
+}
+
+// todo maybe not bold
+.nav__link--active {
+  font-weight: bold;
 }

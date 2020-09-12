@@ -69,8 +69,8 @@ Already have some document or spreadsheet with your hiking/climbing/running gear
 
 ### 0.2.0
 
-- **Create a mobile-friendly app version**. Yeah, I know, not having a mobile version sucks. Work in progress. 🏃‍♂️
 - Learn more about unit testing React and create unit tests.
+- **Create a mobile-friendly app version**. Yeah, I know, not having a mobile version sucks.
 - Create a proper app logo.
 
 ## Changelog

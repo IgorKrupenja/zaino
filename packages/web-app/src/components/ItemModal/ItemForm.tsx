@@ -1,8 +1,6 @@
 import { Item } from '@zaino/shared/';
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { v4 as uuid } from 'uuid';
-import Categories from '../../constants/Categories';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
 import getArrayDifference from '../../utils/getArrayDifference';
 import { Input } from '../Input/';
@@ -12,21 +10,14 @@ import { CategorySelect } from '../Selects/CategorySelect/';
 import { LabelSelect } from '../Selects/LabelSelect/LabelSelect';
 
 type ItemFormProps = {
-  item?: Item;
+  item: Item;
   onSubmit: (item: Item) => void;
+  setTitle?: (title: string) => void;
+  children: ReactNode;
 };
 
-const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
-  const newItem: Item = {
-    id: uuid(),
-    name: '',
-    categoryName: Categories[0].name,
-    weight: '',
-    quantity: 1,
-    packQuantity: 0,
-    addedAt: '',
-  };
-  const [values, setValues] = useState(item ?? newItem);
+const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
+  const [values, setValues] = useState(item);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
   // used in onFormSubmit to set label item counts
   const initialLabelIds = useRef(values.labelIds).current;
@@ -36,12 +27,18 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     e.persist();
-    const name = e.target.name;
-    const value: string = e.target.value;
-    if ((name === 'quantity' || name === 'weight') && !value.match(/^[0-9]+$|^$/g)) {
+    const propertyName = e.target.name;
+    const propertyValue = e.target.value;
+    // set modal title if editing item
+    if (propertyName === 'name' && setTitle) setTitle(propertyValue);
+    // only allow numbers or empty string
+    if (
+      (propertyName === 'quantity' || propertyName === 'weight') &&
+      !propertyValue.match(/^[0-9]+$|^$/g)
+    ) {
       return;
     }
-    setValues({ ...values, [name]: value });
+    setValues({ ...values, [propertyName]: propertyValue });
   };
 
   const validateForm = () => {
@@ -92,8 +89,6 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/* todo */}
-        {/* {values.name} */}
         <Input
           title="Name"
           value={values.name}
@@ -115,13 +110,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
           onChange={e => handleChange(e)}
           error={errors.quantity}
         />
-        {/* notes */}
-        <TextArea
-          title="Notes"
-          name="notes"
-          value={values.notes}
-          onChange={handleChange}
-        ></TextArea>
+        <TextArea title="Notes" name="notes" value={values.notes} onChange={handleChange} />
         <LabelSelect
           labelIds={values.labelIds}
           headerText="Select labels"
@@ -133,7 +122,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
           headerText="Select category"
           onChange={categoryName => setValues({ ...values, categoryName })}
         />
-        <button>Save item</button>
+        {children}
       </form>
       {/* labels and categories moved outside of form as toggling them was broken inside */}
     </>

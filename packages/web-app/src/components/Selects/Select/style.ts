@@ -41,7 +41,7 @@ const commonSelectStyles: Partial<Styles> = {
     backgroundPositionX: '1rem',
     backgroundPositionY: 'center',
     backgroundSize: styles.lSize,
-    fontSize: styles.sSize,
+    fontSize: styles.fontSizeSmall,
     color: styles.darkGrey,
     cursor: 'pointer',
 

@@ -24,7 +24,7 @@ const Header = () => {
     <header>
       <Link className="header-logo" to="/dashboard"></Link>
       <nav>
-        <NavLink to="/dashboard" activeClassName="is-active">
+        <NavLink to="/dashboard" activeClassName="nav__link--active">
           Dashboard
         </NavLink>
         <NavLink
@@ -35,7 +35,7 @@ const Header = () => {
             labelSortOption === LabelSortOption.lastSortOrder &&
             dispatch(sortLabelsBy(LabelSortOption.name))
           }
-          activeClassName="is-active"
+          activeClassName="nav__link--active"
         >
           Labels
         </NavLink>

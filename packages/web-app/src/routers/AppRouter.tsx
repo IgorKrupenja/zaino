@@ -4,7 +4,7 @@ import Media from 'react-media';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import Header from '../components/Header/Header';
-import CategoryImage from '../components/misc/CategoryImage';
+import { MobilePlaceholder } from '../components/misc/MobilePlaceholder';
 import DashboardPage from '../components/Pages/DashboardPage';
 import LabelsPage from '../components/Pages/LabelsPage';
 import LoginPage from '../components/Pages/LoginPage';
@@ -20,20 +20,10 @@ const AppRouter = () => {
 
   return (
     <Router history={history}>
-      {/* todo temporary mobile placeholder until #174 is implemented */}
       <Media queries={{ small: { maxWidth: 599 } }}>
         {matches =>
           matches.small ? (
-            <main>
-              <CategoryImage categoryName="Miscellaneous" />
-              <h1>No mobile version yet :(</h1>
-              <p>
-                Thank you for your interest in accessing Zaino on mobile! Unfortunately, the mobile
-                version of the app is still a work in progress. Check{' '}
-                <a href="https://github.com/krupenja/zaino/issues/174">this Github issue</a> for
-                updates.
-              </p>
-            </main>
+            <MobilePlaceholder />
           ) : (
             <Switch>
               <Route path="/" component={LoginPage} exact />

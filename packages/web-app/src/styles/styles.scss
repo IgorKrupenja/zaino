@@ -2,12 +2,10 @@
 @import './common/settings';
 @import './common/base';
 // styles for individual components
-// @import '../components/misc/Dropdown/style.scss';
-// todo move these
+// todo
 @import './dashboard/dashboard-filters';
 @import './header/header';
 @import './dashboard/dashboard';
-@import './pages/labels-page';
 @import './dashboard/list';
 @import './dashboard/inventory';
 @import './dashboard/pack';

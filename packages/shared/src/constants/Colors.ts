@@ -31,7 +31,7 @@ export const Colors: Color[] = [
   { name: 'yellow', fancyName: 'Beach', hexValue: '#ECB500' },
   { name: 'purple', fancyName: 'Flower', hexValue: '#DE67B6' },
   { name: 'green', fancyName: 'Grass', hexValue: '#5DBF08' },
-  { name: 'dark-green', fancyName: 'Forest', hexValue: '#00875A' },
+  { name: 'dark-green', fancyName: 'Forest', hexValue: '#008300' },
   { name: 'brown', fancyName: 'Mountain', hexValue: '#7C4A35' },
   { name: 'dark-blue', fancyName: 'Storm', hexValue: '#253858' },
   { name: 'grey', fancyName: 'Winter', hexValue: '#666666' },

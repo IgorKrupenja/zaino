@@ -1,0 +1,37 @@
+$opacity: 0.8;
+
+.button {
+  color: white;
+  height: $xl-size;
+  padding: 0 $s-size 0 $s-size;
+  font-weight: 500;
+  position: relative;
+  background-color: rgba($dark-green, $opacity);
+  border: 0.1rem solid rgba($dark-grey, 0.4);
+  border-radius: $xs-size;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: rgba($dark-green, 1);
+  }
+  &:disabled {
+    // background: #000;
+  }
+}
+
+.button--red {
+  background-color: rgba($bright-red, $opacity);
+}
+
+.button--red:hover {
+  background-color: rgba($bright-red, 1);
+}
+
+// todo temp
+
+.popover__container {
+  // background: red;
+  box-shadow: 0 0 0 0.1rem $shadow, 0 0.4rem 1.1rem $shadow;
+  background-color: white;
+  border-radius: $xs-size;
+}

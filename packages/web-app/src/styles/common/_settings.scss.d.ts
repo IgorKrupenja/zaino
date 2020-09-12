@@ -4,6 +4,7 @@ export type settings = {
   sSize: string;
   lSize: string;
   xlSize: string;
+  fontSizeSmall: string;
   lightGrey: string;
   grey: string;
   midGrey: string;

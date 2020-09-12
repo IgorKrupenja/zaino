@@ -1,16 +1,11 @@
 // todo remove anything unused
 
-* {
-  box-sizing: border-box;
-}
-
 // needed for overflow scroll to work on Dashboard
 html,
 body,
 #app {
   height: 100%;
   margin: 0;
-  // background-color: $brown;
 }
 
 html {
@@ -20,8 +15,8 @@ html {
 
 body {
   color: $dark-grey;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: $m-size;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: $font-size-medium;
   line-height: 1.6;
 }
 
@@ -42,8 +37,4 @@ submit {
 
 button:focus {
   outline: 0;
-}
-
-.is-active {
-  font-weight: bold;
 }
