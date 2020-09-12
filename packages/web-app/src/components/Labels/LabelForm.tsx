@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import FormInput from '../Inputs/FormInput';
+import { Input } from '../Input/';
 import { ColorSelect } from '../Selects/ColorSelect';
 
 type LabelFormProps = {
@@ -53,9 +53,11 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
       {/* show label name preview if adding a new label */}
       {!label && <span>{values.name ? values.name : 'Label preview'}</span>}
       <form onSubmit={handleSubmit}>
-        <FormInput
-          name={values.name}
-          errorText={nameError}
+        <Input
+          title="Name"
+          value={values.name}
+          error={nameError}
+          autoFocus
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             e.persist();
             const name = e.target.value;

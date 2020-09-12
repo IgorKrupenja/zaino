@@ -11,10 +11,5 @@
 @import './dashboard/list';
 @import './dashboard/inventory';
 @import './dashboard/pack';
-@import './dashboard/stats';
 @import './misc/category-image';
 @import './misc/loader';
-
-.popover {
-  overflow: unset;
-}

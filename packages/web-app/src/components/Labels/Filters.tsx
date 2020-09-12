@@ -6,7 +6,7 @@ import {
   sortLabelsBy,
 } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import FilterInput from '../Inputs/FilterInput';
+import { Input } from '../Input';
 import { SortSelect } from '../Selects/SortSelect/';
 
 const LabelFilters = () => {
@@ -28,7 +28,13 @@ const LabelFilters = () => {
 
   return (
     <section className="label-filters">
-      <FilterInput onTextChange={text => setFilters({ ...filters, text })} text={filters.text} />
+      <Input
+        onChange={e => {
+          e.persist();
+          setFilters({ ...filters, text: e.target.value });
+        }}
+        value={filters.text}
+      />
       <SortSelect
         sortOptions={LabelSortOption}
         selectedOption={filters.sortBy}

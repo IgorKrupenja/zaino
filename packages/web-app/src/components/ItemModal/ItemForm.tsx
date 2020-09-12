@@ -5,8 +5,9 @@ import { v4 as uuid } from 'uuid';
 import Categories from '../../constants/Categories';
 import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
 import getArrayDifference from '../../utils/getArrayDifference';
-import FormInput from '../Inputs/FormInput';
+import { Input } from '../Input/';
 import CategoryImage from '../misc/CategoryImage';
+import { TextArea } from '../misc/TextArea';
 import { CategorySelect } from '../Selects/CategorySelect/';
 import { LabelSelect } from '../Selects/LabelSelect/LabelSelect';
 
@@ -20,7 +21,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     id: uuid(),
     name: '',
     categoryName: Categories[0].name,
-    weight: 100,
+    weight: '',
     quantity: 1,
     packQuantity: 0,
     addedAt: '',
@@ -35,13 +36,11 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     e.persist();
-
     const name = e.target.name;
     const value: string = e.target.value;
-
-    // allow entering only numbers or empty string
-    if ((name === 'quantity' || name === 'weight') && !value.match(/^[0-9]+$|^$/g)) return;
-
+    if ((name === 'quantity' || name === 'weight') && !value.match(/^[0-9]+$|^$/g)) {
+      return;
+    }
     setValues({ ...values, [name]: value });
   };
 
@@ -50,11 +49,6 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
     const errors = { name: '', weight: '', quantity: '' };
     if (!values.name) {
       errors.name = 'Please enter a name';
-      isFormValid = false;
-    }
-    // allow zero weight for items weighing less than a gram
-    if (values.weight && values.weight < 0) {
-      errors.weight = 'Please enter a non-negative weight or leave empty';
       isFormValid = false;
     }
     if (values.quantity < 1) {
@@ -98,55 +92,42 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {values.name}
-        <FormInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
-        {/* category image */}
+        {/* todo */}
+        {/* {values.name} */}
+        <Input
+          title="Name"
+          value={values.name}
+          onChange={handleChange}
+          error={errors.name}
+          autoFocus
+        />
         <CategoryImage categoryName={values.categoryName} />
-        {/* weight */}
-        <label>
-          <input
-            type="text"
-            name="weight"
-            placeholder="Weight"
-            className={`text-input ${errors.weight && 'text-input__error'}`}
-            value={values.weight}
-            onChange={handleChange}
-          />
-          grams
-        </label>
-        {errors.weight && <span>{errors.weight}</span>}
-        {/* quantity */}
-        <label>
-          Quantity
-          <input
-            type="text"
-            name="quantity"
-            placeholder="Quantity"
-            className={`text-input ${errors.quantity && 'text-input__error'}`}
-            value={values.quantity}
-            onChange={handleChange}
-          />
-        </label>
-        {errors.quantity && <span>{errors.quantity}</span>}
+        <Input
+          title="Weight (grams)"
+          name="weight"
+          value={values.weight}
+          onChange={e => handleChange(e)}
+          error={errors.weight}
+        />
+        <Input
+          title="Quantity"
+          value={values.quantity}
+          onChange={e => handleChange(e)}
+          error={errors.quantity}
+        />
         {/* notes */}
-        <label>
-          Notes
-          <textarea
-            placeholder="Add notes here"
-            name="notes"
-            className="textarea"
-            value={values.notes}
-            onChange={handleChange}
-          ></textarea>
-        </label>
-        {/* labels */}
+        <TextArea
+          title="Notes"
+          name="notes"
+          value={values.notes}
+          onChange={handleChange}
+        ></TextArea>
         <LabelSelect
           labelIds={values.labelIds}
           headerText="Select labels"
           isCreatable
           onChange={labelIds => setValues({ ...values, labelIds })}
         />
-        {/* category */}
         <CategorySelect
           selectedCategoryName={values.categoryName}
           headerText="Select category"
