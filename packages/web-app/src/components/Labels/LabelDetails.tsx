@@ -7,7 +7,7 @@ import { setItemsLabelsFilter } from '../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../state/slices/labels';
 import { CloseButton } from '../misc/CloseButton';
 import { Popover } from '../misc/Popover';
-import { PopoverHeading } from '../misc/PopoverHeading';
+import { PopoverHeader } from '../misc/PopoverHeader';
 import LabelForm from './LabelForm';
 
 const LabelDetails = (label: Label) => {
@@ -46,9 +46,9 @@ const LabelDetails = (label: Label) => {
         onClickOutside={togglePopover}
         content={
           <>
-            <PopoverHeading text="Delete item?">
+            <PopoverHeader text="Delete item?">
               <CloseButton onClick={togglePopover} />
-            </PopoverHeading>
+            </PopoverHeader>
             <p>Deleting a label will remove it from all items. There is no undo.</p>
             <button onClick={() => dispatch(deleteLabel(label.id))}>Delete</button>
           </>

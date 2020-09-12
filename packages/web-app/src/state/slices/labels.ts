@@ -126,7 +126,6 @@ const labelsSlice = createSlice({
     // a label is added/deleted/edited on LabelsPage but so far perf looks good
     saveSortOrder: (state, action: PayloadAction<Label[]>) => {
       action.payload.forEach((filteredLabel, filteredIndex) => {
-        console.log(filteredLabel, filteredIndex);
         const index = state.findIndex(label => label.id === filteredLabel.id);
         state[index].lastSortIndex = filteredIndex;
       });

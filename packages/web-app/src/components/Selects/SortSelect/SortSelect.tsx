@@ -5,7 +5,7 @@ import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
-import { PopoverHeading } from '../../misc/PopoverHeading';
+import { PopoverHeader } from '../../misc/PopoverHeader';
 import { Select } from '../Select';
 import styles from './style';
 
@@ -45,9 +45,9 @@ export const SortSelect = ({
       onClickOutside={togglePopover}
       content={
         <>
-          <PopoverHeading text="Sort by">
+          <PopoverHeader text="Sort by">
             <CloseButton onClick={togglePopover} />
-          </PopoverHeading>
+          </PopoverHeader>
           <Select
             value={value}
             name="sortBy"

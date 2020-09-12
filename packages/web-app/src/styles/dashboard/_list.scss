@@ -1,6 +1,7 @@
 .list {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 
   overflow-y: auto;
   &::-webkit-scrollbar {

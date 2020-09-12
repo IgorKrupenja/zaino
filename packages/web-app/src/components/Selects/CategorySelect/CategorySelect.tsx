@@ -4,15 +4,20 @@ import Categories from '../../../constants/Categories';
 import useToggle from '../../../hooks/useToggle';
 import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
-import { PopoverHeading } from '../../misc/PopoverHeading';
+import { PopoverHeader } from '../../misc/PopoverHeader';
 import { Select } from '../Select';
 
 type CategorySelectProps = {
   selectedCategoryName: string | undefined;
   onChange: (categoryName: string) => void;
+  headerText: string;
 };
 
-export const CategorySelect = ({ selectedCategoryName, onChange }: CategorySelectProps) => {
+export const CategorySelect = ({
+  selectedCategoryName,
+  onChange,
+  headerText,
+}: CategorySelectProps) => {
   const options = useRef(
     Categories.map(category => ({
       value: category.name,
@@ -46,17 +51,16 @@ export const CategorySelect = ({ selectedCategoryName, onChange }: CategorySelec
       onClickOutside={togglePopover}
       content={
         <>
-          <PopoverHeading text="Filter by category">
+          <PopoverHeader text={headerText}>
             <CloseButton onClick={togglePopover} />
-          </PopoverHeading>
+          </PopoverHeader>
           <Select
             value={value}
-            // todo not decided yet
-            // isSearchable={false}
             name="categoryName"
             options={options}
             onChange={handleChange}
             placeholder="Search"
+            noOptionsMessage={() => 'No matching categories'}
           />
         </>
       }

@@ -8,7 +8,7 @@ import { history } from '../../routers/AppRouter';
 import { deleteItem, updateItem } from '../../state/slices/items';
 import { CloseButton } from '../misc/CloseButton';
 import { Popover } from '../misc/Popover';
-import { PopoverHeading } from '../misc/PopoverHeading';
+import { PopoverHeader } from '../misc/PopoverHeader';
 import ItemForm from './ItemForm';
 
 type LocationState = {
@@ -47,9 +47,9 @@ const EditItemModal = () => {
         onClickOutside={togglePopover}
         content={
           <>
-            <PopoverHeading text="Delete item?">
+            <PopoverHeader text="Delete item?">
               <CloseButton onClick={togglePopover} />
-            </PopoverHeading>
+            </PopoverHeader>
             <p>
               The item will be deleted from inventory{item.packQuantity > 0 ? ' and pack' : ''}.
               There is no undo.

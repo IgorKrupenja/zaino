@@ -98,6 +98,7 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        {values.name}
         <FormInput name={values.name} onChange={e => handleChange(e)} errorText={errors.name} />
         {/* category image */}
         <CategoryImage categoryName={values.categoryName} />
@@ -139,15 +140,16 @@ const ItemForm = ({ item, onSubmit }: ItemFormProps) => {
           ></textarea>
         </label>
         {/* labels */}
-        {/* todo renders creatable select */}
         <LabelSelect
           labelIds={values.labelIds}
-          onChange={labelIds => setValues({ ...values, labelIds })}
+          headerText="Select labels"
           isCreatable
+          onChange={labelIds => setValues({ ...values, labelIds })}
         />
         {/* category */}
         <CategorySelect
           selectedCategoryName={values.categoryName}
+          headerText="Select category"
           onChange={categoryName => setValues({ ...values, categoryName })}
         />
         <button>Save item</button>

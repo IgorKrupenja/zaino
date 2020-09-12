@@ -4,7 +4,7 @@ import { OptionTypeBase, ValueType } from 'react-select';
 import useToggle from '../../../hooks/useToggle';
 import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
-import { PopoverHeading } from '../../misc/PopoverHeading';
+import { PopoverHeader } from '../../misc/PopoverHeader';
 import { Select } from '../Select';
 import styles from './style';
 
@@ -23,7 +23,6 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
     options.find(color => color.value === selectedColorName)
   );
   const handleChange = (newValue: ValueType<OptionTypeBase>) => {
-    console.log(newValue);
     togglePopover();
     setValue(newValue);
     onChange((newValue as OptionTypeBase)?.value);
@@ -37,9 +36,9 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
       onClickOutside={togglePopover}
       content={
         <>
-          <PopoverHeading text="Select color">
+          <PopoverHeader text="Select color">
             <CloseButton onClick={togglePopover} />
-          </PopoverHeading>
+          </PopoverHeader>
           <Select
             className="single-select"
             value={value}

@@ -13,6 +13,7 @@ const commonSelectStyles: Partial<Styles> = {
     height: styles.xlSize,
     overflow: 'hidden',
     borderColor: isFocused ? styles.lightBlue : base.borderColor,
+    borderRadius: styles.xsSize,
     '&:hover': {
       borderColor: isFocused ? styles.lightBlue : styles.midGrey,
     },
@@ -24,12 +25,10 @@ const commonSelectStyles: Partial<Styles> = {
   menu: () => ({
     borderTop: styles.border,
   }),
-  input: base => ({
-    ...base,
-  }),
   noOptionsMessage: base => ({
     ...base,
-    padding: `${styles.xsSize} 0 0 0`,
+    padding: `${styles.xsSize} ${styles.sSize} 0 ${styles.sSize}`,
+    height: styles.xlSize,
   }),
   option: (base, { isFocused, isSelected }) => ({
     ...base,

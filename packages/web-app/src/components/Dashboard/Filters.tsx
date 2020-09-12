@@ -36,6 +36,7 @@ const Filters = () => {
       {/* categories */}
       <CategorySelect
         selectedCategoryName={filters.category}
+        headerText="Filter by category"
         onChange={category => {
           if (category === filters.category) {
             // reset category filter if user clicks on a category that is already selected
@@ -63,6 +64,7 @@ const Filters = () => {
       {/* label */}
       <LabelSelect
         labelIds={filters.labels}
+        headerText="Filter by label"
         // setTimeout to prevent UI freezing on slow PCs
         onChange={labelIds => setTimeout(() => dispatch(setItemsLabelsFilter(labelIds)), 1)}
       />

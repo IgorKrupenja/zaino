@@ -4,7 +4,7 @@ import processBatchIncrement from './processBatchIncrement';
 /**
  * Copy all items in a collection in one path to another.
  * Uses batching to support copying collections that have more than 500 documents.
- * Does not support recursive copying (i.e. also does not copy sub-collections).
+ * Does not support recursive copying (i.e. does not also copy sub-collections).
  * Optionally supports setting date field.
  */
 export default async (srcCollectionPath: string, destCollectionPath: string, addedAt?: string) => {

@@ -8,7 +8,7 @@ import { addLabel } from '../../../state/slices/labels';
 import { RootState } from '../../../state/store';
 import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../misc/Popover';
-import { PopoverHeading } from '../../misc/PopoverHeading';
+import { PopoverHeader } from '../../misc/PopoverHeader';
 import { Select } from '../Select';
 import styles from './style';
 
@@ -21,9 +21,10 @@ type LabelSelectProps = {
   labelIds?: string[];
   onChange: (labelIds: string[]) => void;
   isCreatable?: boolean;
+  headerText: string;
 };
 
-export const LabelSelect = ({ labelIds, onChange, isCreatable }: LabelSelectProps) => {
+export const LabelSelect = ({ labelIds, onChange, isCreatable, headerText }: LabelSelectProps) => {
   const dispatch = useDispatch();
   // labels and prepareOptions need to be separate to prevent exceeding max depth with ItemForm
   const labels = useSelector((state: RootState) => state.labels);
@@ -105,9 +106,9 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable }: LabelSelectProp
       onClickOutside={togglePopover}
       content={
         <>
-          <PopoverHeading text="Filter by label">
+          <PopoverHeader text={headerText}>
             <CloseButton onClick={togglePopover} />
-          </PopoverHeading>
+          </PopoverHeader>
           <Select {...selectProps} />
         </>
       }

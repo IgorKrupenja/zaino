@@ -1,7 +1,9 @@
 import React, { ChangeEvent } from 'react';
 
 type TextFilterInputProps = {
+  // todo rename to onChange
   onTextChange: (text: string) => void;
+  // todo rename to value
   text: string;
 };
 
