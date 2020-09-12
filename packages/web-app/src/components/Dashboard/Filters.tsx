@@ -23,22 +23,22 @@ const Filters = () => {
   // set filters if changed externally by clicking on label/category inside ItemDetails
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
+  useEffect(() => {
+    // setTimeout prevents UI freezes when typing
+    const textFilterTimeout = setTimeout(() => dispatch(setItemsTextFilter(filters.text)), 200);
+    return () => clearTimeout(textFilterTimeout);
+  }, [filters.text, dispatch]);
+
   return (
     <section className="dashboard-filters">
       {/* name */}
-      <FilterInput
-        onTextChange={text => {
-          setFilters({ ...filters, text });
-          dispatch(setItemsTextFilter(text));
-        }}
-        text={filters.text}
-      />
+      <FilterInput onTextChange={text => setFilters({ ...filters, text })} text={filters.text} />
       {/* categories */}
       <CategorySelect
         selectedCategoryName={filters.category}
         onChange={category => {
           if (category === filters.category) {
-            // reset category filter if user
+            // reset category filter if user clicks on a category that is already selected
             setFilters({ ...filters, category: undefined });
             dispatch(setItemsCategoryFilter(undefined));
           } else {
@@ -54,7 +54,8 @@ const Filters = () => {
         onChange={value => {
           const sortBy = value as ItemSortOption;
           setFilters({ ...filters, sortBy });
-          dispatch(sortItemsBy(sortBy));
+          // setTimeout to prevent UI freezing on slow PCs
+          setTimeout(() => dispatch(sortItemsBy(sortBy)), 1);
         }}
         selectedOption={filters.sortBy}
         hiddenOption={LabelSortOption.lastSortOrder}
@@ -62,7 +63,8 @@ const Filters = () => {
       {/* label */}
       <LabelSelect
         labelIds={filters.labels}
-        onChange={labelIds => dispatch(setItemsLabelsFilter(labelIds))}
+        // setTimeout to prevent UI freezing on slow PCs
+        onChange={labelIds => setTimeout(() => dispatch(setItemsLabelsFilter(labelIds)), 1)}
       />
     </section>
   );
