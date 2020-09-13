@@ -2,7 +2,7 @@
 // for backgrounds and hovers
 $off-white: #f6f6f6;
 // for actives
-$extra-light-grey: #eee;
+$extra-light-grey: #e9e9e9;
 // dark grey used for text color
 $dark-grey: #333;
 // including for borders
@@ -11,11 +11,6 @@ $light-grey: #ccc;
 $mid-grey: #aaa;
 // delete buttons etc
 $bright-red: #e20000;
-
-// for shadows
-$shadow: rgba($light-grey, 0.8);
-
-$border: 0.1rem $light-grey solid;
 
 // todo this is ugly, see #270
 // re-assign variables imported from Color.ts in WebPack -- needed to get color Intellisense in SCSS
@@ -31,6 +26,10 @@ $brown: $brown-shared;
 $dark-blue: $dark-blue-shared;
 // 666
 $grey: $grey-shared;
+
+// for shadows
+$shadow: 0 0.7rem 2rem rgba($grey, 0.2);
+$border: 0.1rem $light-grey solid;
 
 // Spacing
 $xs-size: 0.6rem;
@@ -49,7 +48,7 @@ $font-size-small: $s-size;
 $font-size-medium: $m-size;
 $font-size-large: 1.8rem;
 
-// export size variables to use in TS
+// export variables to use in TS for styling selects
 :export {
   xsSize: $xs-size;
   sSize: $s-size;
@@ -63,6 +62,5 @@ $font-size-large: 1.8rem;
   midGrey: $mid-grey;
   darkGrey: $dark-grey;
   lightBlue: $light-blue;
-  shadow: $shadow;
   border: $border;
 }

@@ -1,6 +1,6 @@
 import { Color } from '@zaino/shared';
 import { Styles } from 'react-select';
-import checkbox from '../../../images/ui/check-mark.svg';
+import checkbox from '../../../images/icons/check-mark.svg';
 import styles from '../../../styles/common/_settings.scss';
 
 // CSS-in-JS is used here as this is the recommended method for react-select

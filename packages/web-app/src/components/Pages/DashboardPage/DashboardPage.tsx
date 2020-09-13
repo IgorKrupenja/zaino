@@ -24,10 +24,10 @@ export const DashboardPage = () => {
           <Loader />
         ) : (
           <>
-            <Stack className="inventory">
+            <Stack>
               <Inventory />
             </Stack>
-            <Stack className="pack">
+            <Stack>
               <Pack />
             </Stack>
           </>

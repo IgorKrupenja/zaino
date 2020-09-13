@@ -1,0 +1,44 @@
+.account-details {
+  flex-grow: 1;
+}
+
+.account-details__photo {
+  display: block;
+
+  border-radius: 50%;
+  margin: $xs-size 1rem $xs-size 0;
+
+  height: 4.1rem;
+  width: 4.1rem;
+  min-width: 4.1rem;
+
+  overflow: hidden;
+}
+
+.account-details__photo--toggle {
+  margin: $s-size $s-size $s-size auto;
+  border: 0.3rem solid transparent;
+
+  cursor: pointer;
+  &:hover {
+    // works well with non-100% zoom levels, simply border has a gap between image and border
+    background-color: rgba($light-grey, 0.4);
+  }
+}
+
+.account-details__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.account-details__name {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.account-details__email {
+  color: $grey;
+  font-size: $font-size-small;
+  overflow-wrap: anywhere;
+}

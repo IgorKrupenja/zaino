@@ -8,8 +8,9 @@ import { history } from '../../routers/AppRouter';
 import { deleteItem, updateItem } from '../../state/slices/items';
 import { Button } from '../misc/Button';
 import { CloseButton } from '../misc/CloseButton';
-import { Popover } from '../misc/Popover';
-import { PopoverHeader } from '../misc/PopoverHeader';
+import { Popover } from '../Popover/Popover';
+import { PopoverContent } from '../Popover/PopoverContent';
+import { PopoverHeader } from '../Popover/PopoverHeader';
 import ItemForm from './ItemForm';
 
 type LocationState = {
@@ -20,13 +21,16 @@ const EditItemModal = () => {
   const location = useLocation<LocationState>();
   const dispatch = useDispatch();
   const [isPopoverOpen, togglePopover] = useToggle();
-  const item = location.state.item;
-  const [title, setTitle] = useState(item.name);
 
   // redirect to Dashboard if item id is invalid
   // Redirect is better than history.push here
   // as history stack will not be populated with edit/invalid-id
   if (!location.state) return <Redirect to="/dashboard" />;
+
+  const item = location.state.item;
+  const [title, setTitle] = useState(item.name);
+
+  console.log(location.state);
 
   document.title = `${title} | Zaino`;
   Modal.setAppElement('#app');
@@ -54,17 +58,20 @@ const EditItemModal = () => {
         <Popover
           isOpen={isPopoverOpen}
           onClickOutside={togglePopover}
+          containerClassName="popover-container--wide"
           content={
             <>
               <PopoverHeader text="Delete item?">
-                <CloseButton onClick={togglePopover} />
+                <CloseButton className="close-button--large-margin" onClick={togglePopover} />
               </PopoverHeader>
-              <p>
-                The item will be deleted from inventory{item.packQuantity > 0 ? ' and pack' : ''}.
-                There is no undo.
-              </p>
+              <PopoverContent>
+                <p>
+                  The item will be deleted from inventory{item.packQuantity > 0 ? ' and pack' : ''}.
+                  There is no undo.
+                </p>
+              </PopoverContent>
               <Button
-                className="button--red"
+                className="button--red button--wide"
                 onClick={() => {
                   closeModal();
                   dispatch(deleteItem(item));

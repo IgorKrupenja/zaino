@@ -4,8 +4,8 @@ import useToggle from '../../../hooks/useToggle';
 import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { CloseButton } from '../../misc/CloseButton';
-import { Popover } from '../../misc/Popover';
-import { PopoverHeader } from '../../misc/PopoverHeader';
+import { Popover } from '../../Popover/Popover';
+import { PopoverHeader } from '../../Popover/PopoverHeader';
 import { Select } from '../Select';
 import styles from './style';
 

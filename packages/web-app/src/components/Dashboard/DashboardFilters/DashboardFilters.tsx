@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   ItemSortOption,
@@ -24,8 +24,15 @@ export const DashboardFilters = () => {
   // set filters if changed externally by clicking on label/category inside ItemDetails
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
-  // prevent UI freezes when typing in name filter
+  const firstUpdate = useRef(true);
+
+  // useEffect to prevent UI freezes when typing in name filter
   useEffect(() => {
+    // this is needed to prevent setItemsTextFilter running uselessly when component mounts
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     const textFilterTimeout = setTimeout(() => dispatch(setItemsTextFilter(filters.text)), 200);
     return () => clearTimeout(textFilterTimeout);
   }, [filters.text, dispatch]);
@@ -64,17 +71,17 @@ export const DashboardFilters = () => {
         headerText="Filter by category"
         onChange={handleCategoryChange}
       />
-      <SortSelect
-        sortOptions={ItemSortOption}
-        onChange={handleSortChange}
-        selectedOption={filters.sortBy}
-        hiddenOption={LabelSortOption.lastSortOrder}
-      />
       <LabelSelect
         labelIds={filters.labels}
         headerText="Filter by label"
         // setTimeout to prevent UI freezing on slow PCs
         onChange={labelIds => setTimeout(() => dispatch(setItemsLabelsFilter(labelIds)), 1)}
+      />
+      <SortSelect
+        sortOptions={ItemSortOption}
+        onChange={handleSortChange}
+        selectedOption={filters.sortBy}
+        hiddenOption={LabelSortOption.lastSortOrder}
       />
     </section>
   );

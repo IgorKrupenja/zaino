@@ -3,8 +3,8 @@ import { OptionTypeBase, ValueType } from 'react-select';
 import Categories from '../../../constants/Categories';
 import useToggle from '../../../hooks/useToggle';
 import { CloseButton } from '../../misc/CloseButton';
-import { Popover } from '../../misc/Popover';
-import { PopoverHeader } from '../../misc/PopoverHeader';
+import { Popover } from '../../Popover/Popover';
+import { PopoverHeader } from '../../Popover/PopoverHeader';
 import { Select } from '../Select';
 
 type CategorySelectProps = {

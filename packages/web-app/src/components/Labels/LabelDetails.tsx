@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
 import { setItemsLabelsFilter } from '../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../state/slices/labels';
+import { Button } from '../misc/Button';
 import { CloseButton } from '../misc/CloseButton';
-import { Popover } from '../misc/Popover';
-import { PopoverHeader } from '../misc/PopoverHeader';
+import { Popover } from '../Popover/Popover';
+import { PopoverContent } from '../Popover/PopoverContent';
+import { PopoverHeader } from '../Popover/PopoverHeader';
 import LabelForm from './LabelForm';
 
 const LabelDetails = (label: Label) => {
@@ -44,13 +46,21 @@ const LabelDetails = (label: Label) => {
       <Popover
         isOpen={isPopoverOpen}
         onClickOutside={togglePopover}
+        containerClassName="popover-container--wide"
         content={
           <>
             <PopoverHeader text="Delete item?">
-              <CloseButton onClick={togglePopover} />
+              <CloseButton className="close-button--large-margin" onClick={togglePopover} />
             </PopoverHeader>
-            <p>Deleting a label will remove it from all items. There is no undo.</p>
-            <button onClick={() => dispatch(deleteLabel(label.id))}>Delete</button>
+            <PopoverContent>
+              <p>Deleting a label will remove it from all items. There is no undo.</p>
+            </PopoverContent>
+            <Button
+              className="button--red button--wide"
+              onClick={() => dispatch(deleteLabel(label.id))}
+            >
+              Delete
+            </Button>
           </>
         }
       >

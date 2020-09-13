@@ -1,0 +1,10 @@
+.popover-container {
+  border: $border;
+  border-radius: $xs-size;
+  box-shadow: $shadow;
+  background-color: white;
+}
+
+.popover-container--wide {
+  width: 25rem;
+}

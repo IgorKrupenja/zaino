@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import selectFilteredInventoryItems from '../../state/selectors/items';
 import { selectInventoryItemsStats } from '../../state/selectors/itemsStats';
 import { RootState } from '../../state/store';
-import { Button } from '../misc/Button';
 import { InventoryItem } from './InventoryItem';
 import { List } from './List';
 import { Stats } from './Stats';
@@ -23,10 +22,9 @@ const Inventory = () => {
   return (
     <>
       <h2>Inventory</h2>
-      <Button>
-        {/* todo link likely needs 100% w/h */}
-        <Link to="/dashboard/add">Add item</Link>
-      </Button>
+      <Link className="button button--link" to="/dashboard/add">
+        Add item
+      </Link>
       <Stats stats={stats} />
       <List
         title="inventory"

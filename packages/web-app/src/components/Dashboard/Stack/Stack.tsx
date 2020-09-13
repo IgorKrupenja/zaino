@@ -2,13 +2,13 @@ import React, { ReactNode } from 'react';
 import './style.scss';
 
 type StackProps = {
-  className: string;
+  // className: string;
   children: ReactNode;
 };
 
 /**
- * Component used to apply styles
+ * Component used to apply styles.
  */
-export const Stack = ({ className, children }: StackProps) => {
-  return <section className={`stack ${className}`}>{children}</section>;
+export const Stack = ({ children }: StackProps) => {
+  return <section className="stack">{children}</section>;
 };

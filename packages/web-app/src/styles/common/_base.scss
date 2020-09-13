@@ -1,3 +1,10 @@
+// custom font, used in header atm
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 // needed for overflow scroll to work on Dashboard
 html,
 body,
@@ -13,9 +20,14 @@ html {
 
 body {
   color: $dark-grey;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', Helvetica, Arial, sans-serif;
   font-size: $font-size-medium;
-  line-height: 1.6;
+  line-height: 1.4;
+}
+
+p {
+  margin: 0;
 }
 
 // input,
@@ -27,6 +39,7 @@ submit {
 
 button {
   cursor: pointer;
+  padding: 0;
 }
 
 button:disabled {

@@ -11,12 +11,13 @@ import { batchDeleteLabels } from '../../../state/slices/labels';
 import { RootState } from '../../../state/store';
 import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
-import { Popover } from '../../misc/Popover';
-import { PopoverHeader } from '../../misc/PopoverHeader';
+import { Popover } from '../../Popover/Popover';
+import { PopoverContent } from '../../Popover/PopoverContent';
+import { PopoverHeader } from '../../Popover/PopoverHeader';
 import './style.scss';
 
 export const DemoData = () => {
-  const uid = useSelector((state: RootState) => state.auth.uid);
+  const uid = useSelector((state: RootState) => state.user.uid);
   const dispatch = useDispatch();
   const demoItems = useSelector((state: RootState) => selectDemoItems(state));
   const demoLabels = useSelector((state: RootState) => selectDemoLabels(state));
@@ -25,8 +26,12 @@ export const DemoData = () => {
   const isDemoDataPresent = demoItems.length > 0 && demoLabels.length > 0;
   const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
 
-  const prepareDemoData = async () => {
+  const [isLoadPopoverOpen, toggleLoadPopover] = useToggle();
+  const [isRemovePopoverOpen, toggleRemovePopover] = useToggle();
+
+  const handleDemoDataLoad = async () => {
     dispatch(setIsLoading(true));
+    toggleLoadPopover();
     const addedAt = new Date().toISOString();
 
     await Promise.all([
@@ -41,47 +46,73 @@ export const DemoData = () => {
   };
 
   const removeDemoData = () => {
+    toggleRemovePopover();
     dispatch(batchDeleteItems(demoItems));
     dispatch(batchDeleteLabels(demoLabels));
   };
 
-  const [isLoadPopoverOpen, toggleLoadPopover] = useToggle();
-  const [isRemovePopoverOpen, toggleRemovePopover] = useToggle();
-
   return (
-    <section>
-      Demo data
+    <section className="demo-data">
+      <div className="demo-data__title">Demo data</div>
       {/* Load */}
       <Popover
         isOpen={isLoadPopoverOpen}
         onClickOutside={toggleLoadPopover}
+        // style={{ width: '30rem' }}
+        containerClassName="popover-container--wide"
         content={
           <>
             <PopoverHeader text="Load demo data?">
-              <CloseButton onClick={toggleLoadPopover} />
+              <CloseButton className="close-button--large-margin" onClick={toggleLoadPopover} />
             </PopoverHeader>
-            <p>Use this to load demo items and labels. These can be easily removed later.</p>
-            <Button
-              // disabled={isLoading || isDemoDataPresent}
-              onClick={async () => {
-                toggleLoadPopover();
-                await prepareDemoData();
-              }}
-            >
+            <PopoverContent>
+              <p>Use this to load demo items and labels. These can be easily removed later.</p>
+            </PopoverContent>
+            <Button className="button--wide" onClick={handleDemoDataLoad}>
               Load
             </Button>
           </>
         }
       >
-        <Button disabled={isLoading || isDemoDataPresent} onClick={toggleLoadPopover}>
+        <Button
+          className="button--underline"
+          disabled={isLoading || isDemoDataPresent}
+          onClick={toggleLoadPopover}
+        >
           {/* Load button is disabled while data is present or is being loaded */}
           Load
         </Button>
       </Popover>
-      {/* todo Remove */}
-      <button disabled={!isDemoDataPresent} onClick={removeDemoData}>
-        Remove
-      </button>
+      {/*  Remove */}
+      <Popover
+        isOpen={isRemovePopoverOpen}
+        onClickOutside={toggleRemovePopover}
+        containerClassName="popover-container--wide"
+        content={
+          <>
+            <PopoverHeader text="Remove demo data?">
+              <CloseButton onClick={toggleRemovePopover} />
+            </PopoverHeader>
+            <PopoverContent>
+              <p>
+                All items and labels added as demo data (even if you have made changes to them) will
+                be removed. Items and labels you created yourself will not be affected.
+              </p>
+            </PopoverContent>
+            <Button className="button--red button--wide" onClick={removeDemoData}>
+              Remove
+            </Button>
+          </>
+        }
+      >
+        <Button
+          className="button--underline"
+          disabled={!isDemoDataPresent}
+          onClick={toggleRemovePopover}
+        >
+          Remove
+        </Button>
+      </Popover>
     </section>
   );
 };

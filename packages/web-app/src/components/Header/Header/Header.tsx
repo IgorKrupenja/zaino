@@ -1,31 +1,37 @@
 import React from 'react';
-import { batch, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { logout } from '../../../state/slices/auth';
-import { resetItemsState } from '../../../state/slices/items';
-import { resetLabelsState } from '../../../state/slices/labels';
 import { LabelSortOption, sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
+import { AccountDetails } from '../AccountDetails';
 import { DemoData } from '../DemoData';
 import './style.scss';
 
 export const Header = () => {
   const dispatch = useDispatch();
   const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
-  const handleLogout = () => {
-    // potentially faster perf with batch
-    batch(() => {
-      dispatch(logout());
-      dispatch(resetItemsState());
-      dispatch(resetLabelsState());
-    });
-  };
+  // const handleLogout = () => {
+  //   // potentially faster perf with batch
+  //   batch(() => {
+  //     dispatch(logout());
+  //     dispatch(resetItemsState());
+  //     dispatch(resetLabelsState());
+  //   });
+  // };
 
   return (
-    <header>
-      <Link className="header-logo" to="/dashboard"></Link>
-      <nav>
-        <NavLink to="/dashboard" activeClassName="nav__link--active">
+    <header className="header">
+      <h1>
+        <Link to="/dashboard" className="header__title">
+          Zaino
+        </Link>
+      </h1>
+      <nav className="header__nav">
+        <NavLink
+          to="/dashboard"
+          className="button button--underline button--link"
+          activeClassName="button--underline--active"
+        >
           Dashboard
         </NavLink>
         <NavLink
@@ -36,13 +42,17 @@ export const Header = () => {
             labelSortOption === LabelSortOption.lastSortOrder &&
             dispatch(sortLabelsBy(LabelSortOption.name))
           }
-          activeClassName="nav__link--active"
+          className="button button--underline button--link"
+          activeClassName="button--underline--active"
         >
           Labels
         </NavLink>
       </nav>
       <DemoData />
-      <button onClick={handleLogout}>Sign out</button>
+      <AccountDetails />
+      {/* <button className="header__link" onClick={handleLogout}>
+        Sign out
+      </button> */}
     </header>
   );
 };

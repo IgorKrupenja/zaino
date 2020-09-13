@@ -1,19 +1,30 @@
-header {
+.header {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 
+  // todo handle heights properly
   height: $header-height;
+
+  background-color: $dark-green;
+
+  color: white;
 }
 
-.header-logo {
-  background: $dark-green;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
+.header__title {
+  margin-left: 1.7rem;
+  // margin: $s-size $s-size $s-size 1.7rem;
+
+  color: white;
+  font-family: 'Righteous', cursive;
+  font-size: 4.1rem;
+  text-decoration: none;
 }
 
-// todo maybe not bold
-.nav__link--active {
-  font-weight: bold;
+.header__nav {
+  display: flex;
+  flex-direction: row;
+
+  margin-left: $xl-size;
 }

@@ -1,0 +1,19 @@
+.demo-data {
+  position: relative;
+  // display: flex;
+  // flex-direction: row;
+  // flex: 1;
+  margin-left: $xl-size;
+  border: 0.2rem solid white;
+  border-radius: $xs-size;
+
+  // todo
+  display: none;
+}
+
+.demo-data__title {
+  position: absolute;
+  background: $dark-green;
+  top: -1.2rem;
+  left: $xs-size;
+}

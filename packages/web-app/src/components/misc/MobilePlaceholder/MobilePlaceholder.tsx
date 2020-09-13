@@ -1,11 +1,10 @@
 import React from 'react';
-import { CategoryImage } from '../CategoryImage';
 import './style.scss';
 
 export const MobilePlaceholder = () => {
   return (
     <main>
-      <CategoryImage categoryName="Miscellaneous" />
+      <img src={`${process.env.GCP_STORAGE_URL as string}/categories/knife.svg`} />
       <h1>No mobile version yet :(</h1>
       <p>
         Thank you for your interest in accessing Zaino on mobile! Unfortunately, the mobile version

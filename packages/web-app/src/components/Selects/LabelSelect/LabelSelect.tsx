@@ -7,8 +7,8 @@ import useToggle from '../../../hooks/useToggle';
 import { addLabel } from '../../../state/slices/labels';
 import { RootState } from '../../../state/store';
 import { CloseButton } from '../../misc/CloseButton';
-import { Popover } from '../../misc/Popover';
-import { PopoverHeader } from '../../misc/PopoverHeader';
+import { Popover } from '../../Popover/Popover';
+import { PopoverHeader } from '../../Popover/PopoverHeader';
 import { Select } from '../Select';
 import styles from './style';
 
@@ -95,7 +95,7 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable, headerText }: Lab
     options,
     value: values,
     isCreatable,
-    noOptionsMessage: () => 'No matching labels',
+    noOptionsMessage: () => `No${options.length > 0 ? ' matching' : ''} labels`,
   };
 
   const [isPopoverOpen, togglePopover] = useToggle();

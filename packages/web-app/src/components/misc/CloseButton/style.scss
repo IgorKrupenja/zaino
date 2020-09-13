@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
 
+  padding-right: 0.8rem;
+
   cursor: pointer;
 }
 
 .close-button__icon {
-  padding-right: 0.1rem;
-
   height: $l-size;
   width: $l-size;
   fill: $light-grey;
@@ -18,4 +18,8 @@
   &:active {
     fill: $grey;
   }
+}
+
+.close-button--large-margin {
+  padding-right: 1.2rem;
 }

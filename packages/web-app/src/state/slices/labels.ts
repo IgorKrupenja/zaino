@@ -14,7 +14,7 @@ export const addLabel = createAsyncThunk<
   { state: RootState }
 >('labels/addLabel', async (label, { getState }) => {
   await db
-    .collection(`users/${getState().auth.uid}/labels`)
+    .collection(`users/${getState().user.uid}/labels`)
     .doc(label.id)
     .set({ name: label.name, colorName: label.colorName });
 });
@@ -23,7 +23,7 @@ export const updateLabel = createAsyncThunk<void, Label, { state: RootState }>(
   'labels/updateLabel',
   async (label, { getState }) => {
     await db
-      .collection(`users/${getState().auth.uid}/labels`)
+      .collection(`users/${getState().user.uid}/labels`)
       .doc(label.id)
       .update({ name: label.name, colorName: label.colorName });
   }
@@ -42,7 +42,7 @@ export const deleteLabel = createAsyncThunk<void, string, { state: RootState }>(
       });
     await Promise.all([
       // delete labels
-      db.collection(`users/${getState().auth.uid}/labels`).doc(id).delete(),
+      db.collection(`users/${getState().user.uid}/labels`).doc(id).delete(),
       // update labels with removed label
       dispatch(batchUpdateItems(updatedItems)),
     ]);
@@ -55,7 +55,7 @@ export const batchDeleteLabels = createAsyncThunk<void, Label[], { state: RootSt
   'items/batchDeleteLabels',
   async (labels, { getState }) => {
     await deleteDocuments(
-      `users/${getState().auth.uid}/labels`,
+      `users/${getState().user.uid}/labels`,
       labels.map(label => label.id)
     );
   }

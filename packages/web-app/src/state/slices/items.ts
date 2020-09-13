@@ -17,7 +17,7 @@ export const addItem = createAsyncThunk<
   // separate id from other item properties as id's are not stored as document keys in Firestore
   const { id, ...firestoreData } = item;
   await db
-    .collection(`users/${getState().auth.uid}/items`)
+    .collection(`users/${getState().user.uid}/items`)
     .doc(id)
     .set({ ...firestoreData });
 });
@@ -27,7 +27,7 @@ export const updateItem = createAsyncThunk<void, Item, { state: RootState }>(
   async (item, { getState }) => {
     const { id, ...firestoreData } = item;
     await db
-      .collection(`users/${getState().auth.uid}/items`)
+      .collection(`users/${getState().user.uid}/items`)
       .doc(id)
       .update({ ...firestoreData });
   }
@@ -42,7 +42,7 @@ export const batchUpdateItems = createAsyncThunk<void, Item[], { state: RootStat
     let i = 0;
     for (const item of items) {
       const { id, ...firestoreData } = item;
-      const ref = db.collection(`users/${getState().auth.uid}/items`).doc(id);
+      const ref = db.collection(`users/${getState().user.uid}/items`).doc(id);
       batch.update(ref, { ...firestoreData });
       ({ i, batch } = await processBatchIncrement(i, batch));
     }
@@ -58,7 +58,7 @@ export const deleteItem = createAsyncThunk<void, Item, { state: RootState }>(
     item.labelIds?.forEach(labelId =>
       dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
     );
-    await db.collection(`users/${getState().auth.uid}/items`).doc(item.id).delete();
+    await db.collection(`users/${getState().user.uid}/items`).doc(item.id).delete();
   }
 );
 
@@ -71,7 +71,7 @@ export const batchDeleteItems = createAsyncThunk<void, Item[], { state: RootStat
       )
     );
     await deleteDocuments(
-      `users/${getState().auth.uid}/items`,
+      `users/${getState().user.uid}/items`,
       items.map(item => item.id)
     );
   }

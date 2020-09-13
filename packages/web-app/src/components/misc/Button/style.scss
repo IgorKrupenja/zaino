@@ -1,28 +1,75 @@
-$opacity: 0.8;
-
 .button {
-  color: white;
-  height: $xl-size;
-  padding: 0 $s-size 0 $s-size;
-  font-weight: 500;
-  position: relative;
-  background-color: rgba($dark-green, $opacity);
+  margin: 0 $xs-size 0 $xs-size;
   border: 0.1rem solid rgba($dark-grey, 0.4);
   border-radius: $xs-size;
+  padding: 0 $s-size 0 $s-size;
+
+  height: $xl-size;
+  background-color: rgba($dark-green, 0.8);
+
+  font-weight: 500;
+  color: white;
+
   transition: 0.3s;
 
   &:hover {
     background-color: rgba($dark-green, 1);
   }
-  &:disabled {
-    // background: #000;
-  }
 }
 
 .button--red {
-  background-color: rgba($bright-red, $opacity);
+  background-color: rgba($bright-red, 0.8);
+
+  &:hover {
+    background-color: rgba($bright-red, 1);
+  }
 }
 
-.button--red:hover {
-  background-color: rgba($bright-red, 1);
+.button--grey {
+  color: $dark-grey;
+  border: 0.1rem solid rgba($light-grey, 1);
+  background-color: rgba($off-white, 1);
+
+  &:hover {
+    background-color: $extra-light-grey;
+  }
+}
+
+.button--wide {
+  width: 25rem - $s-size * 2;
+  margin: 0 $s-size $s-size $s-size;
+}
+
+// todo for header here
+.button--underline {
+  border: unset;
+  border-radius: unset;
+  border-bottom: 0.2rem solid transparent;
+  padding: unset;
+
+  background-color: unset;
+  font-size: 1.5rem;
+
+  transition: 0.1s;
+
+  &:hover {
+    border-bottom: 0.2rem solid white;
+  }
+}
+
+.button--underline--active {
+  border-bottom: 0.2rem solid white;
+}
+
+// for React router Links and NavLinks
+// todo need to set width and height as well somehow?
+.button--link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: $xl-size;
+
+  color: white;
+  text-decoration: none;
 }

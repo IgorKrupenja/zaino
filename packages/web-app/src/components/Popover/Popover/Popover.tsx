@@ -1,20 +1,26 @@
 import React from 'react';
 import PopoverDefault, { ContentRenderer } from 'react-tiny-popover';
-import { defaultContainerStyle } from './style';
+import './style.scss';
 
 type PopoverProps = {
   isOpen: boolean;
   onClickOutside?: ((e: MouseEvent) => void) | undefined;
   content: JSX.Element | ContentRenderer;
   children: JSX.Element | ((ref: React.Ref<any>) => JSX.Element);
-  style?: Partial<CSSStyleDeclaration>;
+  containerClassName?: string;
 };
 
-export const Popover = ({ isOpen, onClickOutside, content, children, style }: PopoverProps) => {
+export const Popover = ({
+  isOpen,
+  onClickOutside,
+  content,
+  children,
+  containerClassName,
+}: PopoverProps) => {
   return (
     <PopoverDefault
       isOpen={isOpen}
-      containerStyle={{ ...defaultContainerStyle, ...style }}
+      containerClassName={`popover-container ${containerClassName ? containerClassName : ''}`}
       // in seconds
       transitionDuration={0.15}
       position={['bottom', 'right']}

@@ -256,9 +256,13 @@ If you opt to use a separate Firebase project in production, there are some addi
 <!-- todo Add Dima for data -->
 
 - Patrick Gillespie for his [Text to ASCII Art Generator](http://patorjk.com/software/taag/).
-- The development community for writing all those blog posts and Stack Overflow answers.
+- The very good (and open source) [Material Design icons](https://material.io/resources/icons/).
+- Github, Trello and Airtable as clean design inspirations.
+- Astigmatic for the cool (and free) [Righteous font](https://fonts.google.com/specimen/Righteous?preview.text=Zaino&preview.text_type=custom)
+- The development community for writing all the blog posts and Stack Overflow answers.
 
-<!-- todo material icons -->
+<!-- todo people feedback -->
+<!-- todo uni classmates -->
 
 ## License
 
