@@ -1,5 +1,4 @@
 import db from './firebase';
-import processBatchIncrement from './processBatchIncrement';
 
 /**
  * Copy all items in a collection in one path to another.
@@ -18,7 +17,13 @@ export default async (srcCollectionPath: string, destCollectionPath: string, add
   for (const doc of documents.docs) {
     const data = addedAt ? { ...doc.data(), addedAt } : doc.data();
     batch.set(destCollection.doc(doc.id), data);
-    ({ i, batch } = await processBatchIncrement(i, batch));
+    i++;
+    // Firestore only allows 500 batch operations in a single batch.
+    if (i > 490) {
+      i = 0;
+      await batch.commit();
+      batch = db.batch();
+    }
   }
 
   if (i > 0) await batch.commit();

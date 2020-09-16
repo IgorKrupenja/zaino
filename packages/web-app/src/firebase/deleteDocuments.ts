@@ -1,5 +1,4 @@
 import db from './firebase';
-import processBatchIncrement from './processBatchIncrement';
 
 /**
  * Delete documents from a collection.
@@ -14,7 +13,13 @@ export default async (collectionName: string, docIds: string[]) => {
   let i = 0;
   for (const id of docIds) {
     batch.delete(collection.doc(id));
-    ({ i, batch } = await processBatchIncrement(i, batch));
+    i++;
+    // Firestore only allows 500 batch operations in a single batch.
+    if (i > 490) {
+      i = 0;
+      await batch.commit();
+      batch = db.batch();
+    }
   }
 
   if (i > 0) await batch.commit();

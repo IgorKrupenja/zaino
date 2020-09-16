@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Item } from '@zaino/shared/';
 import deleteDocuments from '../../firebase/deleteDocuments';
 import db from '../../firebase/firebase';
-import processBatchIncrement from '../../firebase/processBatchIncrement';
 import { RootState } from '../store';
 import { decrementItemCount } from './labels';
 
@@ -44,7 +43,13 @@ export const batchUpdateItems = createAsyncThunk<void, Item[], { state: RootStat
       const { id, ...firestoreData } = item;
       const ref = db.collection(`users/${getState().user.uid}/items`).doc(id);
       batch.update(ref, { ...firestoreData });
-      ({ i, batch } = await processBatchIncrement(i, batch));
+      i++;
+      // Firestore only allows 500 batch operations in a single batch.
+      if (i > 490) {
+        i = 0;
+        await batch.commit();
+        batch = db.batch();
+      }
     }
 
     if (i > 0) await batch.commit();
