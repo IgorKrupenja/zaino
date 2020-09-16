@@ -1,7 +1,9 @@
 import 'normalize.css/normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Media from 'react-media';
 import { Provider } from 'react-redux';
+import { MobilePlaceholder } from './components/misc/MobilePlaceholder';
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routers/AppRouter';
 import { loadUserData } from './state/slices/dataLoader';
@@ -11,7 +13,10 @@ import './styles/styles.scss';
 
 const app = (
   <Provider store={store}>
-    <AppRouter />
+    {/* Show temporary placeholder on mobiles */}
+    <Media queries={{ small: { maxWidth: 599 } }}>
+      {matches => (matches.small ? <MobilePlaceholder /> : <AppRouter />)}
+    </Media>
   </Provider>
 );
 

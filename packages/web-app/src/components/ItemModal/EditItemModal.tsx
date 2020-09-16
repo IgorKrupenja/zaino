@@ -2,7 +2,7 @@ import { Item } from '@zaino/shared/';
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
-import { Redirect, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
 import { history } from '../../routers/AppRouter';
 import { deleteItem, updateItem } from '../../state/slices/items';
@@ -21,12 +21,6 @@ const EditItemModal = () => {
   const location = useLocation<LocationState>();
   const dispatch = useDispatch();
   const [isPopoverOpen, togglePopover] = useToggle();
-
-  // redirect to Dashboard if item id is invalid
-  // Redirect is better than history.push here
-  // as history stack will not be populated with edit/invalid-id
-  if (!location.state) return <Redirect to="/dashboard" />;
-
   const item = location.state.item;
   const [title, setTitle] = useState(item.name);
 
