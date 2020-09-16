@@ -35,6 +35,7 @@ export const AccountDetails = () => {
       isOpen={isPopoverOpen}
       onClickOutside={togglePopover}
       containerClassName="popover-container--wide"
+      align="end"
       content={
         <>
           <PopoverHeader text="Account">

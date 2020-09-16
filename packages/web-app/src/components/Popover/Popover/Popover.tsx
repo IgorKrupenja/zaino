@@ -8,6 +8,7 @@ type PopoverProps = {
   content: JSX.Element | ContentRenderer;
   children: JSX.Element | ((ref: React.Ref<any>) => JSX.Element);
   containerClassName?: string;
+  align?: 'start' | 'center' | 'end' | undefined;
 };
 
 export const Popover = ({
@@ -16,6 +17,7 @@ export const Popover = ({
   content,
   children,
   containerClassName,
+  align,
 }: PopoverProps) => {
   return (
     <PopoverDefault
@@ -26,6 +28,7 @@ export const Popover = ({
       position={['bottom', 'right']}
       onClickOutside={onClickOutside}
       content={content}
+      align={align}
     >
       {children}
     </PopoverDefault>

@@ -1,5 +1,6 @@
 .account-details {
   flex-grow: 1;
+  margin: $s-size;
 }
 
 .account-details__photo {
@@ -16,7 +17,7 @@
 }
 
 .account-details__photo--toggle {
-  margin: $s-size $s-size $s-size auto;
+  margin: 0 0 0 auto;
   border: 0.3rem solid transparent;
 
   cursor: pointer;
