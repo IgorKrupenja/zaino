@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
-import { setItemsLabelsFilter } from '../../state/slices/itemsFilters';
+import { setItemLabelsFilter } from '../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../state/slices/labels';
 import { Button } from '../misc/Button';
 import { CloseButton } from '../misc/CloseButton';
@@ -27,7 +27,7 @@ const LabelDetails = (label: Label) => {
     // show link to dashboard if label form is not open for edits
     nameElement = (
       // set label filter on Dashboard
-      <Link to="/dashboard" onClick={() => dispatch(setItemsLabelsFilter([label.id]))}>
+      <Link to="/dashboard" onClick={() => dispatch(setItemLabelsFilter([label.id]))}>
         {name}
       </Link>
     );

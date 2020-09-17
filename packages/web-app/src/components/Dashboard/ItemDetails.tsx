@@ -2,7 +2,7 @@ import { Item } from '@zaino/shared/';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setItemsCategoryFilter, setItemsLabelsFilter } from '../../state/slices/itemsFilters';
+import { setItemCategoryFilter, setItemLabelsFilter } from '../../state/slices/itemsFilters';
 import { RootState } from '../../state/store';
 import { CategoryImage } from '../misc/CategoryImage';
 
@@ -21,7 +21,7 @@ const ItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
         <Link to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}>{name}</Link>
       </h3>
       <CategoryImage categoryName={categoryName} />
-      <p onClick={() => dispatch(setItemsCategoryFilter(categoryName))}>{categoryName}</p>
+      <p onClick={() => dispatch(setItemCategoryFilter(categoryName))}>{categoryName}</p>
       <p>
         {weight ? `${weight}g` : ''} {quantityElement}
       </p>
@@ -35,7 +35,7 @@ const ItemDetails = ({ item, quantityElement, button }: ListItemProps) => {
           (accumulator: React.ReactChild[], label) => {
             if (labelIds?.includes(label.id)) {
               accumulator.push(
-                <li key={label.id} onClick={() => dispatch(setItemsLabelsFilter([label.id]))}>
+                <li key={label.id} onClick={() => dispatch(setItemLabelsFilter([label.id]))}>
                   {label.name}
                 </li>
               );

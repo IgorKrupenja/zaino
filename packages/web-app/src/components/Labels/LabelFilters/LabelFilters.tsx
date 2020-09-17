@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  labelFiltersInitialState,
   LabelSortOption,
-  setLabelsTextFilter,
+  resetLabelFilters,
+  setLabelTextFilter,
   sortLabelsBy,
-} from '../../state/slices/labelsFilters';
-import { RootState } from '../../state/store';
-import { Input } from '../Input';
-import { SortSelect } from '../Selects/SortSelect/';
+} from '../../../state/slices/labelsFilters';
+import { RootState } from '../../../state/store';
+import { Input } from '../../Input';
+import { CloseButton } from '../../misc/CloseButton';
+import { FilterReset } from '../../misc/FilterReset';
+import { SortSelect } from '../../Selects/SortSelect';
+import './style.scss';
 
-const LabelFilters = () => {
+export const LabelFilters = () => {
   const dispatch = useDispatch();
-  const [filters, setFilters] = useState(useSelector((state: RootState) => state.labelsFilters));
+  const selectedFilters = useSelector((state: RootState) => state.labelsFilters);
+  const [filters, setFilters] = useState(selectedFilters);
+
+  // set filters if changed externally in FilterReset
+  useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
   const handleSortChange = (value: string) => {
     const sortBy = value as LabelSortOption;
@@ -22,7 +31,7 @@ const LabelFilters = () => {
 
   useEffect(() => {
     // setTimeout prevents UI freezes when typing
-    const textFilterTimeout = setTimeout(() => dispatch(setLabelsTextFilter(filters.text)), 200);
+    const textFilterTimeout = setTimeout(() => dispatch(setLabelTextFilter(filters.text)), 200);
     return () => clearTimeout(textFilterTimeout);
   }, [filters.text, dispatch]);
 
@@ -41,8 +50,10 @@ const LabelFilters = () => {
         hiddenOption={LabelSortOption.lastSortOrder}
         onChange={handleSortChange}
       />
+      <FilterReset filters={filters} initialFilters={labelFiltersInitialState}>
+        <CloseButton onClick={() => dispatch(resetLabelFilters())} />
+        Clear search and sort
+      </FilterReset>
     </section>
   );
 };
-
-export default LabelFilters;

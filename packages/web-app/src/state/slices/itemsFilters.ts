@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type Filters = {
+export type ItemFilters = {
   text: string;
   category?: string;
   labels: string[];
@@ -13,7 +13,7 @@ export enum ItemSortOption {
   weight = 'Weight',
 }
 
-const initialState: Filters = {
+export const itemFiltersInitialState: ItemFilters = {
   text: '',
   category: undefined,
   labels: [],
@@ -22,28 +22,30 @@ const initialState: Filters = {
 
 const itemFiltersSlice = createSlice({
   name: 'filters-items',
-  initialState,
+  initialState: itemFiltersInitialState,
   reducers: {
-    setItemsTextFilter(state, action: PayloadAction<string>) {
+    setItemTextFilter(state, action: PayloadAction<string>) {
       state.text = action.payload;
     },
-    setItemsCategoryFilter(state, action: PayloadAction<string | undefined>) {
+    setItemCategoryFilter(state, action: PayloadAction<string | undefined>) {
       state.category = action.payload;
     },
-    setItemsLabelsFilter(state, action: PayloadAction<string[]>) {
+    setItemLabelsFilter(state, action: PayloadAction<string[]>) {
       state.labels = action.payload;
     },
     sortItemsBy(state, action: PayloadAction<ItemSortOption>) {
       state.sortBy = action.payload;
     },
+    resetItemFilters: () => itemFiltersInitialState,
   },
 });
 
 export const {
-  setItemsTextFilter,
-  setItemsCategoryFilter,
-  setItemsLabelsFilter,
+  setItemTextFilter,
+  setItemCategoryFilter,
+  setItemLabelsFilter,
   sortItemsBy,
+  resetItemFilters,
 } = itemFiltersSlice.actions;
 
 export default itemFiltersSlice.reducer;

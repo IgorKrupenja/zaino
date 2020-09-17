@@ -1,15 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  itemFiltersInitialState,
   ItemSortOption,
-  setItemsCategoryFilter,
-  setItemsLabelsFilter,
-  setItemsTextFilter,
+  resetItemFilters,
+  setItemCategoryFilter,
+  setItemLabelsFilter,
+  setItemTextFilter,
   sortItemsBy,
 } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { Input } from '../../Input';
+import { CloseButton } from '../../misc/CloseButton';
+import { FilterReset } from '../../misc/FilterReset';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect';
 import { SortSelect } from '../../Selects/SortSelect';
@@ -22,6 +26,7 @@ export const DashboardFilters = () => {
   const [filters, setFilters] = useState(selectedFilters);
 
   // set filters if changed externally by clicking on label/category inside ItemDetails
+  // or in in FilterReset
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
   const firstUpdate = useRef(true);
@@ -33,7 +38,7 @@ export const DashboardFilters = () => {
       firstUpdate.current = false;
       return;
     }
-    const textFilterTimeout = setTimeout(() => dispatch(setItemsTextFilter(filters.text)), 200);
+    const textFilterTimeout = setTimeout(() => dispatch(setItemTextFilter(filters.text)), 200);
     return () => clearTimeout(textFilterTimeout);
   }, [filters.text, dispatch]);
 
@@ -41,11 +46,11 @@ export const DashboardFilters = () => {
     if (category === filters.category) {
       // reset category filter if user clicks on a category that is already selected
       setFilters({ ...filters, category: undefined });
-      dispatch(setItemsCategoryFilter(undefined));
+      dispatch(setItemCategoryFilter(undefined));
     } else {
       // set category filter normally
       setFilters({ ...filters, category });
-      dispatch(setItemsCategoryFilter(category));
+      dispatch(setItemCategoryFilter(category));
     }
   };
 
@@ -75,7 +80,7 @@ export const DashboardFilters = () => {
         labelIds={filters.labels}
         headerText="Filter by label"
         // setTimeout to prevent UI freezing on slow PCs
-        onChange={labelIds => setTimeout(() => dispatch(setItemsLabelsFilter(labelIds)), 1)}
+        onChange={labelIds => setTimeout(() => dispatch(setItemLabelsFilter(labelIds)), 1)}
       />
       <SortSelect
         sortOptions={ItemSortOption}
@@ -83,6 +88,10 @@ export const DashboardFilters = () => {
         selectedOption={filters.sortBy}
         hiddenOption={LabelSortOption.lastSortOrder}
       />
+      <FilterReset filters={filters} initialFilters={itemFiltersInitialState}>
+        <CloseButton onClick={() => dispatch(resetItemFilters())} />
+        Clear search, filters and sort
+      </FilterReset>
     </section>
   );
 };

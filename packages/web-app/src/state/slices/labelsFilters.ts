@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type Filters = {
+export type LabelFilters = {
   text: string;
   sortBy: LabelSortOption;
 };
@@ -12,24 +12,25 @@ export enum LabelSortOption {
   lastSortOrder = 'Last sort order',
 }
 
-const initialState: Filters = {
+export const labelFiltersInitialState: LabelFilters = {
   text: '',
   sortBy: LabelSortOption.name,
 };
 
 const labelFiltersSlice = createSlice({
   name: 'filters-labels',
-  initialState,
+  initialState: labelFiltersInitialState,
   reducers: {
-    setLabelsTextFilter(state, action: PayloadAction<string>) {
+    setLabelTextFilter(state, action: PayloadAction<string>) {
       state.text = action.payload;
     },
     sortLabelsBy(state, action: PayloadAction<LabelSortOption>) {
       state.sortBy = action.payload;
     },
+    resetLabelFilters: () => labelFiltersInitialState,
   },
 });
 
-export const { setLabelsTextFilter, sortLabelsBy } = labelFiltersSlice.actions;
+export const { setLabelTextFilter, sortLabelsBy, resetLabelFilters } = labelFiltersSlice.actions;
 
 export default labelFiltersSlice.reducer;
