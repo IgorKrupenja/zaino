@@ -1,0 +1,58 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+
+  background: $off-white;
+}
+
+.login-page__title {
+  margin: 0 0 $m-size 0;
+
+  color: $dark-green;
+  font-family: 'Righteous', cursive;
+  font-size: 7rem;
+  text-decoration: none;
+}
+
+.login-page__slogan {
+  margin-bottom: $xl-size;
+  width: 35rem;
+
+  text-align: center;
+  font-size: $font-size-large;
+}
+
+.login-page__github-link {
+  display: flex;
+  align-items: center;
+
+  margin: $xl-size 0;
+  margin-top: 5rem;
+
+  // to match Github logo
+  color: #181616;
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.login-page__github-icon {
+  margin-right: $xs-size;
+  height: $xl-size;
+  width: $xl-size;
+
+  &:hover {
+    fill: $grey;
+  }
+}
+
+.st0 {
+  fill: $grey;
+}

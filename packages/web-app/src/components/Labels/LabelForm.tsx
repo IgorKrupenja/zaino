@@ -40,7 +40,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
     ) {
       setNameError('Label with this name already exists');
     } else {
-      // allows for in-place rename if sort options is set to name
+      // allows for in-place rename if sort is set to name
       labelSortOption === LabelSortOption.name &&
         dispatch(sortLabelsBy(LabelSortOption.lastSortOrder));
       onSubmit({ ...values });

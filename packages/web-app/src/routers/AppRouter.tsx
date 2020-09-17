@@ -5,7 +5,7 @@ import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import { Header } from '../components/Header/Header';
 import { DashboardPage } from '../components/Pages/DashboardPage';
 import LabelsPage from '../components/Pages/LabelsPage';
-import LoginPage from '../components/Pages/LoginPage';
+import { LoginPage } from '../components/Pages/LoginPage/';
 import { RootState } from '../state/store';
 
 // custom history is needed for login in app.tsx to work

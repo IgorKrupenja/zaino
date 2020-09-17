@@ -10206,6 +10206,13 @@ react-dom@^16.13.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
+react-google-button@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/react-google-button/-/react-google-button-0.7.1.tgz#e84b4ce270a66e345489dc86e47235e877fcc81a"
+  integrity sha512-FN8/9Va6oAGKL561yddNzcjz0iGlt2GZFwiDPczEu0fDVnR21/nBrPs7Y5x97V1S4//nvtkvv6ohfwtxIHpbfg==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-input-autosize@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.2.2.tgz#fcaa7020568ec206bc04be36f4eb68e647c4d8c2"

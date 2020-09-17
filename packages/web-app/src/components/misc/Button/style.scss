@@ -57,7 +57,7 @@
   }
   &:disabled {
     border-bottom: 0.2rem solid transparent;
-    color: $mid-grey;
+    color: $light-grey;
   }
 }
 
@@ -65,7 +65,7 @@
   border-bottom: 0.2rem solid white;
 }
 
-// for React router Links and NavLinks
+// extra styling for React router Links and NavLinks
 // todo need to set width and height as well somehow?
 .button--link {
   display: flex;
@@ -74,4 +74,7 @@
 
   color: white;
   text-decoration: none;
+}
+
+.button--dropdown {
 }

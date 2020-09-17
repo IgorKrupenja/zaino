@@ -50,7 +50,7 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable, headerText }: Lab
 
   // display filtered label when set by clicking on label/category inside ItemDetails
   useEffect(() => setValues(prepareValues(labelIds)), [prepareValues, labelIds]);
-  // update options in DashboardFilters when new ones are created in ItemForm
+  // update labels in DashboardFilters select when new ones are created in ItemForm
   useEffect(() => setOptions(prepareOptions(labels)), [labels]);
 
   const handleChange = (newValues: ValueType<LabelSelectOption>) => {

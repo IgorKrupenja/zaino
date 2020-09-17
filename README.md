@@ -12,6 +12,7 @@ Hiking and mountaineering inventory management app for the meticulous adventurer
 
 Hiking and mountaineering equipment management app for the meticulous adventurer
 
+todo below best
 Hiking and mountaineering equipment app for the meticulous adventurer
 
 Hiking, mountaineering and ultrarunning equipment app for the meticulous adventurer -->
@@ -61,7 +62,7 @@ Hiking, mountaineering and ultrarunning equipment app for the meticulous adventu
 
 ## Live Demo
 
-A fully-functional live demo is available at [zaino.krupenja.net](https://zaino.krupenja.net). It uses a separate production Firebase project so your data is safe from me breaking something in development. 😅
+A fully-functional live demo is available at [zaino.krupenja.net](https://zaino.krupenja.net). It uses a separate production Firebase project so your data is safe from me breaking something in development. 😅 Regular backups are also run there just in case.
 
 Already have some document or spreadsheet with your hiking/climbing/running gear and want to try the app with your own data? Get in touch with with me at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com) and I will try to get a way to import your data into the app.
 

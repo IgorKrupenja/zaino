@@ -1,5 +1,6 @@
 declare module '*.svg' {
-  // const content: string;
+  // either React component when importing in TS
+  // or a string with path to file when importing in SCSS
   const content: React.FunctionComponent<React.SVGAttributes<SVGElement>> | string;
   export default content;
 }
