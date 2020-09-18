@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { OptionTypeBase, ValueType } from 'react-select';
 import useToggle from '../../../hooks/useToggle';
+import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
+import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../Popover/Popover';
 import { PopoverHeader } from '../../Popover/PopoverHeader';
@@ -61,9 +63,10 @@ export const SortSelect = ({
         </>
       }
     >
-      <button type="button" onClick={togglePopover}>
+      <Button className="button--white" onClick={togglePopover}>
         Sort
-      </button>
+        <DropdownIcon className="button--white__icon" />
+      </Button>
     </Popover>
   );
 };

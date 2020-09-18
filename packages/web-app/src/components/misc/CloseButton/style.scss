@@ -12,8 +12,10 @@
   width: $l-size;
   fill: $light-grey;
 
+  transition: 0.3s;
+
   &:hover {
-    fill: $dark-grey;
+    fill: $off-black;
   }
   &:active {
     fill: $grey;

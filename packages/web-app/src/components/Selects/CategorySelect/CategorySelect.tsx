@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { OptionTypeBase, ValueType } from 'react-select';
 import Categories from '../../../constants/Categories';
 import useToggle from '../../../hooks/useToggle';
+import DropdownIcon from '../../../images/icons/drop-down.svg';
+import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../Popover/Popover';
 import { PopoverHeader } from '../../Popover/PopoverHeader';
@@ -65,9 +67,10 @@ export const CategorySelect = ({
         </>
       }
     >
-      <button type="button" onClick={togglePopover}>
+      <Button className="button--white" onClick={togglePopover}>
         Categories
-      </button>
+        <DropdownIcon className="button--white__icon" />
+      </Button>
     </Popover>
   );
 };

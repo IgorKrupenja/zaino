@@ -1,6 +1,6 @@
 .button {
   margin: 0 $xs-size 0 $xs-size;
-  border: 0.1rem solid rgba($dark-grey, 0.4);
+  border: 0.1rem solid rgba($off-black, 0.4);
   border-radius: $xs-size;
   padding: 0 $s-size 0 $s-size;
 
@@ -26,12 +26,47 @@
 }
 
 .button--grey {
-  color: $dark-grey;
+  color: $off-black;
   border: 0.1rem solid rgba($light-grey, 1);
   background-color: rgba($off-white, 1);
 
   &:hover {
     background-color: $extra-light-grey;
+  }
+}
+
+.button--white {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  border: unset;
+  border-radius: unset;
+
+  background-color: white;
+  color: $dark-grey;
+  font-weight: normal;
+
+  &:hover {
+    color: $off-black;
+    background-color: white;
+  }
+  // also change SVG fill when hovering over text
+  &:hover > .button--white__icon {
+    fill: $off-black;
+  }
+}
+
+.button--white__icon {
+  height: 1.6rem;
+  width: 1.6rem;
+
+  fill: $dark-grey;
+  transition: 0.3s;
+
+  &:hover {
+    fill: $off-black;
   }
 }
 

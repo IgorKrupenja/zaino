@@ -24,8 +24,6 @@ const EditItemModal = () => {
   const item = location.state.item;
   const [title, setTitle] = useState(item.name);
 
-  console.log(location.state);
-
   document.title = `${title} | Zaino`;
   Modal.setAppElement('#app');
   const closeModal = () => history.push('/dashboard');

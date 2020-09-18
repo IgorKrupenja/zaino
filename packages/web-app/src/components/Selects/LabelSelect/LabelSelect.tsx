@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ValueType } from 'react-select';
 import { v4 as uuid } from 'uuid';
 import useToggle from '../../../hooks/useToggle';
+import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { addLabel } from '../../../state/slices/labels';
 import { RootState } from '../../../state/store';
+import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
 import { Popover } from '../../Popover/Popover';
 import { PopoverHeader } from '../../Popover/PopoverHeader';
@@ -113,9 +115,10 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable, headerText }: Lab
         </>
       }
     >
-      <button type="button" onClick={togglePopover}>
+      <Button className="button--white" onClick={togglePopover}>
         Labels
-      </button>
+        <DropdownIcon className="button--white__icon" />
+      </Button>
     </Popover>
   );
 };
