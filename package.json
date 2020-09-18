@@ -16,7 +16,7 @@
     "cloc": "cloc . --exclude-dir=node_modules,dist,package-lock.json,stats.json,sandbox"
   },
   "dependencies": {
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.3"
   },
   "devDependencies": {
     "cloc": "^2.6.0"

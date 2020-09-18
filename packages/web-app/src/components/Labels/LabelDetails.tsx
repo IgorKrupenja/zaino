@@ -50,7 +50,7 @@ const LabelDetails = (label: Label) => {
         content={
           <>
             <PopoverHeader text="Delete item?">
-              <CloseButton className="close-button--large-margin" onClick={togglePopover} />
+              <CloseButton className="close-button--large-padding" onClick={togglePopover} />
             </PopoverHeader>
             <PopoverContent>
               <p>Deleting a label will remove it from all items. There is no undo.</p>

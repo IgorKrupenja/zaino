@@ -1,0 +1,27 @@
+.textarea__container {
+  display: flex;
+  flex-direction: column;
+  margin: $s-size 0 0 0;
+}
+
+.textarea {
+  margin-bottom: $xs-size;
+  border: $border;
+  border-radius: $xs-size;
+  padding: $xs-size;
+  height: 10rem;
+
+  background: $off-white;
+  resize: none;
+  transition: 0.1s;
+  color: $off-black;
+
+  &:focus {
+    border: 0.1rem solid $light-blue;
+    border-radius: $xs-size;
+    box-shadow: $input-shadow;
+    outline: 0;
+
+    background: white;
+  }
+}

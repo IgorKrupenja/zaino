@@ -91,7 +91,6 @@ export const LabelSelect = ({ labelIds, onChange, isCreatable, headerText }: Lab
   const selectProps = {
     isMulti: true,
     styles,
-    placeholder: 'Search labels',
     onChange: handleChange,
     onCreateOption: handleCreate,
     options,

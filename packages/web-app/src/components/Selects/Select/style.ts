@@ -1,7 +1,7 @@
 import { Color } from '@zaino/shared';
 import { Styles } from 'react-select';
 import checkbox from '../../../images/icons/check-mark.svg';
-import styles from '../../../styles/common/_settings.scss';
+import styles from '../../../styles/base/_settings.scss';
 
 // CSS-in-JS is used here as this is the recommended method for react-select
 
@@ -9,13 +9,18 @@ const commonSelectStyles: Partial<Styles> = {
   control: (base, { isFocused }) => ({
     ...base,
     margin: styles.xsSize,
+    borderColor: isFocused ? styles.lightBlue : styles.lightGrey,
+    boxShadow: isFocused ? styles.inputShadow : 'none',
+    borderRadius: styles.xsSize,
     minHeight: styles.xlSize,
     height: styles.xlSize,
+    maxWidth: '30rem',
     overflow: 'hidden',
-    borderColor: isFocused ? styles.lightBlue : base.borderColor,
-    borderRadius: styles.xsSize,
+    backgroundColor: isFocused ? 'white' : styles.offWhite,
+
     '&:hover': {
       borderColor: isFocused ? styles.lightBlue : styles.midGrey,
+      boxShadow: isFocused ? styles.inputShadow : 'none',
     },
   }),
   valueContainer: () => ({
@@ -24,6 +29,7 @@ const commonSelectStyles: Partial<Styles> = {
   }),
   menu: () => ({
     borderTop: styles.border,
+    maxWidth: '31.2rem',
   }),
   noOptionsMessage: base => ({
     ...base,

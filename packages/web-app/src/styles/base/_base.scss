@@ -26,25 +26,14 @@ body {
   line-height: 1.4;
 }
 
+h2 {
+  margin: 0;
+}
+
 p {
   margin: 0;
 }
 
-button,
-submit {
-  border: none;
-  background: none;
-}
-
-button {
-  cursor: pointer;
-  padding: 0;
-}
-
-button:disabled {
-  cursor: default;
-}
-
-button:focus {
-  outline: 0;
+::selection {
+  background: rgba($light-blue, 0.4);
 }

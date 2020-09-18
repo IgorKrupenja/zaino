@@ -1,0 +1,41 @@
+.input__container {
+  display: flex;
+  flex-direction: column;
+  margin: $s-size 0 0 0;
+}
+
+.input {
+  border: $border;
+  border-radius: $xs-size;
+  padding: 0 $xs-size;
+  height: $xl-size;
+
+  background: $off-white;
+  transition: 0.1s;
+  color: $off-black;
+
+  &:focus {
+    border: 0.1rem solid $light-blue;
+    box-shadow: $input-shadow;
+    border-radius: $xs-size;
+    outline: 0;
+
+    background: white;
+  }
+}
+
+.input--error {
+  border: 0.1rem solid $bright-red;
+  box-shadow: 0 0 0 0.1rem $bright-red;
+
+  &:focus {
+    border: 0.1rem solid $bright-red;
+    box-shadow: 0 0 0 0.1rem $bright-red;
+  }
+}
+
+.input__error-message {
+  padding: 0.3rem 0.3rem 0 0.3rem;
+  color: $bright-red;
+  font-size: $font-size-small;
+}

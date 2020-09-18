@@ -61,7 +61,6 @@ export const CategorySelect = ({
             name="categoryName"
             options={options}
             onChange={handleChange}
-            placeholder="Search"
             noOptionsMessage={() => 'No matching categories'}
           />
         </>

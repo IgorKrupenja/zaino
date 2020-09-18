@@ -1,0 +1,19 @@
+.item-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-form__horizontal-container {
+  display: flex;
+}
+
+.item-form__half-width-element {
+  width: 50%;
+
+  &:nth-child(1) {
+    margin-right: $xs-size;
+  }
+  &:nth-child(2) {
+    margin-left: $xs-size;
+  }
+}

@@ -1,0 +1,16 @@
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+
+  margin: 0 0 $xs-size 0;
+}
+
+.modal-header__title {
+  font-size: $font-size-large;
+}
+
+.modal-header__title--grey {
+  color: $mid-grey;
+}

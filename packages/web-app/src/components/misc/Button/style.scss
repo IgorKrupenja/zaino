@@ -9,11 +9,15 @@
 
   font-weight: 500;
   color: white;
+  cursor: pointer;
 
   transition: 0.3s;
 
   &:hover {
     background-color: rgba($dark-green, 1);
+  }
+  &:focus {
+    outline: 0;
   }
 }
 
@@ -70,11 +74,6 @@
   }
 }
 
-.button--wide {
-  width: 25rem - $s-size * 2;
-  margin: 0 $s-size $s-size $s-size;
-}
-
 .button--underline {
   border: unset;
   border-radius: unset;
@@ -93,11 +92,17 @@
   &:disabled {
     border-bottom: 0.2rem solid transparent;
     color: $light-grey;
+    cursor: default;
   }
 }
 
 .button--underline--active {
   border-bottom: 0.2rem solid white;
+}
+
+.button--wide {
+  width: 25rem - $s-size * 2;
+  margin: 0 $s-size $s-size $s-size;
 }
 
 // extra styling for React router Links and NavLinks
@@ -111,5 +116,6 @@
   text-decoration: none;
 }
 
-.button--dropdown {
+.button--no-margin {
+  margin: 0;
 }

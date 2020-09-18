@@ -14,6 +14,7 @@ export type settings = {
   offWhite: string;
   extraLightGrey: string;
   border: string;
+  inputShadow: string;
 };
 
 export const styles: settings;

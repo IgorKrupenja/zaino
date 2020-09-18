@@ -6,6 +6,7 @@ import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
 import { Input } from '../Input/';
+import { FormLabel } from '../ItemModal/FormLabel';
 import { ColorSelect } from '../Selects/ColorSelect';
 
 type LabelFormProps = {
@@ -54,7 +55,6 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
       {!label && <span>{values.name ? values.name : 'Label preview'}</span>}
       <form onSubmit={handleSubmit}>
         <Input
-          title="Name"
           value={values.name}
           error={nameError}
           autoFocus
@@ -65,7 +65,9 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
             // update label name preview on typing if editing a label
             setLabelDetailsName && setLabelDetailsName(name);
           }}
-        />
+        >
+          <FormLabel htmlFor="name">Name</FormLabel>
+        </Input>
         <ColorSelect
           selectedColorName={values.colorName as ColorName}
           onChange={colorName => {

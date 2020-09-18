@@ -81,7 +81,6 @@ Already have some document or spreadsheet with your hiking/climbing/running gear
 <!-- todo add date -->
 
 - Initial release 🚀
-- **Known issue**: Constant 3-4% CPU usage when idle [#247](https://github.com/krupenja/zaino/issues/247)
 
 [See full changelog](CHANGELOG.md).
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import DefaultSelect, { InputActionMeta, mergeStyles, Props } from 'react-select';
-import DefaultCreatableSelect from 'react-select/creatable';
+import ReactSelect, { InputActionMeta, mergeStyles, Props } from 'react-select';
+import ReactCreatableSelect from 'react-select/creatable';
 import commonSelectStyles from './style';
 
 /**
@@ -26,6 +26,7 @@ export const Select = (props: Props<any>) => {
 
   const { isCreatable, styles, ...rest } = props;
   const mergedProps = {
+    placeholder: 'Search',
     autoFocus: true,
     hideSelectedOptions: false,
     controlShouldRenderValue: false,
@@ -40,9 +41,5 @@ export const Select = (props: Props<any>) => {
     ...rest,
   };
 
-  return isCreatable ? (
-    <DefaultCreatableSelect {...mergedProps} />
-  ) : (
-    <DefaultSelect {...mergedProps} />
-  );
+  return isCreatable ? <ReactCreatableSelect {...mergedProps} /> : <ReactSelect {...mergedProps} />;
 };

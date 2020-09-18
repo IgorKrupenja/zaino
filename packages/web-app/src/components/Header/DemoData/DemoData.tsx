@@ -63,7 +63,7 @@ export const DemoData = () => {
         content={
           <>
             <PopoverHeader text="Load demo data?">
-              <CloseButton className="close-button--large-margin" onClick={toggleLoadPopover} />
+              <CloseButton className="close-button--large-padding" onClick={toggleLoadPopover} />
             </PopoverHeader>
             <PopoverContent>
               <p>Use this to load demo items and labels. These can be easily removed later.</p>

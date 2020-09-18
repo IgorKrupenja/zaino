@@ -1,13 +1,15 @@
 import { Item } from '@zaino/shared/';
 import React, { ChangeEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { decrementItemCount, incrementItemCount } from '../../state/slices/labels';
-import getArrayDifference from '../../utils/getArrayDifference';
-import { Input } from '../Input/';
-import { CategoryImage } from '../misc/CategoryImage';
-import { TextArea } from '../misc/TextArea';
-import { CategorySelect } from '../Selects/CategorySelect/';
-import { LabelSelect } from '../Selects/LabelSelect/LabelSelect';
+import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
+import getArrayDifference from '../../../utils/getArrayDifference';
+import { Input } from '../../Input';
+import { CategoryImage } from '../../misc/CategoryImage';
+import { TextArea } from '../../misc/TextArea';
+import { CategorySelect } from '../../Selects/CategorySelect';
+import { LabelSelect } from '../../Selects/LabelSelect/LabelSelect';
+import { FormLabel } from '../FormLabel';
+import './style.scss';
 
 type ItemFormProps = {
   item: Item;
@@ -16,7 +18,7 @@ type ItemFormProps = {
   children: ReactNode;
 };
 
-const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
+export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
   const [values, setValues] = useState(item);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
   // used in onFormSubmit to set label item counts
@@ -49,7 +51,7 @@ const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
       isFormValid = false;
     }
     if (values.quantity < 1) {
-      errors.quantity = 'Please enter a positive quantity';
+      errors.quantity = 'Please enter a quantity';
       isFormValid = false;
     }
     setErrors(errors);
@@ -88,29 +90,42 @@ const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="item-form">
         <Input
-          title="Name"
+          name="name"
           value={values.name}
           onChange={handleChange}
           error={errors.name}
           autoFocus
-        />
-        <CategoryImage categoryName={values.categoryName} />
-        <Input
-          title="Weight (grams)"
-          name="weight"
-          value={values.weight}
-          onChange={e => handleChange(e)}
-          error={errors.weight}
-        />
-        <Input
-          title="Quantity"
-          value={values.quantity}
-          onChange={e => handleChange(e)}
-          error={errors.quantity}
-        />
-        <TextArea title="Notes" name="notes" value={values.notes} onChange={handleChange} />
+          onFocus={() => setErrors({ ...errors, name: '' })}
+        >
+          <FormLabel htmlFor="name">Name</FormLabel>
+        </Input>
+        {/* technical div for styling */}
+        <div className="item-form__horizontal-container">
+          <Input
+            name="quantity"
+            value={values.quantity}
+            onChange={e => handleChange(e)}
+            error={errors.quantity}
+            onFocus={() => setErrors({ ...errors, quantity: '' })}
+            containerClassName="item-form__half-width-element"
+          >
+            <FormLabel htmlFor="quantity">Quantity</FormLabel>
+          </Input>
+          <Input
+            name="weight"
+            value={values.weight}
+            onChange={e => handleChange(e)}
+            error={errors.weight}
+            containerClassName="item-form__half-width-element"
+          >
+            <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
+          </Input>
+        </div>
+        <TextArea name="notes" value={values.notes} onChange={handleChange}>
+          <FormLabel htmlFor="notes">Notes</FormLabel>
+        </TextArea>
         <LabelSelect
           labelIds={values.labelIds}
           headerText="Select labels"
@@ -122,11 +137,10 @@ const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
           headerText="Select category"
           onChange={categoryName => setValues({ ...values, categoryName })}
         />
+        <CategoryImage categoryName={values.categoryName} />
         {children}
       </form>
       {/* labels and categories moved outside of form as toggling them was broken inside */}
     </>
   );
 };
-
-export default ItemForm;

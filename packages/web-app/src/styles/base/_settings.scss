@@ -29,9 +29,9 @@ $dark-blue: $dark-blue-shared;
 // 666
 $grey: $grey-shared;
 
-// for shadows
 $shadow: 0 0.7rem 2rem rgba($grey, 0.2);
 $border: 0.1rem $light-grey solid;
+$input-shadow: 0 0 0 0.1rem $light-blue;
 
 // Spacing
 $xs-size: 0.6rem;
@@ -48,6 +48,7 @@ $list-filters-height: 2 * $xl-size;
 // Font sizes
 $font-size-small: $s-size;
 $font-size-medium: $m-size;
+// todo atm used on login page
 $font-size-large: 1.8rem;
 
 // export variables to use in TS for styling selects
@@ -65,4 +66,5 @@ $font-size-large: 1.8rem;
   offBlack: $off-black;
   lightBlue: $light-blue;
   border: $border;
+  inputShadow: $input-shadow;
 }

@@ -16,7 +16,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         disabled={disabled}
-        className={`button ${className ? className : ''}`}
+        className={`button${className ? ` ${className}` : ''}`}
         onClick={onClick}
         type={submit ? 'submit' : 'button'}
       >

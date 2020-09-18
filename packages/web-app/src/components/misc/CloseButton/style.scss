@@ -2,15 +2,21 @@
   display: flex;
   align-items: center;
 
+  border: none;
   padding-right: 0.8rem;
 
+  background: none;
   cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 .close-button__icon {
   height: $l-size;
   width: $l-size;
-  fill: $light-grey;
+  fill: $mid-grey;
 
   transition: 0.3s;
 
@@ -22,6 +28,16 @@
   }
 }
 
-.close-button--large-margin {
+.close-button--large-padding {
   padding-right: 1.2rem;
+}
+
+.close-button--large {
+  padding: 0 0 0 $s-size;
+
+  // a bit of a hack
+  > .close-button__icon {
+    height: 2.2rem;
+    width: 2.2rem;
+  }
 }
