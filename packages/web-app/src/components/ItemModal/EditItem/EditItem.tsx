@@ -7,12 +7,12 @@ import { history } from '../../../routers/AppRouter';
 import { deleteItem, updateItem } from '../../../state/slices/items';
 import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
+import { SectionHeader } from '../../misc/SectionHeader';
 import { Popover } from '../../Popover/Popover';
 import { PopoverContent } from '../../Popover/PopoverContent';
 import { PopoverHeader } from '../../Popover/PopoverHeader';
 import { ItemForm } from '../ItemForm/';
 import { Modal } from '../Modal';
-import { ModalHeader } from '../ModalHeader';
 
 type LocationState = {
   item: Item;
@@ -31,12 +31,12 @@ export const EditItem = () => {
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
       {/* header */}
-      <ModalHeader>
-        <h2 className={`modal-header__title${title ? '' : ' modal-header__title--grey'}`}>
+      <SectionHeader>
+        <h2 className={`section-header__title${title ? '' : ' section-header__title--grey'}`}>
           {title ? title : 'No name'}
         </h2>
         <CloseButton className="close-button--large" onClick={closeModal} />
-      </ModalHeader>
+      </SectionHeader>
       {/* item form */}
       <ItemForm
         item={item}
@@ -48,7 +48,7 @@ export const EditItem = () => {
       >
         {/* technical div for styling */}
         <div className="item-form__horizontal-container">
-          <Button className="item-form__half-width-element" submit>
+          <Button className="button--green item-form__half-width" submit>
             Save changes
           </Button>
           {/* delete button with popover */}
@@ -79,7 +79,7 @@ export const EditItem = () => {
               </>
             }
           >
-            <Button className="button--red item-form__half-width-element" onClick={togglePopover}>
+            <Button className="button--red item-form__half-width" onClick={togglePopover}>
               Delete
             </Button>
           </Popover>

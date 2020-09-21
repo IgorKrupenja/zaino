@@ -1,8 +1,10 @@
 import { Item } from '@zaino/shared/';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import NoBackpackIcon from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/items';
-import ItemDetails from '../ItemDetails';
+import { Button } from '../../misc/Button';
+import { ItemDetails } from '../ItemDetails/';
 import './style.scss';
 
 export const PackItem = (item: Item) => {
@@ -25,24 +27,30 @@ export const PackItem = (item: Item) => {
   };
 
   return (
-    <ItemDetails
-      item={item}
-      quantityElement={
-        item.quantity > 1 && (
-          <>
-            In pack: <button onClick={decreasePackQuantity}>-</button>
-            {packQuantity}
-            <button onClick={increasePackQuantity}>+</button> of {item.quantity}
-          </>
-        )
-      }
-      button={
-        packQuantity > 0 && (
-          <button onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 0 }))}>
-            Remove from pack
-          </button>
-        )
-      }
-    />
+    <ItemDetails item={item}>
+      {item.quantity > 1 && (
+        <div className="item-details__horizontal-container">
+          Quantity in pack:
+          <Button className="button--grey button--extra-small" onClick={decreasePackQuantity}>
+            -
+          </Button>
+          <span className="item-details__pack-quantity">{packQuantity}</span>
+          <Button
+            disabled={item.quantity === item.packQuantity}
+            className={'button--grey button--extra-small'}
+            onClick={increasePackQuantity}
+          >
+            +
+          </Button>
+        </div>
+      )}
+      <Button
+        className="button--grey button--small button--red-text"
+        onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 0 }))}
+      >
+        <NoBackpackIcon className="button--grey__icon button__icon--test" />
+        Remove from pack
+      </Button>
+    </ItemDetails>
   );
 };

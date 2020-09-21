@@ -1,11 +1,10 @@
 .button {
   margin: 0 $xs-size 0 $xs-size;
-  border: 0.1rem solid rgba($off-black, 0.4);
-  border-radius: $xs-size;
   padding: 0 $s-size 0 $s-size;
+  border: none;
+  border-radius: $xs-size;
 
   height: $xl-size;
-  background-color: rgba($dark-green, 0.8);
 
   font-weight: 500;
   color: white;
@@ -13,30 +12,61 @@
 
   transition: 0.3s;
 
-  &:hover {
-    background-color: rgba($dark-green, 1);
-  }
   &:focus {
     outline: 0;
   }
 }
 
+.button--green {
+  border: 0.1rem solid rgba($off-black, 0.4);
+  background-color: rgba($dark-green, 0.8);
+  &:hover {
+    background-color: $dark-green;
+  }
+}
+
 .button--red {
+  border: 0.1rem solid rgba($off-black, 0.4);
   background-color: rgba($bright-red, 0.8);
 
   &:hover {
-    background-color: rgba($bright-red, 1);
+    background-color: $bright-red;
   }
 }
 
 .button--grey {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0.1rem solid $light-grey;
+  background-color: $off-white;
   color: $off-black;
-  border: 0.1rem solid rgba($light-grey, 1);
-  background-color: rgba($off-white, 1);
 
   &:hover {
     background-color: $extra-light-grey;
   }
+  &:disabled {
+    color: $mid-grey;
+    cursor: default;
+    &:hover {
+      background: $off-white;
+    }
+  }
+}
+
+.button--grey__icon {
+  margin-right: 0.3rem;
+
+  height: 1.8rem;
+  width: 1.8rem;
+
+  fill: $off-black;
+  transition: 0.3s;
+}
+
+.button--grey__icon--disabled {
+  fill: $mid-grey;
 }
 
 .button--white {
@@ -45,16 +75,14 @@
   justify-content: center;
 
   margin: 0;
-  border: unset;
-  border-radius: unset;
 
-  background-color: white;
+  background-color: transparent;
   color: $dark-grey;
   font-weight: normal;
 
   &:hover {
     color: $off-black;
-    background-color: white;
+    background-color: transparent;
   }
   // also change SVG fill when hovering over text
   &:hover > .button--white__icon {
@@ -75,13 +103,12 @@
 }
 
 .button--underline {
-  border: unset;
-  border-radius: unset;
   border-bottom: 0.2rem solid transparent;
-  padding: unset;
+  border-radius: 0;
+  padding: 0;
   height: 2.5rem;
 
-  background-color: unset;
+  background-color: transparent;
   font-size: 1.5rem;
 
   transition: 0.1s;
@@ -100,13 +127,37 @@
   border-bottom: 0.2rem solid white;
 }
 
+.button--red-text {
+  color: $dark-red;
+}
+
 .button--wide {
   width: 25rem - $s-size * 2;
   margin: 0 $s-size $s-size $s-size;
 }
 
+.button--no-margin {
+  margin: 0;
+}
+
+.button--small {
+  margin: 0.4rem 0 0 0;
+  padding: 0 $xs-size;
+  height: 2.6rem;
+}
+
+.button--extra-small {
+  margin: 0;
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
+
+  &:nth-child(1) {
+    margin-left: $xs-size;
+  }
+}
+
 // extra styling for React router Links and NavLinks
-// todo need to set width and height as well somehow?
 .button--link {
   display: flex;
   align-items: center;
@@ -114,8 +165,4 @@
 
   color: white;
   text-decoration: none;
-}
-
-.button--no-margin {
-  margin: 0;
 }

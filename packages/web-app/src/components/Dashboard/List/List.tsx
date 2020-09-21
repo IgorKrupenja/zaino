@@ -18,8 +18,12 @@ export const List = ({ filteredItemCount, allItemCount, title, children }: ListP
     emptyString = `No matching items in ${title}`;
   }
 
+  const isFirefoxMac =
+    navigator.userAgent.indexOf('Firefox') !== -1 && navigator.platform.indexOf('Mac') !== -1;
+
   return (
-    <div className={emptyString ? 'list list--empty' : 'list'}>
+    <div className={`list${isFirefoxMac ? ' list--firefox-mac' : ''}`}>
+      {/* todo need ternary here */}
       {emptyString}
       {children}
     </div>

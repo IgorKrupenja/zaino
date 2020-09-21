@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 import { RootState } from '../../../state/store';
 import { DashboardFilters } from '../../Dashboard/DashboardFilters';
-import Inventory from '../../Dashboard/Inventory';
-import Pack from '../../Dashboard/Pack';
+import { Inventory } from '../../Dashboard/Inventory/';
+import { Pack } from '../../Dashboard/Pack/';
 import { Stack } from '../../Dashboard/Stack';
 import { AddItem } from '../../ItemModal/AddItem/';
 import { EditItem } from '../../ItemModal/EditItem/';
@@ -27,12 +27,14 @@ export const DashboardPage = () => {
           <Loader />
         ) : (
           <>
-            <Stack>
-              <Inventory />
-            </Stack>
-            <Stack>
-              <Pack />
-            </Stack>
+            <div className="dashboard-page__stacks">
+              <Stack className="stack--left">
+                <Inventory />
+              </Stack>
+              <Stack className="stack--right">
+                <Pack />
+              </Stack>
+            </div>
           </>
         )}
       </main>

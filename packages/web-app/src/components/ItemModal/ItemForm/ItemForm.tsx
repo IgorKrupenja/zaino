@@ -109,7 +109,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
             onChange={e => handleChange(e)}
             error={errors.quantity}
             onFocus={() => setErrors({ ...errors, quantity: '' })}
-            containerClassName="item-form__half-width-element"
+            containerClassName="item-form__half-width"
           >
             <FormLabel htmlFor="quantity">Quantity</FormLabel>
           </Input>
@@ -118,7 +118,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
             value={values.weight}
             onChange={e => handleChange(e)}
             error={errors.weight}
-            containerClassName="item-form__half-width-element"
+            containerClassName="item-form__half-width"
           >
             <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
           </Input>

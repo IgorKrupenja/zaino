@@ -1,8 +1,19 @@
 .dashboard-page {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 
-  max-width: 130rem;
-  // needed for overflow scroll to work
+  // needed for Loader to display correctly
   height: calc(100% - #{$header-height});
+  // height: 100%;
+}
+
+.dashboard-page__stacks {
+  display: flex;
+
+  padding-bottom: $s-size;
+  width: 100%;
+  max-width: $app-width;
+  // needed for List overflow to work correctly
+  height: calc(100vh - #{$header-height} - #{$list-filters-height});
 }

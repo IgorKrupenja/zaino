@@ -58,7 +58,6 @@ export const DemoData = () => {
       <Popover
         isOpen={isLoadPopoverOpen}
         onClickOutside={toggleLoadPopover}
-        // style={{ width: '30rem' }}
         containerClassName="popover-container--wide"
         content={
           <>
@@ -68,7 +67,7 @@ export const DemoData = () => {
             <PopoverContent>
               <p>Use this to load demo items and labels. These can be easily removed later.</p>
             </PopoverContent>
-            <Button className="button--wide" onClick={handleDemoDataLoad}>
+            <Button className="button--green button--wide" onClick={handleDemoDataLoad}>
               Load
             </Button>
           </>

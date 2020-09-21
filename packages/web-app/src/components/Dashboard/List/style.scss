@@ -1,24 +1,37 @@
 .list {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
   overflow-y: auto;
+  padding: 0 0.5rem 0 $stack-margin-size;
+  // right margin to support the nice scrollbar
+  margin-right: $stack-margin-size / 2;
+  margin-bottom: $stack-margin-size;
 
+  // custom scrollbar for Blink and Webkit
+  // inspired by Trello and this: https://gist.github.com/spemer/a0e218bbb45433bd611e68446523a00b
   &::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
+    width: 0.7rem;
   }
   &::-webkit-scrollbar-track {
-    background: orange;
-    border-radius: 4px;
+    border-radius: 0.6rem;
+    background: $extra-light-grey;
   }
   &::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    border-radius: 0.6rem;
+    min-height: 5rem;
+    background-color: $light-grey;
+
+    &:hover {
+      background-color: $mid-grey;
+    }
   }
+
+  // scrollbars for Firefox on Windows/Linux -- less fancy as FF has limited styling support
+  scrollbar-width: thin;
+  scrollbar-color: $light-grey $extra-light-grey;
 }
 
-.list--empty {
-  height: 200px;
+// scrollbar for Firefox on Mac
+.list--firefox-mac {
+  scrollbar-width: auto;
+  margin-right: 0;
+  padding-right: $stack-margin-size;
 }

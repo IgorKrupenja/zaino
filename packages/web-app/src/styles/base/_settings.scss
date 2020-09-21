@@ -13,6 +13,8 @@ $mid-grey: #aaa;
 $dark-grey: #666;
 // delete buttons etc
 $bright-red: #e20000;
+// remove from pack
+$dark-red: #ca1e2d;
 
 // todo this is ugly, see #270
 // re-assign variables imported from Color.ts in WebPack -- needed to get color Intellisense in SCSS
@@ -26,7 +28,6 @@ $green: $green-shared;
 $dark-green: $dark-green-shared;
 $brown: $brown-shared;
 $dark-blue: $dark-blue-shared;
-// 666
 $grey: $grey-shared;
 
 $shadow: 0 0.7rem 2rem rgba($grey, 0.2);
@@ -39,9 +40,15 @@ $s-size: 1.3rem;
 $m-size: 1.4rem;
 $l-size: 1.8rem;
 $xl-size: 3.3rem;
-$desktop-breakpoint: 45rem;
+// $desktop-breakpoint: 45rem;
 
-// todo maybe rethink this
+// Dashboard stacks and related
+$stack-margin-size: 1rem;
+
+// general app  (maximum) width
+$app-width: 85rem;
+
+// used in Dashboard list height calculation
 $header-height: 2 * $xl-size;
 $list-filters-height: 2 * $xl-size;
 

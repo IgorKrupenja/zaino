@@ -1,7 +1,26 @@
-.stack {
+// wrapper div is used in order to achieve flexible list height
+.stack__wrapper {
   flex: 1;
+  height: 100%;
+}
+
+.stack {
   display: flex;
   flex-direction: column;
 
-  height: calc(100% - #{$list-filters-height});
+  border: $border;
+  border-radius: $xs-size;
+  max-height: 100%;
+
+  background-color: $off-white;
+}
+
+.stack--left {
+  margin-left: $s-size;
+  margin-right: $xs-size;
+}
+
+.stack--right {
+  margin-left: $xs-size;
+  margin-right: $s-size;
 }

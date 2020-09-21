@@ -7,9 +7,9 @@ import { history } from '../../../routers/AppRouter';
 import { addItem } from '../../../state/slices/items';
 import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
+import { SectionHeader } from '../../misc/SectionHeader';
 import { ItemForm } from '../ItemForm/';
 import { Modal } from '../Modal';
-import { ModalHeader } from '../ModalHeader';
 
 export const AddItem = () => {
   const dispatch = useDispatch();
@@ -30,10 +30,10 @@ export const AddItem = () => {
 
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
-      <ModalHeader>
-        <h2 className="modal-header__title">{title}</h2>
+      <SectionHeader>
+        <h2 className="section-header__title">{title}</h2>
         <CloseButton className="close-button--large" onClick={closeModal} />
-      </ModalHeader>
+      </SectionHeader>
       <ItemForm
         item={newItem}
         onSubmit={(item: Item) => {
@@ -41,7 +41,7 @@ export const AddItem = () => {
           dispatch(addItem(item));
         }}
       >
-        <Button className="button--no-margin" submit>
+        <Button className="button--no-margin button--green" submit>
           Create item
         </Button>
       </ItemForm>

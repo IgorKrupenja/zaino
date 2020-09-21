@@ -2,14 +2,15 @@ import { Item } from '@zaino/shared/';
 import React, { useMemo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import selectFilteredInventoryItems from '../../state/selectors/items';
-import { selectInventoryItemsStats } from '../../state/selectors/itemsStats';
-import { RootState } from '../../state/store';
-import { InventoryItem } from './InventoryItem';
-import { List } from './List';
-import { Stats } from './Stats';
+import selectFilteredInventoryItems from '../../../state/selectors/items';
+import { selectInventoryItemsStats } from '../../../state/selectors/itemsStats';
+import { RootState } from '../../../state/store';
+import { SectionHeader } from '../../misc/SectionHeader';
+import { InventoryItem } from '../InventoryItem';
+import { List } from '../List';
+import { Stats } from '../Stats';
 
-const Inventory = () => {
+export const Inventory = () => {
   // a bit of a hack: shallowEqual prevents re-renders when items in store do not change
   // (i.e. new filter conditions result in the same matching items)
   // https://react-redux.js.org/api/hooks#equality-comparisons-and-updates
@@ -21,11 +22,15 @@ const Inventory = () => {
 
   return (
     <>
-      <h2>Inventory</h2>
-      <Link className="button button--link" to="/dashboard/add">
-        Add item
-      </Link>
-      <Stats stats={stats} />
+      <SectionHeader className="section-header--large-margin">
+        <div>
+          <h2 className="section-header__title">Inventory</h2>
+          <Stats stats={stats} />
+        </div>
+        <Link className="button button--link button--green button--no-margin" to="/dashboard/add">
+          Add item
+        </Link>
+      </SectionHeader>
       <List
         title="inventory"
         filteredItemCount={items.length}
@@ -42,5 +47,3 @@ const Inventory = () => {
     </>
   );
 };
-
-export default Inventory;

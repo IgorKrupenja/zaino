@@ -7,8 +7,10 @@
   display: flex;
 }
 
-.item-form__half-width-element {
+.item-form__half-width {
   width: 50%;
+  margin-right: 0;
+  margin-left: 0;
 
   &:nth-child(1) {
     margin-right: $xs-size;

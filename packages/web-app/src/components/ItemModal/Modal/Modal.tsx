@@ -24,7 +24,7 @@ export const Modal = ({ isOpen, onRequestClose, contentLabel, children }: ModalP
       overlayClassName="modal__overlay"
     >
       {/* extra div is needed to achieve proper scrolling when viewport height < modal height */}
-      <div className="modal">{children}</div>
+      <section className="modal">{children}</section>
     </ReactModal>
   );
 };
