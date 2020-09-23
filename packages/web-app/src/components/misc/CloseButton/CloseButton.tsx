@@ -3,7 +3,7 @@ import CloseIcon from '../../../images/icons/close.svg';
 import './style.scss';
 
 type CloseButtonProps = {
-  onClick: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
+  onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
   className?: string;
 };
 

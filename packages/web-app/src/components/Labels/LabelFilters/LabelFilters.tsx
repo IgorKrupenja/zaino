@@ -1,3 +1,4 @@
+import deepEqual from 'fast-deep-equal/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -18,6 +19,11 @@ export const LabelFilters = () => {
   const dispatch = useDispatch();
   const selectedFilters = useSelector((state: RootState) => state.labelsFilters);
   const [filters, setFilters] = useState(selectedFilters);
+  const [isFiltering, setIsFiltering] = useState(false);
+
+  useEffect(() => {
+    setIsFiltering(!deepEqual(filters, labelFiltersInitialState));
+  }, [filters]);
 
   // set filters if changed externally in FilterReset
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
@@ -50,10 +56,12 @@ export const LabelFilters = () => {
         hiddenOption={LabelSortOption.lastSortOrder}
         onChange={handleSortChange}
       />
-      <FilterReset filters={filters} initialFilters={labelFiltersInitialState}>
-        <CloseButton onClick={() => dispatch(resetLabelFilters())} />
-        Clear search and sort
-      </FilterReset>
+      {isFiltering && (
+        <FilterReset onClick={() => dispatch(resetLabelFilters())}>
+          <CloseButton />
+          Clear search and sort
+        </FilterReset>
+      )}
     </section>
   );
 };
