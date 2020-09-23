@@ -5,7 +5,6 @@ import NoBackpackIcon from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../misc/Button';
 import { ItemDetails } from '../ItemDetails/';
-import './style.scss';
 
 export const PackItem = (item: Item) => {
   const dispatch = useDispatch();

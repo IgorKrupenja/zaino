@@ -140,6 +140,11 @@
   margin: 0;
 }
 
+.button--medium {
+  padding-left: 0.3rem;
+  font-size: $font-size-small;
+}
+
 .button--small {
   margin: 0.4rem 0 0 0;
   padding: 0 $xs-size;
@@ -161,8 +166,8 @@
 .button--link {
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
 
-  color: white;
+  // color: white;
   text-decoration: none;
 }

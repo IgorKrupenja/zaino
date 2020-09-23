@@ -5,11 +5,11 @@ import { RootState } from '../../../state/store';
 import { LabelBadge } from '../LabelBadge';
 import './style.scss';
 
-type LabelListProps = {
+type LabelBadgeListProps = {
   labelIds: string[] | undefined;
 };
 
-export const LabelList = ({ labelIds }: LabelListProps) => {
+export const LabelBadgeList = ({ labelIds }: LabelBadgeListProps) => {
   const labels = useSelector((state: RootState) => state.labels);
 
   const itemLabels = labelIds?.map(labelId => labels.find(label => label.id === labelId) as Label);

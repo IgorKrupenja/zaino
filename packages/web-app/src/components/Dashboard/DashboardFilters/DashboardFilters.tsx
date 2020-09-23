@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import DropdownIcon from '../../../images/icons/drop-down.svg';
 import {
   itemFiltersInitialState,
   ItemSortOption,
@@ -12,6 +13,7 @@ import {
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { Input } from '../../Input';
+import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
 import { FilterReset } from '../../misc/FilterReset';
 import { CategorySelect } from '../../Selects/CategorySelect';
@@ -63,7 +65,7 @@ export const DashboardFilters = () => {
 
   return (
     <section className="dashboard-filters">
-      {/* filter by name */}
+      {/* Name */}
       <Input
         onChange={e => {
           e.persist();
@@ -71,23 +73,37 @@ export const DashboardFilters = () => {
         }}
         value={filters.text}
       />
+      {/* Category */}
       <CategorySelect
         selectedCategoryName={filters.category}
         headerText="Filter by category"
         onChange={handleCategoryChange}
-      />
+      >
+        <Button className="button--white">
+          Categories
+          <DropdownIcon className="button--white__icon" />
+        </Button>
+      </CategorySelect>
+      {/* Labels */}
       <LabelSelect
         labelIds={filters.labels}
         headerText="Filter by label"
         // setTimeout to prevent UI freezing on slow PCs
         onChange={labelIds => setTimeout(() => dispatch(setItemLabelsFilter(labelIds)), 1)}
-      />
+      >
+        <Button className="button--white">
+          Labels
+          <DropdownIcon className="button--white__icon" />
+        </Button>
+      </LabelSelect>
+      {/* Sort */}
       <SortSelect
         sortOptions={ItemSortOption}
         onChange={handleSortChange}
         selectedOption={filters.sortBy}
         hiddenOption={LabelSortOption.lastSortOrder}
       />
+      {/* Clear filters */}
       <FilterReset filters={filters} initialFilters={itemFiltersInitialState}>
         <CloseButton onClick={() => dispatch(resetItemFilters())} />
         Clear search, filters and sort

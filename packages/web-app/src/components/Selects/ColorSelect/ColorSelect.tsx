@@ -1,11 +1,10 @@
 import { ColorName, Colors } from '@zaino/shared';
-import React, { useState } from 'react';
-import { OptionTypeBase, ValueType } from 'react-select';
-import useToggle from '../../../hooks/useToggle';
-import { CloseButton } from '../../misc/CloseButton';
-import { Popover } from '../../Popover/Popover';
-import { PopoverHeader } from '../../Popover/PopoverHeader';
-import { Select } from '../Select';
+import React, { useRef, useState } from 'react';
+import { ValueType } from 'react-select';
+import DropdownIcon from '../../../images/icons/drop-down.svg';
+import { SelectOption } from '../../../types/SelectOption';
+import { Button } from '../../misc/Button';
+import { SelectPopover } from '../SelectPopover';
 import styles from './style';
 
 type ColorSelectProps = {
@@ -14,46 +13,36 @@ type ColorSelectProps = {
 };
 
 export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {
-  const options = Colors.map(color => ({
-    value: color.name,
-    label: color.fancyName,
-    hexValue: color.hexValue,
-  }));
-  const [value, setValue] = useState<ValueType<OptionTypeBase>>(
+  const options = useRef(
+    Colors.map(color => ({
+      value: color.name,
+      label: color.fancyName,
+      hexValue: color.hexValue,
+    }))
+  ).current;
+  const [value, setValue] = useState<ValueType<SelectOption>>(
     options.find(color => color.value === selectedColorName)
   );
-  const handleChange = (newValue: ValueType<OptionTypeBase>) => {
-    togglePopover();
+
+  const handleChange = (newValue: ValueType<SelectOption>) => {
     setValue(newValue);
-    onChange((newValue as OptionTypeBase)?.value);
+    onChange((newValue as SelectOption)?.value as ColorName);
   };
 
-  const [isPopoverOpen, togglePopover] = useToggle();
-
   return (
-    <Popover
-      isOpen={isPopoverOpen}
-      onClickOutside={togglePopover}
-      content={
-        <>
-          <PopoverHeader text="Select color">
-            <CloseButton onClick={togglePopover} />
-          </PopoverHeader>
-          <Select
-            className="single-select"
-            value={value}
-            name="categoryName"
-            options={options}
-            styles={styles}
-            onChange={handleChange}
-            components={{ IndicatorSeparator: null, Control: () => null }}
-          />
-        </>
-      }
+    <SelectPopover
+      headerText="Select color"
+      value={value}
+      name="categoryName"
+      options={options}
+      styles={styles}
+      onChange={handleChange}
+      components={{ IndicatorSeparator: null, Control: () => null }}
     >
-      <button type="button" onClick={togglePopover}>
+      <Button className="button--white">
         Color
-      </button>
-    </Popover>
+        <DropdownIcon className="button--white__icon" />
+      </Button>
+    </SelectPopover>
   );
 };

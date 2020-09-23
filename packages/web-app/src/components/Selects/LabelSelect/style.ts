@@ -1,6 +1,6 @@
 import { Styles } from 'react-select';
 import styles from '../../../styles/base/_settings.scss';
-import { colorDot, OptionStyleArguments } from '../Select/style';
+import { colorDot, OptionStyleArguments } from '../SelectPopover/style';
 
 const LabelSelectStyles: Partial<Styles> = {
   control: base => ({

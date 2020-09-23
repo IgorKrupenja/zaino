@@ -10,14 +10,6 @@ import './style.scss';
 export const Header = () => {
   const dispatch = useDispatch();
   const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
-  // const handleLogout = () => {
-  //   // potentially faster perf with batch
-  //   batch(() => {
-  //     dispatch(logout());
-  //     dispatch(resetItemsState());
-  //     dispatch(resetLabelsState());
-  //   });
-  // };
 
   return (
     <header className="header">
@@ -50,9 +42,6 @@ export const Header = () => {
       </nav>
       <DemoData />
       <AccountDetails />
-      {/* <button className="header__link" onClick={handleLogout}>
-        Sign out
-      </button> */}
     </header>
   );
 };

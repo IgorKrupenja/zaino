@@ -57,6 +57,8 @@ const commonSelectStyles: Partial<Styles> = {
   }),
 };
 
+export const popoverToggleStyle = { display: 'inline-block' };
+
 export type OptionStyleArguments = {
   // for some reason react-select requires this key to be named "data", breaks otherwise
   data: Color;

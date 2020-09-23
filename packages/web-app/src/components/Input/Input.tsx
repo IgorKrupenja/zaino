@@ -35,9 +35,7 @@ export const Input = ({
         onChange={onChange}
         autoFocus={autoFocus}
         onFocus={onFocus}
-        // on
       />
-      {/* todo apply class mod instead */}
       {error && <span className="input__error-message">{error}</span>}
     </div>
   );

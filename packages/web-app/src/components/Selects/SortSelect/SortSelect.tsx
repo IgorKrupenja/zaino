@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import { OptionTypeBase, ValueType } from 'react-select';
-import useToggle from '../../../hooks/useToggle';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { ValueType } from 'react-select';
 import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
+import { SelectOption } from '../../../types/SelectOption';
 import { Button } from '../../misc/Button';
-import { CloseButton } from '../../misc/CloseButton';
-import { Popover } from '../../Popover/Popover';
-import { PopoverHeader } from '../../Popover/PopoverHeader';
-import { Select } from '../Select';
+import { SelectPopover } from '../SelectPopover';
 import styles from './style';
 
 type SortSelectProps = {
@@ -18,55 +15,55 @@ type SortSelectProps = {
   onChange: (sortBy: string) => void;
 };
 
+/**
+ * Sort select. Used in both LabelFilters and DashboardFilters.
+ */
 export const SortSelect = ({
   sortOptions,
   onChange,
   selectedOption,
   hiddenOption,
 }: SortSelectProps) => {
-  const options = Object.entries(sortOptions)
-    .map(([key, value]: [string, string]) => ({
-      value: key,
-      label: value,
-    }))
-    .filter(option => option.label !== hiddenOption);
-  const [value, setValue] = useState<ValueType<OptionTypeBase>>(
-    options.find(option => option.label === selectedOption)
+  const options = useRef(
+    Object.entries(sortOptions)
+      .map(([key, value]: [string, string]) => ({
+        value: key,
+        label: value,
+      }))
+      .filter(option => option.label !== hiddenOption)
+  ).current;
+  // logic similar to LabelSelect
+  const prepareValue = useCallback(
+    (selectedOption: string | undefined) => {
+      return options.find(option => option.label === selectedOption);
+    },
+    [options]
   );
-  const handleChange = (newValue: ValueType<OptionTypeBase>) => {
-    togglePopover();
-    setValue(newValue);
-    onChange((newValue as OptionTypeBase).label);
+  const [value, setValue] = useState(prepareValue(selectedOption));
+
+  // display proper sort options when sorting is reset in FilterReset
+  useEffect(() => setValue(prepareValue(selectedOption)), [selectedOption, prepareValue]);
+
+  const handleChange = (newValue: ValueType<SelectOption>) => {
+    onChange((newValue as SelectOption).label);
   };
 
-  const [isPopoverOpen, togglePopover] = useToggle();
-
   return (
-    <Popover
-      isOpen={isPopoverOpen}
-      onClickOutside={togglePopover}
-      content={
-        <>
-          <PopoverHeader text="Sort by">
-            <CloseButton onClick={togglePopover} />
-          </PopoverHeader>
-          <Select
-            value={value}
-            name="sortBy"
-            options={options}
-            onChange={handleChange}
-            components={{
-              Control: () => null,
-            }}
-            styles={styles}
-          />
-        </>
-      }
+    <SelectPopover
+      headerText="Sort by"
+      value={value}
+      name="sortBy"
+      options={options}
+      onChange={handleChange}
+      components={{
+        Control: () => null,
+      }}
+      styles={styles}
     >
-      <Button className="button--white" onClick={togglePopover}>
+      <Button className="button--white">
         Sort
         <DropdownIcon className="button--white__icon" />
       </Button>
-    </Popover>
+    </SelectPopover>
   );
 };

@@ -10,7 +10,6 @@ type TextAreaProps = {
 
 export const TextArea = ({ name, value, onChange, children }: TextAreaProps) => {
   return (
-    // todo not sure if need div
     <div className="textarea__container">
       {children}
       {/* id needed to focus textarea on label click */}

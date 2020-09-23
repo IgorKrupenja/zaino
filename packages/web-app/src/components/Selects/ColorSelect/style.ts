@@ -1,5 +1,5 @@
 import { Styles } from 'react-select';
-import { colorDot, OptionStyleArguments } from '../Select/style';
+import { colorDot, OptionStyleArguments } from '../SelectPopover/style';
 
 const colorSelectStyles: Partial<Styles> = {
   menu: () => ({

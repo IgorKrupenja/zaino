@@ -11,8 +11,7 @@
   height: 100%;
   overflow-y: scroll;
 
-  // todo color should be darker?
-  background-color: rgba($off-white, 0.75);
+  background-color: rgba(black, 0.5);
 }
 
 // technical div, for scrolling
@@ -30,8 +29,8 @@
   border-radius: $xs-size;
   padding: $s-size;
 
-  // todo maybe set to Stack width?
-  width: 40rem;
+  // to match Stack width
+  width: 40.5rem;
 
   background: white;
 }

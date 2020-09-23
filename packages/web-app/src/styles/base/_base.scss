@@ -5,16 +5,15 @@
   box-sizing: border-box;
 }
 
-// needed for overflow scroll to work on Dashboard
+// needed for loading indicator to work
 html,
 body,
 #app {
   height: 100%;
-  margin: 0;
 }
 
 html {
-  // conversion to use rem units as if they are pixels (1 rem = 10 px after 62.5% conversion)
+  // conversion to use rem units more easily (1 rem = 10 px after 62.5% conversion)
   font-size: 62.5%;
 }
 

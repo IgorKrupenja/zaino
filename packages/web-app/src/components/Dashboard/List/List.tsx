@@ -4,6 +4,8 @@ import './style.scss';
 type ListProps = {
   title: string;
   // todo perhaps rename is empty and move part of the logic to inv/pack
+  // todo likely just pass an empty list component from there
+  // todo or not
   filteredItemCount: number;
   allItemCount: number;
   children?: ReactNode;

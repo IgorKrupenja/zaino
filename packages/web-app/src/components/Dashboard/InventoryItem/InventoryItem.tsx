@@ -5,7 +5,6 @@ import BackpackIcon from '../../../images/icons/backpack.svg';
 import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../misc/Button';
 import { ItemDetails } from '../ItemDetails/';
-import './style.scss';
 
 export const InventoryItem = (item: Item) => {
   const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CategoryIcon from '../../../images/icons/category.svg';
 import { setItemCategoryFilter } from '../../../state/slices/itemsFilters';
-import { LabelList } from '../../Labels/LabelList';
+import { LabelBadgeList } from '../../Labels/LabelBadgeList';
 import { CategoryImage } from '../../misc/CategoryImage';
 import './style.scss';
 
@@ -42,7 +42,7 @@ export const ItemDetails = ({ item, quantity: quantity, children }: ListItemProp
           <span className="item-details__weight">{weight ? `• ${weight}g` : ''}</span>
           {quantity}
         </div>
-        <LabelList labelIds={labelIds} />
+        <LabelBadgeList labelIds={labelIds} />
         {children}
       </div>
       <CategoryImage categoryName={categoryName} />
