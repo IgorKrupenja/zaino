@@ -48,11 +48,11 @@ export const DashboardFilters = () => {
     if (category === filters.category) {
       // reset category filter if user clicks on a category that is already selected
       setFilters({ ...filters, category: undefined });
-      dispatch(setItemCategoryFilter(undefined));
+      setTimeout(() => dispatch(setItemCategoryFilter(undefined)), 1);
     } else {
       // set category filter normally
       setFilters({ ...filters, category });
-      dispatch(setItemCategoryFilter(category));
+      setTimeout(() => dispatch(setItemCategoryFilter(category)), 1);
     }
   };
 
