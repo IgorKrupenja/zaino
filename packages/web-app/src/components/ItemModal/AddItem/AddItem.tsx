@@ -5,9 +5,9 @@ import { v4 as uuid } from 'uuid';
 import Categories from '../../../constants/Categories';
 import { history } from '../../../routes/AppRouter';
 import { addItem } from '../../../state/slices/items';
-import { Button } from '../../misc/Button';
-import { CloseButton } from '../../misc/CloseButton';
-import { SectionHeader } from '../../misc/SectionHeader';
+import { Button } from '../../Controls/Button';
+import { CloseButton } from '../../Controls/CloseButton';
+import { SectionHeader } from '../../Misc/SectionHeader';
 import { ItemForm } from '../ItemForm/';
 import { Modal } from '../Modal';
 

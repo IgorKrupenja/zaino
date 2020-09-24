@@ -5,16 +5,16 @@ import EditIcon from '../../../images/icons/edit.svg';
 import { history } from '../../../routes/AppRouter';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
 import getArrayDifference from '../../../utils/getArrayDifference';
+import { Button } from '../../Controls/Button';
+import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
+import { TextArea } from '../../Controls/TextArea';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
-import { Button } from '../../misc/Button';
-import { CategoryImage } from '../../misc/CategoryImage';
-import { ColumnWrapper } from '../../misc/ColumnWrapper';
-import { RowWrapper } from '../../misc/RowWrapper';
-import { TextArea } from '../../misc/TextArea';
+import { CategoryImage } from '../../Misc/CategoryImage';
+import { ColumnWrapper } from '../../Misc/ColumnWrapper';
+import { RowWrapper } from '../../Misc/RowWrapper';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect/LabelSelect';
-import { FormLabel } from '../FormLabel';
 import './style.scss';
 
 type ItemFormProps = {

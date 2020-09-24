@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NoBackpackIcon from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/items';
-import { Button } from '../../misc/Button';
+import { Button } from '../../Controls/Button';
 import { ItemDetails } from '../ItemDetails/';
 
 export const PackItem = (item: Item) => {

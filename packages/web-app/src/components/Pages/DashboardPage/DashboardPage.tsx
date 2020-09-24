@@ -6,7 +6,7 @@ import { DashboardFilters } from '../../Dashboard/DashboardFilters';
 import { Inventory } from '../../Dashboard/Inventory/';
 import { Pack } from '../../Dashboard/Pack/';
 import { Stack } from '../../Dashboard/Stack';
-import { Loader } from '../../misc/Loader';
+import { Loader } from '../../Misc/Loader';
 import './style.scss';
 
 export const DashboardPage = () => {

@@ -9,9 +9,9 @@ import {
   sortLabelsBy,
 } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
+import { CloseButton } from '../../Controls/CloseButton';
 import { Input } from '../../Controls/Input';
-import { CloseButton } from '../../misc/CloseButton';
-import { FilterReset } from '../../misc/FilterReset';
+import { FilterReset } from '../../Misc/FilterReset';
 import { SortSelect } from '../../Selects/SortSelect';
 import './style.scss';
 

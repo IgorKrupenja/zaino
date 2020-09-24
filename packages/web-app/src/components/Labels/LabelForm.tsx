@@ -5,8 +5,8 @@ import { v4 as uuid } from 'uuid';
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
+import { FormLabel } from '../Controls/FormLabel';
 import { Input } from '../Controls/Input';
-import { FormLabel } from '../ItemModal/FormLabel';
 import { ColorSelect } from '../Selects/ColorSelect';
 
 type LabelFormProps = {

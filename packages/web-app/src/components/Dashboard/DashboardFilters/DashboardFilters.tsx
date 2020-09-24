@@ -13,10 +13,10 @@ import {
 } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
+import { Button } from '../../Controls/Button';
+import { CloseButton } from '../../Controls/CloseButton';
 import { Input } from '../../Controls/Input';
-import { Button } from '../../misc/Button';
-import { CloseButton } from '../../misc/CloseButton';
-import { FilterReset } from '../../misc/FilterReset';
+import { FilterReset } from '../../Misc/FilterReset';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect';
 import { SortSelect } from '../../Selects/SortSelect';

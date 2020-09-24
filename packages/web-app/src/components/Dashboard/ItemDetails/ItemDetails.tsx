@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import CategoryIcon from '../../../images/icons/category.svg';
 import { setItemCategoryFilter } from '../../../state/slices/itemsFilters';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
-import { CategoryImage } from '../../misc/CategoryImage';
-import { RowWrapper } from '../../misc/RowWrapper';
+import { CategoryImage } from '../../Misc/CategoryImage';
+import { RowWrapper } from '../../Misc/RowWrapper';
 import './style.scss';
 
 type ItemDetailsProps = {

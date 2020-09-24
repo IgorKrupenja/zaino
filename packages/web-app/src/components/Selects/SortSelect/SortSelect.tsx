@@ -4,7 +4,7 @@ import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { SelectOption } from '../../../types/SelectOption';
-import { Button } from '../../misc/Button';
+import { Button } from '../../Controls/Button';
 import { SelectPopover } from '../SelectPopover';
 import styles from './style';
 

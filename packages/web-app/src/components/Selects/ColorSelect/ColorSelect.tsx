@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { ValueType } from 'react-select';
 import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { SelectOption } from '../../../types/SelectOption';
-import { Button } from '../../misc/Button';
+import { Button } from '../../Controls/Button';
 import { SelectPopover } from '../SelectPopover';
 import styles from './style';
 
