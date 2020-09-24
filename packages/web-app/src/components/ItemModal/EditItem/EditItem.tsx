@@ -7,6 +7,7 @@ import { history } from '../../../routes/AppRouter';
 import { deleteItem, updateItem } from '../../../state/slices/items';
 import { Button } from '../../Controls/Button';
 import { CloseButton } from '../../Controls/CloseButton';
+import { Corkscrew } from '../../Misc/Corkscrew';
 import { SectionHeader } from '../../Misc/SectionHeader';
 import { Popover } from '../../Popover/Popover';
 import { PopoverContent } from '../../Popover/PopoverContent';
@@ -33,7 +34,7 @@ export const EditItem = () => {
       {/* header */}
       <SectionHeader>
         <h2 className={`section-header__title${title ? '' : ' section-header__title--grey'}`}>
-          {title ? title : 'No name'}
+          {!title ? 'No name' : title === 'CORKSCREW' ? <Corkscrew /> : title}
         </h2>
         <CloseButton className="close-button--large" onClick={closeModal} />
       </SectionHeader>

@@ -6,6 +6,7 @@ import CategoryIcon from '../../../images/icons/category.svg';
 import { setItemCategoryFilter } from '../../../state/slices/itemsFilters';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
 import { CategoryImage } from '../../Misc/CategoryImage';
+import { Corkscrew } from '../../Misc/Corkscrew';
 import { RowWrapper } from '../../Misc/RowWrapper';
 import './style.scss';
 
@@ -28,7 +29,7 @@ export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
             className="item-details__name"
             to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}
           >
-            {name}
+            {name === 'CORKSCREW' ? <Corkscrew /> : name}
           </Link>
         </h3>
         <RowWrapper>

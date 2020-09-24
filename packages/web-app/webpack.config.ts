@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import webpack from 'webpack';
+import { getPrefetchLinks } from './src/utils/getPrefetchLinks';
 
 // set NODE_ENV to dev if not set in a npm script that launches webpack
 process.env.NODE_ENV = process.env.NODE_ENV ?? 'development';
@@ -117,8 +118,9 @@ const config: webpack.Configuration = {
       'GCP_STORAGE_URL',
     ]),
     new HtmlWebpackPlugin({
-      template: `src/index.html`,
-      favicon: `src/images/favicon.png`,
+      prefetchLinks: getPrefetchLinks(),
+      template: 'src/index.ejs',
+      favicon: 'src/images/favicon.png',
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import NoBackpackIcon from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../Controls/Button';
+import { RowWrapper } from '../../Misc/RowWrapper';
 import { ItemDetails } from '../ItemDetails/';
 
 export const PackItem = (item: Item) => {
@@ -28,7 +29,7 @@ export const PackItem = (item: Item) => {
   return (
     <ItemDetails item={item}>
       {item.quantity > 1 && (
-        <div className="item-details__horizontal-container">
+        <RowWrapper>
           Quantity in pack:
           <Button className="button--grey button--extra-small" onClick={decreasePackQuantity}>
             -
@@ -41,7 +42,7 @@ export const PackItem = (item: Item) => {
           >
             +
           </Button>
-        </div>
+        </RowWrapper>
       )}
       <Button
         className="button--grey button--small button--red-text"

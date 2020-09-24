@@ -11,15 +11,6 @@ import { setUserDetails } from './state/slices/user';
 import store from './state/store';
 import './styles/styles.scss';
 
-const app = (
-  <Provider store={store}>
-    {/* Show temporary placeholder on mobiles */}
-    <Media queries={{ small: { maxWidth: 599 } }}>
-      {matches => (matches.small ? <MobilePlaceholder /> : <AppRouter />)}
-    </Media>
-  </Provider>
-);
-
 const showConsoleLogo = () => {
   // ;)
   console.log('               .__               ');
@@ -29,6 +20,15 @@ const showConsoleLogo = () => {
   console.log('/_____ \\(____  /__|___|  /\\____/ ');
   console.log('      \\/     \\/        \\/        ');
 };
+
+const app = (
+  <Provider store={store}>
+    {/* Show temporary placeholder on mobiles */}
+    <Media queries={{ small: { maxWidth: 599 } }}>
+      {matches => (matches.small ? <MobilePlaceholder /> : <AppRouter />)}
+    </Media>
+  </Provider>
+);
 
 const renderApp = () => {
   ReactDOM.render(app, document.getElementById('app'));
