@@ -10,7 +10,7 @@ type TextAreaProps = {
   children?: ReactNode;
 };
 
-export const TextArea = ({ name, value, onChange, className, children }: TextAreaProps) => {
+export const TextArea = ({ name, className, children, ...rest }: TextAreaProps) => {
   return (
     <>
       {children}
@@ -19,8 +19,7 @@ export const TextArea = ({ name, value, onChange, className, children }: TextAre
         id={name}
         name={name}
         className={`textarea${getClassString(className)}`}
-        value={value}
-        onChange={onChange}
+        {...rest}
       />
     </>
   );

@@ -15,7 +15,7 @@ type ItemDetailsProps = {
   children?: ReactNode;
 };
 
-export const ItemDetails = ({ item, quantity: quantity, children }: ItemDetailsProps) => {
+export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
   const dispatch = useDispatch();
   const { id, name, categoryName, labelIds, weight } = item;
 

@@ -14,7 +14,6 @@ type LabelBadgeListProps = {
 
 export const LabelBadgeList = ({ labelIds, className, onBadgeClick }: LabelBadgeListProps) => {
   const labels = useSelector((state: RootState) => state.labels);
-
   const itemLabels = labelIds?.map(labelId => labels.find(label => label.id === labelId) as Label);
 
   return itemLabels && itemLabels?.length > 0 ? (

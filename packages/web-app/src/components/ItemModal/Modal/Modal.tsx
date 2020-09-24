@@ -12,17 +12,11 @@ type ModalProps = {
 /**
  * Modal component with custom styling.
  */
-export const Modal = ({ isOpen, onRequestClose, contentLabel, children }: ModalProps) => {
+export const Modal = ({ children, ...rest }: ModalProps) => {
   ReactModal.setAppElement('#app');
 
   return (
-    <ReactModal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel={contentLabel}
-      className="modal__container"
-      overlayClassName="modal__overlay"
-    >
+    <ReactModal className="modal__container" overlayClassName="modal__overlay" {...rest}>
       {/* extra div is needed to achieve proper scrolling when viewport height < modal height */}
       <section className="modal">{children}</section>
     </ReactModal>

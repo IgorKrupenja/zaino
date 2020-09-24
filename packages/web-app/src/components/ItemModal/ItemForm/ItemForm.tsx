@@ -2,7 +2,7 @@ import { Item } from '@zaino/shared/';
 import React, { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import EditIcon from '../../../images/icons/edit.svg';
-import { history } from '../../../routers/AppRouter';
+import { history } from '../../../routes/AppRouter';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
 import getArrayDifference from '../../../utils/getArrayDifference';
 import { Input } from '../../Controls/Input';
@@ -38,7 +38,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
     const propertyName = e.target.name;
     const propertyValue = e.target.value;
     // set modal title if editing item
-    if (propertyName === 'name' && setTitle) setTitle(propertyValue);
+    if (setTitle && propertyName === 'name') setTitle(propertyValue);
     // only allow numbers or empty string
     if (
       (propertyName === 'quantity' || propertyName === 'weight') &&
@@ -119,6 +119,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           onChange={e => handleChange(e)}
           error={errors.quantity}
           clearError={e => {
+            // clear error only if user enters positive quantity (not '', '0' or e.g. '000')
             if (Number(e?.target.value) > 0) setErrors({ ...errors, quantity: '' });
           }}
         >

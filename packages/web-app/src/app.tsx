@@ -5,7 +5,7 @@ import Media from 'react-media';
 import { Provider } from 'react-redux';
 import { MobilePlaceholder } from './components/misc/MobilePlaceholder';
 import { firebase } from './firebase/firebase';
-import AppRouter, { history } from './routers/AppRouter';
+import AppRouter, { history } from './routes/AppRouter';
 import { loadUserData } from './state/slices/dataLoader';
 import { setUserDetails } from './state/slices/user';
 import store from './state/store';

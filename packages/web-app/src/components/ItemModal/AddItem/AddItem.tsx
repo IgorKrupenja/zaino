@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import Categories from '../../../constants/Categories';
-import { history } from '../../../routers/AppRouter';
+import { history } from '../../../routes/AppRouter';
 import { addItem } from '../../../state/slices/items';
 import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';

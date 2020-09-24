@@ -21,13 +21,7 @@ type LabelSelectProps = {
 /**
  * Label select. Used in both ItemForm and DashboardFilters.
  */
-export const LabelSelect = ({
-  labelIds,
-  onChange,
-  children,
-  isCreatable,
-  headerText,
-}: LabelSelectProps) => {
+export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSelectProps) => {
   const dispatch = useDispatch();
   // labels and prepareOptions need to be separate to prevent exceeding max depth with ItemForm
   const labels = useSelector((state: RootState) => state.labels);
@@ -97,8 +91,7 @@ export const LabelSelect = ({
       onCreateOption={handleCreate}
       options={options}
       value={values}
-      isCreatable={isCreatable}
-      headerText={headerText}
+      {...rest}
       noOptionsMessage={() => `No${options.length > 0 ? ' matching' : ''} labels`}
     >
       {children}

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import useToggle from '../../../hooks/useToggle';
-import { history } from '../../../routers/AppRouter';
+import { history } from '../../../routes/AppRouter';
 import { deleteItem, updateItem } from '../../../state/slices/items';
 import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
