@@ -1,20 +1,21 @@
 import { Item } from '@zaino/shared/';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CategoryIcon from '../../../images/icons/category.svg';
 import { setItemCategoryFilter } from '../../../state/slices/itemsFilters';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
 import { CategoryImage } from '../../misc/CategoryImage';
+import { RowWrapper } from '../../misc/RowWrapper';
 import './style.scss';
 
-type ListItemProps = {
+type ItemDetailsProps = {
   item: Item;
-  quantity?: React.ReactNode;
-  children?: React.ReactNode;
+  quantity?: ReactNode;
+  children?: ReactNode;
 };
 
-export const ItemDetails = ({ item, quantity: quantity, children }: ListItemProps) => {
+export const ItemDetails = ({ item, quantity: quantity, children }: ItemDetailsProps) => {
   const dispatch = useDispatch();
   const { id, name, categoryName, labelIds, weight } = item;
 
@@ -30,7 +31,7 @@ export const ItemDetails = ({ item, quantity: quantity, children }: ListItemProp
             {name}
           </Link>
         </h3>
-        <div className="item-details__horizontal-container">
+        <RowWrapper>
           {/* todo breaks on small widths */}
           <span
             className="item-details__category"
@@ -41,8 +42,8 @@ export const ItemDetails = ({ item, quantity: quantity, children }: ListItemProp
           </span>
           <span className="item-details__weight">{weight ? `• ${weight}g` : ''}</span>
           {quantity}
-        </div>
-        <LabelBadgeList labelIds={labelIds} />
+        </RowWrapper>
+        <LabelBadgeList className="label-badge-list--margin" labelIds={labelIds} />
         {children}
       </div>
       <CategoryImage categoryName={categoryName} />

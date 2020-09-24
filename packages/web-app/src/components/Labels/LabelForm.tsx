@@ -1,11 +1,11 @@
 import { ColorName, getRandomColor, Label } from '@zaino/shared';
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';
-import { Input } from '../Input/';
+import { Input } from '../Controls/Input';
 import { FormLabel } from '../ItemModal/FormLabel';
 import { ColorSelect } from '../Selects/ColorSelect';
 
@@ -58,7 +58,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
           value={values.name}
           error={nameError}
           autoFocus
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          onChange={e => {
             e.persist();
             const name = e.target.value;
             setValues({ ...values, name });

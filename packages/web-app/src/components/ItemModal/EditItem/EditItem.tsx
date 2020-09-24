@@ -25,7 +25,7 @@ export const EditItem = () => {
   const item = location.state.item;
   const [title, setTitle] = useState(item.name);
 
-  document.title = `${title} | Zaino`;
+  document.title = `${title.length > 0 ? title : 'No name'} | Zaino`;
   const closeModal = () => history.push('/dashboard');
 
   return (
@@ -46,44 +46,42 @@ export const EditItem = () => {
         }}
         setTitle={setTitle}
       >
-        {/* technical div for styling */}
-        <div className="item-form__horizontal-container">
-          <Button className="button--green item-form__half-width" submit>
-            Save changes
+        {/* Save/submit button */}
+        <Button className="button--green item-form__half-width" submit>
+          Save changes
+        </Button>
+        {/* delete button with popover */}
+        <Popover
+          isOpen={isPopoverOpen}
+          onClickOutside={togglePopover}
+          containerClassName="popover-container--wide"
+          content={
+            <>
+              <PopoverHeader text="Delete item?">
+                <CloseButton className="close-button--large-padding" onClick={togglePopover} />
+              </PopoverHeader>
+              <PopoverContent>
+                <p>
+                  The item will be deleted from inventory
+                  {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
+                </p>
+              </PopoverContent>
+              <Button
+                className="button--red button--wide"
+                onClick={() => {
+                  closeModal();
+                  dispatch(deleteItem(item));
+                }}
+              >
+                Delete
+              </Button>
+            </>
+          }
+        >
+          <Button className="button--red item-form__half-width" onClick={togglePopover}>
+            Delete
           </Button>
-          {/* delete button with popover */}
-          <Popover
-            isOpen={isPopoverOpen}
-            onClickOutside={togglePopover}
-            containerClassName="popover-container--wide"
-            content={
-              <>
-                <PopoverHeader text="Delete item?">
-                  <CloseButton className="close-button--large-padding" onClick={togglePopover} />
-                </PopoverHeader>
-                <PopoverContent>
-                  <p>
-                    The item will be deleted from inventory
-                    {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
-                  </p>
-                </PopoverContent>
-                <Button
-                  className="button--red button--wide"
-                  onClick={() => {
-                    closeModal();
-                    dispatch(deleteItem(item));
-                  }}
-                >
-                  Delete
-                </Button>
-              </>
-            }
-          >
-            <Button className="button--red item-form__half-width" onClick={togglePopover}>
-              Delete
-            </Button>
-          </Popover>
-        </div>
+        </Popover>
       </ItemForm>
     </Modal>
   );

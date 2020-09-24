@@ -1,21 +1,21 @@
 .item-form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: $s-size;
+
+  padding-top: $s-size;
 }
 
-.item-form__horizontal-container {
-  display: flex;
+.item-form__full-width {
+  grid-column: 1 / span 2;
 }
 
-.item-form__half-width {
-  width: 50%;
-  margin-right: 0;
-  margin-left: 0;
+.item-form__notes {
+  // small negative to compensate for LabelBadge's bottom margin
+  margin-top: -0.3rem;
+  margin-bottom: 0.9rem;
+}
 
-  &:nth-child(1) {
-    margin-right: $xs-size;
-  }
-  &:nth-child(2) {
-    margin-left: $xs-size;
-  }
+.cat-test {
+  margin-left: $xs-size;
 }

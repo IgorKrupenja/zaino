@@ -13,7 +13,7 @@ import {
 } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
-import { Input } from '../../Input';
+import { Input } from '../../Controls/Input';
 import { Button } from '../../misc/Button';
 import { CloseButton } from '../../misc/CloseButton';
 import { FilterReset } from '../../misc/FilterReset';

@@ -5,16 +5,16 @@
 }
 
 .textarea {
-  margin-bottom: $xs-size;
   border: $border;
   border-radius: $xs-size;
-  padding: $xs-size;
-  height: 10rem;
+  padding: $xs-size 0.9rem;
+  height: 14rem;
 
   background: $off-white;
   resize: none;
   transition: 0.1s;
   color: $off-black;
+  line-height: 1.4;
 
   &:focus {
     border: 0.1rem solid $light-blue;

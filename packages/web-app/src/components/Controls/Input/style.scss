@@ -1,17 +1,11 @@
-.input__container {
-  display: flex;
-  flex-direction: column;
-  margin: $s-size 0 0 0;
-}
-
 .input {
   border: $border;
   border-radius: $xs-size;
-  padding: 0 $xs-size;
+  padding: $xs-size 0.9rem;
   height: $xl-size;
 
   background: $off-white;
-  transition: 0.1s;
+  transition: all 0.1, height 0;
   color: $off-black;
 
   &:focus {
@@ -22,6 +16,13 @@
 
     background: white;
   }
+}
+
+.input--resizable {
+  padding: $xs-size 0.9rem;
+  height: auto;
+  resize: none;
+  line-height: 1.4;
 }
 
 .input--error {

@@ -1,5 +1,4 @@
 .button {
-  margin: 0 $xs-size 0 $xs-size;
   padding: 0 $s-size 0 $s-size;
   border: none;
   border-radius: $xs-size;
@@ -103,6 +102,7 @@
 }
 
 .button--underline {
+  margin: 0 $xs-size;
   border-bottom: 0.2rem solid transparent;
   border-radius: 0;
   padding: 0;
@@ -136,12 +136,11 @@
   margin: 0 $s-size $s-size $s-size;
 }
 
-.button--no-margin {
-  margin: 0;
-}
-
 .button--medium {
-  padding-left: 0.3rem;
+  margin: 0 0 0.2rem 0.3rem;
+  padding: 0;
+  height: 1.9rem;
+
   font-size: $font-size-small;
 }
 
@@ -160,6 +159,12 @@
   &:nth-child(1) {
     margin-left: $xs-size;
   }
+}
+
+.button__icon--small {
+  margin-left: 0.3rem;
+  height: 1.4rem;
+  height: 1.4rem;
 }
 
 // extra styling for React router Links and NavLinks

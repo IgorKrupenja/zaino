@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { getClassString } from '../../../utils/getClassString';
 import './style.scss';
 
 type ModalHeaderProps = {
@@ -7,7 +8,5 @@ type ModalHeaderProps = {
 };
 
 export const SectionHeader = ({ className, children }: ModalHeaderProps) => {
-  return (
-    <header className={`section-header${className ? ` ${className}` : ''}`}>{children}</header>
-  );
+  return <header className={`section-header${getClassString(className)}`}>{children}</header>;
 };

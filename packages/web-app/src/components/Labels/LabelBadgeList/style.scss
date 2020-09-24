@@ -1,9 +1,11 @@
-.label-list {
+.label-badge-list {
   list-style: none;
   display: flex;
-
   flex-wrap: wrap;
 
-  margin-bottom: 0.6rem;
   padding: 0;
+}
+
+.label-badge-list--margin {
+  margin-top: $xs-size;
 }

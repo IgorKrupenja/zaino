@@ -1,13 +1,16 @@
 import { Item } from '@zaino/shared/';
-import React, { ChangeEvent, ReactNode, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import DropdownIcon from '../../../images/icons/drop-down.svg';
+import EditIcon from '../../../images/icons/edit.svg';
+import { history } from '../../../routers/AppRouter';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
 import getArrayDifference from '../../../utils/getArrayDifference';
-import { Input } from '../../Input';
+import { Input } from '../../Controls/Input';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
 import { Button } from '../../misc/Button';
 import { CategoryImage } from '../../misc/CategoryImage';
+import { ColumnWrapper } from '../../misc/ColumnWrapper';
+import { RowWrapper } from '../../misc/RowWrapper';
 import { TextArea } from '../../misc/TextArea';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect/LabelSelect';
@@ -29,7 +32,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
   const dispatch = useDispatch();
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     e.persist();
     const propertyName = e.target.name;
@@ -54,7 +57,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       isFormValid = false;
     }
     if (values.quantity < 1) {
-      errors.quantity = 'Please enter a quantity';
+      errors.quantity = 'Please enter a quantity > 0';
       isFormValid = false;
     }
     setErrors(errors);
@@ -62,8 +65,8 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
     return isFormValid;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (event?: FormEvent<HTMLFormElement>) => {
+    event && event.preventDefault();
 
     if (validateForm()) {
       // update item counts for labels
@@ -94,77 +97,86 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
   return (
     <form onSubmit={handleSubmit} className="item-form">
       {/* Name */}
-      <Input
-        name="name"
-        value={values.name}
-        onChange={handleChange}
-        error={errors.name}
-        autoFocus
-        onFocus={() => setErrors({ ...errors, name: '' })}
-      >
-        <FormLabel htmlFor="name">Name</FormLabel>
-      </Input>
-      <div className="item-form__horizontal-container">
-        {/* Quantity */}
+      <ColumnWrapper className="item-form__full-width">
+        <Input
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+          error={errors.name}
+          autoFocus
+          isExpanding
+          onSubmit={handleSubmit}
+          clearError={() => setErrors({ ...errors, name: '' })}
+        >
+          <FormLabel htmlFor="name">Name</FormLabel>
+        </Input>
+      </ColumnWrapper>
+      {/* Quantity */}
+      <ColumnWrapper>
         <Input
           name="quantity"
           value={values.quantity}
           onChange={e => handleChange(e)}
           error={errors.quantity}
-          onFocus={() => setErrors({ ...errors, quantity: '' })}
-          containerClassName="item-form__half-width"
+          clearError={e => {
+            if (Number(e?.target.value) > 0) setErrors({ ...errors, quantity: '' });
+          }}
         >
           <FormLabel htmlFor="quantity">Quantity</FormLabel>
         </Input>
-        {/* Weight */}
+      </ColumnWrapper>
+      {/* Weight */}
+      <ColumnWrapper>
         <Input
           name="weight"
           value={values.weight}
           onChange={e => handleChange(e)}
           error={errors.weight}
-          containerClassName="item-form__half-width"
         >
           <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
         </Input>
-      </div>
-      {/* Notes */}
-      <TextArea name="notes" value={values.notes} onChange={handleChange}>
-        <FormLabel htmlFor="notes">Notes</FormLabel>
-      </TextArea>
-      <div className="item-form__horizontal-container">
-        {/* Labels */}
-        <div className="item-form__half-width">
-          {/* todo button--medium class */}
-          {/* todo edit icon */}
-          <LabelSelect
-            labelIds={values.labelIds}
-            headerText="Select labels"
-            isCreatable
-            onChange={labelIds => setValues({ ...values, labelIds })}
-          >
-            <Button className="button--white">
-              Label
-              <DropdownIcon className="button--white__icon" />
-            </Button>
-          </LabelSelect>
-          <LabelBadgeList labelIds={values.labelIds} />
-        </div>
-        {/* Category */}
-        <div className="item-form__half-width">
-          <CategorySelect
-            selectedCategoryName={values.categoryName}
-            headerText="Select category"
-            onChange={categoryName => setValues({ ...values, categoryName })}
-          >
-            <Button className="button--white">
-              Category
-              <DropdownIcon className="button--white__icon" />
-            </Button>
-          </CategorySelect>
+      </ColumnWrapper>
+      {/* Category */}
+      <ColumnWrapper>
+        <CategorySelect
+          selectedCategoryName={values.categoryName}
+          headerText="Select category"
+          onChange={categoryName => setValues({ ...values, categoryName })}
+        >
+          <Button className="button--white button--medium">
+            Category
+            <EditIcon className="button--white__icon button__icon--small" />
+          </Button>
+        </CategorySelect>
+        <RowWrapper>
           <CategoryImage categoryName={values.categoryName} />
-          {values.categoryName}
-        </div>
-      </div>
+          <div className="cat-test">{values.categoryName}</div>
+        </RowWrapper>
+      </ColumnWrapper>
+      {/* Labels */}
+      <ColumnWrapper className="item-form__labels">
+        <LabelSelect
+          labelIds={values.labelIds}
+          headerText="Select labels"
+          isCreatable
+          onChange={labelIds => setValues({ ...values, labelIds })}
+        >
+          <Button className="button--white button--medium">
+            Labels
+            <EditIcon className="button--white__icon button__icon--small" />
+          </Button>
+        </LabelSelect>
+        <LabelBadgeList
+          onBadgeClick={() => history.push('/dashboard')}
+          labelIds={values.labelIds}
+        />
+      </ColumnWrapper>
+      {/* Notes */}
+      <ColumnWrapper className="item-form__full-width item-form__notes">
+        <TextArea name="notes" value={values.notes} onChange={handleChange}>
+          <FormLabel htmlFor="notes">Notes</FormLabel>
+        </TextArea>
+      </ColumnWrapper>
       {/* buttons */}
       {children}
     </form>

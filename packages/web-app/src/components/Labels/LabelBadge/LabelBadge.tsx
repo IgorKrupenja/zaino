@@ -6,9 +6,10 @@ import './style.scss';
 
 type LabelBadgeProps = {
   label: Label;
+  onClick?: () => void;
 };
 
-export const LabelBadge = ({ label }: LabelBadgeProps) => {
+export const LabelBadge = ({ label, onClick }: LabelBadgeProps) => {
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +18,10 @@ export const LabelBadge = ({ label }: LabelBadgeProps) => {
       style={{
         backgroundColor: Colors.find(labelColor => labelColor.name === label.colorName)?.hexValue,
       }}
-      onClick={() => dispatch(setItemLabelsFilter([label.id]))}
+      onClick={() => {
+        onClick && onClick();
+        dispatch(setItemLabelsFilter([label.id]));
+      }}
     >
       {label.name}
     </li>
