@@ -1,10 +1,9 @@
-import { ColorName, Colors } from '@zaino/shared';
 import React, { useRef, useState } from 'react';
 import { ValueType } from 'react-select';
+import { ColorName, Colors } from '../../../constants/Colors';
 import DropdownIcon from '../../../images/icons/drop-down.svg';
-import { SelectOption } from '../../../types/SelectOption';
 import { Button } from '../../Controls/Button';
-import { SelectPopover } from '../SelectPopover';
+import { SelectOption, SelectPopover } from '../SelectPopover';
 import styles from './style';
 
 type ColorSelectProps = {

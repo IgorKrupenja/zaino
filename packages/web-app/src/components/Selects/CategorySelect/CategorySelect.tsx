@@ -1,9 +1,8 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { ValueType } from 'react-select';
 import Categories from '../../../constants/Categories';
-import { SelectOption } from '../../../types/SelectOption';
 import { sortSelectOptionsByName } from '../../../utils/sortSelectOptionsByName';
-import { SelectPopover } from '../SelectPopover';
+import { SelectOption, SelectPopover } from '../SelectPopover';
 
 type CategorySelectProps = {
   selectedCategoryName: string | undefined;

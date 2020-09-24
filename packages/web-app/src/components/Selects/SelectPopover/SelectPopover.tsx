@@ -3,11 +3,17 @@ import { InputActionMeta, mergeStyles, Props, ValueType } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
 import useToggle from '../../../hooks/useToggle';
-import { SelectOption } from '../../../types/SelectOption';
 import { CloseButton } from '../../Controls/CloseButton';
 import { Popover } from '../../Popover/Popover';
 import { PopoverHeader } from '../../Popover/PopoverHeader';
 import commonSelectStyles, { popoverToggleStyle } from './style';
+
+export type SelectOption = {
+  value: string;
+  label: string;
+  // for ColorSelect
+  hexValue?: string;
+};
 
 type SelectPopoverProps = {
   isCreatable?: boolean;

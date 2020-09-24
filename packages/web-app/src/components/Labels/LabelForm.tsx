@@ -1,7 +1,8 @@
-import { ColorName, getRandomColor, Label } from '@zaino/shared';
+import { Label } from '@zaino/shared';
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import { ColorName, getRandomColor } from '../../constants/Colors';
 import { selectAllLabels } from '../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../state/slices/labelsFilters';
 import { RootState } from '../../state/store';

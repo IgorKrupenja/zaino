@@ -1,16 +1,25 @@
 // needed to correctly import settings SCSS in TS
 // exact types needed to get Intellisense in VSCode
 export type settings = {
+  grey: string;
+  lightBlue: string;
+  blue: string;
+  red: string;
+  orange: string;
+  yellow: string;
+  purple: string;
+  green: string;
+  darkGreen: string;
+  brown: string;
+  darkBlue: string;
   xsSize: string;
   sSize: string;
   lSize: string;
   xlSize: string;
   fontSizeSmall: string;
   lightGrey: string;
-  grey: string;
   midGrey: string;
   offBlack: string;
-  lightBlue: string;
   offWhite: string;
   extraLightGrey: string;
   border: string;

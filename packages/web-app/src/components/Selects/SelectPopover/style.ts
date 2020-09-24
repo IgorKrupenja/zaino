@@ -1,5 +1,5 @@
-import { Color } from '@zaino/shared';
 import { Styles } from 'react-select';
+import { Color } from '../../../constants/Colors';
 import checkbox from '../../../images/icons/check-mark.svg';
 import styles from '../../../styles/base/_settings.scss';
 

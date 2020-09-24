@@ -1,7 +1,8 @@
+// Colors constant should be in shared package but #368
+import { ColorName } from '@zaino/web-app/src/constants/Colors';
 import { createReadStream, writeFileSync } from 'fs';
 import { createInterface, Interface } from 'readline';
 import { v4 as uuid } from 'uuid';
-import { ColorName } from '../constants/Colors';
 import { Item } from '../types/Item';
 import { Label } from '../types/Label';
 
@@ -72,7 +73,6 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
   const labelIds: string[] = [];
 
   // labels for technical climbing gear
-  // todo under consideration
   switch (originalCategory) {
     case 'Gear':
       assignLabel('misc gear', 'orange', labelIds);

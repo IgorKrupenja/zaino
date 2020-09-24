@@ -1,13 +1,13 @@
-import { Colors, getRandomColor, Label } from '@zaino/shared';
+import { Label } from '@zaino/shared';
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ValueType } from 'react-select';
 import { v4 as uuid } from 'uuid';
+import { Colors, getRandomColor } from '../../../constants/Colors';
 import { addLabel } from '../../../state/slices/labels';
 import { RootState } from '../../../state/store';
-import { SelectOption } from '../../../types/SelectOption';
 import { sortSelectOptionsByName } from '../../../utils/sortSelectOptionsByName';
-import { SelectPopover } from '../SelectPopover';
+import { SelectOption, SelectPopover } from '../SelectPopover';
 import styles from './style';
 
 type LabelSelectProps = {

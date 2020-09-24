@@ -1,5 +1,4 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import { Colors } from '@zaino/shared';
 import dotenv from 'dotenv';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -62,13 +61,9 @@ const config: webpack.Configuration = {
             options: {
               sourceMap: true,
               additionalData: (content: string) => {
-                const colorVars = Colors.map(color => `$${color.name}-shared: ${color.hexValue}`);
                 return (
                   // storage url for images
-                  `$gcp-storage-url: '${process.env.GCP_STORAGE_URL as string}';` +
-                  // shared color variables
-                  `${colorVars.join(';')};` +
-                  content
+                  `$gcp-storage-url: '${process.env.GCP_STORAGE_URL as string}';${content}`
                 );
               },
             },

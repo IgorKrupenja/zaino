@@ -3,9 +3,8 @@ import { ValueType } from 'react-select';
 import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
-import { SelectOption } from '../../../types/SelectOption';
 import { Button } from '../../Controls/Button';
-import { SelectPopover } from '../SelectPopover';
+import { SelectOption, SelectPopover } from '../SelectPopover';
 import styles from './style';
 
 type SortSelectProps = {
