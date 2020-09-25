@@ -19,6 +19,12 @@ export const TextArea = ({ name, className, children, ...rest }: TextAreaProps) 
         id={name}
         name={name}
         className={`textarea${getClassString(className)}`}
+        onFocus={e => {
+          // puts cursor at the end on focus
+          const value = e.target.value;
+          e.target.value = '';
+          e.target.value = value;
+        }}
         {...rest}
       />
     </>

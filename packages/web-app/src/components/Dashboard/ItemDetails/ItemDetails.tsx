@@ -1,13 +1,12 @@
 import { Item } from '@zaino/shared/';
 import React, { ReactNode } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CategoryIcon from '../../../images/icons/category.svg';
-import { setItemCategoryFilter } from '../../../state/slices/itemsFilters';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
+import { BulletWrapper } from '../../Misc/BulletWrapper';
+import { Category } from '../../Misc/Category';
 import { CategoryImage } from '../../Misc/CategoryImage';
 import { Corkscrew } from '../../Misc/Corkscrew';
-import { RowWrapper } from '../../Misc/RowWrapper';
 import './style.scss';
 
 type ItemDetailsProps = {
@@ -17,37 +16,32 @@ type ItemDetailsProps = {
 };
 
 export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
-  const dispatch = useDispatch();
   const { id, name, categoryName, labelIds, weight } = item;
 
   return (
     <article className="item-details">
-      {/* some extra divs here for proper positioning and styling with CSS */}
-      <div>
-        <h3>
-          <Link
-            className="item-details__name"
-            to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}
-          >
-            {name === 'CORKSCREW' ? <Corkscrew /> : name}
-          </Link>
-        </h3>
-        <RowWrapper>
-          {/* todo breaks on small widths */}
-          <span
-            className="item-details__category"
-            onClick={() => dispatch(setItemCategoryFilter(categoryName))}
-          >
+      <CategoryImage className="item-details__category-image" categoryName={categoryName} />
+      <h3 className="item-details--image-margin">
+        <Link
+          className="item-details__name"
+          to={{ pathname: `/dashboard/edit/${id}`, state: { item } }}
+        >
+          {name === 'CORKSCREW' ? <Corkscrew /> : name}
+        </Link>
+      </h3>
+      <BulletWrapper className="item-details--image-margin">
+        <Category category={categoryName} className="item-details__category">
+          {/* extra div to properly align SVG icon */}
+          <div className="item-details__category-icon__container">
             <CategoryIcon className="item-details__category-icon" />
-            {categoryName}
-          </span>
-          <span className="item-details__weight">{weight ? `• ${weight}g` : ''}</span>
-          {quantity}
-        </RowWrapper>
-        <LabelBadgeList className="label-badge-list--margin" labelIds={labelIds} />
-        {children}
-      </div>
-      <CategoryImage categoryName={categoryName} />
+          </div>
+        </Category>
+        {/* show weight if user has set it (including to 0), hide if not set */}
+        {weight !== '' ? <span className="item-details__weight">{`${weight}g`}</span> : ''}
+        {quantity}
+      </BulletWrapper>
+      <LabelBadgeList className="item-details__label-list" labelIds={labelIds} />
+      {children}
     </article>
   );
 };

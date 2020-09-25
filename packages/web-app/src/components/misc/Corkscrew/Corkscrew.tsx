@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from '../../../styles/base/_settings.scss';
-import './style.scss';
 
 /**
- * A small easter egg and a homage to Dmitri who provided me the demo data. ;)
+ * A small easter egg and a homage to Dmitri who provided me with the demo data. ;)
  */
 export const Corkscrew = () => {
   return (

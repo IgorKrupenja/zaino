@@ -12,6 +12,7 @@ type InputProps = {
   clearError?: (e?: ChangeEvent<HTMLInputElement>) => void;
   isExpanding?: boolean;
   onSubmit?: (e?: FormEvent<HTMLFormElement>) => void;
+  maxLength?: number;
 };
 
 export const Input = ({
@@ -53,6 +54,12 @@ export const Input = ({
           onChange={e => {
             clearError && clearError();
             onChange && onChange(e as ChangeEvent<HTMLTextAreaElement>);
+          }}
+          onFocus={e => {
+            // puts cursor at the end on focus
+            const value = e.target.value;
+            e.target.value = '';
+            e.target.value = value;
           }}
           onKeyPress={handleKeyPress}
         />

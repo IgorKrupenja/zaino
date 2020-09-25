@@ -29,11 +29,12 @@ const createItems = async (lineReader: Interface) => {
     const csvEntry = line.split(';');
 
     let name = csvEntry[2].split(' (pair)')[0];
+    // also remove whitespace at the end
     const categoryName = csvEntry[0];
     const weight = csvEntry[5] ? Number(csvEntry[5]) : 0;
     // set 10 quantity for 'Refill' items
     const quantity = csvEntry[6] === 'R' ? 10 : Number(csvEntry[6]);
-    let notes = csvEntry[10].trim();
+    let notes = csvEntry[10];
 
     // skip header
     if (name === 'Item') continue;
@@ -151,6 +152,10 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
 
   // only add to item object if there are labels
   if (labelIds.length > 0) item.labelIds = labelIds;
+
+  // get rid of whitespace
+  item.name = item.name.trim();
+  item.notes = item.notes?.trim();
 
   return item;
 };

@@ -1,0 +1,19 @@
+.pack-item__remove {
+  color: $dark-red;
+}
+
+.pack-item__quantity {
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.pack-item__quantity--button {
+  margin: 0;
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
+
+  &:nth-child(1) {
+    margin-left: $xs-size;
+  }
+}

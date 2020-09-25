@@ -26,7 +26,7 @@ export const EditItem = () => {
   const item = location.state.item;
   const [title, setTitle] = useState(item.name);
 
-  document.title = `${title.length > 0 ? title : 'No name'} | Zaino`;
+  document.title = `${title ? title : 'No name'} | Zaino`;
   const closeModal = () => history.push('/dashboard');
 
   return (

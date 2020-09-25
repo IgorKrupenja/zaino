@@ -10,6 +10,7 @@ import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
 import { TextArea } from '../../Controls/TextArea';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
+import { Category } from '../../Misc/Category';
 import { CategoryImage } from '../../Misc/CategoryImage';
 import { ColumnWrapper } from '../../Misc/ColumnWrapper';
 import { RowWrapper } from '../../Misc/RowWrapper';
@@ -60,6 +61,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       errors.quantity = 'Please enter a quantity > 0';
       isFormValid = false;
     }
+    // note that 0g weight is allowed to account for items <0.5g (e.g. micro SD cards)
     setErrors(errors);
 
     return isFormValid;
@@ -94,6 +96,8 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
     }
   };
 
+  const closeModal = () => history.push('/dashboard');
+
   return (
     <form onSubmit={handleSubmit} className="item-form">
       {/* Name */}
@@ -118,6 +122,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           value={values.quantity}
           onChange={e => handleChange(e)}
           error={errors.quantity}
+          maxLength={3}
           clearError={e => {
             // clear error only if user enters positive quantity (not '', '0' or e.g. '000')
             if (Number(e?.target.value) > 0) setErrors({ ...errors, quantity: '' });
@@ -133,6 +138,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           value={values.weight}
           onChange={e => handleChange(e)}
           error={errors.weight}
+          maxLength={5}
         >
           <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
         </Input>
@@ -144,14 +150,18 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           headerText="Select category"
           onChange={categoryName => setValues({ ...values, categoryName })}
         >
-          <Button className="button--white button--medium">
+          <Button className="button--white item-form__button">
             Category
-            <EditIcon className="button--white__icon button__icon--small" />
+            <EditIcon className="button--white__icon item-form__edit-icon" />
           </Button>
         </CategorySelect>
         <RowWrapper>
           <CategoryImage categoryName={values.categoryName} />
-          <div className="cat-test">{values.categoryName}</div>
+          <Category
+            category={values.categoryName}
+            onClick={closeModal}
+            className="item-form__category"
+          ></Category>
         </RowWrapper>
       </ColumnWrapper>
       {/* Labels */}
@@ -162,15 +172,12 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           isCreatable
           onChange={labelIds => setValues({ ...values, labelIds })}
         >
-          <Button className="button--white button--medium">
+          <Button className="button--white item-form__button">
             Labels
-            <EditIcon className="button--white__icon button__icon--small" />
+            <EditIcon className="button--white__icon item-form__edit-icon--labels" />
           </Button>
         </LabelSelect>
-        <LabelBadgeList
-          onBadgeClick={() => history.push('/dashboard')}
-          labelIds={values.labelIds}
-        />
+        <LabelBadgeList onBadgeClick={closeModal} labelIds={values.labelIds} />
       </ColumnWrapper>
       {/* Notes */}
       <ColumnWrapper className="item-form__full-width item-form__notes">

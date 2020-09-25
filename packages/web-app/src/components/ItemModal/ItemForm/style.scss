@@ -11,11 +11,27 @@
 }
 
 .item-form__notes {
-  // small negative to compensate for LabelBadge's bottom margin
+  // small negative top margin to compensate for LabelBadge's bottom margin
   margin-top: -0.3rem;
   margin-bottom: 0.9rem;
 }
 
-.cat-test {
+.item-form__button {
+  margin: 0 0 0.2rem 0.3rem;
+  padding: 0;
+  height: 1.9rem;
+
+  font-size: $font-size-small;
+}
+
+.item-form__edit-icon {
+  margin-left: 0.3rem;
+}
+
+.item-form__edit-icon--labels {
+  margin-left: 0.4rem;
+}
+
+.item-form__category {
   margin-left: $xs-size;
 }

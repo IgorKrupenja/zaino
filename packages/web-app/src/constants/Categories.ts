@@ -4,7 +4,7 @@ const Categories: Category[] = [
   { name: 'Clothing: top', imageFileName: 'jacket.svg' },
   { name: 'Clothing: legs', imageFileName: 'shorts.svg' },
   { name: 'Clothing: gloves', imageFileName: 'gloves.svg' },
-  { name: 'Clothing: head & eyewear', imageFileName: 'hat.svg' },
+  { name: 'Clothing: head', imageFileName: 'hat.svg' },
   { name: 'Clothing: socks', imageFileName: 'socks.svg' },
   { name: 'Footwear', imageFileName: 'boots.svg' },
   { name: 'Backpacks & bags', imageFileName: 'backpack.svg' },

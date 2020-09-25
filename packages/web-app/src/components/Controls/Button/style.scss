@@ -47,9 +47,10 @@
   }
   &:disabled {
     color: $mid-grey;
+    border-color: $extra-light-grey;
     cursor: default;
     &:hover {
-      background: $off-white;
+      background-color: $off-white;
     }
   }
 }
@@ -127,52 +128,13 @@
   border-bottom: 0.2rem solid white;
 }
 
-.button--red-text {
-  color: $dark-red;
-}
-
-.button--wide {
-  width: 25rem - $s-size * 2;
-  margin: 0 $s-size $s-size $s-size;
-}
-
-.button--medium {
-  margin: 0 0 0.2rem 0.3rem;
-  padding: 0;
-  height: 1.9rem;
-
-  font-size: $font-size-small;
-}
-
 .button--small {
   margin: 0.4rem 0 0 0;
   padding: 0 $xs-size;
   height: 2.6rem;
 }
 
-.button--extra-small {
-  margin: 0;
-  padding: 0;
-  height: 2rem;
-  width: 2rem;
-
-  &:nth-child(1) {
-    margin-left: $xs-size;
-  }
-}
-
-.button__icon--small {
-  margin-left: 0.3rem;
-  height: 1.4rem;
-  height: 1.4rem;
-}
-
 // extra styling for React router Links and NavLinks
 .button--link {
-  display: flex;
-  align-items: center;
-  // justify-content: center;
-
-  // color: white;
   text-decoration: none;
 }

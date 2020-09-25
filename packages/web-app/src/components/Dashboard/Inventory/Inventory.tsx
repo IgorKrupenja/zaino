@@ -9,6 +9,7 @@ import { SectionHeader } from '../../Misc/SectionHeader';
 import { InventoryItem } from '../InventoryItem';
 import { List } from '../List';
 import { Stats } from '../Stats';
+import './style.scss';
 
 export const Inventory = () => {
   // a bit of a hack: shallowEqual prevents re-renders when items in store do not change
@@ -27,7 +28,7 @@ export const Inventory = () => {
           <h2 className="section-header__title">Inventory</h2>
           <Stats stats={stats} />
         </div>
-        <Link className="button button--link button--green button--no-margin" to="/dashboard/add">
+        <Link className="button button--link button--green inventory__add-item" to="/dashboard/add">
           Add item
         </Link>
       </SectionHeader>

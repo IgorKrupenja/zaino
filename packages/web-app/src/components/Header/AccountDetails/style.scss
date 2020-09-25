@@ -43,3 +43,8 @@
   font-size: $font-size-small;
   overflow-wrap: anywhere;
 }
+
+.account-details__sign-out {
+  width: 25rem - $s-size * 2;
+  margin: 0 $s-size $s-size $s-size;
+}

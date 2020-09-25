@@ -12,14 +12,7 @@ export const InventoryItem = (item: Item) => {
   const isInPack = item.packQuantity > 0;
 
   return (
-    <ItemDetails
-      item={item}
-      quantity={
-        item.quantity > 1 && (
-          <span className="item-details__quantity"> • Quantity: {item.quantity}</span>
-        )
-      }
-    >
+    <ItemDetails item={item} quantity={item.quantity > 1 && <span>Quantity: {item.quantity}</span>}>
       <Button
         className="button--grey button--small"
         disabled={isInPack}

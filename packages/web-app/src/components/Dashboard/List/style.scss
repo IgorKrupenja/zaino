@@ -35,3 +35,12 @@
   margin-right: 0;
   padding-right: $stack-margin-size;
 }
+
+.list--empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  height: 11rem;
+}

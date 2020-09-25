@@ -6,6 +6,7 @@ import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../Controls/Button';
 import { RowWrapper } from '../../Misc/RowWrapper';
 import { ItemDetails } from '../ItemDetails/';
+import './style.scss';
 
 export const PackItem = (item: Item) => {
   const dispatch = useDispatch();
@@ -31,13 +32,16 @@ export const PackItem = (item: Item) => {
       {item.quantity > 1 && (
         <RowWrapper>
           Quantity in pack:
-          <Button className="button--grey button--extra-small" onClick={decreasePackQuantity}>
+          <Button
+            className="button--grey pack-item__quantity--button"
+            onClick={decreasePackQuantity}
+          >
             -
           </Button>
-          <span className="item-details__pack-quantity">{packQuantity}</span>
+          <span className="pack-item__quantity">{packQuantity}</span>
           <Button
             disabled={item.quantity === item.packQuantity}
-            className={'button--grey button--extra-small'}
+            className="button--grey pack-item__quantity--button"
             onClick={increasePackQuantity}
           >
             +
@@ -45,7 +49,7 @@ export const PackItem = (item: Item) => {
         </RowWrapper>
       )}
       <Button
-        className="button--grey button--small button--red-text"
+        className="button--grey button--small pack-item__remove"
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 0 }))}
       >
         <NoBackpackIcon className="button--grey__icon button__icon--test" />

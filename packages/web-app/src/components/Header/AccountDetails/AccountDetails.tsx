@@ -48,7 +48,7 @@ export const AccountDetails = () => {
               <div className="account-details__email">{email}</div>
             </div>
           </PopoverContent>
-          <Button className="button--wide button--grey" onClick={handleLogout}>
+          <Button className="button--grey account-details__sign-out" onClick={handleLogout}>
             Sign out
           </Button>
         </>
