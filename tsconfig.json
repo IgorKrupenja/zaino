@@ -15,6 +15,5 @@
     "noImplicitReturns": true,
     // allow default and named imports in one line, e.g.: import React, { useEffect } from 'react';
     "allowSyntheticDefaultImports": true
-  },
-  "include": ["sandbox"]
+  }
 }
