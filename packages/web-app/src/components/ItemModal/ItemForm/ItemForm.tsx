@@ -2,9 +2,9 @@ import { Item } from '@zaino/shared/';
 import React, { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import EditIcon from '../../../images/icons/edit.svg';
-import { history } from '../../../routes/AppRouter';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
-import getArrayDifference from '../../../utils/getArrayDifference';
+import { closeModal } from '../../../utils/closeModal';
+import { getArrayDifference } from '../../../utils/getArrayDifference';
 import { Button } from '../../Controls/Button';
 import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
@@ -95,8 +95,6 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       });
     }
   };
-
-  const closeModal = () => history.push('/dashboard');
 
   return (
     <form onSubmit={handleSubmit} className="item-form">

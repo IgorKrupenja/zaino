@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, RouteComponentProps } from 'react-router-dom';
-import { AddItem } from '../components/ItemModal/AddItem';
 import { EditItem } from '../components/ItemModal/EditItem';
+import { NewItem } from '../components/ItemModal/NewItem';
 import { RootState } from '../state/store';
 
 type MatchParams = {
@@ -17,8 +17,8 @@ export const DashboardRoutes = () => {
 
   return (
     <>
-      <Route path="/dashboard/add">
-        <AddItem />
+      <Route path="/dashboard/new">
+        <NewItem />
       </Route>
       <Route
         path="/dashboard/edit/:id"

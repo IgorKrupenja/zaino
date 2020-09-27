@@ -25,34 +25,36 @@ const LabelsPage = () => {
   }, [labels, dispatch]);
 
   return (
-    <>
+    <main className="labels-page">
       <LabelFilters />
       {isLoading ? (
         <Loader />
       ) : (
-        <main className="labels-page">
-          <section>
-            {/* heading */}
-            {/* todo likely use section header with .section-header--large-margin */}
-            <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
-            {/* add label */}
-            <button onClick={toggleForm}>Add label</button>
-            {isFormOpen && (
-              <LabelForm
-                // lastSortIndex to keep newly-created label at the top of the list
-                // if sorting by name
-                onSubmit={label => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
-                toggleForm={toggleForm}
-              />
-            )}
-            {/* label list */}
-            {labels.length > 0
-              ? labels.map(label => <LabelDetails key={label.id} {...label} />)
-              : `No ${isFiltering ? '' : 'matching'} labels`}
-          </section>
-        </main>
+        <section>
+          {/* todo should whole thing be a modified Stack? */}
+          {/* heading */}
+          {/* todo likely use section header with .section-header--large-margin */}
+          <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
+          {/* add label */}
+          {/* todo this likely goes inside section header */}
+          <button onClick={toggleForm}>New label</button>
+          {/* todo pass button text as child so can have "create new label" */}
+          {isFormOpen && (
+            <LabelForm
+              // lastSortIndex to keep newly-created label at the top of the list
+              // if sorting by name
+              onSubmit={label => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
+              toggleForm={toggleForm}
+            />
+          )}
+          {/* label list */}
+          {labels.length > 0
+            ? labels.map(label => <LabelDetails key={label.id} {...label} />)
+            : // todo consider creating common component with empty dashboard list?
+              `No ${isFiltering ? '' : 'matching'} labels`}
+        </section>
       )}
-    </>
+    </main>
   );
 };
 

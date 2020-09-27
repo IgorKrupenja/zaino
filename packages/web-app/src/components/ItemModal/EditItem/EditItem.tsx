@@ -2,8 +2,8 @@ import { Item } from '@zaino/shared/';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useToggle from '../../../hooks/useToggle';
-import { history } from '../../../routes/AppRouter';
 import { deleteItem, updateItem } from '../../../state/slices/items';
+import { closeModal } from '../../../utils/closeModal';
 import { Button } from '../../Controls/Button';
 import { CloseButton } from '../../Controls/CloseButton';
 import { Corkscrew } from '../../Misc/Corkscrew';
@@ -20,7 +20,6 @@ export const EditItem = ({ item }: { item: Item }) => {
   const [title, setTitle] = useState(item.name);
 
   document.title = `${title ? title : 'No name'} | Zaino`;
-  const closeModal = () => history.push('/dashboard');
 
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>

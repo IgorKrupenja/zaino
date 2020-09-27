@@ -28,8 +28,8 @@ export const Inventory = () => {
           <h2 className="section-header__title">Inventory</h2>
           <Stats stats={stats} />
         </div>
-        <Link className="button button--link button--green inventory__add-item" to="/dashboard/add">
-          Add item
+        <Link className="button button--link button--green inventory__new-item" to="/dashboard/new">
+          New item
         </Link>
       </SectionHeader>
       <List

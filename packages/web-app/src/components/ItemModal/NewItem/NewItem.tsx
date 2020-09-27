@@ -3,15 +3,15 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import Categories from '../../../constants/Categories';
-import { history } from '../../../routes/AppRouter';
 import { addItem } from '../../../state/slices/items';
+import { closeModal } from '../../../utils/closeModal';
 import { Button } from '../../Controls/Button';
 import { CloseButton } from '../../Controls/CloseButton';
 import { SectionHeader } from '../../Misc/SectionHeader';
-import { ItemForm } from '../ItemForm/';
+import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
 
-export const AddItem = () => {
+export const NewItem = () => {
   const dispatch = useDispatch();
 
   const newItem: Item = {
@@ -24,9 +24,8 @@ export const AddItem = () => {
     addedAt: '',
   };
 
-  const title = 'Add item';
+  const title = 'New item';
   document.title = `${title} | Zaino`;
-  const closeModal = () => history.push('/dashboard');
 
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
@@ -42,7 +41,7 @@ export const AddItem = () => {
         }}
       >
         <Button className="button--green item-form__full-width" submit>
-          Create item
+          Create new item
         </Button>
       </ItemForm>
     </Modal>
