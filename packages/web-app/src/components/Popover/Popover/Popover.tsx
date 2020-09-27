@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactTinyPopover, { ContentRenderer } from 'react-tiny-popover';
+import { getClassString } from '../../../utils/getClassString';
 import './style.scss';
 
 type PopoverProps = {
@@ -15,7 +16,7 @@ export const Popover = ({ isOpen, children, containerClassName, ...rest }: Popov
   return (
     <ReactTinyPopover
       isOpen={isOpen}
-      containerClassName={`popover-container ${containerClassName ? containerClassName : ''}`}
+      containerClassName={`popover-container${getClassString(containerClassName)}`}
       // in seconds
       transitionDuration={0.15}
       position={['bottom', 'right']}

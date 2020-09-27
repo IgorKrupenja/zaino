@@ -54,10 +54,8 @@ export const EditItem = ({ item }: { item: Item }) => {
                 <CloseButton className="close-button--large-padding" onClick={togglePopover} />
               </PopoverHeader>
               <PopoverContent>
-                <p>
-                  The item will be deleted from inventory
-                  {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
-                </p>
+                The item will be deleted from inventory
+                {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
               </PopoverContent>
               <Button
                 className="button--red button--wide"

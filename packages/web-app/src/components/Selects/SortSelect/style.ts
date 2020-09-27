@@ -1,9 +1,7 @@
 import { Styles } from 'react-select';
 
-const SortSelectStyles: Partial<Styles> = {
+export const sortSelectStyles: Partial<Styles> = {
   menu: () => ({
     borderTop: 'none',
   }),
 };
-
-export default SortSelectStyles;

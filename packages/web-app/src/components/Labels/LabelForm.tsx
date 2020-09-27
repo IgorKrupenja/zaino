@@ -69,6 +69,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
         >
           <FormLabel htmlFor="name">Name</FormLabel>
         </Input>
+        {/* todo use edit icon and create a component out of it */}
         <ColorSelect
           selectedColorName={values.colorName as ColorName}
           onChange={colorName => {

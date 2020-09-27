@@ -1,5 +1,5 @@
 import { Label } from '@zaino/shared/';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useToggle from '../../hooks/useToggle';
@@ -19,7 +19,7 @@ const LabelDetails = (label: Label) => {
   const [isPopoverOpen, togglePopover] = useToggle();
 
   // extracted from render for clarity
-  let nameElement: React.ReactNode;
+  let nameElement: ReactNode;
   if (isFormOpen) {
     // show label name (or 'Label preview') if form is open
     nameElement = name.length > 0 ? name : 'Label preview';
@@ -37,12 +37,14 @@ const LabelDetails = (label: Label) => {
   return (
     <article key={label.id}>
       {nameElement}
+      {/* item count */}
       {itemTotalCount ? (
         <span>
           {itemTotalCount} item{itemTotalCount > 1 && 's'} ({label.itemUniqueCount} unique)
         </span>
       ) : null}
       {!isFormOpen && <button onClick={toggleForm}>Edit</button>}
+      {/* todo likely move inside LabelForm */}
       <Popover
         isOpen={isPopoverOpen}
         onClickOutside={togglePopover}
@@ -53,7 +55,7 @@ const LabelDetails = (label: Label) => {
               <CloseButton className="close-button--large-padding" onClick={togglePopover} />
             </PopoverHeader>
             <PopoverContent>
-              <p>Deleting a label will remove it from all items. There is no undo.</p>
+              Deleting a label will remove it from all items. There is no undo.
             </PopoverContent>
             <Button
               className="button--red button--wide"

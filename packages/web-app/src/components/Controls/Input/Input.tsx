@@ -31,7 +31,6 @@ export const Input = ({
     id: name,
     name,
     value,
-    // onFocus: clearError,
     className: `input${error ? ' input--error' : ''}${isExpanding ? ' input--resizable' : ''}`,
     ...rest,
   };

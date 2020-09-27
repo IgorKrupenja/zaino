@@ -34,6 +34,8 @@ const LabelsPage = () => {
           {/* todo should whole thing be a modified Stack? */}
           {/* heading */}
           {/* todo likely use section header with .section-header--large-margin */}
+          {/* todo maybe use StatsWrapper -- or call it something else? */}
+          {/* todo likely remove isFiltering logic here */}
           <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
           {/* add label */}
           {/* todo this likely goes inside section header */}
@@ -48,6 +50,7 @@ const LabelsPage = () => {
             />
           )}
           {/* label list */}
+          {/* todo but actually maybe separate List component and rename existing List to ItemList */}
           {labels.length > 0
             ? labels.map(label => <LabelDetails key={label.id} {...label} />)
             : // todo consider creating common component with empty dashboard list?

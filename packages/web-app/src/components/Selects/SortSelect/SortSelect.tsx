@@ -5,7 +5,7 @@ import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { Button } from '../../Controls/Button';
 import { SelectOption, SelectPopover } from '../SelectPopover';
-import styles from './style';
+import { sortSelectStyles } from './style';
 
 type SortSelectProps = {
   sortOptions: typeof LabelSortOption | typeof ItemSortOption;
@@ -57,7 +57,7 @@ export const SortSelect = ({
       components={{
         Control: () => null,
       }}
-      styles={styles}
+      styles={sortSelectStyles}
     >
       <Button className="button--white">
         Sort

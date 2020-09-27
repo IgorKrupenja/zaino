@@ -5,7 +5,7 @@ import styles from '../../../styles/base/_settings.scss';
 
 // CSS-in-JS is used here as this is the recommended method for react-select
 
-const commonSelectStyles: Partial<Styles> = {
+export const commonSelectStyles: Partial<Styles> = {
   control: (base, { isFocused }) => ({
     ...base,
     margin: styles.xsSize,
@@ -14,7 +14,6 @@ const commonSelectStyles: Partial<Styles> = {
     borderRadius: styles.xsSize,
     minHeight: styles.xlSize,
     height: styles.xlSize,
-    maxWidth: '30rem',
     overflow: 'hidden',
     backgroundColor: isFocused ? 'white' : styles.offWhite,
 
@@ -27,9 +26,12 @@ const commonSelectStyles: Partial<Styles> = {
     paddingLeft: styles.xsSize,
     fontSize: styles.sSize,
   }),
+  input: base => ({
+    ...base,
+    overflow: 'hidden',
+  }),
   menu: () => ({
     borderTop: styles.border,
-    maxWidth: '31.2rem',
   }),
   noOptionsMessage: base => ({
     ...base,
@@ -57,8 +59,6 @@ const commonSelectStyles: Partial<Styles> = {
   }),
 };
 
-export const popoverToggleStyle = { display: 'inline-block' };
-
 export type OptionStyleArguments = {
   // for some reason react-select requires this key to be named "data", breaks otherwise
   data: Color;
@@ -81,5 +81,3 @@ export const colorDot = (color = styles.lightGrey, marginLeft = '2.2rem') => ({
     minWidth: '1.2rem',
   },
 });
-
-export default commonSelectStyles;

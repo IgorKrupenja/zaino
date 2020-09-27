@@ -4,7 +4,7 @@ import { ColorName, Colors } from '../../../constants/Colors';
 import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { Button } from '../../Controls/Button';
 import { SelectOption, SelectPopover } from '../SelectPopover';
-import styles from './style';
+import { colorSelectStyles } from './style';
 
 type ColorSelectProps = {
   selectedColorName: ColorName;
@@ -34,7 +34,7 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
       value={value}
       name="categoryName"
       options={options}
-      styles={styles}
+      styles={colorSelectStyles}
       onChange={handleChange}
       components={{ IndicatorSeparator: null, Control: () => null }}
     >

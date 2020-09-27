@@ -8,7 +8,7 @@ import { addLabel } from '../../../state/slices/labels';
 import { RootState } from '../../../state/store';
 import { sortSelectOptionsByName } from '../../../utils/sortSelectOptionsByName';
 import { SelectOption, SelectPopover } from '../SelectPopover';
-import styles from './style';
+import { labelSelectStyles } from './style';
 
 type LabelSelectProps = {
   labelIds?: string[];
@@ -86,7 +86,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
     <SelectPopover
       formatCreateLabel={(inputValue: string) => `Create label "${inputValue}"`}
       isMulti={true}
-      styles={styles}
+      styles={labelSelectStyles}
       onChange={handleChange}
       onCreateOption={handleCreate}
       options={options}

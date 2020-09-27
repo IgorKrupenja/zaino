@@ -3,6 +3,7 @@ import { ValueType } from 'react-select';
 import Categories from '../../../constants/Categories';
 import { sortSelectOptionsByName } from '../../../utils/sortSelectOptionsByName';
 import { SelectOption, SelectPopover } from '../SelectPopover';
+import { categorySelectStyles } from './style';
 
 type CategorySelectProps = {
   selectedCategoryName: string | undefined;
@@ -50,6 +51,7 @@ export const CategorySelect = ({
     <SelectPopover
       headerText={headerText}
       value={value}
+      styles={categorySelectStyles}
       name="categoryName"
       options={options}
       onChange={handleChange}

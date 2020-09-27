@@ -65,7 +65,7 @@ export const DemoData = () => {
               <CloseButton className="close-button--large-padding" onClick={toggleLoadPopover} />
             </PopoverHeader>
             <PopoverContent>
-              <p>Use this to load demo items and labels. These can be easily removed later.</p>
+              Use this to load demo items and labels. These can be easily removed later.
             </PopoverContent>
             <Button className="button--green button--wide" onClick={handleDemoDataLoad}>
               Load
@@ -93,10 +93,8 @@ export const DemoData = () => {
               <CloseButton onClick={toggleRemovePopover} />
             </PopoverHeader>
             <PopoverContent>
-              <p>
-                All items and labels added as demo data (even if you have made changes to them) will
-                be removed. Items and labels you created yourself will not be affected.
-              </p>
+              All items and labels added as demo data (even if you have made changes to them) will
+              be removed. Items and labels you created yourself will not be affected.
             </PopoverContent>
             <Button className="button--red button--wide" onClick={removeDemoData}>
               Remove

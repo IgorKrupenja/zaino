@@ -2,11 +2,10 @@ import React, { ReactNode, useState } from 'react';
 import { InputActionMeta, mergeStyles, Props, ValueType } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
-import useToggle from '../../../hooks/useToggle';
 import { CloseButton } from '../../Controls/CloseButton';
 import { Popover } from '../../Popover/Popover';
 import { PopoverHeader } from '../../Popover/PopoverHeader';
-import commonSelectStyles, { popoverToggleStyle } from './style';
+import { commonSelectStyles } from './style';
 
 export type SelectOption = {
   value: string;
@@ -27,7 +26,7 @@ type SelectPopoverProps = {
  * Provides some core functionality and styles.
  */
 export const SelectPopover = (props: SelectPopoverProps) => {
-  const [isPopoverOpen, togglePopover] = useToggle();
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (newInputValue: string, actionMeta: InputActionMeta) => {
@@ -47,7 +46,7 @@ export const SelectPopover = (props: SelectPopoverProps) => {
   const { onChange, isCreatable, styles, headerText, children, ...rest } = props;
 
   const handleChange = (newValues: ValueType<SelectOption>) => {
-    !isCreatable && togglePopover();
+    !isCreatable && closePopover();
     onChange(newValues);
   };
 
@@ -68,20 +67,31 @@ export const SelectPopover = (props: SelectPopoverProps) => {
     ...rest,
   };
 
+  const openPopover = () => {
+    setIsPopoverOpen(true);
+  };
+
+  const closePopover = () => {
+    setIsPopoverOpen(false);
+    // clear search query after popover transitions out to prevent jerky animation
+    // todo this is a hack, proper fix would be to disable transition on close, see #163
+    setTimeout(() => setInputValue(''), 150);
+  };
+
   return (
     <Popover
       isOpen={isPopoverOpen}
-      onClickOutside={togglePopover}
+      onClickOutside={closePopover}
       content={
         <>
           <PopoverHeader text={headerText}>
-            <CloseButton onClick={togglePopover} />
+            <CloseButton onClick={closePopover} />
           </PopoverHeader>
           {isCreatable ? <CreatableSelect {...mergedProps} /> : <Select {...mergedProps} />}
         </>
       }
     >
-      <div style={popoverToggleStyle} onClick={togglePopover}>
+      <div onClick={isPopoverOpen ? closePopover : openPopover}>
         {/* popover toggle container */}
         {children}
       </div>
