@@ -33,6 +33,7 @@ const LabelsPage = () => {
         <main className="labels-page">
           <section>
             {/* heading */}
+            {/* todo likely use section header with .section-header--large-margin */}
             <h2>{isFiltering ? labelCount : `${labelCount} matching`} labels</h2>
             {/* add label */}
             <button onClick={toggleForm}>Add label</button>

@@ -23,9 +23,10 @@ export const DashboardRoutes = () => {
       <Route
         path="/dashboard/edit/:id"
         render={({ match }: RouteComponentProps<MatchParams>) => {
+          const item = items.find(item => item.id === match.params.id);
           // show EditItem if id is valid
-          if (items.find(item => item.id === match.params.id)) {
-            return <EditItem />;
+          if (item) {
+            return <EditItem item={item} />;
           }
           // redirect to Dashboard if item id is invalid
           return <Redirect to="/dashboard" />;

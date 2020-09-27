@@ -1,7 +1,6 @@
 import { Item } from '@zaino/shared/';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import useToggle from '../../../hooks/useToggle';
 import { history } from '../../../routes/AppRouter';
 import { deleteItem, updateItem } from '../../../state/slices/items';
@@ -15,15 +14,9 @@ import { PopoverHeader } from '../../Popover/PopoverHeader';
 import { ItemForm } from '../ItemForm/';
 import { Modal } from '../Modal';
 
-type LocationState = {
-  item: Item;
-};
-
-export const EditItem = () => {
-  const location = useLocation<LocationState>();
+export const EditItem = ({ item }: { item: Item }) => {
   const dispatch = useDispatch();
   const [isPopoverOpen, togglePopover] = useToggle();
-  const item = location.state.item;
   const [title, setTitle] = useState(item.name);
 
   document.title = `${title ? title : 'No name'} | Zaino`;

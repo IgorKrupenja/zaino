@@ -23,14 +23,20 @@ const AppRouter = () => {
         <>
           <Header />
           <Switch>
-            <Route path="/dashboard" component={DashboardPage} />
-            <Route path="/labels" component={LabelsPage} />
+            <Route path="/dashboard">
+              <DashboardPage />
+            </Route>
+            <Route path="/labels">
+              <LabelsPage />
+            </Route>
             <Redirect to="/dashboard" />
           </Switch>
         </>
       ) : (
         <Switch>
-          <Route path="/" component={LoginPage} exact />
+          <Route path="/" exact>
+            <LoginPage />
+          </Route>
           <Redirect to="/" />
         </Switch>
       )}
