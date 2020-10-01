@@ -48,6 +48,7 @@ export const EditItem = ({ item }: { item: Item }) => {
           isOpen={isPopoverOpen}
           onClickOutside={togglePopover}
           containerClassName="popover-container--wide"
+          align="center"
           content={
             <>
               <PopoverHeader text="Delete item?">

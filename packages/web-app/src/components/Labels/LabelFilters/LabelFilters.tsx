@@ -56,12 +56,10 @@ export const LabelFilters = () => {
         hiddenOption={LabelSortOption.lastSortOrder}
         onChange={handleSortChange}
       />
-      {isFiltering && (
-        <FilterReset onClick={() => dispatch(resetLabelFilters())}>
-          <CloseButton />
-          Clear search and sort
-        </FilterReset>
-      )}
+      <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetLabelFilters())}>
+        <CloseButton />
+        Clear search and sort
+      </FilterReset>
     </section>
   );
 };

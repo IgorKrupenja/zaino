@@ -15,6 +15,7 @@ type LabelSelectProps = {
   onChange: (labelIds: string[]) => void;
   isCreatable?: boolean;
   headerText: string;
+  popoverAlign?: string;
   children: ReactNode;
 };
 

@@ -3,6 +3,9 @@
   flex-direction: column;
   align-items: center;
 
+  max-width: $app-width;
+  margin: 0 auto;
+
   // needed for Loader to display correctly
   height: calc(100% - #{$header-height});
 }
@@ -12,7 +15,6 @@
 
   padding-bottom: $s-size;
   width: 100%;
-  max-width: $app-width;
   // needed for List overflow to work correctly
   height: calc(100vh - #{$header-height} - #{$list-filters-height});
 }

@@ -1,12 +1,18 @@
+.header__container {
+  background: $dark-green;
+}
+
 .header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
-  height: $header-height;
+  margin: 0 auto;
 
-  background: $dark-green;
+  height: $header-height;
+  width: 100%;
+  max-width: $app-width;
 
   color: white;
 }
@@ -24,5 +30,5 @@
   display: flex;
   flex-direction: row;
 
-  margin-left: $xl-size;
+  margin-left: $margin-header;
 }

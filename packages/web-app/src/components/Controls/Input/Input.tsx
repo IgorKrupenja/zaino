@@ -1,8 +1,10 @@
 import React, { ChangeEvent, FormEvent, KeyboardEvent, ReactNode } from 'react';
 import Textarea from 'react-expanding-textarea';
+import { getClassString } from '../../../utils/getClassString';
 import './style.scss';
 
 type InputProps = {
+  className?: string;
   value: string | number;
   name?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -13,9 +15,11 @@ type InputProps = {
   isExpanding?: boolean;
   onSubmit?: (e?: FormEvent<HTMLFormElement>) => void;
   maxLength?: number;
+  placeholder?: string;
 };
 
 export const Input = ({
+  className,
   name,
   error,
   children,
@@ -31,7 +35,11 @@ export const Input = ({
     id: name,
     name,
     value,
-    className: `input${error ? ' input--error' : ''}${isExpanding ? ' input--resizable' : ''}`,
+    className:
+      'input' +
+      (error ? ' input--error' : '') +
+      (isExpanding ? ' input--resizable' : '') +
+      getClassString(className),
     ...rest,
   };
 

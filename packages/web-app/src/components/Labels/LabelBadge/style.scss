@@ -12,7 +12,7 @@
   overflow-wrap: anywhere;
 
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 
   &:hover {
     filter: brightness(1.1);

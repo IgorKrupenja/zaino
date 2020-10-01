@@ -26,6 +26,7 @@ const LabelsPage = () => {
 
   return (
     <main className="labels-page">
+      {/* todo mb create common wrapper component? */}
       <LabelFilters />
       {isLoading ? (
         <Loader />

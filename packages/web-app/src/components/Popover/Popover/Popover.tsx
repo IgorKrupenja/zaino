@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactTinyPopover, { ContentRenderer } from 'react-tiny-popover';
+import ReactTinyPopover, { Align, ContentRenderer } from 'react-tiny-popover';
 import { getClassString } from '../../../utils/getClassString';
 import './style.scss';
 
@@ -9,7 +9,7 @@ type PopoverProps = {
   content: JSX.Element | ContentRenderer;
   children: JSX.Element | ((ref: React.Ref<any>) => JSX.Element);
   containerClassName?: string;
-  align?: 'start' | 'center' | 'end' | undefined;
+  align?: Align;
 };
 
 export const Popover = ({ isOpen, children, containerClassName, ...rest }: PopoverProps) => {
@@ -19,6 +19,7 @@ export const Popover = ({ isOpen, children, containerClassName, ...rest }: Popov
       containerClassName={`popover-container${getClassString(containerClassName)}`}
       // in seconds
       transitionDuration={0.15}
+      align="center"
       position={['bottom', 'right']}
       {...rest}
     >

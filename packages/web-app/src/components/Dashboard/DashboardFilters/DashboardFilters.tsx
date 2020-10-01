@@ -14,9 +14,9 @@ import {
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Controls/Button';
-import { CloseButton } from '../../Controls/CloseButton';
 import { Input } from '../../Controls/Input';
 import { FilterReset } from '../../Misc/FilterReset';
+import { RowWrapper } from '../../Misc/RowWrapper';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect';
 import { SortSelect } from '../../Selects/SortSelect';
@@ -70,51 +70,52 @@ export const DashboardFilters = () => {
 
   return (
     <section className="dashboard-filters">
-      {/* Name */}
-      <Input
-        onChange={e => {
-          e.persist();
-          setFilters({ ...filters, text: e.target.value });
-        }}
-        value={filters.text}
-      />
-      {/* Category */}
-      <CategorySelect
-        selectedCategoryName={filters.category}
-        headerText="Filter by category"
-        onChange={handleCategoryChange}
-      >
-        <Button className="button--white">
-          Categories
-          <DropdownIcon className="button--white__icon" />
-        </Button>
-      </CategorySelect>
-      {/* Labels */}
-      <LabelSelect
-        labelIds={filters.labels}
-        headerText="Filter by label"
-        // setTimeout to prevent UI freezing on slow PCs
-        onChange={labelIds => setTimeout(() => dispatch(setItemLabelsFilter(labelIds)), 15)}
-      >
-        <Button className="button--white">
-          Labels
-          <DropdownIcon className="button--white__icon" />
-        </Button>
-      </LabelSelect>
-      {/* Sort */}
-      <SortSelect
-        sortOptions={ItemSortOption}
-        onChange={handleSortChange}
-        selectedOption={filters.sortBy}
-        hiddenOption={LabelSortOption.lastSortOrder}
-      />
+      <RowWrapper>
+        {/* Name */}
+        <Input
+          className="dashboard-filters__name"
+          placeholder="Search items"
+          onChange={e => {
+            e.persist();
+            setFilters({ ...filters, text: e.target.value });
+          }}
+          value={filters.text}
+        />
+        {/* Category */}
+        <CategorySelect
+          selectedCategoryName={filters.category}
+          headerText="Filter by category"
+          onChange={handleCategoryChange}
+        >
+          <Button className="button--white">
+            Categories
+            <DropdownIcon className="button--white__icon" />
+          </Button>
+        </CategorySelect>
+        {/* Labels */}
+        <LabelSelect
+          labelIds={filters.labels}
+          headerText="Filter by label"
+          // setTimeout to prevent UI freezing on slow PCs
+          onChange={labelIds => setTimeout(() => dispatch(setItemLabelsFilter(labelIds)), 15)}
+        >
+          <Button className="button--white">
+            Labels
+            <DropdownIcon className="button--white__icon" />
+          </Button>
+        </LabelSelect>
+        {/* Sort */}
+        <SortSelect
+          sortOptions={ItemSortOption}
+          onChange={handleSortChange}
+          selectedOption={filters.sortBy}
+          hiddenOption={LabelSortOption.lastSortOrder}
+        />
+      </RowWrapper>
       {/* Clear filters */}
-      {isFiltering && (
-        <FilterReset onClick={() => dispatch(resetItemFilters())}>
-          <CloseButton />
-          Clear search, filters and sort
-        </FilterReset>
-      )}
+      <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetItemFilters())}>
+        Clear search, filters and sort
+      </FilterReset>
     </section>
   );
 };

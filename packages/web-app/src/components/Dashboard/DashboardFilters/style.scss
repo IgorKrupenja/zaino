@@ -1,5 +1,19 @@
 .dashboard-filters {
   display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+
+  padding: 2.1rem $m-size 0 $m-size;
 
   height: $list-filters-height;
+  width: 100%;
+
+  & > .row-wrapper {
+    width: 100%;
+  }
+}
+
+.dashboard-filters__name {
+  flex-grow: 1;
 }

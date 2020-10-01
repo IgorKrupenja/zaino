@@ -1,11 +1,22 @@
 import React, { ReactNode } from 'react';
+import CloseIcon from '../../../images/icons/close.svg';
+import { Button } from '../../Controls/Button';
 import './style.scss';
 
 type FilterResetProps = {
-  onClick: () => void;
+  onClick?: () => void;
   children: ReactNode;
+  isFiltering: boolean;
 };
 
-export const FilterReset = ({ onClick, children }: FilterResetProps) => {
-  return <div onClick={onClick}>{children}</div>;
+export const FilterReset = ({ onClick, children, isFiltering }: FilterResetProps) => {
+  return (
+    <Button
+      className={`filter-reset button--white${isFiltering ? '' : ' filter-reset--hidden'}`}
+      onClick={onClick}
+    >
+      <CloseIcon className="button--white__icon" />
+      {children}
+    </Button>
+  );
 };

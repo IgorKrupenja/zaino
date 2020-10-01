@@ -12,36 +12,39 @@ export const Header = () => {
   const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
 
   return (
-    <header className="header">
-      <h1>
-        <Link to="/dashboard" className="header__title">
-          Zaino
-        </Link>
-      </h1>
-      <nav className="header__nav">
-        <NavLink
-          to="/dashboard"
-          className="button button--underline button--link"
-          activeClassName="button--underline--active"
-        >
-          Dashboard
-        </NavLink>
-        <NavLink
-          to="/labels"
-          // re-sort labels by name after in-place edit and switching back to Labels page
-          // see slices/labels for more details
-          onClick={() =>
-            labelSortOption === LabelSortOption.lastSortOrder &&
-            dispatch(sortLabelsBy(LabelSortOption.name))
-          }
-          className="button button--underline button--link"
-          activeClassName="button--underline--active"
-        >
-          Labels
-        </NavLink>
-      </nav>
-      <DemoData />
-      <AccountDetails />
-    </header>
+    // container div to properly style header
+    <div className="header__container">
+      <header className="header">
+        <h1>
+          <Link to="/dashboard" className="header__title">
+            Zaino
+          </Link>
+        </h1>
+        <nav className="header__nav">
+          <NavLink
+            to="/dashboard"
+            className="button button--underline button--link"
+            activeClassName="button--underline--active"
+          >
+            Dashboard
+          </NavLink>
+          <NavLink
+            to="/labels"
+            // re-sort labels by name after in-place edit and switching back to Labels page
+            // see slices/labels for more details
+            onClick={() =>
+              labelSortOption === LabelSortOption.lastSortOrder &&
+              dispatch(sortLabelsBy(LabelSortOption.name))
+            }
+            className="button button--underline button--link"
+            activeClassName="button--underline--active"
+          >
+            Labels
+          </NavLink>
+        </nav>
+        <DemoData />
+        <AccountDetails />
+      </header>
+    </div>
   );
 };

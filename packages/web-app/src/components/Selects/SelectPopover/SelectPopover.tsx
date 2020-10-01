@@ -80,6 +80,7 @@ export const SelectPopover = (props: SelectPopoverProps) => {
 
   return (
     <Popover
+      align="end"
       isOpen={isPopoverOpen}
       onClickOutside={closePopover}
       content={
