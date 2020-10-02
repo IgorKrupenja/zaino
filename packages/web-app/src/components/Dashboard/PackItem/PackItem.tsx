@@ -5,7 +5,7 @@ import NoBackpackIcon from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../Controls/Button';
 import { RowWrapper } from '../../Wrappers/RowWrapper';
-import { ItemDetails } from '../ItemDetails/';
+import { ItemDetails } from '../ItemDetails';
 import './style.scss';
 
 export const PackItem = (item: Item) => {

@@ -100,6 +100,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
     <form onSubmit={handleSubmit} className="item-form">
       {/* Name */}
       <ColumnWrapper className="item-form__full-width">
+        <FormLabel htmlFor="name">Name</FormLabel>
         <Input
           name="name"
           value={values.name}
@@ -109,12 +110,11 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           isExpanding
           onSubmit={handleSubmit}
           clearError={() => setErrors({ ...errors, name: '' })}
-        >
-          <FormLabel htmlFor="name">Name</FormLabel>
-        </Input>
+        />
       </ColumnWrapper>
       {/* Quantity */}
       <ColumnWrapper>
+        <FormLabel htmlFor="quantity">Quantity</FormLabel>
         <Input
           name="quantity"
           value={values.quantity}
@@ -125,21 +125,18 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
             // clear error only if user enters positive quantity (not '', '0' or e.g. '000')
             if (Number(e?.target.value) > 0) setErrors({ ...errors, quantity: '' });
           }}
-        >
-          <FormLabel htmlFor="quantity">Quantity</FormLabel>
-        </Input>
+        />
       </ColumnWrapper>
       {/* Weight */}
       <ColumnWrapper>
+        <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
         <Input
           name="weight"
           value={values.weight}
           onChange={e => handleChange(e)}
           error={errors.weight}
           maxLength={5}
-        >
-          <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
-        </Input>
+        />
       </ColumnWrapper>
       {/* Category */}
       <ColumnWrapper>
@@ -179,9 +176,8 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       </ColumnWrapper>
       {/* Notes */}
       <ColumnWrapper className="item-form__full-width item-form__notes">
-        <TextArea name="notes" value={values.notes} onChange={handleChange}>
-          <FormLabel htmlFor="notes">Notes</FormLabel>
-        </TextArea>
+        <FormLabel htmlFor="notes">Notes</FormLabel>
+        <TextArea name="notes" value={values.notes} onChange={handleChange} />
       </ColumnWrapper>
       {/* buttons */}
       {children}

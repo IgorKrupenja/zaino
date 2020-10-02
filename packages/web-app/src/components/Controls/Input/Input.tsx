@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FormEvent, KeyboardEvent, ReactNode } from 'react';
-import Textarea from 'react-expanding-textarea';
+import React, { ChangeEvent, FormEvent, KeyboardEvent } from 'react';
+import ReactExpandingTextarea from 'react-expanding-textarea';
 import { getClassString } from '../../../utils/getClassString';
 import './style.scss';
 
@@ -10,7 +10,6 @@ type InputProps = {
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   error?: string;
   autoFocus?: boolean;
-  children?: ReactNode;
   clearError?: (e?: ChangeEvent<HTMLInputElement>) => void;
   isExpanding?: boolean;
   onSubmit?: (e?: FormEvent<HTMLFormElement>) => void;
@@ -22,7 +21,6 @@ export const Input = ({
   className,
   name,
   error,
-  children,
   value,
   onSubmit,
   isExpanding,
@@ -38,7 +36,7 @@ export const Input = ({
     className:
       'input' +
       (error ? ' input--error' : '') +
-      (isExpanding ? ' input--resizable' : '') +
+      (isExpanding ? ' input--expanding' : '') +
       getClassString(className),
     ...rest,
   };
@@ -53,9 +51,8 @@ export const Input = ({
 
   return (
     <>
-      {children}
       {isExpanding ? (
-        <Textarea
+        <ReactExpandingTextarea
           {...elementProps}
           value={String(value)}
           onChange={e => {

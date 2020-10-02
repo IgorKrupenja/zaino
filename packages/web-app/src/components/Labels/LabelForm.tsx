@@ -55,6 +55,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
       {/* show label name preview if adding a new label */}
       {!label && <span>{values.name ? values.name : 'Label preview'}</span>}
       <form onSubmit={handleSubmit}>
+        <FormLabel htmlFor="name">Name</FormLabel>
         <Input
           value={values.name}
           error={nameError}
@@ -66,9 +67,7 @@ const LabelForm = ({ label, onSubmit, toggleForm, setLabelDetailsName }: LabelFo
             // update label name preview on typing if editing a label
             setLabelDetailsName && setLabelDetailsName(name);
           }}
-        >
-          <FormLabel htmlFor="name">Name</FormLabel>
-        </Input>
+        />
         {/* todo use edit icon and create a component out of it */}
         <ColorSelect
           selectedColorName={values.colorName as ColorName}
