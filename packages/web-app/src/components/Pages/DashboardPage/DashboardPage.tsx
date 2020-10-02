@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { DashboardRoutes } from '../../../routes/DashboardRoutes';
 import { RootState } from '../../../state/store';
-import { DashboardFilters } from '../../Dashboard/DashboardFilters';
 import { Inventory } from '../../Dashboard/Inventory';
+import { ItemFilters } from '../../Dashboard/ItemFilters';
 import { Pack } from '../../Dashboard/Pack';
 import { Stack } from '../../Dashboard/Stack';
 import { Loader } from '../../Misc/Loader';
@@ -16,7 +16,7 @@ export const DashboardPage = () => {
   return (
     <>
       <main className="dashboard-page">
-        <DashboardFilters />
+        <ItemFilters />
         {isLoading ? (
           <Loader />
         ) : (

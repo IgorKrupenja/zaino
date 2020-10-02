@@ -12,10 +12,10 @@ import { TextArea } from '../../Controls/TextArea';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
 import { Category } from '../../Misc/Category';
 import { CategoryImage } from '../../Misc/CategoryImage';
-import { ColumnWrapper } from '../../Misc/ColumnWrapper';
-import { RowWrapper } from '../../Misc/RowWrapper';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect/LabelSelect';
+import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
+import { RowWrapper } from '../../Wrappers/RowWrapper';
 import './style.scss';
 
 type ItemFormProps = {

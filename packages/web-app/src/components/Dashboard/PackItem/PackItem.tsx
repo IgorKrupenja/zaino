@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import NoBackpackIcon from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../Controls/Button';
-import { RowWrapper } from '../../Misc/RowWrapper';
+import { RowWrapper } from '../../Wrappers/RowWrapper';
 import { ItemDetails } from '../ItemDetails/';
 import './style.scss';
 

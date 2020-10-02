@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React from 'react';
-import { BulletWrapper } from '../../Misc/BulletWrapper';
+import { BulletWrapper } from '../../Wrappers/BulletWrapper';
 import './style.scss';
 
 type StatsProps = {

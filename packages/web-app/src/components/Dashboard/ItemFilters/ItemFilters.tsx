@@ -16,13 +16,13 @@ import { RootState } from '../../../state/store';
 import { Button } from '../../Controls/Button';
 import { Input } from '../../Controls/Input';
 import { FilterReset } from '../../Misc/FilterReset';
-import { FiltersWrapper } from '../../Misc/FiltersWrapper';
-import { RowWrapper } from '../../Misc/RowWrapper';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect';
 import { SortSelect } from '../../Selects/SortSelect';
+import { FiltersWrapper } from '../../Wrappers/FiltersWrapper';
+import { RowWrapper } from '../../Wrappers/RowWrapper';
 
-export const DashboardFilters = () => {
+export const ItemFilters = () => {
   const dispatch = useDispatch();
   // better name?
   const selectedFilters = useSelector((state: RootState) => state.itemsFilters);

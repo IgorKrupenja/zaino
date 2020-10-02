@@ -14,10 +14,11 @@ export const List = ({ filteredItemCount, allItemCount, title, children }: ListP
 
   return (
     <div
-      className={`list
-      ${isFirefoxMac ? ' list--firefox-mac' : ''}
-      ${allItemCount === 0 || filteredItemCount === 0 ? 'list--empty' : ''}
-      `}
+      className={
+        'list' +
+        (isFirefoxMac ? ' list--firefox-mac' : '') +
+        (allItemCount === 0 || filteredItemCount === 0 ? ' list--empty' : '')
+      }
     >
       {allItemCount === 0 ? (
         <>No items in {title}</>

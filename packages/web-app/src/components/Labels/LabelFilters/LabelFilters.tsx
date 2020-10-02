@@ -11,9 +11,9 @@ import {
 import { RootState } from '../../../state/store';
 import { Input } from '../../Controls/Input';
 import { FilterReset } from '../../Misc/FilterReset';
-import { FiltersWrapper } from '../../Misc/FiltersWrapper';
-import { RowWrapper } from '../../Misc/RowWrapper';
 import { SortSelect } from '../../Selects/SortSelect';
+import { FiltersWrapper } from '../../Wrappers/FiltersWrapper';
+import { RowWrapper } from '../../Wrappers/RowWrapper';
 import './style.scss';
 
 export const LabelFilters = () => {

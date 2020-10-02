@@ -3,10 +3,10 @@ import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import CategoryIcon from '../../../images/icons/category.svg';
 import { LabelBadgeList } from '../../Labels/LabelBadgeList';
-import { BulletWrapper } from '../../Misc/BulletWrapper';
 import { Category } from '../../Misc/Category';
 import { CategoryImage } from '../../Misc/CategoryImage';
 import { Corkscrew } from '../../Misc/Corkscrew';
+import { BulletWrapper } from '../../Wrappers/BulletWrapper';
 import './style.scss';
 
 type ItemDetailsProps = {
