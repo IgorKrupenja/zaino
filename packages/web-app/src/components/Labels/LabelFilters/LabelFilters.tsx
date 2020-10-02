@@ -11,6 +11,8 @@ import {
 import { RootState } from '../../../state/store';
 import { Input } from '../../Controls/Input';
 import { FilterReset } from '../../Misc/FilterReset';
+import { FiltersWrapper } from '../../Misc/FiltersWrapper';
+import { RowWrapper } from '../../Misc/RowWrapper';
 import { SortSelect } from '../../Selects/SortSelect';
 import './style.scss';
 
@@ -41,23 +43,27 @@ export const LabelFilters = () => {
   }, [filters.text, dispatch]);
 
   return (
-    <section className="label-filters">
-      <Input
-        onChange={e => {
-          e.persist();
-          setFilters({ ...filters, text: e.target.value });
-        }}
-        value={filters.text}
-      />
-      <SortSelect
-        sortOptions={LabelSortOption}
-        selectedOption={filters.sortBy}
-        hiddenOption={LabelSortOption.lastSortOrder}
-        onChange={handleSortChange}
-      />
+    <FiltersWrapper>
+      <RowWrapper className="row-wrapper--full-width">
+        <Input
+          className="input--grow"
+          placeholder="Search labels"
+          onChange={e => {
+            e.persist();
+            setFilters({ ...filters, text: e.target.value });
+          }}
+          value={filters.text}
+        />
+        <SortSelect
+          sortOptions={LabelSortOption}
+          selectedOption={filters.sortBy}
+          hiddenOption={LabelSortOption.lastSortOrder}
+          onChange={handleSortChange}
+        />
+      </RowWrapper>
       <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetLabelFilters())}>
         Clear search and sort
       </FilterReset>
-    </section>
+    </FiltersWrapper>
   );
 };

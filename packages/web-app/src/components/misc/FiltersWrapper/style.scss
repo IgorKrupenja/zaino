@@ -1,4 +1,4 @@
-.dashboard-filters {
+.filters-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -8,15 +8,4 @@
 
   height: $list-filters-height;
   width: 100%;
-
-  // todo redo
-  & > .row-wrapper {
-    width: 100%;
-  }
-  & .input {
-    flex-grow: 1;
-  }
-}
-
-.dashboard-filters__name {
 }

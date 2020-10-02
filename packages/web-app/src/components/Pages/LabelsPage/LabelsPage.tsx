@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import useToggle from '../../hooks/useToggle';
-import selectFilteredLabels, { selectLabelCount } from '../../state/selectors/labels';
-import { addLabel, saveSortOrder } from '../../state/slices/labels';
-import { RootState } from '../../state/store';
-import LabelDetails from '../Labels/LabelDetails';
-import { LabelFilters } from '../Labels/LabelFilters/';
-import LabelForm from '../Labels/LabelForm';
-import { Loader } from '../Misc/Loader';
+import useToggle from '../../../hooks/useToggle';
+import selectFilteredLabels, { selectLabelCount } from '../../../state/selectors/labels';
+import { addLabel, saveSortOrder } from '../../../state/slices/labels';
+import { RootState } from '../../../state/store';
+import LabelDetails from '../../Labels/LabelDetails';
+import { LabelFilters } from '../../Labels/LabelFilters';
+import LabelForm from '../../Labels/LabelForm';
+import { Loader } from '../../Misc/Loader';
+import './style.scss';
 
-const LabelsPage = () => {
+export const LabelsPage = () => {
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectFilteredLabels(state));
   const labelCount = labels.length;
@@ -26,7 +27,6 @@ const LabelsPage = () => {
 
   return (
     <main className="labels-page">
-      {/* todo mb create common wrapper component? */}
       <LabelFilters />
       {isLoading ? (
         <Loader />
@@ -61,5 +61,3 @@ const LabelsPage = () => {
     </main>
   );
 };
-
-export default LabelsPage;

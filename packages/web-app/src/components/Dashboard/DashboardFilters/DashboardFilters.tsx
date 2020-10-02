@@ -16,11 +16,11 @@ import { RootState } from '../../../state/store';
 import { Button } from '../../Controls/Button';
 import { Input } from '../../Controls/Input';
 import { FilterReset } from '../../Misc/FilterReset';
+import { FiltersWrapper } from '../../Misc/FiltersWrapper';
 import { RowWrapper } from '../../Misc/RowWrapper';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect';
 import { SortSelect } from '../../Selects/SortSelect';
-import './style.scss';
 
 export const DashboardFilters = () => {
   const dispatch = useDispatch();
@@ -69,11 +69,11 @@ export const DashboardFilters = () => {
   };
 
   return (
-    <section className="dashboard-filters">
-      <RowWrapper>
+    <FiltersWrapper>
+      <RowWrapper className="row-wrapper--full-width">
         {/* Name */}
         <Input
-          className="dashboard-filters__name"
+          className="input--grow"
           placeholder="Search items"
           onChange={e => {
             e.persist();
@@ -116,6 +116,6 @@ export const DashboardFilters = () => {
       <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetItemFilters())}>
         Clear search, filters and sort
       </FilterReset>
-    </section>
+    </FiltersWrapper>
   );
 };

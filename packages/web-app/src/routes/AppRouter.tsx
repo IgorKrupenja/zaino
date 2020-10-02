@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import { Header } from '../components/Header/Header';
 import { DashboardPage } from '../components/Pages/DashboardPage';
-import LabelsPage from '../components/Pages/LabelsPage';
+import { LabelsPage } from '../components/Pages/LabelsPage/';
 import { LoginPage } from '../components/Pages/LoginPage';
 import { RootState } from '../state/store';
 
