@@ -6,8 +6,10 @@ export type LabelFilters = {
 };
 
 export enum LabelSortOption {
-  name = 'Name',
-  itemCount = 'Number of items',
+  name = 'Alphabetically',
+  nameReverse = 'Reverse alphabetically',
+  itemsHighest = 'Most items',
+  itemsLowest = 'Least items',
   // see comments in labels slice for saveSortOrder
   lastSortOrder = 'Last sort order',
 }

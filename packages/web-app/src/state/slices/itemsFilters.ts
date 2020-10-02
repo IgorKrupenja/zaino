@@ -8,16 +8,19 @@ export type ItemFilters = {
 };
 
 export enum ItemSortOption {
-  added = 'Recently added',
-  name = 'Name',
-  weight = 'Weight',
+  addedLatest = 'Most recently created',
+  addedOldest = 'Least recently created',
+  name = 'Alphabetically',
+  nameReverse = 'Reverse alphabetically',
+  weightHighest = 'Highest weight',
+  weightLowest = 'Lowest weight',
 }
 
 export const itemFiltersInitialState: ItemFilters = {
   text: '',
   category: undefined,
   labels: [],
-  sortBy: ItemSortOption.added,
+  sortBy: ItemSortOption.addedLatest,
 };
 
 const itemFiltersSlice = createSlice({

@@ -26,12 +26,28 @@ const selectFilteredInventoryItems = createSelector(
       })
       .sort((a, b) => {
         switch (sortBy) {
-          case ItemSortOption.added:
+          case ItemSortOption.addedLatest:
+            return a.addedAt < b.addedAt ? 1 : -1;
+          case ItemSortOption.addedOldest:
             return a.addedAt > b.addedAt ? 1 : -1;
           case ItemSortOption.name:
             return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
-          case ItemSortOption.weight:
-            return a.weight < b.weight ? 1 : -1;
+          case ItemSortOption.nameReverse:
+            return a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1;
+          case ItemSortOption.weightHighest:
+            if (a.weight === '') {
+              // sort empty weight items appear below 0g items
+              return 1;
+            } else {
+              return a.weight < b.weight ? 1 : -1;
+            }
+          case ItemSortOption.weightLowest:
+            if (b.weight === '') {
+              // sort empty weight items appear above 0g items
+              return 1;
+            } else {
+              return a.weight > b.weight ? 1 : -1;
+            }
         }
       });
   }

@@ -16,11 +16,21 @@ const selectFilteredLabels = createSelector(
         switch (sortBy) {
           case LabelSortOption.name:
             return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
-          case LabelSortOption.itemCount:
+          case LabelSortOption.nameReverse:
+            return a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1;
+          case LabelSortOption.itemsHighest:
             if (a.itemTotalCount === undefined || b.itemTotalCount === undefined) {
+              // sort labels with no items below all other
               return 0;
             } else {
               return a.itemTotalCount < b.itemTotalCount ? 1 : -1;
+            }
+          case LabelSortOption.itemsLowest:
+            if (a.itemTotalCount === undefined || b.itemTotalCount === undefined) {
+              // sort labels with no items above all other
+              return 0;
+            } else {
+              return a.itemTotalCount > b.itemTotalCount ? 1 : -1;
             }
           case LabelSortOption.lastSortOrder:
             if (a.lastSortIndex === undefined || b.lastSortIndex === undefined) {
