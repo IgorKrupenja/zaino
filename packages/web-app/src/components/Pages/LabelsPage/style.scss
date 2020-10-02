@@ -1,4 +1,6 @@
 .labels-page {
   max-width: $app-width;
   margin: 0 auto;
+
+  height: calc(100% - #{$header-height});
 }

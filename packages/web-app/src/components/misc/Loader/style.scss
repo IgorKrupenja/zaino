@@ -3,15 +3,16 @@
 .loader-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   width: 100%;
   height: 100%;
 }
 
 .loader {
-  align-self: center;
-
-  margin: auto 0 auto 0;
+  // better positioning with negative margin
+  margin-top: -20%;
   width: 8rem;
   height: 8rem;
 
@@ -22,6 +23,10 @@
   animation-duration: 1.7s;
   animation-iteration-count: infinite;
   animation-timing-function: ease;
+}
+
+.loader--center {
+  margin-top: 0;
 }
 
 @keyframes loader-bounce {
