@@ -9,7 +9,6 @@ import {
   sortLabelsBy,
 } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
-import { CloseButton } from '../../Controls/CloseButton';
 import { Input } from '../../Controls/Input';
 import { FilterReset } from '../../Misc/FilterReset';
 import { SortSelect } from '../../Selects/SortSelect';
@@ -57,7 +56,6 @@ export const LabelFilters = () => {
         onChange={handleSortChange}
       />
       <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetLabelFilters())}>
-        <CloseButton />
         Clear search and sort
       </FilterReset>
     </section>
