@@ -5,7 +5,6 @@ import { RootState } from '../../../state/store';
 import { Inventory } from '../../Dashboard/Inventory';
 import { ItemFilters } from '../../Dashboard/ItemFilters';
 import { Pack } from '../../Dashboard/Pack';
-import { Stack } from '../../Dashboard/Stack';
 import { Loader } from '../../Misc/Loader';
 import './style.scss';
 
@@ -20,16 +19,10 @@ export const DashboardPage = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <>
-            <div className="dashboard-page__stacks">
-              <Stack className="stack--left">
-                <Inventory />
-              </Stack>
-              <Stack className="stack--right">
-                <Pack />
-              </Stack>
-            </div>
-          </>
+          <div className="dashboard-page__stacks">
+            <Inventory />
+            <Pack />
+          </div>
         )}
       </main>
 

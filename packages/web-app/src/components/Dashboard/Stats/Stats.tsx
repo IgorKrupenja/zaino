@@ -4,6 +4,7 @@ import { BulletWrapper } from '../../Wrappers/BulletWrapper';
 import './style.scss';
 
 type StatsProps = {
+  className: string;
   stats: {
     weight: number;
     percentageOfTotal: number;
@@ -13,7 +14,7 @@ type StatsProps = {
   };
 };
 
-export const Stats = ({ stats }: StatsProps) => {
+export const Stats = ({ stats, className }: StatsProps) => {
   const {
     weight,
     percentageOfTotal,
@@ -44,7 +45,7 @@ export const Stats = ({ stats }: StatsProps) => {
       : '0g'; // also show 0g if total weight is 0 (i.e. there are only 0-weight items in list)
 
   return (
-    <BulletWrapper className="stats">
+    <BulletWrapper className={className}>
       {allItemUniqueCount === 0 || filteredItemUniqueCount === 0 ? (
         '0 items'
       ) : (

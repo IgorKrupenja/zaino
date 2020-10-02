@@ -8,7 +8,9 @@ type StackProps = {
 };
 
 /**
- * Component used to apply styles.
+ * Compound component used to display stacks on the dashboard.
+ * Consists of a stack wrapper component abd a list subcomponent.
+ * Currently used by Inventory and Pack.
  */
 export const Stack = ({ children, className }: StackProps) => {
   return (
@@ -17,3 +19,31 @@ export const Stack = ({ children, className }: StackProps) => {
     </div>
   );
 };
+
+type ListProps = {
+  children: ReactNode;
+  isEmpty?: boolean;
+};
+
+/**
+ * Component displaying actual item list with fancy scrollbar.
+ * Used as a subcomponent along with Stack.
+ */
+const List = ({ children, isEmpty }: ListProps) => {
+  const isFirefoxMac =
+    navigator.userAgent.indexOf('Firefox') !== -1 && navigator.platform.indexOf('Mac') !== -1;
+
+  return (
+    <div
+      className={
+        'stack__list' +
+        (isFirefoxMac ? ' stack__list--firefox-mac' : '') +
+        (isEmpty ? ' stack__list--empty' : '')
+      }
+    >
+      {children}
+    </div>
+  );
+};
+
+Stack.List = List;

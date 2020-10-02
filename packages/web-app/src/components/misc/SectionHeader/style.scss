@@ -22,3 +22,9 @@
 .section-header__title--grey {
   color: $mid-grey;
 }
+
+.section-header__content {
+  color: $grey;
+  line-height: 1.2;
+  font-size: $font-size-small;
+}
