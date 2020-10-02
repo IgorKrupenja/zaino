@@ -4,16 +4,19 @@
   justify-content: start;
   align-items: flex-start;
 
-  padding: 2.1rem $m-size 0 $m-size;
+  padding: 2.4rem $m-size 0 $m-size;
 
   height: $list-filters-height;
   width: 100%;
 
+  // todo redo
   & > .row-wrapper {
     width: 100%;
+  }
+  & .input {
+    flex-grow: 1;
   }
 }
 
 .dashboard-filters__name {
-  flex-grow: 1;
 }

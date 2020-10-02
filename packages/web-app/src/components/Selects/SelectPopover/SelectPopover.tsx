@@ -25,7 +25,14 @@ type SelectPopoverProps = {
  * Core select component with popover used in actual re-usable selects.
  * Provides some core functionality and styles.
  */
-export const SelectPopover = (props: SelectPopoverProps) => {
+export const SelectPopover = ({
+  onChange,
+  isCreatable,
+  styles,
+  headerText,
+  children,
+  ...rest
+}: SelectPopoverProps) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
@@ -42,8 +49,6 @@ export const SelectPopover = (props: SelectPopoverProps) => {
       setInputValue(newInputValue);
     }
   };
-
-  const { onChange, isCreatable, styles, headerText, children, ...rest } = props;
 
   const handleChange = (newValues: ValueType<SelectOption>) => {
     !isCreatable && closePopover();
