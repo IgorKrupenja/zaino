@@ -1,0 +1,31 @@
+.popover {
+  border: $border;
+  border-radius: $xs-size;
+  box-shadow: $shadow;
+  background-color: white;
+}
+
+.popover--wide {
+  width: 25rem;
+}
+
+.popover__content {
+  display: flex;
+  flex-direction: row;
+  margin: $xs-size $s-size $xs-size $s-size;
+  padding: 0 0.4rem 0 0.4rem;
+}
+
+.popover__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 0.1rem solid $light-grey;
+  padding-left: $m-size;
+  height: $xl-size;
+}
+
+.popover__title {
+  font-size: $font-size-small;
+}

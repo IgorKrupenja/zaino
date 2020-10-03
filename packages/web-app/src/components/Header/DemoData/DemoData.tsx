@@ -11,9 +11,7 @@ import { batchDeleteLabels } from '../../../state/slices/labels';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Controls/Button';
 import { CloseButton } from '../../Controls/CloseButton';
-import { Popover } from '../../Popover/Popover';
-import { PopoverContent } from '../../Popover/PopoverContent';
-import { PopoverHeader } from '../../Popover/PopoverHeader';
+import { Popover } from '../../Misc/Popover';
 import './style.scss';
 
 export const DemoData = () => {
@@ -58,15 +56,16 @@ export const DemoData = () => {
       <Popover
         isOpen={isLoadPopoverOpen}
         onClickOutside={toggleLoadPopover}
-        containerClassName="popover-container--wide"
+        containerClassName="popover--wide"
         content={
           <>
-            <PopoverHeader text="Load demo data?">
+            <Popover.Header>
+              <Popover.Title>Load demo data?</Popover.Title>
               <CloseButton className="close-button--large-padding" onClick={toggleLoadPopover} />
-            </PopoverHeader>
-            <PopoverContent>
+            </Popover.Header>
+            <Popover.Content>
               Use this to load demo items and labels. These can be easily removed later.
-            </PopoverContent>
+            </Popover.Content>
             <Button className="button--green button--wide" onClick={handleDemoDataLoad}>
               Load
             </Button>
@@ -86,16 +85,17 @@ export const DemoData = () => {
       <Popover
         isOpen={isRemovePopoverOpen}
         onClickOutside={toggleRemovePopover}
-        containerClassName="popover-container--wide"
+        containerClassName="popover--wide"
         content={
           <>
-            <PopoverHeader text="Remove demo data?">
+            <Popover.Header>
+              <Popover.Title>Remove demo data?</Popover.Title>
               <CloseButton className="close-button--large-padding" onClick={toggleRemovePopover} />
-            </PopoverHeader>
-            <PopoverContent>
+            </Popover.Header>
+            <Popover.Content>
               All items and labels added as demo data (even if you have made changes to them) will
               be removed. Items and labels you created yourself will not be affected.
-            </PopoverContent>
+            </Popover.Content>
             <Button className="button--red button--wide" onClick={removeDemoData}>
               Remove
             </Button>

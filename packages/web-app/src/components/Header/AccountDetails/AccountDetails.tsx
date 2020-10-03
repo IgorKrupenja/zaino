@@ -8,9 +8,7 @@ import { logout } from '../../../state/slices/user';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Controls/Button';
 import { CloseButton } from '../../Controls/CloseButton';
-import { Popover } from '../../Popover/Popover';
-import { PopoverContent } from '../../Popover/PopoverContent';
-import { PopoverHeader } from '../../Popover/PopoverHeader';
+import { Popover } from '../../Misc/Popover';
 import './style.scss';
 
 export const AccountDetails = () => {
@@ -34,20 +32,21 @@ export const AccountDetails = () => {
     <Popover
       isOpen={isPopoverOpen}
       onClickOutside={togglePopover}
-      containerClassName="popover-container--wide"
+      containerClassName="popover--wide"
       align="end"
       content={
         <>
-          <PopoverHeader text="Account">
+          <Popover.Header>
+            <Popover.Title>Account</Popover.Title>
             <CloseButton className="close-button--large-padding" onClick={togglePopover} />
-          </PopoverHeader>
-          <PopoverContent>
+          </Popover.Header>
+          <Popover.Content>
             <img src={photoUrl} className="account-details__photo" />
             <div className="account-details__info">
               <div className="account-details__name">{name}</div>
               <div className="account-details__email">{email}</div>
             </div>
-          </PopoverContent>
+          </Popover.Content>
           <Button className="button--grey account-details__sign-out" onClick={handleLogout}>
             Sign out
           </Button>

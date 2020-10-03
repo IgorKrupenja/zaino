@@ -7,10 +7,8 @@ import { closeModal } from '../../../utils/closeModal';
 import { Button } from '../../Controls/Button';
 import { CloseButton } from '../../Controls/CloseButton';
 import { Corkscrew } from '../../Misc/Corkscrew';
+import { Popover } from '../../Misc/Popover';
 import { SectionHeader } from '../../Misc/SectionHeader';
-import { Popover } from '../../Popover/Popover';
-import { PopoverContent } from '../../Popover/PopoverContent';
-import { PopoverHeader } from '../../Popover/PopoverHeader';
 import { ItemForm } from '../ItemForm/';
 import { Modal } from '../Modal';
 
@@ -47,17 +45,18 @@ export const EditItem = ({ item }: { item: Item }) => {
         <Popover
           isOpen={isPopoverOpen}
           onClickOutside={togglePopover}
-          containerClassName="popover-container--wide"
+          containerClassName="popover--wide"
           align="center"
           content={
             <>
-              <PopoverHeader text="Delete item?">
+              <Popover.Header>
+                <Popover.Title>Delete item?</Popover.Title>
                 <CloseButton className="close-button--large-padding" onClick={togglePopover} />
-              </PopoverHeader>
-              <PopoverContent>
+              </Popover.Header>
+              <Popover.Content>
                 The item will be deleted from inventory
                 {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
-              </PopoverContent>
+              </Popover.Content>
               <Button
                 className="button--red button--wide"
                 onClick={() => {

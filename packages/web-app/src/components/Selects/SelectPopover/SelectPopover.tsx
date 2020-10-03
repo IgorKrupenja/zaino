@@ -3,8 +3,7 @@ import { InputActionMeta, mergeStyles, Props, ValueType } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
 import { CloseButton } from '../../Controls/CloseButton';
-import { Popover } from '../../Popover/Popover';
-import { PopoverHeader } from '../../Popover/PopoverHeader';
+import { Popover } from '../../Misc/Popover';
 import { commonSelectStyles } from './style';
 
 export type SelectOption = {
@@ -90,9 +89,10 @@ export const SelectPopover = ({
       onClickOutside={closePopover}
       content={
         <>
-          <PopoverHeader text={headerText}>
+          <Popover.Header>
+            <Popover.Title>{headerText}</Popover.Title>
             <CloseButton onClick={closePopover} />
-          </PopoverHeader>
+          </Popover.Header>
           {isCreatable ? <CreatableSelect {...mergedProps} /> : <Select {...mergedProps} />}
         </>
       }

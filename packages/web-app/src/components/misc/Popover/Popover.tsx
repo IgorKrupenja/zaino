@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ReactTinyPopover, { Align, ContentRenderer } from 'react-tiny-popover';
 import { getClassString } from '../../../utils/getClassString';
 import './style.scss';
@@ -12,11 +12,15 @@ type PopoverProps = {
   align?: Align;
 };
 
+/**
+ * Compound popover component used throughout the UI.
+ * Used with specific sub-components, see below.
+ */
 export const Popover = ({ isOpen, children, containerClassName, ...rest }: PopoverProps) => {
   return (
     <ReactTinyPopover
       isOpen={isOpen}
-      containerClassName={`popover-container${getClassString(containerClassName)}`}
+      containerClassName={`popover${getClassString(containerClassName)}`}
       // in seconds
       transitionDuration={0.15}
       align="center"
@@ -27,3 +31,19 @@ export const Popover = ({ isOpen, children, containerClassName, ...rest }: Popov
     </ReactTinyPopover>
   );
 };
+
+const Content = ({ children }: { children: ReactNode }) => {
+  return <div className="popover__content">{children}</div>;
+};
+
+const Header = ({ children }: { children: ReactNode }) => {
+  return <div className="popover__header">{children}</div>;
+};
+
+const Title = ({ children }: { children: ReactNode }) => {
+  return <h3 className="popover__title">{children}</h3>;
+};
+
+Popover.Content = Content;
+Popover.Header = Header;
+Popover.Title = Title;
