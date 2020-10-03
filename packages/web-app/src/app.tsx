@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Media from 'react-media';
 import { Provider } from 'react-redux';
-import { MobilePlaceholder } from './components/Misc/MobilePlaceholder';
+import { MobilePlaceholder } from './components/Pages/MobilePlaceholder';
 import { firebase } from './firebase/firebase';
 import AppRouter, { history } from './routes/AppRouter';
 import { loadUserData } from './state/slices/dataLoader';
