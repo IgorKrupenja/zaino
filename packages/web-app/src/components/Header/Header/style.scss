@@ -33,14 +33,18 @@
   margin-left: $margin-header;
 }
 
-.header__nav__icon {
+.header__nav__link {
+  display: flex;
+  color: white;
+  text-decoration: none;
+}
+
+.header__nav__link__icon {
   margin-right: 0.3rem;
-  height: 2rem;
-  width: 2rem;
   fill: white;
 }
 
-.header__nav__link {
-  color: white;
-  text-decoration: none;
+.header__nav__link__text {
+  display: flex;
+  margin-bottom: 0.2rem;
 }
