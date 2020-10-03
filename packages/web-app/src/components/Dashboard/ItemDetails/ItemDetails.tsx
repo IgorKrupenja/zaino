@@ -2,7 +2,7 @@ import { Item } from '@zaino/shared/';
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import CategoryIcon from '../../../images/icons/category.svg';
-import { LabelBadgeList } from '../../Labels/LabelBadgeList';
+import { LabelBadgeList } from '../../LabelBadge/LabelBadgeList';
 import { Category } from '../../Misc/Category';
 import { CategoryImage } from '../../Misc/CategoryImage';
 import { Corkscrew } from '../../Misc/Corkscrew';

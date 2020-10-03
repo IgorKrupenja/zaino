@@ -32,15 +32,19 @@ export const Popover = ({ isOpen, children, containerClassName, ...rest }: Popov
   );
 };
 
-const Content = ({ children }: { children: ReactNode }) => {
+type PopoverChildProps = {
+  children: ReactNode;
+};
+
+const Content = ({ children }: PopoverChildProps) => {
   return <div className="popover__content">{children}</div>;
 };
 
-const Header = ({ children }: { children: ReactNode }) => {
+const Header = ({ children }: PopoverChildProps) => {
   return <div className="popover__header">{children}</div>;
 };
 
-const Title = ({ children }: { children: ReactNode }) => {
+const Title = ({ children }: PopoverChildProps) => {
   return <h3 className="popover__title">{children}</h3>;
 };
 

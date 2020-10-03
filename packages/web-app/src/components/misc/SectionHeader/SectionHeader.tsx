@@ -11,13 +11,13 @@ export const SectionHeader = ({ className, children }: SectionHeaderProps) => {
   return <header className={`section-header${getClassString(className)}`}>{children}</header>;
 };
 
-type TitleProps = {
-  className?: string;
-  children: ReactNode;
-};
-
-const Title = ({ children, className }: TitleProps) => {
+const Title = ({ children, className }: SectionHeaderProps) => {
   return <h2 className={`section-header__title${getClassString(className)}`}>{children}</h2>;
 };
 
+const Content = ({ children }: SectionHeaderProps) => {
+  return <div className="section-header__content">{children}</div>;
+};
+
 SectionHeader.Title = Title;
+SectionHeader.Content = Content;

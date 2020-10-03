@@ -10,6 +10,10 @@ type LabelBadgeProps = {
   onClick?: () => void;
 };
 
+/**
+ * Component that shows fancy label badges.
+ * Used both inside LabelBadgeList and on their own on Labels page.
+ */
 export const LabelBadge = ({ label, onClick }: LabelBadgeProps) => {
   const dispatch = useDispatch();
 

@@ -29,18 +29,18 @@ export const LabelFilters = () => {
   // set filters if changed externally in FilterReset
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
+  useEffect(() => {
+    // setTimeout prevents UI freezes when typing
+    const textFilterTimeout = setTimeout(() => dispatch(setLabelTextFilter(filters.text)), 200);
+    return () => clearTimeout(textFilterTimeout);
+  }, [filters.text, dispatch]);
+
   const handleSortChange = (value: string) => {
     const sortBy = value as LabelSortOption;
     setFilters({ ...filters, sortBy });
     // setTimeout to prevent UI freezing on slow PCs
     setTimeout(() => dispatch(sortLabelsBy(sortBy)), 1);
   };
-
-  useEffect(() => {
-    // setTimeout prevents UI freezes when typing
-    const textFilterTimeout = setTimeout(() => dispatch(setLabelTextFilter(filters.text)), 200);
-    return () => clearTimeout(textFilterTimeout);
-  }, [filters.text, dispatch]);
 
   return (
     <FiltersWrapper>

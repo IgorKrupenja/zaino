@@ -9,7 +9,7 @@ import { Button } from '../../Controls/Button';
 import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
 import { TextArea } from '../../Controls/TextArea';
-import { LabelBadgeList } from '../../Labels/LabelBadgeList';
+import { LabelBadgeList } from '../../LabelBadge/LabelBadgeList';
 import { Category } from '../../Misc/Category';
 import { CategoryImage } from '../../Misc/CategoryImage';
 import { CategorySelect } from '../../Selects/CategorySelect';
