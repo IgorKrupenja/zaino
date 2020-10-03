@@ -1,4 +1,6 @@
 .demo-data {
+  display: flex;
+  flex-direction: row;
   position: relative;
 
   margin-left: $margin-header;

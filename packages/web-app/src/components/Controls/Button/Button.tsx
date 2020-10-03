@@ -5,7 +5,7 @@ import './style.scss';
 type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   submit?: boolean;
-  className?: string;
+  className: string;
   disabled?: boolean;
   children: ReactNode;
 };

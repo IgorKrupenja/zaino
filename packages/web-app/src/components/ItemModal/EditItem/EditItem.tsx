@@ -25,9 +25,9 @@ export const EditItem = ({ item }: { item: Item }) => {
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
       {/* header */}
       <SectionHeader>
-        <h2 className={`section-header__title${title ? '' : ' section-header__title--grey'}`}>
+        <SectionHeader.Title className={title ? '' : ' section-header__title--grey'}>
           {!title ? 'No name' : title === 'CORKSCREW' ? <Corkscrew /> : title}
-        </h2>
+        </SectionHeader.Title>
         <CloseButton className="close-button--large" onClick={closeModal} />
       </SectionHeader>
       {/* item form */}

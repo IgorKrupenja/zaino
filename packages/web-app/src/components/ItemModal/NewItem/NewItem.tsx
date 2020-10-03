@@ -30,7 +30,7 @@ export const NewItem = () => {
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
       <SectionHeader>
-        <h2 className="section-header__title">{title}</h2>
+        <SectionHeader.Title>{title}</SectionHeader.Title>
         <CloseButton className="close-button--large" onClick={closeModal} />
       </SectionHeader>
       <ItemForm

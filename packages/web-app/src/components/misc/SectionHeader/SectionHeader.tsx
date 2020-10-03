@@ -12,11 +12,12 @@ export const SectionHeader = ({ className, children }: SectionHeaderProps) => {
 };
 
 type TitleProps = {
+  className?: string;
   children: ReactNode;
 };
 
-const Title = ({ children }: TitleProps) => {
-  return <h2 className="section-header__title">{children}</h2>;
+const Title = ({ children, className }: TitleProps) => {
+  return <h2 className={`section-header__title${getClassString(className)}`}>{children}</h2>;
 };
 
 SectionHeader.Title = Title;

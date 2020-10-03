@@ -106,6 +106,9 @@
 }
 
 .button--underline {
+  display: flex;
+  align-items: center;
+
   margin: 0 $xs-size;
   border-bottom: 0.2rem solid transparent;
   border-radius: 0;
@@ -140,9 +143,4 @@
   margin: 0.4rem 0 0 0;
   padding: 0 $xs-size;
   height: 2.6rem;
-}
-
-// extra styling for React router Links and NavLinks
-.button--link {
-  text-decoration: none;
 }
