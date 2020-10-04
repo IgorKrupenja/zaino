@@ -46,7 +46,7 @@ export const LabelFilters = () => {
     <FiltersWrapper>
       <RowWrapper className="row-wrapper--full-width">
         <Input
-          className="input--grow"
+          className="input--grow input--search"
           placeholder="Search labels"
           onChange={e => {
             e.persist();

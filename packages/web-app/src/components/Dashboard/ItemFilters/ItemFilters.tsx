@@ -73,7 +73,7 @@ export const ItemFilters = () => {
       <RowWrapper className="row-wrapper--full-width">
         {/* Name */}
         <Input
-          className="input--grow"
+          className="input--grow input--search"
           placeholder="Search items"
           onChange={e => {
             e.persist();

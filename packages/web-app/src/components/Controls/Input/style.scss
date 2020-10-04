@@ -16,6 +16,15 @@
 
     background: white;
   }
+  // Blink and WebKit
+  &::-webkit-input-placeholder {
+    color: $dark-grey;
+  }
+  // Firefox
+  &::-moz-placeholder {
+    color: $dark-grey;
+    opacity: 1;
+  }
 }
 
 .input--expanding {
@@ -25,10 +34,6 @@
   line-height: 1.4;
 }
 
-.input--grow {
-  flex-grow: 1;
-}
-
 .input--error {
   border: 0.1rem solid $bright-red;
   box-shadow: 0 0 0 0.1rem $bright-red;
@@ -36,6 +41,19 @@
   &:focus {
     border: 0.1rem solid $bright-red;
     box-shadow: 0 0 0 0.1rem $bright-red;
+  }
+}
+
+.input--grow {
+  flex-grow: 1;
+}
+
+.input--search {
+  background: $off-white url('../../../images/icons/search.svg') no-repeat 0.6rem center;
+  padding-left: 3rem;
+
+  &:focus {
+    background: white url('../../../images/icons/search.svg') no-repeat 0.6rem center;
   }
 }
 

@@ -33,7 +33,7 @@ export const Inventory = () => {
           <Stats className="section-header__content" stats={stats} />
         </ColumnWrapper>
         {/* styling this Link as button */}
-        <Link className="button button--link button--green inventory__new-item" to="/dashboard/new">
+        <Link className="button button--green inventory__new-item" to="/dashboard/new">
           New item
         </Link>
       </SectionHeader>
