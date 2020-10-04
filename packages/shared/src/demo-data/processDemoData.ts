@@ -31,7 +31,7 @@ const createItems = async (lineReader: Interface) => {
     let name = csvEntry[2].split(' (pair)')[0];
     // also remove whitespace at the end
     const categoryName = csvEntry[0];
-    const weight = csvEntry[5] ? Number(csvEntry[5]) : 0;
+    const weight = csvEntry[5] ? Number(csvEntry[5]) : '';
     // set 10 quantity for 'Refill' items
     const quantity = csvEntry[6] === 'R' ? 10 : Number(csvEntry[6]);
     let notes = csvEntry[10];
