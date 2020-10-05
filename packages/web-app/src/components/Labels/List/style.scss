@@ -1,6 +1,7 @@
 .list {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   margin: 0 $s-size $s-size $s-size;
   border: $border;
@@ -13,7 +14,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 
   height: 11rem;
 }

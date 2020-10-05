@@ -17,10 +17,10 @@ export const LabelBadgeList = ({ labelIds, className, onBadgeClick }: LabelBadge
   const itemLabels = labelIds?.map(labelId => labels.find(label => label.id === labelId) as Label);
 
   return itemLabels && itemLabels?.length > 0 ? (
-    <ul className={`label-badge-list${getClassString(className)}`}>
+    <div className={`label-badge-list${getClassString(className)}`}>
       {itemLabels.map(label => (
         <LabelBadge onClick={onBadgeClick} key={label.id} label={label} />
       ))}
-    </ul>
+    </div>
   ) : null;
 };

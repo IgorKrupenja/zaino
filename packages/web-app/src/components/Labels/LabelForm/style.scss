@@ -1,3 +1,8 @@
 .label-form {
   display: flex;
+  flex-direction: column;
+}
+
+.label-form__cancel {
+  order: 1;
 }

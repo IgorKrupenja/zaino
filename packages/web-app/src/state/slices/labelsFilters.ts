@@ -10,6 +10,8 @@ export enum LabelSortOption {
   nameReverse = 'Reverse alphabetically',
   itemsHighest = 'Most items',
   itemsLowest = 'Least items',
+  itemsUniqueHighest = 'Most unique items',
+  itemsUniqueLowest = 'Least unique items',
   // see comments in labels slice for saveSortOrder
   lastSortOrder = 'Last sort order',
 }

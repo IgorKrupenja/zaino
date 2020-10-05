@@ -32,6 +32,20 @@ const selectFilteredLabels = createSelector(
             } else {
               return a.itemTotalCount > b.itemTotalCount ? 1 : -1;
             }
+          case LabelSortOption.itemsUniqueHighest:
+            if (a.itemUniqueCount === undefined || b.itemUniqueCount === undefined) {
+              // sort labels with no items below all other
+              return 0;
+            } else {
+              return a.itemUniqueCount < b.itemUniqueCount ? 1 : -1;
+            }
+          case LabelSortOption.itemsUniqueLowest:
+            if (a.itemUniqueCount === undefined || b.itemUniqueCount === undefined) {
+              // sort labels with no items above all other
+              return 0;
+            } else {
+              return a.itemUniqueCount > b.itemUniqueCount ? 1 : -1;
+            }
           case LabelSortOption.lastSortOrder:
             if (a.lastSortIndex === undefined || b.lastSortIndex === undefined) {
               return 0;

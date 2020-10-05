@@ -5,6 +5,7 @@ import BackpackIcon from '../../../images/icons/backpack.svg';
 import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../Controls/Button';
 import { ItemDetails } from '../ItemDetails/';
+import './style.scss';
 
 export const InventoryItem = (item: Item) => {
   const dispatch = useDispatch();
@@ -19,7 +20,9 @@ export const InventoryItem = (item: Item) => {
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 1 }))}
       >
         <BackpackIcon
-          className={`button--grey__icon${isInPack ? ' button--grey__icon--disabled' : ''}`}
+          className={`inventory-item__button-icon${
+            isInPack ? ' inventory-item__button-icon__disabled' : ''
+          }`}
         />
         {isInPack ? 'Already in pack' : 'Add to pack'}
       </Button>

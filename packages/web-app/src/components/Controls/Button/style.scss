@@ -55,20 +55,6 @@
   }
 }
 
-.button--grey__icon {
-  margin-right: 0.3rem;
-
-  height: 1.8rem;
-  width: 1.8rem;
-
-  fill: $off-black;
-  transition: 0.3s ease;
-}
-
-.button--grey__icon--disabled {
-  fill: $mid-grey;
-}
-
 .button--white {
   display: flex;
   align-items: center;
@@ -87,20 +73,8 @@
     color: $off-black;
     background-color: transparent;
   }
-  // also change SVG fill when hovering over text
-  &:hover > .button--white__icon {
-    fill: $off-black;
-  }
-}
-
-.button--white__icon {
-  height: 1.6rem;
-  width: 1.6rem;
-
-  fill: $dark-grey;
-  transition: fill 0.3s ease;
-
-  &:hover {
+  // also change SVG icon fill when hovering over text
+  &:hover > svg {
     fill: $off-black;
   }
 }

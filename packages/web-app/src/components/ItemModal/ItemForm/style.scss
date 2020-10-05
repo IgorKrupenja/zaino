@@ -24,14 +24,10 @@
   font-size: $font-size-small;
 }
 
-.item-form__edit-icon {
-  margin-left: 0.3rem;
-}
-
-.item-form__edit-icon--labels {
-  margin-left: 0.4rem;
-}
-
 .item-form__category {
   margin-left: $xs-size;
+}
+
+.item-form__align-start {
+  align-items: flex-start;
 }

@@ -90,7 +90,7 @@ export const DemoData = () => {
           <>
             <Popover.Header>
               <Popover.Title>Remove demo data?</Popover.Title>
-              <CloseButton className="close-button--large-padding" onClick={toggleRemovePopover} />
+              <CloseButton onClick={toggleRemovePopover} />
             </Popover.Header>
             <Popover.Content>
               All items and labels added as demo data (even if you have made changes to them) will

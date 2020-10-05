@@ -38,7 +38,7 @@ export const AccountDetails = () => {
         <>
           <Popover.Header>
             <Popover.Title>Account</Popover.Title>
-            <CloseButton className="close-button--large-padding" onClick={togglePopover} />
+            <CloseButton onClick={togglePopover} />
           </Popover.Header>
           <Popover.Content>
             <img src={photoUrl} className="account-details__photo" />

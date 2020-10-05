@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ValueType } from 'react-select';
-import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { ItemSortOption } from '../../../state/slices/itemsFilters';
 import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { Button } from '../../Controls/Button';
+import { DropdownIcon } from '../../Icons/DropdownIcon';
 import { SelectOption, SelectPopover } from '../SelectPopover';
 import { sortSelectStyles } from './style';
 
@@ -61,7 +61,7 @@ export const SortSelect = ({
     >
       <Button className="button--white">
         Sort
-        <DropdownIcon className="button--white__icon" />
+        <DropdownIcon />
       </Button>
     </SelectPopover>
   );

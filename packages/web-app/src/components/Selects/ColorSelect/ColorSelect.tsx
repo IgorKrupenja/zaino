@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { ValueType } from 'react-select';
 import { ColorName, Colors } from '../../../constants/Colors';
-import DropdownIcon from '../../../images/icons/drop-down.svg';
 import { Button } from '../../Controls/Button';
+import { EditIcon } from '../../Icons/EditIcon';
 import { SelectOption, SelectPopover } from '../SelectPopover';
 import { colorSelectStyles } from './style';
 
@@ -40,7 +40,7 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
     >
       <Button className="button--white">
         Color
-        <DropdownIcon className="button--white__icon" />
+        <EditIcon />
       </Button>
     </SelectPopover>
   );

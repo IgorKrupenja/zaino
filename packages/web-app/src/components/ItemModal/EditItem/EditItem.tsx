@@ -11,6 +11,7 @@ import { Popover } from '../../Misc/Popover';
 import { SectionHeader } from '../../Misc/SectionHeader';
 import { ItemForm } from '../ItemForm/';
 import { Modal } from '../Modal';
+import './style.scss';
 
 export const EditItem = ({ item }: { item: Item }) => {
   const dispatch = useDispatch();
@@ -23,8 +24,8 @@ export const EditItem = ({ item }: { item: Item }) => {
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
       {/* header */}
       <SectionHeader>
-        <SectionHeader.Title className={title ? '' : ' section-header__title--grey'}>
-          {!title ? 'No name' : title === 'CORKSCREW' ? <Corkscrew /> : title}
+        <SectionHeader.Title className={title.trim() ? '' : 'edit-item__header--grey'}>
+          {!title.trim() ? 'No name' : title === 'CORKSCREW' ? <Corkscrew /> : title}
         </SectionHeader.Title>
         <CloseButton className="close-button--large" onClick={closeModal} />
       </SectionHeader>
@@ -51,7 +52,7 @@ export const EditItem = ({ item }: { item: Item }) => {
             <>
               <Popover.Header>
                 <Popover.Title>Delete item?</Popover.Title>
-                <CloseButton className="close-button--large-padding" onClick={togglePopover} />
+                <CloseButton onClick={togglePopover} />
               </Popover.Header>
               <Popover.Content>
                 The item will be deleted from inventory

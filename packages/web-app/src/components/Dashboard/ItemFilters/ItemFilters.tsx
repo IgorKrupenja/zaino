@@ -1,7 +1,6 @@
 import deepEqual from 'fast-deep-equal/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DropdownIcon from '../../../images/icons/drop-down.svg';
 import {
   itemFiltersInitialState,
   ItemSortOption,
@@ -15,6 +14,7 @@ import { LabelSortOption } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Controls/Button';
 import { Input } from '../../Controls/Input';
+import { DropdownIcon } from '../../Icons/DropdownIcon';
 import { FilterReset } from '../../Misc/FilterReset';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { LabelSelect } from '../../Selects/LabelSelect';
@@ -89,7 +89,7 @@ export const ItemFilters = () => {
         >
           <Button className="button--white">
             Categories
-            <DropdownIcon className="button--white__icon" />
+            <DropdownIcon />
           </Button>
         </CategorySelect>
         {/* Labels */}
@@ -101,7 +101,7 @@ export const ItemFilters = () => {
         >
           <Button className="button--white">
             Labels
-            <DropdownIcon className="button--white__icon" />
+            <DropdownIcon />
           </Button>
         </LabelSelect>
         {/* Sort */}

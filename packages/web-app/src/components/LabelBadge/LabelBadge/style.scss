@@ -3,6 +3,7 @@
   border: 1px solid transparent;
   border-radius: 1rem;
   padding: 0 0.7rem;
+  outline: none;
 
   color: white;
   font-size: 1.2rem;
@@ -16,5 +17,9 @@
 
   &:hover {
     filter: brightness(1.1);
+  }
+  &:disabled {
+    cursor: unset;
+    filter: unset;
   }
 }

@@ -23,7 +23,12 @@ export const LabelFilters = () => {
   const [isFiltering, setIsFiltering] = useState(false);
 
   useEffect(() => {
-    setIsFiltering(!deepEqual(filters, labelFiltersInitialState));
+    setIsFiltering(
+      !deepEqual(filters, labelFiltersInitialState) &&
+        // also hide filter reset if sorting by last sort order
+        // see comments in labels slice for saveSortOrder
+        !deepEqual(filters, { ...labelFiltersInitialState, sortBy: LabelSortOption.lastSortOrder })
+    );
   }, [filters]);
 
   // set filters if changed externally in FilterReset

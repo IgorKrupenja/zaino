@@ -1,34 +1,43 @@
 import { Label } from '@zaino/shared';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Colors } from '../../../constants/Colors';
+import { ColorName, Colors } from '../../../constants/Colors';
 import { setItemLabelsFilter } from '../../../state/slices/itemsFilters';
 import './style.scss';
 
 type LabelBadgeProps = {
-  label: Label;
+  label?: Label;
+  colorName?: ColorName;
   onClick?: () => void;
+  children?: string;
+  disabled?: boolean;
 };
 
 /**
  * Component that shows fancy label badges.
  * Used both inside LabelBadgeList and on their own on Labels page.
  */
-export const LabelBadge = ({ label, onClick }: LabelBadgeProps) => {
+export const LabelBadge = ({ label, colorName, onClick, children, disabled }: LabelBadgeProps) => {
   const dispatch = useDispatch();
 
   return (
-    <li
+    <button
       className="label-badge"
+      disabled={disabled}
       style={{
-        backgroundColor: Colors.find(labelColor => labelColor.name === label.colorName)?.hexValue,
+        backgroundColor: Colors.find(
+          labelColor => labelColor.name === (colorName ?? label?.colorName)
+        )?.hexValue,
       }}
       onClick={() => {
-        onClick && onClick();
-        dispatch(setItemLabelsFilter([label.id]));
+        if (!disabled && label) {
+          // execute extra actions if onClick was passed
+          onClick && onClick();
+          dispatch(setItemLabelsFilter([label.id]));
+        }
       }}
     >
-      {label.name}
-    </li>
+      {children ? children : label?.name}
+    </button>
   );
 };

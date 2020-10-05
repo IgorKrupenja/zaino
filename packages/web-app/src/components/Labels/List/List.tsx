@@ -13,7 +13,10 @@ export const List = ({ children }: ListProps) => {
   return <section className="list">{children}</section>;
 };
 
-const Empty = ({ children }: { children: ReactNode }) => {
+/**
+ * Sub-component to style empty list when there are no (filtered) labels.
+ */
+const Empty = ({ children }: ListProps) => {
   return <section className="list--empty">{children}</section>;
 };
 

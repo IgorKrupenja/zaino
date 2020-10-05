@@ -1,7 +1,6 @@
 import { Item } from '@zaino/shared/';
 import React, { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import EditIcon from '../../../images/icons/edit.svg';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
 import { closeModal } from '../../../utils/closeModal';
 import { getArrayDifference } from '../../../utils/getArrayDifference';
@@ -9,6 +8,7 @@ import { Button } from '../../Controls/Button';
 import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
 import { TextArea } from '../../Controls/TextArea';
+import { EditIcon } from '../../Icons/EditIcon';
 import { LabelBadgeList } from '../../LabelBadge/LabelBadgeList';
 import { Category } from '../../Misc/Category';
 import { CategoryImage } from '../../Misc/CategoryImage';
@@ -53,12 +53,12 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
   const validateForm = () => {
     let isFormValid = true;
     const errors = { name: '', weight: '', quantity: '' };
-    if (!values.name) {
-      errors.name = 'Please enter a name';
+    if (!values.name.trim()) {
+      errors.name = 'Name cannot be blank';
       isFormValid = false;
     }
     if (values.quantity < 1) {
-      errors.quantity = 'Please enter a quantity > 0';
+      errors.quantity = 'Quantity cannot be zero';
       isFormValid = false;
     }
     // note that 0g weight is allowed to account for items <0.5g (e.g. micro SD cards)
@@ -139,7 +139,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         />
       </ColumnWrapper>
       {/* Category */}
-      <ColumnWrapper>
+      <ColumnWrapper className="item-form__align-start">
         <CategorySelect
           selectedCategoryName={values.categoryName}
           headerText="Select category"
@@ -147,7 +147,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         >
           <Button className="button--white item-form__button">
             Category
-            <EditIcon className="button--white__icon item-form__edit-icon" />
+            <EditIcon />
           </Button>
         </CategorySelect>
         <RowWrapper>
@@ -160,7 +160,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         </RowWrapper>
       </ColumnWrapper>
       {/* Labels */}
-      <ColumnWrapper className="item-form__labels">
+      <ColumnWrapper className="item-form__align-start">
         <LabelSelect
           labelIds={values.labelIds}
           headerText="Select labels"
@@ -169,7 +169,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         >
           <Button className="button--white item-form__button">
             Labels
-            <EditIcon className="button--white__icon item-form__edit-icon--labels" />
+            <EditIcon />
           </Button>
         </LabelSelect>
         <LabelBadgeList onBadgeClick={closeModal} labelIds={values.labelIds} />
