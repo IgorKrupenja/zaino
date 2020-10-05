@@ -7,12 +7,18 @@
   align-items: center;
 
   width: 100%;
+  // prevent scrollbar from showing when header and filters are shown (i.e.e when loading demo data)
+  height: calc(100% - #{$header-height} - 1.5rem);
+}
+
+.loader-container--full-height {
+  // full height when not showing header/filters
   height: 100%;
 }
 
 .loader {
-  // better positioning with negative margin
-  margin-top: -20%;
+  // slightly better positioning with negative margin
+  margin-top: -2.5%;
   width: 8rem;
   height: 8rem;
 
