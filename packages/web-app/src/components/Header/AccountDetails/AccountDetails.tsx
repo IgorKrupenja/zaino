@@ -53,13 +53,11 @@ export const AccountDetails = () => {
         </>
       }
     >
-      <div className="account-details">
-        <img
-          src={photoUrl}
-          onClick={togglePopover}
-          className="account-details__photo account-details__photo--toggle"
-        />
-      </div>
+      <img
+        src={photoUrl}
+        onClick={togglePopover}
+        className="account-details__photo account-details__photo--toggle"
+      />
     </Popover>
   );
 };
