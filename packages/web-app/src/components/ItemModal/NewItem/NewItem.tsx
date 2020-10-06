@@ -10,6 +10,7 @@ import { CloseButton } from '../../Controls/CloseButton';
 import { SectionHeader } from '../../Misc/SectionHeader';
 import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
+import './style.scss';
 
 export const NewItem = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ export const NewItem = () => {
           dispatch(addItem(item));
         }}
       >
-        <Button className="button--green item-form__full-width" submit>
+        <Button className="button--green item-form__full-width new-item__button" submit>
           Create new item
         </Button>
       </ItemForm>

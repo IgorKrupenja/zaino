@@ -38,10 +38,6 @@ export const EditItem = ({ item }: { item: Item }) => {
         }}
         setTitle={setTitle}
       >
-        {/* Save/submit button */}
-        <Button className="button--green item-form__half-width" submit>
-          Save changes
-        </Button>
         {/* delete button with popover */}
         <Popover
           isOpen={isPopoverOpen}
@@ -70,10 +66,17 @@ export const EditItem = ({ item }: { item: Item }) => {
             </>
           }
         >
-          <Button className="button--red item-form__half-width" onClick={togglePopover}>
+          <Button
+            className="button--red item-form__half-width edit-item__button-left"
+            onClick={togglePopover}
+          >
             Delete
           </Button>
         </Popover>
+        {/* Save/submit button */}
+        <Button className="button--green item-form__half-width edit-item__button-right" submit>
+          Save changes
+        </Button>
       </ItemForm>
     </Modal>
   );
