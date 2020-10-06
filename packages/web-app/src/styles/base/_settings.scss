@@ -41,6 +41,8 @@ $margin-header: 2rem;
 $stack-margin-size: 1rem;
 // general (maximum) app width
 $app-width: 85rem;
+// labels page (maximum) width, potentially to be used on other pages like Dashboard
+$labels-width: 65rem;
 // both used in Dashboard List height calculation
 $header-height: 2 * $xl-size;
 $list-filters-height: 2 * $xl-size + 1.5rem;

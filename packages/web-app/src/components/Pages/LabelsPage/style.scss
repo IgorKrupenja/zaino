@@ -1,5 +1,5 @@
 .labels-page {
-  max-width: $app-width;
+  max-width: $labels-width;
   margin: 0 auto;
   // needed for Loader to display correctly
   height: calc(100% - #{$header-height});

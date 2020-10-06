@@ -3,6 +3,39 @@
   background: white;
 }
 
+.label-details__main {
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size;
+}
+
+.label-details__badge {
+  margin: 0;
+}
+
+.label-details__badge__container {
+  width: 65%;
+}
+
+.label-details__count {
+  margin-right: auto;
+  padding: 0 $s-size;
+
+  color: $dark-grey;
+  font-size: $font-size-small;
+}
+
+.label-details__count--form-open {
+  margin-left: auto;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.label-details__edit {
+  padding: 0;
+  height: 2rem;
+}
+
 .label-details__delete {
   order: 0;
 }

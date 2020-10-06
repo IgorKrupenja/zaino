@@ -33,5 +33,5 @@ ul {
 }
 
 ::selection {
-  background: rgba($light-blue, 0.5);
+  background: lighten($light-blue, 30%);
 }

@@ -17,7 +17,7 @@
 
   cursor: pointer;
   &:hover {
-    // works well with non-100% zoom levels, simply border has a gap between image and border
+    // works well with non-100% zoom levels
     background-color: rgba($light-grey, 0.4);
   }
 }

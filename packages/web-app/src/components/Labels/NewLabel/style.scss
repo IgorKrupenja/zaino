@@ -1,3 +1,8 @@
+.new-label__badge {
+  // +0.2rem to better align with first existing label in list - though this is minor
+  margin: ($s-size + 0.2rem) $s-size $s-size $s-size;
+}
+
 .new-label__create {
   order: 1;
 }

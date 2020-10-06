@@ -35,8 +35,11 @@ export const Labels = () => {
             {labelCount} label{labelCount !== 1 && 's'}
           </SectionHeader.Content>
         </ColumnWrapper>
-        {/* todo button should likely be disabled when form open */}
-        <Button className="button--green labels__new-label" onClick={toggleForm}>
+        <Button
+          className="button--green labels__new-label"
+          disabled={isFormOpen}
+          onClick={toggleForm}
+        >
           New label
         </Button>
       </SectionHeader>

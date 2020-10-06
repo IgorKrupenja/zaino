@@ -3,6 +3,30 @@
   flex-direction: column;
 }
 
+.label-form__row {
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 $s-size $s-size $s-size;
+}
+
+.label-form__input__container {
+  flex-grow: 1;
+}
+
 .label-form__cancel {
   order: 1;
+  margin-right: $s-size;
+  margin-left: auto;
+}
+
+.label-form--controls-white {
+  .label-form__input {
+    background-color: white;
+  }
+  .label-form__cancel {
+    background-color: white;
+    &:hover {
+      background-color: $extra-light-grey;
+    }
+  }
 }

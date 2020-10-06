@@ -5,10 +5,12 @@ import { ColorName } from '../../../constants/Colors';
 import { selectAllLabels } from '../../../state/selectors/labels';
 import { LabelSortOption, sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
+import { getClassString } from '../../../utils/getClassString';
 import { Button } from '../../Controls/Button';
 import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
 import { ColorSelect } from '../../Selects/ColorSelect';
+import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
 import { RowWrapper } from '../../Wrappers/RowWrapper';
 import './style.scss';
 
@@ -19,6 +21,7 @@ type LabelFormProps = {
   setLabelBadgeText: (labelName: string) => void;
   setLabelBadgeColor: (colorName: ColorName) => void;
   children: ReactNode;
+  className?: string;
 };
 
 export const LabelForm = ({
@@ -28,6 +31,7 @@ export const LabelForm = ({
   setLabelBadgeText,
   setLabelBadgeColor,
   children,
+  className,
 }: LabelFormProps) => {
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectAllLabels(state));
@@ -35,6 +39,7 @@ export const LabelForm = ({
   const [values, setValues] = useState(label);
   const [nameError, setNameError] = useState('');
   const initialName = useRef(values.name).current;
+  const initialColor = useRef(values.colorName).current;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,21 +61,24 @@ export const LabelForm = ({
   };
 
   return (
-    <form className="label-form" onSubmit={handleSubmit}>
-      <RowWrapper>
-        <FormLabel htmlFor="name">Name</FormLabel>
-        <Input
-          value={values.name}
-          error={nameError}
-          autoFocus
-          onChange={e => {
-            e.persist();
-            const name = e.target.value;
-            setValues({ ...values, name });
-            // update label name preview on typing if editing a label
-            setLabelBadgeText && setLabelBadgeText(name);
-          }}
-        />
+    <form className={`label-form${getClassString(className)}`} onSubmit={handleSubmit}>
+      <RowWrapper className="label-form__row">
+        <ColumnWrapper className="label-form__input__container">
+          <FormLabel htmlFor="name">Name</FormLabel>
+          <Input
+            className="label-form__input"
+            value={values.name}
+            error={nameError}
+            autoFocus
+            onChange={e => {
+              e.persist();
+              const name = e.target.value;
+              setValues({ ...values, name });
+              // update label name preview on typing if editing a label
+              setLabelBadgeText && setLabelBadgeText(name);
+            }}
+          />
+        </ColumnWrapper>
         <ColorSelect
           selectedColorName={values.colorName}
           onChange={colorName => {
@@ -79,17 +87,20 @@ export const LabelForm = ({
           }}
         />
       </RowWrapper>
-      <RowWrapper>
+      <RowWrapper className="label-form__row">
         <Button
           className="button--grey label-form__cancel"
           onClick={() => {
             toggleForm();
             // reset label name preview on typing if cancelling edit
             setLabelBadgeText(initialName);
+            // also reset label badge preview color
+            setLabelBadgeColor(initialColor);
           }}
         >
           Cancel
         </Button>
+        {/* other buttons passed as children */}
         {children}
       </RowWrapper>
     </form>

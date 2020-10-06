@@ -14,22 +14,30 @@
   &:focus {
     outline: 0;
   }
+  &:disabled {
+    cursor: default;
+  }
 }
 
 .button--green {
   border: 0.1rem solid rgba($off-black, 0.4);
-  background-color: rgba($dark-green, 0.8);
+  background-color: $dark-green;
+
   &:hover {
-    background-color: $dark-green;
+    background-color: darken($dark-green, 5%);
+  }
+  &:disabled {
+    border-color: rgba($off-black, 0.1);
+    background-color: rgba($dark-green, 0.5);
   }
 }
 
 .button--red {
   border: 0.1rem solid rgba($off-black, 0.4);
-  background-color: rgba($bright-red, 0.8);
+  background-color: $bright-red;
 
   &:hover {
-    background-color: $bright-red;
+    background-color: darken($bright-red, 5%);
   }
 }
 

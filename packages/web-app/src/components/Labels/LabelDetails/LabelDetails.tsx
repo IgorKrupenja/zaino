@@ -7,7 +7,6 @@ import { resetItemFilters } from '../../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../../state/slices/labels';
 import { Button } from '../../Controls/Button';
 import { CloseButton } from '../../Controls/CloseButton';
-import { EditIcon } from '../../Icons/EditIcon';
 import { LabelBadge } from '../../LabelBadge/LabelBadge';
 import { Popover } from '../../Misc/Popover';
 import { RowWrapper } from '../../Wrappers/RowWrapper';
@@ -24,30 +23,36 @@ export const LabelDetails = (label: Label) => {
 
   return (
     <article className="label-details" key={label.id}>
-      <RowWrapper>
-        <LabelBadge
-          // disable actions on label badge click if form is open
-          disabled={isFormOpen}
-          colorName={colorName}
-          label={label}
-          onClick={() => {
-            dispatch(resetItemFilters());
-            history.push('./dashboard');
-          }}
-          // show live label name preview (as user is typing) if form is open
-        >
-          {isFormOpen ? (name.trim() ? name : 'Label preview') : undefined}
-        </LabelBadge>
+      <RowWrapper className="label-details__main">
+        <div className="label-details__badge__container">
+          <LabelBadge
+            className="label-details__badge"
+            // disable actions on label badge click if form is open
+            disabled={isFormOpen}
+            colorName={colorName}
+            label={label}
+            onClick={() => {
+              dispatch(resetItemFilters());
+              history.push('./dashboard');
+            }}
+            // show live label name preview (as user is typing) if form is open
+          >
+            {isFormOpen ? (name.trim() ? name : 'Label preview') : undefined}
+          </LabelBadge>
+        </div>
         {/* item count */}
         {itemTotalCount ? (
-          <div>
+          <div
+            className={`label-details__count${
+              isFormOpen ? ' label-details__count--form-open' : ''
+            }`}
+          >
             {itemTotalCount} item{itemTotalCount > 1 && 's'} ({label.itemUniqueCount} unique)
           </div>
         ) : null}
         {!isFormOpen && (
-          <Button className="button--white" onClick={toggleForm}>
+          <Button className="button--white label-details__edit" onClick={toggleForm}>
             Edit
-            <EditIcon />
           </Button>
         )}
       </RowWrapper>
