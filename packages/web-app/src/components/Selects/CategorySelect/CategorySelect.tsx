@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { ValueType } from 'react-select';
+import { Align } from 'react-tiny-popover';
 import Categories from '../../../constants/Categories';
 import { sortSelectOptionsByName } from '../../../utils/sortSelectOptionsByName';
 import { SelectOption, SelectPopover } from '../SelectPopover';
@@ -10,6 +11,7 @@ type CategorySelectProps = {
   onChange: (categoryName: string) => void;
   headerText: string;
   children: ReactNode;
+  popoverAlign?: Align;
 };
 
 /**
@@ -18,8 +20,8 @@ type CategorySelectProps = {
 export const CategorySelect = ({
   selectedCategoryName,
   onChange,
-  headerText,
   children,
+  ...rest
 }: CategorySelectProps) => {
   const [options] = useState(
     Categories.map(category => ({
@@ -49,13 +51,13 @@ export const CategorySelect = ({
 
   return (
     <SelectPopover
-      headerText={headerText}
       value={value}
       styles={categorySelectStyles}
       name="categoryName"
       options={options}
       onChange={handleChange}
       noOptionsMessage={() => 'No matching categories'}
+      {...rest}
     >
       {children}
     </SelectPopover>

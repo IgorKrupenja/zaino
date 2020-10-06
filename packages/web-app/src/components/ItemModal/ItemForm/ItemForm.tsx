@@ -141,6 +141,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       {/* Category */}
       <ColumnWrapper className="item-form__align-start">
         <CategorySelect
+          popoverAlign="center"
           selectedCategoryName={values.categoryName}
           headerText="Select category"
           onChange={categoryName => setValues({ ...values, categoryName })}
@@ -162,6 +163,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       {/* Labels */}
       <ColumnWrapper className="item-form__align-start">
         <LabelSelect
+          popoverAlign="center"
           labelIds={values.labelIds}
           headerText="Select labels"
           isCreatable

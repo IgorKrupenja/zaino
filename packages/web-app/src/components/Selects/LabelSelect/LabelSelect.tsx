@@ -2,6 +2,7 @@ import { Label } from '@zaino/shared';
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ValueType } from 'react-select';
+import { Align } from 'react-tiny-popover';
 import { v4 as uuid } from 'uuid';
 import { Colors, getRandomColor } from '../../../constants/Colors';
 import { addLabel } from '../../../state/slices/labels';
@@ -15,7 +16,7 @@ type LabelSelectProps = {
   onChange: (labelIds: string[]) => void;
   isCreatable?: boolean;
   headerText: string;
-  popoverAlign?: string;
+  popoverAlign?: Align;
   children: ReactNode;
 };
 

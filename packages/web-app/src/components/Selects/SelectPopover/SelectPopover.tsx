@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import { InputActionMeta, mergeStyles, Props, ValueType } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
+import { Align } from 'react-tiny-popover';
 import { CloseButton } from '../../Controls/CloseButton';
 import { Popover } from '../../Misc/Popover';
 import { commonSelectStyles } from './style';
@@ -18,6 +19,7 @@ type SelectPopoverProps = {
   headerText: string;
   onChange: (value: ValueType<SelectOption>) => void;
   children: ReactNode;
+  popoverAlign?: Align;
 } & Props<SelectOption>;
 
 /**
@@ -30,6 +32,7 @@ export const SelectPopover = ({
   styles,
   headerText,
   children,
+  popoverAlign,
   ...rest
 }: SelectPopoverProps) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -84,7 +87,7 @@ export const SelectPopover = ({
 
   return (
     <Popover
-      align="end"
+      align={popoverAlign ?? 'end'}
       isOpen={isPopoverOpen}
       onClickOutside={closePopover}
       content={
