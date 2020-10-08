@@ -66,6 +66,7 @@ export const LabelForm = ({
         <ColumnWrapper className="label-form__input__container">
           <FormLabel htmlFor="name">Name</FormLabel>
           <Input
+            name="name"
             className="label-form__input"
             value={values.name}
             error={nameError}
