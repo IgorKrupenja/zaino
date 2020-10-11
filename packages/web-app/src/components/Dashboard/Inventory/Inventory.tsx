@@ -32,7 +32,7 @@ export const Inventory = () => {
           <SectionHeader.Title>Inventory</SectionHeader.Title>
           <Stats className="section-header__content" stats={stats} />
         </ColumnWrapper>
-        {/* styling this Link as button */}
+        {/* styling this Link as a Button */}
         <Link className="button button--green inventory__new-item" to="/dashboard/new">
           New item
         </Link>
