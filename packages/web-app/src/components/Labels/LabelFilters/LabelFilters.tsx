@@ -6,7 +6,7 @@ import {
   LabelSortOption,
   resetLabelFilters,
   setLabelTextFilter,
-  sortLabelsBy,
+  sortLabelsBy
 } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { Input } from '../../Controls/Input';
@@ -14,7 +14,6 @@ import { FilterReset } from '../../Misc/FilterReset';
 import { SortSelect } from '../../Selects/SortSelect';
 import { FiltersWrapper } from '../../Wrappers/FiltersWrapper';
 import { RowWrapper } from '../../Wrappers/RowWrapper';
-import './style.scss';
 
 export const LabelFilters = () => {
   const dispatch = useDispatch();

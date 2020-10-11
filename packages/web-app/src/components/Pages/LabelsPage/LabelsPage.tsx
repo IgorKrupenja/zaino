@@ -12,9 +12,12 @@ export const LabelsPage = () => {
   document.title = 'Labels | Zaino';
 
   return (
-    <main className="labels-page">
-      <LabelFilters />
-      {isLoading ? <Loader /> : <Labels />}
-    </main>
+    // extra div for proper scrollbar position with header
+    <div className="labels-page__container">
+      <main className="labels-page">
+        <LabelFilters />
+        {isLoading ? <Loader /> : <Labels />}
+      </main>
+    </div>
   );
 };

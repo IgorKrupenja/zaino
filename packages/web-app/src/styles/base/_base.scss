@@ -12,6 +12,10 @@ body,
   height: 100%;
 }
 
+#app {
+  position: relative;
+}
+
 html {
   // conversion to use rem units more easily (1 rem = 10 px after 62.5% conversion)
   font-size: 62.5%;

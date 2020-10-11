@@ -4,6 +4,13 @@
 
   // needed for Loader to display correctly
   height: calc(100% - #{$header-height});
+
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
 }
 
 .dashboard-page__stacks {
