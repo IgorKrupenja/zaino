@@ -49,7 +49,7 @@ export const PackItem = (item: Item) => {
         </RowWrapper>
       )}
       <Button
-        className="button--grey button--small pack-item__remove"
+        className="button--grey button--medium pack-item__remove"
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 0 }))}
       >
         <NoBackpackIcon className="pack-item__button-icon" />

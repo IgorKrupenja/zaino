@@ -2,22 +2,15 @@ import { Item } from '@zaino/shared/';
 import React, { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
-import { closeModal } from '../../../utils/closeModal';
 import { getArrayDifference } from '../../../utils/getArrayDifference';
-import { Button } from '../../Controls/Button';
 import { ExpandingInput } from '../../Controls/ExpandingInput';
 import { FormError } from '../../Controls/FormError';
 import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
 import { TextArea } from '../../Controls/TextArea';
-import { EditIcon } from '../../Icons/EditIcon';
-import { LabelBadgeList } from '../../LabelBadge/LabelBadgeList';
-import { Category } from '../../Misc/Category';
-import { CategoryImage } from '../../Misc/CategoryImage';
-import { CategorySelect } from '../../Selects/CategorySelect';
-import { LabelSelect } from '../../Selects/LabelSelect/LabelSelect';
 import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
-import { RowWrapper } from '../../Wrappers/RowWrapper';
+import { CategoryPicker } from '../CategoryPicker';
+import { LabelPicker } from '../LabelPicker';
 import './style.scss';
 
 type ItemFormProps = {
@@ -141,50 +134,21 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         />
       </ColumnWrapper>
       {/* Category */}
-      {/* todo potential names CategoryPicker and LabelPicker */}
-      <ColumnWrapper className="item-form__align-start">
-        <CategorySelect
-          popoverAlign="center"
-          selectedCategoryName={values.categoryName}
-          headerText="Select category"
-          onChange={categoryName => setValues({ ...values, categoryName })}
-        >
-          <Button className="button--white item-form__button">
-            Category
-            <EditIcon />
-          </Button>
-        </CategorySelect>
-        <RowWrapper>
-          <CategoryImage categoryName={values.categoryName} />
-          <Category
-            category={values.categoryName}
-            onClick={closeModal}
-            className="item-form__category"
-          ></Category>
-        </RowWrapper>
-      </ColumnWrapper>
+      <CategoryPicker
+        categoryName={values.categoryName}
+        onChange={categoryName => setValues({ ...values, categoryName })}
+      />
       {/* Labels */}
-      <ColumnWrapper className="item-form__align-start">
-        <LabelSelect
-          popoverAlign="center"
-          labelIds={values.labelIds}
-          headerText="Select labels"
-          isCreatable
-          onChange={labelIds => setValues({ ...values, labelIds })}
-        >
-          <Button className="button--white item-form__button">
-            Labels
-            <EditIcon />
-          </Button>
-        </LabelSelect>
-        <LabelBadgeList onBadgeClick={closeModal} labelIds={values.labelIds} />
-      </ColumnWrapper>
+      <LabelPicker
+        labelIds={values.labelIds}
+        onChange={labelIds => setValues({ ...values, labelIds })}
+      />
       {/* Notes */}
       <ColumnWrapper className="item-form__full-width item-form__notes">
         <FormLabel htmlFor="notes">Notes</FormLabel>
         <TextArea name="notes" value={values.notes} onChange={handleChange} />
       </ColumnWrapper>
-      {/* buttons */}
+      {/* Buttons */}
       {children}
     </form>
   );
