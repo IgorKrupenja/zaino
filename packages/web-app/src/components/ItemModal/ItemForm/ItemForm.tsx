@@ -5,6 +5,8 @@ import { decrementItemCount, incrementItemCount } from '../../../state/slices/la
 import { closeModal } from '../../../utils/closeModal';
 import { getArrayDifference } from '../../../utils/getArrayDifference';
 import { Button } from '../../Controls/Button';
+import { ExpandingInput } from '../../Controls/ExpandingInput';
+import { FormError } from '../../Controls/FormError';
 import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
 import { TextArea } from '../../Controls/TextArea';
@@ -33,7 +35,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
   const dispatch = useDispatch();
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     e.persist();
     const propertyName = e.target.name;
@@ -101,16 +103,15 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       {/* Name */}
       <ColumnWrapper className="item-form__full-width">
         <FormLabel htmlFor="name">Name</FormLabel>
-        <Input
+        <ExpandingInput
           name="name"
           value={values.name}
           onChange={handleChange}
           error={errors.name}
-          autoFocus
-          isExpanding
           onSubmit={handleSubmit}
           clearError={() => setErrors({ ...errors, name: '' })}
         />
+        {errors.name && <FormError>{errors.name}</FormError>}
       </ColumnWrapper>
       {/* Quantity */}
       <ColumnWrapper>
@@ -126,6 +127,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
             if (Number(e?.target.value) > 0) setErrors({ ...errors, quantity: '' });
           }}
         />
+        {errors.quantity && <FormError>{errors.quantity}</FormError>}
       </ColumnWrapper>
       {/* Weight */}
       <ColumnWrapper>
@@ -139,6 +141,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         />
       </ColumnWrapper>
       {/* Category */}
+      {/* todo potential names CategoryPicker and LabelPicker */}
       <ColumnWrapper className="item-form__align-start">
         <CategorySelect
           popoverAlign="center"

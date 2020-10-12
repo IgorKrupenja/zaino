@@ -10,16 +10,7 @@ import { loadUserData } from './state/slices/dataLoader';
 import { setUserDetails } from './state/slices/user';
 import store from './state/store';
 import './styles/styles.scss';
-
-const showConsoleLogo = () => {
-  // ;)
-  console.log('               .__               ');
-  console.log('_____________  |__| ____   ____  ');
-  console.log('\\___   /\\__  \\ |  |/    \\ /  _ \\ ');
-  console.log(' /    /  / __ \\|  |   |  (  <_> )');
-  console.log('/_____ \\(____  /__|___|  /\\____/ ');
-  console.log('      \\/     \\/        \\/        ');
-};
+import { getAsciiLogo } from './utils/getAsciiLogo';
 
 const app = (
   <Provider store={store}>
@@ -52,7 +43,7 @@ firebase.auth().onAuthStateChanged(async user => {
     );
     await store.dispatch(loadUserData(user.uid));
     renderApp();
-    showConsoleLogo();
+    console.log(getAsciiLogo());
     // only redirect to dashboard from root, not e.g from /labels
     if (history.location.pathname === '/') {
       history.push('/dashboard');

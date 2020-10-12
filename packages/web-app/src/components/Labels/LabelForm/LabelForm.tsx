@@ -7,10 +7,10 @@ import { LabelSortOption, sortLabelsBy } from '../../../state/slices/labelsFilte
 import { RootState } from '../../../state/store';
 import { getClassString } from '../../../utils/getClassString';
 import { Button } from '../../Controls/Button';
+import { FormError } from '../../Controls/FormError';
 import { FormLabel } from '../../Controls/FormLabel';
 import { Input } from '../../Controls/Input';
 import { ColorSelect } from '../../Selects/ColorSelect';
-import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
 import { RowWrapper } from '../../Wrappers/RowWrapper';
 import './style.scss';
 
@@ -62,24 +62,23 @@ export const LabelForm = ({
 
   return (
     <form className={`label-form${getClassString(className)}`} onSubmit={handleSubmit}>
-      <RowWrapper className="label-form__row">
-        <ColumnWrapper className="label-form__input__container">
-          <FormLabel htmlFor="name">Name</FormLabel>
-          <Input
-            name="name"
-            className="label-form__input"
-            value={values.name}
-            error={nameError}
-            autoFocus
-            onChange={e => {
-              e.persist();
-              const name = e.target.value;
-              setValues({ ...values, name });
-              // update label name preview on typing if editing a label
-              setLabelBadgeText && setLabelBadgeText(name);
-            }}
-          />
-        </ColumnWrapper>
+      <FormLabel htmlFor="name">Name</FormLabel>
+      <RowWrapper>
+        <Input
+          name="name"
+          className="label-form__input"
+          value={values.name}
+          error={nameError}
+          autoFocus
+          onChange={e => {
+            e.persist();
+            const name = e.target.value;
+            setValues({ ...values, name });
+            // update label name preview on typing if editing a label
+            setLabelBadgeText && setLabelBadgeText(name);
+          }}
+          clearError={() => setNameError('')}
+        />
         <ColorSelect
           selectedColorName={values.colorName}
           onChange={colorName => {
@@ -88,7 +87,8 @@ export const LabelForm = ({
           }}
         />
       </RowWrapper>
-      <RowWrapper className="label-form__row">
+      {nameError && <FormError>{nameError}</FormError>}
+      <RowWrapper className="label-form__buttons">
         <Button
           className="button--grey label-form__cancel"
           onClick={() => {

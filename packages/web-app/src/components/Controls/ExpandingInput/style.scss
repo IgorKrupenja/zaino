@@ -1,4 +1,4 @@
-.textarea {
+.expanding-input {
   @include editable-text-control;
-  height: 14rem;
+  height: auto;
 }

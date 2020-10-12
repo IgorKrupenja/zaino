@@ -1,15 +1,17 @@
 .label-form {
   display: flex;
   flex-direction: column;
+
+  margin: 0 $s-size $s-size $s-size;
 }
 
-.label-form__row {
+.label-form__buttons {
   align-items: flex-end;
   justify-content: space-between;
-  padding: 0 $s-size $s-size $s-size;
+  margin-top: $s-size;
 }
 
-.label-form__input__container {
+.label-form__input {
   flex-grow: 1;
 }
 
