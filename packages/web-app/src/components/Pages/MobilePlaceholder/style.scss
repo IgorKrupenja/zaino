@@ -1,0 +1,29 @@
+.mobile-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  // 5rem bottom margin for better positioning with SVG
+  padding: $l-size $l-size 5rem $l-size;
+  height: 100%;
+
+  background-color: $off-white;
+}
+
+.mobile-placeholder__image {
+  height: 20rem;
+}
+
+.mobile-placeholder__header {
+  font-size: 2.5rem;
+}
+
+.mobile-placeholder__text {
+  text-align: center;
+  font-size: $font-size-large;
+}
+
+.mobile-placeholder__link {
+  color: $off-black;
+}

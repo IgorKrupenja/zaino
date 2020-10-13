@@ -117,7 +117,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           maxLength={3}
           clearError={e => {
             // clear error only if user enters positive quantity (not '', '0' or e.g. '000')
-            if (Number(e?.target.value) > 0) setErrors({ ...errors, quantity: '' });
+            Number(e?.target.value) > 0 && setErrors({ ...errors, quantity: '' });
           }}
         />
         {errors.quantity && <FormError>{errors.quantity}</FormError>}
