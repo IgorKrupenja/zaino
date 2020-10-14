@@ -1,0 +1,6 @@
+{
+  // no warnings for html
+  "MD033": false,
+  // allow long lines
+  "MD013": false
+}

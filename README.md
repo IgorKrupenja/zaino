@@ -1,54 +1,25 @@
-<!-- todo later also include logo -->
+<h1 align="center">️ Zaino</h1>
+<h3 align="center">
+  Hiking and mountaineering equipment app for the meticulous adventurer.
+</h3>
 
-<!-- # Slogan
+<h4 align="center">
+  <a href="https://zaino.krupenja.net">Live demo</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/issues">Issues</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/blob/master/CHANGELOG.md">Changelog</a>
+</h4>
 
-Hiking, mountaineering and ultra running inventory management app for the meticulous adventurer
-
-Hiking, mountaineering and ultra running equipment management app for the meticulous adventurer
-
-or drop ultra running?
-
-Hiking and mountaineering inventory management app for the meticulous adventurer
-
-Hiking and mountaineering equipment management app for the meticulous adventurer
-
-todo below best
-Hiking and mountaineering equipment app for the meticulous adventurer
-
-Hiking, mountaineering and ultrarunning equipment app for the meticulous adventurer -->
-
-<!-- Todo at least a screenshot here, maybe gif -->
-<!-- todo or mb 2 screens -->
-
-<!-- todo maybe centered Zaino text for now first line -->
-<!-- todo then line -->
-<!-- todo then project description -->
-<!-- todo maybe live demo link -->
-
-<!-- todo insp https://github.com/thelounge/thelounge#readme -->
+![Screenshot](screenshot.png)
 
 ## Overview
 
-<!-- todo mention not working on mobiles yet -->
-<!-- todo add WIP notice, maybe tie with mobile -->
-<!-- todo mention that features below are implemented SO FAR -->
+🚧 **Please note that Zaino is a work in progress.** 🚧 For instance, it does not yet have a mobile version. So far, the following features have been implemented.
 
-- **Log-in with Google account**.
-
-<!-- todo mention SECURE login  -->
-
-- **Data storage with Firestore**.
-- **Efficient packing for your next adventure**.
-- **Robust search and filtering**.
-- **Flexible label system**.
-- **Demo data**.
-- **Self-hosting support**.
-
-<!-- todo in self hosting refer to development section below -->
-
-<!-- todo mention privacy in self-hosting -->
-
-<!-- todo add descriptions -->
+- **Log-in with Google account**. Fast and secure log in with your Google account.
+- **Data storage with Firestore**. Your data is safely stored in a Firestore database both with live demo and if you self-host Zaino.
+- **Robust search and filtering**. Easily filter and sort your items by name, category, label, weight, etc.
+- **Efficient packing for your next adventure**. Pack list offers a convenient overview of the items you want to take with you, including weight.
+- **Flexible label system**. Organise your items in any way you want with custom labels.
+- **Demo data**. Want to try the app without entering your own data first? Click Load under Demo data in header to populate your inventory with a comprehensive set of sample items. These can be easily removed later.
+- **Self-hosting support**. Concerned about privacy and want to completely self-host your data? This is possible and I have provided a detailed guide in the [Setup](#setup) section below.
 
 ### Technologies used
 
@@ -64,21 +35,22 @@ Hiking, mountaineering and ultrarunning equipment app for the meticulous adventu
 
 A fully-functional live demo is available at [zaino.krupenja.net](https://zaino.krupenja.net). It uses a separate production Firebase project so your data is safe from me breaking something in development. 😅 Regular backups are also run there just in case.
 
-Already have some document or spreadsheet with your hiking/climbing/running gear and want to try the app with your own data? Get in touch with with me at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com) and I will try to get a way to import your data into the app.
+Already have some document or spreadsheet with your hiking/climbing gear and want to try the app with your own data? Get in touch with with me at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com) and I will try to get a way to import your data into the app.
 
 ## Roadmap
 
 ### 0.2.0
 
+- **Collect user feedback and make any necessary improvements based on it.**
 - Learn more about unit testing React and create unit tests.
-- **Create a mobile-friendly app version**. Yeah, I know, not having a mobile version sucks.
+- Create a mobile-friendly app version. Yeah, I know, not having a mobile version sucks.
 - Create a proper app logo.
+
+Progress can be tracked in [Github projects](https://github.com/igor-krupenja/zaino/projects/1?card_filter_query=milestone%3A0.2.0).
 
 ## Changelog
 
-### 0.1.0
-
-<!-- todo add date -->
+### 0.1.0 (15th October 2020)
 
 - Initial release 🚀
 
@@ -88,11 +60,11 @@ Already have some document or spreadsheet with your hiking/climbing/running gear
 
 ### Contributing
 
-Feel free to report any bugs and submit feature requests in the [Issues section](https://github.com/krupenja/zaino/issues). PRs are also welcome — if you require any assistance, give me a shout at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com).
+Feel free to report any bugs and submit feature requests in the [Issues section](https://github.com/krupenja/zaino/issues). PRs are also welcome — please read [Setup](#setup) below and if you require any assistance, give me a shout at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com).
 
 ### Code structure
 
-For clarity, the project code is split into several [packages](packages). Each package is a separate [yarn workspace](https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/) to facilitate easier imports, e.g. `import { Labels, Colors } from '@zaino/shared'`. This is the reason why yarn was chosen over npm for this project as npm's workspace support is [only in beta at the moment](https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major).
+The project code is split into several [packages](packages). Each package is a separate [yarn workspace](https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/) to facilitate easier imports, e.g. `import { Labels, Colors } from '@zaino/shared'`. This is the reason why yarn was chosen over npm for this project as npm's workspace support is [only in beta at the moment](https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major).
 
 In the future, this structure can be used to accomodate additional sub-projects (like a landing page or a React Native app) as separate packages. At the moment, the packages are are:
 
@@ -106,18 +78,29 @@ A couple of Firebase cloud functions including the function that populates Fires
 
 #### [web-app](packages/web-app)
 
-Main web app with the following code structure:
+Main web app, code structure highlights:
 
-<!-- todo add web app structure when finalised -->
-
-<!-- todo SCSS mention BEM naming convention -->
-
-- `src/components/`
-- `src/state`
+- `src/components/` App components and pages, along with per-component styles. Styles are mostly in SCSS and follow the BEM convention.
+  - `Controls` Various reusable controls and form elements.
+  - `Dashboard` Dashboard page components.
+  - `Header` App header, including demo data loader.
+  - `Icons` Several commonly re-used icons with applied styles.
+  - `ItemModal` New/edit item modal components.
+  - `LabelBadge` Fancy label badge components used throughout Dashboard and Labels pages.
+  - `Labels` Labels page components.
+  - `Misc` Various smaller components used throughout the app.
+  - `Pages` App pages and temporary mobile placeholder.
+  - `Selects` Core select component and re-useable and actual selects that use it. Note that the code is ugly here and needs refactoring, see [#346](/../../issues/346).
+  - `Wrappers` Various wrapper components used purely to align and style child components.
+- `src/constants` Built-in label colors and categories, will be moved to Firestore when customisation of these is implemented.
+- `src/firebase` Firebase initialisation and a couple of functions to work with Firestore data.
+- `src/routes` React Router config and routes.
+- `src/state` State management with Redux.
+- `src/styles` Style variables and settings that apply to the whole app.
 
 ### Setup
 
-This section outlines how to setup a development environment to develop Zaino. This involves quite a few steps, mostly to configure Firebase functionality.
+This section outlines how to setup a development environment for Zaino. This involves quite a few steps, mostly to configure Firebase functionality.
 
 Please note that the development setup has only been tested on macOS and Ubuntu Linux. If you encounter any problems on Windows, please [file an issue](https://github.com/krupenja/zaino/issues/new).
 
@@ -130,13 +113,11 @@ Please note that the development setup has only been tested on macOS and Ubuntu 
 
 #### Firestore
 
-<!-- todo mention git ignore for obvious reasons -->
-
 Zaino is a serverless app that uses Firestore as a database. To use Firestore, you need to create a Firebase project and add its configuration to the repo:
 
 1. Go to [Firebase console](https://console.firebase.google.com/u/0/) and create a new project.
 2. In Firebase console for your newly-created project, click on the cogwheel, choose Project Settings, scroll down to Your apps and click Add app. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
-3. Choose **Web** app and follow the app setup workflow. On the last screen you will see some JS code. The key part here is the web app's Firebase configuration, similar to the dummy data below:
+3. Choose **Web** app and follow the app setup workflow. On the last screen you will see some JS code. The key part here is the web app's Firebase configuration, similar to the _dummy_ data below:
 
 ```js
 // Your web app's Firebase configuration
@@ -152,7 +133,7 @@ var firebaseConfig = {
 };
 ```
 
-4. In the root of the repository, create a file named `.env.development` and populate it with your Firebase configuration data from the previous step according to a template shown below. Make sure that you use the same variable names (`FIREBASE_API_KEY` etc.), this is important.
+4. In the root of the repository, create a file named `.env.development` (this file is gitignored for obvious reasons) and populate it with your Firebase configuration data from the previous step according to a template shown below. Make sure that you use the same variable names (`FIREBASE_API_KEY` etc.), this is important.
 
 ```env
 FIREBASE_API_KEY="AIzaSyD_GYhIIBfdFHvUDFpuIHQdSK7nio-dLM"
@@ -179,6 +160,10 @@ FIREBASE_MEASUREMENT_ID="G-P4N3TPO1XY"
 7. Run `yarn run deploy-rules-dev` to deploy Firestore security rules.
 
 #### Images and Google Cloud Storage
+
+<!-- todo can skip? -->
+
+**⚠️ Important.** This section can be skipped if you do not want to use category images.
 
 Due to licensing restrictions (see [below](#license)), the images I use i the [live demo](#live-demo) of the app are not part of the repository and are hosted separately on Google Cloud Storage. If you run the app as is, it will display no images and show a bunch of 404 errors in console. Possible solutions:
 
@@ -209,7 +194,7 @@ Due to licensing restrictions (see [below](#license)), the images I use i the [l
 
 #### Demo data and Firebase functions
 
-<!-- todo add notice that not necessary if do not use demo data and backup -->
+**⚠️ Important**. This section can be skipped if you do not want to use demo data or set up Firestore backups.
 
 Unfortunately, Firestore apparently does not a have a meaningful way to import data, so to add the demo data to the app, I created a Firebase cloud function [addDemoDataDb.ts](packages/cloud-functions/src/addDemoDataDb.ts). There are extra steps necessary to use Firebase functions:
 
@@ -226,7 +211,7 @@ Note that this will also deploy the [backupDb.ts](packages/cloud-functions/src/b
 
 #### Start development server
 
-Woo-hoo, after so many steps we are now ready to start development! You can can run Webpack development server locally with `yarn start` in project root and access it at [http://localhost:8080/](http://localhost:8080/). Development server supports Hot Module Replacement for SCSS and React components (the latter with [React Refresh Webpack Plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin)).
+Woo-hoo, after so many steps you are now ready to start development! You can can run Webpack development server locally with `yarn start` in project root and access it at [http://localhost:8080/](http://localhost:8080/). Development server supports Hot Module Replacement for SCSS and React components (the latter with [React Refresh Webpack Plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin)).
 
 If you use VSCode as your editor, `yarn start` will actually run when you open the project in VSCode. If you do not like this behaviour, tasks can be edited or disabled in [tasks.json](.vscode/tasks.json).
 
@@ -253,16 +238,14 @@ If you opt to use a separate Firebase project in production, there are some addi
 
 ## Acknowledgements
 
-<!-- todo Add Dima for data -->
-
+- Dmitri Shastin for his ideas and sharing his inventory data with me.
 - Patrick Gillespie for his [Text to ASCII Art Generator](http://patorjk.com/software/taag/).
 - The very good (and open source) [Material Design icons](https://material.io/resources/icons/).
 - Github, Trello and Airtable as clean design inspirations.
 - Astigmatic for the cool (and free) [Righteous font](https://fonts.google.com/specimen/Righteous?preview.text=Zaino&preview.text_type=custom)
 - The development community for writing all the blog posts and Stack Overflow answers.
-
-<!-- todo people feedback -->
-<!-- todo uni classmates -->
+- All the people proving me with feedback.
+- My awesome university classmates 💪
 
 ## License
 
