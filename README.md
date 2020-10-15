@@ -4,7 +4,7 @@
 </h3>
 
 <h4 align="center">
-  <a href="https://zaino.krupenja.net">Live demo</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/issues">Issues</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/blob/master/CHANGELOG.md">Changelog</a>
+  <a href="https://zaino.io">Live demo</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/issues">Issues</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/blob/master/CHANGELOG.md">Changelog</a>
 </h4>
 
 ![Screenshot](screenshot.png)
@@ -33,7 +33,7 @@
 
 ## Live Demo
 
-A fully-functional live demo is available at [zaino.krupenja.net](https://zaino.krupenja.net). It uses a separate production Firebase project so your data is safe from me breaking something in development. 😅 Regular backups are also run there just in case.
+A fully-functional live demo is available at [zaino.io](https://zaino.io). It uses a separate production Firebase project so your data is safe from me breaking something in development. 😅 Regular backups are also run there just in case.
 
 Already have some document or spreadsheet with your hiking/climbing gear and want to try the app with your own data? Get in touch with with me at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com) and I will try to get a way to import your data into the app.
 
