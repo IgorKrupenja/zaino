@@ -1,4 +1,4 @@
-<h1 align="center">️ Zaino</h1>
+<h1 align="center">️🎒 Zaino</h1>
 <h3 align="center">
   Hiking and mountaineering equipment app for the meticulous adventurer.
 </h3>
