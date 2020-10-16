@@ -58,7 +58,7 @@ export const SelectPopover = ({
   };
 
   const mergedProps: Props<SelectOption> = {
-    placeholder: `Search${isCreatable ? ' or create' : ''}`,
+    placeholder: `Search${isCreatable ? ' or create new' : ''}`,
     autoFocus: true,
     hideSelectedOptions: false,
     controlShouldRenderValue: false,
