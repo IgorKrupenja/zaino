@@ -80,7 +80,7 @@ A couple of Firebase cloud functions including the function that populates Fires
 
 Main web app, code structure highlights:
 
-- `src/components/` App components and pages, along with per-component styles. Styles are mostly in SCSS and follow the BEM convention.
+- [src/components/](packages/web-app/src/components) App components and pages, along with per-component styles. Styles are mostly in SCSS and follow the BEM convention.
   - `Controls` Various reusable controls and form elements.
   - `Dashboard` Dashboard page components.
   - `Header` App header, including demo data loader.
@@ -92,11 +92,11 @@ Main web app, code structure highlights:
   - `Pages` App pages and temporary mobile placeholder.
   - `Selects` Core select component and re-useable and actual selects that use it. Note that the code is ugly here and needs refactoring, see [#346](/../../issues/346).
   - `Wrappers` Various wrapper components used purely to align and style child components.
-- `src/constants` Built-in label colors and categories, will be moved to Firestore when customisation of these is implemented.
-- `src/firebase` Firebase initialisation and a couple of functions to work with Firestore data.
-- `src/routes` React Router config and routes.
-- `src/state` State management with Redux.
-- `src/styles` Style variables and settings that apply to the whole app.
+- [src/constants/](packages/web-app/src/constants) Built-in label colors and categories, will be moved to Firestore when customisation of these is implemented.
+- [src/firebase/](packages/web-app/src/firebase) Firebase initialisation and a couple of functions to work with Firestore data.
+- [src/routes/](packages/web-app/src/routes) React Router config and routes.
+- [src/state/](packages/web-app/src/state) State management with Redux.
+- [src/styles/](packages/web-app/src/styles) Style variables and settings that apply to the whole app.
 
 ### Setup
 
