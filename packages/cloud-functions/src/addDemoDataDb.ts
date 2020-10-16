@@ -14,9 +14,8 @@ export const addDemoDataDb = functions
   .pubsub.topic('add-demo-data-db')
   .onPublish(async () => {
     const root = '/common/demo-data';
-    // need casting to prevent TS complaining about items with weight ''
-    const items: Item[] = demoData.items as Item[];
-    const labels: Label[] = demoData.labels;
+    const items = demoData.items as Item[];
+    const labels = demoData.labels as Label[];
     const db = admin.firestore();
 
     // delete previously added demo data
