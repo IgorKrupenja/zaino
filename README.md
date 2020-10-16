@@ -11,7 +11,13 @@
 
 ## Overview
 
-🚧 **Please note that Zaino is a work in progress.** 🚧 For instance, it does not yet have a mobile version. So far, the following features have been implemented.
+#### 🚧 🚧 🚧 🚧 🚧 🚧
+
+**Please note that Zaino is a work in progress.** For instance, it does not yet have a mobile version yet.
+
+#### 🚧 🚧 🚧 🚧 🚧 🚧
+
+So far, the following features have been implemented.
 
 - **Log-in with Google account**. Fast and secure log in with your Google account.
 - **Data storage with Firestore**. Your data is safely stored in a Firestore database both with live demo and if you self-host Zaino.
@@ -60,7 +66,7 @@ Progress can be tracked in [Github projects](https://github.com/igor-krupenja/za
 
 ### Contributing
 
-Feel free to report any bugs and submit feature requests in the [Issues section](https://github.com/krupenja/zaino/issues). PRs are also welcome — please read [Setup](#setup) below and if you require any assistance, give me a shout at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com).
+Feel free to report any bugs and submit feature requests in the [Issues section](https://github.com/igor-krupenja/zaino/issues). PRs are also welcome — please read [Setup](#setup) below and if you require any assistance, give me a shout at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com).
 
 ### Code structure
 
@@ -102,13 +108,13 @@ Main web app, code structure highlights:
 
 This section outlines how to setup a development environment for Zaino. This involves quite a few steps, mostly to configure Firebase functionality.
 
-Please note that the development setup has only been tested on macOS and Ubuntu Linux. If you encounter any problems on Windows, please [file an issue](https://github.com/krupenja/zaino/issues/new).
+Please note that the development setup has only been tested on macOS and Ubuntu Linux. If you encounter any problems on Windows, please [file an issue](https://github.com/igor-krupenja/zaino/issues/new).
 
 #### Preparation
 
 1. Install current Node LTS or [use nvm](https://github.com/nvm-sh/nvm).
 2. Install Yarn.
-3. Clone the repo with `git clone https://github.com/krupenja/zaino.git` or [fork it](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
+3. Clone the repo with `git clone https://github.com/igor-krupenja/zaino.git` or [fork it](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
 4. In the root of your cloned repo folder, run `yarn install`.
 
 #### Firestore
@@ -242,7 +248,7 @@ If you opt to use a separate Firebase project in production, there are some addi
 - Patrick Gillespie for his [Text to ASCII Art Generator](http://patorjk.com/software/taag/).
 - The very good (and open source) [Material Design icons](https://material.io/resources/icons/).
 - Github, Trello and Airtable as clean design inspirations.
-- Astigmatic for the cool (and free) [Righteous font](https://fonts.google.com/specimen/Righteous?preview.text=Zaino&preview.text_type=custom)
+- Astigmatic for the cool (and free) [Righteous font](https://fonts.google.com/specimen/Righteous?preview.text=Zaino&preview.text_type=custom).
 - The development community for writing all the blog posts and Stack Overflow answers.
 - All the people proving me with feedback.
 - My awesome university classmates 💪
