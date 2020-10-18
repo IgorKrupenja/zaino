@@ -1,12 +1,12 @@
 import deepEqual from 'fast-deep-equal/react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   labelFiltersInitialState,
   LabelSortOption,
   resetLabelFilters,
   setLabelTextFilter,
-  sortLabelsBy
+  sortLabelsBy,
 } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { Input } from '../../Controls/Input';
@@ -33,7 +33,13 @@ export const LabelFilters = () => {
   // set filters if changed externally in FilterReset
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
+  const firstUpdate = useRef(true);
   useEffect(() => {
+    // this is needed to prevent setItemsTextFilter running uselessly when component mounts
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     // setTimeout prevents UI freezes when typing
     const textFilterTimeout = setTimeout(() => dispatch(setLabelTextFilter(filters.text)), 200);
     return () => clearTimeout(textFilterTimeout);
