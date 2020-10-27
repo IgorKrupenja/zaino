@@ -11,11 +11,7 @@
 
 ## Overview
 
-#### 🚧 🚧 🚧 🚧 🚧 🚧
-
-**Please note that Zaino is a work in progress.** For instance, it does not yet have a mobile version yet.
-
-#### 🚧 🚧 🚧 🚧 🚧 🚧
+🚧🚧🚧 **Please note that Zaino is a work in progress.** For instance, it does not have a mobile version yet.
 
 So far, the following features have been implemented.
 
@@ -204,7 +200,7 @@ Due to licensing restrictions (see [below](#license)), the images I use i the [l
 ```
 
 - Alternatively, you can just disable the images in [CategoryImage.tsx](packages/web-app/src/components/common/CategoryImage.tsx) and [index.html](packages/web-app/src/index.html)
-- Another option would be to add your own image assets and import then with `file-loader` for Webpack. In addition to [CategoryImage.tsx](packages/web-app/src/components/common/CategoryImage.tsx) and [index.html](packages/web-app/src/index.html), check out [Categories.ts](packages/web-app/src/constants/Categories.ts) as well.
+- Another option would be to add your own image assets and import them with `file-loader` for Webpack. In addition to [CategoryImage.tsx](packages/web-app/src/components/common/CategoryImage.tsx) and [index.html](packages/web-app/src/index.html), check out [Categories.ts](packages/web-app/src/constants/Categories.ts) as well.
 
 #### Demo data and Firebase functions
 
