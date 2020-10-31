@@ -10,13 +10,6 @@
   width: 25rem;
 }
 
-.popover__content {
-  display: flex;
-  flex-direction: row;
-  margin: $xs-size $s-size $xs-size $s-size;
-  padding: 0 0.4rem 0 0.4rem;
-}
-
 .popover__header {
   display: flex;
   justify-content: space-between;
@@ -28,5 +21,15 @@
 }
 
 .popover__title {
-  font-size: $font-size-small;
+  font-size: $font-size-medium;
+}
+
+.popover__content {
+  display: flex;
+  flex-direction: column;
+  margin: $xs-size $s-size $s-size $s-size;
+}
+
+.popover__text {
+  margin-bottom: $xs-size;
 }

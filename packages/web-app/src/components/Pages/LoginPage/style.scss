@@ -1,18 +1,16 @@
 .login-page {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  height: 100%;
+  min-height: 100%;
 
   background: $off-white;
 
   opacity: 1;
-  animation-name: fade-in;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-in;
-  animation-duration: 0.3s;
+  animation: fade-in 0.3 ease-in;
 }
 
 @keyframes fade-in {
@@ -25,45 +23,98 @@
 }
 
 .login-page__title {
-  margin: 0 0 $m-size 0;
+  margin-bottom: $l-size;
 
   color: $dark-green;
+  line-height: 6rem;
   font-family: 'Righteous', cursive;
   font-size: 7rem;
   text-decoration: none;
 }
 
 .login-page__slogan {
-  margin-bottom: $xl-size;
+  margin-bottom: $l-size;
   width: 35rem;
 
   text-align: center;
   font-size: $font-size-large;
 }
 
-.login-page__github-link {
-  display: flex;
-  align-items: center;
-
-  margin: $xl-size 0;
-  margin-top: 5rem;
-
-  // to match Github logo
-  color: #181616;
-  font-size: 1.5rem;
-  text-decoration: none;
+.login-page__policies {
+  margin-top: 4rem;
+  color: $grey;
+  transition: 0.3s ease;
 
   &:hover {
-    text-decoration: underline;
+    color: $off-black;
   }
 }
 
-.login-page__github-icon {
-  margin-right: $xs-size;
-  height: $xl-size;
-  width: $xl-size;
+.login-page__github-link {
+  position: absolute;
+  display: flex;
+  align-items: center;
 
-  &:hover {
-    fill: $grey;
+  bottom: $s-size;
+  right: $s-size;
+
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  &:hover .login-page__github-link__text {
+    transform: translateX(0%);
+    max-width: 12rem;
+    opacity: 1;
+  }
+  &:hover .login-page__github-link__icon {
+    animation: rotate-3d-reverse 0.5s linear forwards;
+  }
+}
+
+.login-page__github-link__text {
+  margin-right: 0.3rem;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(100%);
+
+  color: $off-black;
+  white-space: nowrap;
+  overflow: hidden;
+
+  transition: 0.5s ease;
+}
+
+.login-page__github-link__icon {
+  height: 5rem;
+  width: 5rem;
+
+  // display icon above link text animation on hover
+  background-color: $off-white;
+  z-index: 10;
+
+  // forwards makes animation stay on the last frame at the end
+  animation: rotate-3d 0.5s linear forwards;
+
+  path {
+    transition: 0.3s ease;
+    fill: $off-black;
+  }
+}
+
+@keyframes rotate-3d {
+  0% {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+@keyframes rotate-3d-reverse {
+  0% {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 180deg);
   }
 }

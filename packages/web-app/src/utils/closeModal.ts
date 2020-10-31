@@ -1,6 +1,6 @@
-import { history } from '../routes/AppRouter';
+import { sessionHistory } from '../routes/AppRouter';
 
 export const closeModal = () => {
   document.title = 'Dashboard | Zaino';
-  history.push('/dashboard');
+  sessionHistory.push('/dashboard');
 };

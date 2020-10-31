@@ -23,11 +23,11 @@
   }
   // Blink and WebKit
   &::-webkit-input-placeholder {
-    color: $dark-grey;
+    color: $grey;
   }
   // Firefox
   &::-moz-placeholder {
-    color: $dark-grey;
+    color: $grey;
     opacity: 1;
   }
 }

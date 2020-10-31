@@ -246,6 +246,13 @@ If you opt to use a separate Firebase project in production, there are some addi
 2. Run `gcloud config set project PROJECT_ID`, replacing `PROJECT_ID` with your actual Firebase _production_ project ID.
 3. Run `gcloud pubsub topics create 'add-demo-data-db' && gcloud pubsub topics publish 'add-demo-data-db' --message 'dummy'`.
 
+#### Privacy and cookie policy
+
+Zaino [live demo](#live-demo) has a privacy and cookie policy that is not a part of this repo and by default Webpack builds Zaino without the policies. If you want to build Zaino with your own privacy and cookie policies, you would need to:
+
+- Add `PRIVACY_POLICY_ENABLED="true"` flag to a relevant .env flag (`.env.development` and/or `.env.production`).
+- Create a `PrivacyPolicy` component that is used in [AppRouter.tsx](packages/web-app/src/routes/AppRouter.tsx).
+
 ## Acknowledgements
 
 - Dmitri Shastin for his ideas and sharing his inventory data with me.

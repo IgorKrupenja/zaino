@@ -6,6 +6,12 @@ import path from 'path';
 import webpack from 'webpack';
 import { getPrefetchLinks } from './src/utils/getPrefetchLinks';
 
+// output images with proper names to dist/images dir
+const fileLoaderOptions = {
+  context: path.resolve(__dirname, 'src'),
+  name: '[path][name].[ext]',
+};
+
 // set NODE_ENV to dev if not set in a npm script that launches webpack
 process.env.NODE_ENV = process.env.NODE_ENV ?? 'development';
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -95,11 +101,16 @@ const config: webpack.Configuration = {
         use: [
           {
             loader: 'file-loader',
-            options: {
-              // output images with proper names to dist/images dir
-              context: path.resolve(__dirname, 'src'),
-              name: '[path][name].[ext]',
-            },
+            options: fileLoaderOptions,
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: fileLoaderOptions,
           },
         ],
       },
@@ -116,6 +127,7 @@ const config: webpack.Configuration = {
       'FIREBASE_APP_ID',
       'FIREBASE_MEASUREMENT_ID',
       'GCP_STORAGE_URL',
+      'PRIVACY_POLICY_ENABLED',
     ]),
     new HtmlWebpackPlugin({
       prefetchLinks: getPrefetchLinks(),

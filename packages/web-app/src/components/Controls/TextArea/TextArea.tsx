@@ -18,7 +18,7 @@ export const TextArea = ({ name, className, children, ...rest }: TextAreaProps) 
       <textarea
         id={name}
         name={name}
-        className={`textarea${getClassString(className)}`}
+        className={getClassString('textarea', className)}
         onFocus={e => {
           // puts cursor at the end on focus
           const value = e.target.value;

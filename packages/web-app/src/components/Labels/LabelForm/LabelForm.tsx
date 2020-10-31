@@ -61,7 +61,7 @@ export const LabelForm = ({
   };
 
   return (
-    <form className={`label-form${getClassString(className)}`} onSubmit={handleSubmit}>
+    <form className={getClassString('label-form', className)} onSubmit={handleSubmit}>
       <FormLabel htmlFor="name">Name</FormLabel>
       <RowWrapper>
         <Input

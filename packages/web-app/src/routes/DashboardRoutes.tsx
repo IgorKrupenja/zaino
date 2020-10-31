@@ -10,7 +10,7 @@ type MatchParams = {
 };
 
 /**
- * Provides routes specific to Dashboard page.
+ * Provides routes specific to Dashboard page: Edit Item and New Item.
  */
 export const DashboardRoutes = () => {
   const items = useSelector((state: RootState) => state.items);

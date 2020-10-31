@@ -37,6 +37,10 @@ ul {
   margin: 0;
 }
 
+a {
+  color: $off-black;
+}
+
 ::selection {
-  background: lighten($light-blue, 30%);
+  background: lighten($light-blue, 40%);
 }

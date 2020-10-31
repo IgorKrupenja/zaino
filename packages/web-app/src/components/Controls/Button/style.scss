@@ -74,7 +74,7 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 
   background-color: transparent;
-  color: $dark-grey;
+  color: $grey;
   font-weight: normal;
 
   &:hover {
@@ -114,11 +114,6 @@
 
 .button--underline--active {
   border-bottom: 0.2rem solid white;
-}
-
-.button--wide {
-  width: 25rem - $s-size * 2;
-  margin: 0 $s-size $s-size $s-size;
 }
 
 .button--medium {

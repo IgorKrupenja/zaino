@@ -8,11 +8,11 @@ type SectionHeaderProps = {
 };
 
 export const SectionHeader = ({ className, children }: SectionHeaderProps) => {
-  return <header className={`section-header${getClassString(className)}`}>{children}</header>;
+  return <header className={getClassString('section-header', className)}>{children}</header>;
 };
 
 const Title = ({ children, className }: SectionHeaderProps) => {
-  return <h2 className={`section-header__title${getClassString(className)}`}>{children}</h2>;
+  return <h2 className={getClassString('section-header__title', className)}>{children}</h2>;
 };
 
 const Content = ({ children }: SectionHeaderProps) => {

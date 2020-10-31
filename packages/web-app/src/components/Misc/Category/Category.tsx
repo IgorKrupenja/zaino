@@ -20,7 +20,7 @@ export const Category = ({ category, className, onClick, children }: CategoryPro
         dispatch(setItemCategoryFilter(category));
         onClick && onClick();
       }}
-      className={`category${getClassString(className)}`}
+      className={getClassString('category', className)}
     >
       {children}
       {category}

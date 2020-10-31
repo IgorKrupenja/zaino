@@ -9,7 +9,7 @@
   overflow-wrap: anywhere;
 
   background: white;
-  color: $dark-grey;
+  color: $grey;
   font-size: $font-size-small;
 
   &:last-child {
@@ -57,7 +57,7 @@
   height: $s-size;
   width: $s-size;
 
-  fill: $dark-grey;
+  fill: $grey;
   transition: 0.3s ease;
 }
 

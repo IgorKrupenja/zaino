@@ -17,6 +17,9 @@ firebase-debug.log
 yarn-error.log
 # WebStorm just in case
 .idea
+# Policies
+PrivacyPolicy
+CookiePolicy
 
 ############################# macOS
 .DS_Store

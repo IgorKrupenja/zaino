@@ -94,7 +94,7 @@ export const SelectPopover = ({
         <>
           <Popover.Header>
             <Popover.Title>{headerText}</Popover.Title>
-            <CloseButton className="close-button--small-padding" onClick={closePopover} />
+            <CloseButton onClick={closePopover} />
           </Popover.Header>
           {isCreatable ? <CreatableSelect {...mergedProps} /> : <Select {...mergedProps} />}
         </>

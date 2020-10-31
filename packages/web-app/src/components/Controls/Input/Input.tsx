@@ -19,7 +19,7 @@ export const Input = ({ className, name, error, onChange, clearError, ...rest }:
     // id needed to focus input on label click
     id: name,
     name,
-    className: 'input' + (error ? ' input--error' : '') + getClassString(className),
+    className: getClassString('input' + (error ? ' input--error' : ''), className),
     ...rest,
   };
 

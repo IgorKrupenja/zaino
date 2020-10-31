@@ -3,7 +3,7 @@
   align-items: center;
 
   border: none;
-  padding-right: 1.2rem;
+  padding-right: 0.8rem;
 
   background: none;
   cursor: pointer;
@@ -28,16 +28,11 @@
   }
 }
 
-.close-button--small-padding {
-  padding-right: 0.8rem;
-}
-
 .close-button--large {
   margin-top: -0.3rem;
   margin-right: -0.3rem;
   padding: 0;
 
-  // a bit of a hack
   > .close-button__icon {
     height: 2.2rem;
     width: 2.2rem;

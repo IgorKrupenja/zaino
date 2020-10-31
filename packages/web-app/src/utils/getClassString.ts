@@ -1,5 +1,7 @@
 /**
- * Get CSS properly formatted class string if className is defined, empty string otherwise.
+ * Get properly formatted CSS class string from main class name and optional extra name(s).
  * Used in many components for styling.
  */
-export const getClassString = (className: string | undefined) => (className ? ` ${className}` : '');
+export const getClassString = (mainClassName: string, extraClassNames?: string) => {
+  return mainClassName + (extraClassNames ? ` ${extraClassNames}` : '');
+};

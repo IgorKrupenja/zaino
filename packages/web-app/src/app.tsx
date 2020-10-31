@@ -5,7 +5,7 @@ import Media from 'react-media';
 import { Provider } from 'react-redux';
 import { MobilePlaceholder } from './components/Pages/MobilePlaceholder';
 import { firebase } from './firebase/firebase';
-import AppRouter, { history } from './routes/AppRouter';
+import AppRouter from './routes/AppRouter';
 import { loadUserData } from './state/slices/dataLoader';
 import { setUserDetails } from './state/slices/user';
 import store from './state/store';
@@ -44,13 +44,8 @@ firebase.auth().onAuthStateChanged(async user => {
     await store.dispatch(loadUserData(user.uid));
     renderApp();
     console.log(getAsciiLogo());
-    // only redirect to dashboard from root, not e.g from /labels
-    if (history.location.pathname === '/') {
-      history.push('/dashboard');
-    }
   } else {
     // on log out
     renderApp();
-    history.push('/');
   }
 });

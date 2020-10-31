@@ -5,6 +5,7 @@ import { RootState } from '../../../state/store';
 import { Inventory } from '../../Dashboard/Inventory';
 import { ItemFilters } from '../../Dashboard/ItemFilters';
 import { Pack } from '../../Dashboard/Pack';
+import { Header } from '../../Header/Header';
 import { Loader } from '../../Misc/Loader';
 import './style.scss';
 
@@ -14,6 +15,7 @@ export const DashboardPage = () => {
 
   return (
     <>
+      <Header />
       <main className="dashboard-page">
         <ItemFilters />
         {isLoading ? (

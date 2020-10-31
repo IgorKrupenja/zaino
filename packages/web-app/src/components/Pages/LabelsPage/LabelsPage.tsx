@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
+import { Header } from '../../Header/Header';
 import { LabelFilters } from '../../Labels/LabelFilters';
 import { Labels } from '../../Labels/Labels';
 import { Loader } from '../../Misc/Loader';
@@ -12,12 +13,15 @@ export const LabelsPage = () => {
   document.title = 'Labels | Zaino';
 
   return (
-    // extra div for proper scrollbar position with header
-    <div className="labels-page__container">
-      <main className="labels-page">
-        <LabelFilters />
-        {isLoading ? <Loader /> : <Labels />}
-      </main>
-    </div>
+    <>
+      <Header />
+      {/* extra div for proper scrollbar position with header */}
+      <div className="labels-page__container">
+        <main className="labels-page">
+          <LabelFilters />
+          {isLoading ? <Loader /> : <Labels />}
+        </main>
+      </div>
+    </>
   );
 };

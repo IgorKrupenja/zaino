@@ -1,7 +1,9 @@
 import React from 'react';
 import { batch, useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { firebase } from '../../../firebase/firebase';
 import useToggle from '../../../hooks/useToggle';
+import { sessionHistory } from '../../../routes/AppRouter';
 import { resetItemsState } from '../../../state/slices/items';
 import { resetLabelsState } from '../../../state/slices/labels';
 import { logout } from '../../../state/slices/user';
@@ -32,7 +34,7 @@ export const AccountDetails = () => {
     <Popover
       isOpen={isPopoverOpen}
       onClickOutside={togglePopover}
-      containerClassName="popover--wide"
+      className="popover--wide"
       align="end"
       content={
         <>
@@ -40,16 +42,23 @@ export const AccountDetails = () => {
             <Popover.Title>Account</Popover.Title>
             <CloseButton onClick={togglePopover} />
           </Popover.Header>
-          <Popover.Content>
+          <Popover.Content className="account-details__content">
             <img src={photoUrl} className="account-details__photo" />
-            <div className="account-details__info">
-              <div className="account-details__name">{name}</div>
-              <div className="account-details__email">{email}</div>
-            </div>
+            <div className="account-details__name">{name}</div>
+            <div className="account-details__email">{email}</div>
+            {/* render policy link if enabled in .env */}
+            {process.env.PRIVACY_POLICY_ENABLED === 'true' && (
+              <Link
+                className="account-details__policies"
+                to={{ pathname: '/privacy', state: { from: sessionHistory.location.pathname } }}
+              >
+                Privacy and cookie policy
+              </Link>
+            )}
+            <Button className="button--grey account-details__sign-out" onClick={handleLogout}>
+              Sign out
+            </Button>
           </Popover.Content>
-          <Button className="button--grey account-details__sign-out" onClick={handleLogout}>
-            Sign out
-          </Button>
         </>
       }
     >

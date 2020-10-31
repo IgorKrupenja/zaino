@@ -13,5 +13,5 @@ type BulletWrapperProps = {
  * Based on https://stackoverflow.com/a/41080934/7405507
  */
 export const BulletWrapper = ({ children, className }: BulletWrapperProps) => {
-  return <div className={`bullet-wrapper${getClassString(className)}`}>{children}</div>;
+  return <div className={getClassString('bullet-wrapper', className)}>{children}</div>;
 };

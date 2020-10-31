@@ -42,7 +42,7 @@ export const EditItem = ({ item }: { item: Item }) => {
         <Popover
           isOpen={isPopoverOpen}
           onClickOutside={togglePopover}
-          containerClassName="popover--wide"
+          className="popover--wide"
           align="center"
           content={
             <>
@@ -51,18 +51,20 @@ export const EditItem = ({ item }: { item: Item }) => {
                 <CloseButton onClick={togglePopover} />
               </Popover.Header>
               <Popover.Content>
-                The item will be deleted from inventory
-                {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
+                <Popover.Text>
+                  The item will be deleted from inventory
+                  {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
+                </Popover.Text>
+                <Button
+                  className="button--red"
+                  onClick={() => {
+                    closeModal();
+                    dispatch(deleteItem(item));
+                  }}
+                >
+                  Delete
+                </Button>
               </Popover.Content>
-              <Button
-                className="button--red button--wide"
-                onClick={() => {
-                  closeModal();
-                  dispatch(deleteItem(item));
-                }}
-              >
-                Delete
-              </Button>
             </>
           }
         >

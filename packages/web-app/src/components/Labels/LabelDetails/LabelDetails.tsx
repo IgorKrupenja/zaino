@@ -2,7 +2,7 @@ import { Label } from '@zaino/shared/';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useToggle from '../../../hooks/useToggle';
-import { history } from '../../../routes/AppRouter';
+import { sessionHistory } from '../../../routes/AppRouter';
 import { resetItemFilters } from '../../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../../state/slices/labels';
 import { Button } from '../../Controls/Button';
@@ -33,7 +33,7 @@ export const LabelDetails = (label: Label) => {
             label={label}
             onClick={() => {
               dispatch(resetItemFilters());
-              history.push('./dashboard');
+              sessionHistory.push('./dashboard');
             }}
             // show live label name preview (as user is typing) if form is open
           >
@@ -56,7 +56,6 @@ export const LabelDetails = (label: Label) => {
           </Button>
         )}
       </RowWrapper>
-      {/* form if open */}
       {isFormOpen && (
         <LabelForm
           label={label}
@@ -69,7 +68,7 @@ export const LabelDetails = (label: Label) => {
           <Popover
             isOpen={isPopoverOpen}
             onClickOutside={togglePopover}
-            containerClassName="popover--wide"
+            className="popover--wide"
             content={
               <>
                 <Popover.Header>
@@ -77,14 +76,16 @@ export const LabelDetails = (label: Label) => {
                   <CloseButton onClick={togglePopover} />
                 </Popover.Header>
                 <Popover.Content>
-                  Deleting a label will remove it from all items. There is no undo.
+                  <Popover.Text>
+                    Deleting a label will remove it from all items. There is no undo.
+                  </Popover.Text>
+                  <Button
+                    className="button--red"
+                    onClick={() => label && dispatch(deleteLabel(label.id))}
+                  >
+                    Delete
+                  </Button>
                 </Popover.Content>
-                <Button
-                  className="button--red button--wide"
-                  onClick={() => label && dispatch(deleteLabel(label.id))}
-                >
-                  Delete
-                </Button>
               </>
             }
           >

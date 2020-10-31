@@ -16,7 +16,7 @@ export const CategoryImage = ({ categoryName: categoryName, className }: Categor
   return (
     <img
       src={`${process.env.GCP_STORAGE_URL as string}/categories/${imageFileName}`}
-      className={`category-image${getClassString(className)}`}
+      className={getClassString('category-image', className)}
     />
   );
 };

@@ -11,5 +11,5 @@ type ColumnWrapperProps = {
  * Wrapper component to arrange children in a column: vertically from top to bottom.
  */
 export const ColumnWrapper = ({ className, children }: ColumnWrapperProps) => {
-  return <div className={`column-wrapper${getClassString(className)}`}>{children}</div>;
+  return <div className={getClassString('column-wrapper', className)}>{children}</div>;
 };
