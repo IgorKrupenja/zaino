@@ -41,11 +41,6 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 ## Roadmap
 
-### 0.1.1
-
-- **Collect user feedback and make any necessary improvements based on it.**
-- Add privacy and cookie policies.
-
 ### 0.1.2
 
 - Add anonymous login.
@@ -59,6 +54,11 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 Progress can be tracked in [Github projects](https://github.com/igor-krupenja/zaino/projects/1?card_filter_query=milestone%3A0.2.0).
 
 ## Changelog
+
+### 0.1.1 (4th November 2020)
+
+- Usability and styling improvements based on user feedback.
+- Add privacy and cookie policy.
 
 ### 0.1.0 (15th October 2020)
 
