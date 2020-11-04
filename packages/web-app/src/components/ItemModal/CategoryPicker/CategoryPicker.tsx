@@ -1,8 +1,6 @@
 import React from 'react';
-import { closeModal } from '../../../utils/closeModal';
 import { Button } from '../../Controls/Button';
 import { EditIcon } from '../../Icons/EditIcon';
-import { Category } from '../../Misc/Category';
 import { CategoryImage } from '../../Misc/CategoryImage';
 import { CategorySelect } from '../../Selects/CategorySelect';
 import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
@@ -38,7 +36,7 @@ export const CategoryPicker = ({ categoryName, onChange }: CategoryPickerProps) 
         {/* Category image */}
         <CategoryImage categoryName={categoryName} />
         {/* Category name */}
-        <Category category={categoryName} onClick={closeModal} className="category-picker__name" />
+        <div className="category-picker__name">{categoryName}</div>
       </RowWrapper>
     </ColumnWrapper>
   );

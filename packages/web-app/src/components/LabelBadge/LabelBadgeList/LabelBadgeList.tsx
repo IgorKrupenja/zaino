@@ -10,16 +10,27 @@ type LabelBadgeListProps = {
   labelIds: string[] | undefined;
   className?: string;
   onBadgeClick?: () => void;
+  badgeClickDisabled?: boolean;
 };
 
-export const LabelBadgeList = ({ labelIds, className, onBadgeClick }: LabelBadgeListProps) => {
+export const LabelBadgeList = ({
+  badgeClickDisabled,
+  labelIds,
+  className,
+  onBadgeClick,
+}: LabelBadgeListProps) => {
   const labels = useSelector((state: RootState) => state.labels);
   const itemLabels = labelIds?.map(labelId => labels.find(label => label.id === labelId) as Label);
 
   return itemLabels && itemLabels?.length > 0 ? (
     <div className={getClassString('label-badge-list', className)}>
       {itemLabels.map(label => (
-        <LabelBadge onClick={onBadgeClick} key={label.id} label={label} />
+        <LabelBadge
+          onClick={onBadgeClick}
+          key={label.id}
+          label={label}
+          disabled={badgeClickDisabled}
+        />
       ))}
     </div>
   ) : null;

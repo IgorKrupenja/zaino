@@ -1,5 +1,4 @@
 import React from 'react';
-import { closeModal } from '../../../utils/closeModal';
 import { Button } from '../../Controls/Button';
 import { EditIcon } from '../../Icons/EditIcon';
 import { LabelBadgeList } from '../../LabelBadge/LabelBadgeList';
@@ -35,7 +34,7 @@ export const LabelPicker = ({ labelIds, onChange }: LabelPickerProps) => {
         </Button>
       </LabelSelect>
       {/* Label badge list */}
-      <LabelBadgeList onBadgeClick={closeModal} labelIds={labelIds} />
+      <LabelBadgeList labelIds={labelIds} badgeClickDisabled />
     </ColumnWrapper>
   );
 };
