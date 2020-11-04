@@ -62,10 +62,16 @@ export const LabelForm = ({
 
   return (
     <form className={getClassString('label-form', className)} onSubmit={handleSubmit}>
-      <FormLabel htmlFor="name">Name</FormLabel>
+      <FormLabel className="label-form__input__label" htmlFor={label.name || 'new-name'}>
+        Name
+      </FormLabel>
       <RowWrapper>
         <Input
-          name="name"
+          // use actual label.name instead of "name" so that name and id are unique
+          // this is needed to focus the correct input on FormLabel click
+          // if forms for several labels are open at the same time
+          // "new-name" is used for new labels
+          name={label.name || 'new-name'}
           className="label-form__input"
           value={values.name}
           error={nameError}
@@ -87,7 +93,7 @@ export const LabelForm = ({
           }}
         />
       </RowWrapper>
-      {nameError && <FormError>{nameError}</FormError>}
+      {nameError && <FormError className="label-form__input__error">{nameError}</FormError>}
       <RowWrapper className="label-form__buttons">
         <Button
           className="button--grey label-form__cancel"

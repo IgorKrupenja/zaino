@@ -15,20 +15,13 @@
   flex-grow: 1;
 }
 
+.label-form__input__label,
+.label-form__input__error {
+  width: max-content;
+}
+
 .label-form__cancel {
   order: 1;
   margin-right: $s-size;
   margin-left: auto;
-}
-
-.label-form--controls-white {
-  .label-form__input {
-    background-color: white;
-  }
-  .label-form__cancel {
-    background-color: white;
-    &:hover {
-      background-color: $extra-light-grey;
-    }
-  }
 }

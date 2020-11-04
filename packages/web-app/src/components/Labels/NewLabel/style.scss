@@ -1,3 +1,20 @@
+.new-label {
+  .label-form__input {
+    background-color: white;
+  }
+  .label-form__cancel {
+    background-color: white;
+    &:hover {
+      background-color: $extra-light-grey;
+    }
+  }
+}
+
+.new-label__container {
+  border-top: $border;
+  // border-bottom: $border;
+}
+
 .new-label__badge {
   // +0.2rem to better align with first existing label in list - though this is minor
   margin: ($s-size + 0.2rem) $s-size $s-size $s-size;

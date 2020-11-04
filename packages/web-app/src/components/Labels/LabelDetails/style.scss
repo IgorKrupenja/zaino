@@ -1,10 +1,13 @@
 .label-details {
   border-top: $border;
   background: white;
+
+  &:nth-child(1) {
+    border-top: none;
+  }
 }
 
 .label-details__main {
-  display: flex;
   justify-content: space-between;
   padding: $s-size;
 }

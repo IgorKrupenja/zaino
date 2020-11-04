@@ -49,7 +49,9 @@ export const Labels = () => {
       {labelCount > 0 ? (
         labels.map(label => <LabelDetails key={label.id} {...label} />)
       ) : (
-        <List.Empty>{`No${labelCount === totalLabelCount ? '' : ' matching'} labels`}</List.Empty>
+        <List.Empty className={isFormOpen ? 'list--empty--border' : ''}>{`No${
+          labelCount === totalLabelCount ? '' : ' matching'
+        } labels`}</List.Empty>
       )}
     </List>
   );

@@ -1,8 +1,10 @@
 import React, { ReactNode } from 'react';
+import { getClassString } from '../../../utils/getClassString';
 import './style.scss';
 
 type ListProps = {
   children: ReactNode;
+  className?: string;
 };
 
 /**
@@ -16,8 +18,8 @@ export const List = ({ children }: ListProps) => {
 /**
  * Sub-component to style empty list when there are no (filtered) labels.
  */
-const Empty = ({ children }: ListProps) => {
-  return <section className="list--empty">{children}</section>;
+const Empty = ({ children, className }: ListProps) => {
+  return <section className={getClassString('list--empty', className)}>{children}</section>;
 };
 
 List.Empty = Empty;

@@ -26,12 +26,12 @@ export const NewLabel = ({ toggleForm }: NewLabelProps) => {
   const [name, setName] = useState(newLabel.name);
 
   return (
-    <div>
+    <div className="new-label__container">
       <LabelBadge className="new-label__badge" colorName={colorName} disabled>
         {name.trim() ? name : 'new label'}
       </LabelBadge>
       <LabelForm
-        className="label-form--controls-white"
+        className="new-label"
         label={newLabel}
         // lastSortIndex to keep newly-created label at the top of the list -- if sorting by name
         onSubmit={label => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
