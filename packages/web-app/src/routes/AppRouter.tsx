@@ -2,6 +2,7 @@ import { createBrowserHistory } from 'history';
 import React, { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
+import { Loader } from '../components/Misc/Loader';
 import { DashboardPage } from '../components/Pages/DashboardPage';
 import { LabelsPage } from '../components/Pages/LabelsPage';
 import { LoginPage } from '../components/Pages/LoginPage';
@@ -30,7 +31,7 @@ const AppRouter = () => {
         {/* only render policy routes if imported above */}
         {PrivacyPolicy && (
           <Route path="/privacy">
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loader />}>
               <PrivacyPolicy />
             </Suspense>
           </Route>
