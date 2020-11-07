@@ -11,7 +11,9 @@
 
 ## Overview
 
-🚧🚧🚧 **Please note that Zaino is a work in progress.** For instance, it does not have a mobile version yet.
+🚧🚧🚧 **Please note that Zaino is a work in progress.** 🚧🚧🚧 
+
+For instance, the app does not have a mobile version yet.
 
 So far, the following features have been implemented.
 
