@@ -43,12 +43,9 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 ## Roadmap
 
-### 0.1.2
-
-- Add anonymous login.
-
 ### 0.2.0
 
+- Add anonymous login.
 - Learn more about unit testing React and create unit tests.
 - Create a mobile-friendly app version. Yeah, I know, not having a mobile version sucks.
 - Create a proper app logo.
