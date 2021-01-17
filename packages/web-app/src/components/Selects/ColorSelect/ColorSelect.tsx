@@ -6,6 +6,12 @@ import { EditIcon } from '../../Icons/EditIcon';
 import { SelectOption, SelectPopover } from '../SelectPopover';
 import { colorSelectStyles } from './style';
 
+export type ColorSelectOption = {
+  value: ColorName;
+  label: string;
+  hexValue: string;
+};
+
 type ColorSelectProps = {
   selectedColorName: ColorName;
   onChange: (colorName: ColorName) => void;
@@ -19,13 +25,14 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
       hexValue: color.hexValue,
     }))
   ).current;
-  const [value, setValue] = useState<ValueType<SelectOption>>(
+  const [value, setValue] = useState(
     options.find(color => color.value === selectedColorName)
   );
 
-  const handleChange = (newValue: ValueType<SelectOption>) => {
-    setValue(newValue);
-    onChange((newValue as SelectOption)?.value as ColorName);
+  const handleChange = (newValue: ValueType<SelectOption, boolean>) => {
+    const selectedOption = newValue as ColorSelectOption;
+    setValue(selectedOption);
+    onChange(selectedOption.value);
   };
 
   return (

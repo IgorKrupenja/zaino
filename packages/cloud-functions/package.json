@@ -1,6 +1,6 @@
 {
   "name": "@zaino/cloud-functions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "build": "NODE_ENV=production firebase -P prod functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getEnvRegion.ts) && rm -rf ./dist && tsc",
     "build-dev": "firebase functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getEnvRegion.ts) && rm -rf ./dist && tsc",
@@ -22,7 +22,7 @@
     "dotenv": "^8.2.0",
     "firebase-admin": "^9.2.0",
     "firebase-functions": "^3.6.1",
-    "firebase-tools": "^8.9.2",
+    "firebase-tools": "^9.2.1",
     "typescript": "^4.0.2"
   },
   "devDependencies": {

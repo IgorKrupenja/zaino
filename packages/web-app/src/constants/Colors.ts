@@ -1,4 +1,4 @@
-import styles from '../styles/base/_settings.scss';
+import styles from '../styles/base/_export.scss';
 
 // Unused ideas:
 // ocean, sun, tree, earth, spring, summer

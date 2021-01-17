@@ -1,0 +1,31 @@
+@import './settings';
+
+// export variables to use in TS for styling
+// note that these are in a separate file
+// in order to prevent sass-resources-loader appending the exports several times
+// which results in duplicate code in bundle CSS when building for production
+:export {
+  xsSize: $xs-size;
+  sSize: $s-size;
+  lSize: $l-size;
+  xlSize: $xl-size;
+  fontSizeSmall: $s-size;
+  offWhite: $off-white;
+  extraLightGrey: $extra-light-grey;
+  lightGrey: $light-grey;
+  midGrey: $mid-grey;
+  offBlack: $off-black;
+  grey: $grey;
+  lightBlue: $light-blue;
+  blue: $blue;
+  red: $red;
+  orange: $orange;
+  yellow: $yellow;
+  purple: $purple;
+  green: $green;
+  darkGreen: $dark-green;
+  brown: $brown;
+  darkBlue: $dark-blue;
+  border: $border;
+  inputShadow: $input-shadow;
+}

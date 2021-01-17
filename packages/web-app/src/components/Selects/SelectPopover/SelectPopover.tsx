@@ -10,17 +10,17 @@ import { commonSelectStyles } from './style';
 export type SelectOption = {
   value: string;
   label: string;
-  // for ColorSelect
+  // for LabelSelect
   hexValue?: string;
 };
 
 type SelectPopoverProps = {
   isCreatable?: boolean;
   headerText: string;
-  onChange: (value: ValueType<SelectOption>) => void;
+  onChange: (value: ValueType<SelectOption, boolean>) => void;
   children: ReactNode;
   popoverAlign?: Align;
-} & Props<SelectOption>;
+} & Props<SelectOption, boolean>;
 
 /**
  * Core select component with popover used in actual re-usable selects.
@@ -52,12 +52,12 @@ export const SelectPopover = ({
     }
   };
 
-  const handleChange = (newValues: ValueType<SelectOption>) => {
+  const handleChange = (newValues: ValueType<SelectOption, boolean>) => {
     !isCreatable && closePopover();
     onChange(newValues);
   };
 
-  const mergedProps: Props<SelectOption> = {
+  const mergedProps: Props<SelectOption, boolean> = {
     placeholder: `Search${isCreatable ? ' or create new' : ''}`,
     autoFocus: true,
     hideSelectedOptions: false,

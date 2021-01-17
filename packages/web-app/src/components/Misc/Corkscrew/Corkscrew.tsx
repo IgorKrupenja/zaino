@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../../styles/base/_settings.scss';
+import styles from '../../../styles/base/_export.scss';
 
 /**
  * A small easter egg and a homage to Dmitri who provided me with the demo data. ;)

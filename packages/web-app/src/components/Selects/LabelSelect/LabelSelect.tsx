@@ -54,7 +54,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
     setOptions(prepareOptions(labels));
   }, [labels]);
 
-  const handleChange = (newValues: ValueType<SelectOption>) => {
+  const handleChange = (newValues: ValueType<SelectOption, boolean>) => {
     const newValueArray = newValues as SelectOption[];
     // turn values into labelIds
     const labelIds: string[] = newValueArray ? newValueArray.map(label => label.value) : [];

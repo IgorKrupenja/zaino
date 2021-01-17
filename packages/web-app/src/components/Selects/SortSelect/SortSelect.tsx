@@ -43,7 +43,7 @@ export const SortSelect = ({
   // display proper sort options when sorting is reset in FilterReset
   useEffect(() => setValue(prepareValue(selectedOption)), [selectedOption, prepareValue]);
 
-  const handleChange = (newValue: ValueType<SelectOption>) => {
+  const handleChange = (newValue: ValueType<SelectOption, boolean>) => {
     onChange((newValue as SelectOption).label);
   };
 

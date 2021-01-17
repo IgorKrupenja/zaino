@@ -38,7 +38,7 @@ export const CategorySelect = ({
   );
   const [value, setValue] = useState(prepareValue(selectedCategoryName));
 
-  const handleChange = (newValue: ValueType<SelectOption>) => {
+  const handleChange = (newValue: ValueType<SelectOption, boolean>) => {
     const selectedOption = newValue as SelectOption;
     onChange(selectedOption?.label);
   };

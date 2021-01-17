@@ -48,15 +48,34 @@ const config: webpack.Configuration = {
         ].filter(Boolean) as webpack.RuleSetUseItem[],
       },
       {
-        test: /\.s?css$/,
+        // separately process _settings.css as a module
+        // needed for the exported SCSS variables to work in TS files
+        test: /_export\.scss$/,
         use: [
+          // style loader build times faster
+          // but MiniCssExtractPlugin extracts CSS out of JS in production
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: 'css-loader',
             options: {
-              // hot module reload for SCSS in development
-              hmr: isDevelopment,
+              sourceMap: true,
+              modules: true,
             },
           },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        // all other CSS files
+        test: /\.s?css$/,
+        exclude: /_export\.scss$/,
+        use: [
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -86,18 +105,14 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.svg$/,
-        issuer: {
-          // load svg files as React components in TSX files
-          test: /\.tsx$/,
-        },
+        // load svg files as React components in TSX files
+        issuer: /\.tsx$/,
         use: ['@svgr/webpack'],
       },
       {
         test: /\.svg$/,
-        issuer: {
-          // load svg files with file loader in SCSS and TS style files
-          test: /(style\.ts|\.scss)$/,
-        },
+        // load svg files with file loader in SCSS and TS style files
+        issuer: /(style\.ts|\.scss)$/,
         use: [
           {
             loader: 'file-loader',
@@ -136,7 +151,7 @@ const config: webpack.Configuration = {
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
-  ].filter(Boolean) as webpack.Plugin[],
+  ].filter(Boolean) as webpack.WebpackPluginInstance[],
   devtool: isDevelopment ? 'inline-source-map' : 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),

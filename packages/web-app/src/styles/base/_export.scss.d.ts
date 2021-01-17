@@ -1,5 +1,4 @@
-// needed to correctly import settings SCSS in TS
-// exact types needed to get Intellisense in VSCode
+// needed to correctly import settings SCSS variables in TS
 export type settings = {
   grey: string;
   lightBlue: string;
