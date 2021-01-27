@@ -18,7 +18,7 @@ For instance, the app does not have a mobile version yet.
 So far, the following features have been implemented.
 
 - **Log-in with Google account**. Fast and secure log in with your Google account.
-- **Data storage with Firestore**. Your data is safely stored in a Firestore database both with live demo and if you self-host Zaino.
+- **Data storage with Firestore**. Your data is safely stored in a Cloud Firestore database both with live demo and if you self-host Zaino.
 - **Robust search and filtering**. Easily filter and sort your items by name, category, label, weight, etc.
 - **Efficient packing for your next adventure**. Pack list offers a convenient overview of the items you want to take with you, including weight.
 - **Flexible label system**. Organise your items in any way you want with custom labels.
@@ -33,7 +33,7 @@ So far, the following features have been implemented.
 - SCSS (no frameworks)
 - Yarn workspaces
 - Webpack
-- Firestore, Firebase Authentication, Firebase Functions, Google Cloud Storage, Firebase Hosting
+- Cloud Firestore, Firebase Authentication, Firebase Functions, Google Cloud Storage, Firebase Hosting
 
 ## Live Demo
 
