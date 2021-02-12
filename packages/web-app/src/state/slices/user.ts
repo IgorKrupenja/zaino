@@ -1,8 +1,19 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { batch } from 'react-redux';
 import { firebase, googleAuthProvider } from '../../firebase/firebase';
+import { resetItemsState } from './items';
+import { resetLabelsState } from './labels';
 
 export const login = createAsyncThunk('user/login', async () => {
   await firebase.auth().signInWithRedirect(googleAuthProvider);
+});
+
+export const logout = createAsyncThunk('user/logout', async (unused, { dispatch }) => {
+  await firebase.auth().signOut();
+  batch(() => {
+    dispatch(resetItemsState());
+    dispatch(resetLabelsState());
+  });
 });
 
 type User = {
@@ -23,9 +34,11 @@ const userSlice = createSlice({
       // set all state properties
       return action.payload;
     },
-    logout: () => initialState,
+  },
+  extraReducers: builder => {
+    builder.addCase(logout.pending, () => initialState);
   },
 });
 
-export const { setUserDetails, logout } = userSlice.actions;
+export const { setUserDetails } = userSlice.actions;
 export default userSlice.reducer;
