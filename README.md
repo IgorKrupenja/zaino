@@ -115,7 +115,7 @@ Please note that the development setup has only been tested on macOS and Ubuntu 
 
 #### Preparation
 
-1. Install current (or LTS) Node.js or [use nvm](https://github.com/nvm-sh/nvm).
+1. Install Node.js LTS or [use nvm](https://github.com/nvm-sh/nvm).
 2. Install Yarn.
 3. Clone the repo with `git clone https://github.com/igor-krupenja/zaino.git` or [fork it](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
 4. In the root of your cloned repo folder, run `yarn install`.

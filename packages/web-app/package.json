@@ -10,7 +10,7 @@
     "preserve": "yarn run build",
     "serve": "firebase serve -P prod --only hosting",
     "deploy": "firebase deploy -P prod --only hosting,firestore",
-    "analyze": "NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --profile --json > dist/stats.json; webpack-bundle-analyzer dist/stats.json"
+    "analyze": "NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --profile --json > dist/stats.json && webpack-bundle-analyzer dist/stats.json"
   },
   "dependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
