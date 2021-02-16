@@ -4,8 +4,8 @@ import { shallowEqual, useSelector } from 'react-redux';
 import { selectFilteredPackItems } from '../../../state/selectors/items';
 import { selectPackItemsStats } from '../../../state/selectors/itemsStats';
 import { RootState } from '../../../state/store';
-import { SectionHeader } from '../../Misc/SectionHeader';
-import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
+import { SectionHeader } from '../../Common/Misc/SectionHeader';
+import { Column } from '../../Common/Wrappers/Column';
 import { PackItem } from '../PackItem';
 import { Stack } from '../Stack';
 import { Stats } from '../Stats';
@@ -20,10 +20,10 @@ export const Pack = () => {
   return (
     <Stack className="stack--right">
       <SectionHeader className="section-header--large-margin">
-        <ColumnWrapper>
+        <Column>
           <SectionHeader.Title>Pack</SectionHeader.Title>
           <Stats className="section-header__content" stats={stats} />
-        </ColumnWrapper>
+        </Column>
       </SectionHeader>
       {items.length > 0 ? (
         <Stack.List>

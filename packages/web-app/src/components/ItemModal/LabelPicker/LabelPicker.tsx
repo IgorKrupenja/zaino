@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from '../../Controls/Button';
-import { EditIcon } from '../../Icons/EditIcon';
-import { LabelBadgeList } from '../../LabelBadge/LabelBadgeList';
-import { LabelSelect } from '../../Selects/LabelSelect';
-import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
+import { Button } from '../../Common/Controls/Button';
+import { EditIcon } from '../../Common/Icons/EditIcon';
+import { LabelBadgeList } from '../../Common/LabelBadge/LabelBadgeList';
+import { LabelSelect } from '../../Common/Selects/LabelSelect';
+import { Column } from '../../Common/Wrappers/Column';
 import './style.scss';
 
 type LabelPickerProps = {
@@ -18,7 +18,7 @@ type LabelPickerProps = {
  */
 export const LabelPicker = ({ labelIds, onChange }: LabelPickerProps) => {
   return (
-    <ColumnWrapper className="label-picker">
+    <Column className="label-picker">
       {/* Select */}
       <LabelSelect
         popoverAlign="center"
@@ -35,6 +35,6 @@ export const LabelPicker = ({ labelIds, onChange }: LabelPickerProps) => {
       </LabelSelect>
       {/* Label badge list */}
       <LabelBadgeList labelIds={labelIds} badgeClickDisabled />
-    </ColumnWrapper>
+    </Column>
   );
 };

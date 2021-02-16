@@ -10,17 +10,17 @@ import {
   setItemTextFilter,
   sortItemsBy,
 } from '../../../state/slices/itemsFilters';
-import { LabelSortOption } from '../../../state/slices/labelsFilters';
+import { CollectionSortOption } from '../../../state/collectionSettings';
 import { RootState } from '../../../state/store';
-import { Button } from '../../Controls/Button';
-import { Input } from '../../Controls/Input';
-import { DropdownIcon } from '../../Icons/DropdownIcon';
-import { FilterReset } from '../../Misc/FilterReset';
-import { CategorySelect } from '../../Selects/CategorySelect';
-import { LabelSelect } from '../../Selects/LabelSelect';
-import { SortSelect } from '../../Selects/SortSelect';
-import { FiltersWrapper } from '../../Wrappers/FiltersWrapper';
-import { RowWrapper } from '../../Wrappers/RowWrapper';
+import { Button } from '../../Common/Controls/Button';
+import { Input } from '../../Common/Controls/Input';
+import { DropdownIcon } from '../../Common/Icons/DropdownIcon';
+import { FilterReset } from '../../Common/Filters/FilterReset';
+import { CategorySelect } from '../../Common/Selects/CategorySelect';
+import { LabelSelect } from '../../Common/Selects/LabelSelect';
+import { SortSelect } from '../../Common/Selects/SortSelect';
+import { FiltersWrapper } from '../../Common/Filters/FiltersWrapper';
+import { Row } from '../../Common/Wrappers/Row';
 
 export const ItemFilters = () => {
   const dispatch = useDispatch();
@@ -70,7 +70,7 @@ export const ItemFilters = () => {
 
   return (
     <FiltersWrapper>
-      <RowWrapper className="row-wrapper--full-width">
+      <Row className="row-wrapper--full-width">
         {/* Name */}
         <Input
           className="input--grow input--search"
@@ -109,9 +109,9 @@ export const ItemFilters = () => {
           sortOptions={ItemSortOption}
           onChange={handleSortChange}
           selectedOption={filters.sortBy}
-          hiddenOption={LabelSortOption.lastSortOrder}
+          hiddenOption={CollectionSortOption.lastSortOrder}
         />
-      </RowWrapper>
+      </Row>
       {/* Clear filters */}
       <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetItemFilters())}>
         Clear search, filters and sort

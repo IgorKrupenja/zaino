@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import selectFilteredInventoryItems from '../../../state/selectors/items';
 import { selectInventoryItemsStats } from '../../../state/selectors/itemsStats';
 import { RootState } from '../../../state/store';
-import { SectionHeader } from '../../Misc/SectionHeader';
-import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
+import { SectionHeader } from '../../Common/Misc/SectionHeader';
+import { Column } from '../../Common/Wrappers/Column';
 import { InventoryItem } from '../InventoryItem';
 import { Stack } from '../Stack';
 import { Stats } from '../Stats';
@@ -28,10 +28,10 @@ export const Inventory = () => {
   return (
     <Stack className="stack--left">
       <SectionHeader className="section-header--large-margin">
-        <ColumnWrapper>
+        <Column>
           <SectionHeader.Title>Inventory</SectionHeader.Title>
           <Stats className="section-header__content" stats={stats} />
-        </ColumnWrapper>
+        </Column>
         {/* styling this Link as a Button */}
         <Link className="button button--green inventory__new-item" to="/dashboard/new">
           New item

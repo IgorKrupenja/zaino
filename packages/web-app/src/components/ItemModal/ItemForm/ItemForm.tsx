@@ -3,12 +3,12 @@ import React, { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'reac
 import { useDispatch } from 'react-redux';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
 import { getArrayDifference } from '../../../utils/getArrayDifference';
-import { ExpandingInput } from '../../Controls/ExpandingInput';
-import { FormError } from '../../Controls/FormError';
-import { FormLabel } from '../../Controls/FormLabel';
-import { Input } from '../../Controls/Input';
-import { TextArea } from '../../Controls/TextArea';
-import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
+import { ExpandingInput } from '../../Common/Controls/ExpandingInput';
+import { FormError } from '../../Common/Controls/FormError';
+import { FormLabel } from '../../Common/Controls/FormLabel';
+import { Input } from '../../Common/Controls/Input';
+import { TextArea } from '../../Common/Controls/TextArea';
+import { Column } from '../../Common/Wrappers/Column';
 import { CategoryPicker } from '../CategoryPicker';
 import { LabelPicker } from '../LabelPicker';
 import './style.scss';
@@ -94,7 +94,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
   return (
     <form onSubmit={handleSubmit} className="item-form">
       {/* Name */}
-      <ColumnWrapper className="item-form__full-width">
+      <Column className="item-form__full-width">
         <FormLabel htmlFor="name">Name</FormLabel>
         <ExpandingInput
           name="name"
@@ -105,9 +105,9 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           clearError={() => setErrors({ ...errors, name: '' })}
         />
         {errors.name && <FormError>{errors.name}</FormError>}
-      </ColumnWrapper>
+      </Column>
       {/* Quantity */}
-      <ColumnWrapper>
+      <Column>
         <FormLabel htmlFor="quantity">Quantity</FormLabel>
         <Input
           name="quantity"
@@ -121,9 +121,9 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           }}
         />
         {errors.quantity && <FormError>{errors.quantity}</FormError>}
-      </ColumnWrapper>
+      </Column>
       {/* Weight */}
-      <ColumnWrapper>
+      <Column>
         <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
         <Input
           name="weight"
@@ -132,7 +132,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           error={errors.weight}
           maxLength={5}
         />
-      </ColumnWrapper>
+      </Column>
       {/* Category */}
       <CategoryPicker
         categoryId={values.categoryId}
@@ -144,10 +144,10 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         onChange={labelIds => setValues({ ...values, labelIds })}
       />
       {/* Notes */}
-      <ColumnWrapper className="item-form__full-width item-form__notes">
+      <Column className="item-form__full-width item-form__notes">
         <FormLabel htmlFor="notes">Notes</FormLabel>
         <TextArea name="notes" value={values.notes} onChange={handleChange} />
-      </ColumnWrapper>
+      </Column>
       {/* Buttons */}
       {children}
     </form>

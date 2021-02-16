@@ -3,15 +3,16 @@ import React, { ReactNode, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColorName } from '../../../constants/Colors';
 import { selectAllLabels } from '../../../state/selectors/labels';
-import { LabelSortOption, sortLabelsBy } from '../../../state/slices/labelsFilters';
+import { sortLabelsBy } from '../../../state/slices/labelsFilters';
+import { CollectionSortOption } from '../../../state/collectionSettings';
 import { RootState } from '../../../state/store';
 import { getClassString } from '../../../utils/getClassString';
-import { Button } from '../../Controls/Button';
-import { FormError } from '../../Controls/FormError';
-import { FormLabel } from '../../Controls/FormLabel';
-import { Input } from '../../Controls/Input';
-import { ColorSelect } from '../../Selects/ColorSelect';
-import { RowWrapper } from '../../Wrappers/RowWrapper';
+import { Button } from '../../Common/Controls/Button';
+import { FormError } from '../../Common/Controls/FormError';
+import { FormLabel } from '../../Common/Controls/FormLabel';
+import { Input } from '../../Common/Controls/Input';
+import { ColorSelect } from '../../Common/Selects/ColorSelect';
+import { Row } from '../../Common/Wrappers/Row';
 import './style.scss';
 
 type LabelFormProps = {
@@ -53,8 +54,8 @@ export const LabelForm = ({
       setNameError('Label with this name already exists');
     } else {
       // allows for in-place rename if sort is set to name
-      labelSortOption === LabelSortOption.name &&
-        dispatch(sortLabelsBy(LabelSortOption.lastSortOrder));
+      labelSortOption === CollectionSortOption.name &&
+        dispatch(sortLabelsBy(CollectionSortOption.lastSortOrder));
       onSubmit({ ...values });
       toggleForm();
     }
@@ -65,7 +66,7 @@ export const LabelForm = ({
       <FormLabel className="label-form__input__label" htmlFor={label.name || 'new-name'}>
         Name
       </FormLabel>
-      <RowWrapper>
+      <Row>
         <Input
           // use actual label.name instead of "name" so that name and id are unique
           // this is needed to focus the correct input on FormLabel click
@@ -92,9 +93,9 @@ export const LabelForm = ({
             setValues({ ...values, colorName });
           }}
         />
-      </RowWrapper>
+      </Row>
       {nameError && <FormError className="label-form__input__error">{nameError}</FormError>}
-      <RowWrapper className="label-form__buttons">
+      <Row className="label-form__buttons">
         <Button
           className="button--grey label-form__cancel"
           onClick={() => {
@@ -109,7 +110,7 @@ export const LabelForm = ({
         </Button>
         {/* other buttons passed as children */}
         {children}
-      </RowWrapper>
+      </Row>
     </form>
   );
 };

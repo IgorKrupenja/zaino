@@ -1,37 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export type LabelFilters = {
-  text: string;
-  sortBy: LabelSortOption;
-};
-
-export enum LabelSortOption {
-  name = 'Alphabetically',
-  nameReverse = 'Reverse alphabetically',
-  itemsHighest = 'Most items',
-  itemsLowest = 'Least items',
-  itemsUniqueHighest = 'Most unique items',
-  itemsUniqueLowest = 'Least unique items',
-  // see comments in labels slice for saveSortOrder
-  lastSortOrder = 'Last sort order',
-}
-
-export const labelFiltersInitialState: LabelFilters = {
-  text: '',
-  sortBy: LabelSortOption.name,
-};
+import { collectionFiltersInitialState, CollectionSortOption } from '../collectionSettings';
 
 const labelFiltersSlice = createSlice({
   name: 'filters-labels',
-  initialState: labelFiltersInitialState,
+  initialState: collectionFiltersInitialState,
   reducers: {
     setLabelTextFilter(state, action: PayloadAction<string>) {
       state.text = action.payload;
     },
-    sortLabelsBy(state, action: PayloadAction<LabelSortOption>) {
+    sortLabelsBy(state, action: PayloadAction<CollectionSortOption>) {
       state.sortBy = action.payload;
     },
-    resetLabelFilters: () => labelFiltersInitialState,
+    resetLabelFilters: () => collectionFiltersInitialState,
   },
 });
 

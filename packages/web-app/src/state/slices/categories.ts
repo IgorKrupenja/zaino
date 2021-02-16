@@ -22,7 +22,11 @@ const categoriesSlice = createSlice({
         }
       });
 
-      categories.forEach(category => state.push(category));
+      categories.forEach(category => {
+        if (!category.itemTotalCount) category.itemTotalCount = 0;
+        if (!category.itemUniqueCount) category.itemUniqueCount = 0;
+        state.push(category);
+      });
     },
     // reset state action to be executed on logout
     resetCategoriesState: () => [],

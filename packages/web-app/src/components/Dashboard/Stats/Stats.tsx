@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React from 'react';
-import { BulletWrapper } from '../../Wrappers/BulletWrapper';
+import { BulletRow } from '../../Common/Wrappers/BulletRow';
 import './style.scss';
 
 type StatsProps = {
@@ -45,7 +45,7 @@ export const Stats = ({ stats, className }: StatsProps) => {
       : '0g'; // also show 0g if total weight is 0 (i.e. there are only 0-weight items in list)
 
   return (
-    <BulletWrapper className={className}>
+    <BulletRow className={className}>
       {allItemUniqueCount === 0 || filteredItemUniqueCount === 0 ? (
         '0 items'
       ) : (
@@ -54,7 +54,7 @@ export const Stats = ({ stats, className }: StatsProps) => {
           <span>{weightString}</span>
         </>
       )}
-    </BulletWrapper>
+    </BulletRow>
   );
   // }
 };

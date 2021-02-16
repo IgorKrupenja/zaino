@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import BackpackIcon from '../../../images/icons/backpack.svg';
 import { updateItem } from '../../../state/slices/items';
-import { Button } from '../../Controls/Button';
+import { Button } from '../../Common/Controls/Button';
 import { ItemDetails } from '../ItemDetails/';
 import './style.scss';
 

@@ -2,18 +2,20 @@ import deepEqual from 'fast-deep-equal/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  labelFiltersInitialState,
-  LabelSortOption,
   resetLabelFilters,
   setLabelTextFilter,
   sortLabelsBy,
 } from '../../../state/slices/labelsFilters';
+import {
+  collectionFiltersInitialState,
+  CollectionSortOption,
+} from '../../../state/collectionSettings';
 import { RootState } from '../../../state/store';
-import { Input } from '../../Controls/Input';
-import { FilterReset } from '../../Misc/FilterReset';
-import { SortSelect } from '../../Selects/SortSelect';
-import { FiltersWrapper } from '../../Wrappers/FiltersWrapper';
-import { RowWrapper } from '../../Wrappers/RowWrapper';
+import { Input } from '../../Common/Controls/Input';
+import { FilterReset } from '../../Common/Filters/FilterReset';
+import { SortSelect } from '../../Common/Selects/SortSelect';
+import { FiltersWrapper } from '../../Common/Filters/FiltersWrapper';
+import { Row } from '../../Common/Wrappers/Row';
 
 export const LabelFilters = () => {
   const dispatch = useDispatch();
@@ -23,10 +25,13 @@ export const LabelFilters = () => {
 
   useEffect(() => {
     setIsFiltering(
-      !deepEqual(filters, labelFiltersInitialState) &&
+      !deepEqual(filters, collectionFiltersInitialState) &&
         // also hide filter reset if sorting by last sort order
         // see comments in labels slice for saveSortOrder
-        !deepEqual(filters, { ...labelFiltersInitialState, sortBy: LabelSortOption.lastSortOrder })
+        !deepEqual(filters, {
+          ...collectionFiltersInitialState,
+          sortBy: CollectionSortOption.lastSortOrder,
+        })
     );
   }, [filters]);
 
@@ -35,7 +40,7 @@ export const LabelFilters = () => {
 
   const firstUpdate = useRef(true);
   useEffect(() => {
-    // this is needed to prevent setItemsTextFilter running uselessly when component mounts
+    // this is needed to prevent setLabelTextFilter running uselessly when component mounts
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
@@ -46,7 +51,7 @@ export const LabelFilters = () => {
   }, [filters.text, dispatch]);
 
   const handleSortChange = (value: string) => {
-    const sortBy = value as LabelSortOption;
+    const sortBy = value as CollectionSortOption;
     setFilters({ ...filters, sortBy });
     // setTimeout to prevent UI freezing on slow PCs
     setTimeout(() => dispatch(sortLabelsBy(sortBy)), 1);
@@ -54,7 +59,7 @@ export const LabelFilters = () => {
 
   return (
     <FiltersWrapper>
-      <RowWrapper className="row-wrapper--full-width">
+      <Row className="row-wrapper--full-width">
         <Input
           className="input--grow input--search"
           placeholder="Search labels"
@@ -65,12 +70,12 @@ export const LabelFilters = () => {
           value={filters.text}
         />
         <SortSelect
-          sortOptions={LabelSortOption}
+          sortOptions={CollectionSortOption}
           selectedOption={filters.sortBy}
-          hiddenOption={LabelSortOption.lastSortOrder}
+          hiddenOption={CollectionSortOption.lastSortOrder}
           onChange={handleSortChange}
         />
-      </RowWrapper>
+      </Row>
       <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetLabelFilters())}>
         Clear search and sort
       </FilterReset>

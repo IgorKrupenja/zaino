@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
-import { Button } from '../../Controls/Button';
-import { EditIcon } from '../../Icons/EditIcon';
-import { CategoryImage } from '../../Misc/CategoryImage';
-import { CategorySelect } from '../../Selects/CategorySelect';
-import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
-import { RowWrapper } from '../../Wrappers/RowWrapper';
+import { Button } from '../../Common/Controls/Button';
+import { EditIcon } from '../../Common/Icons/EditIcon';
+import { CategoryImage } from '../../Common/Misc/CategoryImage';
+import { CategorySelect } from '../../Common/Selects/CategorySelect';
+import { Column } from '../../Common/Wrappers/Column';
+import { Row } from '../../Common/Wrappers/Row';
 import './style.scss';
 
 type CategoryPickerProps = {
@@ -24,7 +24,7 @@ export const CategoryPicker = ({ categoryId, onChange }: CategoryPickerProps) =>
   const categoryName = categories.find(category => category.id === categoryId)?.name;
 
   return (
-    <ColumnWrapper className="category-picker">
+    <Column className="category-picker">
       {/* Select */}
       <CategorySelect
         popoverAlign="center"
@@ -37,12 +37,12 @@ export const CategoryPicker = ({ categoryId, onChange }: CategoryPickerProps) =>
           <EditIcon />
         </Button>
       </CategorySelect>
-      <RowWrapper>
+      <Row>
         {/* Category image */}
         <CategoryImage categoryId={categoryId} />
         {/* Category name */}
         <div className="category-picker__name">{categoryName}</div>
-      </RowWrapper>
-    </ColumnWrapper>
+      </Row>
+    </Column>
   );
 };

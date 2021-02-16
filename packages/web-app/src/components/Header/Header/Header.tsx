@@ -4,11 +4,12 @@ import { Link, NavLink } from 'react-router-dom';
 import DashboardIcon from '../../../images/icons/dashboard.svg';
 import LabelIcon from '../../../images/icons/label.svg';
 import CategoryIcon from '../../../images/icons/category.svg';
-import { LabelSortOption, sortLabelsBy } from '../../../state/slices/labelsFilters';
+import { sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { AccountDetails } from '../AccountDetails';
 import { DemoData } from '../DemoData';
 import './style.scss';
+import { CollectionSortOption } from '../../../state/collectionSettings';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export const Header = () => {
       <header className="header">
         <h1>
           <Link to="/dashboard" className="header__title">
-            Zaino
+            Z
           </Link>
         </h1>
         <nav className="header__nav">
@@ -52,8 +53,8 @@ export const Header = () => {
             // re-sort labels by name after in-place edit and switching back to Labels page
             // see slices/labels for more details
             onClick={() =>
-              labelSortOption === LabelSortOption.lastSortOrder &&
-              dispatch(sortLabelsBy(LabelSortOption.name))
+              labelSortOption === CollectionSortOption.lastSortOrder &&
+              dispatch(sortLabelsBy(CollectionSortOption.name))
             }
             className="button button--underline header__nav__link"
             activeClassName="button--underline--active"
