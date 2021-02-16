@@ -4,6 +4,7 @@ import itemsReducer from './slices/items';
 import itemsFiltersReducer from './slices/itemsFilters';
 import labelsReducer from './slices/labels';
 import labelsFiltersReducer from './slices/labelsFilters';
+import categoriesReducer from './slices/categories';
 import userReducer from './slices/user';
 
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
     user: userReducer,
     items: itemsReducer,
     labels: labelsReducer,
+    categories: categoriesReducer,
     itemsFilters: itemsFiltersReducer,
     labelsFilters: labelsFiltersReducer,
     dataLoader: dataLoaderReducer,

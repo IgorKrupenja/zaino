@@ -135,8 +135,8 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       </ColumnWrapper>
       {/* Category */}
       <CategoryPicker
-        categoryName={values.categoryName}
-        onChange={categoryName => setValues({ ...values, categoryName })}
+        categoryId={values.categoryId}
+        onChange={categoryId => setValues({ ...values, categoryId })}
       />
       {/* Labels */}
       <LabelPicker

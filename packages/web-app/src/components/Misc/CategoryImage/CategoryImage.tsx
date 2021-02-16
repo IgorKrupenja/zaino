@@ -1,22 +1,24 @@
 import React from 'react';
-import Categories from '../../../constants/Categories';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../state/store';
 import { getClassString } from '../../../utils/getClassString';
 import './style.scss';
 
 type CategoryImageProps = {
-  categoryName: string;
+  categoryId?: string;
   className?: string;
 };
 
-export const CategoryImage = ({ categoryName: categoryName, className }: CategoryImageProps) => {
-  const imageFileName = Categories.find(category => {
-    return category.name === categoryName;
-  })?.imageFileName as string;
+export const CategoryImage = ({ categoryId, className }: CategoryImageProps) => {
+  const categories = useSelector((state: RootState) => state.categories);
+  const imageFileName = categories.find(category => category.id === categoryId)?.imageFileName;
 
-  return (
+  return categoryId ? (
     <img
       src={`${process.env.GCP_STORAGE_URL as string}/categories/${imageFileName}`}
       className={getClassString('category-image', className)}
     />
+  ) : (
+    <></>
   );
 };

@@ -16,18 +16,18 @@ type ItemDetailsProps = {
 };
 
 export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
-  const { id, name, categoryName, labelIds, weight } = item;
+  const { id, name, categoryId, labelIds, weight } = item;
 
   return (
     <article className="item-details">
-      <CategoryImage className="item-details__category-image" categoryName={categoryName} />
+      <CategoryImage className="item-details__category-image" categoryId={categoryId} />
       <h3 className="item-details--image-margin">
         <Link className="item-details__name" to={`/dashboard/edit/${id}`}>
           {name === 'CORKSCREW' ? <Corkscrew /> : name}
         </Link>
       </h3>
       <BulletWrapper className="item-details--image-margin">
-        <Category category={categoryName} className="item-details__category">
+        <Category categoryId={categoryId} className="item-details__category">
           {/* extra div to properly align SVG icon */}
           <div className="item-details__category-icon__container">
             <CategoryIcon className="item-details__category-icon" />

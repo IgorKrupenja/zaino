@@ -1,9 +1,9 @@
 import { Item } from '@zaino/shared/';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import Categories from '../../../constants/Categories';
 import { addItem } from '../../../state/slices/items';
+import { RootState } from '../../../state/store';
 import { closeModal } from '../../../utils/closeModal';
 import { Button } from '../../Controls/Button';
 import { CloseButton } from '../../Controls/CloseButton';
@@ -14,11 +14,12 @@ import './style.scss';
 
 export const NewItem = () => {
   const dispatch = useDispatch();
+  const categories = useSelector((state: RootState) => state.categories);
 
   const newItem: Item = {
     id: uuid(),
     name: '',
-    categoryName: Categories[0].name,
+    categoryId: categories.find(category => category.isDefault)?.id ?? categories[0].id,
     weight: '',
     quantity: 1,
     packQuantity: 0,

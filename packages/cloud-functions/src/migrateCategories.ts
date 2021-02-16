@@ -6,6 +6,10 @@ import * as functions from 'firebase-functions';
 import * as tools from 'firebase-tools';
 import functionsRegion from './utils/functionsRegion';
 
+/**
+ * IMPORTANT: This function was only used for a one-off migration to DB schema with categories.
+ * It should not be used anymore but is left here for reference.
+ */
 export const refactorCategories = functions
   .region(functionsRegion)
   .pubsub.topic('refactor-categories')
@@ -105,6 +109,7 @@ const categories = [
     name: 'Clothing: top',
     imageFileName: 'jacket.svg',
     id: 'a6a97ef9-3ad8-490a-852d-3fe44af3c90c',
+    isDefault: true,
   },
   {
     name: 'Clothing: legs',

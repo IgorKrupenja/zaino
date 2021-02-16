@@ -1,13 +1,15 @@
+import { Category } from '@zaino/shared';
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { ValueType } from 'react-select';
 import { Align } from 'react-tiny-popover';
-import Categories from '../../../constants/Categories';
+import { RootState } from '../../../state/store';
 import { sortSelectOptionsByName } from '../../../utils/sortSelectOptionsByName';
 import { SelectOption, SelectPopover } from '../SelectPopover';
 import { categorySelectStyles } from './style';
 
 type CategorySelectProps = {
-  selectedCategoryName: string | undefined;
+  selectedCategoryId?: string;
   onChange: (categoryName: string) => void;
   headerText: string;
   children: ReactNode;
@@ -18,17 +20,21 @@ type CategorySelectProps = {
  * Category select. Used in both ItemForm and DashboardFilters.
  */
 export const CategorySelect = ({
-  selectedCategoryName,
+  selectedCategoryId,
   onChange,
   children,
   ...rest
 }: CategorySelectProps) => {
+  const categories = useSelector((state: RootState) => state.categories);
   const [options] = useState(
-    Categories.map(category => ({
-      value: category.name,
-      label: category.name,
-    })).sort(sortSelectOptionsByName)
+    categories
+      .map(category => ({
+        value: category.id,
+        label: category.name,
+      }))
+      .sort(sortSelectOptionsByName)
   );
+
   // logic similar to LabelSelect
   const prepareValue = useCallback(
     (selectedCategoryName: string | undefined) => {
@@ -36,18 +42,15 @@ export const CategorySelect = ({
     },
     [options]
   );
-  const [value, setValue] = useState(prepareValue(selectedCategoryName));
+  const [value, setValue] = useState(prepareValue(selectedCategoryId));
 
   const handleChange = (newValue: ValueType<SelectOption, boolean>) => {
     const selectedOption = newValue as SelectOption;
-    onChange(selectedOption?.label);
+    onChange(selectedOption?.value);
   };
 
   // update selected category when clicking on a category inside ItemDetails
-  useEffect(() => setValue(prepareValue(selectedCategoryName)), [
-    selectedCategoryName,
-    prepareValue,
-  ]);
+  useEffect(() => setValue(prepareValue(selectedCategoryId)), [selectedCategoryId, prepareValue]);
 
   return (
     <SelectPopover

@@ -49,15 +49,15 @@ export const ItemFilters = () => {
     return () => clearTimeout(textFilterTimeout);
   }, [filters.text, dispatch]);
 
-  const handleCategoryChange = (category: string) => {
-    if (category === filters.category) {
+  const handleCategoryChange = (categoryId: string) => {
+    if (categoryId === filters.category) {
       // reset category filter if user clicks on a category that is already selected
       setFilters({ ...filters, category: undefined });
       setTimeout(() => dispatch(setItemCategoryFilter(undefined)), 1);
     } else {
       // set category filter normally
-      setFilters({ ...filters, category });
-      setTimeout(() => dispatch(setItemCategoryFilter(category)), 1);
+      setFilters({ ...filters, category: categoryId });
+      setTimeout(() => dispatch(setItemCategoryFilter(categoryId)), 1);
     }
   };
 
@@ -83,7 +83,7 @@ export const ItemFilters = () => {
         />
         {/* Category */}
         <CategorySelect
-          selectedCategoryName={filters.category}
+          selectedCategoryId={filters.category}
           headerText="Filter by category"
           onChange={handleCategoryChange}
         >

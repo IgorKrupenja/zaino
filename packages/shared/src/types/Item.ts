@@ -1,7 +1,7 @@
 export type Item = {
   id: string;
   name: string;
-  categoryName: string;
+  categoryId?: string;
   quantity: number;
   packQuantity: number;
   // allow empty string for weight — this seems better than undefined

@@ -3,4 +3,4 @@ admin.initializeApp();
 
 export * from './addDemoDataDb';
 export * from './backupDb';
-export * from './refactorCategories';
+export * from './migrateCategories';
