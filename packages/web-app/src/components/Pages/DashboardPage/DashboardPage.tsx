@@ -16,7 +16,8 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
-      <main className="dashboard-page">
+      {/* "--loading" needed for Loader to display correctly when loading demo data */}
+      <main className={`dashboard-page ${isLoading && 'dashboard-page--loading'}`}>
         <ItemFilters />
         {isLoading ? (
           <Loader />

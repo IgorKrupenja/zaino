@@ -2,14 +2,15 @@
   max-width: $app-width;
   margin: 0 auto;
 
-  // needed for Loader to display correctly
-  height: calc(100% - #{$header-height});
-
   position: absolute;
   top: $header-height;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.dashboard-page--loading {
+  height: calc(100% - #{$header-height});
 }
 
 .dashboard-page__stacks {

@@ -17,7 +17,8 @@ export const LabelsPage = () => {
       <Header />
       {/* extra div for proper scrollbar position with header */}
       <div className="labels-page__container">
-        <main className="labels-page">
+        {/* "--loading" needed for Loader to display correctly when loading demo data */}
+        <main className={`labels-page ${isLoading && 'labels-page--loading'}`}>
           <LabelFilters />
           {isLoading ? <Loader /> : <Labels />}
         </main>
