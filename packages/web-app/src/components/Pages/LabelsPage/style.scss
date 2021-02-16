@@ -2,7 +2,7 @@
   max-width: $labels-width;
   margin: 0 auto;
 
-  // needed for Loader to display correctly
+  // needed for Loader to display correctly when loading demo data
   height: calc(100% - #{$header-height});
 }
 
