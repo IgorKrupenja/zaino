@@ -56,7 +56,7 @@ export const CollectionFilters = ({
     // setTimeout prevents UI freezes when typing
     const textFilterTimeout = setTimeout(() => dispatch(setTextFilter(filters.text)), 200);
     return () => clearTimeout(textFilterTimeout);
-  }, [filters.text, dispatch]);
+  }, [filters.text, dispatch, setTextFilter]);
 
   const handleSortChange = (value: string) => {
     const sortBy = value as CollectionSortOption;
