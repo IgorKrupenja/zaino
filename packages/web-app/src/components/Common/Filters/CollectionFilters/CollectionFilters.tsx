@@ -14,6 +14,7 @@ import { Row } from '../../Wrappers/Row';
 import { ActionCreatorWithoutPayload, ActionCreatorWithPayload } from '@reduxjs/toolkit';
 
 type CollectionFiltersProps = {
+  textFilterPlaceholder: string;
   setTextFilter: ActionCreatorWithPayload<string, string>;
   sort: ActionCreatorWithPayload<CollectionSortOption, string>;
   resetFilters: ActionCreatorWithoutPayload<string>;
@@ -23,6 +24,7 @@ export const CollectionFilters = ({
   sort,
   setTextFilter,
   resetFilters,
+  textFilterPlaceholder,
 }: CollectionFiltersProps) => {
   const dispatch = useDispatch();
   const selectedFilters = useSelector((state: RootState) => state.categoriesFilters);
@@ -68,7 +70,7 @@ export const CollectionFilters = ({
       <Row className="row-wrapper--full-width">
         <Input
           className="input--grow input--search"
-          placeholder="Search categories"
+          placeholder={textFilterPlaceholder}
           onChange={e => {
             e.persist();
             setFilters({ ...filters, text: e.target.value });

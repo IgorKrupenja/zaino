@@ -1,15 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import selectFilteredCategories, { selectCategoryCount } from '../../../state/selectors/categories';
+import {
+  resetCategoryFilters,
+  setCategoryTextFilter,
+  sortCategoriesBy,
+} from '../../../state/slices/categoriesFilters';
 import { RootState } from '../../../state/store';
 import { CollectionFilters } from '../../Common/Filters/CollectionFilters';
 import { Loader } from '../../Common/Misc/Loader';
 import { ScrollablePage } from '../../Common/Misc/ScrollablePage';
-import {
-  setCategoryTextFilter,
-  sortCategoriesBy,
-  resetCategoryFilters,
-} from '../../../state/slices/categoriesFilters';
+import { SectionHeader } from '../../Common/Misc/SectionHeader';
+import { Column } from '../../Common/Wrappers/Column';
+import { List } from '../../Labels/List/List';
 
 export const CategoriesPage = () => {
   document.title = 'Categories | Zaino';
@@ -24,21 +27,49 @@ export const CategoriesPage = () => {
         setTextFilter={setCategoryTextFilter}
         sort={sortCategoriesBy}
         resetFilters={resetCategoryFilters}
+        textFilterPlaceholder="Search categories"
       />
       {isLoading ? (
         <Loader />
       ) : (
-        <>
-          <div>count: {categoryCount}</div>
-          <div>
-            {categories.map(c => (
-              <div>
-                {c.name} -- {c.itemTotalCount} total -- {c.itemUniqueCount} unique
+        <List>
+          {/* header with name, count and New category button */}
+          <SectionHeader className="section-header--large-margin">
+            <Column>
+              <SectionHeader.Title>Categories</SectionHeader.Title>
+              <SectionHeader.Content>
+                {categoryCount} categor{categoryCount === 1 ? 'y' : 'ies'}
+              </SectionHeader.Content>
+            </Column>
+            {/* todo btn */}
+            {/* <Button
+              className="button--green labels-page__new-label"
+              disabled={isFormOpen}
+              onClick={toggleForm}
+            >
+              New category
+            </Button> */}
+          </SectionHeader>
+          {/* new label form */}
+          {/* todo new cat form */}
+          {/* {isFormOpen && <NewLabel toggleForm={toggleForm} />} */}
+          {/* list proper */}
+          {categoryCount > 0 ? (
+            // todo proper list
+            categories.map(category => (
+              <div key={category.id}>
+                {category.name} -- {category.itemTotalCount} total -- {category.itemUniqueCount}{' '}
+                unique
               </div>
-            ))}
-          </div>
-          <div>{JSON.stringify(categories)}</div>
-        </>
+            ))
+          ) : (
+            // todo empty list
+            // <List.Empty className={isFormOpen ? 'list--empty--border' : ''}>{`No${
+            //   labelCount === totalLabelCount ? '' : ' matching'
+            // } labels`}</List.Empty>
+            <div>No categories</div>
+          )}
+        </List>
       )}
     </ScrollablePage>
   );

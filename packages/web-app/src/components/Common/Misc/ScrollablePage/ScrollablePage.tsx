@@ -15,7 +15,6 @@ type ScrollablePageProps = {
 export const ScrollablePage = ({ children }: ScrollablePageProps) => {
   const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
 
-  console.log(isLoading);
   return (
     <>
       <Header />

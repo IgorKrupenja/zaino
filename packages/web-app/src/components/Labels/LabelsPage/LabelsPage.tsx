@@ -1,25 +1,25 @@
+import { Label } from '@zaino/shared';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useToggle from '../../../hooks/useToggle';
 import selectFilteredLabels, { selectLabelCount } from '../../../state/selectors/labels';
 import { saveSortOrder } from '../../../state/slices/labels';
-import { RootState } from '../../../state/store';
-import { Button } from '../../Common/Controls/Button';
-import { LabelDetails } from '../LabelDetails';
-import { List } from '../List/List';
-import { NewLabel } from '../NewLabel';
-import { Loader } from '../../Common/Misc/Loader';
-import { ScrollablePage } from '../../Common/Misc/ScrollablePage';
-import { SectionHeader } from '../../Common/Misc/SectionHeader';
-import { Column } from '../../Common/Wrappers/Column';
-import { Label } from '@zaino/shared';
-import './style.scss';
 import {
   resetLabelFilters,
   setLabelTextFilter,
   sortLabelsBy,
 } from '../../../state/slices/labelsFilters';
+import { RootState } from '../../../state/store';
+import { Button } from '../../Common/Controls/Button';
 import { CollectionFilters } from '../../Common/Filters/CollectionFilters';
+import { Loader } from '../../Common/Misc/Loader';
+import { ScrollablePage } from '../../Common/Misc/ScrollablePage';
+import { SectionHeader } from '../../Common/Misc/SectionHeader';
+import { Column } from '../../Common/Wrappers/Column';
+import { LabelDetails } from '../LabelDetails';
+import { List } from '../List/List';
+import { NewLabel } from '../NewLabel';
+import './style.scss';
 
 export const LabelsPage = () => {
   document.title = 'Labels | Zaino';
@@ -34,14 +34,13 @@ export const LabelsPage = () => {
     dispatch(saveSortOrder(labels));
   }, [labels, dispatch]);
 
-  console.log(`from labels page: ${isLoading}`);
-
   return (
     <ScrollablePage>
       <CollectionFilters
         setTextFilter={setLabelTextFilter}
         sort={sortLabelsBy}
         resetFilters={resetLabelFilters}
+        textFilterPlaceholder="Search labels"
       />
       {isLoading ? (
         <Loader />
