@@ -49,7 +49,7 @@ const config: webpack.Configuration = {
         ].filter(Boolean) as webpack.RuleSetUseItem[],
       },
       {
-        // separately process _settings.css as a module
+        // separately process _export.scss as a module
         // needed for the exported SCSS variables to work in TS files
         test: /_export\.scss$/,
         use: [
@@ -152,7 +152,7 @@ const config: webpack.Configuration = {
     new FaviconsWebpackPlugin({
       logo: 'src/images/favicon.png',
       // favicon folder path inside dist folder
-      prefix: 'images/favicon',
+      prefix: 'images/favicon/',
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
