@@ -150,7 +150,7 @@ const config: webpack.Configuration = {
       template: 'src/index.ejs',
     }),
     new FaviconsWebpackPlugin({
-      logo: 'src/images/favicon.png',
+      logo: 'src/images/logo.svg',
       // favicon folder path inside dist folder
       prefix: 'images/favicon/',
     }),

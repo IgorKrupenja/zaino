@@ -23,13 +23,16 @@
   color: white;
 }
 
-.header__title {
+.header__logo__link {
+  width: 3.5rem;
+  height: 3.5rem;
   margin-left: 1.7rem;
+}
 
-  color: white;
-  font-family: 'Righteous', cursive;
-  font-size: 4.1rem;
-  text-decoration: none;
+.header__logo {
+  & > path {
+    fill: white;
+  }
 }
 
 .header__nav {
