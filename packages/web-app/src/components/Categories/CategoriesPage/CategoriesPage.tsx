@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import useToggle from '../../../hooks/useToggle';
 import selectFilteredCategories, { selectCategoryCount } from '../../../state/selectors/categories';
 import {
   resetCategoryFilters,
@@ -20,6 +21,7 @@ export const CategoriesPage = () => {
   const categories = useSelector((state: RootState) => selectFilteredCategories(state));
   const categoryCount = categories.length;
   const totalCategoryCount = useSelector((state: RootState) => selectCategoryCount(state));
+  const [isFormOpen, toggleForm] = useToggle();
 
   return (
     <ScrollablePage>
@@ -63,11 +65,9 @@ export const CategoriesPage = () => {
               </div>
             ))
           ) : (
-            // todo empty list
-            // <List.Empty className={isFormOpen ? 'list--empty--border' : ''}>{`No${
-            //   labelCount === totalLabelCount ? '' : ' matching'
-            // } labels`}</List.Empty>
-            <div>No categories</div>
+            <List.Empty className={isFormOpen ? 'list--empty--border' : ''}>{`No${
+              categoryCount === totalCategoryCount ? '' : ' matching'
+            } categories`}</List.Empty>
           )}
         </List>
       )}

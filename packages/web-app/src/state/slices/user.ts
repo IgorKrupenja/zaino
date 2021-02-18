@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { batch } from 'react-redux';
 import copyCollection from '../../firebase/copyCollection';
 import db, { firebase, googleAuthProvider } from '../../firebase/firebase';
@@ -17,7 +17,7 @@ export const handleLoginRedirect = createAsyncThunk(
       // currently no business logic behind firstLoginAt
       // it is only needed to properly create a document for the user in Firestore
       // as Firestore does not correctly create empty documents
-      db.collection(`users`).doc(user.uid).set({ firstLoginAt: new Date().toISOString() });
+      await db.collection(`users`).doc(user.uid).set({ firstLoginAt: new Date().toISOString() });
       // add default categories for every new user
       await copyCollection('common/defaults/categories', `users/${user.uid}/categories`);
     }

@@ -1,4 +1,3 @@
-import { Category } from '@zaino/shared';
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ValueType } from 'react-select';

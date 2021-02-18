@@ -7,6 +7,7 @@ import CategoryIcon from '../../../images/icons/category.svg';
 import { sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { AccountDetails } from '../AccountDetails';
+import logo from '../../../images/b-test.jpg';
 import { DemoData } from '../DemoData';
 import './style.scss';
 import { CollectionSortOption } from '../../../state/collectionSettings';
@@ -19,11 +20,14 @@ export const Header = () => {
     // container div to properly style header
     <div className="header__container">
       <header className="header">
-        <h1>
-          <Link to="/dashboard" className="header__title">
-            Z
-          </Link>
-        </h1>
+        {/* todo temporary logo and styles */}
+        <Link
+          style={{ display: 'inline-block', width: '5rem', height: '5rem' }}
+          to="/dashboard"
+          className="header__title"
+        >
+          <img style={{ width: '5rem', height: '5rem' }} src={logo}></img>
+        </Link>
         <nav className="header__nav">
           <NavLink
             to="/dashboard"
