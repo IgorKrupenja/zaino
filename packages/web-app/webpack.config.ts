@@ -2,6 +2,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import dotenv from 'dotenv';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import path from 'path';
 import webpack from 'webpack';
 import { getPrefetchLinks } from './src/utils/getPrefetchLinks';
@@ -147,7 +148,11 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       prefetchLinks: getPrefetchLinks(),
       template: 'src/index.ejs',
-      favicon: 'src/images/favicon.png',
+    }),
+    new FaviconsWebpackPlugin({
+      logo: 'src/images/favicon.png',
+      // favicon folder path inside dist folder
+      prefix: 'images/favicon',
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
