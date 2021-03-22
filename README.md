@@ -45,9 +45,8 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 ### 0.2.0
 
+- **Add unit tests for functionality tat is ready.**
 - Add anonymous login.
-- Learn more about unit testing React and create unit tests.
-- Create a mobile-friendly app version. Yeah, I know, not having a mobile version sucks.
 - Create a proper app logo.
 
 Progress can be tracked in [Github projects](https://github.com/igor-krupenja/zaino/projects/1?card_filter_query=milestone%3A0.2.0).
