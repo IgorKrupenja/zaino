@@ -3,7 +3,6 @@ import React, { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import { Loader } from '../components/Common/Misc/Loader';
-import { CategoriesPage } from '../components/Categories/CategoriesPage';
 import { DashboardPage } from '../components/Dashboard/DashboardPage';
 import { LabelsPage } from '../components/Labels/LabelsPage';
 import { LoginPage } from '../components/Pages/LoginPage';
@@ -40,9 +39,6 @@ const AppRouter = () => {
         {/* private routes only accessible if user is logged in */}
         <PrivateRoute path="/dashboard">
           <DashboardPage />
-        </PrivateRoute>
-        <PrivateRoute path="/categories">
-          <CategoriesPage />
         </PrivateRoute>
         <PrivateRoute path="/labels">
           <LabelsPage />

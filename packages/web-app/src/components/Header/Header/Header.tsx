@@ -33,21 +33,6 @@ export const Header = () => {
             <span className="header__nav__link__text">Dashboard</span>
           </NavLink>
           <NavLink
-            to="/categories"
-            // todo
-            // // re-sort labels by name after in-place edit and switching back to Labels page
-            // // see slices/labels for more details
-            // onClick={() =>
-            //   labelSortOption === LabelSortOption.lastSortOrder &&
-            //   dispatch(sortLabelsBy(LabelSortOption.name))
-            // }
-            className="button button--underline header__nav__link"
-            activeClassName="button--underline--active"
-          >
-            <CategoryIcon className="header__nav__link__icon" />
-            <span className="header__nav__link__text">Categories</span>
-          </NavLink>
-          <NavLink
             to="/labels"
             // re-sort labels by name after in-place edit and switching back to Labels page
             // see slices/labels for more details
