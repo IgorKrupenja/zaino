@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import { InputActionMeta, mergeStyles, Props, ValueType } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
-import { Align } from 'react-tiny-popover';
+import { PopoverAlign } from 'react-tiny-popover';
 import { CloseButton } from '../../Controls/CloseButton';
 import { Popover } from '../../Misc/Popover';
 import { commonSelectStyles } from './style';
@@ -19,7 +19,7 @@ type SelectPopoverProps = {
   headerText: string;
   onChange: (value: ValueType<SelectOption, boolean>) => void;
   children: ReactNode;
-  popoverAlign?: Align;
+  popoverAlign?: PopoverAlign;
 } & Props<SelectOption, boolean>;
 
 /**

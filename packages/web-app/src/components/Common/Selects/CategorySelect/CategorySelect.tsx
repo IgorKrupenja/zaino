@@ -1,7 +1,7 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ValueType } from 'react-select';
-import { Align } from 'react-tiny-popover';
+import { PopoverAlign } from 'react-tiny-popover';
 import { RootState } from '../../../../state/store';
 import { sortSelectOptionsByName } from '../../../../utils/sortSelectOptionsByName';
 import { SelectOption, SelectPopover } from '../SelectPopover';
@@ -12,7 +12,7 @@ type CategorySelectProps = {
   onChange: (categoryName: string) => void;
   headerText: string;
   children: ReactNode;
-  popoverAlign?: Align;
+  popoverAlign?: PopoverAlign;
 };
 
 /**

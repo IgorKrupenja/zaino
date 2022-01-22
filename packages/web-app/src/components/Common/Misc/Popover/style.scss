@@ -1,9 +1,10 @@
 .popover {
-  z-index: 99;
+  background-color: white;
   border: $border;
   border-radius: $xs-size;
   box-shadow: $shadow;
-  background-color: white;
+  overflow: hidden;
+  z-index: 99;
 }
 
 .popover--wide {
@@ -11,13 +12,12 @@
 }
 
 .popover__header {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-
   border-bottom: 0.1rem solid $light-grey;
-  padding-left: $m-size;
+  display: flex;
   height: $xl-size;
+  justify-content: space-between;
+  padding-left: $m-size;
 }
 
 .popover__title {
