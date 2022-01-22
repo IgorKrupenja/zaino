@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Category, Item, Label } from '@zaino/shared';
 import { batch } from 'react-redux';
-import type firebase from 'firebase';
+import type firebase from 'firebase/compat';
 import db from '../../firebase/firebase';
 import { RootState } from '../store';
 import { loadItems } from './items';
