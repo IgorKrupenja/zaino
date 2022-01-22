@@ -258,7 +258,7 @@ If you opt to use a separate Firebase project in production, there are some addi
 
 Zaino [live demo](#live-demo) has a privacy and cookie policy that is not a part of this repo and by default Webpack builds Zaino without the policies. If you want to build Zaino with your own privacy and cookie policies, you would need to:
 
-- Add `PRIVACY_POLICY_ENABLED="true"` flag to a relevant .env flag (`.env.development` and/or `.env.production`).
+- Add `PRIVACY_POLICY_ENABLED="true"` flag to a relevant .env file (`.env.development` and/or `.env.production`).
 - Create a `PrivacyPolicy` component that is used in [AppRouter.tsx](packages/web-app/src/routes/AppRouter.tsx).
 
 ## Acknowledgements
