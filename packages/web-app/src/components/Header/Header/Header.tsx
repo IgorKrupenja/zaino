@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import DashboardIcon from '../../../images/icons/dashboard.svg';
 import LabelIcon from '../../../images/icons/label.svg';
+import Logo from '../../../images/logo.svg';
+import { CollectionSortOption } from '../../../state/collectionSettings';
 import { sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { AccountDetails } from '../AccountDetails';
-import Logo from '../../../images/logo.svg';
 import { DemoData } from '../DemoData';
 import './style.scss';
-import { CollectionSortOption } from '../../../state/collectionSettings';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,9 @@ export const Header = () => {
           <NavLink
             to="/dashboard"
             className={({ isActive }) =>
-              isActive ? 'button--underline--active' : 'button button--underline header__nav__link'
+              `button button--underline header__nav__link ${
+                isActive ? 'button--underline--active' : ''
+              }`
             }
           >
             <DashboardIcon className="header__nav__link__icon" />
@@ -41,7 +43,9 @@ export const Header = () => {
               dispatch(sortLabelsBy(CollectionSortOption.name))
             }
             className={({ isActive }) =>
-              isActive ? 'button--underline--active' : 'button button--underline header__nav__link'
+              `button button--underline header__nav__link ${
+                isActive ? 'button--underline--active' : ''
+              }`
             }
           >
             <LabelIcon className="header__nav__link__icon" />
