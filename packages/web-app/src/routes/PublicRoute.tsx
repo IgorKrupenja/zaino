@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { RootState } from '../state/store';
 
 type PublicRouteProps = {
-  children: ReactNode;
+  children: JSX.Element;
 };
 
 /**
