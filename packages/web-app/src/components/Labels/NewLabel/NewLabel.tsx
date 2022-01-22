@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { getRandomColor } from '../../../constants/Colors';
 import { addLabel } from '../../../state/slices/labels';
-import { Button } from '../../Controls/Button';
-import { LabelBadge } from '../../LabelBadge/LabelBadge';
+import { Button } from '../../Common/Controls/Button';
+import { LabelBadge } from '../../Common/LabelBadge/LabelBadge';
 import { LabelForm } from '../LabelForm';
 import './style.scss';
 
@@ -22,6 +22,7 @@ export const NewLabel = ({ toggleForm }: NewLabelProps) => {
     colorName: colorName,
     itemUniqueCount: 0,
     itemTotalCount: 0,
+    lastSortIndex: 0,
   };
   const [name, setName] = useState(newLabel.name);
 

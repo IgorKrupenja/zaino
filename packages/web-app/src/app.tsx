@@ -7,7 +7,7 @@ import { MobilePlaceholder } from './components/Pages/MobilePlaceholder';
 import { firebase } from './firebase/firebase';
 import AppRouter from './routes/AppRouter';
 import { loadUserData } from './state/slices/dataLoader';
-import { setUserDetails } from './state/slices/user';
+import { handleLoginRedirect } from './state/slices/user';
 import store from './state/store';
 import './styles/styles.scss';
 import { getAsciiLogo } from './utils/getAsciiLogo';
@@ -28,24 +28,15 @@ const renderApp = () => {
 firebase.auth().onAuthStateChanged(async user => {
   if (user) {
     // on log in
+    // get resulting credential to check if new user
+    const credential = await firebase.auth().getRedirectResult();
     // using store.dispatch as useDispatch cannot be used outside of functional components
-    store.dispatch(
-      setUserDetails({
-        uid: user.uid,
-        // types for these are string | null but null seems to apply to anonymous sign in only
-        // as app does not support anonymous sign anyway, casting as strings
-        name: user.displayName as string,
-        email: user.email as string,
-        // if user has not set an photo in Google account,
-        // Google conveniently provides an image with name's first letter
-        photoUrl: user.photoURL as string,
-      })
+    await store.dispatch(
+      handleLoginRedirect({ user, isNew: credential.additionalUserInfo?.isNewUser })
     );
     await store.dispatch(loadUserData(user.uid));
-    renderApp();
     console.log(getAsciiLogo());
-  } else {
-    // on log out
-    renderApp();
   }
+  // re-render on both login and logout
+  renderApp();
 });

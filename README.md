@@ -43,20 +43,32 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 ## Roadmap
 
-### 0.2.0
+### 0.4.0
 
-- **Add unit tests for functionality tat is ready.**
-- Add anonymous login.
-- Create a proper app logo.
+- Add custom categories.
 
-Progress can be tracked in [Github projects](https://github.com/igor-krupenja/zaino/projects/1?card_filter_query=milestone%3A0.2.0).
+### 0.3.0
+
+- Improve inventory and pack management UX.
+- Add support for multiple packs.
+
+### 0.2.1
+
+- Add unit tests for functionality that is ready.
+- Improve code structure and maintainability.
 
 ## Changelog
+
+### 0.2.0 (22nd January 2022)
+
+- Add proper app logo.
+- Made preliminary changes to support custom categories. This functionality is not yet exposed in the app, will be added in
+- Minor bugfixes.
 
 ### 0.1.1 (4th November 2020)
 
 - Usability and styling improvements based on user feedback.
-- Add privacy and cookie policy.
+- Added privacy and cookie policy.
 
 ### 0.1.0 (15th October 2020)
 
@@ -114,7 +126,7 @@ Please note that the development setup has only been tested on macOS and Ubuntu 
 
 #### Preparation
 
-1. Install current (or LTS) Node.js or [use nvm](https://github.com/nvm-sh/nvm).
+1. Install Node.js **LTS** or [use nvm](https://github.com/nvm-sh/nvm).
 2. Install Yarn.
 3. Clone the repo with `git clone https://github.com/igor-krupenja/zaino.git` or [fork it](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
 4. In the root of your cloned repo folder, run `yarn install`.

@@ -5,9 +5,9 @@ import useToggle from '../../../hooks/useToggle';
 import { sessionHistory } from '../../../routes/AppRouter';
 import { logout } from '../../../state/slices/user';
 import { RootState } from '../../../state/store';
-import { Button } from '../../Controls/Button';
-import { CloseButton } from '../../Controls/CloseButton';
-import { Popover } from '../../Misc/Popover';
+import { Button } from '../../Common/Controls/Button';
+import { CloseButton } from '../../Common/Controls/CloseButton';
+import { Popover } from '../../Common/Misc/Popover';
 import './style.scss';
 
 export const AccountDetails = () => {

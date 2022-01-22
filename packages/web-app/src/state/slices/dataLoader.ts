@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Item, Label } from '@zaino/shared';
+import { Category, Item, Label } from '@zaino/shared';
 import { batch } from 'react-redux';
 import type firebase from 'firebase';
 import db from '../../firebase/firebase';
 import { RootState } from '../store';
 import { loadItems } from './items';
 import { loadLabels } from './labels';
+import { loadCategories } from './categories';
 
 /**
  * Process Firestore data to get Items and Labels as used in the app.
@@ -17,7 +18,7 @@ const processData = (
 ) => {
   return snapshots.map(collection =>
     collection.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-  ) as [Item[], Label[]];
+  ) as [Item[], Label[], Category[]];
 };
 
 export const loadUserData = createAsyncThunk<void, string, { state: RootState }>(
@@ -27,12 +28,14 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
     const snapshots = await Promise.all([
       db.collection(`users/${uid}/items`).get(),
       db.collection(`users/${uid}/labels`).get(),
+      db.collection(`users/${uid}/categories`).get(),
     ]);
-    const [items, labels] = processData(snapshots);
+    const [items, labels, categories] = processData(snapshots);
 
     batch(() => {
       dispatch(loadItems(items));
       dispatch(loadLabels({ labels, items }));
+      dispatch(loadCategories({ categories, items }));
     });
   }
 );

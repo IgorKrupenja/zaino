@@ -84,7 +84,11 @@ const labelsSlice = createSlice({
         });
       });
 
-      labels.forEach(label => state.push(label));
+      labels.forEach(label => {
+        if (!label.itemTotalCount) label.itemTotalCount = 0;
+        if (!label.itemUniqueCount) label.itemUniqueCount = 0;
+        state.push(label);
+      });
     },
     // increment and decrement separate from update in order not to write to Firestore
     // each time items count is changed for a label

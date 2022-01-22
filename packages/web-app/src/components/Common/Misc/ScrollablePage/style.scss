@@ -1,0 +1,19 @@
+.scrollable-page {
+  max-width: $labels-width;
+  margin: 0 auto;
+}
+
+.scrollable-page--loading {
+  height: calc(100% - #{$header-height});
+}
+
+.scrollable-page__container {
+  width: 100%;
+
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+}

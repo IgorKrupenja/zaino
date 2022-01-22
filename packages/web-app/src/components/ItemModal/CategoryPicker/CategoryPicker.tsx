@@ -1,14 +1,16 @@
 import React from 'react';
-import { Button } from '../../Controls/Button';
-import { EditIcon } from '../../Icons/EditIcon';
-import { CategoryImage } from '../../Misc/CategoryImage';
-import { CategorySelect } from '../../Selects/CategorySelect';
-import { ColumnWrapper } from '../../Wrappers/ColumnWrapper';
-import { RowWrapper } from '../../Wrappers/RowWrapper';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../state/store';
+import { Button } from '../../Common/Controls/Button';
+import { EditIcon } from '../../Common/Icons/EditIcon';
+import { CategoryImage } from '../../Common/Misc/CategoryImage';
+import { CategorySelect } from '../../Common/Selects/CategorySelect';
+import { Column } from '../../Common/Wrappers/Column';
+import { Row } from '../../Common/Wrappers/Row';
 import './style.scss';
 
 type CategoryPickerProps = {
-  categoryName: string;
+  categoryId?: string;
   onChange: (categoryName: string) => void;
 };
 
@@ -17,13 +19,16 @@ type CategoryPickerProps = {
  * Extracted into a separate component to make ItemForm more readable.
  * Can possibly used elsewhere in the future?
  */
-export const CategoryPicker = ({ categoryName, onChange }: CategoryPickerProps) => {
+export const CategoryPicker = ({ categoryId, onChange }: CategoryPickerProps) => {
+  const categories = useSelector((state: RootState) => state.categories);
+  const categoryName = categories.find(category => category.id === categoryId)?.name;
+
   return (
-    <ColumnWrapper className="category-picker">
+    <Column className="category-picker">
       {/* Select */}
       <CategorySelect
         popoverAlign="center"
-        selectedCategoryName={categoryName}
+        selectedCategoryId={categoryId}
         headerText="Select category"
         onChange={onChange}
       >
@@ -32,12 +37,12 @@ export const CategoryPicker = ({ categoryName, onChange }: CategoryPickerProps) 
           <EditIcon />
         </Button>
       </CategorySelect>
-      <RowWrapper>
+      <Row>
         {/* Category image */}
-        <CategoryImage categoryName={categoryName} />
+        <CategoryImage categoryId={categoryId} />
         {/* Category name */}
         <div className="category-picker__name">{categoryName}</div>
-      </RowWrapper>
-    </ColumnWrapper>
+      </Row>
+    </Column>
   );
 };

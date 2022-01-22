@@ -11,16 +11,14 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jest/recommended",
-    "plugin:jest/style"
+    "plugin:react-hooks/recommended"
   ],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
-  "plugins": ["react", "react-hooks", "jest"],
+  "plugins": ["react", "react-hooks"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,

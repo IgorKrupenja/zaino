@@ -6,7 +6,9 @@
     "target": "es2017",
     // import JSON
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    // todo temporary workaround for #486
+    "skipLibCheck": true
   },
   "compileOnSave": true,
   "include": ["src"]

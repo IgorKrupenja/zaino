@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import DashboardIcon from '../../../images/icons/dashboard.svg';
 import LabelIcon from '../../../images/icons/label.svg';
-import { LabelSortOption, sortLabelsBy } from '../../../state/slices/labelsFilters';
+import { sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { AccountDetails } from '../AccountDetails';
+import Logo from '../../../images/logo.svg';
 import { DemoData } from '../DemoData';
 import './style.scss';
+import { CollectionSortOption } from '../../../state/collectionSettings';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -17,11 +19,9 @@ export const Header = () => {
     // container div to properly style header
     <div className="header__container">
       <header className="header">
-        <h1>
-          <Link to="/dashboard" className="header__title">
-            Zaino
-          </Link>
-        </h1>
+        <Link className="header__logo__link" to="/dashboard">
+          <Logo className="header__logo" />
+        </Link>
         <nav className="header__nav">
           <NavLink
             to="/dashboard"
@@ -36,8 +36,8 @@ export const Header = () => {
             // re-sort labels by name after in-place edit and switching back to Labels page
             // see slices/labels for more details
             onClick={() =>
-              labelSortOption === LabelSortOption.lastSortOrder &&
-              dispatch(sortLabelsBy(LabelSortOption.name))
+              labelSortOption === CollectionSortOption.lastSortOrder &&
+              dispatch(sortLabelsBy(CollectionSortOption.name))
             }
             className="button button--underline header__nav__link"
             activeClassName="button--underline--active"

@@ -5,11 +5,11 @@ import useToggle from '../../../hooks/useToggle';
 import { sessionHistory } from '../../../routes/AppRouter';
 import { resetItemFilters } from '../../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../../state/slices/labels';
-import { Button } from '../../Controls/Button';
-import { CloseButton } from '../../Controls/CloseButton';
-import { LabelBadge } from '../../LabelBadge/LabelBadge';
-import { Popover } from '../../Misc/Popover';
-import { RowWrapper } from '../../Wrappers/RowWrapper';
+import { Button } from '../../Common/Controls/Button';
+import { CloseButton } from '../../Common/Controls/CloseButton';
+import { LabelBadge } from '../../Common/LabelBadge/LabelBadge';
+import { Popover } from '../../Common/Misc/Popover';
+import { Row } from '../../Common/Wrappers/Row';
 import { LabelForm } from '../LabelForm';
 import './style.scss';
 
@@ -23,7 +23,7 @@ export const LabelDetails = (label: Label) => {
 
   return (
     <article className="label-details" key={label.id}>
-      <RowWrapper className="label-details__main">
+      <Row className="label-details__main">
         <div className="label-details__badge__container">
           <LabelBadge
             className="label-details__badge"
@@ -55,7 +55,7 @@ export const LabelDetails = (label: Label) => {
             Edit
           </Button>
         )}
-      </RowWrapper>
+      </Row>
       {isFormOpen && (
         <LabelForm
           label={label}

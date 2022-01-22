@@ -2,6 +2,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import dotenv from 'dotenv';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import path from 'path';
 import webpack from 'webpack';
 import { getPrefetchLinks } from './src/utils/getPrefetchLinks';
@@ -48,7 +49,7 @@ const config: webpack.Configuration = {
         ].filter(Boolean) as webpack.RuleSetUseItem[],
       },
       {
-        // separately process _settings.css as a module
+        // separately process _export.scss as a module
         // needed for the exported SCSS variables to work in TS files
         test: /_export\.scss$/,
         use: [
@@ -147,7 +148,11 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       prefetchLinks: getPrefetchLinks(),
       template: 'src/index.ejs',
-      favicon: 'src/images/favicon.png',
+    }),
+    new FaviconsWebpackPlugin({
+      logo: 'src/images/logo.svg',
+      // favicon folder path inside dist folder
+      prefix: 'images/favicon/',
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),

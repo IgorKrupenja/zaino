@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NoBackpackIcon from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/items';
-import { Button } from '../../Controls/Button';
-import { RowWrapper } from '../../Wrappers/RowWrapper';
+import { Button } from '../../Common/Controls/Button';
+import { Row } from '../../Common/Wrappers/Row';
 import { ItemDetails } from '../ItemDetails';
 import './style.scss';
 
@@ -30,7 +30,7 @@ export const PackItem = (item: Item) => {
   return (
     <ItemDetails item={item}>
       {item.quantity > 1 && (
-        <RowWrapper>
+        <Row>
           Quantity in pack:
           <Button
             className="button--grey pack-item__quantity--button"
@@ -46,7 +46,7 @@ export const PackItem = (item: Item) => {
           >
             +
           </Button>
-        </RowWrapper>
+        </Row>
       )}
       <Button
         className="button--grey button--medium pack-item__remove"
