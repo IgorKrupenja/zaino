@@ -1,11 +1,21 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import dotenv from 'dotenv';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import path from 'path';
-import webpack from 'webpack';
+import {
+  Configuration as WebpackConfiguration,
+  EnvironmentPlugin,
+  RuleSetUseItem,
+  WebpackPluginInstance,
+} from 'webpack';
+import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import { getPrefetchLinks } from './src/utils/getPrefetchLinks';
+
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
 
 // output images with proper names to dist/images dir
 const fileLoaderOptions = {
@@ -19,7 +29,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 dotenv.config({ path: `../../.env.${process.env.NODE_ENV}` });
 
-const config: webpack.Configuration = {
+const config: Configuration = {
   entry: [`./src/app.tsx`],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -46,7 +56,7 @@ const config: webpack.Configuration = {
             options: { plugins: ['react-refresh/babel'] },
           },
           'ts-loader',
-        ].filter(Boolean) as webpack.RuleSetUseItem[],
+        ].filter(Boolean) as RuleSetUseItem[],
       },
       {
         // separately process _export.scss as a module
@@ -133,7 +143,7 @@ const config: webpack.Configuration = {
     ],
   },
   plugins: [
-    new webpack.EnvironmentPlugin([
+    new EnvironmentPlugin([
       'FIREBASE_API_KEY',
       'FIREBASE_AUTH_DOMAIN',
       'FIREBASE_DATABASE_URL',
@@ -156,10 +166,10 @@ const config: webpack.Configuration = {
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
-  ].filter(Boolean) as webpack.WebpackPluginInstance[],
+  ].filter(Boolean) as WebpackPluginInstance[],
   devtool: isDevelopment ? 'inline-source-map' : 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     hot: true,
   },
