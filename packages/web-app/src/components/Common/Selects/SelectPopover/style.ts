@@ -33,7 +33,6 @@ export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = 
     display: isFocused ? 'none' : 'block',
     paddingTop: '0.5rem',
   }),
-  // todo this is very broken
   input: base => ({
     ...base,
     overflow: 'hidden',
