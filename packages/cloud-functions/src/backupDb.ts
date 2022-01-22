@@ -13,7 +13,7 @@ export const backupDb = functions
   .onRun(async () => {
     console.log('backupDb: starting DB backup...');
 
-    const projectId = process.env.GCP_PROJECT || process.env.GCLOUD_PROJECT;
+    const projectId = process.env.GCP_PROJECT || (process.env.GCLOUD_PROJECT as string);
     const databaseName = client.databasePath(projectId, '(default)');
 
     try {
