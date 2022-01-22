@@ -2,13 +2,14 @@ import React from 'react';
 import GoogleButton from 'react-google-button';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useTitle } from '../../../hooks/useTitle';
 import GithubIcon from '../../../images/icons/github.svg';
 import { login } from '../../../state/slices/user';
 import './style.scss';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
-  document.title = 'Zaino';
+  useTitle('Zaino');
 
   return (
     <main className="login-page">

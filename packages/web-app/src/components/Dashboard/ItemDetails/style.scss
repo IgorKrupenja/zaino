@@ -19,7 +19,7 @@
 
 .item-details__category-image {
   // use absolute positioning as it gives better results with svg here
-  // todo but potentially need to make all SVGs appear more or less the same size, see #373
+  // TODO: but potentially need to make all SVGs appear more or less the same size, see #373
   position: absolute;
   right: $stack-margin-size;
 }

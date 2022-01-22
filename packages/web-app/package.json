@@ -36,7 +36,6 @@
     "favicons-webpack-plugin": "^5.0.1",
     "file-loader": "^6.1.0",
     "firebase": "^9.6.4",
-    "history": "^5.2.0",
     "html-webpack-plugin": "^5.1.0",
     "mini-css-extract-plugin": "^2.5.2",
     "node-sass": "^7.0.1",

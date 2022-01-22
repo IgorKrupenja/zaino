@@ -181,8 +181,6 @@ FIREBASE_MEASUREMENT_ID="G-P4N3TPO1XY"
 
 #### Images and Google Cloud Storage
 
-<!-- todo can skip? -->
-
 **⚠️ Important.** This section can be skipped if you do not want to use category images.
 
 Due to licensing restrictions (see [below](#license)), the images I use i the [live demo](#live-demo) of the app are not part of the repository and are hosted separately on Google Cloud Storage. If you run the app as is, it will display no images and show a bunch of 404 errors in console. Possible solutions:

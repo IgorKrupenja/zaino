@@ -11,6 +11,7 @@ import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
 import './style.scss';
+import { useTitle } from '../../../hooks/useTitle';
 
 export const NewItem = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export const NewItem = () => {
   };
 
   const title = 'New item';
-  document.title = `${title} | Zaino`;
+  useTitle(`${title} | Zaino`);
 
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>

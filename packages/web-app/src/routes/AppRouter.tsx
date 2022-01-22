@@ -1,4 +1,3 @@
-import { createBrowserHistory } from 'history';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Loader } from '../components/Common/Misc/Loader';
@@ -7,12 +6,6 @@ import { LabelsPage } from '../components/Labels/LabelsPage';
 import { LoginPage } from '../components/Pages/LoginPage';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
-
-// custom history is needed for login in app.tsx to work
-// as history is accessed there not from React component
-// but inside firebase.auth().onAuthStateChanged
-// todo test
-export const sessionHistory = createBrowserHistory();
 
 const AppRouter = () => {
   let PrivacyPolicy;

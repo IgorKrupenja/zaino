@@ -129,7 +129,7 @@ const itemsSlice = createSlice({
         );
       });
     });
-    // todo possibly add rejected handling here, #78
+    // TODO: possibly add rejected handling here, #78
   },
 });
 

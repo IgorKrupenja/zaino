@@ -14,6 +14,7 @@ import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { ItemForm } from '../ItemForm/';
 import { Modal } from '../Modal';
 import './style.scss';
+import { useTitle } from '../../../hooks/useTitle';
 
 export const EditItem = () => {
   const closeModal = useCloseModal();
@@ -21,13 +22,12 @@ export const EditItem = () => {
   const { id } = useParams();
   const items = useSelector((state: RootState) => state.items);
   const item = items.find(item => item.id === id);
-  // todo remove fallback
+  // TODO remove fallback
   const [title, setTitle] = useState(item?.name ?? 'TEST');
 
   const dispatch = useDispatch();
   const [isPopoverOpen, togglePopover] = useToggle();
-
-  document.title = `${title ? title : 'No name'} | Zaino`;
+  useTitle(`${title ? title : 'No name'} | Zaino`);
 
   return item ? (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>

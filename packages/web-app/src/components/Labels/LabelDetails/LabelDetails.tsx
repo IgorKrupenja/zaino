@@ -1,8 +1,8 @@
 import { Label } from '@zaino/shared/';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import useToggle from '../../../hooks/useToggle';
-import { sessionHistory } from '../../../routes/AppRouter';
 import { resetItemFilters } from '../../../state/slices/itemsFilters';
 import { deleteLabel, updateLabel } from '../../../state/slices/labels';
 import { Button } from '../../Common/Controls/Button';
@@ -20,6 +20,7 @@ export const LabelDetails = (label: Label) => {
   const [colorName, setColorName] = useState(label.colorName);
   const itemTotalCount = label.itemTotalCount;
   const [isPopoverOpen, togglePopover] = useToggle();
+  const navigate = useNavigate();
 
   return (
     <article className="label-details" key={label.id}>
@@ -27,13 +28,12 @@ export const LabelDetails = (label: Label) => {
         <div className="label-details__badge__container">
           <LabelBadge
             className="label-details__badge"
-            // disable actions on label badge click if form is open
             disabled={isFormOpen}
             colorName={colorName}
             label={label}
             onClick={() => {
               dispatch(resetItemFilters());
-              sessionHistory.push('./dashboard');
+              navigate('/dashboard');
             }}
             // show live label name preview (as user is typing) if form is open
           >

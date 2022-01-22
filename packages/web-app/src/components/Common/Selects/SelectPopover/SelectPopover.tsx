@@ -81,7 +81,7 @@ export const SelectPopover = ({
   const closePopover = () => {
     setIsPopoverOpen(false);
     // clear search query after popover transitions out to prevent jerky animation
-    // todo this is a hack, proper fix would be to disable transition on close, see #163
+    // TODO: this is a hack, proper fix would be to disable transition on close, see #163
     setTimeout(() => setInputValue(''), 150);
   };
 
