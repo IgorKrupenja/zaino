@@ -37,7 +37,7 @@ export const CategorySelect = ({
   // logic similar to LabelSelect
   const prepareValue = useCallback(
     (selectedCategoryName: string | undefined) => {
-      return options.find(option => option.label === selectedCategoryName);
+      return options.find(option => option.value === selectedCategoryName);
     },
     [options]
   );
