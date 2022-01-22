@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Route } from 'react-router-dom';
+import { Navigate, Route } from 'react-router-dom';
 import { RootState } from '../state/store';
 
 type PrivateRouteProps = {
@@ -13,14 +13,8 @@ type PrivateRouteProps = {
  * Private route, shown only if user is logged in.
  * If user tries to access such a route when not logged in, redirect to root (login page).
  */
-export const PrivateRoute = ({ path, children, exact }: PrivateRouteProps) => {
+export const PrivateRoute = ({ path, children }: PrivateRouteProps) => {
   const isAuthenticated = useSelector((state: RootState) => !!state.user.uid);
 
-  return isAuthenticated ? (
-    <Route path={path} exact={exact}>
-      {children}
-    </Route>
-  ) : (
-    <Redirect to="/" />
-  );
+  return isAuthenticated ? <Route path={path}>{children}</Route> : <Navigate to="/" />;
 };

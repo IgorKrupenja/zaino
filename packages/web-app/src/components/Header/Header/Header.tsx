@@ -25,8 +25,9 @@ export const Header = () => {
         <nav className="header__nav">
           <NavLink
             to="/dashboard"
-            className="button button--underline header__nav__link"
-            activeClassName="button--underline--active"
+            className={({ isActive }) =>
+              isActive ? 'button--underline--active' : 'button button--underline header__nav__link'
+            }
           >
             <DashboardIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Dashboard</span>
@@ -39,8 +40,9 @@ export const Header = () => {
               labelSortOption === CollectionSortOption.lastSortOrder &&
               dispatch(sortLabelsBy(CollectionSortOption.name))
             }
-            className="button button--underline header__nav__link"
-            activeClassName="button--underline--active"
+            className={({ isActive }) =>
+              isActive ? 'button--underline--active' : 'button button--underline header__nav__link'
+            }
           >
             <LabelIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Labels</span>

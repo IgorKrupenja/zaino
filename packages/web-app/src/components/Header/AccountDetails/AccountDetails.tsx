@@ -36,7 +36,8 @@ export const AccountDetails = () => {
             {process.env.PRIVACY_POLICY_ENABLED === 'true' && (
               <Link
                 className="account-details__policies"
-                to={{ pathname: '/privacy', state: { from: sessionHistory.location.pathname } }}
+                to="/privacy"
+                state={{ from: sessionHistory.location.pathname }}
               >
                 Privacy and cookie policy
               </Link>

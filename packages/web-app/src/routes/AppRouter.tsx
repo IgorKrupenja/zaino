@@ -1,7 +1,7 @@
 import { createBrowserHistory } from 'history';
 import React, { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Route, Router, Switch } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Router, Routes } from 'react-router-dom';
 import { Loader } from '../components/Common/Misc/Loader';
 import { DashboardPage } from '../components/Dashboard/DashboardPage';
 import { LabelsPage } from '../components/Labels/LabelsPage';
@@ -13,22 +13,21 @@ import { PublicRoute } from './PublicRoute';
 // custom history is needed for login in app.tsx to work
 // as history is accessed there not from React component
 // but inside firebase.auth().onAuthStateChanged
+// todo test
 export const sessionHistory = createBrowserHistory();
 
 const AppRouter = () => {
   const isAuthenticated = useSelector((state: RootState) => !!state.user.uid);
 
-  // only import policy if enabled in .env
   let PrivacyPolicy;
   if (process.env.PRIVACY_POLICY_ENABLED === 'true') {
     PrivacyPolicy = lazy(() => import('../components/Pages/PrivacyPolicy'));
   }
 
   return (
-    <Router history={sessionHistory}>
-      <Switch>
+    <BrowserRouter>
+      <Routes>
         {/* privacy policy route is accessible both if user is logged in and if they are not */}
-        {/* only render policy routes if imported above */}
         {PrivacyPolicy && (
           <Route path="/privacy">
             <Suspense fallback={<Loader />}>
@@ -47,9 +46,9 @@ const AppRouter = () => {
         <PublicRoute path="/" exact>
           <LoginPage />
         </PublicRoute>
-        {isAuthenticated ? <Redirect to="/dashboard" /> : <Redirect to="/" />}
-      </Switch>
-    </Router>
+        {isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/" />}
+      </Routes>
+    </BrowserRouter>
   );
 };
 

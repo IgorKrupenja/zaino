@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Route } from 'react-router-dom';
+import { Navigate, Route } from 'react-router-dom';
 import { RootState } from '../state/store';
 
 type PublicRouteProps = {
@@ -13,14 +13,8 @@ type PublicRouteProps = {
  * Public route, shown only if user is NOT logged in.
  * If user tries to access such a route when logged in, redirect to Dashboard.
  */
-export const PublicRoute = ({ path, children, exact }: PublicRouteProps) => {
+export const PublicRoute = ({ path, children }: PublicRouteProps) => {
   const isAuthenticated = useSelector((state: RootState) => !!state.user.uid);
 
-  return isAuthenticated ? (
-    <Redirect to="/dashboard" />
-  ) : (
-    <Route path={path} exact={exact}>
-      {children}
-    </Route>
-  );
+  return isAuthenticated ? <Navigate to="/dashboard" /> : <Route path={path}>{children}</Route>;
 };
