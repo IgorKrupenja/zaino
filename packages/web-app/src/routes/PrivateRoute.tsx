@@ -17,7 +17,7 @@ export const PrivateRoute = ({ path, children, exact }: PrivateRouteProps) => {
   const isAuthenticated = useSelector((state: RootState) => !!state.user.uid);
 
   return isAuthenticated ? (
-    <Route to={path} exact={exact}>
+    <Route path={path} exact={exact}>
       {children}
     </Route>
   ) : (

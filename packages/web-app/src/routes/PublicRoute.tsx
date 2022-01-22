@@ -19,7 +19,7 @@ export const PublicRoute = ({ path, children, exact }: PublicRouteProps) => {
   return isAuthenticated ? (
     <Redirect to="/dashboard" />
   ) : (
-    <Route to={path} exact={exact}>
+    <Route path={path} exact={exact}>
       {children}
     </Route>
   );
