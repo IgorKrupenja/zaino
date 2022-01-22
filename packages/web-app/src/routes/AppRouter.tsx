@@ -12,7 +12,6 @@ import { PublicRoute } from './PublicRoute';
 // as history is accessed there not from React component
 // but inside firebase.auth().onAuthStateChanged
 // todo test
-// todo dashboard routes broken
 export const sessionHistory = createBrowserHistory();
 
 const AppRouter = () => {

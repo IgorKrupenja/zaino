@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { addItem } from '../../../state/slices/items';
 import { RootState } from '../../../state/store';
-import { closeModal } from '../../../utils/closeModal';
+import { useCloseModal } from '../../../hooks/useCloseModal';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
 import { SectionHeader } from '../../Common/Misc/SectionHeader';
@@ -14,6 +14,7 @@ import './style.scss';
 
 export const NewItem = () => {
   const dispatch = useDispatch();
+  const closeModal = useCloseModal();
   const categories = useSelector((state: RootState) => state.categories);
 
   const newItem: Item = {

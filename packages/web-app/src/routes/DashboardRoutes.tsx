@@ -6,8 +6,8 @@ import { NewItem } from '../components/ItemModal/NewItem';
 export const DashboardRoutes = () => {
   return (
     <Routes>
-      <Route path="/dashboard/new" element={<NewItem />} />
-      <Route path="/dashboard/edit/:id" element={<EditItem />} />
+      <Route path="new" element={<NewItem />} />
+      <Route path="edit/:id" element={<EditItem />} />
     </Routes>
   );
 };

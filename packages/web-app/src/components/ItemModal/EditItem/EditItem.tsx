@@ -5,7 +5,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import useToggle from '../../../hooks/useToggle';
 import { deleteItem, updateItem } from '../../../state/slices/items';
 import { RootState } from '../../../state/store';
-import { closeModal } from '../../../utils/closeModal';
+import { useCloseModal } from '../../../hooks/useCloseModal';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
 import { Corkscrew } from '../../Common/Misc/Corkscrew';
@@ -16,14 +16,16 @@ import { Modal } from '../Modal';
 import './style.scss';
 
 export const EditItem = () => {
+  const closeModal = useCloseModal();
+
   const { id } = useParams();
   const items = useSelector((state: RootState) => state.items);
   const item = items.find(item => item.id === id);
+  // todo remove fallback
+  const [title, setTitle] = useState(item?.name ?? 'TEST');
 
   const dispatch = useDispatch();
   const [isPopoverOpen, togglePopover] = useToggle();
-  // todo remove fallback
-  const [title, setTitle] = useState(item?.name ?? 'TEST');
 
   document.title = `${title ? title : 'No name'} | Zaino`;
 
