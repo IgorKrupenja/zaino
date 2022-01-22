@@ -16,7 +16,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "@svgr/webpack": "^6.2.0",
     "@types/mini-css-extract-plugin": "^2.5.1",
-    "@types/node": "^14.6.2",
+    "@types/node": "^17.0.10",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-modal": "^3.10.6",
@@ -37,7 +37,6 @@
     "firebase": "^9.6.4",
     "html-webpack-plugin": "^5.1.0",
     "mini-css-extract-plugin": "^2.5.2",
-    "node-sass": "^7.0.1",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -50,6 +49,7 @@
     "react-select": "^4.1.0",
     "react-tiny-popover": "7.0.1",
     "redux": "^4.0.5",
+    "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
     "sass-resources-loader": "^2.1.0",
     "style-loader": "^3.3.1",
@@ -74,6 +74,10 @@
     "nodemon": "^2.0.4",
     "react-refresh": "^0.11.0",
     "webpack-bundle-analyzer": "^4.3.0"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=17.0.0"
   },
   "comments": {
     "scripts/start": "uses nodemon to restart server on config changes"
