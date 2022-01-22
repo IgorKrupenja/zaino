@@ -1,4 +1,4 @@
-import { Styles } from 'react-select';
+import { StylesConfig } from 'react-select';
 import { SelectOption } from '.';
 import { Color } from '../../../../constants/Colors';
 import checkbox from '../../../../images/icons/check-mark.svg';
@@ -6,7 +6,7 @@ import styles from '../../../../styles/base/_export.scss';
 
 // CSS-in-JS is used here as this is the recommended method for react-select
 
-export const commonSelectStyles: Partial<Styles<SelectOption, boolean>> = {
+export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   control: (base, { isFocused }) => ({
     ...base,
     margin: styles.xsSize,
@@ -26,7 +26,14 @@ export const commonSelectStyles: Partial<Styles<SelectOption, boolean>> = {
   valueContainer: () => ({
     paddingLeft: styles.xsSize,
     fontSize: styles.sSize,
+    display: 'flex',
   }),
+  placeholder: (base, { isFocused }) => ({
+    ...base,
+    display: isFocused ? 'none' : 'block',
+    paddingTop: '0.5rem',
+  }),
+  // todo this is very broken
   input: base => ({
     ...base,
     overflow: 'hidden',

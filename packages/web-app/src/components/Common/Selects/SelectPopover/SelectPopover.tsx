@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { InputActionMeta, mergeStyles, Props, ValueType } from 'react-select';
+import { InputActionMeta, mergeStyles, OnChangeValue, Props } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
 import { PopoverAlign } from 'react-tiny-popover';
@@ -15,11 +15,13 @@ export type SelectOption = {
 };
 
 type SelectPopoverProps = {
-  isCreatable?: boolean;
   headerText: string;
-  onChange: (value: ValueType<SelectOption, boolean>) => void;
+  onChange: (value: OnChangeValue<SelectOption, boolean>) => void;
   children: ReactNode;
   popoverAlign?: PopoverAlign;
+  isCreatable?: boolean;
+  onCreateOption?: (value: string) => void;
+  formatCreateLabel?: (value: string) => string;
 } & Props<SelectOption, boolean>;
 
 /**
@@ -52,7 +54,7 @@ export const SelectPopover = ({
     }
   };
 
-  const handleChange = (newValues: ValueType<SelectOption, boolean>) => {
+  const handleChange = (newValues: OnChangeValue<SelectOption, boolean>) => {
     !isCreatable && closePopover();
     onChange(newValues);
   };
@@ -69,7 +71,6 @@ export const SelectPopover = ({
     onInputChange: handleInputChange,
     inputValue,
     onChange: handleChange,
-    // merge common select styles and styles passed as props
     styles: styles ? mergeStyles(commonSelectStyles, styles) : commonSelectStyles,
     ...rest,
   };
@@ -80,9 +81,7 @@ export const SelectPopover = ({
 
   const closePopover = () => {
     setIsPopoverOpen(false);
-    // clear search query after popover transitions out to prevent jerky animation
-    // TODO: this is a hack, proper fix would be to disable transition on close, see #163
-    setTimeout(() => setInputValue(''), 150);
+    setInputValue('');
   };
 
   return (

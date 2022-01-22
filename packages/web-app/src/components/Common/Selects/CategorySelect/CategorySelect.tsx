@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { ValueType } from 'react-select';
+import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 import { RootState } from '../../../../state/store';
 import { sortSelectOptionsByName } from '../../../../utils/sortSelectOptionsByName';
@@ -43,7 +43,7 @@ export const CategorySelect = ({
   );
   const [value, setValue] = useState(prepareValue(selectedCategoryId));
 
-  const handleChange = (newValue: ValueType<SelectOption, boolean>) => {
+  const handleChange = (newValue: OnChangeValue<SelectOption, boolean>) => {
     const selectedOption = newValue as SelectOption;
     onChange(selectedOption?.value);
   };

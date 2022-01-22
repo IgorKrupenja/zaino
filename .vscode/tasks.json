@@ -14,7 +14,7 @@
         "group": "main"
       },
       "runOptions": {
-        "runOn": "folderOpen"
+        // "runOn": "folderOpen"
       }
     },
     {
@@ -30,7 +30,7 @@
         "group": "main"
       },
       "runOptions": {
-        "runOn": "folderOpen"
+        // "runOn": "folderOpen"
       }
     }
     // {

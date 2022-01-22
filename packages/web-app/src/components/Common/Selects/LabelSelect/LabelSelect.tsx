@@ -1,7 +1,7 @@
 import { Label } from '@zaino/shared';
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ValueType } from 'react-select';
+import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 import { v4 as uuid } from 'uuid';
 import { Colors, getRandomColor } from '../../../../constants/Colors';
@@ -54,14 +54,14 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
     setOptions(prepareOptions(labels));
   }, [labels]);
 
-  const handleChange = (newValues: ValueType<SelectOption, boolean>) => {
+  const handleChange = (newValues: OnChangeValue<SelectOption, boolean>) => {
     const newValueArray = newValues as SelectOption[];
     // turn values into labelIds
     const labelIds: string[] = newValueArray ? newValueArray.map(label => label.value) : [];
     onChange(labelIds);
   };
 
-  const handleCreate = (inputValue: string) => {
+  const handleCreate = (inputValue: string): void => {
     const id = uuid();
     const color = getRandomColor();
     dispatch(
