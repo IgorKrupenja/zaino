@@ -17,7 +17,10 @@ export const handleLoginRedirect = createAsyncThunk(
       // currently no business logic behind firstLoginAt
       // it is only needed to properly create a document for the user in Firestore
       // as Firestore does not correctly create empty documents
-      await db.collection(`users`).doc(user.uid).set({ firstLoginAt: new Date().toISOString() });
+      await db
+        .collection(`users`)
+        .doc(user.uid)
+        .set({ firstLoginAt: new Date().toISOString(), eMail: user.email });
       // add default categories for every new user
       await copyCollection('common/defaults/categories', `users/${user.uid}/categories`);
     }
