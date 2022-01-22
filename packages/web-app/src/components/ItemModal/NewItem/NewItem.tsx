@@ -4,16 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { addItem } from '../../../state/slices/items';
 import { RootState } from '../../../state/store';
-import { closeModal } from '../../../utils/closeModal';
+import { useCloseModal } from '../../../hooks/useCloseModal';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
 import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
 import './style.scss';
+import { useTitle } from '../../../hooks/useTitle';
 
 export const NewItem = () => {
   const dispatch = useDispatch();
+  const closeModal = useCloseModal();
   const categories = useSelector((state: RootState) => state.categories);
 
   const newItem: Item = {
@@ -27,7 +29,7 @@ export const NewItem = () => {
   };
 
   const title = 'New item';
-  document.title = `${title} | Zaino`;
+  useTitle(`${title} | Zaino`);
 
   return (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>

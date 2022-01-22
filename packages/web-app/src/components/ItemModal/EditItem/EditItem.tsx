@@ -1,9 +1,12 @@
 import { Item } from '@zaino/shared/';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useParams } from 'react-router-dom';
+import { useCloseModal } from '../../../hooks/useCloseModal';
+import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
 import { deleteItem, updateItem } from '../../../state/slices/items';
-import { closeModal } from '../../../utils/closeModal';
+import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
 import { Corkscrew } from '../../Common/Misc/Corkscrew';
@@ -13,14 +16,19 @@ import { ItemForm } from '../ItemForm/';
 import { Modal } from '../Modal';
 import './style.scss';
 
-export const EditItem = ({ item }: { item: Item }) => {
+export const EditItem = () => {
+  const closeModal = useCloseModal();
+
+  const { id } = useParams();
+  const items = useSelector((state: RootState) => state.items);
+  const item = items.find(item => item.id === id);
+  const [title, setTitle] = useState(item?.name ?? '');
+
   const dispatch = useDispatch();
   const [isPopoverOpen, togglePopover] = useToggle();
-  const [title, setTitle] = useState(item.name);
+  useTitle(`${title ? title : 'No name'} | Zaino`);
 
-  document.title = `${title ? title : 'No name'} | Zaino`;
-
-  return (
+  return item ? (
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
       {/* header */}
       <SectionHeader>
@@ -81,5 +89,7 @@ export const EditItem = ({ item }: { item: Item }) => {
         </Button>
       </ItemForm>
     </Modal>
+  ) : (
+    <Navigate to="/dashboard" />
   );
 };

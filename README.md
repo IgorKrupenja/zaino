@@ -181,8 +181,6 @@ FIREBASE_MEASUREMENT_ID="G-P4N3TPO1XY"
 
 #### Images and Google Cloud Storage
 
-<!-- todo can skip? -->
-
 **⚠️ Important.** This section can be skipped if you do not want to use category images.
 
 Due to licensing restrictions (see [below](#license)), the images I use i the [live demo](#live-demo) of the app are not part of the repository and are hosted separately on Google Cloud Storage. If you run the app as is, it will display no images and show a bunch of 404 errors in console. Possible solutions:
@@ -260,7 +258,7 @@ If you opt to use a separate Firebase project in production, there are some addi
 
 Zaino [live demo](#live-demo) has a privacy and cookie policy that is not a part of this repo and by default Webpack builds Zaino without the policies. If you want to build Zaino with your own privacy and cookie policies, you would need to:
 
-- Add `PRIVACY_POLICY_ENABLED="true"` flag to a relevant .env flag (`.env.development` and/or `.env.production`).
+- Add `PRIVACY_POLICY_ENABLED="true"` flag to a relevant .env file (`.env.development` and/or `.env.production`).
 - Create a `PrivacyPolicy` component that is used in [AppRouter.tsx](packages/web-app/src/routes/AppRouter.tsx).
 
 ## Acknowledgements

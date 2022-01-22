@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ValueType } from 'react-select';
-import { ItemSortOption } from '../../../../state/slices/itemsFilters';
+import { OnChangeValue } from 'react-select';
 import { CollectionSortOption } from '../../../../state/collectionSettings';
+import { ItemSortOption } from '../../../../state/slices/itemsFilters';
 import { Button } from '../../Controls/Button';
 import { DropdownIcon } from '../../Icons/DropdownIcon';
 import { SelectOption, SelectPopover } from '../SelectPopover';
@@ -43,7 +43,7 @@ export const SortSelect = ({
   // display proper sort options when sorting is reset in FilterReset
   useEffect(() => setValue(prepareValue(selectedOption)), [selectedOption, prepareValue]);
 
-  const handleChange = (newValue: ValueType<SelectOption, boolean>) => {
+  const handleChange = (newValue: OnChangeValue<SelectOption, boolean>) => {
     onChange((newValue as SelectOption).label);
   };
 

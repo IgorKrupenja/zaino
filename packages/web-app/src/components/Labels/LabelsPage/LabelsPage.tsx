@@ -1,6 +1,7 @@
 import { Label } from '@zaino/shared';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
 import selectFilteredLabels, { selectLabelCount } from '../../../state/selectors/labels';
 import { saveSortOrder } from '../../../state/slices/labels';
@@ -22,7 +23,7 @@ import { NewLabel } from '../NewLabel';
 import './style.scss';
 
 export const LabelsPage = () => {
-  document.title = 'Labels | Zaino';
+  useTitle('Labels | Zaino');
   const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectFilteredLabels(state)) as Label[];

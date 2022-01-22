@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useToggle from '../../../hooks/useToggle';
-import { sessionHistory } from '../../../routes/AppRouter';
 import { logout } from '../../../state/slices/user';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
@@ -15,6 +14,7 @@ export const AccountDetails = () => {
   const dispatch = useDispatch();
   const handleLogout = () => dispatch(logout());
   const [isPopoverOpen, togglePopover] = useToggle();
+  const location = useLocation();
 
   return (
     <Popover
@@ -36,7 +36,8 @@ export const AccountDetails = () => {
             {process.env.PRIVACY_POLICY_ENABLED === 'true' && (
               <Link
                 className="account-details__policies"
-                to={{ pathname: '/privacy', state: { from: sessionHistory.location.pathname } }}
+                to="/privacy"
+                state={{ from: location.pathname }}
               >
                 Privacy and cookie policy
               </Link>
