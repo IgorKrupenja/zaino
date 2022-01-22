@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import DashboardIcon from '../../../images/icons/dashboard.svg';
 import LabelIcon from '../../../images/icons/label.svg';
-import CategoryIcon from '../../../images/icons/category.svg';
 import { sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
 import { AccountDetails } from '../AccountDetails';

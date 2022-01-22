@@ -43,15 +43,27 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 ## Roadmap
 
-### 0.2.0
+### 0.4.0
 
-- **Add unit tests for functionality tat is ready.**
-- Add anonymous login.
-- Create a proper app logo.
+- Add custom categories.
 
-Progress can be tracked in [Github projects](https://github.com/igor-krupenja/zaino/projects/1?card_filter_query=milestone%3A0.2.0).
+### 0.3.0
+
+- Improve inventory and pack management UX.
+- Add support for multiple packs.
+
+### 0.2.1
+
+- Add unit tests for functionality that is ready.
+- Improve code structure and maintainability.
 
 ## Changelog
+
+### 0.2.0 (22nd January 2022)
+
+- Add proper app logo.
+- Made preliminary changes to support custom categories. This functionality is not yet exposed in the app, will be added in
+- Minor bugfixes.
 
 ### 0.1.1 (4th November 2020)
 
