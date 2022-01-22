@@ -7,7 +7,6 @@
     // import JSON
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    // TODO: temporary workaround for #486
     "skipLibCheck": true
   },
   "compileOnSave": true,
