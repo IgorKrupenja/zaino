@@ -163,6 +163,8 @@ const config: Configuration = {
       logo: 'src/images/logo.svg',
       // favicon folder path inside dist folder
       prefix: 'images/favicon/',
+      mode: 'webapp',
+      devMode: 'light',
     }),
     new MiniCssExtractPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
