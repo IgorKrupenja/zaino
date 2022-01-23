@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { Item } from '@zaino/shared/';
+import { Item } from '../../shared';
 import selectFilteredInventoryItems, {
   selectAllInventoryItems,
   selectAllPackItems,

@@ -1,7 +1,7 @@
-import { Item } from '@zaino/shared/';
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import CategoryIcon from '../../../images/icons/category.svg';
+import { ReactComponent as CategoryIcon } from '../../../images/icons/category.svg';
+import { Item } from '../../../shared';
 import { LabelBadgeList } from '../../Common/LabelBadge/LabelBadgeList';
 import { Category } from '../../Common/Misc/Category';
 import { CategoryImage } from '../../Common/Misc/CategoryImage';
@@ -30,7 +30,7 @@ export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
         <Category categoryId={categoryId} className="item-details__category">
           {/* extra div to properly align SVG icon */}
           <div className="item-details__category-icon__container">
-            <CategoryIcon className="item-details__category-icon" />
+            <CategoryIcon />
           </div>
         </Category>
         {/* show weight if user has set it (including to 0), hide if not set */}

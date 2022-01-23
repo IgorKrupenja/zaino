@@ -1,4 +1,3 @@
-import { Item } from '@zaino/shared/';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
@@ -12,6 +11,7 @@ import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
 import './style.scss';
 import { useTitle } from '../../../hooks/useTitle';
+import { Item } from '../../../shared';
 
 export const NewItem = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export const NewItem = () => {
   const newItem: Item = {
     id: uuid(),
     name: '',
-    categoryId: categories.find(category => category.isDefault)?.id ?? categories[0].id,
+    categoryId: categories.find((category) => category.isDefault)?.id ?? categories[0].id,
     weight: '',
     quantity: 1,
     packQuantity: 0,

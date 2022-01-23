@@ -1,3 +1,6 @@
+@use 'sass:math';
+@import 'styles/styles.scss';
+
 // wrapper div is used in order to achieve flexible list height
 .stack__wrapper {
   flex: 1;
@@ -63,7 +66,6 @@
 .stack__list--empty {
   align-items: center;
   display: flex;
-
   height: 11rem;
   justify-content: center;
   overflow: hidden;

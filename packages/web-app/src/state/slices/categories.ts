@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Category, Item } from '@zaino/shared';
+import { Category, Item } from '../../shared';
 
 const initialState: Category[] = [];
 
@@ -11,8 +11,8 @@ const categoriesSlice = createSlice({
       const categories = action.payload.categories;
       // compute item counts for each category as these are not stored in Firestore
       // these counts are used on CategoriesPage, including in sort
-      action.payload.items.forEach(item => {
-        const category = categories.find(category => category.id === item.categoryId);
+      action.payload.items.forEach((item) => {
+        const category = categories.find((category) => category.id === item.categoryId);
         // only if category not empty
         if (category) {
           category.itemUniqueCount = category.itemUniqueCount ? (category.itemUniqueCount += 1) : 1;
@@ -22,7 +22,7 @@ const categoriesSlice = createSlice({
         }
       });
 
-      categories.forEach(category => {
+      categories.forEach((category) => {
         if (!category.itemTotalCount) category.itemTotalCount = 0;
         if (!category.itemUniqueCount) category.itemUniqueCount = 0;
         state.push(category);

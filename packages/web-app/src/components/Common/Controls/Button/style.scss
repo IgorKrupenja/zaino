@@ -1,13 +1,15 @@
+@import 'styles/styles.scss';
+
 .button {
-  padding: 0 $s-size 0 $s-size;
   border: none;
   border-radius: $xs-size;
-
-  height: $xl-size;
-
-  font-weight: 500;
   color: white;
   cursor: pointer;
+
+  font-weight: 500;
+
+  height: $xl-size;
+  padding: 0 $s-size 0 $s-size;
 
   transition: 0.3s ease;
 
@@ -20,21 +22,21 @@
 }
 
 .button--green {
-  border: 0.1rem solid rgba($off-black, 0.4);
   background-color: $dark-green;
+  border: 0.1rem solid rgba($off-black, 0.4);
 
   &:hover {
     background-color: darken($dark-green, 5%);
   }
   &:disabled {
-    border-color: rgba($off-black, 0.1);
     background-color: rgba($dark-green, 0.5);
+    border-color: rgba($off-black, 0.1);
   }
 }
 
 .button--red {
-  border: 0.1rem solid rgba($off-black, 0.4);
   background-color: $bright-red;
+  border: 0.1rem solid rgba($off-black, 0.4);
 
   &:hover {
     background-color: darken($bright-red, 5%);
@@ -42,20 +44,20 @@
 }
 
 .button--grey {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  background-color: $off-white;
 
   border: 0.1rem solid $light-grey;
-  background-color: $off-white;
   color: $off-black;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     background-color: $extra-light-grey;
   }
   &:disabled {
-    color: $mid-grey;
     border-color: $extra-light-grey;
+    color: $mid-grey;
     cursor: default;
     &:hover {
       background-color: $off-white;
@@ -64,8 +66,12 @@
 }
 
 .button--white {
-  display: flex;
   align-items: center;
+
+  background-color: transparent;
+  color: $grey;
+  display: flex;
+  font-weight: normal;
   justify-content: center;
 
   margin: 0;
@@ -73,13 +79,9 @@
 
   transition: background-color 0.3s ease, color 0.3s ease;
 
-  background-color: transparent;
-  color: $grey;
-  font-weight: normal;
-
   &:hover {
-    color: $off-black;
     background-color: transparent;
+    color: $off-black;
   }
   // also change SVG icon fill when hovering over text
   &:hover > svg {
@@ -88,17 +90,17 @@
 }
 
 .button--underline {
-  display: flex;
   align-items: center;
 
-  margin: 0 $xs-size;
+  background-color: transparent;
   border-bottom: 0.2rem solid transparent;
   border-radius: 0;
-  padding: 0;
+  display: flex;
+  font-size: 1.5rem;
   height: 2.5rem;
 
-  background-color: transparent;
-  font-size: 1.5rem;
+  margin: 0 $xs-size;
+  padding: 0;
 
   transition: 0.1s ease;
 
@@ -117,15 +119,14 @@
 }
 
 .button--medium {
+  height: 2.6rem;
   margin: 0.4rem 0 0 0;
   padding: 0 $xs-size;
-  height: 2.6rem;
 }
 
 .button--small {
+  font-size: $font-size-small;
+  height: 1.9rem;
   margin: 0 0 0.2rem 0.3rem;
   padding: 0;
-  height: 1.9rem;
-
-  font-size: $font-size-small;
 }

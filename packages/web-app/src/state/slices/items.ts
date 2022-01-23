@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Item } from '@zaino/shared/';
 import deleteDocuments from '../../firebase/deleteDocuments';
 import db from '../../firebase/firebase';
+import { Item } from '../../shared';
 import { RootState } from '../store';
 import { decrementItemCount } from './labels';
 
@@ -60,7 +60,7 @@ export const deleteItem = createAsyncThunk<void, Item, { state: RootState }>(
   'items/deleteItem',
   async (item, { getState, dispatch }) => {
     // also decrement counts for related labels
-    item.labelIds?.forEach(labelId =>
+    item.labelIds?.forEach((labelId) =>
       dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
     );
     await db.collection(`users/${getState().user.uid}/items`).doc(item.id).delete();
@@ -70,14 +70,14 @@ export const deleteItem = createAsyncThunk<void, Item, { state: RootState }>(
 export const batchDeleteItems = createAsyncThunk<void, Item[], { state: RootState }>(
   'items/batchDeleteItems',
   async (items, { getState, dispatch }) => {
-    items.forEach(item =>
-      item.labelIds?.forEach(labelId =>
+    items.forEach((item) =>
+      item.labelIds?.forEach((labelId) =>
         dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
       )
     );
     await deleteDocuments(
       `users/${getState().user.uid}/items`,
-      items.map(item => item.id)
+      items.map((item) => item.id)
     );
   }
 );
@@ -89,13 +89,13 @@ const itemsSlice = createSlice({
   initialState,
   reducers: {
     loadItems: (state, action: PayloadAction<Item[]>) => {
-      action.payload.forEach(item => state.push(item));
+      action.payload.forEach((item) => state.push(item));
     },
     // reset state action to be executed on logout
     resetItemsState: () => [],
   },
   // builder used in TS so that both `state` and `action` are correctly typed
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     // Redux Toolkit allows us to write "mutating" logic in reducers. It
     // doesn't actually mutate the state because it uses the immer library,
     // which detects changes to a "draft state" and produces a brand new
@@ -106,25 +106,25 @@ const itemsSlice = createSlice({
     });
     builder.addCase(updateItem.pending, (state, action) => {
       const update = action.meta.arg;
-      const index = state.findIndex(item => item.id === update.id);
+      const index = state.findIndex((item) => item.id === update.id);
       state[index] = update;
     });
     builder.addCase(deleteItem.pending, (state, action) => {
       state.splice(
-        state.findIndex(item => item.id === action.meta.arg.id),
+        state.findIndex((item) => item.id === action.meta.arg.id),
         1
       );
     });
     builder.addCase(batchUpdateItems.pending, (state, action) => {
-      action.meta.arg.forEach(update => {
-        const index = state.findIndex(item => item.id === update.id);
+      action.meta.arg.forEach((update) => {
+        const index = state.findIndex((item) => item.id === update.id);
         state[index] = update;
       });
     });
     builder.addCase(batchDeleteItems.pending, (state, action) => {
-      action.meta.arg.forEach(itemToDelete => {
+      action.meta.arg.forEach((itemToDelete) => {
         state.splice(
-          state.findIndex(item => item.id === itemToDelete.id),
+          state.findIndex((item) => item.id === itemToDelete.id),
           1
         );
       });

@@ -1,8 +1,8 @@
-import { Label } from '@zaino/shared';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { getRandomColor } from '../../../constants/Colors';
+import { Label } from '../../../shared';
 import { addLabel } from '../../../state/slices/labels';
 import { Button } from '../../Common/Controls/Button';
 import { LabelBadge } from '../../Common/LabelBadge/LabelBadge';
@@ -35,7 +35,7 @@ export const NewLabel = ({ toggleForm }: NewLabelProps) => {
         className="new-label"
         label={newLabel}
         // lastSortIndex to keep newly-created label at the top of the list -- if sorting by name
-        onSubmit={label => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
+        onSubmit={(label) => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
         toggleForm={toggleForm}
         setLabelBadgeText={setName}
         setLabelBadgeColor={setColorName}

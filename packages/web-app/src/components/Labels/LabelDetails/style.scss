@@ -1,6 +1,8 @@
+@import 'styles/styles.scss';
+
 .label-details {
-  border-top: $border;
   background: white;
+  border-top: $border;
 
   &:nth-child(1) {
     border-top: none;
@@ -21,11 +23,10 @@
 }
 
 .label-details__count {
-  margin-right: auto;
-  padding: 0 $s-size;
-
   color: $grey;
   font-size: $font-size-small;
+  margin-right: auto;
+  padding: 0 $s-size;
 }
 
 .label-details__count--form-open {
@@ -35,8 +36,8 @@
 }
 
 .label-details__edit {
-  padding: 0;
   height: 2rem;
+  padding: 0;
 }
 
 .label-details__delete {

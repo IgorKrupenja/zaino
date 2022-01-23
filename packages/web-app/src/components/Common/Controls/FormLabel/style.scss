@@ -1,6 +1,8 @@
+@import 'styles/styles.scss';
+
 .form-label {
-  padding: 0 0 0.3rem 0.3rem;
+  color: $grey;
 
   font-size: $font-size-small;
-  color: $grey;
+  padding: 0 0 0.3rem 0.3rem;
 }

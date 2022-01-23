@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import DashboardIcon from '../../../images/icons/dashboard.svg';
-import LabelIcon from '../../../images/icons/label.svg';
-import Logo from '../../../images/logo.svg';
+import { ReactComponent as DashboardIcon } from '../../../images/icons/dashboard.svg';
+import { ReactComponent as LabelIcon } from '../../../images/icons/label.svg';
+import { ReactComponent as Logo } from '../../../images/logo.svg';
 import { CollectionSortOption } from '../../../state/collectionSettings';
 import { sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';
@@ -20,7 +20,7 @@ export const Header = () => {
     <div className="header__container">
       <header className="header">
         <Link className="header__logo__link" to="/dashboard">
-          <Logo className="header__logo" />
+          <Logo />
         </Link>
         <nav className="header__nav">
           <NavLink
@@ -31,7 +31,7 @@ export const Header = () => {
               }`
             }
           >
-            <DashboardIcon className="header__nav__link__icon" />
+            <DashboardIcon />
             <span className="header__nav__link__text">Dashboard</span>
           </NavLink>
           <NavLink
@@ -48,7 +48,7 @@ export const Header = () => {
               }`
             }
           >
-            <LabelIcon className="header__nav__link__icon" />
+            <LabelIcon />
             <span className="header__nav__link__text">Labels</span>
           </NavLink>
         </nav>

@@ -1,10 +1,10 @@
-import { Item } from '@zaino/shared/';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useParams } from 'react-router-dom';
 import { useCloseModal } from '../../../hooks/useCloseModal';
 import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
+import { Item } from '../../../shared';
 import { deleteItem, updateItem } from '../../../state/slices/items';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
@@ -21,7 +21,7 @@ export const EditItem = () => {
 
   const { id } = useParams();
   const items = useSelector((state: RootState) => state.items);
-  const item = items.find(item => item.id === id);
+  const item = items.find((item) => item.id === id);
   const [title, setTitle] = useState(item?.name ?? '');
 
   const dispatch = useDispatch();

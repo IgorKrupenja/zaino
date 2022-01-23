@@ -1,8 +1,9 @@
+@import 'styles/styles.scss';
+
 .item-form {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-gap: $s-size;
-
+  grid-template-columns: repeat(2, 1fr);
   padding-top: $s-size;
 }
 
@@ -11,9 +12,9 @@
 }
 
 .item-form__notes {
+  margin-bottom: 0.9rem;
   // small negative top margin to compensate for LabelBadge's bottom margin
   margin-top: -0.3rem;
-  margin-bottom: 0.9rem;
 }
 
 .item-form__align-start {

@@ -1,7 +1,7 @@
-import { Item } from '@zaino/shared/';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import NoBackpackIcon from '../../../images/icons/no-backpack.svg';
+import { ReactComponent as NoBackpackIcon } from '../../../images/icons/no-backpack.svg';
+import { Item } from '../../../shared';
 import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../Common/Controls/Button';
 import { Row } from '../../Common/Wrappers/Row';
@@ -52,7 +52,7 @@ export const PackItem = (item: Item) => {
         className="button--grey button--medium pack-item__remove"
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 0 }))}
       >
-        <NoBackpackIcon className="pack-item__button-icon" />
+        <NoBackpackIcon />
         Remove from pack
       </Button>
     </ItemDetails>

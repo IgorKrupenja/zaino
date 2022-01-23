@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Item, Label } from '@zaino/shared/';
 import deleteDocuments from '../../firebase/deleteDocuments';
 import db from '../../firebase/firebase';
+import { Item, Label } from '../../shared';
 import { RootState } from '../store';
 import { batchUpdateItems } from './items';
 
@@ -33,8 +33,8 @@ export const deleteLabel = createAsyncThunk<void, string, { state: RootState }>(
   'labels/deleteLabel',
   async (id, { getState, dispatch }) => {
     const updatedItems = getState()
-      .items.filter(item => item.labelIds?.includes(id))
-      .map(item => {
+      .items.filter((item) => item.labelIds?.includes(id))
+      .map((item) => {
         // immutably remove labelId from item
         const labelIds = [...(item.labelIds as string[])];
         labelIds?.splice(labelIds?.indexOf(id), 1);
@@ -56,7 +56,7 @@ export const batchDeleteLabels = createAsyncThunk<void, Label[], { state: RootSt
   async (labels, { getState }) => {
     await deleteDocuments(
       `users/${getState().user.uid}/labels`,
-      labels.map(label => label.id)
+      labels.map((label) => label.id)
     );
   }
 );
@@ -72,9 +72,9 @@ const labelsSlice = createSlice({
       const labels = action.payload.labels;
       // compute item counts for each label as these are not stored in Firestore
       // these counts are used on LabelsPage, including in sort
-      action.payload.items.forEach(item => {
-        item.labelIds?.forEach(labelId => {
-          const label = labels.find(label => label.id === labelId);
+      action.payload.items.forEach((item) => {
+        item.labelIds?.forEach((labelId) => {
+          const label = labels.find((label) => label.id === labelId);
           if (label) {
             label.itemUniqueCount = label.itemUniqueCount ? (label.itemUniqueCount += 1) : 1;
             label.itemTotalCount = label.itemTotalCount
@@ -84,7 +84,7 @@ const labelsSlice = createSlice({
         });
       });
 
-      labels.forEach(label => {
+      labels.forEach((label) => {
         if (!label.itemTotalCount) label.itemTotalCount = 0;
         if (!label.itemUniqueCount) label.itemUniqueCount = 0;
         state.push(label);
@@ -97,7 +97,7 @@ const labelsSlice = createSlice({
       action: PayloadAction<{ labelId: string; itemQuantity: number }>
     ) => {
       const itemQuantity = action.payload.itemQuantity;
-      const index = state.findIndex(label => label.id === action.payload.labelId);
+      const index = state.findIndex((label) => label.id === action.payload.labelId);
       const itemUniqueCount = state[index].itemUniqueCount;
       const itemTotalCount = state[index].itemTotalCount;
 
@@ -108,7 +108,7 @@ const labelsSlice = createSlice({
       state,
       action: PayloadAction<{ labelId: string; itemQuantity: number }>
     ) => {
-      const index = state.findIndex(label => label.id === action.payload.labelId);
+      const index = state.findIndex((label) => label.id === action.payload.labelId);
       const itemUniqueCount = state[index].itemUniqueCount;
       const itemTotalCount = state[index].itemTotalCount;
 
@@ -130,32 +130,32 @@ const labelsSlice = createSlice({
     // a label is added/deleted/edited on LabelsPage but so far perf looks good
     saveSortOrder: (state, action: PayloadAction<Label[]>) => {
       action.payload.forEach((filteredLabel, filteredIndex) => {
-        const index = state.findIndex(label => label.id === filteredLabel.id);
+        const index = state.findIndex((label) => label.id === filteredLabel.id);
         state[index].lastSortIndex = filteredIndex;
       });
     },
     // reset action to be executed on logout
     resetLabelsState: () => [],
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder.addCase(addLabel.pending, (state, action) => {
       state.push(action.meta.arg);
     });
     builder.addCase(updateLabel.pending, (state, action) => {
       const update = action.meta.arg;
-      const index = state.findIndex(label => label.id === update.id);
+      const index = state.findIndex((label) => label.id === update.id);
       state[index] = update;
     });
     builder.addCase(deleteLabel.pending, (state, action) => {
       state.splice(
-        state.findIndex(label => label.id === action.meta.arg),
+        state.findIndex((label) => label.id === action.meta.arg),
         1
       );
     });
     builder.addCase(batchDeleteLabels.pending, (state, action) => {
-      action.meta.arg.forEach(labelToDelete => {
+      action.meta.arg.forEach((labelToDelete) => {
         state.splice(
-          state.findIndex(label => label.id === labelToDelete.id),
+          state.findIndex((label) => label.id === labelToDelete.id),
           1
         );
       });

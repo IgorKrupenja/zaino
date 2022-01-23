@@ -1,7 +1,7 @@
-import { Item } from '@zaino/shared/';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import BackpackIcon from '../../../images/icons/backpack.svg';
+import { ReactComponent as BackpackIcon } from '../../../images/icons/backpack.svg';
+import { Item } from '../../../shared';
 import { updateItem } from '../../../state/slices/items';
 import { Button } from '../../Common/Controls/Button';
 import { ItemDetails } from '../ItemDetails/';
@@ -19,11 +19,7 @@ export const InventoryItem = (item: Item) => {
         disabled={isInPack}
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 1 }))}
       >
-        <BackpackIcon
-          className={`inventory-item__button-icon${
-            isInPack ? ' inventory-item__button-icon__disabled' : ''
-          }`}
-        />
+        <BackpackIcon />
         {isInPack ? 'Already in pack' : 'Add to pack'}
       </Button>
     </ItemDetails>

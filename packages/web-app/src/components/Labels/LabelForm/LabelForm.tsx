@@ -1,4 +1,3 @@
-import { Label } from '@zaino/shared';
 import React, { ReactNode, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColorName } from '../../../constants/Colors';
@@ -14,6 +13,7 @@ import { Input } from '../../Common/Controls/Input';
 import { ColorSelect } from '../../Common/Selects/ColorSelect';
 import { Row } from '../../Common/Wrappers/Row';
 import './style.scss';
+import { Label } from '../../../shared';
 
 type LabelFormProps = {
   label: Label;
@@ -47,7 +47,7 @@ export const LabelForm = ({
     if (!values.name.trim()) {
       setNameError('Name cannot be blank');
     } else if (
-      labels.map(label => label.name).includes(values.name) &&
+      labels.map((label) => label.name).includes(values.name) &&
       // allow saving label if name unchanged
       initialName !== values.name
     ) {
@@ -77,7 +77,7 @@ export const LabelForm = ({
           value={values.name}
           error={nameError}
           autoFocus
-          onChange={e => {
+          onChange={(e) => {
             e.persist();
             const name = e.target.value;
             setValues({ ...values, name });
@@ -88,7 +88,7 @@ export const LabelForm = ({
         />
         <ColorSelect
           selectedColorName={values.colorName}
-          onChange={colorName => {
+          onChange={(colorName) => {
             setLabelBadgeColor(colorName);
             setValues({ ...values, colorName });
           }}

@@ -6,7 +6,7 @@ export const MobilePlaceholder = () => {
     <main className="mobile-placeholder">
       <img
         className="mobile-placeholder__image"
-        src={`${process.env.GCP_STORAGE_URL as string}/categories/knife.svg`}
+        src={`${process.env.REACT_APP_GCP_STORAGE_URL as string}/categories/knife.svg`}
       />
       <h1 className="mobile-placeholder__header">No mobile version yet 😞</h1>
       <p className="mobile-placeholder__text">

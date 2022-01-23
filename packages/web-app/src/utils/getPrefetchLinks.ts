@@ -25,7 +25,7 @@ const fileNames = [
 export const getPrefetchLinks = () => {
   return fileNames.reduce((linksString, fileName) => {
     return `${linksString}<link rel="prefetch" href="${
-      process.env.GCP_STORAGE_URL as string
+      process.env.REACT_APP_GCP_STORAGE_URL as string
     }/categories/${fileName}" />`;
   }, '');
 };

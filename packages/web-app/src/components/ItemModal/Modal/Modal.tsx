@@ -13,7 +13,7 @@ type ModalProps = {
  * Modal component with custom styling.
  */
 export const Modal = ({ children, ...rest }: ModalProps) => {
-  ReactModal.setAppElement('#app');
+  ReactModal.setAppElement('#root');
 
   return (
     <ReactModal className="modal__container" overlayClassName="modal__overlay" {...rest}>

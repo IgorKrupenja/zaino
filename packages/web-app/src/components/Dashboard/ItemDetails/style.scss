@@ -1,16 +1,15 @@
-.item-details {
-  position: relative;
+@import 'styles/styles.scss';
 
-  margin-bottom: $stack-margin-size;
+.item-details {
+  background: white;
   border: $border;
   border-radius: $xs-size;
-  padding: $xs-size $stack-margin-size $stack-margin-size $stack-margin-size;
-
-  overflow-wrap: anywhere;
-
-  background: white;
   color: $grey;
   font-size: $font-size-small;
+  margin-bottom: $stack-margin-size;
+  overflow-wrap: anywhere;
+  padding: $xs-size $stack-margin-size $stack-margin-size $stack-margin-size;
+  position: relative;
 
   &:last-child {
     margin-bottom: 0;
@@ -30,8 +29,8 @@
 }
 
 .item-details__name {
-  font-size: 1.5rem;
   color: $off-black;
+  font-size: 1.5rem;
   text-decoration: none;
 
   &:hover {
@@ -47,18 +46,17 @@
 }
 
 .item-details__category-icon__container {
-  display: inline-flex;
   align-items: center;
+  display: inline-flex;
   margin-right: 0.2rem;
 }
 
 .item-details__category-icon {
-  margin-right: 0;
-  height: $s-size;
-  width: $s-size;
-
   fill: $grey;
+  height: $s-size;
+  margin-right: 0;
   transition: 0.3s ease;
+  width: $s-size;
 }
 
 .item-details__label-list {

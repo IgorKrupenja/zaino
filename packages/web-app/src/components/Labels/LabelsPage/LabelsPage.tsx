@@ -1,8 +1,8 @@
-import { Label } from '@zaino/shared';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
+import { Label } from '../../../shared';
 import selectFilteredLabels, { selectLabelCount } from '../../../state/selectors/labels';
 import { saveSortOrder } from '../../../state/slices/labels';
 import {
@@ -67,7 +67,7 @@ export const LabelsPage = () => {
           {isFormOpen && <NewLabel toggleForm={toggleForm} />}
           {/* list proper */}
           {labelCount > 0 ? (
-            labels.map(label => <LabelDetails key={label.id} {...label} />)
+            labels.map((label) => <LabelDetails key={label.id} {...label} />)
           ) : (
             <List.Empty className={isFormOpen ? 'list--empty--border' : ''}>{`No${
               labelCount === totalLabelCount ? '' : ' matching'
