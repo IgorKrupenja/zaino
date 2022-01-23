@@ -63,17 +63,8 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 ### 0.2.0 (22nd January 2022)
 
 - Add proper app logo.
-- Made preliminary changes to support custom categories. This functionality is not yet exposed in the app, will be added in
+- Made preliminary changes to support custom categories. This functionality is not yet exposed in the app, will be added in [0.4.0](#roadmap).
 - Minor bugfixes.
-
-### 0.1.1 (4th November 2020)
-
-- Usability and styling improvements based on user feedback.
-- Added privacy and cookie policy.
-
-### 0.1.0 (15th October 2020)
-
-- Initial release 🚀
 
 [See full changelog](CHANGELOG.md).
 
