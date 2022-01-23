@@ -173,7 +173,7 @@ module.exports = function (webpackEnv) {
             additionalData: content => {
               return (
                 // storage url for images
-                `$gcp-storage-url: '${process.env.GCP_STORAGE_URL}';${content}`
+                `$gcp-storage-url: '${process.env.REACT_APP_GCP_STORAGE_URL}';${content}`
               );
             },
           },

@@ -20,9 +20,7 @@
   animation-iteration-count: infinite;
   animation-name: loader-bounce;
   animation-timing-function: ease;
-  // todo
-  background-image: url('https://storage.googleapis.com/zaino-2e6cf.appspot.com/mountain.svg');
-  // background-image: url('#{$gcp-storage-url}/mountain.svg');
+  background-image: url('#{$gcp-storage-url}/mountain.svg');
   height: 8rem;
   // slightly better positioning with negative margin
   margin-top: -2.5%;
