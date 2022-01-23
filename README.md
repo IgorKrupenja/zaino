@@ -46,6 +46,7 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 ### 0.4.0
 
 - Add custom categories.
+- Add infinite scroll pagination.
 
 ### 0.3.0
 
