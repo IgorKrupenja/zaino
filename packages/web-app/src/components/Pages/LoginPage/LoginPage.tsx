@@ -22,12 +22,9 @@ export const LoginPage = () => {
         type="light"
         onClick={() => dispatch(login())}
       />
-      {/* render policy link if enabled in .env */}
-      {process.env.REACT_APP_PRIVACY_POLICY_ENABLED === 'true' && (
-        <Link className="login-page__policies" to="/privacy">
-          Privacy and cookie policy
-        </Link>
-      )}
+      <Link className="login-page__policies" to="/privacy">
+        Privacy and cookie policy
+      </Link>
       <a className="login-page__github-link" href="https://www.github.com/igor-krupenja/zaino">
         <span className="login-page__github-link__text">Source on Github</span>
         <GithubIcon className="login-page__github-link__icon" />

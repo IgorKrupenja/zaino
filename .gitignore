@@ -1,25 +1,34 @@
-node_modules/
-dist/
+# dependencies
+**/node_modules/
+
+# testing
+**/coverage/
+
+# production
+**/build/
+
+# env
+.env
 .env.development
 .env.test
 .env.production
-# playground/sandbox folder
-sandbox/
-# Webpack stats
-stats.json
-# Firebasse hosting cache
-.firebase/
-# firebase projects config
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Firebase
+.firebase
 .firebaserc
-# produced by firebase serve
 firebase-debug.log
-# yarn error logs, e.g. when package not found in npm DB
-yarn-error.log
+
 # WebStorm just in case
 .idea
-# Policies
-PrivacyPolicy
-CookiePolicy
+
+# misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 ############################# macOS
 .DS_Store

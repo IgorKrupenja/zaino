@@ -31,11 +31,9 @@ export const AccountDetails = () => {
             <div className="account-details__name">{name}</div>
             <div className="account-details__email">{email}</div>
             {/* render policy link if enabled in .env */}
-            {process.env.REACT_APP_PRIVACY_POLICY_ENABLED === 'true' && (
-              <Link className="account-details__policies" to="/privacy">
-                Privacy and cookie policy
-              </Link>
-            )}
+            <Link className="account-details__policies" to="/privacy">
+              Privacy and cookie policy
+            </Link>
             <Button className="button--grey account-details__sign-out" onClick={handleLogout}>
               Sign out
             </Button>
