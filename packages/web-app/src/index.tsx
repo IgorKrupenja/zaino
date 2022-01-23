@@ -1,43 +1,15 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
 import 'normalize.css/normalize.css';
-import React from 'react';
 import ReactDOM from 'react-dom';
-import Media from 'react-media';
-import { Provider } from 'react-redux';
-import { MobilePlaceholder } from './components/Pages/MobilePlaceholder';
+import { App } from './components/App/App';
 import { firebase } from './firebase/firebase';
 import reportWebVitals from './reportWebVitals';
-import AppRouter from './routes/AppRouter';
 import { loadUserData } from './state/slices/dataLoader';
 import { handleLoginRedirect } from './state/slices/user';
 import store from './state/store';
 import './styles/styles.scss';
 import { getAsciiLogo } from './utils/getAsciiLogo';
 
-const app = (
-  <React.StrictMode>
-    <Provider store={store}>
-      {/* Show temporary placeholder on mobiles */}
-      <Media queries={{ small: { maxWidth: 599 } }}>
-        {(matches) => (matches.small ? <MobilePlaceholder /> : <AppRouter />)}
-      </Media>
-    </Provider>
-  </React.StrictMode>
-);
-
-const renderApp = () => {
-  ReactDOM.render(app, document.getElementById('root'));
-};
+const renderApp = () => ReactDOM.render(<App />, document.getElementById('root'));
 
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {

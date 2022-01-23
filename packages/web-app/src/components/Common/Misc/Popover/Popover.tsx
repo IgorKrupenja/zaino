@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ContentRenderer, Popover as ReactTinyPopover, PopoverAlign } from 'react-tiny-popover';
 import { getClassString } from '../../../../utils/getClassString';
 import './style.scss';
