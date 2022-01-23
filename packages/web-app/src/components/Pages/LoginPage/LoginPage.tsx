@@ -1,4 +1,3 @@
-import React from 'react';
 import GoogleButton from 'react-google-button';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
