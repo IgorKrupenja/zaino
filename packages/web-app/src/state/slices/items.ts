@@ -35,7 +35,6 @@ export const updateItem = createAsyncThunk<void, Item, { state: RootState }>(
 export const batchUpdateItems = createAsyncThunk<void, Item[], { state: RootState }>(
   'items/batchUpdateItems',
   async (items, { getState }) => {
-    // use batch to write to DB as can have a significant number of items here
     let batch = db.batch();
 
     let i = 0;
@@ -59,7 +58,6 @@ export const batchUpdateItems = createAsyncThunk<void, Item[], { state: RootStat
 export const deleteItem = createAsyncThunk<void, Item, { state: RootState }>(
   'items/deleteItem',
   async (item, { getState, dispatch }) => {
-    // also decrement counts for related labels
     item.labelIds?.forEach((labelId) =>
       dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
     );
@@ -91,16 +89,10 @@ const itemsSlice = createSlice({
     loadItems: (state, action: PayloadAction<Item[]>) => {
       action.payload.forEach((item) => state.push(item));
     },
-    // reset state action to be executed on logout
+    // reset state action executed on logout
     resetItemsState: () => [],
   },
-  // builder used in TS so that both `state` and `action` are correctly typed
   extraReducers: (builder) => {
-    // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    // doesn't actually mutate the state because it uses the immer library,
-    // which detects changes to a "draft state" and produces a brand new
-    // immutable state based off those changes
-    // more info https://redux.js.org/tutorials/essentials/part-2-app-structure
     builder.addCase(addItem.pending, (state, action) => {
       state.push(action.meta.arg);
     });

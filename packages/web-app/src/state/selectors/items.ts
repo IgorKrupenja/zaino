@@ -48,6 +48,8 @@ const selectFilteredInventoryItems = createSelector(
             } else {
               return a.weight > b.weight ? 1 : -1;
             }
+          default:
+            return 1;
         }
       });
   }

@@ -27,6 +27,8 @@ export const collectionCombiner = (
           return a.itemUniqueCount > b.itemUniqueCount ? 1 : -1;
         case CollectionSortOption.lastSortOrder:
           return a.lastSortIndex > b.lastSortIndex ? 1 : -1;
+        default:
+          return 1;
       }
     });
 };

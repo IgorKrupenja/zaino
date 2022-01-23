@@ -21,7 +21,7 @@ export const ScrollablePage = ({ children }: ScrollablePageProps) => {
       {/* extra div for proper scrollbar position with header */}
       <div className="scrollable-page__container">
         {/* "--loading" needed for Loader to display correctly when loading demo data */}
-        <main className={`scrollable-page ${isLoading && 'scrollable-page--loading'}`}>
+        <main className={`scrollable-page ${isLoading ? 'scrollable-page--loading' : ''}`}>
           {children}
         </main>
       </div>
