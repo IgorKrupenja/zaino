@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { Item } from '../../shared';
+import { Item } from '@zaino/shared';
 import { ItemSortOption } from '../slices/itemsFilters';
 import { RootState } from '../store';
 

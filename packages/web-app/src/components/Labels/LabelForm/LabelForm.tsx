@@ -1,9 +1,10 @@
+import { Label } from '@zaino/shared';
 import React, { ReactNode, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColorName } from '../../../constants/Colors';
+import { CollectionSortOption } from '../../../state/collectionSettings';
 import { selectAllLabels } from '../../../state/selectors/labels';
 import { sortLabelsBy } from '../../../state/slices/labelsFilters';
-import { CollectionSortOption } from '../../../state/collectionSettings';
 import { RootState } from '../../../state/store';
 import { getClassString } from '../../../utils/getClassString';
 import { Button } from '../../Common/Controls/Button';
@@ -13,7 +14,6 @@ import { Input } from '../../Common/Controls/Input';
 import { ColorSelect } from '../../Common/Selects/ColorSelect';
 import { Row } from '../../Common/Wrappers/Row';
 import './style.scss';
-import { Label } from '../../../shared';
 
 type LabelFormProps = {
   label: Label;

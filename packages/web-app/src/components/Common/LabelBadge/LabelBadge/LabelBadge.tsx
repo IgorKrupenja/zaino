@@ -1,7 +1,6 @@
-import React from 'react';
+import { Label } from '@zaino/shared';
 import { useDispatch } from 'react-redux';
 import { ColorName, Colors } from '../../../../constants/Colors';
-import { Label } from '../../../../shared';
 import { setItemLabelsFilter } from '../../../../state/slices/itemsFilters';
 import { getClassString } from '../../../../utils/getClassString';
 import './style.scss';

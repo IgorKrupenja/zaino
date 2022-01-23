@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Item, Label } from '@zaino/shared';
 import deleteDocuments from '../../firebase/deleteDocuments';
 import db from '../../firebase/firebase';
-import { Item, Label } from '../../shared';
 import { RootState } from '../store';
 import { batchUpdateItems } from './items';
 

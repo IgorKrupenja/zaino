@@ -1,17 +1,16 @@
-import React from 'react';
+import { Item } from '@zaino/shared';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import { useCloseModal } from '../../../hooks/useCloseModal';
+import { useTitle } from '../../../hooks/useTitle';
 import { addItem } from '../../../state/slices/items';
 import { RootState } from '../../../state/store';
-import { useCloseModal } from '../../../hooks/useCloseModal';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
 import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
 import './style.scss';
-import { useTitle } from '../../../hooks/useTitle';
-import { Item } from '../../../shared';
 
 export const NewItem = () => {
   const dispatch = useDispatch();

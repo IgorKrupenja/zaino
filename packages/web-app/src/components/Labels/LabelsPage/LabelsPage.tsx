@@ -1,8 +1,8 @@
+import { Label } from '@zaino/shared';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
-import { Label } from '../../../shared';
 import selectFilteredLabels, { selectLabelCount } from '../../../state/selectors/labels';
 import { saveSortOrder } from '../../../state/slices/labels';
 import {

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Category, Item } from '../../shared';
+import { Category, Item } from '@zaino/shared';
 
 const initialState: Category[] = [];
 

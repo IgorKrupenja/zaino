@@ -1,6 +1,6 @@
+import { Label } from '@zaino/shared';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Label } from '../../../../shared';
 import { RootState } from '../../../../state/store';
 import { getClassString } from '../../../../utils/getClassString';
 import { LabelBadge } from '../LabelBadge';

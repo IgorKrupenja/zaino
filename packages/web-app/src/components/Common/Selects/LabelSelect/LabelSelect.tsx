@@ -1,10 +1,10 @@
-import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import { Label } from '@zaino/shared';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 import { v4 as uuid } from 'uuid';
 import { Colors, getRandomColor } from '../../../../constants/Colors';
-import { Label } from '../../../../shared';
 import { addLabel } from '../../../../state/slices/labels';
 import { RootState } from '../../../../state/store';
 import { sortSelectOptionsByName } from '../../../../utils/sortSelectOptionsByName';

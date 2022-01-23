@@ -1,4 +1,4 @@
-import { Collection } from '../../shared';
+import { Collection } from '@zaino/shared';
 import { CollectionFilters, CollectionSortOption } from '../collectionSettings';
 
 /**
