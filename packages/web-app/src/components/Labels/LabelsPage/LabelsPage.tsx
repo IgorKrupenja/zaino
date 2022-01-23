@@ -18,7 +18,7 @@ import { ScrollablePage } from '../../Common/Misc/ScrollablePage';
 import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { Column } from '../../Common/Wrappers/Column';
 import { LabelDetails } from '../LabelDetails';
-import { List } from '../List/List';
+import { List } from '../List';
 import { NewLabel } from '../NewLabel';
 import './style.scss';
 

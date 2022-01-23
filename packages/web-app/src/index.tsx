@@ -9,8 +9,6 @@ import store from './state/store';
 import './styles/styles.scss';
 import { getAsciiLogo } from './utils/getAsciiLogo';
 
-const renderApp = () => ReactDOM.render(<App />, document.getElementById('root'));
-
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
     // on log in
@@ -26,6 +24,8 @@ firebase.auth().onAuthStateChanged(async (user) => {
   // re-render on both login and logout
   renderApp();
 });
+
+const renderApp = () => ReactDOM.render(<App />, document.getElementById('root'));
 
 // From CRA: If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

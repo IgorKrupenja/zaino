@@ -10,7 +10,7 @@ describe('Test', () => {
     });
   });
 
-  test('renders learn react link', () => {
+  test('renders description', () => {
     render(<App />);
     const linkElement = screen.getByText(
       /Hiking and mountaineering equipment app for the meticulous adventurer./i
