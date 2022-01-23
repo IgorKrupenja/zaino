@@ -24,8 +24,9 @@ const fileNames = [
   'knife.svg',
 ];
 
-module.exports = () => {
-  return fileNames.reduce((linksString, fileName) => {
-    return `${linksString}<link rel="prefetch" href="${process.env.REACT_APP_GCP_STORAGE_URL}/categories/${fileName}" />`;
-  }, '');
-};
+module.exports = () =>
+  fileNames.reduce(
+    (linksString, fileName) =>
+      `${linksString}<link rel="prefetch" href="${process.env.REACT_APP_GCP_STORAGE_URL}/categories/${fileName}" />`,
+    ''
+  );
