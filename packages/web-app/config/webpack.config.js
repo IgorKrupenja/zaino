@@ -24,6 +24,7 @@ const ForkTsCheckerWebpackPlugin =
     ? require('react-dev-utils/ForkTsCheckerWarningWebpackPlugin')
     : require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const getPrefetchLinks = require('./webpack/getPrefetchLinks');
 
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
@@ -551,6 +552,7 @@ module.exports = function (webpackEnv) {
         Object.assign(
           {},
           {
+            prefetchLinks: getPrefetchLinks(),
             inject: true,
             template: paths.appHtml,
           },
@@ -583,7 +585,8 @@ module.exports = function (webpackEnv) {
       // <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
       // It will be an empty string unless you specify "homepage"
       // in `package.json`, in which case it will be the pathname of that URL.
-      new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+      // Igor: Note that this is commented out in favour of FaviconsWebpackPlugin below
+      // new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
       new FaviconsWebpackPlugin({
         logo: 'src/images/logo.svg',
         // favicon folder path inside dist folder

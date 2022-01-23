@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Get prefetch links for images to be inserted into the HTML header by HtmlWebpackPlugin.
  * This is obviously a hack until a better solution (one SVG file with sprites?) is implemented.
@@ -22,10 +24,8 @@ const fileNames = [
   'knife.svg',
 ];
 
-export const getPrefetchLinks = () => {
+module.exports = () => {
   return fileNames.reduce((linksString, fileName) => {
-    return `${linksString}<link rel="prefetch" href="${
-      process.env.REACT_APP_GCP_STORAGE_URL as string
-    }/categories/${fileName}" />`;
+    return `${linksString}<link rel="prefetch" href="${process.env.REACT_APP_GCP_STORAGE_URL}/categories/${fileName}" />`;
   }, '');
 };
