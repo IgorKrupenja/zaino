@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": "dist",
+    "outDir": "build",
     "target": "es2017",
     // import JSON
     "resolveJsonModule": true,

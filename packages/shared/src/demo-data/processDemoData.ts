@@ -1,4 +1,6 @@
-// Colors constant should be in shared package but #368
+// TODO: The script is broken, see #493 and #502
+// TODO: Colors constant should be in shared package but #368
+// Run with node --loader ts-node/esm src/demo-data/processDemoData.ts
 import { ColorName } from '@zaino/web-app/src/constants/Colors';
 import { createReadStream, writeFileSync } from 'fs';
 import { createInterface, Interface } from 'readline';
@@ -162,7 +164,7 @@ const createLabelsForItem = (item: Item, year: string, originalCategory: string,
 
 const assignLabel = (name: string, colorName: ColorName, labelIds: string[]) => {
   // check if label already exists
-  const labelId = labels.find(label => label.name === name)?.id;
+  const labelId = labels.find((label) => label.name === name)?.id;
   if (labelId) {
     labelIds.push(labelId);
   } else {
