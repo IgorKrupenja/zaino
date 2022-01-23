@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "@zaino/web-app",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
@@ -82,7 +82,8 @@
   "scripts": {
     "start": "nodemon --exec 'node scripts/start.js'",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "analyze": "node scripts/build.js -- --stats && npx webpack-bundle-analyzer ./build/bundle-stats.json"
   },
   "eslintConfig": {
     "extends": [

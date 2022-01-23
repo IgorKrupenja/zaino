@@ -1,7 +1,7 @@
 {
   "name": "zaino",
   "description": "Hiking and mountaineering equipment app for the meticulous adventurer.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "src/web-app/app.tsx",
   "author": "Igor Krupenja",
   "license": "MIT",
