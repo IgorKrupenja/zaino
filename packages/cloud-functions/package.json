@@ -1,9 +1,10 @@
 {
   "name": "@zaino/cloud-functions",
-  "version": "0.1.1",
+  "version": "0.2.0",
+  "private": true,
   "scripts": {
-    "build": "NODE_ENV=production firebase -P prod functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getEnvRegion.ts) && rm -rf ./dist && tsc",
-    "build-dev": "firebase functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getEnvRegion.ts) && rm -rf ./dist && tsc",
+    "build": "NODE_ENV=production firebase -P prod functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getEnvRegion.ts) && rm -rf ./build && tsc",
+    "build-dev": "firebase functions:config:set settings.region=$(node --loader ts-node/esm src/utils/getEnvRegion.ts) && rm -rf ./build && tsc",
     "serve": "yarn run build && firebase emulators:start --only functions",
     "shell": "yarn run build && firebase functions:shell",
     "start": "yarn run shell",
@@ -11,13 +12,14 @@
     "deploy": "firebase deploy -P prod --only functions",
     "predeploy-dev": "yarn run build-dev",
     "deploy-dev": "firebase deploy -P dev --only functions",
+    "deploy-rules-dev": "firebase deploy -P dev --only firestore",
     "logs": "firebase functions:log"
   },
   "engines": {
     "npm": ">=8.0.0",
     "node": ">=16.0.0"
   },
-  "main": "dist/cloud-functions/src/index.js",
+  "main": "build/cloud-functions/src/index.js",
   "dependencies": {
     "@google-cloud/firestore": "^5.0.2",
     "dotenv": "^14.2.0",
@@ -28,6 +30,5 @@
   },
   "devDependencies": {
     "firebase-functions-test": "^0.3.3"
-  },
-  "private": true
+  }
 }

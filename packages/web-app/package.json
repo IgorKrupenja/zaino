@@ -82,9 +82,11 @@
   },
   "scripts": {
     "start": "nodemon --exec 'node scripts/start.js'",
-    "build": "node scripts/build.js",
+    "lint": "eslint src",
     "test": "node scripts/test.js",
-    "analyze": "node scripts/build.js -- --stats && npx webpack-bundle-analyzer ./build/bundle-stats.json"
+    "build": "node scripts/build.js",
+    "analyze": "node scripts/build.js -- --stats && npx webpack-bundle-analyzer ./build/bundle-stats.json",
+    "deploy": "firebase deploy -P prod --only hosting,firestore"
   },
   "eslintConfig": {
     "extends": [

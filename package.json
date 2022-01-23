@@ -2,12 +2,9 @@
   "name": "zaino",
   "description": "Hiking and mountaineering equipment app for the meticulous adventurer.",
   "version": "0.2.0",
+  "private": true,
   "author": "Igor Krupenja",
   "license": "MIT",
-  "scripts": {
-    "deploy-rules-dev": "firebase deploy -P dev --only firestore"
-  },
-  "private": true,
   "workspaces": [
     "packages/*"
   ]

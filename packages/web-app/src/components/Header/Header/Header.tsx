@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { ReactComponent as DashboardIcon } from '../../../images/icons/dashboard.svg';

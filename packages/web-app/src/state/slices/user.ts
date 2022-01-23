@@ -18,7 +18,7 @@ export const handleLoginRedirect = createAsyncThunk(
       // it is only needed to properly create a document for the user in Firestore
       // as Firestore does not correctly create empty documents
       await db
-        .collection(`users`)
+        .collection('users')
         .doc(user.uid)
         .set({ firstLoginAt: new Date().toISOString(), eMail: user.email });
       // add default categories for every new user
@@ -42,7 +42,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {},
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder.addCase(logout.pending, () => initialState);
     builder.addCase(handleLoginRedirect.pending, (state, action) => {
       const user = action.meta.arg.user;

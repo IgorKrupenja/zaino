@@ -1,8 +1,16 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /.pnp
 .pnp.js
+
+# env
+.env
+.env.development
+.env.test
+.env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Privacy policy content
 src/components/pages/PrivacyPolicy/PrivacyPolicyContent.tsx

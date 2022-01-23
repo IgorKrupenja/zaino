@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { InputActionMeta, mergeStyles, OnChangeValue, Props } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
