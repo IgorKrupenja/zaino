@@ -2,22 +2,10 @@
   "name": "zaino",
   "description": "Hiking and mountaineering equipment app for the meticulous adventurer.",
   "version": "0.2.0",
-  "main": "src/web-app/app.tsx",
   "author": "Igor Krupenja",
   "license": "MIT",
   "scripts": {
-    "start": "yarn --cwd ./packages/web-app/ start",
-    "build": "yarn --cwd ./packages/web-app/ run build",
-    "serve": "yarn --cwd ./packages/web-app/ run serve",
-    "deploy": "yarn --cwd ./packages/web-app/ run deploy",
-    "deploy-rules-dev": "firebase deploy -P dev --only firestore",
-    "deploy-fn": "yarn --cwd ./packages/cloud-functions/ run deploy",
-    "deploy-fn-dev": "yarn --cwd ./packages/cloud-functions/ run deploy-dev",
-    "analyze": "yarn --cwd ./packages/web-app/ analyze",
-    "cloc": "cloc . --exclude-dir=node_modules,dist,package-lock.json,stats.json,sandbox"
-  },
-  "devDependencies": {
-    "cloc": "^2.6.0"
+    "deploy-rules-dev": "firebase deploy -P dev --only firestore"
   },
   "private": true,
   "workspaces": [
