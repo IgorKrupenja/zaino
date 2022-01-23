@@ -11,7 +11,7 @@ type CloseButtonProps = {
 export const CloseButton = ({ onClick, className }: CloseButtonProps) => {
   return (
     <button className={getClassString('close-button', className)} type="button" onClick={onClick}>
-      <CloseIcon />
+      <CloseIcon className="close-button__icon" />
     </button>
   );
 };

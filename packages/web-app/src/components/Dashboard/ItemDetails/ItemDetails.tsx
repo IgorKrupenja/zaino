@@ -30,7 +30,7 @@ export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
         <Category categoryId={categoryId} className="item-details__category">
           {/* extra div to properly align SVG icon */}
           <div className="item-details__category-icon__container">
-            <CategoryIcon />
+            <CategoryIcon className="item-details__category-icon" />
           </div>
         </Category>
         {/* show weight if user has set it (including to 0), hide if not set */}

@@ -20,7 +20,7 @@ export const Header = () => {
     <div className="header__container">
       <header className="header">
         <Link className="header__logo__link" to="/dashboard">
-          <Logo />
+          <Logo className="header__logo" />
         </Link>
         <nav className="header__nav">
           <NavLink
@@ -31,7 +31,7 @@ export const Header = () => {
               }`
             }
           >
-            <DashboardIcon />
+            <DashboardIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Dashboard</span>
           </NavLink>
           <NavLink
@@ -48,7 +48,7 @@ export const Header = () => {
               }`
             }
           >
-            <LabelIcon />
+            <LabelIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Labels</span>
           </NavLink>
         </nav>

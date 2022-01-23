@@ -52,7 +52,7 @@ export const PackItem = (item: Item) => {
         className="button--grey button--medium pack-item__remove"
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 0 }))}
       >
-        <NoBackpackIcon />
+        <NoBackpackIcon className="pack-item__button-icon" />
         Remove from pack
       </Button>
     </ItemDetails>

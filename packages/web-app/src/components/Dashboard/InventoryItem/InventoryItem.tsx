@@ -19,7 +19,11 @@ export const InventoryItem = (item: Item) => {
         disabled={isInPack}
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 1 }))}
       >
-        <BackpackIcon />
+        <BackpackIcon
+          className={`inventory-item__button-icon${
+            isInPack ? ' inventory-item__button-icon__disabled' : ''
+          }`}
+        />
         {isInPack ? 'Already in pack' : 'Add to pack'}
       </Button>
     </ItemDetails>
