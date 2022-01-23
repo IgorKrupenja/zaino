@@ -31,7 +31,7 @@ export const LoginPage = () => {
       )}
       <a className="login-page__github-link" href="https://www.github.com/igor-krupenja/zaino">
         <span className="login-page__github-link__text">Source on Github</span>
-        <GithubIcon />
+        <GithubIcon className="login-page__github-link__icon" />
       </a>
     </main>
   );

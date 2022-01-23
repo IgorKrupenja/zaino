@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "config/*",
+    "tsconfig.json",
+    "nodemon.json",
+    "src/images/logo.svg",
+    "src/images/logo-text.svg"
+  ]
+}
