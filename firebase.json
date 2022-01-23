@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "packages/web-app/dist",
+    "public": "packages/web-app/build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
@@ -10,7 +10,7 @@
     ]
   },
   "firestore": {
-    "rules": "firestore.rules"
+    "rules": "packages/cloud-functions/firestore.rules"
   },
   "functions": {
     "source": "packages/cloud-functions"

@@ -1,31 +1,26 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Loader } from '../components/Common/Misc/Loader';
 import { DashboardPage } from '../components/Dashboard/DashboardPage';
 import { LabelsPage } from '../components/Labels/LabelsPage';
-import { LoginPage } from '../components/Pages/LoginPage';
+import { LoginPage } from '../components/pages/LoginPage';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 const AppRouter = () => {
-  let PrivacyPolicy;
-  if (process.env.REACT_APP_PRIVACY_POLICY_ENABLED === 'true') {
-    PrivacyPolicy = lazy(() => import('../components/Pages/PrivacyPolicy'));
-  }
+  const PrivacyPolicy = lazy(() => import('../components/pages/PrivacyPolicy'));
 
   return (
     <BrowserRouter>
       <Routes>
-        {PrivacyPolicy && (
-          <Route
-            path="/privacy"
-            element={
-              <Suspense fallback={<Loader />}>
-                <PrivacyPolicy />
-              </Suspense>
-            }
-          ></Route>
-        )}
+        <Route
+          path="/privacy"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PrivacyPolicy />
+            </Suspense>
+          }
+        ></Route>
         <Route
           path="/dashboard/*"
           element={

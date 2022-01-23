@@ -7,9 +7,8 @@ import dotenv from 'dotenv';
  */
 const getRegion = () => {
   process.env.NODE_ENV = process.env.NODE_ENV ?? 'development';
-  dotenv.config({ path: `../../.env.${process.env.NODE_ENV}` });
+  dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
   // need to use console.log here and not return for the build script to pickup region
-  // also setting region to default (us-central1) if nothing is specified in .env file
   console.log(process.env.FIREBASE_FUNCTIONS_REGION ?? 'europe-west1');
 };
 

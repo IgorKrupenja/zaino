@@ -27,13 +27,13 @@ export const addDemoDataDb = functions
 
     // add demo data
     const batch = db.batch();
-    items.forEach(item => {
+    items.forEach((item) => {
       // do not write id as a field
       const { id, ...firestoreData } = item;
       const itemRef = db.collection(`${root}/items`).doc(id);
       batch.set(itemRef, firestoreData);
     });
-    labels.forEach(label => {
+    labels.forEach((label) => {
       const { id, ...firestoreData } = label;
       const itemRef = db.collection(`${root}/labels`).doc(id);
       batch.set(itemRef, firestoreData);

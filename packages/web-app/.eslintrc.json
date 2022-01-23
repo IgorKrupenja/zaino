@@ -1,0 +1,21 @@
+{
+  "extends": ["react-app", "plugin:jsx-a11y/recommended", "react-app/jest"],
+  "rules": {
+    "no-return-await": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/require-await": "warn"
+      }
+    }
+  ]
+}
