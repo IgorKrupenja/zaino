@@ -33,7 +33,7 @@ export const AccountDetails = () => {
             <div className="account-details__name">{name}</div>
             <div className="account-details__email">{email}</div>
             {/* render policy link if enabled in .env */}
-            {process.env.PRIVACY_POLICY_ENABLED === 'true' && (
+            {process.env.REACT_APP_PRIVACY_POLICY_ENABLED === 'true' && (
               <Link
                 className="account-details__policies"
                 to="/privacy"

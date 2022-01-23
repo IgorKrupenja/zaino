@@ -1,22 +1,19 @@
 .account-details__photo {
+  border-radius: 50%;
   display: block;
   grid-row: 1 / span 2;
-
-  border-radius: 50%;
-  margin: $xs-size 0;
-
   height: 4.1rem;
-  width: 4.1rem;
+  margin: $xs-size 0;
   min-width: 4.1rem;
-
   overflow: hidden;
+  width: 4.1rem;
 }
 
 .account-details__photo--toggle {
-  margin: 0 $m-size 0 auto;
   border: 0.3rem solid transparent;
-
   cursor: pointer;
+  margin: 0 $m-size 0 auto;
+
   &:hover {
     // works well with non-100% zoom levels
     background-color: rgba($light-grey, 0.4);
@@ -30,29 +27,25 @@
 
 .account-details__name {
   align-self: end;
-  margin-left: 1rem;
-
-  overflow-wrap: anywhere;
   hyphens: auto;
+  margin-left: 1rem;
+  overflow-wrap: anywhere;
 }
 
 .account-details__email {
   align-self: start;
-  margin-left: 1rem;
-
-  overflow-wrap: anywhere;
   color: $grey;
   font-size: $font-size-small;
+  margin-left: 1rem;
+  overflow-wrap: anywhere;
 }
 
 .account-details__policies {
-  grid-column: 1 / span 2;
-  justify-self: end;
-
   color: $grey;
   font-size: $font-size-small;
   font-style: italic;
-
+  grid-column: 1 / span 2;
+  justify-self: end;
   transition: 0.3s ease;
 
   &:hover {

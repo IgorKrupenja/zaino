@@ -1,19 +1,18 @@
 .demo-data {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-
-  margin-left: $m-size;
   border: 0.2rem solid white;
   border-radius: $xs-size;
+  display: flex;
+  flex-direction: row;
+  margin-left: $m-size;
   padding: $xs-size;
+  position: relative;
 }
 
 .demo-data__title {
-  position: absolute;
-  top: -1.2rem;
+  background: $dark-green;
   left: $xs-size;
 
   padding: 0 0.6rem;
-  background: $dark-green;
+  position: absolute;
+  top: -1.2rem;
 }

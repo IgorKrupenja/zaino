@@ -1,36 +1,31 @@
 .header__container {
+  background: $dark-green;
   position: fixed;
   top: 0;
-  z-index: 10;
-
   width: 100%;
-
-  background: $dark-green;
+  z-index: 10;
 }
 
 .header {
+  align-items: center;
+  color: white;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-
-  margin: 0 auto;
-
   height: $header-height;
-  width: 100%;
+  justify-content: space-between;
+  margin: 0 auto;
   max-width: $app-width;
-
-  color: white;
+  width: 100%;
 }
 
 .header__logo__link {
-  width: 3.5rem;
   height: 3.5rem;
   margin-left: 1.7rem;
+  width: 3.5rem;
 }
 
 .header__logo {
-  & > path {
+  & path {
     fill: white;
   }
 }
@@ -38,19 +33,18 @@
 .header__nav {
   display: flex;
   flex-direction: row;
-
   margin-left: $m-size;
 }
 
 .header__nav__link {
-  display: flex;
   color: white;
+  display: flex;
   text-decoration: none;
 }
 
 .header__nav__link__icon {
-  margin-right: 0.3rem;
   fill: white;
+  margin-right: 0.3rem;
 }
 
 .header__nav__link__text {

@@ -9,7 +9,7 @@ import { PublicRoute } from './PublicRoute';
 
 const AppRouter = () => {
   let PrivacyPolicy;
-  if (process.env.PRIVACY_POLICY_ENABLED === 'true') {
+  if (process.env.REACT_APP_PRIVACY_POLICY_ENABLED === 'true') {
     PrivacyPolicy = lazy(() => import('../components/Pages/PrivacyPolicy'));
   }
 

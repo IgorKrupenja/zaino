@@ -1,6 +1,6 @@
 .scrollable-page {
-  max-width: $labels-width;
   margin: 0 auto;
+  max-width: $labels-width;
 }
 
 .scrollable-page--loading {
@@ -8,12 +8,11 @@
 }
 
 .scrollable-page__container {
-  width: 100%;
-
-  position: absolute;
-  top: $header-height;
-  left: 0;
-  right: 0;
   bottom: 0;
+  left: 0;
   overflow-y: scroll;
+  position: absolute;
+  right: 0;
+  top: $header-height;
+  width: 100%;
 }

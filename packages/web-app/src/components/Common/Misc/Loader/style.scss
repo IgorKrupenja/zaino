@@ -1,14 +1,13 @@
 // adapted from https://css-tricks.com/making-css-animations-feel-natural/
 
 .loader-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
   // prevent scrollbar from showing when header and filters are shown (i.e.e when loading demo data)
   height: calc(100% - #{$header-height} - 1.5rem);
+  justify-content: center;
+  width: 100%;
 }
 
 .loader-container--full-height {
@@ -17,18 +16,16 @@
 }
 
 .loader {
-  // slightly better positioning with negative margin
-  margin-top: -2.5%;
-  width: 8rem;
-  height: 8rem;
-
-  background-image: url('#{$gcp-storage-url}/mountain.svg');
-
-  transform-origin: bottom;
-  animation-name: loader-bounce;
   animation-duration: 1.7s;
   animation-iteration-count: infinite;
+  animation-name: loader-bounce;
   animation-timing-function: ease;
+  background-image: url('#{$gcp-storage-url}/mountain.svg');
+  height: 8rem;
+  // slightly better positioning with negative margin
+  margin-top: -2.5%;
+  transform-origin: bottom;
+  width: 8rem;
 }
 
 .loader--center {

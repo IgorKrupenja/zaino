@@ -1,7 +1,7 @@
-import { Item } from '@zaino/shared/';
+import { Item } from '@zaino/shared';
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import CategoryIcon from '../../../images/icons/category.svg';
+import { ReactComponent as CategoryIcon } from '../../../images/icons/category.svg';
 import { LabelBadgeList } from '../../Common/LabelBadge/LabelBadgeList';
 import { Category } from '../../Common/Misc/Category';
 import { CategoryImage } from '../../Common/Misc/CategoryImage';

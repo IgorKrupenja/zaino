@@ -10,7 +10,7 @@ export const collectionCombiner = (
   { text, sortBy }: CollectionFilters
 ) => {
   return collections
-    .filter(collection => collection.name.toLowerCase().includes(text.toLowerCase()))
+    .filter((collection) => collection.name.toLowerCase().includes(text.toLowerCase()))
     .sort((a, b) => {
       switch (sortBy) {
         case CollectionSortOption.name:

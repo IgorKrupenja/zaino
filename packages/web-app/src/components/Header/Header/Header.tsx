@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import DashboardIcon from '../../../images/icons/dashboard.svg';
-import LabelIcon from '../../../images/icons/label.svg';
-import Logo from '../../../images/logo.svg';
+import { ReactComponent as DashboardIcon } from '../../../images/icons/dashboard.svg';
+import { ReactComponent as LabelIcon } from '../../../images/icons/label.svg';
+import { ReactComponent as Logo } from '../../../images/logo.svg';
 import { CollectionSortOption } from '../../../state/collectionSettings';
 import { sortLabelsBy } from '../../../state/slices/labelsFilters';
 import { RootState } from '../../../state/store';

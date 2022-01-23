@@ -1,4 +1,4 @@
-import { Item } from '@zaino/shared/';
+import { Item } from '@zaino/shared';
 import React, { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
@@ -69,11 +69,11 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       // update item counts for labels
       const newLabelIds = values.labelIds;
       const addedLabelIds = getArrayDifference(newLabelIds, initialLabelIds);
-      addedLabelIds?.forEach(label =>
+      addedLabelIds?.forEach((label) =>
         dispatch(incrementItemCount({ labelId: label, itemQuantity: values.quantity }))
       );
       const removedLabelIds = getArrayDifference(initialLabelIds, newLabelIds);
-      removedLabelIds?.forEach(label =>
+      removedLabelIds?.forEach((label) =>
         dispatch(decrementItemCount({ labelId: label, itemQuantity: values.quantity }))
       );
 
@@ -112,10 +112,10 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         <Input
           name="quantity"
           value={values.quantity}
-          onChange={e => handleChange(e)}
+          onChange={(e) => handleChange(e)}
           error={errors.quantity}
           maxLength={3}
-          clearError={e => {
+          clearError={(e) => {
             // clear error only if user enters positive quantity (not '', '0' or e.g. '000')
             Number(e?.target.value) > 0 && setErrors({ ...errors, quantity: '' });
           }}
@@ -128,7 +128,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         <Input
           name="weight"
           value={values.weight}
-          onChange={e => handleChange(e)}
+          onChange={(e) => handleChange(e)}
           error={errors.weight}
           maxLength={5}
         />
@@ -136,12 +136,12 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       {/* Category */}
       <CategoryPicker
         categoryId={values.categoryId}
-        onChange={categoryId => setValues({ ...values, categoryId })}
+        onChange={(categoryId) => setValues({ ...values, categoryId })}
       />
       {/* Labels */}
       <LabelPicker
         labelIds={values.labelIds}
-        onChange={labelIds => setValues({ ...values, labelIds })}
+        onChange={(labelIds) => setValues({ ...values, labelIds })}
       />
       {/* Notes */}
       <Column className="item-form__full-width item-form__notes">

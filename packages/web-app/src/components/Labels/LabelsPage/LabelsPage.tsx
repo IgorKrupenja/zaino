@@ -18,7 +18,7 @@ import { ScrollablePage } from '../../Common/Misc/ScrollablePage';
 import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { Column } from '../../Common/Wrappers/Column';
 import { LabelDetails } from '../LabelDetails';
-import { List } from '../List/List';
+import { List } from '../List';
 import { NewLabel } from '../NewLabel';
 import './style.scss';
 
@@ -67,7 +67,7 @@ export const LabelsPage = () => {
           {isFormOpen && <NewLabel toggleForm={toggleForm} />}
           {/* list proper */}
           {labelCount > 0 ? (
-            labels.map(label => <LabelDetails key={label.id} {...label} />)
+            labels.map((label) => <LabelDetails key={label.id} {...label} />)
           ) : (
             <List.Empty className={isFormOpen ? 'list--empty--border' : ''}>{`No${
               labelCount === totalLabelCount ? '' : ' matching'

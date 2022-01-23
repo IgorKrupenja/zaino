@@ -1,12 +1,10 @@
 .back-link {
+  color: $grey;
   display: inline-block;
-
+  font-size: 1.6rem;
   padding-bottom: 0.4rem;
-
   transition: 0.3s ease;
 
-  font-size: 1.6rem;
-  color: $grey;
   &:hover {
     color: $off-black;
   }

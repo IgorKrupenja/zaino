@@ -1,8 +1,7 @@
 {
   "watch": [
-    "webpack.config.ts",
+    "config/*",
     "tsconfig.json",
-    "tsconfig-for-webpack-config.json",
     "nodemon.json",
     "src/images/logo.svg",
     "src/images/logo-text.svg"

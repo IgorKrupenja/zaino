@@ -1,16 +1,13 @@
 .login-page {
-  position: relative;
+  align-items: center;
+  animation: fade-in 0.3 ease-in;
+  background: $off-white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-
   min-height: 100%;
-
-  background: $off-white;
-
   opacity: 1;
-  animation: fade-in 0.3 ease-in;
+  position: relative;
 }
 
 @keyframes fade-in {
@@ -23,26 +20,24 @@
 }
 
 .login-page__title {
-  margin-bottom: $l-size;
-
   color: $dark-green;
-  line-height: 6rem;
   font-family: 'Righteous', cursive;
   font-size: 7rem;
+  line-height: 6rem;
+  margin-bottom: $l-size;
   text-decoration: none;
 }
 
 .login-page__slogan {
-  margin-bottom: $l-size;
-  width: 35rem;
-
-  text-align: center;
   font-size: $font-size-large;
+  margin-bottom: $l-size;
+  text-align: center;
+  width: 35rem;
 }
 
 .login-page__policies {
-  margin-top: 4rem;
   color: $grey;
+  margin-top: 4rem;
   transition: 0.3s ease;
 
   &:hover {
@@ -51,20 +46,18 @@
 }
 
 .login-page__github-link {
-  position: absolute;
-  display: flex;
   align-items: center;
-
   bottom: $s-size;
-  right: $s-size;
-
+  display: flex;
   font-size: 1.5rem;
+  position: absolute;
+  right: $s-size;
   text-decoration: none;
 
   &:hover .login-page__github-link__text {
-    transform: translateX(0%);
     max-width: 12rem;
     opacity: 1;
+    transform: translateX(0%);
   }
   &:hover .login-page__github-link__icon {
     animation: rotate-3d-reverse 0.5s linear forwards;
@@ -72,32 +65,28 @@
 }
 
 .login-page__github-link__text {
+  color: $off-black;
   margin-right: 0.3rem;
   max-width: 0;
   opacity: 0;
-  transform: translateX(100%);
-
-  color: $off-black;
-  white-space: nowrap;
   overflow: hidden;
-
+  transform: translateX(100%);
   transition: 0.5s ease;
+  white-space: nowrap;
 }
 
 .login-page__github-link__icon {
-  height: 5rem;
-  width: 5rem;
-
-  // display icon above link text animation on hover
-  background-color: $off-white;
-  z-index: 10;
-
   // forwards makes animation stay on the last frame at the end
   animation: rotate-3d 0.5s linear forwards;
+  // display icon above link text animation on hover
+  background-color: $off-white;
+  height: 5rem;
+  width: 5rem;
+  z-index: 10;
 
   path {
-    transition: 0.3s ease;
     fill: $off-black;
+    transition: 0.3s ease;
   }
 }
 

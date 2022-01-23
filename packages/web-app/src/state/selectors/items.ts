@@ -1,9 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { Item } from '@zaino/shared/';
+import { Item } from '@zaino/shared';
 import { ItemSortOption } from '../slices/itemsFilters';
 import { RootState } from '../store';
 
-const getPackItems = (items: Item[]) => items.filter(item => item.packQuantity > 0);
+const getPackItems = (items: Item[]) => items.filter((item) => item.packQuantity > 0);
 
 export const selectAllInventoryItems = (state: RootState) => state.items;
 export const selectAllPackItems = (state: RootState) => getPackItems(state.items);
@@ -14,12 +14,12 @@ const selectFilteredInventoryItems = createSelector(
   (items, { text, category, labels, sortBy }) => {
     // filter out items not matching set filters
     return items
-      .filter(item => {
+      .filter((item) => {
         const textMatch = item.name.toLowerCase().includes(text.toLowerCase());
         // check if category filter is set ? if so, check if item category matches : true otherwise
         const categoryMatch = category ? item.categoryId === category : true;
         // check that item labels contain EVERY label from labels filter
-        const labelMatch = labels.every(label => item.labelIds?.includes(label));
+        const labelMatch = labels.every((label) => item.labelIds?.includes(label));
 
         // return true only if item matches all filters
         return textMatch && categoryMatch && labelMatch;
@@ -54,13 +54,13 @@ const selectFilteredInventoryItems = createSelector(
 );
 
 // use selectItems with filters already applied to compose
-export const selectFilteredPackItems = createSelector([selectFilteredInventoryItems], items => {
+export const selectFilteredPackItems = createSelector([selectFilteredInventoryItems], (items) => {
   // filter out items not in Pack
   return getPackItems(items);
 });
 
-export const selectDemoItems = createSelector([selectAllInventoryItems], items => {
-  return items.filter(item => item.isFromDemoData === true);
+export const selectDemoItems = createSelector([selectAllInventoryItems], (items) => {
+  return items.filter((item) => item.isFromDemoData === true);
 });
 
 export default selectFilteredInventoryItems;

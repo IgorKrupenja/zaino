@@ -1,26 +1,24 @@
 .section-header {
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: start;
-
   overflow-wrap: anywhere;
 }
 
 .section-header--large-margin {
-  margin: 0.9rem $s-size 1rem $s-size;
-
   // fix an issue with truncated header in Safari (#334)
   flex: 0 0 auto;
+  margin: 0.9rem $s-size 1rem $s-size;
 }
 
 .section-header__title {
-  padding-right: $s-size;
   font-size: $font-size-large;
+  padding-right: $s-size;
 }
 
 .section-header__content {
   color: $grey;
-  line-height: 1.2;
   font-size: $font-size-small;
+  line-height: 1.2;
 }

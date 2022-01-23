@@ -3,7 +3,7 @@ import GoogleButton from 'react-google-button';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTitle } from '../../../hooks/useTitle';
-import GithubIcon from '../../../images/icons/github.svg';
+import { ReactComponent as GithubIcon } from '../../../images/icons/github.svg';
 import { login } from '../../../state/slices/user';
 import './style.scss';
 
@@ -24,7 +24,7 @@ export const LoginPage = () => {
         onClick={() => dispatch(login())}
       />
       {/* render policy link if enabled in .env */}
-      {process.env.PRIVACY_POLICY_ENABLED === 'true' && (
+      {process.env.REACT_APP_PRIVACY_POLICY_ENABLED === 'true' && (
         <Link className="login-page__policies" to="/privacy">
           Privacy and cookie policy
         </Link>

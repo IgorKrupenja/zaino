@@ -1,9 +1,9 @@
 .filter-reset {
+  color: $dark-red;
+  font-size: $font-size-small;
+  height: auto;
   margin-top: 0.2rem;
   padding-left: 0.2rem;
-  height: auto;
-  font-size: $font-size-small;
-  color: $dark-red;
 
   &:hover {
     color: darken($dark-red, 10%);

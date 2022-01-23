@@ -20,11 +20,13 @@ export const LabelBadgeList = ({
   onBadgeClick,
 }: LabelBadgeListProps) => {
   const labels = useSelector((state: RootState) => state.labels);
-  const itemLabels = labelIds?.map(labelId => labels.find(label => label.id === labelId) as Label);
+  const itemLabels = labelIds?.map(
+    (labelId) => labels.find((label) => label.id === labelId) as Label
+  );
 
   return itemLabels && itemLabels?.length > 0 ? (
     <div className={getClassString('label-badge-list', className)}>
-      {itemLabels.map(label => (
+      {itemLabels.map((label) => (
         <LabelBadge
           onClick={onBadgeClick}
           key={label.id}

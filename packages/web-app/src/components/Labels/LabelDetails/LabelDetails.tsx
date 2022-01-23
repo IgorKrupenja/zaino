@@ -1,4 +1,4 @@
-import { Label } from '@zaino/shared/';
+import { Label } from '@zaino/shared';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -59,7 +59,7 @@ export const LabelDetails = (label: Label) => {
       {isFormOpen && (
         <LabelForm
           label={label}
-          onSubmit={label => dispatch(updateLabel(label))}
+          onSubmit={(label) => dispatch(updateLabel(label))}
           toggleForm={toggleForm}
           setLabelBadgeText={setName}
           setLabelBadgeColor={setColorName}

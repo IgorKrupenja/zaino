@@ -1,31 +1,15 @@
 import 'normalize.css/normalize.css';
-import React from 'react';
 import ReactDOM from 'react-dom';
-import Media from 'react-media';
-import { Provider } from 'react-redux';
-import { MobilePlaceholder } from './components/Pages/MobilePlaceholder';
+import { App } from './components/App/App';
 import { firebase } from './firebase/firebase';
-import AppRouter from './routes/AppRouter';
+import reportWebVitals from './reportWebVitals';
 import { loadUserData } from './state/slices/dataLoader';
 import { handleLoginRedirect } from './state/slices/user';
 import store from './state/store';
 import './styles/styles.scss';
 import { getAsciiLogo } from './utils/getAsciiLogo';
 
-const app = (
-  <Provider store={store}>
-    {/* Show temporary placeholder on mobiles */}
-    <Media queries={{ small: { maxWidth: 599 } }}>
-      {matches => (matches.small ? <MobilePlaceholder /> : <AppRouter />)}
-    </Media>
-  </Provider>
-);
-
-const renderApp = () => {
-  ReactDOM.render(app, document.getElementById('app'));
-};
-
-firebase.auth().onAuthStateChanged(async user => {
+firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
     // on log in
     // get resulting credential to check if new user
@@ -40,3 +24,10 @@ firebase.auth().onAuthStateChanged(async user => {
   // re-render on both login and logout
   renderApp();
 });
+
+const renderApp = () => ReactDOM.render(<App />, document.getElementById('root'));
+
+// From CRA: If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

@@ -1,11 +1,9 @@
 .filters-wrapper {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: flex-start;
-
-  padding: 2.4rem $m-size 0 $m-size;
-
   height: $list-filters-height;
+  justify-content: flex-start;
+  padding: 2.4rem $m-size 0 $m-size;
   width: 100%;
 }

@@ -1,5 +1,5 @@
 import { Label } from '@zaino/shared';
-import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
@@ -29,10 +29,10 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
   const labels = useSelector((state: RootState) => state.labels);
   const prepareOptions = (labels: Label[]) =>
     labels
-      .map(label => ({
+      .map((label) => ({
         value: label.id,
         label: label.name,
-        hexValue: Colors.find(color => color.name === label.colorName)?.hexValue,
+        hexValue: Colors.find((color) => color.name === label.colorName)?.hexValue,
       }))
       .sort(sortSelectOptionsByName);
   const [options, setOptions] = useState(prepareOptions(labels));
@@ -41,7 +41,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
   // (as prepareValues is a dependency of an useEffect hook below)
   const prepareValues = useCallback(
     (labelIds: string[] | undefined) => {
-      return labelIds ? options.filter(label => labelIds.includes(label.value)) : [];
+      return labelIds ? options.filter((label) => labelIds.includes(label.value)) : [];
     },
     [options]
   );
@@ -57,7 +57,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
   const handleChange = (newValues: OnChangeValue<SelectOption, boolean>) => {
     const newValueArray = newValues as SelectOption[];
     // turn values into labelIds
-    const labelIds: string[] = newValueArray ? newValueArray.map(label => label.value) : [];
+    const labelIds: string[] = newValueArray ? newValueArray.map((label) => label.value) : [];
     onChange(labelIds);
   };
 

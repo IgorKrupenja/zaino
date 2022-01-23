@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Category, Item, Label } from '@zaino/shared';
-import { batch } from 'react-redux';
 import type firebase from 'firebase/compat';
+import { batch } from 'react-redux';
 import db from '../../firebase/firebase';
 import { RootState } from '../store';
+import { loadCategories } from './categories';
 import { loadItems } from './items';
 import { loadLabels } from './labels';
-import { loadCategories } from './categories';
 
 /**
  * Process Firestore data to get Items and Labels as used in the app.
@@ -16,8 +16,8 @@ import { loadCategories } from './categories';
 const processData = (
   snapshots: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>[]
 ) => {
-  return snapshots.map(collection =>
-    collection.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  return snapshots.map((collection) =>
+    collection.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
   ) as [Item[], Label[], Category[]];
 };
 
@@ -68,8 +68,8 @@ const dataLoaderSlice = createSlice({
       state.isLoading = action.payload;
     },
   },
-  extraReducers: builder => {
-    builder.addCase(loadDemoData.fulfilled, state => {
+  extraReducers: (builder) => {
+    builder.addCase(loadDemoData.fulfilled, (state) => {
       state.isLoading = false;
     });
   },

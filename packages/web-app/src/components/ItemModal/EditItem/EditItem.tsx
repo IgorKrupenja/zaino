@@ -1,4 +1,4 @@
-import { Item } from '@zaino/shared/';
+import { Item } from '@zaino/shared';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useParams } from 'react-router-dom';
@@ -21,7 +21,7 @@ export const EditItem = () => {
 
   const { id } = useParams();
   const items = useSelector((state: RootState) => state.items);
-  const item = items.find(item => item.id === id);
+  const item = items.find((item) => item.id === id);
   const [title, setTitle] = useState(item?.name ?? '');
 
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import CloseIcon from '../../../../images/icons/close.svg';
+import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg';
 import { Button } from '../../Controls/Button';
 import './style.scss';
 
