@@ -3,7 +3,6 @@
 .pnp.js
 
 # env
-.env
 .env.development
 .env.test
 .env.production
