@@ -1,8 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import { App } from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('Test', () => {
+  beforeAll(() => {
+    // @ts-ignore
+    window.matchMedia = () => ({
+      addListener: () => {},
+      removeListener: () => {},
+    });
+  });
+
+  test('renders learn react link', () => {
+    render(<App />);
+    const linkElement = screen.getByText(
+      /Hiking and mountaineering equipment app for the meticulous adventurer./i
+    );
+    expect(linkElement).toBeInTheDocument();
+  });
 });
