@@ -12,14 +12,15 @@ export const PackItem = (item: Item) => {
   const dispatch = useDispatch();
   const [packQuantity, setPackQuantity] = useState(item.packQuantity);
 
-  // update pack quantity on prop change
-  // e.g. when lowering inventory quantity below current pack quantity in ItemForm
+  // Update pack quantity on prop change,
+  // e.g. when lowering inventory quantity below current pack quantity in ItemForm.
   useEffect(() => setPackQuantity(item.packQuantity), [item.packQuantity]);
 
   const decreasePackQuantity = () => {
     setPackQuantity(packQuantity - 1);
     dispatch(updateItem({ ...item, packQuantity: packQuantity - 1 }));
   };
+
   const increasePackQuantity = () => {
     if (packQuantity < item.quantity) {
       setPackQuantity(packQuantity + 1);

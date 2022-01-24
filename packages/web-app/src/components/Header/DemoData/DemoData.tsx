@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import Popover from 'react-tiny-popover';
-import copyCollection from '../../../firebase/copyCollection';
+import copyCollection from '../../../firebase/utils/copyCollection';
 import useToggle from '../../../hooks/useToggle';
 import { selectDemoItems } from '../../../state/selectors/items';
-import { selectDemoLabels } from '../../../state/selectors/labels';
+import { selectDemoDataLabels } from '../../../state/selectors/labels';
 import { loadDemoData, setIsLoading } from '../../../state/slices/dataLoader';
 import { batchDeleteItems } from '../../../state/slices/items';
 import { batchDeleteLabels } from '../../../state/slices/labels';
@@ -18,7 +18,7 @@ export const DemoData = () => {
   const uid = useSelector((state: RootState) => state.user.uid);
   const dispatch = useDispatch();
   const demoItems = useSelector((state: RootState) => selectDemoItems(state));
-  const demoLabels = useSelector((state: RootState) => selectDemoLabels(state));
+  const demoLabels = useSelector((state: RootState) => selectDemoDataLabels(state));
   // used to enable/disable Load and Remove buttons
   // also accounts for the case when all/some demo items/labels were deleted manually
   const isDemoDataPresent = demoItems.length > 0 && demoLabels.length > 0;

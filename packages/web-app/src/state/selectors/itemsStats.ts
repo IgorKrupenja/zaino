@@ -6,26 +6,15 @@ import selectFilteredInventoryItems, {
   selectFilteredPackItems,
 } from './items';
 
-const getWeight = (items: Item[], isPack?: boolean) => {
-  return items.reduce((sum, item) => {
-    const quantity = isPack ? item.packQuantity : item.quantity;
-    // take into account items that have no weight
-    return item.weight ? sum + item.weight * quantity : sum;
-  }, 0);
-};
+export const selectInventoryItemsStats = createSelector(
+  [selectFilteredInventoryItems, selectAllInventoryItems],
+  (filteredItems, allItems) => getItemStats(filteredItems, allItems)
+);
 
-const getItemCounts = (items: Item[], isPack?: boolean) => {
-  const itemCounts = {
-    // unique item count, each item counts as one regardless of quantity
-    unique: items.length,
-    // total items count, taking quantity into consideration
-    total: 0,
-  };
-  itemCounts.total = items.reduce((sum, item) => {
-    return (sum += isPack ? item.packQuantity : item.quantity);
-  }, 0);
-  return itemCounts;
-};
+export const selectPackItemsStats = createSelector(
+  [selectFilteredPackItems, selectAllPackItems],
+  (filteredItems, allItems) => getItemStats(filteredItems, allItems, true)
+);
 
 const getItemStats = (filteredItems: Item[], allItems: Item[], isPack?: boolean) => {
   const weight = getWeight(filteredItems, isPack);
@@ -46,12 +35,22 @@ const getItemStats = (filteredItems: Item[], allItems: Item[], isPack?: boolean)
   };
 };
 
-export const selectInventoryItemsStats = createSelector(
-  [selectFilteredInventoryItems, selectAllInventoryItems],
-  (filteredItems, allItems) => getItemStats(filteredItems, allItems)
-);
+const getWeight = (items: Item[], isPack?: boolean) => {
+  return items.reduce((sum, item) => {
+    const quantity = isPack ? item.packQuantity : item.quantity;
+    return item.weight ? sum + item.weight * quantity : sum;
+  }, 0);
+};
 
-export const selectPackItemsStats = createSelector(
-  [selectFilteredPackItems, selectAllPackItems],
-  (filteredItems, allItems) => getItemStats(filteredItems, allItems, true)
-);
+const getItemCounts = (items: Item[], isPack?: boolean) => {
+  const itemCounts = {
+    // unique item count, each item counts as one regardless of quantity
+    unique: items.length,
+    // total items count, taking quantity into consideration
+    total: 0,
+  };
+  itemCounts.total = items.reduce((sum, item) => {
+    return (sum += isPack ? item.packQuantity : item.quantity);
+  }, 0);
+  return itemCounts;
+};

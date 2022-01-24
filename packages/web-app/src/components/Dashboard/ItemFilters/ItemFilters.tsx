@@ -1,6 +1,7 @@
 import deepEqual from 'fast-deep-equal/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CollectionSortOption } from '../../../state/collectionSettings';
 import {
   itemFiltersInitialState,
   ItemSortOption,
@@ -10,16 +11,15 @@ import {
   setItemTextFilter,
   sortItemsBy,
 } from '../../../state/slices/itemsFilters';
-import { CollectionSortOption } from '../../../state/collectionSettings';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { Input } from '../../Common/Controls/Input';
-import { DropdownIcon } from '../../Common/Icons/DropdownIcon';
 import { FilterReset } from '../../Common/Filters/FilterReset';
+import { FiltersWrapper } from '../../Common/Filters/FiltersWrapper';
+import { DropdownIcon } from '../../Common/Icons/DropdownIcon';
 import { CategorySelect } from '../../Common/Selects/CategorySelect';
 import { LabelSelect } from '../../Common/Selects/LabelSelect';
 import { SortSelect } from '../../Common/Selects/SortSelect';
-import { FiltersWrapper } from '../../Common/Filters/FiltersWrapper';
 import { Row } from '../../Common/Wrappers/Row';
 
 export const ItemFilters = () => {
@@ -33,32 +33,26 @@ export const ItemFilters = () => {
     setIsFiltering(!deepEqual(filters, itemFiltersInitialState));
   }, [filters]);
 
-  // update filters if changed externally by clicking on label/category inside ItemDetails
-  // or in in FilterReset
+  // Update filters if changed externally e.g. by clicking on label/category inside ItemDetails
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
+  // TODO: simple boolean?
   const firstUpdate = useRef(true);
   // useEffect to prevent UI freezes when typing in name filter
   useEffect(() => {
-    // this is needed to prevent setItemsTextFilter running uselessly when component mounts
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
     }
+
     const textFilterTimeout = setTimeout(() => dispatch(setItemTextFilter(filters.text)), 200);
     return () => clearTimeout(textFilterTimeout);
   }, [filters.text, dispatch]);
 
-  const handleCategoryChange = (categoryId: string) => {
-    if (categoryId === filters.category) {
-      // reset category filter if user clicks on a category that is already selected
-      setFilters({ ...filters, category: undefined });
-      setTimeout(() => dispatch(setItemCategoryFilter(undefined)), 1);
-    } else {
-      // set category filter normally
-      setFilters({ ...filters, category: categoryId });
-      setTimeout(() => dispatch(setItemCategoryFilter(categoryId)), 1);
-    }
+  const handleCategoryChange = (selectedCategoryId: string) => {
+    const categoryId = selectedCategoryId === filters.categoryId ? undefined : selectedCategoryId;
+    setFilters({ ...filters, categoryId: categoryId });
+    setTimeout(() => dispatch(setItemCategoryFilter(categoryId)), 1);
   };
 
   const handleSortChange = (value: string) => {
@@ -75,7 +69,7 @@ export const ItemFilters = () => {
         <Input
           className="input--grow input--search"
           placeholder="Search items"
-          onChange={e => {
+          onChange={(e) => {
             e.persist();
             setFilters({ ...filters, text: e.target.value });
           }}
@@ -83,7 +77,7 @@ export const ItemFilters = () => {
         />
         {/* Category */}
         <CategorySelect
-          selectedCategoryId={filters.category}
+          selectedCategoryId={filters.categoryId}
           headerText="Filter by category"
           onChange={handleCategoryChange}
         >
@@ -97,7 +91,7 @@ export const ItemFilters = () => {
           labelIds={filters.labels}
           headerText="Filter by label"
           // setTimeout to prevent UI freezing on slow PCs
-          onChange={labelIds => setTimeout(() => dispatch(setItemLabelsFilter(labelIds)), 15)}
+          onChange={(labelIds) => setTimeout(() => dispatch(setItemLabelsFilter(labelIds)), 15)}
         >
           <Button className="button--white">
             Labels

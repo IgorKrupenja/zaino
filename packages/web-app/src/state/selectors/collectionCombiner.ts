@@ -2,8 +2,7 @@ import { Collection } from '@zaino/shared';
 import { CollectionFilters, CollectionSortOption } from '../collectionSettings';
 
 /**
- * Common combiner for collections (both label and categories).
- * Extracted into a separate function as sorting options are exactly the same for both collections.
+ * Common combiner for collections (both labels and categories).
  */
 export const collectionCombiner = (
   collections: Collection[],

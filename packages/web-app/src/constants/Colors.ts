@@ -1,6 +1,7 @@
 import { ColorName } from '@zaino/shared';
 import styles from '../styles/base/_export.scss';
 
+// TODO: split into three files
 export type Color = {
   name: ColorName;
   fancyName: string;

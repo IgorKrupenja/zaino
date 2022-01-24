@@ -6,7 +6,7 @@ import { loadUserData } from './state/slices/dataLoader';
 import { handleLoginRedirect } from './state/slices/user';
 import store from './state/store';
 import './styles/styles.scss';
-import { getAsciiLogo } from './utils/getAsciiLogo';
+import { asciiLogo } from './utils/asciiLogo';
 
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
@@ -17,7 +17,7 @@ firebase.auth().onAuthStateChanged(async (user) => {
       handleLoginRedirect({ user, isNew: credential.additionalUserInfo?.isNewUser })
     );
     await store.dispatch(loadUserData(user.uid));
-    console.log(getAsciiLogo());
+    console.log(asciiLogo);
   }
 
   // re-render on both login and logout

@@ -4,7 +4,7 @@ import { Color } from '../../../../constants/Colors';
 import checkbox from '../../../../images/icons/check-mark.svg';
 import styles from '../../../../styles/base/_export.scss';
 
-// CSS-in-JS is used here as this is the recommended method for react-select
+// CSS-in-JS is used here as this is the recommended method for react-select.
 
 export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   control: (base, { isFocused }) => ({

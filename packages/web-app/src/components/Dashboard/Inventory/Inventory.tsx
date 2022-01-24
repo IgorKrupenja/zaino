@@ -1,5 +1,4 @@
 import { Item } from '@zaino/shared';
-import React from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import selectFilteredInventoryItems from '../../../state/selectors/items';
@@ -16,8 +15,8 @@ import './style.scss';
  * Component that holds inventory items state and passes these as InventoryItems to Stack.
  */
 export const Inventory = () => {
-  // a bit of a hack: shallowEqual prevents re-renders when items in store do not change
-  // (i.e. new filter conditions result in the same matching items)
+  // shallowEqual prevents re-renders when items in store do not change
+  // (i.e. new filter conditions result in the same matching items).
   // https://react-redux.js.org/api/hooks#equality-comparisons-and-updates
   const items = useSelector(
     (state: RootState) => selectFilteredInventoryItems(state),
@@ -32,7 +31,6 @@ export const Inventory = () => {
           <SectionHeader.Title>Inventory</SectionHeader.Title>
           <Stats className="section-header__content" stats={stats} />
         </Column>
-        {/* styling this Link as a Button */}
         <Link className="button button--green inventory__new-item" to="/dashboard/new">
           New item
         </Link>
