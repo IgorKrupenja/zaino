@@ -102,7 +102,7 @@ Main web app, code structure highlights:
   - `Labels` Labels page components.
   - `Misc` Various smaller components used throughout the app.
   - `Pages` App pages and temporary mobile placeholder.
-  - `Selects` Core select component and re-useable and actual selects that use it. Note that the code is ugly here and needs refactoring, see [#346](/../../issues/346).
+  - `Selects` Core select component and re-useable and actual selects that use it. Note that the code is ugly here and needs refactoring, see [#346](https://github.com/igor-krupenja/zaino/issues/346).
   - `Wrappers` Various wrapper components used purely to align and style child components.
 - [src/constants/](packages/web-app/src/constants) Built-in label colors and categories, will be moved to Firestore when customisation of these is implemented.
 - [src/firebase/](packages/web-app/src/firebase) Firebase initialisation and a couple of functions to work with Firestore data.
@@ -112,9 +112,7 @@ Main web app, code structure highlights:
 
 ### Setup
 
-This section outlines how to setup a development environment for Zaino. This involves quite a few steps, mostly to configure Firebase functionality.
-
-Please note that the development setup has only been tested on macOS and Ubuntu Linux. If you encounter any problems on Windows, please [file an issue](https://github.com/igor-krupenja/zaino/issues/new).
+Please note that the development environment works completely fine on macOS and Linux only. There are a couple of minor issues on Windows, see [#521](https://github.com/igor-krupenja/zaino/issues/521) and [#522](https://github.com/igor-krupenja/zaino/issues/522).
 
 #### Preparation
 

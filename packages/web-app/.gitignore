@@ -1,4 +1,4 @@
-# dependencies
+# Dependencies
 /.pnp
 .pnp.js
 
@@ -13,3 +13,6 @@
 
 # Privacy policy content
 src/components/pages/PrivacyPolicy/PrivacyPolicyContent.tsx
+
+# Copyrighted images
+src/images/copyrighted/
