@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { firebase } from '../../../firebase/firebase';
 import useToggle from '../../../hooks/useToggle';
 import { logout } from '../../../state/slices/user';
 import { RootState } from '../../../state/store';
@@ -11,7 +12,11 @@ import './style.scss';
 export const AccountDetails = () => {
   const { name, email, photoUrl } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
-  const handleLogout = () => dispatch(logout());
+  const handleLogout = async () => {
+    // TODO: Having Firebase Auth sign out here is a temporary workaround for #572
+    await firebase.auth().signOut();
+    dispatch(logout());
+  };
   const [isPopoverOpen, togglePopover] = useToggle();
 
   return (

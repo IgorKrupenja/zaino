@@ -28,7 +28,6 @@ export const handleLoginRedirect = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk('user/logout', async (unused, { dispatch }) => {
-  await firebase.auth().signOut();
   batch(() => {
     dispatch(resetItemsState());
     dispatch(resetLabelsState());
