@@ -1,31 +1,27 @@
-// mixin that is used by Input, ExpandingInput and TextArea
+// Mixin that is used by Input, ExpandingInput and TextArea.
 @mixin editable-text-control {
+  background: $off-white;
   border: $border;
   border-radius: $xs-size;
-  padding: $xs-size 0.9rem;
-
+  color: $off-black;
   height: $xl-size;
-  background: $off-white;
-
+  line-height: 1.4;
+  padding: $xs-size 0.9rem;
+  resize: none;
   transition: all 0.1s ease, height 0s;
 
-  color: $off-black;
-  resize: none;
-  line-height: 1.4;
-
   &:focus {
-    border: 0.1rem solid $light-blue;
-    box-shadow: $input-shadow;
-    border-radius: $xs-size;
-    outline: 0;
-
     background: white;
+    border: 0.1rem solid $light-blue;
+    border-radius: $xs-size;
+    box-shadow: $input-shadow;
+    outline: 0;
   }
-  // Blink and WebKit
+
   &::-webkit-input-placeholder {
     color: $grey;
   }
-  // Firefox
+
   &::-moz-placeholder {
     color: $grey;
     opacity: 1;

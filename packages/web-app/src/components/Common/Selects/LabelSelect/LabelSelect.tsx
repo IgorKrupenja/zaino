@@ -25,6 +25,7 @@ type LabelSelectProps = {
  */
 export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSelectProps) => {
   const dispatch = useDispatch();
+
   // labels and prepareOptions need to be separate to prevent exceeding max depth with ItemForm
   const labels = useSelector((state: RootState) => state.labels);
   const prepareOptions = (labels: Label[]) =>
@@ -36,6 +37,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
       }))
       .sort(sortSelectOptionsByName);
   const [options, setOptions] = useState(prepareOptions(labels));
+
   // prepare select values based on passed selected labelIds
   // had to use useCallback to prevent prepareValues running on every re-render
   // (as prepareValues is a dependency of an useEffect hook below)
@@ -57,7 +59,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
   const handleChange = (newValues: OnChangeValue<SelectOption, boolean>) => {
     const newValueArray = newValues as SelectOption[];
     // turn values into labelIds
-    const labelIds: string[] = newValueArray ? newValueArray.map((label) => label.value) : [];
+    const labelIds = newValueArray ? newValueArray.map((label) => label.value) : [];
     onChange(labelIds);
   };
 

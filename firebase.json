@@ -10,9 +10,9 @@
     ]
   },
   "firestore": {
-    "rules": "packages/cloud-functions/firestore.rules"
+    "rules": "packages/firebase/firestore.rules"
   },
   "functions": {
-    "source": "packages/cloud-functions"
+    "source": "packages/firebase"
   }
 }

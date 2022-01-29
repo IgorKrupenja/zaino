@@ -4,7 +4,7 @@ import { Color } from '../../../../constants/Colors';
 import checkbox from '../../../../images/icons/check-mark.svg';
 import styles from '../../../../styles/base/_export.scss';
 
-// CSS-in-JS is used here as this is the recommended method for react-select
+// CSS-in-JS is used here as this is the recommended method for react-select.
 
 export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   control: (base, { isFocused }) => ({
@@ -33,21 +33,21 @@ export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = 
     display: isFocused ? 'none' : 'block',
     paddingTop: '0.5rem',
   }),
-  input: base => ({
+  input: (base) => ({
     ...base,
     overflow: 'hidden',
   }),
   menu: () => ({
     borderTop: styles.border,
   }),
-  noOptionsMessage: base => ({
+  noOptionsMessage: (base) => ({
     ...base,
     padding: `${styles.xsSize} ${styles.sSize} 0 ${styles.sSize}`,
     height: styles.xlSize,
   }),
   option: (base, { isFocused, isSelected }) => ({
     ...base,
-    backgroundImage: isSelected ? `url("${checkbox as string}")` : '',
+    backgroundImage: isSelected ? `url("${checkbox}")` : '',
     backgroundRepeat: 'no-repeat',
     paddingTop: styles.xsSize,
     paddingBottom: styles.xsSize,

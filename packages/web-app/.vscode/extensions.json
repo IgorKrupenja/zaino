@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "foxundermoon.shell-format",
+    "timonwong.shellcheck",
+    "mrmlnc.vscode-postcss-sorting",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "gencer.html-slim-scss-css-class-completion",
+    "mrmlnc.vscode-scss"
+  ]
+}

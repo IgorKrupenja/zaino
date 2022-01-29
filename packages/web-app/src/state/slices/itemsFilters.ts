@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type ItemFilters = {
   text: string;
-  category?: string;
+  categoryId?: string;
   labels: string[];
   sortBy: ItemSortOption;
 };
@@ -18,7 +18,7 @@ export enum ItemSortOption {
 
 export const itemFiltersInitialState: ItemFilters = {
   text: '',
-  category: undefined,
+  categoryId: undefined,
   labels: [],
   sortBy: ItemSortOption.addedLatest,
 };
@@ -31,7 +31,7 @@ const itemFiltersSlice = createSlice({
       state.text = action.payload;
     },
     setItemCategoryFilter(state, action: PayloadAction<string | undefined>) {
-      state.category = action.payload;
+      state.categoryId = action.payload;
     },
     setItemLabelsFilter(state, action: PayloadAction<string[]>) {
       state.labels = action.payload;

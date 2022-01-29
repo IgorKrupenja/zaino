@@ -1,4 +1,4 @@
-import db from './firebase';
+import db from '../firebase';
 
 /**
  * Copy all items in a collection in one path to another.

@@ -11,7 +11,7 @@ type StackProps = {
 
 /**
  * Compound component used to display stacks on the dashboard.
- * Consists of a stack wrapper component abd a list subcomponent.
+ * Consists of a stack wrapper component and a List subcomponent.
  * Currently used by Inventory and Pack.
  */
 export const Stack = ({ children, className }: StackProps) => {
@@ -28,10 +28,6 @@ type ListProps = {
   isEmpty?: boolean;
 };
 
-/**
- * Component displaying actual item list with fancy scrollbar.
- * Used as a subcomponent along with Stack.
- */
 const List = ({ children, isEmpty }: ListProps) => {
   return (
     <div

@@ -57,9 +57,9 @@ export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>
   }
 );
 
-// handles app loading state to display page loading indicators
-// at the moment this is only used when demo data is loading
-// in the future, this can also be used to address #62 and #117
+// Handles app loading state to display page loading indicators.
+// At the moment this is only used when demo data is loading.
+// In the future, this can also be used to address  #117.
 const dataLoaderSlice = createSlice({
   name: 'dataLoader',
   initialState: { isLoading: false },

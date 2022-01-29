@@ -44,12 +44,12 @@ export const ExpandingInput = ({
     <ReactExpandingTextarea
       {...elementProps}
       value={String(value)}
-      onChange={e => {
+      onChange={(e) => {
         clearError && clearError();
-        onChange && onChange(e as ChangeEvent<HTMLTextAreaElement>);
+        onChange && onChange(e);
       }}
       autoFocus
-      onFocus={e => {
+      onFocus={(e) => {
         // puts cursor at the end on focus
         const value = e.target.value;
         e.target.value = '';

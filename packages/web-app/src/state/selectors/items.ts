@@ -6,12 +6,14 @@ import { RootState } from '../store';
 const getPackItems = (items: Item[]) => items.filter((item) => item.packQuantity > 0);
 
 export const selectAllInventoryItems = (state: RootState) => state.items;
+
 export const selectAllPackItems = (state: RootState) => getPackItems(state.items);
+
 const selectFilters = (state: RootState) => state.itemsFilters;
 
 const selectFilteredInventoryItems = createSelector(
   [selectAllInventoryItems, selectFilters],
-  (items, { text, category, labels, sortBy }) => {
+  (items, { text, categoryId: category, labels, sortBy }) => {
     // filter out items not matching set filters
     return items
       .filter((item) => {
@@ -48,6 +50,8 @@ const selectFilteredInventoryItems = createSelector(
             } else {
               return a.weight > b.weight ? 1 : -1;
             }
+          default:
+            return 1;
         }
       });
   }

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { batch } from 'react-redux';
-import copyCollection from '../../firebase/copyCollection';
 import db, { firebase, googleAuthProvider } from '../../firebase/firebase';
+import copyCollection from '../../firebase/utils/copyCollection';
 import { resetCategoriesState } from './categories';
 import { resetItemsState } from './items';
 import { resetLabelsState } from './labels';
@@ -28,7 +28,6 @@ export const handleLoginRedirect = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk('user/logout', async (unused, { dispatch }) => {
-  await firebase.auth().signOut();
   batch(() => {
     dispatch(resetItemsState());
     dispatch(resetLabelsState());

@@ -17,11 +17,11 @@ export type SelectOption = {
 type SelectPopoverProps = {
   headerText: string;
   onChange: (value: OnChangeValue<SelectOption, boolean>) => void;
-  children: ReactNode;
   popoverAlign?: PopoverAlign;
   isCreatable?: boolean;
   onCreateOption?: (value: string) => void;
   formatCreateLabel?: (value: string) => string;
+  children: ReactNode;
 } & Props<SelectOption, boolean>;
 
 /**
@@ -29,12 +29,12 @@ type SelectPopoverProps = {
  * Provides some core functionality and styles.
  */
 export const SelectPopover = ({
-  onChange,
-  isCreatable,
-  styles,
   headerText,
-  children,
+  onChange,
   popoverAlign,
+  isCreatable,
+  children,
+  styles,
   ...rest
 }: SelectPopoverProps) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -99,10 +99,8 @@ export const SelectPopover = ({
         </>
       }
     >
-      <div onClick={isPopoverOpen ? closePopover : openPopover}>
-        {/* popover toggle container */}
-        {children}
-      </div>
+      {/* popover toggle container */}
+      <div onClick={isPopoverOpen ? closePopover : openPopover}>{children}</div>
     </Popover>
   );
 };

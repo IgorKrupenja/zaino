@@ -27,17 +27,16 @@ export const CategorySelect = ({
   const categories = useSelector((state: RootState) => state.categories);
   const [options] = useState(
     categories
-      .map(category => ({
+      .map((category) => ({
         value: category.id,
         label: category.name,
       }))
       .sort(sortSelectOptionsByName)
   );
 
-  // logic similar to LabelSelect
   const prepareValue = useCallback(
     (selectedCategoryName: string | undefined) => {
-      return options.find(option => option.value === selectedCategoryName);
+      return options.find((option) => option.value === selectedCategoryName);
     },
     [options]
   );

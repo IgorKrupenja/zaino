@@ -10,7 +10,7 @@ service cloud.firestore {
     }
   }
 
-  // allow read access to demo data for every authenticated user
+  // allow read access to common data for every authenticated user
   match /databases/{database}/documents/common/demo-data/items {
     match /{document=**} {
       allow read: if request.auth.uid != null;
