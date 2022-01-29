@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged(async (user) => {
     const credential = await firebase.auth().getRedirectResult();
     // Using store.dispatch as useDispatch cannot be used outside of functional components
     await store.dispatch(
-      ha ndleLoginRedirect({ user, isNew: credential.additionalUserInfo?.isNewUser })
+      handleLoginRedirect({ user, isNew: credential.additionalUserInfo?.isNewUser })
     );
     await store.dispatch(loadUserData(user.uid));
     console.log(asciiLogo);
