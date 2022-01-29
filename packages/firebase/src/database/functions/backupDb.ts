@@ -1,12 +1,11 @@
 import firestore from '@google-cloud/firestore';
 import * as functions from 'firebase-functions';
-import settings from '../../utils/functionsRegion';
+import settings from '../../utils/settings';
 
 const client = new firestore.v1.FirestoreAdminClient();
-const bucket = 'gs://zaino-backups';
 
 export const backupDb = functions
-  .region(settings.functionsRegion)
+  .region(settings.functions.region)
   .pubsub.schedule('every 24 hours')
   .onRun(async () => {
     console.log('backupDb: starting DB backup...');
@@ -17,7 +16,7 @@ export const backupDb = functions
     try {
       await client.exportDocuments({
         name: databaseName,
-        outputUriPrefix: bucket,
+        outputUriPrefix: settings.backups.bucket,
         // collectionIds empty to export all collections
         collectionIds: [],
       });

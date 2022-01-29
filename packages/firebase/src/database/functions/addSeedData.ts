@@ -7,10 +7,10 @@ import * as tools from 'firebase-tools';
 // two below should have been import from @zaino/shared but that is broken in Firebase, see #223
 import { Item, Label } from '../../../../shared';
 import seedData from '../seed-data/seed-data.json';
-import settings from '../../utils/functionsRegion';
+import settings from '../../utils/settings';
 
 export const addSeedData = functions
-  .region(settings.functionsRegion)
+  .region(settings.functions.region)
   .pubsub.topic('add-seed-data')
   .onPublish(async () => {
     const root = '/common/demo-data';
