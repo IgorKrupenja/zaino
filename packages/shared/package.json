@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "typescript": "^4.0.2",
-    "uuid": "^8.3.0"
+    "typescript": "^4.0.2"
   }
 }
