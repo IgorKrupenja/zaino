@@ -14,20 +14,20 @@ export const handleLoginRedirect = createAsyncThunk(
   'user/handleLoginRedirect',
   async ({ user, isNew }: { user: firebase.User; isNew?: boolean }) => {
     if (isNew) {
-      // currently no business logic behind firstLoginAt
-      // it is only needed to properly create a document for the user in Firestore
-      // as Firestore does not correctly create empty documents
+      // Currently no business logic behind email field.
+      // It is only needed to properly create a document for the user in Firestore
+      // as Firestore does not correctly create empty documents.
       await db
         .collection('users')
         .doc(user.uid)
-        .set({ firstLoginAt: new Date().toISOString(), eMail: user.email });
+        .set({ firstLoginAt: new Date().toISOString(), email: user.email });
       // add default categories for every new user
       await copyCollection('common/defaults/categories', `users/${user.uid}/categories`);
     }
   }
 );
 
-export const logout = createAsyncThunk('user/logout', async (unused, { dispatch }) => {
+export const logout = createAsyncThunk('user/logout', (unused, { dispatch }) => {
   batch(() => {
     dispatch(resetItemsState());
     dispatch(resetLabelsState());

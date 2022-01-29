@@ -10,17 +10,17 @@ import { asciiLogo } from './utils/asciiLogo';
 
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
-    // on log in
+    // On log in
     const credential = await firebase.auth().getRedirectResult();
-    // using store.dispatch as useDispatch cannot be used outside of functional components
+    // Using store.dispatch as useDispatch cannot be used outside of functional components
     await store.dispatch(
-      handleLoginRedirect({ user, isNew: credential.additionalUserInfo?.isNewUser })
+      ha ndleLoginRedirect({ user, isNew: credential.additionalUserInfo?.isNewUser })
     );
     await store.dispatch(loadUserData(user.uid));
     console.log(asciiLogo);
   }
 
-  // re-render on both login and logout
+  // Re-render on both login and logout
   renderApp();
 });
 
