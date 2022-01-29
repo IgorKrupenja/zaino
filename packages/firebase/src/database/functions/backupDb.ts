@@ -1,14 +1,12 @@
-// note that function deploy fails if using synthetic import here
 import firestore from '@google-cloud/firestore';
 import * as functions from 'firebase-functions';
-// import { bucket } from 'firebase-functions/lib/providers/storage';
-import functionsRegion from './utils/functionsRegion';
+import settings from '../../utils/functionsRegion';
 
 const client = new firestore.v1.FirestoreAdminClient();
 const bucket = 'gs://zaino-backups';
 
 export const backupDb = functions
-  .region(functionsRegion)
+  .region(settings.functionsRegion)
   .pubsub.schedule('every 24 hours')
   .onRun(async () => {
     console.log('backupDb: starting DB backup...');

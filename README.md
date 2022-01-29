@@ -73,6 +73,7 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 ### Code structure
 
 <!-- todo clean and shorten -->
+<!-- todo mention workspaces -->
 
 The project code is split into several [packages](packages). Each package is a separate [yarn workspace](https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/) to facilitate easier imports, e.g. `import { Labels, Colors } from '@zaino/shared'`. This is the reason why yarn was chosen over npm for this project as npm's workspace support is [only in beta at the moment](https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major).
 
@@ -181,6 +182,16 @@ REACT_APP_GCP_STORAGE_URL="https://storage.googleapis.com/${REACT_APP_FIREBASE_S
 - Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicy/PrivacyPolicyContent.tsx`.
 
 #### Firebase
+
+1. Create Firestore database in Firebase console for your projects, a detailed guide is available [here](https://firebase.google.com/docs/firestore/quickstart#create).
+2. Go to [Cloud Storage](https://console.cloud.google.com/storage/browser/) in GCP console and create buckets named `zaino-backups` for your project backups.
+3. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the necessary variables. The file format should be like this:
+
+```env
+# Firebase functions - functions do to not use Firebase project region automatically
+FIREBASE_FUNCTIONS_REGION="europe-west1"
+
+```
 
 <!-- TODO -->
 

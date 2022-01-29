@@ -1,5 +1,5 @@
 {
-  "name": "@zaino/cloud-functions",
+  "name": "@zaino/firebase",
   "version": "0.2.0",
   "private": true,
   "scripts": {
@@ -13,20 +13,22 @@
     "predeploy-dev": "yarn run build-dev",
     "deploy-dev": "firebase deploy -P dev --only functions",
     "deploy-rules-dev": "firebase deploy -P dev --only firestore",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "deploy-new": "scripts/deploy.sh development"
   },
   "engines": {
     "npm": ">=8.0.0",
-    "node": ">=16.0.0"
+    "node": "16"
   },
   "engineStrict": true,
-  "main": "build/cloud-functions/src/index.js",
+  "main": "build/firebase/src/index.js",
   "dependencies": {
     "@google-cloud/firestore": "^5.0.2",
     "dotenv": "^14.2.0",
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.6.1",
     "firebase-tools": "^10.1.2",
+    "ts-node": "^10.4.0",
     "typescript": "^4.0.2"
   },
   "devDependencies": {

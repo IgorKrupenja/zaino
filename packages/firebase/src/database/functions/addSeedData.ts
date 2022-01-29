@@ -5,17 +5,17 @@ import * as functions from 'firebase-functions';
 // @ts-ignore
 import * as tools from 'firebase-tools';
 // two below should have been import from @zaino/shared but that is broken in Firebase, see #223
-import { Item, Label } from '../../shared/';
-import demoData from '../../shared/src/demo-data/output-data.json';
-import functionsRegion from './utils/functionsRegion';
+import { Item, Label } from '../../../../shared';
+import seedData from '../seed-data/seed-data.json';
+import settings from '../../utils/functionsRegion';
 
-export const addDemoDataDb = functions
-  .region(functionsRegion)
-  .pubsub.topic('add-demo-data-db')
+export const addSeedData = functions
+  .region(settings.functionsRegion)
+  .pubsub.topic('add-seed-data')
   .onPublish(async () => {
     const root = '/common/demo-data';
-    const items = demoData.items as Item[];
-    const labels = demoData.labels as Label[];
+    const items = seedData.items as Item[];
+    const labels = seedData.labels as Label[];
     const db = admin.firestore();
 
     // delete previously added demo data
