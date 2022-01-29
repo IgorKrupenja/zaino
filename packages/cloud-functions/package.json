@@ -19,6 +19,7 @@
     "npm": ">=8.0.0",
     "node": ">=16.0.0"
   },
+  "engineStrict": true,
   "main": "build/cloud-functions/src/index.js",
   "dependencies": {
     "@google-cloud/firestore": "^5.0.2",

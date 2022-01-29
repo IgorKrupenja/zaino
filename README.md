@@ -70,11 +70,9 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 ## Development
 
-### Contributing
-
-Feel free to report any bugs and submit feature requests in the [Issues section](https://github.com/igor-krupenja/zaino/issues). PRs are also welcome — please read [Setup](#setup) below and if you require any assistance, give me a shout at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com).
-
 ### Code structure
+
+<!-- todo clean and shorten -->
 
 The project code is split into several [packages](packages). Each package is a separate [yarn workspace](https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/) to facilitate easier imports, e.g. `import { Labels, Colors } from '@zaino/shared'`. This is the reason why yarn was chosen over npm for this project as npm's workspace support is [only in beta at the moment](https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major).
 
@@ -114,12 +112,77 @@ Main web app, code structure highlights:
 
 Please note that the development environment works completely fine on macOS and Linux only. There are a couple of minor issues on Windows, see [#521](https://github.com/igor-krupenja/zaino/issues/521) and [#522](https://github.com/igor-krupenja/zaino/issues/522).
 
-#### Preparation
+#### Common
 
-1. Install Node.js **LTS** or [use nvm](https://github.com/nvm-sh/nvm).
-2. Install Yarn.
-3. Clone the repo with `git clone https://github.com/igor-krupenja/zaino.git` or [fork it](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
-4. In the root of your cloned repo folder, run `yarn install`.
+1. [Install Google's Cloud SDK](https://cloud.google.com/sdk/docs/install) and run `gcloud auth login` to log in.
+2. Run `npm install -g firebase-tools` to install Firebase CLI and run `firebase login` to log in.
+3. Run `npm install` in the *root* directory of the cloned/forked repo. Running in the root directory is required because this repo uses [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces).
+4. Go to [Firebase console](https://console.firebase.google.com/u/0/) and create two projects, one for `development` environment and one for `production` environment.
+5. In Firebase console, create *Web* apps for the two projects you created. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
+6. In Firebase console, open Project Settings and note the Project IDs for the project you created.
+7. Create a `.firebaserc` file in the *root* of this repo and add the Project IDs there like this:
+
+```json
+{
+  "projects": {
+    "development": "...",
+    "production": "..."
+  }
+}
+```
+
+#### Web app
+
+1. Go to `packages/web-app` and create `.env.development` and `.env.production` files.
+2. Go to Firebase console and open Project Settings for your projects.
+3. Scroll down to Your Apps section and locate the code snippet with `firebaseConfig`.
+4. Use the data from to add the variables in `.env.development` and `.env.production`. The file format should be like this:
+
+```env
+# Firebase
+REACT_APP_FIREBASE_API_KEY="..."
+REACT_APP_FIREBASE_AUTH_DOMAIN="..."
+REACT_APP_FIREBASE_DATABASE_URL="..."
+REACT_APP_FIREBASE_PROJECT_ID="..."
+REACT_APP_FIREBASE_STORAGE_BUCKET="..."
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID="..."
+REACT_APP_FIREBASE_APP_ID="..."
+REACT_APP_FIREBASE_MEASUREMENT_ID="..."
+# GCP Cloud Storage root URL
+REACT_APP_GCP_STORAGE_URL="https://storage.googleapis.com/${REACT_APP_FIREBASE_STORAGE_BUCKET}"
+```
+
+##### Caveats
+
+- Most of the images used in the [live demo](#live-demo) were purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/) and cannot be made part of this repo due to copyright restrictions. To get images in the app, you can add your own to `packages/web-app/src/images/copyrighted` directory using the following structure:
+
+```shell
+├── categories
+│   ├── backpack.svg
+│   ├── boots.svg
+│   ├── compass.svg
+│   ├── gloves.svg
+│   ├── gps.svg
+│   ├── hat.svg
+│   ├── hook.svg
+│   ├── jacket.svg
+│   ├── knife.svg
+│   ├── pickaxe.svg
+│   ├── poles.svg
+│   ├── shorts.svg
+│   ├── socks.svg
+│   ├── stove.svg
+│   └── tent.svg
+└── mountain.svg <--- page loading indicator image
+```
+
+<!-- TODO: Privacy policy location might require update -->
+
+- Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicy/PrivacyPolicyContent.tsx`.
+
+#### Firebase
+
+<!-- TODO -->
 
 #### Firestore
 
@@ -179,21 +242,21 @@ Due to licensing restrictions (see [below](#license)), the images I use i the [l
 
 ```shell
 ├── categories
-│   ├── backpack.svg
-│   ├── boots.svg
-│   ├── compass.svg
-│   ├── gloves.svg
-│   ├── gps.svg
-│   ├── hat.svg
-│   ├── hook.svg
-│   ├── jacket.svg
-│   ├── knife.svg
-│   ├── pickaxe.svg
-│   ├── poles.svg
-│   ├── shorts.svg
-│   ├── socks.svg
-│   ├── stove.svg
-│   └── tent.svg
+│   ├── backpack.svg
+│   ├── boots.svg
+│   ├── compass.svg
+│   ├── gloves.svg
+│   ├── gps.svg
+│   ├── hat.svg
+│   ├── hook.svg
+│   ├── jacket.svg
+│   ├── knife.svg
+│   ├── pickaxe.svg
+│   ├── poles.svg
+│   ├── shorts.svg
+│   ├── socks.svg
+│   ├── stove.svg
+│   └── tent.svg
 └── mountain.svg <--- page loading indicator image
 ```
 

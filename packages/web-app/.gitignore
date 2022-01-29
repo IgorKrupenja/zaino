@@ -1,7 +1,3 @@
-# Dependencies
-/.pnp
-.pnp.js
-
 # env
 .env.development
 .env.test

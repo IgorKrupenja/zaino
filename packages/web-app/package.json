@@ -89,6 +89,11 @@
     "deploy": "scripts/deploy.sh production",
     "deploy-dev": "scripts/deploy.sh development"
   },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
+  "engineStrict": true,
   "eslintConfig": {
     "extends": [
       "react-app",
