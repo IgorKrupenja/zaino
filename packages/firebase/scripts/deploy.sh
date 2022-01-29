@@ -11,10 +11,9 @@ firebase -P "$1" functions:config:set settings.backups.bucket="$GCP_STORAGE_BACK
 rm -rf ./build
 tsc
 
-firebase deploy -P "$1" --only functions,firestore
+firebase deploy -P "$1" --only functions,firestore --force
 
-gsutil ls -b gs://"$GCP_STORAGE_BACKUPS_BUCKET" || gsutil mb -l "$GCP_STORAGE_BACKUPS_REGION" -c NEARLINE gs://"$GCP_STORAGE_BACKUPS_BUCKET"
+gsutil ls -b gs://"$GCP_STORAGE_BACKUPS_BUCKET" &>/dev/null || gsutil mb -l "$GCP_STORAGE_BACKUPS_REGION" -c NEARLINE gs://"$GCP_STORAGE_BACKUPS_BUCKET"
 
-# todo check if need quoting fn name
-# gcloud pubsub topics create "add-seed-data"
-# gcloud pubsub topics publish "add-seed-data" --message "$(date -R): seeding DB"
+gcloud pubsub topics list | grep add-seed-data &>/dev/null || gcloud pubsub topics create add-seed-data
+gcloud pubsub topics publish add-seed-data --message "$(date -R): seeding DB"

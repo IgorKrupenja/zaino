@@ -191,9 +191,10 @@ REACT_APP_GCP_STORAGE_URL="https://storage.googleapis.com/${REACT_APP_FIREBASE_S
 
 ```shell
 FIREBASE_PROJECT_ID="..."
+FIREBASE_TOKEN="..."
 ```
 
-Note: You can change additional settings like regions and periodic database bucket name in [the `.env` file](packages/firebase/.env).
+Note: You can change additional settings like regions and Cloud Storage bucket name in [the `.env` file](packages/firebase/.env).
 
 ### Deployment
 

@@ -3,7 +3,7 @@
     {
       "id": "2ea46137-fa0b-4bb0-9bc7-647ebbf3df6a",
       "name": "Haglöfs Rando Barrier Jacket",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 410,
       "quantity": 1,
       "packQuantity": 0,
@@ -13,7 +13,7 @@
     {
       "id": "634b064b-3f65-49ab-a862-e5ab91b612c6",
       "name": "Mountain Hardware Ghost Whisperer Hooded Down Jacket",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 262,
       "quantity": 1,
       "packQuantity": 0,
@@ -24,7 +24,7 @@
     {
       "id": "8e70f0f6-693b-47e8-90d8-97e69d8f7c7e",
       "name": "Montane Minimus Softshell Jacket",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 250,
       "quantity": 1,
       "packQuantity": 0,
@@ -35,7 +35,7 @@
     {
       "id": "e148be06-d408-4d66-97f7-19c233b6765e",
       "name": "Mountain Equipment Shivling Hardshell Jacket",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 435,
       "quantity": 1,
       "packQuantity": 0,
@@ -46,7 +46,7 @@
     {
       "id": "915e637f-aa2e-481f-acb7-e63ab733248e",
       "name": "Nike Front Runner Running Jacket",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 470,
       "quantity": 1,
       "packQuantity": 0,
@@ -56,7 +56,7 @@
     {
       "id": "7f0da59e-d454-496c-bc31-2527787947c9",
       "name": "Inov-8 ATC Ultra Shell HZ Running Jacket - SS17",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 188,
       "quantity": 1,
       "packQuantity": 0,
@@ -67,7 +67,7 @@
     {
       "id": "75b32267-f4e3-4746-9f31-2fbc99af1651",
       "name": "Linebreak Compression Running Top",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 195,
       "quantity": 1,
       "packQuantity": 0,
@@ -77,7 +77,7 @@
     {
       "id": "5901dffd-8b40-4ce1-ace5-7a54e55cb661",
       "name": "New Balance Mens Tempo Sleeveless Running Top",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 120,
       "quantity": 1,
       "packQuantity": 0,
@@ -87,7 +87,7 @@
     {
       "id": "8062a86f-c10b-4df5-a028-aee50f8da695",
       "name": "Mizuno Premium Origami Running Vest",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 69,
       "quantity": 1,
       "packQuantity": 0,
@@ -99,7 +99,7 @@
     {
       "id": "6969ceda-4a8f-4103-bedf-62efe283f37d",
       "name": "Rab Boreas Pull-on Top",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 271,
       "quantity": 1,
       "packQuantity": 0,
@@ -109,7 +109,7 @@
     {
       "id": "0a886043-df7e-41a9-931a-ff8b7789eb9b",
       "name": "OMM Contour Race Fleece Long Sleeve Half Zip Running Top",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 326,
       "quantity": 1,
       "packQuantity": 0,
@@ -120,7 +120,7 @@
     {
       "id": "d0141a3f-7ef2-4212-be66-5b9e486e18e1",
       "name": "Mizuno DryLite Premium Tee",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 90,
       "quantity": 1,
       "packQuantity": 0,
@@ -130,7 +130,7 @@
     {
       "id": "47f3422b-1f05-4740-bec3-a50b15b436f4",
       "name": "Icebreaker Merino Bodyfit Base Layer Top",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 260,
       "quantity": 1,
       "packQuantity": 0,
@@ -140,7 +140,7 @@
     {
       "id": "a33be727-f8e9-4e9e-8148-97987efe57bc",
       "name": "Trespass Unisex Thriller Microfleece Thermal Base Layer Top",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 250,
       "quantity": 1,
       "packQuantity": 0,
@@ -150,7 +150,7 @@
     {
       "id": "e5bcf8d8-ba5b-4921-b319-733e5e663c37",
       "name": "Salomon Bonatti Waterproof Pant Black - SS17",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 188,
       "quantity": 1,
       "packQuantity": 0,
@@ -161,7 +161,7 @@
     {
       "id": "e1d86c14-8fed-4450-9c31-4d35e28b5dae",
       "name": "Ronhill Stride Stretch Run Tight Black",
-      "categoryName": "Clothing: top",
+      "categoryId": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
       "weight": 277,
       "quantity": 1,
       "packQuantity": 0,
@@ -172,7 +172,7 @@
     {
       "id": "21b3af9e-fbe9-47bf-a6ff-d41b6055707f",
       "name": "Haglöfs Col Pant (soft shell)",
-      "categoryName": "Clothing: legs",
+      "categoryId": "8df47a80-03f8-4fc5-94e0-3085a95238a9",
       "weight": 540,
       "quantity": 1,
       "packQuantity": 0,
@@ -184,7 +184,7 @@
     {
       "id": "f7ed65aa-19ea-42b4-aec3-22a76b0dfd4f",
       "name": "North Face Men's Venture 1/2 Zip Pants",
-      "categoryName": "Clothing: legs",
+      "categoryId": "8df47a80-03f8-4fc5-94e0-3085a95238a9",
       "weight": 220,
       "quantity": 1,
       "packQuantity": 0,
@@ -194,7 +194,7 @@
     {
       "id": "f2a719a6-a6d6-4e99-be4e-82907b5e6295",
       "name": "Wild Country Session Shorts",
-      "categoryName": "Clothing: legs",
+      "categoryId": "8df47a80-03f8-4fc5-94e0-3085a95238a9",
       "weight": 237,
       "quantity": 1,
       "packQuantity": 0,
@@ -204,7 +204,7 @@
     {
       "id": "85bc3cf6-c740-47c5-9a26-341dc96c6a95",
       "name": "Trespass Unisex Thriller Microfleece Thermal Base Layer Pant",
-      "categoryName": "Clothing: legs",
+      "categoryId": "8df47a80-03f8-4fc5-94e0-3085a95238a9",
       "weight": 210,
       "quantity": 1,
       "packQuantity": 0,
@@ -214,7 +214,7 @@
     {
       "id": "238d0c49-038b-4dfd-a05a-33054b9aea1c",
       "name": "Trekmates mountainXT Karakoram Gaiters",
-      "categoryName": "Clothing: legs",
+      "categoryId": "8df47a80-03f8-4fc5-94e0-3085a95238a9",
       "weight": 180,
       "quantity": 1,
       "packQuantity": 0,
@@ -226,7 +226,7 @@
     {
       "id": "e1670c9d-32cd-455a-8ea9-3c659a5a9e61",
       "name": "Redfox gaiters",
-      "categoryName": "Clothing: legs",
+      "categoryId": "8df47a80-03f8-4fc5-94e0-3085a95238a9",
       "weight": 360,
       "quantity": 1,
       "packQuantity": 0,
@@ -236,7 +236,7 @@
     {
       "id": "865df0a3-8a8a-47a2-8cd5-1d85521030d1",
       "name": "Tervel Comfortline Briefs",
-      "categoryName": "Clothing: legs",
+      "categoryId": "8df47a80-03f8-4fc5-94e0-3085a95238a9",
       "weight": 37,
       "quantity": 2,
       "packQuantity": 0,
@@ -247,7 +247,7 @@
     {
       "id": "23c061bb-208a-432f-84f9-416eafd9480d",
       "name": "Adidas Sports Shorts",
-      "categoryName": "Clothing: legs",
+      "categoryId": "8df47a80-03f8-4fc5-94e0-3085a95238a9",
       "weight": 195,
       "quantity": 1,
       "packQuantity": 0,
@@ -258,7 +258,7 @@
     {
       "id": "420378d2-6e7f-43ad-b741-961302e552bd",
       "name": "Hilly Mono Skin Supreme anklet socks",
-      "categoryName": "Clothing: socks",
+      "categoryId": "90b69496-3252-42df-aaae-8fd840c8ce87",
       "weight": 68,
       "quantity": 1,
       "packQuantity": 0,
@@ -269,7 +269,7 @@
     {
       "id": "e5e6ae8f-0019-49bc-ae4c-36814613fc02",
       "name": "Hilly Mono Skin Off Road Sock Navy/Red",
-      "categoryName": "Clothing: socks",
+      "categoryId": "90b69496-3252-42df-aaae-8fd840c8ce87",
       "weight": 46,
       "quantity": 1,
       "packQuantity": 0,
@@ -280,7 +280,7 @@
     {
       "id": "63a730d9-048b-4608-9376-62ca88d88a05",
       "name": "Smartwool trekking socks",
-      "categoryName": "Clothing: socks",
+      "categoryId": "90b69496-3252-42df-aaae-8fd840c8ce87",
       "weight": 115,
       "quantity": 2,
       "packQuantity": 0,
@@ -290,7 +290,7 @@
     {
       "id": "fab74379-7103-4e65-9c41-6acc3f39422d",
       "name": "Extremities Hi Wick Sticky Thicky Glove",
-      "categoryName": "Clothing: gloves",
+      "categoryId": "df9ba045-e7bc-4963-806d-5f51c931de86",
       "weight": 84,
       "quantity": 1,
       "packQuantity": 0,
@@ -306,7 +306,7 @@
     {
       "id": "0066a39e-76a4-46f8-b702-2a3e1cfa569c",
       "name": "North Ridge Mitre Peak Waterproof gloves",
-      "categoryName": "Clothing: gloves",
+      "categoryId": "df9ba045-e7bc-4963-806d-5f51c931de86",
       "weight": 185,
       "quantity": 1,
       "packQuantity": 0,
@@ -316,7 +316,7 @@
     {
       "id": "e9201a74-276d-41e2-b6f6-4c5446521280",
       "name": "Extremities Hot Bags mitts",
-      "categoryName": "Clothing: gloves",
+      "categoryId": "df9ba045-e7bc-4963-806d-5f51c931de86",
       "weight": 98,
       "quantity": 1,
       "packQuantity": 0,
@@ -328,7 +328,7 @@
     {
       "id": "99615f7a-8c27-4e6e-b19f-0d115c5e9dab",
       "name": "SCOTT Sanction Goggle",
-      "categoryName": "Clothing: head",
+      "categoryId": "b4e6acb0-9706-49c9-8a91-40aad2ca8a92",
       "weight": 130,
       "quantity": 1,
       "packQuantity": 0,
@@ -338,7 +338,7 @@
     {
       "id": "c21dfc98-7833-49a1-8d8d-185b5afd4b5a",
       "name": "High UV Protection Buff Patterned",
-      "categoryName": "Clothing: head",
+      "categoryId": "b4e6acb0-9706-49c9-8a91-40aad2ca8a92",
       "weight": 49,
       "quantity": 1,
       "packQuantity": 0,
@@ -349,7 +349,7 @@
     {
       "id": "c2767583-1692-471e-b5ba-88f46603fd84",
       "name": "Buff Stroke UV Headband",
-      "categoryName": "Clothing: head",
+      "categoryId": "b4e6acb0-9706-49c9-8a91-40aad2ca8a92",
       "weight": 16,
       "quantity": 1,
       "packQuantity": 0,
@@ -361,7 +361,7 @@
     {
       "id": "55d52483-2964-4db5-8699-cb448f4e32b9",
       "name": "Vintage riders baseball cap",
-      "categoryName": "Clothing: head",
+      "categoryId": "b4e6acb0-9706-49c9-8a91-40aad2ca8a92",
       "weight": 92,
       "quantity": 1,
       "packQuantity": 0,
@@ -371,7 +371,7 @@
     {
       "id": "ad3322da-5558-40e5-b35f-1665c3d56154",
       "name": "Haglöfs Fanatic H cap",
-      "categoryName": "Clothing: head",
+      "categoryId": "b4e6acb0-9706-49c9-8a91-40aad2ca8a92",
       "weight": 30,
       "quantity": 1,
       "packQuantity": 0,
@@ -382,7 +382,7 @@
     {
       "id": "35b26199-9ec2-460e-83c0-8a31b71e34a9",
       "name": "Outdoor Research hat",
-      "categoryName": "Clothing: head",
+      "categoryId": "b4e6acb0-9706-49c9-8a91-40aad2ca8a92",
       "weight": 80,
       "quantity": 1,
       "packQuantity": 0,
@@ -392,7 +392,7 @@
     {
       "id": "2074d5cc-d349-465f-b6cd-e59c3e3e1111",
       "name": "Mizuno Wave Inspire 14 Running Shoes - AW18",
-      "categoryName": "Footwear",
+      "categoryId": "87af3c64-d042-415a-bb98-c5dc413e4dd6",
       "weight": 778,
       "quantity": 1,
       "packQuantity": 0,
@@ -403,7 +403,7 @@
     {
       "id": "5f71b93b-94eb-40ab-9fbb-899fcb20ffe6",
       "name": "Anatom Q2 Hiking Boots",
-      "categoryName": "Footwear",
+      "categoryId": "87af3c64-d042-415a-bb98-c5dc413e4dd6",
       "weight": 1550,
       "quantity": 1,
       "packQuantity": 0,
@@ -413,7 +413,7 @@
     {
       "id": "8549b3bb-bb45-4f9c-9d03-71798fd67bd8",
       "name": "Scarpa Manta Mountaineering Boots",
-      "categoryName": "Footwear",
+      "categoryId": "87af3c64-d042-415a-bb98-c5dc413e4dd6",
       "weight": 1795,
       "quantity": 1,
       "packQuantity": 0,
@@ -425,7 +425,7 @@
     {
       "id": "66a72281-fe54-4811-abd2-ec39407feb5b",
       "name": "Tenaya Masai Climbing Shoes",
-      "categoryName": "Footwear",
+      "categoryId": "87af3c64-d042-415a-bb98-c5dc413e4dd6",
       "weight": 662,
       "quantity": 1,
       "packQuantity": 0,
@@ -436,7 +436,7 @@
     {
       "id": "d8e935e1-c37b-4941-9f05-3edb78e83e8a",
       "name": "Inov-8 Mudclaw 300 Fell Running Shoes (Precision Fit)",
-      "categoryName": "Footwear",
+      "categoryId": "87af3c64-d042-415a-bb98-c5dc413e4dd6",
       "weight": 692,
       "quantity": 1,
       "packQuantity": 0,
@@ -447,7 +447,7 @@
     {
       "id": "58ad96a6-bf74-49fa-be55-11dd8c938105",
       "name": "Inov-8 Terraultra G 260",
-      "categoryName": "Footwear",
+      "categoryId": "87af3c64-d042-415a-bb98-c5dc413e4dd6",
       "weight": 903,
       "quantity": 1,
       "packQuantity": 0,
@@ -459,7 +459,7 @@
     {
       "id": "e04684b5-a13d-4b63-b1d8-4eff2084ab5d",
       "name": "Merrell Rant Bracken",
-      "categoryName": "Footwear",
+      "categoryId": "87af3c64-d042-415a-bb98-c5dc413e4dd6",
       "weight": 946,
       "quantity": 1,
       "packQuantity": 0,
@@ -470,7 +470,7 @@
     {
       "id": "d5e528ef-2f20-49f6-9638-6f5fb257a62d",
       "name": "Brooks Cascadia 9 Trail Running Shoes",
-      "categoryName": "Footwear",
+      "categoryId": "87af3c64-d042-415a-bb98-c5dc413e4dd6",
       "weight": 870,
       "quantity": 1,
       "packQuantity": 0,
@@ -480,7 +480,7 @@
     {
       "id": "127f16ba-79d8-43a1-834f-5989f6ef0b20",
       "name": "Petzl Elios Helmet",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 330,
       "quantity": 1,
       "packQuantity": 0,
@@ -491,7 +491,7 @@
     {
       "id": "306ca93e-f2e7-4c35-9667-3e0d1b5af247",
       "name": "Black Diamond Venom Adze 64cm with leash",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 575,
       "quantity": 1,
       "packQuantity": 0,
@@ -503,7 +503,7 @@
     {
       "id": "5d756a33-e0fe-47ca-a9d2-e0731318e77a",
       "name": "Grivel G12-New-Matic Crampons",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 1160,
       "quantity": 1,
       "packQuantity": 0,
@@ -515,7 +515,7 @@
     {
       "id": "3b521af5-c2e2-4baa-9d94-7319832178ac",
       "name": "DMM Viper 2.0 Harness M",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 410,
       "quantity": 1,
       "packQuantity": 0,
@@ -526,7 +526,7 @@
     {
       "id": "3117124b-4cb8-41bf-be66-40312474fc97",
       "name": "DMM Bug Belay Device",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 75,
       "quantity": 1,
       "packQuantity": 0,
@@ -537,7 +537,7 @@
     {
       "id": "14c862b7-41c1-4157-aa67-82bc0df7e7e8",
       "name": "Petzl Reverso 4 Belay Device",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 59,
       "quantity": 1,
       "packQuantity": 0,
@@ -548,7 +548,7 @@
     {
       "id": "ccfce023-956b-4bc0-8ab7-2e45adfa07e2",
       "name": "Metolius Yosemite Chalk Bag",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 110,
       "quantity": 1,
       "packQuantity": 0,
@@ -559,7 +559,7 @@
     {
       "id": "e12af6a2-c6dc-408a-8b94-f56df7fc316c",
       "name": "Chalk Ball",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 56,
       "quantity": 1,
       "packQuantity": 0,
@@ -570,7 +570,7 @@
     {
       "id": "fed7804c-26c0-44be-b151-57255f999294",
       "name": "Edelrid Cobra TS rope 10.3mm x 70m",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 4760,
       "quantity": 1,
       "packQuantity": 0,
@@ -582,7 +582,7 @@
     {
       "id": "80ae1248-ef37-47e3-9258-381fbd29c69d",
       "name": "Mammut Vertex rope 10.2mm x 30m",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 2010,
       "quantity": 1,
       "packQuantity": 0,
@@ -594,7 +594,7 @@
     {
       "id": "55281fd7-2af4-455b-ab3c-9c8ca4ba8ffb",
       "name": "Beal Joker Golden Dry rope 9.1mm x 50m",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 2815,
       "quantity": 1,
       "packQuantity": 0,
@@ -610,7 +610,7 @@
     {
       "id": "c547b168-e509-41bb-a53c-0fddbeb149eb",
       "name": "Mammut accessory cord 6mm x 30m",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 700,
       "quantity": 1,
       "packQuantity": 0,
@@ -622,7 +622,7 @@
     {
       "id": "0dbf635d-b44b-45dc-8e0d-eb53b8e478de",
       "name": "Mammut Performance rope 10mm x 10m",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 660,
       "quantity": 1,
       "packQuantity": 0,
@@ -634,7 +634,7 @@
     {
       "id": "c1ed7bcc-5f4b-4fab-92d0-e3a737ea2fc3",
       "name": "DMM Dyneema Daisy Chain 12mm",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 85,
       "quantity": 1,
       "packQuantity": 0,
@@ -645,7 +645,7 @@
     {
       "id": "2ed91ccf-21d3-48a5-9a37-62daf0e53c6f",
       "name": "DMM Dyneema Sling 11mm x 120cm",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 50,
       "quantity": 1,
       "packQuantity": 0,
@@ -656,7 +656,7 @@
     {
       "id": "69d412b7-6627-4335-8e0b-8311e15f21fe",
       "name": "Wild Country Dyneema Sling 12mm x 120cm",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 49,
       "quantity": 2,
       "packQuantity": 0,
@@ -667,7 +667,7 @@
     {
       "id": "a13b8715-4051-4de8-95dd-1ba2aef8f85d",
       "name": "Clog Polyester Sling (broad) 120cm",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 102,
       "quantity": 2,
       "packQuantity": 0,
@@ -678,7 +678,7 @@
     {
       "id": "66c663e7-3866-49d7-8492-ff187cacd840",
       "name": "DMM Dyneema Sling 8mm x 400cm",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 120,
       "quantity": 1,
       "packQuantity": 0,
@@ -689,7 +689,7 @@
     {
       "id": "03b7b3e3-c185-4256-abc0-f9e88c8bad3a",
       "name": "Mammut accessory cord 7mm x 7m",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 225,
       "quantity": 1,
       "packQuantity": 0,
@@ -700,7 +700,7 @@
     {
       "id": "d13939b1-e2bf-46f4-afbf-4dc19a57d991",
       "name": "Mammut prussik cord 6mm x 3m",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 70,
       "quantity": 1,
       "packQuantity": 0,
@@ -711,7 +711,7 @@
     {
       "id": "4c7eb0a3-15c7-4079-a96c-244bc9ba1510",
       "name": "Prussik cord 5mm x 1m",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 35,
       "quantity": 2,
       "packQuantity": 0,
@@ -722,7 +722,7 @@
     {
       "id": "fd4c9683-73b0-4b16-a125-4714327de0c9",
       "name": "DMM Spectre 2 QD – Dyneema 12mm x 12cm",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 75,
       "quantity": 5,
       "packQuantity": 0,
@@ -733,7 +733,7 @@
     {
       "id": "70b68fd2-59aa-4e7d-a5d8-f4981aa7e8e1",
       "name": "Wild Country Oxygen QD – Dyneema 12mm x 15cm",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 111,
       "quantity": 2,
       "packQuantity": 0,
@@ -744,7 +744,7 @@
     {
       "id": "25d4e594-f816-478b-8b76-d6734a56db47",
       "name": "North Ridge Alpha K1 Solidgate QD 12mm x 18cm",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 105,
       "quantity": 1,
       "packQuantity": 0,
@@ -755,7 +755,7 @@
     {
       "id": "33d72021-2cd6-44c7-a8b0-0db6ec693549",
       "name": "Black Diamond Airlock",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 75,
       "quantity": 2,
       "packQuantity": 0,
@@ -771,7 +771,7 @@
     {
       "id": "5f8d4358-d467-4818-a22a-b02ef5b85f0a",
       "name": "DMM Boa Screwgate",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 83,
       "quantity": 1,
       "packQuantity": 0,
@@ -787,7 +787,7 @@
     {
       "id": "a1a68d3c-ed77-4c52-9a62-3677455fc6b9",
       "name": "Wild Country Super 12 HMS",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 95,
       "quantity": 2,
       "packQuantity": 0,
@@ -803,7 +803,7 @@
     {
       "id": "24dca67a-08f4-47fe-b7b8-b16f458077ea",
       "name": "Wild Country Super 10 HMS Screw M",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 60,
       "quantity": 1,
       "packQuantity": 0,
@@ -815,7 +815,7 @@
     {
       "id": "6bc00235-72d0-46e0-9e9e-6c1d13028a59",
       "name": "Mammut Wire Gate  M",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 41,
       "quantity": 1,
       "packQuantity": 0,
@@ -827,7 +827,7 @@
     {
       "id": "e3f1c5f1-dff3-4aff-a9bd-3afa8889487f",
       "name": "DMM Aero Screwgate M",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 59,
       "quantity": 3,
       "packQuantity": 0,
@@ -839,7 +839,7 @@
     {
       "id": "f9cd9da3-9d31-4f2c-b3dd-3240702918ca",
       "name": "DMM Sentinel Screwgate M",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 54,
       "quantity": 3,
       "packQuantity": 0,
@@ -851,7 +851,7 @@
     {
       "id": "f5b43fa1-9d4b-45f7-bd9e-a920a10011ce",
       "name": "DMM Spectre 2 M",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 33,
       "quantity": 6,
       "packQuantity": 0,
@@ -863,7 +863,7 @@
     {
       "id": "e14c954a-fedc-4634-af07-e9a14922193b",
       "name": "DMM Phantom M",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 26,
       "quantity": 2,
       "packQuantity": 0,
@@ -875,7 +875,7 @@
     {
       "id": "cbeea78a-15a2-4267-9cff-e8760a3e2c05",
       "name": "Wild Country Helium Friend cam 0.0",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 87,
       "quantity": 1,
       "packQuantity": 0,
@@ -886,7 +886,7 @@
     {
       "id": "57faaa5c-eb1c-4075-962e-c084cb7ccf58",
       "name": "DMM 3CU cam 1.0",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 84,
       "quantity": 1,
       "packQuantity": 0,
@@ -897,7 +897,7 @@
     {
       "id": "4e5b4b49-93da-44d9-a0cf-93257d9892f5",
       "name": "DMM Dragon cam 2.0",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 108,
       "quantity": 1,
       "packQuantity": 0,
@@ -908,7 +908,7 @@
     {
       "id": "fc36e8fc-66b8-4544-82c0-0616783fe511",
       "name": "DMM 4CU cam 3.0",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 151,
       "quantity": 1,
       "packQuantity": 0,
@@ -919,7 +919,7 @@
     {
       "id": "c890afe7-5ff2-47da-aab7-73ba72ff97cd",
       "name": "Cam Storage Case",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 151,
       "quantity": 1,
       "packQuantity": 0,
@@ -930,7 +930,7 @@
     {
       "id": "43927fe6-9dde-44a7-861c-df54eae98dc0",
       "name": "Grandwall wallnuts – Wire 1-12",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 340,
       "quantity": 1,
       "packQuantity": 0,
@@ -941,7 +941,7 @@
     {
       "id": "9e17c3bf-3475-4125-88e4-2d36985145a9",
       "name": "DMM Wallnuts – Wire 1-11",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 425,
       "quantity": 1,
       "packQuantity": 0,
@@ -953,7 +953,7 @@
     {
       "id": "88b5dd47-eb27-4157-8119-c596700a3d66",
       "name": "DMM Torque Nut - Dyneema 1,2,4",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 320,
       "quantity": 1,
       "packQuantity": 0,
@@ -965,7 +965,7 @@
     {
       "id": "3283bee8-4c6f-48c9-94bd-19cc7ec9a282",
       "name": "Wild Country Rockcentrics Hex – Dyneema 6,7",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": 167,
       "quantity": 1,
       "packQuantity": 0,
@@ -977,7 +977,7 @@
     {
       "id": "9fa546d0-86cf-42cd-9d57-a218e77ffdc7",
       "name": "Ice screws",
-      "categoryName": "Climbing",
+      "categoryId": "c1e94cf1-fe53-4576-8d05-92c868a9254f",
       "weight": "",
       "quantity": 2,
       "packQuantity": 0,
@@ -993,7 +993,7 @@
     {
       "id": "d6ae4851-7acd-422f-ab48-5dfecc23ebed",
       "name": "Vango Banshee 300 Tent",
-      "categoryName": "Tents & sleeping",
+      "categoryId": "51a3e5dd-bb96-4243-a171-190b3a75500d",
       "weight": 2750,
       "quantity": 1,
       "packQuantity": 0,
@@ -1003,7 +1003,7 @@
     {
       "id": "12a14d2a-e53d-420c-9831-0f26c5a08461",
       "name": "Deuter Travel Lite 300 sleeping bag",
-      "categoryName": "Tents & sleeping",
+      "categoryId": "51a3e5dd-bb96-4243-a171-190b3a75500d",
       "weight": 1400,
       "quantity": 2,
       "packQuantity": 0,
@@ -1013,7 +1013,7 @@
     {
       "id": "fbc7e78d-f2ec-4426-ae1b-1be476bae919",
       "name": "North Face Gold Kazoo sleeping bag",
-      "categoryName": "Tents & sleeping",
+      "categoryId": "51a3e5dd-bb96-4243-a171-190b3a75500d",
       "weight": 1030,
       "quantity": 1,
       "packQuantity": 0,
@@ -1024,7 +1024,7 @@
     {
       "id": "c52ca3dd-0875-493d-8135-a0451bbfa169",
       "name": "Rab Storm bivy bag",
-      "categoryName": "Tents & sleeping",
+      "categoryId": "51a3e5dd-bb96-4243-a171-190b3a75500d",
       "weight": 550,
       "quantity": 1,
       "packQuantity": 0,
@@ -1034,7 +1034,7 @@
     {
       "id": "e756440b-1e08-4039-8776-cc7b2e0ffda5",
       "name": "DIY Sleeping Mat",
-      "categoryName": "Tents & sleeping",
+      "categoryId": "51a3e5dd-bb96-4243-a171-190b3a75500d",
       "weight": 180,
       "quantity": 1,
       "packQuantity": 0,
@@ -1044,7 +1044,7 @@
     {
       "id": "23555846-5b48-47f7-ba43-76f96ba5f9a0",
       "name": "Mountain Warehouse Silk Mummy Sleeping Bag Liner",
-      "categoryName": "Tents & sleeping",
+      "categoryId": "51a3e5dd-bb96-4243-a171-190b3a75500d",
       "weight": 114,
       "quantity": 1,
       "packQuantity": 0,
@@ -1054,7 +1054,7 @@
     {
       "id": "1ea17d13-2758-4b66-a67f-ea278ce3d90e",
       "name": "Alphalite Spork",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 9,
       "quantity": 1,
       "packQuantity": 0,
@@ -1064,7 +1064,7 @@
     {
       "id": "181226c5-6d84-4373-af75-a1062f983a24",
       "name": "Hi Gear Aluminum Drinks Bottle 1L",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 150,
       "quantity": 2,
       "packQuantity": 0,
@@ -1074,7 +1074,7 @@
     {
       "id": "2eab463b-3572-4597-bbdb-6e61512c460f",
       "name": "Sea To Summit X-Series Rubber Bowl Set",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 355,
       "quantity": 1,
       "packQuantity": 0,
@@ -1084,7 +1084,7 @@
     {
       "id": "af27cd33-1033-43bf-8431-a262be29984b",
       "name": "MSR Mountain Bowl",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 102,
       "quantity": 1,
       "packQuantity": 0,
@@ -1094,7 +1094,7 @@
     {
       "id": "874c98b1-bb6a-40f1-8e52-28699b3adf54",
       "name": "Salomon Hydrapak Hydration System 1.5L",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 130,
       "quantity": 1,
       "packQuantity": 0,
@@ -1104,7 +1104,7 @@
     {
       "id": "96b176b1-076f-4654-8f0e-adbc129c5491",
       "name": "Camelbak Antidote Reservoir Hydration System 2.0L",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 180,
       "quantity": 1,
       "packQuantity": 0,
@@ -1114,7 +1114,7 @@
     {
       "id": "9cd2a3a2-a69f-49a7-9ef9-3013db3be24d",
       "name": "Salomon Hydrapak Softflask 250ml",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 24,
       "quantity": 1,
       "packQuantity": 0,
@@ -1124,7 +1124,7 @@
     {
       "id": "255567ba-f970-484f-84ef-09ae48334077",
       "name": "CORKSCREW",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 65,
       "quantity": 1,
       "packQuantity": 0,
@@ -1136,7 +1136,7 @@
     {
       "id": "b16755c9-ac5e-4e10-ba9f-385ff55086e5",
       "name": "Energy gel",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 69,
       "quantity": 10,
       "packQuantity": 0,
@@ -1146,7 +1146,7 @@
     {
       "id": "8b0780e5-2714-4c03-83e7-c0b4010fb8ac",
       "name": "Energy bar",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 40,
       "quantity": 10,
       "packQuantity": 0,
@@ -1156,7 +1156,7 @@
     {
       "id": "2e812d78-1d26-4d83-a891-d6cfb2c89e8c",
       "name": "Recovery gel",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 89,
       "quantity": 10,
       "packQuantity": 0,
@@ -1166,7 +1166,7 @@
     {
       "id": "695a716f-ed33-4e37-b48b-192847ad206a",
       "name": "Electrolyte / carbohydrate powder",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": "",
       "quantity": 10,
       "packQuantity": 0,
@@ -1178,7 +1178,7 @@
     {
       "id": "008d42fc-2a93-416c-826e-160661351e0e",
       "name": "Electrolyre tabs (Nuun)",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 70,
       "quantity": 1,
       "packQuantity": 0,
@@ -1188,7 +1188,7 @@
     {
       "id": "b48453a3-8cdd-4371-b97a-f6fb8387f1e2",
       "name": "Mountain House Salmon and Potato in Dill Sauce (Big pack)",
-      "categoryName": "Kitchen & nutrition",
+      "categoryId": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5",
       "weight": 212,
       "quantity": 10,
       "packQuantity": 0,
@@ -1198,7 +1198,7 @@
     {
       "id": "9b9e14b9-c8f8-40f3-beef-8db0bb5c7dc6",
       "name": "Osprey Kestrel Rucksack 58L",
-      "categoryName": "Backpacks & bags",
+      "categoryId": "a48fe3a6-c6bf-4643-b21f-dbdfb899308a",
       "weight": 1720,
       "quantity": 1,
       "packQuantity": 0,
@@ -1208,7 +1208,7 @@
     {
       "id": "8064983d-89ff-4d93-a7de-545675d7b909",
       "name": "Osprey Talon II Rucksack 33-35L",
-      "categoryName": "Backpacks & bags",
+      "categoryId": "a48fe3a6-c6bf-4643-b21f-dbdfb899308a",
       "weight": 870,
       "quantity": 1,
       "packQuantity": 0,
@@ -1218,7 +1218,7 @@
     {
       "id": "d0122d3b-bf78-432f-bad4-edd9cbad2bfc",
       "name": "Osprey Ultra Light Rain Cover",
-      "categoryName": "Backpacks & bags",
+      "categoryId": "a48fe3a6-c6bf-4643-b21f-dbdfb899308a",
       "weight": 115,
       "quantity": 1,
       "packQuantity": 0,
@@ -1229,7 +1229,7 @@
     {
       "id": "fff77023-9da2-4e7f-80c9-c20410c30dd1",
       "name": "Osprey Ultra Light Rain Cover (20-40L)",
-      "categoryName": "Backpacks & bags",
+      "categoryId": "a48fe3a6-c6bf-4643-b21f-dbdfb899308a",
       "weight": 98,
       "quantity": 1,
       "packQuantity": 0,
@@ -1241,7 +1241,7 @@
     {
       "id": "f42a533b-c0a9-4e81-bd09-d066eea55553",
       "name": "Salomon Agile 12 Set Running bag",
-      "categoryName": "Backpacks & bags",
+      "categoryId": "a48fe3a6-c6bf-4643-b21f-dbdfb899308a",
       "weight": 415,
       "quantity": 1,
       "packQuantity": 0,
@@ -1251,7 +1251,7 @@
     {
       "id": "4aef9e6f-9aeb-423b-90db-a1d2099ff022",
       "name": "Podsacs Rucksac Liner (50-60L)",
-      "categoryName": "Backpacks & bags",
+      "categoryId": "a48fe3a6-c6bf-4643-b21f-dbdfb899308a",
       "weight": 120,
       "quantity": 1,
       "packQuantity": 0,
@@ -1263,7 +1263,7 @@
     {
       "id": "87d431ae-7e62-4b73-8f36-07bfe4f3fa6f",
       "name": "Liberty Mountain Stuff Sack (9x20 inch)",
-      "categoryName": "Backpacks & bags",
+      "categoryId": "a48fe3a6-c6bf-4643-b21f-dbdfb899308a",
       "weight": 58,
       "quantity": 2,
       "packQuantity": 0,
@@ -1274,7 +1274,7 @@
     {
       "id": "2f5f2f5c-0f9c-4693-a350-cf243c70e650",
       "name": "Edelrid Rope Tooth",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 47,
       "quantity": 1,
       "packQuantity": 0,
@@ -1285,7 +1285,7 @@
     {
       "id": "ac68b82b-97e9-47a6-a3e8-0ffa9abe567a",
       "name": "Wild Country Pro-Key Nut Tool",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 70,
       "quantity": 1,
       "packQuantity": 0,
@@ -1295,7 +1295,7 @@
     {
       "id": "2d9479fc-5504-4172-8fa5-c3d6588d1696",
       "name": "Black Diamond Cosmo Headtorch",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 58,
       "quantity": 1,
       "packQuantity": 0,
@@ -1306,7 +1306,7 @@
     {
       "id": "244a118f-79c4-453a-967a-aee7b9247be7",
       "name": "Headtorch batteries",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 12,
       "quantity": 8,
       "packQuantity": 0,
@@ -1316,7 +1316,7 @@
     {
       "id": "ddf152c7-66e1-43dc-aeed-1e5c2dacbf9d",
       "name": "HiGear Microfibre Body Towel",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 164,
       "quantity": 1,
       "packQuantity": 0,
@@ -1326,7 +1326,7 @@
     {
       "id": "e478fd78-5aff-49e3-8ac4-4063416c7231",
       "name": "LifeVenture Compact Trek Towel 120",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 134,
       "quantity": 1,
       "packQuantity": 0,
@@ -1336,7 +1336,7 @@
     {
       "id": "fcd810d4-7781-4301-b476-aaeecdb6c359",
       "name": "Gipron mountain running poles",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 195,
       "quantity": 3,
       "packQuantity": 0,
@@ -1346,7 +1346,7 @@
     {
       "id": "47d18968-7b5c-4293-b5fd-686b39bec868",
       "name": "Silva Field Compass",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 28,
       "quantity": 1,
       "packQuantity": 0,
@@ -1356,7 +1356,7 @@
     {
       "id": "3e5ad1e9-dc34-4f73-bb32-2a9b9a746f75",
       "name": "Julbo eXplorer glasses with Liveventure case",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 118,
       "quantity": 1,
       "packQuantity": 0,
@@ -1368,7 +1368,7 @@
     {
       "id": "e73fe99c-5129-49dc-a43b-d37d5b0ab405",
       "name": "Julbo glasses case",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 80,
       "quantity": 1,
       "packQuantity": 0,
@@ -1378,7 +1378,7 @@
     {
       "id": "eb3d7679-1879-417c-9897-b655ece14203",
       "name": "Hugo Boss glasses with case",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 108,
       "quantity": 1,
       "packQuantity": 0,
@@ -1389,7 +1389,7 @@
     {
       "id": "9d96d060-1af6-4343-b8f3-2ecb06b4b0ef",
       "name": "Cheap John Lewis sunglasses",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 26,
       "quantity": 1,
       "packQuantity": 0,
@@ -1400,7 +1400,7 @@
     {
       "id": "2f95df54-4a49-49e8-8626-11db4e56d5d3",
       "name": "Medkit",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 360,
       "quantity": 1,
       "packQuantity": 0,
@@ -1410,7 +1410,7 @@
     {
       "id": "dcaf4a76-ae59-4aa0-94f1-ba0832de70a6",
       "name": "Hygiene kit",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 385,
       "quantity": 1,
       "packQuantity": 0,
@@ -1420,7 +1420,7 @@
     {
       "id": "0b1f3011-a98b-4562-a412-c5544f485d49",
       "name": "Found trekking pole x1",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": "",
       "quantity": 1,
       "packQuantity": 0,
@@ -1432,7 +1432,7 @@
     {
       "id": "3e5d1402-9e74-4525-ab6e-dba99b276e8f",
       "name": "Hi Gear Strider performance trekking pole x1",
-      "categoryName": "Miscellaneous",
+      "categoryId": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0",
       "weight": 200,
       "quantity": 1,
       "packQuantity": 0,
@@ -1442,7 +1442,7 @@
     {
       "id": "7e4cf777-8ee1-4f71-99e0-17f08344017a",
       "name": "GoPro Hero 3+ Black Edition",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 133,
       "quantity": 1,
       "packQuantity": 0,
@@ -1452,7 +1452,7 @@
     {
       "id": "1b3f31bb-4448-4863-8bc2-e8ae32a6f0ed",
       "name": "GoPro Chest strap",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 193,
       "quantity": 1,
       "packQuantity": 0,
@@ -1462,7 +1462,7 @@
     {
       "id": "8721679c-814c-49c4-8d0b-fc87c2b1b9c2",
       "name": "GoPro Battery",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 25,
       "quantity": 7,
       "packQuantity": 0,
@@ -1472,7 +1472,7 @@
     {
       "id": "d242ce46-56fc-4321-892a-4fed272f9aa2",
       "name": "Memory cards 64 Gb micro-SD",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 0,
       "quantity": 2,
       "packQuantity": 0,
@@ -1483,7 +1483,7 @@
     {
       "id": "c7be3eef-c20a-4039-ba16-cb97bddb8e0d",
       "name": "OnePlus 3 phone with cover",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 217,
       "quantity": 1,
       "packQuantity": 0,
@@ -1493,7 +1493,7 @@
     {
       "id": "13ee49a9-a64d-45b9-9f19-e6987cf1f432",
       "name": "Leophile Eel earphones",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 33,
       "quantity": 1,
       "packQuantity": 0,
@@ -1504,7 +1504,7 @@
     {
       "id": "0041f11e-39e5-41bf-9206-75cfa81b1cbc",
       "name": "Suunto Ambit3 Peak Sportswatch",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 94,
       "quantity": 1,
       "packQuantity": 0,
@@ -1514,7 +1514,7 @@
     {
       "id": "13272ae5-4b68-44db-ba2f-1e8aab0843d9",
       "name": "Suunto HR monitor",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 42,
       "quantity": 1,
       "packQuantity": 0,
@@ -1524,13 +1524,91 @@
     {
       "id": "9984e15e-0254-4832-8c26-e92832cc4a72",
       "name": "Chargers and cables",
-      "categoryName": "Electronics",
+      "categoryId": "8bf6a997-ffb1-483d-aa50-364feb83bd73",
       "weight": 281,
       "quantity": 1,
       "packQuantity": 0,
       "addedAt": "",
       "isFromDemoData": true,
       "notes": "All chargers (phone, GoPro, Suunto) + cables (incl multiport)"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Clothing: top",
+      "imageFileName": "jacket.svg",
+      "id": "a6a97ef9-3ad8-490a-852d-3fe44af3c90c",
+      "isDefault": true
+    },
+    {
+      "name": "Clothing: legs",
+      "imageFileName": "shorts.svg",
+      "id": "8df47a80-03f8-4fc5-94e0-3085a95238a9"
+    },
+    {
+      "name": "Clothing: gloves",
+      "imageFileName": "gloves.svg",
+      "id": "df9ba045-e7bc-4963-806d-5f51c931de86"
+    },
+    {
+      "name": "Clothing: head",
+      "imageFileName": "hat.svg",
+      "id": "b4e6acb0-9706-49c9-8a91-40aad2ca8a92"
+    },
+    {
+      "name": "Clothing: socks",
+      "imageFileName": "socks.svg",
+      "id": "90b69496-3252-42df-aaae-8fd840c8ce87"
+    },
+    {
+      "name": "Footwear",
+      "imageFileName": "boots.svg",
+      "id": "87af3c64-d042-415a-bb98-c5dc413e4dd6"
+    },
+    {
+      "name": "Backpacks & bags",
+      "imageFileName": "backpack.svg",
+      "id": "a48fe3a6-c6bf-4643-b21f-dbdfb899308a"
+    },
+    {
+      "name": "Hiking poles",
+      "imageFileName": "poles.svg",
+      "id": "3db35a64-da6e-4429-b4de-6cb203f1886b"
+    },
+    {
+      "name": "Climbing",
+      "imageFileName": "pickaxe.svg",
+      "id": "c1e94cf1-fe53-4576-8d05-92c868a9254f"
+    },
+    {
+      "name": "Tents & sleeping",
+      "imageFileName": "tent.svg",
+      "id": "51a3e5dd-bb96-4243-a171-190b3a75500d"
+    },
+    {
+      "name": "Kitchen & nutrition",
+      "imageFileName": "stove.svg",
+      "id": "0ea4c94d-7c47-46fd-b2b7-b741757c59c5"
+    },
+    {
+      "name": "Fishing & hunting",
+      "imageFileName": "hook.svg",
+      "id": "01f23d8f-8116-48f4-b89f-3b60acd6e503"
+    },
+    {
+      "name": "Navigation",
+      "imageFileName": "compass.svg",
+      "id": "20d929f7-eb25-4892-b55e-3e4786b8529f"
+    },
+    {
+      "name": "Electronics",
+      "imageFileName": "gps.svg",
+      "id": "8bf6a997-ffb1-483d-aa50-364feb83bd73"
+    },
+    {
+      "name": "Miscellaneous",
+      "imageFileName": "knife.svg",
+      "id": "1343f0e3-a79a-4a5f-91e5-a4632c353fb0"
     }
   ],
   "labels": [
