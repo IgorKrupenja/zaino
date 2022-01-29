@@ -72,9 +72,9 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 ### Code structure
 
-<!-- TODO re-write -->
+<!-- TODO re-write para below -->
 
-Note that this will also deploy the [backupDb.ts](packages/cloud-functions/src/backupDb.ts) function which saves a backup of Firestore data very 24 hours to `GCP_STORAGE_URL` bucket you specify in your `.env.development` file. This can be disabled by simply removing the relevant export [here](packages/cloud-functions/src/index.ts).
+<!-- Note that this will also deploy the [backupDb.ts](packages/cloud-functions/src/backupDb.ts) function which saves a backup of Firestore data very 24 hours to `GCP_STORAGE_URL` bucket you specify in your `.env.development` file. This can be disabled by simply removing the relevant export [here](packages/cloud-functions/src/index.ts). -->
 
 <!-- todo clean and shorten -->
 <!-- todo mention workspaces -->
@@ -142,7 +142,7 @@ Please note that the development environment works completely fine on macOS and 
 2. Scroll down to Your Apps section and locate the code snippet with `firebaseConfig`.
 3. Go to `packages/web-app` and create `.env.development` and `.env.production` files with the variables from `firebaseConfig`. The file format should be like this:
 
-```env
+```shell
 # Firebase
 REACT_APP_FIREBASE_API_KEY="..."
 REACT_APP_FIREBASE_AUTH_DOMAIN="..."
@@ -189,7 +189,7 @@ REACT_APP_GCP_STORAGE_URL="https://storage.googleapis.com/${REACT_APP_FIREBASE_S
 1. Create Firestore database in Firebase console for your projects, a detailed guide is available [here](https://firebase.google.com/docs/firestore/quickstart#create).
 2. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the variables for your Project IDs. The file format should be like this:
 
-```env
+```shell
 FIREBASE_PROJECT_ID="..."
 ```
 
