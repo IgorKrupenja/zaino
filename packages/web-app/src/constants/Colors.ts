@@ -1,13 +1,10 @@
 import { ColorName } from '@zaino/shared';
 import styles from '../styles/base/_export.scss';
 
-// TODO: split into three/two files?
-export type Color = {
+type Color = {
   name: ColorName;
   fancyName: string;
   hexValue: string;
-  // needed for styling background for 'Create label' in LabelSelect
-  __isNew__?: boolean;
 };
 
 export const Colors: Color[] = [
@@ -23,5 +20,3 @@ export const Colors: Color[] = [
   { name: 'dark-blue', fancyName: 'Storm', hexValue: styles.darkBlue },
   { name: 'grey', fancyName: 'Winter', hexValue: styles.grey },
 ];
-
-export const getRandomColor = () => Colors[Math.floor(Math.random() * Colors.length)];

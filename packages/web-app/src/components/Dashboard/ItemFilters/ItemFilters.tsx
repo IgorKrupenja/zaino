@@ -1,5 +1,5 @@
 import deepEqual from 'fast-deep-equal/react';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CollectionSortOption } from '../../../state/collectionSettings';
 import {

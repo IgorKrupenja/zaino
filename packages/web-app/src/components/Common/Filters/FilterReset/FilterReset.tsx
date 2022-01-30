@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg';
 import { Button } from '../../Controls/Button';
 import './style.scss';

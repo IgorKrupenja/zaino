@@ -1,5 +1,4 @@
 import { Item } from '@zaino/shared';
-import React from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { selectFilteredPackItems } from '../../../state/selectors/items';
 import { selectPackItemsStats } from '../../../state/selectors/itemsStats';

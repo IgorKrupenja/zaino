@@ -1,5 +1,5 @@
-import React, { ChangeEvent } from 'react';
-import { getClassString } from '../../../../utils/getClassString';
+import { ChangeEvent } from 'react';
+import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type InputProps = {
@@ -27,7 +27,7 @@ export const Input = ({ className, name, error, onChange, clearError, ...rest }:
     <input
       type="text"
       {...elementProps}
-      onChange={e => {
+      onChange={(e) => {
         clearError && clearError(e);
         onChange && onChange(e);
       }}

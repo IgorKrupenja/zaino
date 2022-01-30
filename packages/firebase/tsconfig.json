@@ -14,7 +14,7 @@
     "moduleResolution": "node",
     // Report error when not all code paths in function return a value.
     "noImplicitReturns": true,
-    // allow default and named imports in one line, e.g.: import React, { useEffect } from 'react';
+    // allow default and named imports in one line, e.g.: import { useEffect } from 'react';
     "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,

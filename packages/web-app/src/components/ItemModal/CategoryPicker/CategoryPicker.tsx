@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
@@ -21,7 +20,7 @@ type CategoryPickerProps = {
  */
 export const CategoryPicker = ({ categoryId, onChange }: CategoryPickerProps) => {
   const categories = useSelector((state: RootState) => state.categories);
-  const categoryName = categories.find(category => category.id === categoryId)?.name;
+  const categoryName = categories.find((category) => category.id === categoryId)?.name;
 
   return (
     <Column className="category-picker">

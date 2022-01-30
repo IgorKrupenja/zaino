@@ -1,5 +1,5 @@
 import { Item } from '@zaino/shared';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactComponent as NoBackpackIcon } from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/items';

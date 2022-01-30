@@ -1,5 +1,5 @@
 import { Label } from '@zaino/shared';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';

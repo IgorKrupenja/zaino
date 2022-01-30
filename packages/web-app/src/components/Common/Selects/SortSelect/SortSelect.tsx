@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { OnChangeValue } from 'react-select';
 import { CollectionSortOption } from '../../../../state/collectionSettings';
 import { ItemSortOption } from '../../../../state/slices/itemsFilters';
@@ -29,12 +29,12 @@ export const SortSelect = ({
         value: key,
         label: value,
       }))
-      .filter(option => option.label !== hiddenOption)
+      .filter((option) => option.label !== hiddenOption)
   ).current;
   // logic similar to LabelSelect
   const prepareValue = useCallback(
     (selectedOption: string | undefined) => {
-      return options.find(option => option.label === selectedOption);
+      return options.find((option) => option.label === selectedOption);
     },
     [options]
   );

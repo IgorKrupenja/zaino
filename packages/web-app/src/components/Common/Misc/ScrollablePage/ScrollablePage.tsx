@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../state/store';
 import { Header } from '../../../Header/Header';

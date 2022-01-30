@@ -1,5 +1,5 @@
 import { Item } from '@zaino/shared';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as CategoryIcon } from '../../../images/icons/category.svg';
 import { LabelBadgeList } from '../../Common/LabelBadge/LabelBadgeList';

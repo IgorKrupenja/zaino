@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItemCategoryFilter } from '../../../../state/slices/itemsFilters';
 import { RootState } from '../../../../state/store';
-import { getClassString } from '../../../../utils/getClassString';
+import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type CategoryProps = {
@@ -15,7 +15,7 @@ type CategoryProps = {
 export const Category = ({ categoryId, className, onClick, children }: CategoryProps) => {
   const dispatch = useDispatch();
   const categories = useSelector((state: RootState) => state.categories);
-  const categoryName = categories.find(category => category.id === categoryId)?.name;
+  const categoryName = categories.find((category) => category.id === categoryId)?.name;
 
   return (
     <div

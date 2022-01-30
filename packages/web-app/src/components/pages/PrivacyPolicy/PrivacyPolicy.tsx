@@ -1,4 +1,4 @@
-import React from 'react';
+import { lazy } from 'react';
 import { useTitle } from '../../../hooks/useTitle';
 import { BackLink } from '../../Common/Misc/BackLink';
 import './style.scss';
@@ -6,7 +6,7 @@ import './style.scss';
 export const PrivacyPolicy = () => {
   useTitle('Privacy and cookie policy | Zaino');
 
-  const PrivacyPolicyContent = React.lazy(async () => {
+  const PrivacyPolicyContent = lazy(async () => {
     try {
       return await import('./PrivacyPolicyContent');
     } catch {

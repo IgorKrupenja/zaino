@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '../../Common/Controls/Button';
 import { EditIcon } from '../../Common/Icons/EditIcon';
 import { LabelBadgeList } from '../../Common/LabelBadge/LabelBadgeList';

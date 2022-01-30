@@ -1,5 +1,5 @@
-import React, { ChangeEvent, ReactNode } from 'react';
-import { getClassString } from '../../../../utils/getClassString';
+import { ChangeEvent, ReactNode } from 'react';
+import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type TextAreaProps = {
@@ -19,7 +19,7 @@ export const TextArea = ({ name, className, children, ...rest }: TextAreaProps) 
         id={name}
         name={name}
         className={getClassString('textarea', className)}
-        onFocus={e => {
+        onFocus={(e) => {
           // puts cursor at the end on focus
           const value = e.target.value;
           e.target.value = '';

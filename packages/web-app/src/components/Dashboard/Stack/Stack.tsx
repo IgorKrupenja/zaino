@@ -1,7 +1,5 @@
-import React, { ReactNode } from 'react';
-import { getClassString } from '../../../utils/getClassString';
-import { isFirefox } from '../../../utils/isFirefox';
-import { isMacOs } from '../../../utils/isMacOs';
+import { ReactNode } from 'react';
+import { getClassString } from '../../../utils';
 import './style.scss';
 
 type StackProps = {
@@ -29,11 +27,14 @@ type ListProps = {
 };
 
 const List = ({ children, isEmpty }: ListProps) => {
+  const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
+  const isMacOs = navigator.userAgent.indexOf('Mac') !== -1;
+
   return (
     <div
       className={
         'stack__list' +
-        (isFirefox() && isMacOs() ? ' stack__list--firefox-mac' : '') +
+        (isFirefox && isMacOs ? ' stack__list--firefox-mac' : '') +
         (isEmpty ? ' stack__list--empty' : '')
       }
     >
