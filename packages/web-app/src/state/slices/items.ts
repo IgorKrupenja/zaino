@@ -121,7 +121,7 @@ const itemsSlice = createSlice({
         );
       });
     });
-    // TODO: possibly add rejected handling here, #78
+    // TODO: add rejected handling here, #78
   },
 });
 

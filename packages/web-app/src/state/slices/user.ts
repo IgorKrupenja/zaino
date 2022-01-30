@@ -21,7 +21,7 @@ export const handleLoginRedirect = createAsyncThunk(
         .collection('users')
         .doc(user.uid)
         .set({ firstLoginAt: new Date().toISOString(), email: user.email });
-      // add default categories for every new user
+      // Add default categories for every new user
       await copyCollection('common/defaults/categories', `users/${user.uid}/categories`);
     }
   }
@@ -51,8 +51,6 @@ const userSlice = createSlice({
         // as app does not support anonymous sign anyway, casting as strings
         name: user.displayName as string,
         email: user.email as string,
-        // if user has not set an photo in Google account,
-        // Google conveniently provides an image with name's first letter
         photoUrl: user.photoURL as string,
       };
     });

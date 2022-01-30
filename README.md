@@ -152,8 +152,6 @@ REACT_APP_FIREBASE_STORAGE_BUCKET="..."
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID="..."
 REACT_APP_FIREBASE_APP_ID="..."
 REACT_APP_FIREBASE_MEASUREMENT_ID="..."
-# GCP Cloud Storage root URL
-REACT_APP_GCP_STORAGE_URL="https://storage.googleapis.com/${REACT_APP_FIREBASE_STORAGE_BUCKET}"
 ```
 
 ##### Caveats ⚠️
@@ -191,7 +189,6 @@ REACT_APP_GCP_STORAGE_URL="https://storage.googleapis.com/${REACT_APP_FIREBASE_S
 
 ```shell
 FIREBASE_PROJECT_ID="..."
-FIREBASE_TOKEN="..."
 ```
 
 Note: You can change additional settings like regions and Cloud Storage bucket name in [the `.env` file](packages/firebase/.env).

@@ -38,14 +38,14 @@ const selectFilteredInventoryItems = createSelector(
             return a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1;
           case ItemSortOption.weightHighest:
             if (a.weight === '') {
-              // sort empty weight items appear below 0g items
+              // sort empty weight items to appear below 0g items
               return 1;
             } else {
               return a.weight < b.weight ? 1 : -1;
             }
           case ItemSortOption.weightLowest:
             if (b.weight === '') {
-              // sort empty weight items appear above 0g items
+              // sort empty weight items to appear above 0g items
               return 1;
             } else {
               return a.weight > b.weight ? 1 : -1;

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type ItemFilters = {
+type ItemFilters = {
   text: string;
   categoryId?: string;
   labels: string[];

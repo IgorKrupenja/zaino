@@ -1,6 +1,5 @@
 import { StylesConfig } from 'react-select';
 import { SelectOption } from '.';
-import { Color } from '../../../../constants/Colors';
 import checkbox from '../../../../images/icons/check-mark.svg';
 import styles from '../../../../styles/base/_export.scss';
 
@@ -64,13 +63,6 @@ export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = 
       backgroundColor: styles.extraLightGrey,
     },
   }),
-};
-
-export type OptionStyleArguments = {
-  // for some reason react-select requires this key to be named "data", breaks otherwise
-  data: Color;
-  isFocused?: boolean;
-  isSelected?: boolean;
 };
 
 export const colorDot = (color = styles.lightGrey, marginLeft = '2.2rem') => ({

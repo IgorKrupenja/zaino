@@ -1,8 +1,9 @@
 import { ColorName } from '@zaino/shared';
 import styles from '../styles/base/_export.scss';
 
-// TODO: split into three files
+// TODO: split into three/two files?
 export type Color = {
+  // todo color name should be in constants in shared
   name: ColorName;
   fancyName: string;
   hexValue: string;

@@ -61,7 +61,6 @@ export const batchDeleteLabels = createAsyncThunk<void, Label[], { state: RootSt
   }
 );
 
-// separate variable to annotate type
 const initialState: Label[] = [];
 
 const labelsSlice = createSlice({
@@ -135,7 +134,7 @@ const labelsSlice = createSlice({
       });
     },
     // reset action to be executed on logout
-    resetLabelsState: () => [],
+    resetLabelsState: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(addLabel.pending, (state, action) => {

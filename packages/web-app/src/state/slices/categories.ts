@@ -28,8 +28,7 @@ const categoriesSlice = createSlice({
         state.push(category);
       });
     },
-    // reset state action to be executed on logout
-    resetCategoriesState: () => [],
+    resetCategoriesState: () => initialState,
   },
 });
 

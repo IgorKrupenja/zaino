@@ -10,7 +10,7 @@ import { asciiLogo } from './utils/asciiLogo';
 
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
-    // On log in
+    // User is signed in
     const credential = await firebase.auth().getRedirectResult();
     // Using store.dispatch as useDispatch cannot be used outside of functional components
     await store.dispatch(
