@@ -8,12 +8,7 @@ import { loadCategories } from './categories';
 import { loadItems } from './items';
 import { loadLabels } from './labels';
 
-/**
- * Process Firestore data to get Items and Labels as used in the app.
- *
- * @param snapshots Two snapshots with item and label data from Firestore.
- */
-const processData = (
+const processSnapshotData = (
   snapshots: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>[]
 ) => {
   return snapshots.map((collection) =>
@@ -21,6 +16,7 @@ const processData = (
   ) as [Item[], Label[], Category[]];
 };
 
+// todo does it belong here?
 export const loadUserData = createAsyncThunk<void, string, { state: RootState }>(
   'dataLoader/loadUserData',
   async (uid, { dispatch }) => {
@@ -30,7 +26,7 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
       db.collection(`users/${uid}/labels`).get(),
       db.collection(`users/${uid}/categories`).get(),
     ]);
-    const [items, labels, categories] = processData(snapshots);
+    const [items, labels, categories] = processSnapshotData(snapshots);
 
     batch(() => {
       dispatch(loadItems(items));
@@ -40,6 +36,7 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
   }
 );
 
+// todo does it belong here?
 export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>(
   'dataLoader/loadDemoData',
   async (uid, { dispatch }) => {
@@ -48,7 +45,7 @@ export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>
       db.collection(`users/${uid}/items`).where('isFromDemoData', '==', true).get(),
       db.collection(`users/${uid}/labels`).where('isFromDemoData', '==', true).get(),
     ]);
-    const [items, labels] = processData(snapshots);
+    const [items, labels] = processSnapshotData(snapshots);
 
     batch(() => {
       dispatch(loadItems(items));

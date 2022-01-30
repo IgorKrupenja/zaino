@@ -107,6 +107,7 @@ const itemsSlice = createSlice({
         1
       );
     });
+    // todo reorder
     builder.addCase(batchUpdateItems.pending, (state, action) => {
       action.meta.arg.forEach((update) => {
         const index = state.findIndex((item) => item.id === update.id);

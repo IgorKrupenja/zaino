@@ -6,6 +6,7 @@ import { resetCategoriesState } from './categories';
 import { resetItemsState } from './items';
 import { resetLabelsState } from './labels';
 
+// todo remove as not state related
 export const login = createAsyncThunk('user/login', async () => {
   await firebase.auth().signInWithRedirect(googleAuthProvider);
 });
