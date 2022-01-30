@@ -1,7 +1,7 @@
 import { ColorName } from '@zaino/shared';
 import { useRef, useState } from 'react';
 import { OnChangeValue } from 'react-select';
-import { Colors } from '../../../../constants/Colors';
+import { Colors } from '../../../../constants';
 import { Button } from '../../Controls/Button';
 import { EditIcon } from '../../Icons/EditIcon';
 import { SelectOption, SelectPopover } from '../SelectPopover';

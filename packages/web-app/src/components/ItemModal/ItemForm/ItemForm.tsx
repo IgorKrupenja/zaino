@@ -1,8 +1,8 @@
 import { Item } from '@zaino/shared';
-import React, { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labels';
-import { getArrayDifference } from '../../../utils/getArrayDifference';
+import { getArrayDifference } from '../../../utils';
 import { ExpandingInput } from '../../Common/Controls/ExpandingInput';
 import { FormError } from '../../Common/Controls/FormError';
 import { FormLabel } from '../../Common/Controls/FormLabel';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { useTitle } from '../../../hooks/useTitle';
 import { DashboardRoutes } from '../../../routes/DashboardRoutes';

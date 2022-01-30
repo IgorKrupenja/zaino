@@ -4,8 +4,8 @@ import { SelectOption } from '../SelectPopover';
 import { colorDot } from '../SelectPopover/style';
 
 export const labelSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
-  // setting widths manually is a workaround to prevent control text overflow issues
-  control: base => ({
+  // Setting widths manually is a workaround to prevent control text overflow issues
+  control: (base) => ({
     ...base,
     width: '21.8rem',
   }),
@@ -14,9 +14,10 @@ export const labelSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
     overflowWrap: 'anywhere',
     width: '23rem',
   }),
-  input: base => ({
+  input: (base) => ({
     ...base,
-    width: '20rem',
+    // TODO: breaks placeholder text,
+    width: '22rem',
   }),
   option: (base, props) => ({
     ...base,

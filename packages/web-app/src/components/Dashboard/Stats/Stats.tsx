@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import React from 'react';
+
 import { BulletRow } from '../../Common/Wrappers/BulletRow';
 import './style.scss';
 

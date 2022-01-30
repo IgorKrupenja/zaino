@@ -1,9 +1,9 @@
 import { Label } from '@zaino/shared';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { getRandomColor } from '../../../constants/Colors';
 import { addLabel } from '../../../state/slices/labels';
+import { getRandomColor } from '../../../utils';
 import { Button } from '../../Common/Controls/Button';
 import { LabelBadge } from '../../Common/LabelBadge/LabelBadge';
 import { LabelForm } from '../LabelForm';

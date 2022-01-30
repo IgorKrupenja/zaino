@@ -1,5 +1,5 @@
 import { ColorName, Label } from '@zaino/shared';
-import React, { ReactNode, useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CollectionSortOption } from '../../../state/collectionSettings';
 import { selectAllLabels } from '../../../state/selectors/labels';

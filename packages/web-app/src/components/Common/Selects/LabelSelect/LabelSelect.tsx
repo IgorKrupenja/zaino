@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 import { v4 as uuid } from 'uuid';
-import { Colors, getRandomColor } from '../../../../constants/Colors';
+import { Colors } from '../../../../constants';
 import { addLabel } from '../../../../state/slices/labels';
 import { RootState } from '../../../../state/store';
-import { sortSelectOptionsByName } from '../../../../utils/sortSelectOptionsByName';
+import { getRandomColor, sortSelectOptionsByName } from '../../../../utils';
 import { SelectOption, SelectPopover } from '../SelectPopover';
 import { labelSelectStyles } from './style';
 

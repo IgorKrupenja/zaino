@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, KeyboardEvent } from 'react';
+import { ChangeEvent, FormEvent, KeyboardEvent } from 'react';
 import ReactExpandingTextarea from 'react-expanding-textarea';
 import { getClassString } from '../../../../utils/getClassString';
 import './style.scss';

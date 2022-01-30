@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import Media from 'react-media';
 import { Provider } from 'react-redux';
 import AppRouter from '../../routes/AppRouter';
@@ -7,12 +7,12 @@ import { MobilePlaceholder } from '../pages/MobilePlaceholder';
 
 export const App = () => {
   return (
-    <React.StrictMode>
+    <StrictMode>
       <Provider store={store}>
         <Media queries={{ small: { maxWidth: 599 } }}>
           {(matches) => (matches.small ? <MobilePlaceholder /> : <AppRouter />)}
         </Media>
       </Provider>
-    </React.StrictMode>
+    </StrictMode>
   );
 };

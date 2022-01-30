@@ -1,5 +1,5 @@
 import { Item } from '@zaino/shared';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useParams } from 'react-router-dom';
 import { useCloseModal } from '../../../hooks/useCloseModal';

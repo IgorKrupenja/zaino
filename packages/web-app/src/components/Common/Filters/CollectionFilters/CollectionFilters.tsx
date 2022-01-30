@@ -1,5 +1,5 @@
 import deepEqual from 'fast-deep-equal/react';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   collectionFiltersInitialState,
@@ -71,7 +71,7 @@ export const CollectionFilters = ({
         <Input
           className="input--grow input--search"
           placeholder={textFilterPlaceholder}
-          onChange={e => {
+          onChange={(e) => {
             e.persist();
             setFilters({ ...filters, text: e.target.value });
           }}

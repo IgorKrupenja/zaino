@@ -6,7 +6,7 @@ import { loadUserData } from './state/slices/dataLoader';
 import { handleLoginRedirect } from './state/slices/user';
 import store from './state/store';
 import './styles/styles.scss';
-import { asciiLogo } from './utils/asciiLogo';
+import { asciiLogo } from './utils';
 
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {

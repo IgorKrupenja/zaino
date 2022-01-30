@@ -1,7 +1,6 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
+import { isFirefox, isMacOs } from '../../../utils';
 import { getClassString } from '../../../utils/getClassString';
-import { isFirefox } from '../../../utils/isFirefox';
-import { isMacOs } from '../../../utils/isMacOs';
 import './style.scss';
 
 type StackProps = {
