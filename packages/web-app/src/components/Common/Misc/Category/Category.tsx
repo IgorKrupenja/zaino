@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItemCategoryFilter } from '../../../../state/slices/itemsFilters';
 import { RootState } from '../../../../state/store';
-import { getClassString } from '../../../../utils/getClassString';
+import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type CategoryProps = {

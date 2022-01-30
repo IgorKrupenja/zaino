@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, KeyboardEvent } from 'react';
 import ReactExpandingTextarea from 'react-expanding-textarea';
-import { getClassString } from '../../../../utils/getClassString';
+import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type ExpandingInputProps = {

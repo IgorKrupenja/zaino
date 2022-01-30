@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { getClassString } from '../../../../utils/getClassString';
+import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type BulletRowProps = {

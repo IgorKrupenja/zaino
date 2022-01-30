@@ -1,7 +1,7 @@
 import { Label } from '@zaino/shared';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../state/store';
-import { getClassString } from '../../../../utils/getClassString';
+import { getClassString } from '../../../../utils';
 import { LabelBadge } from '../LabelBadge';
 import './style.scss';
 

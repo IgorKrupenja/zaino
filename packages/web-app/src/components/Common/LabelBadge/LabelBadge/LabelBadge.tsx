@@ -2,7 +2,7 @@ import { ColorName, Label } from '@zaino/shared';
 import { useDispatch } from 'react-redux';
 import { Colors } from '../../../../constants';
 import { setItemLabelsFilter } from '../../../../state/slices/itemsFilters';
-import { getClassString } from '../../../../utils/getClassString';
+import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type LabelBadgeProps = {

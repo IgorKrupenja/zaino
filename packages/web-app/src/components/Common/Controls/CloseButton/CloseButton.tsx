@@ -1,5 +1,5 @@
 import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg';
-import { getClassString } from '../../../../utils/getClassString';
+import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type CloseButtonProps = {
