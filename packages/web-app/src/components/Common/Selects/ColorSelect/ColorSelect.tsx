@@ -7,7 +7,7 @@ import { EditIcon } from '../../Icons/EditIcon';
 import { SelectOption, SelectPopover } from '../SelectPopover';
 import { colorSelectStyles } from './style';
 
-export type ColorSelectOption = {
+type ColorSelectOption = {
   value: ColorName;
   label: string;
   hexValue: string;

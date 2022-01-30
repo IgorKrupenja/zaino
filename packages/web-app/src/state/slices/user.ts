@@ -6,28 +6,30 @@ import { resetCategoriesState } from './categories';
 import { resetItemsState } from './items';
 import { resetLabelsState } from './labels';
 
+// todo move as not state related
 export const login = createAsyncThunk('user/login', async () => {
   await firebase.auth().signInWithRedirect(googleAuthProvider);
 });
 
+// todo rename to login?
 export const handleLoginRedirect = createAsyncThunk(
   'user/handleLoginRedirect',
   async ({ user, isNew }: { user: firebase.User; isNew?: boolean }) => {
     if (isNew) {
-      // currently no business logic behind firstLoginAt
-      // it is only needed to properly create a document for the user in Firestore
-      // as Firestore does not correctly create empty documents
+      // Currently no business logic behind email field.
+      // It is only needed to properly create a document for the user in Firestore
+      // as Firestore does not correctly create empty documents.
       await db
         .collection('users')
         .doc(user.uid)
-        .set({ firstLoginAt: new Date().toISOString(), eMail: user.email });
-      // add default categories for every new user
+        .set({ firstLoginAt: new Date().toISOString(), email: user.email });
+      // Add default categories for every new user
       await copyCollection('common/defaults/categories', `users/${user.uid}/categories`);
     }
   }
 );
 
-export const logout = createAsyncThunk('user/logout', async (unused, { dispatch }) => {
+export const logout = createAsyncThunk('user/logout', (unused, { dispatch }) => {
   batch(() => {
     dispatch(resetItemsState());
     dispatch(resetLabelsState());
@@ -51,8 +53,6 @@ const userSlice = createSlice({
         // as app does not support anonymous sign anyway, casting as strings
         name: user.displayName as string,
         email: user.email as string,
-        // if user has not set an photo in Google account,
-        // Google conveniently provides an image with name's first letter
         photoUrl: user.photoURL as string,
       };
     });

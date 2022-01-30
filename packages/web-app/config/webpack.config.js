@@ -181,7 +181,7 @@ module.exports = function (webpackEnv) {
           },
         },
         {
-          // make variables and mixins accessible in every SCSS file without explicit import
+          // Igor: make variables and mixins accessible in every SCSS file without explicit import
           loader: 'sass-resources-loader',
           options: {
             resources: ['src/styles/base/_settings.scss', 'src/styles/base/_mixins.scss'],

@@ -57,6 +57,7 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 - Add unit tests for functionality that is ready.
 - Improve code structure and maintainability.
+- Streamlined and fully automated the deployment process.
 
 ## Changelog
 
@@ -143,7 +144,6 @@ Please note that the development environment works completely fine on macOS and 
 3. Go to `packages/web-app` and create `.env.development` and `.env.production` files with the variables from `firebaseConfig`. The file format should be like this:
 
 ```shell
-# Firebase
 REACT_APP_FIREBASE_API_KEY="..."
 REACT_APP_FIREBASE_AUTH_DOMAIN="..."
 REACT_APP_FIREBASE_DATABASE_URL="..."
@@ -152,8 +152,6 @@ REACT_APP_FIREBASE_STORAGE_BUCKET="..."
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID="..."
 REACT_APP_FIREBASE_APP_ID="..."
 REACT_APP_FIREBASE_MEASUREMENT_ID="..."
-# GCP Cloud Storage root URL
-REACT_APP_GCP_STORAGE_URL="https://storage.googleapis.com/${REACT_APP_FIREBASE_STORAGE_BUCKET}"
 ```
 
 ##### Caveats ⚠️
@@ -191,7 +189,6 @@ REACT_APP_GCP_STORAGE_URL="https://storage.googleapis.com/${REACT_APP_FIREBASE_S
 
 ```shell
 FIREBASE_PROJECT_ID="..."
-FIREBASE_TOKEN="..."
 ```
 
 Note: You can change additional settings like regions and Cloud Storage bucket name in [the `.env` file](packages/firebase/.env).

@@ -12,8 +12,8 @@ export const PrivacyPolicy = () => {
     } catch {
       console.warn(
         [
-          'Privacy policy content not found. Please create a file named "PrivacyPolicyContent.tsx" ',
-          'in the "src/components/pages/PrivacyPolicy" directory.',
+          'Privacy policy content not found. Please create a file named "PrivacyPolicyContent.tsx"',
+          ' in the "src/components/pages/PrivacyPolicy" directory.',
         ].join()
       );
       return {
@@ -27,7 +27,6 @@ export const PrivacyPolicy = () => {
       <p className="privacy-policy__title">Zaino</p>
       <BackLink />
       <PrivacyPolicyContent />
-
       <BackLink className="back-link--large-margin" />
     </main>
   );

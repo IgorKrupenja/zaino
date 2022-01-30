@@ -13,7 +13,6 @@ export const AccountDetails = () => {
   const { name, email, photoUrl } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const handleLogout = async () => {
-    // TODO: Having Firebase Auth sign out here is a temporary workaround for #572
     await firebase.auth().signOut();
     dispatch(logout());
   };
