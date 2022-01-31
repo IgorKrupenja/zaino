@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { App } from './components/App/App';
 import { firebase } from './firebase/firebase';
 import { loadUserData } from './state/slices/dataLoader';
-import { login } from './state/slices/user';
+import { login } from './state/slices/userSlice';
 import { store } from './state/store';
 import './styles/styles.scss';
 import { asciiLogo } from './utils';

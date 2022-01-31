@@ -8,6 +8,7 @@ import { resetLabelsState } from './labelsSlice';
 
 // todo move to service as not state related - or maybe where stuff is moved from index.tsx
 export const login_TEMP_MOVE_TO_SERVICE = createAsyncThunk('user/login', async () => {
+  console.log('login_TEMP_MOVE_TO_SERVICE');
   await firebase.auth().signInWithRedirect(googleAuthProvider);
 });
 

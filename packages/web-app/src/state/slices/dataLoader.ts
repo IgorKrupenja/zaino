@@ -3,6 +3,7 @@ import { Category, Item, Label } from '@zaino/shared';
 import type firebase from 'firebase/compat';
 import { batch } from 'react-redux';
 import db from '../../firebase/firebase';
+import copyCollection from '../../firebase/utils/copyCollection';
 import { RootState } from '../store';
 import { addCategories } from './categoriesSlice';
 import { addItems } from './itemsSlice';
@@ -37,9 +38,16 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
   }
 );
 
-export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>(
+export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
   'demoData/loadDemoData',
   async (uid, { dispatch }) => {
+    const addedAt = new Date().toISOString();
+
+    await Promise.all([
+      copyCollection('common/demo-data/items', `users/${uid}/items`, addedAt),
+      copyCollection('common/demo-data/labels', `users/${uid}/labels`),
+    ]);
+
     const snapshots = await Promise.all([
       db.collection(`users/${uid}/items`).where('isFromDemoData', '==', true).get(),
       db.collection(`users/${uid}/labels`).where('isFromDemoData', '==', true).get(),
@@ -64,7 +72,11 @@ const demoDataSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(loadDemoData.fulfilled, (state) => {
+    // todo needs testing
+    builder.addCase(addDemoData.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(addDemoData.fulfilled, (state) => {
       state.isLoading = false;
     });
   },

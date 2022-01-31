@@ -6,7 +6,7 @@ import { itemFiltersReducer } from './slices/itemFiltersSlice';
 import { itemsReducer } from './slices/itemsSlice';
 import { labelFiltersReducer } from './slices/labelFiltersSlice';
 import { labelsReducer } from './slices/labelsSlice';
-import { userReducer } from './slices/user';
+import { userReducer } from './slices/userSlice';
 
 export const store = configureStore({
   reducer: {
