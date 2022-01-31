@@ -24,7 +24,7 @@ import './style.scss';
 
 export const LabelsPage = () => {
   useTitle('Labels | Zaino');
-  const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
+  const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectFilteredLabels(state)) as Label[];
   const labelCount = labels.length;

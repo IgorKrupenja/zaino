@@ -4,7 +4,7 @@ import type firebase from 'firebase/compat';
 import { batch } from 'react-redux';
 import db from '../../firebase/firebase';
 import { RootState } from '../store';
-import { loadCategories } from './categoriesSlice';
+import { addCategories } from './categoriesSlice';
 import { addItems } from './itemsSlice';
 import { addLabels } from './labelsSlice';
 
@@ -18,7 +18,7 @@ const processSnapshotData = (
 
 // todo does it belong here? - no, move to service
 export const loadUserData = createAsyncThunk<void, string, { state: RootState }>(
-  'dataLoader/loadUserData',
+  'demoData/loadUserData',
   async (uid, { dispatch }) => {
     const snapshots = await Promise.all([
       db.collection(`users/${uid}/items`).get(),
@@ -26,20 +26,19 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
       db.collection(`users/${uid}/categories`).get(),
     ]);
 
-    // todo and this move to index
+    // todo and this move to index - or whenever stuff is moved from index
     const [items, labels, categories] = processSnapshotData(snapshots);
 
     batch(() => {
       dispatch(addItems(items));
       dispatch(addLabels({ labels, items }));
-      dispatch(loadCategories({ categories, items }));
+      dispatch(addCategories({ categories, items }));
     });
   }
 );
 
-// todo does it belong here? yes, rename to demo data slice
 export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>(
-  'dataLoader/loadDemoData',
+  'demoData/loadDemoData',
   async (uid, { dispatch }) => {
     const snapshots = await Promise.all([
       db.collection(`users/${uid}/items`).where('isFromDemoData', '==', true).get(),
@@ -54,11 +53,9 @@ export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>
   }
 );
 
-// Handles app loading state to display page loading indicators.
-// At the moment this is only used when demo data is loading.
-// In the future, this can also be used to address  #117.
-const dataLoaderSlice = createSlice({
-  name: 'dataLoader',
+// TODO: should also be used to address #117 in the future.
+const demoDataSlice = createSlice({
+  name: 'demoData',
   initialState: { isLoading: false },
   reducers: {
     // todo rethink - perhaps move part of DemoData here, and set on loadDemoData.pending
@@ -73,6 +70,5 @@ const dataLoaderSlice = createSlice({
   },
 });
 
-export const { setIsLoading } = dataLoaderSlice.actions;
-
-export default dataLoaderSlice.reducer;
+export const { setIsLoading } = demoDataSlice.actions;
+export const demoDataReducer = demoDataSlice.reducer;

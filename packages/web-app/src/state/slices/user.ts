@@ -6,14 +6,13 @@ import { resetCategoriesState } from './categoriesSlice';
 import { resetItemsState } from './itemsSlice';
 import { resetLabelsState } from './labelsSlice';
 
-// todo move as not state related
-export const login = createAsyncThunk('user/login', async () => {
+// todo move to service as not state related - or maybe where stuff is moved from index.tsx
+export const login_TEMP_MOVE_TO_SERVICE = createAsyncThunk('user/login', async () => {
   await firebase.auth().signInWithRedirect(googleAuthProvider);
 });
 
-// todo rename to login?
-export const handleLoginRedirect = createAsyncThunk(
-  'user/handleLoginRedirect',
+export const login = createAsyncThunk(
+  'user/login',
   async ({ user, isNew }: { user: firebase.User; isNew?: boolean }) => {
     if (isNew) {
       // Currently no business logic behind email field.
@@ -23,7 +22,6 @@ export const handleLoginRedirect = createAsyncThunk(
         .collection('users')
         .doc(user.uid)
         .set({ firstLoginAt: new Date().toISOString(), email: user.email });
-      // Add default categories for every new user
       await copyCollection('common/defaults/categories', `users/${user.uid}/categories`);
     }
   }
@@ -45,12 +43,11 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(logout.pending, () => initialState);
-    builder.addCase(handleLoginRedirect.pending, (state, action) => {
+    builder.addCase(login.pending, (state, action) => {
       const user = action.meta.arg.user;
       return {
         uid: user.uid,
-        // types for these are string | null but null seems to apply to anonymous sign in only
-        // as app does not support anonymous sign anyway, casting as strings
+        // Types for these are string | null but null seems to apply to anonymous sign in only
         name: user.displayName as string,
         email: user.email as string,
         photoUrl: user.photoURL as string,
@@ -59,4 +56,4 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice.reducer;
+export const userReducer = userSlice.reducer;

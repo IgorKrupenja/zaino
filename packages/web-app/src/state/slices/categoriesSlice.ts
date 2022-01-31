@@ -7,7 +7,7 @@ const categoriesSlice = createSlice({
   name: 'items',
   initialState,
   reducers: {
-    loadCategories: (state, action: PayloadAction<{ categories: Category[]; items: Item[] }>) => {
+    addCategories: (state, action: PayloadAction<{ categories: Category[]; items: Item[] }>) => {
       const categories = action.payload.categories;
       action.payload.items.forEach((item) => {
         const category = categories.find((category) => category.id === item.categoryId);
@@ -29,5 +29,5 @@ const categoriesSlice = createSlice({
   },
 });
 
-export const { resetCategoriesState, loadCategories } = categoriesSlice.actions;
+export const { resetCategoriesState, addCategories } = categoriesSlice.actions;
 export const categoriesReducer = categoriesSlice.reducer;

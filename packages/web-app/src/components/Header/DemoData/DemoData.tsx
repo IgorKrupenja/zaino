@@ -21,7 +21,7 @@ export const DemoData = () => {
   // used to enable/disable Load and Remove buttons
   // also accounts for the case when all/some demo items/labels were deleted manually
   const isDemoDataPresent = demoItems.length > 0 && demoLabels.length > 0;
-  const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
+  const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
 
   const [isLoadPopoverOpen, toggleLoadPopover] = useToggle();
   const [isRemovePopoverOpen, toggleRemovePopover] = useToggle();

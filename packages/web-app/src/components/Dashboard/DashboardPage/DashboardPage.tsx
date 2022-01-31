@@ -10,7 +10,7 @@ import { Pack } from '../Pack';
 import './style.scss';
 
 export const DashboardPage = () => {
-  const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
+  const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
   useTitle('Dashboard | Zaino');
 
   return (
