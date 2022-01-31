@@ -1,10 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { Item } from '@zaino/shared';
-import selectFilteredInventoryItems, {
+import {
   selectAllInventoryItems,
   selectAllPackItems,
+  selectFilteredInventoryItems,
   selectFilteredPackItems,
-} from './items';
+} from './itemsSelector';
 
 export const selectInventoryItemsStats = createSelector(
   [selectFilteredInventoryItems, selectAllInventoryItems],
@@ -18,9 +19,6 @@ export const selectPackItemsStats = createSelector(
 
 const getItemStats = (filteredItems: Item[], allItems: Item[], isPack?: boolean) => {
   const weight = getWeight(filteredItems, isPack);
-  // + below drops any "extra" zeroes at the end
-  // It changes the result (which is a string) into a number again (e.g. "0 + foo"),
-  // which means that it uses only as many digits as necessary
   const percentage = +((weight * 100) / getWeight(allItems, isPack)).toFixed(2);
   const { total: filteredItemTotalCount, unique: filteredItemUniqueCount } = getItemCounts(
     filteredItems,
@@ -44,9 +42,9 @@ const getWeight = (items: Item[], isPack?: boolean) => {
 
 const getItemCounts = (items: Item[], isPack?: boolean) => {
   const itemCounts = {
-    // unique item count, each item counts as one regardless of quantity
+    // Unique item count, each item counts as one regardless of quantity
     unique: items.length,
-    // total items count, taking quantity into consideration
+    // Total items count, taking quantity into consideration
     total: 0,
   };
   itemCounts.total = items.reduce((sum, item) => {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import useToggle from '../../../hooks/useToggle';
-import { selectDemoItems } from '../../../state/selectors/items';
-import { selectDemoDataLabels } from '../../../state/selectors/labels';
+import { selectDemoItems } from '../../../state/selectors/itemsSelector';
+import { selectDemoDataLabels } from '../../../state/selectors/labelsSelector';
 import { addDemoData } from '../../../state/slices/demoDataSlice';
 import { batchDeleteItems } from '../../../state/slices/itemsSlice';
 import { batchDeleteLabels } from '../../../state/slices/labelsSlice';

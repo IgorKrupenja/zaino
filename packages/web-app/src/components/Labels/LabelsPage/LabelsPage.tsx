@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
-import selectFilteredLabels, { selectLabelCount } from '../../../state/selectors/labels';
+import { selectFilteredLabels, selectLabelCount } from '../../../state/selectors/labelsSelector';
 import {
   resetLabelFilters,
   setLabelTextFilter,

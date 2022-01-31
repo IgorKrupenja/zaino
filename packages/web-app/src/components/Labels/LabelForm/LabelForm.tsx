@@ -2,7 +2,7 @@ import { ColorName, Label } from '@zaino/shared';
 import { ReactNode, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CollectionSortOption } from '../../../state/enums';
-import { selectAllLabels } from '../../../state/selectors/labels';
+import { selectAllLabels } from '../../../state/selectors/labelsSelector';
 import { sortLabelsBy } from '../../../state/slices/labelFiltersSlice';
 import { RootState } from '../../../state/store';
 import { getClassString } from '../../../utils';

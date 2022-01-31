@@ -1,8 +1,8 @@
 import { Item } from '@zaino/shared';
 import { shallowEqual, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import selectFilteredInventoryItems from '../../../state/selectors/items';
-import { selectInventoryItemsStats } from '../../../state/selectors/itemsStats';
+import { selectFilteredInventoryItems } from '../../../state/selectors/itemsSelector';
+import { selectInventoryItemsStats } from '../../../state/selectors/itemsStatsSelector';
 import { RootState } from '../../../state/store';
 import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { Column } from '../../Common/Wrappers/Column';

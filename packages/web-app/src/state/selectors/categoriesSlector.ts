@@ -1,7 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
+import { collectionCombiner } from '../combiners';
 import { RootState } from '../store';
-import { collectionCombiner } from './collectionCombiner';
 
+// TODO: currently unused, for #516
 const selectAllCategories = (state: RootState) => state.categories;
 
 const selectFilters = (state: RootState) => state.categoryFilters;
@@ -11,9 +12,7 @@ export const selectCategoryCount = createSelector(
   (categories) => categories.length
 );
 
-const selectFilteredCategories = createSelector(
+export const selectFilteredCategories = createSelector(
   [selectAllCategories, selectFilters],
   collectionCombiner
 );
-
-export default selectFilteredCategories;

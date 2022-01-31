@@ -1,7 +1,7 @@
 import { Item } from '@zaino/shared';
 import { shallowEqual, useSelector } from 'react-redux';
-import { selectFilteredPackItems } from '../../../state/selectors/items';
-import { selectPackItemsStats } from '../../../state/selectors/itemsStats';
+import { selectFilteredPackItems } from '../../../state/selectors/itemsSelector';
+import { selectPackItemsStats } from '../../../state/selectors/itemsStatsSelector';
 import { RootState } from '../../../state/store';
 import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { Column } from '../../Common/Wrappers/Column';
