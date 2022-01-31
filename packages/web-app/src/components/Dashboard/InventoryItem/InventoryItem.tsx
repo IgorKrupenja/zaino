@@ -1,7 +1,7 @@
 import { Item } from '@zaino/shared';
 import { useDispatch } from 'react-redux';
 import { ReactComponent as BackpackIcon } from '../../../images/icons/backpack.svg';
-import { updateItem } from '../../../state/slices/items';
+import { updateItem } from '../../../state/slices/itemsSlice';
 import { Button } from '../../Common/Controls/Button';
 import { ItemDetails } from '../ItemDetails/';
 import './style.scss';

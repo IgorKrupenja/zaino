@@ -2,10 +2,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import categoriesReducer from './slices/categories';
 import categoriesFiltersReducer from './slices/categoriesFilters';
 import dataLoaderReducer from './slices/dataLoader';
-import { itemsReducer } from './slices/items';
 import itemsFiltersReducer from './slices/itemsFilters';
-import labelsReducer from './slices/labels';
+import { itemsReducer } from './slices/itemsSlice';
 import labelsFiltersReducer from './slices/labelsFilters';
+import { labelsReducer } from './slices/labelsSlice';
 import userReducer from './slices/user';
 
 const store = configureStore({

@@ -5,8 +5,8 @@ import { batch } from 'react-redux';
 import db from '../../firebase/firebase';
 import { RootState } from '../store';
 import { loadCategories } from './categories';
-import { addItems } from './items';
-import { loadLabels } from './labels';
+import { addItems } from './itemsSlice';
+import { addLabels } from './labelsSlice';
 
 const processSnapshotData = (
   snapshots: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>[]
@@ -31,7 +31,7 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
 
     batch(() => {
       dispatch(addItems(items));
-      dispatch(loadLabels({ labels, items }));
+      dispatch(addLabels({ labels, items }));
       dispatch(loadCategories({ categories, items }));
     });
   }
@@ -49,7 +49,7 @@ export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>
 
     batch(() => {
       dispatch(addItems(items));
-      dispatch(loadLabels({ labels, items }));
+      dispatch(addLabels({ labels, items }));
     });
   }
 );

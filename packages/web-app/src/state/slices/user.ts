@@ -3,8 +3,8 @@ import { batch } from 'react-redux';
 import db, { firebase, googleAuthProvider } from '../../firebase/firebase';
 import copyCollection from '../../firebase/utils/copyCollection';
 import { resetCategoriesState } from './categories';
-import { resetItemsState } from './items';
-import { resetLabelsState } from './labels';
+import { resetItemsState } from './itemsSlice';
+import { resetLabelsState } from './labelsSlice';
 
 // todo move as not state related
 export const login = createAsyncThunk('user/login', async () => {

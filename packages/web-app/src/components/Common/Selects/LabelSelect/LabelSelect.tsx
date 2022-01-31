@@ -5,7 +5,7 @@ import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 import { v4 as uuid } from 'uuid';
 import { Colors } from '../../../../constants';
-import { addLabel } from '../../../../state/slices/labels';
+import { addLabel } from '../../../../state/slices/labelsSlice';
 import { RootState } from '../../../../state/store';
 import { getRandomColor, sortSelectOptionsByName } from '../../../../utils';
 import { SelectOption, SelectPopover } from '../SelectPopover';

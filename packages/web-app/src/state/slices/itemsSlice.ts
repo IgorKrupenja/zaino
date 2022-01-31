@@ -3,7 +3,7 @@ import { Item } from '@zaino/shared';
 import db from '../../firebase/firebase';
 import deleteDocuments from '../../firebase/utils/deleteDocuments';
 import { RootState } from '../store';
-import { decrementItemCount } from './labels';
+import { decrementItemCount } from './labelsSlice';
 
 export const addItem = createAsyncThunk<
   // Return type of the payload creator

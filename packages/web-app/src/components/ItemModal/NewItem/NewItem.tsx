@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { useCloseModal } from '../../../hooks/useCloseModal';
 import { useTitle } from '../../../hooks/useTitle';
-import { addItem } from '../../../state/slices/items';
+import { addItem } from '../../../state/slices/itemsSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';

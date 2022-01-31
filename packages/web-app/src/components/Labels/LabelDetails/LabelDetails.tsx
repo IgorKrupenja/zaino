@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useToggle from '../../../hooks/useToggle';
 import { resetItemFilters } from '../../../state/slices/itemsFilters';
-import { deleteLabel, updateLabel } from '../../../state/slices/labels';
+import { deleteLabel, updateLabel } from '../../../state/slices/labelsSlice';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
 import { LabelBadge } from '../../Common/LabelBadge/LabelBadge';

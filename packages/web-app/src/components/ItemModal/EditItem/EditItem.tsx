@@ -5,7 +5,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useCloseModal } from '../../../hooks/useCloseModal';
 import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
-import { deleteItem, updateItem } from '../../../state/slices/items';
+import { deleteItem, updateItem } from '../../../state/slices/itemsSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';

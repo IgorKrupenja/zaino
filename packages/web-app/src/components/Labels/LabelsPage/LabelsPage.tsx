@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
 import selectFilteredLabels, { selectLabelCount } from '../../../state/selectors/labels';
-import { saveSortOrder } from '../../../state/slices/labels';
 import {
   resetLabelFilters,
   setLabelTextFilter,
   sortLabelsBy,
 } from '../../../state/slices/labelsFilters';
+import { saveSortOrder } from '../../../state/slices/labelsSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CollectionFilters } from '../../Common/Filters/CollectionFilters';

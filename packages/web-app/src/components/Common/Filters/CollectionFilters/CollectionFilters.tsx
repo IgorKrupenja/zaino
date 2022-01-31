@@ -1,3 +1,4 @@
+import { ActionCreatorWithoutPayload, ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import deepEqual from 'fast-deep-equal/react';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,11 +8,10 @@ import {
 } from '../../../../state/collectionSettings';
 import { RootState } from '../../../../state/store';
 import { Input } from '../../Controls/Input';
-import { FilterReset } from '../FilterReset';
 import { SortSelect } from '../../Selects/SortSelect';
-import { FiltersWrapper } from '../FiltersWrapper';
 import { Row } from '../../Wrappers/Row';
-import { ActionCreatorWithoutPayload, ActionCreatorWithPayload } from '@reduxjs/toolkit';
+import { FilterReset } from '../FilterReset';
+import { FiltersWrapper } from '../FiltersWrapper';
 
 type CollectionFiltersProps = {
   textFilterPlaceholder: string;
@@ -34,8 +34,7 @@ export const CollectionFilters = ({
   useEffect(() => {
     setIsFiltering(
       !deepEqual(filters, collectionFiltersInitialState) &&
-        // also hide filter reset if sorting by last sort order
-        // see comments in categories slice for saveSortOrder
+        // Hide filter reset if sorting by last sort order
         !deepEqual(filters, {
           ...collectionFiltersInitialState,
           sortBy: CollectionSortOption.lastSortOrder,
