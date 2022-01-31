@@ -1,3 +1,3 @@
-import { Colors } from '../constants';
+import { colors } from '../constants';
 
-export const getRandomColor = () => Colors[Math.floor(Math.random() * Colors.length)];
+export const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];

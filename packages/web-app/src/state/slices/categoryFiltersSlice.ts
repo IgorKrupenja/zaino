@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { collectionFiltersInitialState, CollectionSortOption } from '../collectionSettings';
+import { collectionFiltersInitialState } from '../constants';
+import { CollectionSortOption } from '../enums';
 
-const CategoryFiltersSlice = createSlice({
-  name: 'filters-categories',
+const categoryFiltersSlice = createSlice({
+  name: 'category-filters',
   initialState: collectionFiltersInitialState,
   reducers: {
     setCategoryTextFilter(state, action: PayloadAction<string>) {
@@ -15,10 +16,6 @@ const CategoryFiltersSlice = createSlice({
   },
 });
 
-export const {
-  setCategoryTextFilter,
-  sortCategoriesBy,
-  resetCategoryFilters,
-} = CategoryFiltersSlice.actions;
-
-export default CategoryFiltersSlice.reducer;
+export const { setCategoryTextFilter, sortCategoriesBy, resetCategoryFilters } =
+  categoryFiltersSlice.actions;
+export const categoryFiltersReducer = categoryFiltersSlice.reducer;

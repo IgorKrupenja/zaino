@@ -1,5 +1,6 @@
 import { Collection } from '@zaino/shared';
-import { CollectionFilters, CollectionSortOption } from '../collectionSettings';
+import { CollectionSortOption } from '../enums';
+import { CollectionFilters } from '../types';
 
 /**
  * Common combiner for collections (both labels and categories).

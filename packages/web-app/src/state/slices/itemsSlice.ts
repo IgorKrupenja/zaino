@@ -3,17 +3,16 @@ import { Item } from '@zaino/shared';
 import db from '../../firebase/firebase';
 import deleteDocuments from '../../firebase/utils/deleteDocuments';
 import { RootState } from '../store';
-import { decrementItemCount } from './labels';
+import { decrementItemCount } from './labelsSlice';
 
 export const addItem = createAsyncThunk<
   // Return type of the payload creator
   void,
   // First argument to the payload creator
   Item,
-  // Types for ThunkAPI
+  // Types for ThunkAPI like dispatch and getState
   { state: RootState }
 >('items/addItem', async (item, { getState }) => {
-  // separate id from other item properties as id's are not stored as document keys in Firestore
   const { id, ...firestoreData } = item;
   await db
     .collection(`users/${getState().user.uid}/items`)
@@ -86,11 +85,10 @@ const itemsSlice = createSlice({
   name: 'items',
   initialState,
   reducers: {
-    loadItems: (state, action: PayloadAction<Item[]>) => {
+    addItems: (state, action: PayloadAction<Item[]>) => {
       action.payload.forEach((item) => state.push(item));
     },
-    // reset state action executed on logout
-    resetItemsState: () => [],
+    resetItemsState: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(addItem.pending, (state, action) => {
@@ -101,18 +99,17 @@ const itemsSlice = createSlice({
       const index = state.findIndex((item) => item.id === update.id);
       state[index] = update;
     });
-    builder.addCase(deleteItem.pending, (state, action) => {
-      state.splice(
-        state.findIndex((item) => item.id === action.meta.arg.id),
-        1
-      );
-    });
-    // todo reorder
     builder.addCase(batchUpdateItems.pending, (state, action) => {
       action.meta.arg.forEach((update) => {
         const index = state.findIndex((item) => item.id === update.id);
         state[index] = update;
       });
+    });
+    builder.addCase(deleteItem.pending, (state, action) => {
+      state.splice(
+        state.findIndex((item) => item.id === action.meta.arg.id),
+        1
+      );
     });
     builder.addCase(batchDeleteItems.pending, (state, action) => {
       action.meta.arg.forEach((itemToDelete) => {
@@ -126,5 +123,5 @@ const itemsSlice = createSlice({
   },
 });
 
-export const { resetItemsState, loadItems } = itemsSlice.actions;
-export default itemsSlice.reducer;
+export const { resetItemsState, addItems } = itemsSlice.actions;
+export const itemsReducer = itemsSlice.reducer;

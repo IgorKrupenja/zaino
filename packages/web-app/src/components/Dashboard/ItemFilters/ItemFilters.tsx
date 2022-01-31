@@ -1,16 +1,15 @@
 import deepEqual from 'fast-deep-equal/react';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CollectionSortOption } from '../../../state/collectionSettings';
+import { CollectionSortOption, ItemSortOption } from '../../../state/enums';
 import {
   itemFiltersInitialState,
-  ItemSortOption,
   resetItemFilters,
   setItemCategoryFilter,
   setItemLabelsFilter,
   setItemTextFilter,
   sortItemsBy,
-} from '../../../state/slices/itemsFilters';
+} from '../../../state/slices/itemFiltersSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { Input } from '../../Common/Controls/Input';
@@ -25,7 +24,7 @@ import { Row } from '../../Common/Wrappers/Row';
 export const ItemFilters = () => {
   const dispatch = useDispatch();
   // better name?
-  const selectedFilters = useSelector((state: RootState) => state.itemsFilters);
+  const selectedFilters = useSelector((state: RootState) => state.itemFilters);
   const [filters, setFilters] = useState(selectedFilters);
   const [isFiltering, setIsFiltering] = useState(false);
 

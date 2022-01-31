@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import Popover from 'react-tiny-popover';
-import copyCollection from '../../../firebase/utils/copyCollection';
 import useToggle from '../../../hooks/useToggle';
-import { selectDemoItems } from '../../../state/selectors/items';
-import { selectDemoDataLabels } from '../../../state/selectors/labels';
-import { loadDemoData, setIsLoading } from '../../../state/slices/dataLoader';
-import { batchDeleteItems } from '../../../state/slices/items';
-import { batchDeleteLabels } from '../../../state/slices/labels';
+import { selectDemoItems } from '../../../state/selectors/itemsSelector';
+import { selectDemoDataLabels } from '../../../state/selectors/labelsSelector';
+import { addDemoData } from '../../../state/slices/demoDataSlice';
+import { batchDeleteItems } from '../../../state/slices/itemsSlice';
+import { batchDeleteLabels } from '../../../state/slices/labelsSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
@@ -21,25 +19,14 @@ export const DemoData = () => {
   // used to enable/disable Load and Remove buttons
   // also accounts for the case when all/some demo items/labels were deleted manually
   const isDemoDataPresent = demoItems.length > 0 && demoLabels.length > 0;
-  const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
+  const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
 
   const [isLoadPopoverOpen, toggleLoadPopover] = useToggle();
   const [isRemovePopoverOpen, toggleRemovePopover] = useToggle();
 
-  const handleDemoDataLoad = async () => {
-    dispatch(setIsLoading(true));
+  const loadDemoData = () => {
     toggleLoadPopover();
-    const addedAt = new Date().toISOString();
-
-    await Promise.all([
-      // copy demo items/labels to user's collections
-      // date argument to set single timestamp
-      // for all copied demo data items for sorting purposes
-      copyCollection('common/demo-data/items', `users/${uid}/items`, addedAt),
-      copyCollection('common/demo-data/labels', `users/${uid}/labels`),
-    ]);
-
-    dispatch(loadDemoData(uid));
+    dispatch(addDemoData(uid));
   };
 
   const removeDemoData = () => {
@@ -66,7 +53,7 @@ export const DemoData = () => {
               <Popover.Text>
                 Use this to load demo items and labels. These can be easily removed later.
               </Popover.Text>
-              <Button className="button--green" onClick={handleDemoDataLoad}>
+              <Button className="button--green" onClick={loadDemoData}>
                 Load
               </Button>
             </Popover.Content>

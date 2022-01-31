@@ -1,7 +1,7 @@
 import { ColorName } from '@zaino/shared';
 import { useRef, useState } from 'react';
 import { OnChangeValue } from 'react-select';
-import { Colors } from '../../../../constants';
+import { colors } from '../../../../constants';
 import { Button } from '../../Controls/Button';
 import { EditIcon } from '../../Icons/EditIcon';
 import { SelectOption, SelectPopover } from '../SelectPopover';
@@ -20,7 +20,7 @@ type ColorSelectProps = {
 
 export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {
   const options = useRef(
-    Colors.map((color) => ({
+    colors.map((color) => ({
       value: color.name,
       label: color.fancyName,
       hexValue: color.hexValue,

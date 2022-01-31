@@ -7,13 +7,10 @@ const categoriesSlice = createSlice({
   name: 'items',
   initialState,
   reducers: {
-    loadCategories: (state, action: PayloadAction<{ categories: Category[]; items: Item[] }>) => {
+    addCategories: (state, action: PayloadAction<{ categories: Category[]; items: Item[] }>) => {
       const categories = action.payload.categories;
-      // compute item counts for each category as these are not stored in Firestore
-      // these counts are used on CategoriesPage, including in sort
       action.payload.items.forEach((item) => {
         const category = categories.find((category) => category.id === item.categoryId);
-        // only if category not empty
         if (category) {
           category.itemUniqueCount = category.itemUniqueCount ? (category.itemUniqueCount += 1) : 1;
           category.itemTotalCount = category.itemTotalCount
@@ -32,5 +29,5 @@ const categoriesSlice = createSlice({
   },
 });
 
-export const { resetCategoriesState, loadCategories } = categoriesSlice.actions;
-export default categoriesSlice.reducer;
+export const { resetCategoriesState, addCategories } = categoriesSlice.actions;
+export const categoriesReducer = categoriesSlice.reducer;

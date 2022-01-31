@@ -1,9 +1,9 @@
 import { ColorName, Label } from '@zaino/shared';
 import { ReactNode, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CollectionSortOption } from '../../../state/collectionSettings';
-import { selectAllLabels } from '../../../state/selectors/labels';
-import { sortLabelsBy } from '../../../state/slices/labelsFilters';
+import { CollectionSortOption } from '../../../state/enums';
+import { selectAllLabels } from '../../../state/selectors/labelsSelector';
+import { sortLabelsBy } from '../../../state/slices/labelFiltersSlice';
 import { RootState } from '../../../state/store';
 import { getClassString } from '../../../utils';
 import { Button } from '../../Common/Controls/Button';
@@ -35,7 +35,7 @@ export const LabelForm = ({
 }: LabelFormProps) => {
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectAllLabels(state));
-  const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
+  const labelSortOption = useSelector((state: RootState) => state.labelFilters.sortBy);
   const [values, setValues] = useState(label);
   const [nameError, setNameError] = useState('');
   const initialName = useRef(values.name).current;

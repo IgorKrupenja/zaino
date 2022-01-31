@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 import { v4 as uuid } from 'uuid';
-import { Colors } from '../../../../constants';
-import { addLabel } from '../../../../state/slices/labels';
+import { colors } from '../../../../constants';
+import { addLabel } from '../../../../state/slices/labelsSlice';
 import { RootState } from '../../../../state/store';
 import { getRandomColor, sortSelectOptionsByName } from '../../../../utils';
 import { SelectOption, SelectPopover } from '../SelectPopover';
@@ -33,7 +33,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
       .map((label) => ({
         value: label.id,
         label: label.name,
-        hexValue: Colors.find((color) => color.name === label.colorName)?.hexValue,
+        hexValue: colors.find((color) => color.name === label.colorName)?.hexValue,
       }))
       .sort(sortSelectOptionsByName);
   const [options, setOptions] = useState(prepareOptions(labels));

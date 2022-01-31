@@ -1,25 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit';
-import dataLoaderReducer from './slices/dataLoader';
-import itemsReducer from './slices/items';
-import itemsFiltersReducer from './slices/itemsFilters';
-import labelsReducer from './slices/labels';
-import labelsFiltersReducer from './slices/labelsFilters';
-import categoriesFiltersReducer from './slices/categoriesFilters';
-import categoriesReducer from './slices/categories';
-import userReducer from './slices/user';
+import { categoriesReducer } from './slices/categoriesSlice';
+import { categoryFiltersReducer } from './slices/categoryFiltersSlice';
+import { demoDataReducer } from './slices/demoDataSlice';
+import { itemFiltersReducer } from './slices/itemFiltersSlice';
+import { itemsReducer } from './slices/itemsSlice';
+import { labelFiltersReducer } from './slices/labelFiltersSlice';
+import { labelsReducer } from './slices/labelsSlice';
+import { userReducer } from './slices/userSlice';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     user: userReducer,
     items: itemsReducer,
     labels: labelsReducer,
     categories: categoriesReducer,
-    itemsFilters: itemsFiltersReducer,
-    labelsFilters: labelsFiltersReducer,
-    categoriesFilters: categoriesFiltersReducer,
-    dataLoader: dataLoaderReducer,
+    itemFilters: itemFiltersReducer,
+    labelFilters: labelFiltersReducer,
+    categoryFilters: categoryFiltersReducer,
+    demoData: demoDataReducer,
   },
 });
 
-export default store;
 export type RootState = ReturnType<typeof store.getState>;

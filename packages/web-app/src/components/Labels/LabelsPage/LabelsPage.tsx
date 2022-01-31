@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTitle } from '../../../hooks/useTitle';
 import useToggle from '../../../hooks/useToggle';
-import selectFilteredLabels, { selectLabelCount } from '../../../state/selectors/labels';
-import { saveSortOrder } from '../../../state/slices/labels';
+import { selectFilteredLabels, selectLabelCount } from '../../../state/selectors/labelsSelector';
 import {
   resetLabelFilters,
   setLabelTextFilter,
   sortLabelsBy,
-} from '../../../state/slices/labelsFilters';
+} from '../../../state/slices/labelFiltersSlice';
+import { saveSortOrder } from '../../../state/slices/labelsSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CollectionFilters } from '../../Common/Filters/CollectionFilters';
@@ -24,7 +24,7 @@ import './style.scss';
 
 export const LabelsPage = () => {
   useTitle('Labels | Zaino');
-  const isLoading = useSelector((state: RootState) => state.dataLoader.isLoading);
+  const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectFilteredLabels(state)) as Label[];
   const labelCount = labels.length;

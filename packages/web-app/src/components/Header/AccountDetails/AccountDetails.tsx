@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { firebase } from '../../../firebase/firebase';
 import useToggle from '../../../hooks/useToggle';
-import { logout } from '../../../state/slices/user';
+import { logout } from '../../../state/slices/userSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';

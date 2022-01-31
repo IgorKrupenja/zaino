@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { ReactComponent as DashboardIcon } from '../../../images/icons/dashboard.svg';
 import { ReactComponent as LabelIcon } from '../../../images/icons/label.svg';
 import { ReactComponent as Logo } from '../../../images/logo.svg';
-import { CollectionSortOption } from '../../../state/collectionSettings';
-import { sortLabelsBy } from '../../../state/slices/labelsFilters';
+import { CollectionSortOption } from '../../../state/enums';
+import { sortLabelsBy } from '../../../state/slices/labelFiltersSlice';
 import { RootState } from '../../../state/store';
 import { AccountDetails } from '../AccountDetails';
 import { DemoData } from '../DemoData';
@@ -12,7 +12,7 @@ import './style.scss';
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const labelSortOption = useSelector((state: RootState) => state.labelsFilters.sortBy);
+  const labelSortOption = useSelector((state: RootState) => state.labelFilters.sortBy);
 
   return (
     // container div to properly style header
