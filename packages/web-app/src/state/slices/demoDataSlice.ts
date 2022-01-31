@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Category, Item, Label } from '@zaino/shared';
 import type firebase from 'firebase/compat';
 import { batch } from 'react-redux';
@@ -9,6 +9,7 @@ import { addCategories } from './categoriesSlice';
 import { addItems } from './itemsSlice';
 import { addLabels } from './labelsSlice';
 
+// todo mb re-useable function
 const processSnapshotData = (
   snapshots: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>[]
 ) => {
@@ -52,6 +53,7 @@ export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
       db.collection(`users/${uid}/items`).where('isFromDemoData', '==', true).get(),
       db.collection(`users/${uid}/labels`).where('isFromDemoData', '==', true).get(),
     ]);
+
     const [items, labels] = processSnapshotData(snapshots);
 
     batch(() => {
@@ -65,14 +67,8 @@ export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
 const demoDataSlice = createSlice({
   name: 'demoData',
   initialState: { isLoading: false },
-  reducers: {
-    // todo rethink - perhaps move part of DemoData here, and set on loadDemoData.pending
-    setIsLoading(state, action: PayloadAction<boolean>) {
-      state.isLoading = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    // todo needs testing
     builder.addCase(addDemoData.pending, (state) => {
       state.isLoading = true;
     });
@@ -82,5 +78,4 @@ const demoDataSlice = createSlice({
   },
 });
 
-export const { setIsLoading } = demoDataSlice.actions;
 export const demoDataReducer = demoDataSlice.reducer;

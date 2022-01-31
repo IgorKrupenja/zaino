@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useToggle from '../../../hooks/useToggle';
 import { selectDemoItems } from '../../../state/selectors/items';
 import { selectDemoDataLabels } from '../../../state/selectors/labels';
-import { addDemoData } from '../../../state/slices/dataLoader';
+import { addDemoData } from '../../../state/slices/demoDataSlice';
 import { batchDeleteItems } from '../../../state/slices/itemsSlice';
 import { batchDeleteLabels } from '../../../state/slices/labelsSlice';
 import { RootState } from '../../../state/store';
@@ -25,7 +25,6 @@ export const DemoData = () => {
   const [isRemovePopoverOpen, toggleRemovePopover] = useToggle();
 
   const loadDemoData = () => {
-    // dispatch(setIsLoading(true));
     toggleLoadPopover();
     dispatch(addDemoData(uid));
   };

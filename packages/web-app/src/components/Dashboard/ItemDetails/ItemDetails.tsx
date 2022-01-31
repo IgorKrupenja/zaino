@@ -28,7 +28,6 @@ export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
       </h3>
       <BulletRow className="item-details--image-margin">
         <Category categoryId={categoryId} className="item-details__category">
-          {/* extra div to properly align SVG icon */}
           <div className="item-details__category-icon__container">
             <CategoryIcon className="item-details__category-icon" />
           </div>

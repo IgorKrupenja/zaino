@@ -20,10 +20,7 @@ export const LoginPage = () => {
         // fix width, cannot set in SCSS as component overwrites class styles with inline styles
         style={{ width: '20rem', textAlign: 'start' }}
         type="light"
-        onClick={() => {
-          console.log('login with google');
-          return dispatch(login_TEMP_MOVE_TO_SERVICE());
-        }}
+        onClick={() => dispatch(login_TEMP_MOVE_TO_SERVICE())}
       />
       <Link className="login-page__policies" to="/privacy">
         Privacy and cookie policy
