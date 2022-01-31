@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { collectionCombiner } from './collectionCombiner';
 
-const selectFilters = (state: RootState) => state.labelsFilters;
+const selectFilters = (state: RootState) => state.labelFilters;
 
 export const selectAllLabels = (state: RootState) => state.labels;
 

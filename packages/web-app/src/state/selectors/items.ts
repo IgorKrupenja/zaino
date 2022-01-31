@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { Item } from '@zaino/shared';
-import { ItemSortOption } from '../slices/itemsFilters';
+import { ItemSortOption } from '../enums';
 import { RootState } from '../store';
 
 const getPackItems = (items: Item[]) => items.filter((item) => item.packQuantity > 0);
@@ -9,7 +9,7 @@ export const selectAllInventoryItems = (state: RootState) => state.items;
 
 export const selectAllPackItems = (state: RootState) => getPackItems(state.items);
 
-const selectFilters = (state: RootState) => state.itemsFilters;
+const selectFilters = (state: RootState) => state.itemFilters;
 
 const selectFilteredInventoryItems = createSelector(
   [selectAllInventoryItems, selectFilters],

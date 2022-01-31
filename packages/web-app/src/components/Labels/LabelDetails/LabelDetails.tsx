@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useToggle from '../../../hooks/useToggle';
-import { resetItemFilters } from '../../../state/slices/itemsFilters';
+import { resetItemFilters } from '../../../state/slices/itemFiltersSlice';
 import { deleteLabel, updateLabel } from '../../../state/slices/labelsSlice';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';

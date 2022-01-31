@@ -1,7 +1,7 @@
 import { ColorName, Label } from '@zaino/shared';
 import { useDispatch } from 'react-redux';
-import { Colors } from '../../../../constants';
-import { setItemLabelsFilter } from '../../../../state/slices/itemsFilters';
+import { colors } from '../../../../constants';
+import { setItemLabelsFilter } from '../../../../state/slices/itemFiltersSlice';
 import { getClassString } from '../../../../utils';
 import './style.scss';
 
@@ -33,7 +33,7 @@ export const LabelBadge = ({
       className={getClassString('label-badge', className)}
       disabled={disabled}
       style={{
-        backgroundColor: Colors.find(
+        backgroundColor: colors.find(
           (labelColor) => labelColor.name === (colorName ?? label?.colorName)
         )?.hexValue,
       }}

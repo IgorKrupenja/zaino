@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ItemSortOption } from '../enums';
 
 type ItemFilters = {
   text: string;
@@ -6,15 +7,6 @@ type ItemFilters = {
   labels: string[];
   sortBy: ItemSortOption;
 };
-
-export enum ItemSortOption {
-  addedLatest = 'Most recently created',
-  addedOldest = 'Least recently created',
-  name = 'Alphabetically',
-  nameReverse = 'Reverse alphabetically',
-  weightHighest = 'Highest weight',
-  weightLowest = 'Lowest weight',
-}
 
 export const itemFiltersInitialState: ItemFilters = {
   text: '',
@@ -24,7 +16,7 @@ export const itemFiltersInitialState: ItemFilters = {
 };
 
 const itemFiltersSlice = createSlice({
-  name: 'filters-items',
+  name: 'item-filters',
   initialState: itemFiltersInitialState,
   reducers: {
     setItemTextFilter(state, action: PayloadAction<string>) {
@@ -50,5 +42,4 @@ export const {
   sortItemsBy,
   resetItemFilters,
 } = itemFiltersSlice.actions;
-
-export default itemFiltersSlice.reducer;
+export const itemFiltersReducer = itemFiltersSlice.reducer;

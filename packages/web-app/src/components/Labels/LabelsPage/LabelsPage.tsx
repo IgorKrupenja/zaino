@@ -8,7 +8,7 @@ import {
   resetLabelFilters,
   setLabelTextFilter,
   sortLabelsBy,
-} from '../../../state/slices/labelsFilters';
+} from '../../../state/slices/labelFiltersSlice';
 import { saveSortOrder } from '../../../state/slices/labelsSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';

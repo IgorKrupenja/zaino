@@ -1,4 +1,3 @@
-// all these are used by both collections: categories and labels
 export enum CollectionSortOption {
   name = 'Alphabetically',
   nameReverse = 'Reverse alphabetically',
@@ -8,13 +7,3 @@ export enum CollectionSortOption {
   itemsUniqueLowest = 'Least unique items',
   lastSortOrder = 'Last sort order',
 }
-
-export type CollectionFilters = {
-  text: string;
-  sortBy: CollectionSortOption;
-};
-
-export const collectionFiltersInitialState: CollectionFilters = {
-  text: '',
-  sortBy: CollectionSortOption.name,
-};

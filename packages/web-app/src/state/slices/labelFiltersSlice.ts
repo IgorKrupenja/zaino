@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { collectionFiltersInitialState, CollectionSortOption } from '../collectionSettings';
+import { collectionFiltersInitialState } from '../constants';
+import { CollectionSortOption } from '../enums';
 
 const labelFiltersSlice = createSlice({
-  name: 'filters-labels',
+  name: 'label-filters',
   initialState: collectionFiltersInitialState,
   reducers: {
     setLabelTextFilter(state, action: PayloadAction<string>) {
@@ -16,5 +17,4 @@ const labelFiltersSlice = createSlice({
 });
 
 export const { setLabelTextFilter, sortLabelsBy, resetLabelFilters } = labelFiltersSlice.actions;
-
-export default labelFiltersSlice.reducer;
+export const labelFiltersReducer = labelFiltersSlice.reducer;
