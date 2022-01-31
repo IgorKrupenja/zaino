@@ -4,7 +4,7 @@ import type firebase from 'firebase/compat';
 import { batch } from 'react-redux';
 import db from '../../firebase/firebase';
 import { RootState } from '../store';
-import { loadCategories } from './categories';
+import { loadCategories } from './categoriesSlice';
 import { addItems } from './itemsSlice';
 import { addLabels } from './labelsSlice';
 

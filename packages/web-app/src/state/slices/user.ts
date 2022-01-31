@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { batch } from 'react-redux';
 import db, { firebase, googleAuthProvider } from '../../firebase/firebase';
 import copyCollection from '../../firebase/utils/copyCollection';
-import { resetCategoriesState } from './categories';
+import { resetCategoriesState } from './categoriesSlice';
 import { resetItemsState } from './itemsSlice';
 import { resetLabelsState } from './labelsSlice';
 
