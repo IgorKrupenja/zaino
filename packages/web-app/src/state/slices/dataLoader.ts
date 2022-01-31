@@ -5,7 +5,7 @@ import { batch } from 'react-redux';
 import db from '../../firebase/firebase';
 import { RootState } from '../store';
 import { loadCategories } from './categories';
-import { loadItems } from './items';
+import { addItems } from './items';
 import { loadLabels } from './labels';
 
 const processSnapshotData = (
@@ -16,31 +16,31 @@ const processSnapshotData = (
   ) as [Item[], Label[], Category[]];
 };
 
-// todo does it belong here?
+// todo does it belong here? - no, move to service
 export const loadUserData = createAsyncThunk<void, string, { state: RootState }>(
   'dataLoader/loadUserData',
   async (uid, { dispatch }) => {
-    // get item and label refs from Firestore asynchronously for faster data loading
     const snapshots = await Promise.all([
       db.collection(`users/${uid}/items`).get(),
       db.collection(`users/${uid}/labels`).get(),
       db.collection(`users/${uid}/categories`).get(),
     ]);
+
+    // todo and this move to index
     const [items, labels, categories] = processSnapshotData(snapshots);
 
     batch(() => {
-      dispatch(loadItems(items));
+      dispatch(addItems(items));
       dispatch(loadLabels({ labels, items }));
       dispatch(loadCategories({ categories, items }));
     });
   }
 );
 
-// todo does it belong here?
+// todo does it belong here? yes, rename to demo data slice
 export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>(
   'dataLoader/loadDemoData',
   async (uid, { dispatch }) => {
-    // loads demo items/labels only
     const snapshots = await Promise.all([
       db.collection(`users/${uid}/items`).where('isFromDemoData', '==', true).get(),
       db.collection(`users/${uid}/labels`).where('isFromDemoData', '==', true).get(),
@@ -48,7 +48,7 @@ export const loadDemoData = createAsyncThunk<void, string, { state: RootState }>
     const [items, labels] = processSnapshotData(snapshots);
 
     batch(() => {
-      dispatch(loadItems(items));
+      dispatch(addItems(items));
       dispatch(loadLabels({ labels, items }));
     });
   }
@@ -61,6 +61,7 @@ const dataLoaderSlice = createSlice({
   name: 'dataLoader',
   initialState: { isLoading: false },
   reducers: {
+    // todo rethink - perhaps move part of DemoData here, and set on loadDemoData.pending
     setIsLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },
