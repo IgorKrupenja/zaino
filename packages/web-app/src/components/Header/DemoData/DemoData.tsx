@@ -31,6 +31,7 @@ export const DemoData = () => {
     toggleLoadPopover();
     const addedAt = new Date().toISOString();
 
+    // todo perhaps does not belong here?
     await Promise.all([
       // copy demo items/labels to user's collections
       // date argument to set single timestamp
