@@ -4,7 +4,7 @@ import * as functions from 'firebase-functions';
 // Should import from @zaino/shared but that is broken in Firebase, see #223
 import { Category, Item, Label } from '../../../../shared';
 import seedData from '../seed-data/seed-data.json';
-import settings from '../../utils/settings';
+import { settings } from '../../utils/settings';
 
 export const addSeedData = functions
   .region(settings.functions.region)

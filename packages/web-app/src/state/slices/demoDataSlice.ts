@@ -39,8 +39,9 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
   }
 );
 
+// todo or maybe also move to service and only keep loader logic here, rename loaderSlice
 export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
-  'demoData/loadDemoData',
+  'demoData/addDemoData',
   async (uid, { dispatch }) => {
     const addedAt = new Date().toISOString();
 
