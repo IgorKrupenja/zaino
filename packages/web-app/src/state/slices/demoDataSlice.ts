@@ -1,23 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Category, Item, Label } from '@zaino/shared';
-import type firebase from 'firebase/compat';
 import { batch } from 'react-redux';
-import { copyCollection, db } from '../../firebase';
+import { copyCollection, db, getObjectsFromSnapshots } from '../../firebase';
 import { RootState } from '../store';
 import { addCategories } from './categoriesSlice';
 import { addItems } from './itemsSlice';
 import { addLabels } from './labelsSlice';
 
-// todo mb re-useable function
-const processSnapshotData = (
-  snapshots: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>[]
-) => {
-  return snapshots.map((collection) =>
-    collection.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-  ) as [Item[], Label[], Category[]];
-};
-
-// todo does it belong here? - no, move to ITEMS service
+// todo does it belong here? - no, move elsewhere. To App?
 export const loadUserData = createAsyncThunk<void, string, { state: RootState }>(
   'demoData/loadUserData',
   async (uid, { dispatch }) => {
@@ -27,8 +17,11 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
       db.collection(`users/${uid}/categories`).get(),
     ]);
 
-    // todo and this move to index - or whenever stuff is moved from index
-    const [items, labels, categories] = processSnapshotData(snapshots);
+    const [items, labels, categories] = getObjectsFromSnapshots(snapshots) as [
+      Item[],
+      Label[],
+      Category[]
+    ];
 
     batch(() => {
       dispatch(addItems(items));
@@ -38,7 +31,6 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
   }
 );
 
-// todo or maybe also move to ITEMS service and only keep loader logic here, rename loaderSlice
 export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
   'demoData/addDemoData',
   async (uid, { dispatch }) => {
@@ -54,7 +46,7 @@ export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
       db.collection(`users/${uid}/labels`).where('isFromDemoData', '==', true).get(),
     ]);
 
-    const [items, labels] = processSnapshotData(snapshots);
+    const [items, labels] = getObjectsFromSnapshots(snapshots) as [Item[], Label[]];
 
     batch(() => {
       dispatch(addItems(items));
