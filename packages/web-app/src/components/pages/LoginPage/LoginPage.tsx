@@ -1,49 +1,16 @@
-import { useEffect, useState } from 'react';
 import GoogleButton from 'react-google-button';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { firebase } from '../../../firebase/firebase';
+import { Link } from 'react-router-dom';
 import { useTitle } from '../../../hooks/useTitle';
 import { ReactComponent as GithubIcon } from '../../../images/icons/github.svg';
-import { loadUserData } from '../../../state/slices/demoDataSlice';
-import { login, login_TEMP_MOVE_TO_SERVICE } from '../../../state/slices/userSlice';
-import { asciiLogo } from '../../../utils';
-import { Loader } from '../../Common/Misc/Loader';
+import { login_TEMP_MOVE_TO_SERVICE } from '../../../state/slices/userSlice';
 import './style.scss';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
   useTitle('Zaino');
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    if (firebase) {
-      firebase.auth().onAuthStateChanged(async (user) => {
-        if (user) {
-          setIsLoading(true);
-
-          const credential = await firebase.auth().getRedirectResult();
-          dispatch(login({ user, isNew: credential.additionalUserInfo?.isNewUser }));
-          // todo this should go to dashboard maybe?
-          dispatch(loadUserData(user.uid));
-
-          // todo this defs to dashboard? or maybe in component
-          console.log(asciiLogo);
-
-          navigate('/dashboard');
-        } else {
-          setIsLoading(false);
-        }
-      });
-    }
-  }, [dispatch, navigate]);
-
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <main className="login-page">
       <h2 className="login-page__title">Zaino</h2>
       <p className="login-page__slogan">

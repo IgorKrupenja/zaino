@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { firebase } from '../../../firebase/firebase';
 import useToggle from '../../../hooks/useToggle';
 import { logout } from '../../../state/slices/userSlice';
@@ -12,9 +12,12 @@ import './style.scss';
 export const AccountDetails = () => {
   const { name, email, photoUrl } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
     await firebase.auth().signOut();
     dispatch(logout());
+    navigate('/');
   };
   const [isPopoverOpen, togglePopover] = useToggle();
 
