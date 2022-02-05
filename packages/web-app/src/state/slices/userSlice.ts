@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { User } from 'firebase/auth';
 import { batch } from 'react-redux';
 import db, { firebase, googleAuthProvider } from '../../firebase/firebase';
 import copyCollection from '../../firebase/utils/copyCollection';
@@ -7,16 +8,20 @@ import { resetItemsState } from './itemsSlice';
 import { resetLabelsState } from './labelsSlice';
 
 // todo move to service as not state related - or maybe where stuff is moved from index.tsx
+// todo tryLoginWithFirebase
 export const login_TEMP_MOVE_TO_SERVICE = createAsyncThunk(
   'user/login_TEMP_MOVE_TO_SERVICE',
   async () => {
+    // todo use new approach
     await firebase.auth().signInWithRedirect(googleAuthProvider);
   }
 );
 
 export const login = createAsyncThunk(
+  // todo rename
   'user/login',
-  async ({ user, isNew }: { user: firebase.User; isNew?: boolean }) => {
+  async ({ user, isNew }: { user: User; isNew?: boolean }) => {
+    // todo move out and only run whole trunk if new - BUT NOTE extra reducer belo
     if (isNew) {
       // Currently no business logic behind email field.
       // It is only needed to properly create a document for the user in Firestore

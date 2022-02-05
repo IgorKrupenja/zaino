@@ -18,7 +18,7 @@ const processSnapshotData = (
   ) as [Item[], Label[], Category[]];
 };
 
-// todo does it belong here? - no, move to service
+// todo does it belong here? - no, move to ITEMS service
 export const loadUserData = createAsyncThunk<void, string, { state: RootState }>(
   'demoData/loadUserData',
   async (uid, { dispatch }) => {
@@ -39,7 +39,7 @@ export const loadUserData = createAsyncThunk<void, string, { state: RootState }>
   }
 );
 
-// todo or maybe also move to service and only keep loader logic here, rename loaderSlice
+// todo or maybe also move to ITEMS service and only keep loader logic here, rename loaderSlice
 export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
   'demoData/addDemoData',
   async (uid, { dispatch }) => {
