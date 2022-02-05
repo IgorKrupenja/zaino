@@ -1,6 +1,6 @@
+import { getAuth, signOut } from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { firebase } from '../../../firebase/firebase';
 import useToggle from '../../../hooks/useToggle';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
@@ -11,6 +11,7 @@ import './style.scss';
 export const AccountDetails = () => {
   const { name, email, photoUrl } = useSelector((state: RootState) => state.user);
   const [isPopoverOpen, togglePopover] = useToggle();
+  const auth = getAuth();
 
   return (
     <Popover
@@ -34,7 +35,7 @@ export const AccountDetails = () => {
             </Link>
             <Button
               className="button--grey account-details__sign-out"
-              onClick={async () => firebase.auth().signOut()}
+              onClick={() => signOut(auth)}
             >
               Sign out
             </Button>

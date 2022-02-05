@@ -1,7 +1,13 @@
+import {
+  getAdditionalUserInfo,
+  getAuth,
+  getRedirectResult,
+  onAuthStateChanged,
+  User,
+} from 'firebase/auth';
 import { StrictMode, useEffect, useState } from 'react';
 import Media from 'react-media';
 import { Provider } from 'react-redux';
-import { firebase } from '../../firebase/firebase';
 import AppRouter from '../../routes/AppRouter';
 import { loadUserData } from '../../state/slices/demoDataSlice';
 import { login, logout } from '../../state/slices/userSlice';
@@ -15,13 +21,16 @@ export const App = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    const auth = getAuth();
 
-    firebase.auth().onAuthStateChanged(async (user) => {
+    const onAuthStateChangeHandler = async (user: User | null): Promise<void> => {
       if (user) {
         setIsLoading(true);
 
-        const credential = await firebase.auth().getRedirectResult();
-        await store.dispatch(login({ user, isNew: credential.additionalUserInfo?.isNewUser }));
+        const credential = await getRedirectResult(auth);
+        await store.dispatch(
+          login({ user, isNew: credential ? getAdditionalUserInfo(credential)?.isNewUser : false })
+        );
         await store.dispatch(loadUserData(user.uid));
 
         console.log(asciiLogo);
@@ -31,7 +40,9 @@ export const App = () => {
         await store.dispatch(logout());
         setIsLoading(false);
       }
-    });
+    };
+
+    onAuthStateChanged(auth, (user) => void onAuthStateChangeHandler(user));
   }, []);
 
   return (
