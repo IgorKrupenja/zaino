@@ -1,5 +1,5 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const config = {
@@ -16,6 +16,6 @@ const config = {
 firebase.initializeApp(config);
 
 const db = firebase.firestore();
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+const googleAuthProvider = new GoogleAuthProvider();
 
 export { googleAuthProvider, db as default };
