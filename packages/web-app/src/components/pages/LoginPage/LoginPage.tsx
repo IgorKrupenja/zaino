@@ -25,15 +25,15 @@ export const LoginPage = () => {
         if (user) {
           setIsLoading(true);
 
-          // User is signed in
           const credential = await firebase.auth().getRedirectResult();
           dispatch(login({ user, isNew: credential.additionalUserInfo?.isNewUser }));
           // todo this should go to dashboard maybe?
           dispatch(loadUserData(user.uid));
-          navigate('/dashboard');
 
           // todo this defs to dashboard? or maybe in component
           console.log(asciiLogo);
+
+          navigate('/dashboard');
         } else {
           setIsLoading(false);
         }
