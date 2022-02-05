@@ -1,35 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Category, Item, Label } from '@zaino/shared';
+import { Item, Label } from '@zaino/shared';
 import { batch } from 'react-redux';
 import { copyCollection, db, getObjectsFromSnapshots } from '../../firebase';
 import { RootState } from '../store';
-import { addCategories } from './categoriesSlice';
 import { addItems } from './itemsSlice';
 import { addLabels } from './labelsSlice';
-
-// todo does it belong here? - no, move elsewhere. To App?
-export const loadUserData = createAsyncThunk<void, string, { state: RootState }>(
-  'demoData/loadUserData',
-  async (uid, { dispatch }) => {
-    const snapshots = await Promise.all([
-      db.collection(`users/${uid}/items`).get(),
-      db.collection(`users/${uid}/labels`).get(),
-      db.collection(`users/${uid}/categories`).get(),
-    ]);
-
-    const [items, labels, categories] = getObjectsFromSnapshots(snapshots) as [
-      Item[],
-      Label[],
-      Category[]
-    ];
-
-    batch(() => {
-      dispatch(addItems(items));
-      dispatch(addLabels({ labels, items }));
-      dispatch(addCategories({ categories, items }));
-    });
-  }
-);
 
 export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
   'demoData/addDemoData',
