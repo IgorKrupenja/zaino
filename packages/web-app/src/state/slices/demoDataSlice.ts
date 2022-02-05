@@ -1,46 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Category, Item, Label } from '@zaino/shared';
-import type firebase from 'firebase/compat';
+import { Item, Label } from '@zaino/shared';
 import { batch } from 'react-redux';
-import db from '../../firebase/firebase';
-import copyCollection from '../../firebase/utils/copyCollection';
+import { copyCollection, db, getObjectsFromSnapshots } from '../../firebase';
 import { RootState } from '../store';
-import { addCategories } from './categoriesSlice';
 import { addItems } from './itemsSlice';
 import { addLabels } from './labelsSlice';
 
-// todo mb re-useable function
-const processSnapshotData = (
-  snapshots: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>[]
-) => {
-  return snapshots.map((collection) =>
-    collection.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-  ) as [Item[], Label[], Category[]];
-};
-
-// todo does it belong here? - no, move to service
-export const loadUserData = createAsyncThunk<void, string, { state: RootState }>(
-  'demoData/loadUserData',
-  async (uid, { dispatch }) => {
-    const snapshots = await Promise.all([
-      db.collection(`users/${uid}/items`).get(),
-      db.collection(`users/${uid}/labels`).get(),
-      db.collection(`users/${uid}/categories`).get(),
-    ]);
-
-    // todo and this move to index - or whenever stuff is moved from index
-    const [items, labels, categories] = processSnapshotData(snapshots);
-
-    batch(() => {
-      dispatch(addItems(items));
-      dispatch(addLabels({ labels, items }));
-      dispatch(addCategories({ categories, items }));
-    });
-  }
-);
-
 export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
-  'demoData/loadDemoData',
+  'demoData/addDemoData',
   async (uid, { dispatch }) => {
     const addedAt = new Date().toISOString();
 
@@ -54,7 +21,7 @@ export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
       db.collection(`users/${uid}/labels`).where('isFromDemoData', '==', true).get(),
     ]);
 
-    const [items, labels] = processSnapshotData(snapshots);
+    const [items, labels] = getObjectsFromSnapshots(snapshots) as [Item[], Label[]];
 
     batch(() => {
       dispatch(addItems(items));
@@ -63,7 +30,7 @@ export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
   }
 );
 
-// TODO: should also be used to address #117 in the future.
+// TODO: similar approach should also be used to address #117 in the future.
 const demoDataSlice = createSlice({
   name: 'demoData',
   initialState: { isLoading: false },

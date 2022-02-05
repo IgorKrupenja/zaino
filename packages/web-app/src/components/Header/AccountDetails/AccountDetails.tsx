@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { getAuth, signOut } from 'firebase/auth';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { firebase } from '../../../firebase/firebase';
 import useToggle from '../../../hooks/useToggle';
-import { logout } from '../../../state/slices/userSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
@@ -11,12 +10,8 @@ import './style.scss';
 
 export const AccountDetails = () => {
   const { name, email, photoUrl } = useSelector((state: RootState) => state.user);
-  const dispatch = useDispatch();
-  const handleLogout = async () => {
-    await firebase.auth().signOut();
-    dispatch(logout());
-  };
   const [isPopoverOpen, togglePopover] = useToggle();
+  const auth = getAuth();
 
   return (
     <Popover
@@ -38,7 +33,10 @@ export const AccountDetails = () => {
             <Link className="account-details__policies" to="/privacy">
               Privacy and cookie policy
             </Link>
-            <Button className="button--grey account-details__sign-out" onClick={handleLogout}>
+            <Button
+              className="button--grey account-details__sign-out"
+              onClick={() => signOut(auth)}
+            >
               Sign out
             </Button>
           </Popover.Content>
