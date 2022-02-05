@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { firebase } from '../../firebase/firebase';
 import AppRouter from '../../routes/AppRouter';
 import { loadUserData } from '../../state/slices/demoDataSlice';
-import { login } from '../../state/slices/userSlice';
+import { login, logout } from '../../state/slices/userSlice';
 import { store } from '../../state/store';
 import { asciiLogo } from '../../utils';
 import { Loader } from '../Common/Misc/Loader';
@@ -28,6 +28,7 @@ export const App = () => {
 
         setIsLoading(false);
       } else {
+        await store.dispatch(logout());
         setIsLoading(false);
       }
     });

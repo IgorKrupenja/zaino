@@ -7,7 +7,7 @@ import { resetItemsState } from './itemsSlice';
 import { resetLabelsState } from './labelsSlice';
 
 // todo move to service as not state related - or maybe where stuff is moved from index.tsx
-// todo tryLoginWithFirebase
+// todo tryLoginWithFirebase or better redirectToLoginPage
 export const login_TEMP_MOVE_TO_SERVICE = createAsyncThunk(
   'user/login_TEMP_MOVE_TO_SERVICE',
   async () => {
@@ -34,7 +34,8 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk('user/logout', (unused, { dispatch }) => {
+export const logout = createAsyncThunk('user/logout', async (unused, { dispatch }) => {
+  // await firebase.auth().signOut();
   batch(() => {
     dispatch(resetItemsState());
     dispatch(resetLabelsState());
