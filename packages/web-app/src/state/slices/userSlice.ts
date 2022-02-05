@@ -1,14 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { Category, Item, Label } from '@zaino/shared';
 import { User } from 'firebase/auth';
 import { batch } from 'react-redux';
-import { copyCollection, db } from '../../firebase';
-import { resetCategoriesState } from './categoriesSlice';
-import { resetItemsState } from './itemsSlice';
-import { resetLabelsState } from './labelsSlice';
+import { copyCollection, db, getObjectsFromSnapshots } from '../../firebase';
+import { addCategories, resetCategoriesState } from './categoriesSlice';
+import { addItems, resetItemsState } from './itemsSlice';
+import { addLabels, resetLabelsState } from './labelsSlice';
 
 export const login = createAsyncThunk(
   'user/login',
-  async ({ user, isNew }: { user: User; isNew?: boolean }) => {
+  async ({ user, isNew }: { user: User; isNew?: boolean }, { dispatch }) => {
     if (isNew) {
       // Currently no business logic behind email field.
       // It is only needed to properly create a document for the user in Firestore
@@ -19,6 +20,24 @@ export const login = createAsyncThunk(
         .set({ firstLoginAt: new Date().toISOString(), email: user.email });
       await copyCollection('common/defaults/categories', `users/${user.uid}/categories`);
     }
+
+    const snapshots = await Promise.all([
+      db.collection(`users/${user.uid}/items`).get(),
+      db.collection(`users/${user.uid}/labels`).get(),
+      db.collection(`users/${user.uid}/categories`).get(),
+    ]);
+
+    const [items, labels, categories] = getObjectsFromSnapshots(snapshots) as [
+      Item[],
+      Label[],
+      Category[]
+    ];
+
+    batch(() => {
+      dispatch(addItems(items));
+      dispatch(addLabels({ labels, items }));
+      dispatch(addCategories({ categories, items }));
+    });
   }
 );
 
