@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { User } from 'firebase/auth';
 import { batch } from 'react-redux';
 import db, { firebase, googleAuthProvider } from '../../firebase/firebase';
 import copyCollection from '../../firebase/utils/copyCollection';
@@ -20,7 +19,7 @@ export const login_TEMP_MOVE_TO_SERVICE = createAsyncThunk(
 export const login = createAsyncThunk(
   // todo rename
   'user/login',
-  async ({ user, isNew }: { user: User; isNew?: boolean }) => {
+  async ({ user, isNew }: { user: firebase.User; isNew?: boolean }) => {
     // todo move out and only run whole trunk if new - BUT NOTE extra reducer belo
     if (isNew) {
       // Currently no business logic behind email field.
