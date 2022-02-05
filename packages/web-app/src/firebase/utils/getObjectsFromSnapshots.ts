@@ -1,4 +1,3 @@
-// todo mb re-useable function
 import type firebase from 'firebase/compat';
 
 export const getObjectsFromSnapshots = (

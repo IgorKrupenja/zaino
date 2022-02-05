@@ -30,7 +30,7 @@ export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
   }
 );
 
-// TODO: should also be used to address #117 in the future.
+// TODO: similar approach should also be used to address #117 in the future.
 const demoDataSlice = createSlice({
   name: 'demoData',
   initialState: { isLoading: false },
