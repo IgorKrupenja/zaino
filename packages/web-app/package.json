@@ -55,7 +55,6 @@
     "react-dom": "^17.0.2",
     "react-expanding-textarea": "^2.3.4",
     "react-google-button": "^0.7.2",
-    "react-media": "^2.0.0-rc.1",
     "react-modal": "^3.14.4",
     "react-redux": "^7.2.6",
     "react-refresh": "^0.11.0",

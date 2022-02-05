@@ -12,13 +12,7 @@ export const App = () => {
   return (
     <StrictMode>
       <Provider store={store}>
-        {isSmallScreen ? (
-          <MobilePlaceholder />
-        ) : (
-          <AuthStateHandler>
-            <AppRouter />
-          </AuthStateHandler>
-        )}
+        <AuthStateHandler>{isSmallScreen ? <MobilePlaceholder /> : <AppRouter />}</AuthStateHandler>
       </Provider>
     </StrictMode>
   );
