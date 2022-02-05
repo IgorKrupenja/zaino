@@ -10,17 +10,11 @@ export const App = () => {
   return (
     <StrictMode>
       <Provider store={store}>
-        <Media queries={{ small: { maxWidth: 599 } }}>
-          {(matches) =>
-            matches.small ? (
-              <MobilePlaceholder />
-            ) : (
-              <AuthStateHandler>
-                <AppRouter />
-              </AuthStateHandler>
-            )
-          }
-        </Media>
+        <AuthStateHandler>
+          <Media queries={{ small: { maxWidth: 599 } }}>
+            {(matches) => (matches.small ? <MobilePlaceholder /> : <AppRouter />)}
+          </Media>
+        </AuthStateHandler>
       </Provider>
     </StrictMode>
   );

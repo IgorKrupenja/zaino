@@ -28,6 +28,7 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
     setIsLoading(true);
     const auth = getAuth();
 
+    // todo move to firebase
     const loadUserData = async (uid: string) => {
       const snapshots = await Promise.all([
         db.collection(`users/${uid}/items`).get(),
