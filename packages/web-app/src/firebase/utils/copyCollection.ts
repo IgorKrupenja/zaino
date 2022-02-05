@@ -1,4 +1,4 @@
-import { db } from '../firebase';
+import { db } from '../firebaseConfig';
 
 /**
  * Copy all items in a collection in one path to another.
@@ -6,7 +6,11 @@ import { db } from '../firebase';
  * Does not support recursive copying (i.e. does not also copy sub-collections).
  * Optionally supports setting date field.
  */
-export default async (srcCollectionPath: string, destCollectionPath: string, addedAt?: string) => {
+export const copyCollection = async (
+  srcCollectionPath: string,
+  destCollectionPath: string,
+  addedAt?: string
+) => {
   // set single timestamp for all copied documents
   const srcCollection = db.collection(srcCollectionPath);
   const documents = await srcCollection.get();

@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { User } from 'firebase/auth';
 import { batch } from 'react-redux';
-import { db } from '../../firebase/firebase';
-import copyCollection from '../../firebase/utils/copyCollection';
+import { copyCollection, db } from '../../firebase';
 import { resetCategoriesState } from './categoriesSlice';
 import { resetItemsState } from './itemsSlice';
 import { resetLabelsState } from './labelsSlice';
@@ -23,7 +22,7 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk('user/logout', async (unused, { dispatch }) => {
+export const logout = createAsyncThunk('user/logout', (unused, { dispatch }) => {
   batch(() => {
     dispatch(resetItemsState());
     dispatch(resetLabelsState());

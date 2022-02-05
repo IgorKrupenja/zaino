@@ -1,4 +1,4 @@
-import { db } from '../firebase';
+import { db } from '../firebaseConfig';
 
 /**
  * Delete documents from a collection.
@@ -6,7 +6,7 @@ import { db } from '../firebase';
  * Does not support recursive deletion (i.e. does not also delete documents in sub-collections).
  * Optionally supports deleting documents that only match a specific query.
  */
-export default async (collectionName: string, docIds: string[]) => {
+export const deleteDocuments = async (collectionName: string, docIds: string[]) => {
   const collection = db.collection(collectionName);
   let batch = db.batch();
 
@@ -14,7 +14,7 @@ export default async (collectionName: string, docIds: string[]) => {
   for (const id of docIds) {
     batch.delete(collection.doc(id));
     i++;
-    // Firestore only allows 500 batch operations in a single batch.
+    // Firestore only allows ~500 batch operations in a single batch.
     if (i > 490) {
       i = 0;
       await batch.commit();
