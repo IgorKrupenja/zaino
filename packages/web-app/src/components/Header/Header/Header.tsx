@@ -29,14 +29,16 @@ export const Header = () => {
             <DashboardIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Dashboard</span>
           </NavLink>
-          <NavLink
-            to="/categories"
-            // TODO: re-sort categories on page change, see labels below
-            className={({ isActive }) => getLinkClassName(isActive)}
-          >
-            <CategoryIcon className="header__nav__link__icon" />
-            <span className="header__nav__link__text">Categories</span>
-          </NavLink>
+          {process.env.REACT_APP_SHOW_CATEGORIES_PAGE === 'true' && (
+            <NavLink
+              to="/categories"
+              // TODO: re-sort categories on page change, see labels below
+              className={({ isActive }) => getLinkClassName(isActive)}
+            >
+              <CategoryIcon className="header__nav__link__icon" />
+              <span className="header__nav__link__text">Categories</span>
+            </NavLink>
+          )}
           <NavLink
             to="/labels"
             // re-sort labels by name after in-place edit and switching back to Labels page

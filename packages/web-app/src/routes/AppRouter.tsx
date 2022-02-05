@@ -30,15 +30,16 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         ></Route>
-
-        <Route
-          path="/categories"
-          element={
-            <PrivateRoute>
-              <CategoriesPage />
-            </PrivateRoute>
-          }
-        ></Route>
+        {process.env.REACT_APP_SHOW_CATEGORIES_PAGE === 'true' && (
+          <Route
+            path="/categories"
+            element={
+              <PrivateRoute>
+                <CategoriesPage />
+              </PrivateRoute>
+            }
+          ></Route>
+        )}
         <Route
           path="/labels"
           element={
