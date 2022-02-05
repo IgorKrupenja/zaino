@@ -33,9 +33,11 @@ export const LoginPage = () => {
     //   dispatch(login({ user, isNew: credential.additionalUserInfo?.isNewUser }));
     // };
     console.log('LoginPage.useEffect');
+    setIsPageLoading(true);
 
     if (firebase) {
       firebase.auth().onAuthStateChanged(async (user) => {
+        console.log('LoginPage.useEffect.onAuthStateChanged');
         if (user) {
           setIsPageLoading(true);
           console.log('LoginPage.useEffect.onAuthStateChanged.authUser', user);
@@ -49,10 +51,9 @@ export const LoginPage = () => {
 
           // todo this defs to dashboard? or maybe in component
           console.log(asciiLogo);
+        } else {
+          setIsPageLoading(false);
         }
-
-        // Re-render on both login and logout
-        // renderApp();
       });
     }
   }, [dispatch, navigate]);
@@ -110,8 +111,7 @@ export const LoginPage = () => {
   //   // todo review
   // });
 
-  return loading || isPageLoading ? (
-    // return isPageLoading ? (
+  return isPageLoading ? (
     <Loader />
   ) : (
     <main className="login-page">
