@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { CategoriesPage } from '../components/Categories/CategoriesPage';
 import { Loader } from '../components/Common/Misc/Loader';
 import { DashboardPage } from '../components/Dashboard/DashboardPage';
 import { LabelsPage } from '../components/Labels/LabelsPage';
@@ -29,6 +30,16 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         ></Route>
+        {process.env.REACT_APP_SHOW_CATEGORIES_PAGE === 'true' && (
+          <Route
+            path="/categories"
+            element={
+              <PrivateRoute>
+                <CategoriesPage />
+              </PrivateRoute>
+            }
+          ></Route>
+        )}
         <Route
           path="/labels"
           element={
