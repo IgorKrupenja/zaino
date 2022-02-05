@@ -25,7 +25,6 @@ export const LoginPage = () => {
 
   // useEffect(() => console.log(asciiLogo));
 
-  // Listen to onAuthStateChanged
   useEffect(() => {
     // const handleLogin = async (user: User) => {
     //   const credential = await firebase.auth().getRedirectResult();
