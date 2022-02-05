@@ -1,6 +1,6 @@
 import firebase from 'firebase/compat/app';
-// import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -18,6 +18,4 @@ firebase.initializeApp(config);
 const db = firebase.firestore();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-// todo rename firebase export
-// todo do not export firebase here, create AUTH service instead
 export { googleAuthProvider, db as default };
