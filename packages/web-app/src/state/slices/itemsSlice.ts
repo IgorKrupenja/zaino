@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Item } from '@zaino/shared';
-import db from '../../firebase/firebase';
+import { db } from '../../firebase/firebase';
 import deleteDocuments from '../../firebase/utils/deleteDocuments';
 import { RootState } from '../store';
 import { decrementItemCount } from './labelsSlice';

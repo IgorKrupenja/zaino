@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { User } from 'firebase/auth';
 import { batch } from 'react-redux';
-import db from '../../firebase/firebase';
+import { db } from '../../firebase/firebase';
 import copyCollection from '../../firebase/utils/copyCollection';
 import { resetCategoriesState } from './categoriesSlice';
 import { resetItemsState } from './itemsSlice';
