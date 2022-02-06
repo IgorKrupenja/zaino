@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { Provider } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import AppRouter from '../../routes/AppRouter';
+import { AppRouter } from '../../routes';
 import { store } from '../../state/store';
 import { AuthStateHandler } from '../AuthStateHandler';
 import { MobilePlaceholder } from '../pages/MobilePlaceholder';

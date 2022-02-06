@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useTitle } from '../../../hooks';
-import { DashboardRoutes } from '../../../routes/DashboardRoutes';
+import { DashboardRoutes } from '../../../routes';
 import { RootState } from '../../../state/store';
 import { Loader } from '../../Common/Misc/Loader';
 import { Header } from '../../Header/Header';

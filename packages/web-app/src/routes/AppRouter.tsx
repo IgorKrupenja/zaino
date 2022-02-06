@@ -8,7 +8,7 @@ import { LoginPage } from '../components/pages/LoginPage';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
-const AppRouter = () => {
+export const AppRouter = () => {
   const PrivacyPolicy = lazy(() => import('../components/pages/PrivacyPolicy'));
 
   return (
@@ -68,5 +68,3 @@ const AppRouter = () => {
     </BrowserRouter>
   );
 };
-
-export default AppRouter;

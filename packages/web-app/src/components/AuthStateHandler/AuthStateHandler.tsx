@@ -15,6 +15,7 @@ type AuthStateHandlerProps = {
   children: ReactNode;
 };
 
+// TODO: perhaps move to other location or transform into a useAuthState hook
 export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
