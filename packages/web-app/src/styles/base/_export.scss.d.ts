@@ -1,5 +1,4 @@
-// needed to correctly import settings SCSS variables in TS
-export type settings = {
+type settings = {
   blue: string;
   border: string;
   brown: string;
@@ -25,6 +24,6 @@ export type settings = {
   yellow: string;
 };
 
-// TODO: fishy
-export const styles: settings;
+const styles: settings;
+// Used to import settings SCSS variables in TS style files, can only be default export
 export default styles;

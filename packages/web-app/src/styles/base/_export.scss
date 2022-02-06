@@ -1,9 +1,7 @@
 @import './settings';
 
-// export variables to use in TS for styling
-// note that these are in a separate file
-// in order to prevent sass-resources-loader appending the exports several times
-// which results in duplicate code in bundle CSS when building for production
+// These are in a separate file to prevent sass-resources-loader appending exports several times.
+// Needed to prevent duplicate code in bundle CSS when building for production.
 :export {
   blue: $blue;
   border: $border;
