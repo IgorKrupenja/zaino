@@ -25,20 +25,17 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
 
     const onAuthStateChangeHandler = async (user: User | null) => {
       if (user) {
-        setIsLoading(true);
-
         const credential = await getRedirectResult(auth);
         dispatch(
           login({ user, isNew: credential ? getAdditionalUserInfo(credential)?.isNewUser : false })
         );
 
         console.log(asciiLogo);
-
-        setIsLoading(false);
       } else {
         dispatch(logout());
-        setIsLoading(false);
       }
+
+      setIsLoading(false);
     };
 
     onAuthStateChanged(auth, (user) => void onAuthStateChangeHandler(user));
