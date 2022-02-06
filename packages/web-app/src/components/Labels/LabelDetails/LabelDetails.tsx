@@ -2,7 +2,7 @@ import { Label } from '@zaino/shared';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import useToggle from '../../../hooks/useToggle';
+import { useToggle } from '../../../hooks';
 import { resetItemFilters } from '../../../state/slices/itemFiltersSlice';
 import { deleteLabel, updateLabel } from '../../../state/slices/labelsSlice';
 import { Button } from '../../Common/Controls/Button';

@@ -1,8 +1,7 @@
 import { Label } from '@zaino/shared';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTitle } from '../../../hooks/useTitle';
-import useToggle from '../../../hooks/useToggle';
+import { useTitle, useToggle } from '../../../hooks';
 import { selectFilteredLabels, selectLabelCount } from '../../../state/selectors/labelsSelector';
 import {
   resetLabelFilters,

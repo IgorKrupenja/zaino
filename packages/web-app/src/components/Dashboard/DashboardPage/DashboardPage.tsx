@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useTitle } from '../../../hooks/useTitle';
+import { useTitle } from '../../../hooks';
 import { DashboardRoutes } from '../../../routes/DashboardRoutes';
 import { RootState } from '../../../state/store';
 import { Loader } from '../../Common/Misc/Loader';

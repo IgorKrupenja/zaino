@@ -1,7 +1,7 @@
 import { getAuth, signOut } from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import useToggle from '../../../hooks/useToggle';
+import { useToggle } from '../../../hooks';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';

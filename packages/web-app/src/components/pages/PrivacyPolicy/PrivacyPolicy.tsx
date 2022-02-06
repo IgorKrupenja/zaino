@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { useTitle } from '../../../hooks/useTitle';
+import { useTitle } from '../../../hooks';
 import { BackLink } from '../../Common/Misc/BackLink';
 import './style.scss';
 

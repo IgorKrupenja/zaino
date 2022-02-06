@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import useToggle from '../../../hooks/useToggle';
+import { useToggle } from '../../../hooks';
 import { selectDemoItems } from '../../../state/selectors/itemsSelector';
 import { selectDemoDataLabels } from '../../../state/selectors/labelsSelector';
 import { addDemoData } from '../../../state/slices/demoDataSlice';

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import useToggle from '../../../hooks/useToggle';
+import { useToggle } from '../../../hooks';
 import {
   selectCategoryCount,
   selectFilteredCategories,

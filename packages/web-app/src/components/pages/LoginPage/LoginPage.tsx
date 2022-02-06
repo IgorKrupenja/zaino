@@ -2,7 +2,7 @@ import { getAuth, signInWithRedirect } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
 import { Link } from 'react-router-dom';
 import { googleAuthProvider } from '../../../firebase';
-import { useTitle } from '../../../hooks/useTitle';
+import { useTitle } from '../../../hooks';
 import { ReactComponent as GithubIcon } from '../../../images/icons/github.svg';
 import './style.scss';
 

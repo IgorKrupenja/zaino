@@ -1,8 +1,7 @@
 import { Item } from '@zaino/shared';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { useCloseModal } from '../../../hooks/useCloseModal';
-import { useTitle } from '../../../hooks/useTitle';
+import { useCloseModal, useTitle } from '../../../hooks';
 import { addItem } from '../../../state/slices/itemsSlice';
 import { RootState } from '../../../state/store';
 import { Button } from '../../Common/Controls/Button';
