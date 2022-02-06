@@ -1,11 +1,10 @@
-// custom font, used in header and login page atm
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
-// needed for loading indicator to work
+// Needed for loading indicator to work
 html,
 body,
 #root {
@@ -13,12 +12,12 @@ body,
 }
 
 #root {
-  // for fixed header
+  // For fixed header
   position: relative;
 }
 
 html {
-  // conversion to use rem units more easily (1 rem = 10 px after 62.5% conversion)
+  // Conversion to use rem units more easily (1 rem = 10 px after 62.5% conversion)
   font-size: 62.5%;
 }
 
