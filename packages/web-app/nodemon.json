@@ -5,6 +5,8 @@
     "nodemon.json",
     "src/images/logo.svg",
     "src/images/logo-with-text.svg",
-    ".eslintrc.json"
+    ".eslintrc.json",
+    ".env",
+    ".env.development"
   ]
 }
