@@ -21,7 +21,6 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
     const auth = getAuth();
 
     const onAuthStateChangeHandler = async (user: User | null) => {
