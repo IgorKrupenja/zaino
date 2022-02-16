@@ -18,12 +18,15 @@ type AuthStateHandlerProps = {
 // TODO: perhaps move to other location or transform into a useAuthState hook
 export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
   const [isLoading, setIsLoading] = useState(true);
+  console.log('AuthStateHandler: isLoading', isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('use effect');
     const auth = getAuth();
 
     const onAuthStateChangeHandler = async (user: User | null) => {
+      console.log('onAuthStateChangeHandler: user', user);
       if (user) {
         const credential = await getRedirectResult(auth);
         dispatch(
