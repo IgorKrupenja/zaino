@@ -6,12 +6,12 @@ import { selectAllLabels } from '../../../state/selectors/labelsSelector';
 import { sortLabelsBy } from '../../../state/slices/labelFiltersSlice';
 import { RootState } from '../../../state/store';
 import { getClassString } from '../../../utils';
+import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/Controls/Button';
 import { FormError } from '../../common/Controls/FormError';
 import { FormLabel } from '../../common/Controls/FormLabel';
 import { Input } from '../../common/Controls/Input';
 import { ColorSelect } from '../../common/Selects/ColorSelect';
-import { Row } from '../../common/Wrappers/Row';
 import './style.scss';
 
 type LabelFormProps = {

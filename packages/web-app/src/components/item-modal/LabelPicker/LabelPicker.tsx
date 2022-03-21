@@ -1,8 +1,8 @@
+import { Column } from '../../common/containers/Column';
 import { Button } from '../../common/Controls/Button';
 import { EditIcon } from '../../common/Icons/EditIcon';
 import { LabelBadgeList } from '../../common/labels/LabelBadgeList';
 import { LabelSelect } from '../../common/Selects/LabelSelect';
-import { Column } from '../../common/Wrappers/Column';
 import './style.scss';
 
 type LabelPickerProps = {

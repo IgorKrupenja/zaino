@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactComponent as NoBackpackIcon } from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/itemsSlice';
+import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/Controls/Button';
-import { Row } from '../../common/Wrappers/Row';
 import { ItemDetails } from '../ItemDetails';
 import './style.scss';
 

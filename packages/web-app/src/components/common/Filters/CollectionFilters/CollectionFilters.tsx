@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { collectionFiltersInitialState } from '../../../../state/constants';
 import { CollectionSortOption } from '../../../../state/enums';
 import { RootState } from '../../../../state/store';
+import { Row } from '../../containers/Row';
 import { Input } from '../../Controls/Input';
 import { SortSelect } from '../../Selects/SortSelect';
-import { Row } from '../../Wrappers/Row';
 import { FilterReset } from '../FilterReset';
 import { FiltersWrapper } from '../FiltersWrapper';
 

@@ -10,11 +10,11 @@ import {
   sortCategoriesBy,
 } from '../../../state/slices/categoryFiltersSlice';
 import { RootState } from '../../../state/store';
+import { Column } from '../../common/containers/Column';
 import { CollectionFilters } from '../../common/Filters/CollectionFilters';
 import { Loader } from '../../common/Misc/Loader';
 import { ScrollablePage } from '../../common/Misc/ScrollablePage';
 import { SectionHeader } from '../../common/Misc/SectionHeader';
-import { Column } from '../../common/Wrappers/Column';
 import { List } from '../../labels/List';
 
 // TODO: unfinished

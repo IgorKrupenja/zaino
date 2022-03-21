@@ -10,12 +10,12 @@ import {
 } from '../../../state/slices/labelFiltersSlice';
 import { saveSortOrder } from '../../../state/slices/labelsSlice';
 import { RootState } from '../../../state/store';
+import { Column } from '../../common/containers/Column';
 import { Button } from '../../common/Controls/Button';
 import { CollectionFilters } from '../../common/Filters/CollectionFilters';
 import { Loader } from '../../common/Misc/Loader';
 import { ScrollablePage } from '../../common/Misc/ScrollablePage';
 import { SectionHeader } from '../../common/Misc/SectionHeader';
-import { Column } from '../../common/Wrappers/Column';
 import { LabelDetails } from '../LabelDetails';
 import { List } from '../List';
 import { NewLabel } from '../NewLabel';

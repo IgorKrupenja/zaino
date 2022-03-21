@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 
-import { BulletRow } from '../../common/Wrappers/BulletRow';
+import { BulletRow } from '../../common/containers/BulletRow';
 import './style.scss';
 
 type StatsProps = {

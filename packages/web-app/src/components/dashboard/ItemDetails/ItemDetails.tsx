@@ -2,11 +2,11 @@ import { Item } from '@zaino/shared';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as CategoryIcon } from '../../../images/icons/category.svg';
+import { BulletRow } from '../../common/containers/BulletRow';
 import { LabelBadgeList } from '../../common/labels/LabelBadgeList';
 import { Category } from '../../common/Misc/Category';
 import { CategoryImage } from '../../common/Misc/CategoryImage';
 import { Corkscrew } from '../../common/Misc/Corkscrew';
-import { BulletRow } from '../../common/Wrappers/BulletRow';
 import './style.scss';
 
 type ItemDetailsProps = {

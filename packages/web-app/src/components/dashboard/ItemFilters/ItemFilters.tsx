@@ -11,6 +11,7 @@ import {
   sortItemsBy,
 } from '../../../state/slices/itemFiltersSlice';
 import { RootState } from '../../../state/store';
+import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/Controls/Button';
 import { Input } from '../../common/Controls/Input';
 import { FilterReset } from '../../common/Filters/FilterReset';
@@ -19,7 +20,6 @@ import { DropdownIcon } from '../../common/Icons/DropdownIcon';
 import { CategorySelect } from '../../common/Selects/CategorySelect';
 import { LabelSelect } from '../../common/Selects/LabelSelect';
 import { SortSelect } from '../../common/Selects/SortSelect';
-import { Row } from '../../common/Wrappers/Row';
 
 export const ItemFilters = () => {
   const dispatch = useDispatch();

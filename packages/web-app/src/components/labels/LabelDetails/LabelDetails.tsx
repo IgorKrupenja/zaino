@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { useToggle } from '../../../hooks';
 import { resetItemFilters } from '../../../state/slices/itemFiltersSlice';
 import { deleteLabel, updateLabel } from '../../../state/slices/labelsSlice';
+import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/Controls/Button';
 import { CloseButton } from '../../common/Controls/CloseButton';
 import { LabelBadge } from '../../common/labels/LabelBadge';
 import { Popover } from '../../common/Misc/Popover';
-import { Row } from '../../common/Wrappers/Row';
 import { LabelForm } from '../LabelForm';
 import './style.scss';
 
