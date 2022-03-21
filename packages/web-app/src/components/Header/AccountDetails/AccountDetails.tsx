@@ -11,7 +11,6 @@ import './style.scss';
 export const AccountDetails = () => {
   const { name, email, photoUrl } = useSelector((state: RootState) => state.user);
   const [isPopoverOpen, togglePopover] = useToggle();
-  const auth = getAuth();
 
   return (
     <Popover
@@ -35,7 +34,7 @@ export const AccountDetails = () => {
             </Link>
             <Button
               className="button--grey account-details__sign-out"
-              onClick={() => signOut(auth)}
+              onClick={() => signOut(getAuth())}
             >
               Sign out
             </Button>

@@ -5,9 +5,10 @@ import {
   onAuthStateChanged,
   User,
 } from 'firebase/auth';
-import { ReactNode, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { ReactNode, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../../state/slices/userSlice';
+import { RootState, store } from '../../state/store';
 import { asciiLogo } from '../../utils';
 import { Loader } from '../Common/Misc/Loader';
 
@@ -15,17 +16,16 @@ type AuthStateHandlerProps = {
   children: ReactNode;
 };
 
-// TODO: perhaps move to other location or transform into a useAuthState hook
 export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const isLoading = useSelector((state: RootState) => state.user.isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
     const auth = getAuth();
+    const isLoggedIn = store.getState().user.email !== '';
 
-    const onAuthStateChangeHandler = async (user: User | null) => {
-      if (user) {
+    const onAuthStateChangedHandler = async (user: User | null) => {
+      if (user && !isLoggedIn) {
         const credential = await getRedirectResult(auth);
         dispatch(
           login({ user, isNew: credential ? getAdditionalUserInfo(credential)?.isNewUser : false })
@@ -35,11 +35,9 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
       } else {
         dispatch(logout());
       }
-
-      setIsLoading(false);
     };
 
-    onAuthStateChanged(auth, (user) => void onAuthStateChangeHandler(user));
+    onAuthStateChanged(auth, (user) => void onAuthStateChangedHandler(user));
   }, [dispatch]);
 
   return <>{isLoading ? <Loader /> : children}</>;
