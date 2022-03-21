@@ -19,7 +19,6 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    // custom rules
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-unsafe-assignment": "warn",
