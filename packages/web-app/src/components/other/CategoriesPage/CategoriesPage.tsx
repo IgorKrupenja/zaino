@@ -11,10 +11,10 @@ import {
 } from '../../../state/slices/categoryFiltersSlice';
 import { RootState } from '../../../state/store';
 import { Column } from '../../common/containers/Column';
-import { CollectionFilters } from '../../common/Filters/CollectionFilters';
-import { Loader } from '../../common/Misc/Loader';
-import { ScrollablePage } from '../../common/Misc/ScrollablePage';
-import { SectionHeader } from '../../common/Misc/SectionHeader';
+import { CollectionFilters } from '../../common/filters/CollectionFilters';
+import { Loader } from '../../common/misc/Loader';
+import { ScrollablePage } from '../../common/misc/ScrollablePage';
+import { SectionHeader } from '../../common/misc/SectionHeader';
 import { List } from '../../labels/List';
 
 // TODO: unfinished

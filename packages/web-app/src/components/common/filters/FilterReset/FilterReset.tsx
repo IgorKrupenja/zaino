@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg';
-import { Button } from '../../Controls/Button';
+import { Button } from '../../controls/Button';
 import './style.scss';
 
 type FilterResetProps = {

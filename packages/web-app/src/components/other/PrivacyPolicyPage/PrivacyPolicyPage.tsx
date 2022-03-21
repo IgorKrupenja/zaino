@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { useTitle } from '../../../hooks';
-import { BackLink } from '../../common/Misc/BackLink';
+import { BackLink } from '../../common/misc/BackLink';
 import './style.scss';
 
 export const PrivacyPolicyPage = () => {

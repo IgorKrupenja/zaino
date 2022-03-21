@@ -6,8 +6,8 @@ import { collectionFiltersInitialState } from '../../../../state/constants';
 import { CollectionSortOption } from '../../../../state/enums';
 import { RootState } from '../../../../state/store';
 import { Row } from '../../containers/Row';
-import { Input } from '../../Controls/Input';
-import { SortSelect } from '../../Selects/SortSelect';
+import { Input } from '../../controls/Input';
+import { SortSelect } from '../../selects/SortSelect';
 import { FilterReset } from '../FilterReset';
 import { FiltersWrapper } from '../FiltersWrapper';
 

@@ -4,7 +4,7 @@ import { selectFilteredPackItems } from '../../../state/selectors/itemsSelector'
 import { selectPackItemsStats } from '../../../state/selectors/itemsStatsSelector';
 import { RootState } from '../../../state/store';
 import { Column } from '../../common/containers/Column';
-import { SectionHeader } from '../../common/Misc/SectionHeader';
+import { SectionHeader } from '../../common/misc/SectionHeader';
 import { PackItem } from '../PackItem';
 import { Stack } from '../Stack';
 import { Stats } from '../Stats';

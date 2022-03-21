@@ -3,10 +3,10 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as CategoryIcon } from '../../../images/icons/category.svg';
 import { BulletRow } from '../../common/containers/BulletRow';
-import { Category } from '../../common/Misc/Category';
-import { CategoryImage } from '../../common/Misc/CategoryImage';
-import { Corkscrew } from '../../common/Misc/Corkscrew';
-import { LabelBadgeList } from '../../common/Misc/LabelBadgeList';
+import { Category } from '../../common/misc/Category';
+import { CategoryImage } from '../../common/misc/CategoryImage';
+import { Corkscrew } from '../../common/misc/Corkscrew';
+import { LabelBadgeList } from '../../common/misc/LabelBadgeList';
 import './style.scss';
 
 type ItemDetailsProps = {

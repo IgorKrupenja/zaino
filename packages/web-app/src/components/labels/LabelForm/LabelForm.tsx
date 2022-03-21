@@ -7,11 +7,11 @@ import { sortLabelsBy } from '../../../state/slices/labelFiltersSlice';
 import { RootState } from '../../../state/store';
 import { getClassString } from '../../../utils';
 import { Row } from '../../common/containers/Row';
-import { Button } from '../../common/Controls/Button';
-import { FormError } from '../../common/Controls/FormError';
-import { FormLabel } from '../../common/Controls/FormLabel';
-import { Input } from '../../common/Controls/Input';
-import { ColorSelect } from '../../common/Selects/ColorSelect';
+import { Button } from '../../common/controls/Button';
+import { FormError } from '../../common/controls/FormError';
+import { FormLabel } from '../../common/controls/FormLabel';
+import { Input } from '../../common/controls/Input';
+import { ColorSelect } from '../../common/selects/ColorSelect';
 import './style.scss';
 
 type LabelFormProps = {

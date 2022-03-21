@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useToggle } from '../../../../hooks';
 import { RootState } from '../../../../state/store';
-import { Button } from '../../Controls/Button';
-import { CloseButton } from '../../Controls/CloseButton';
-import { Popover } from '../../Misc/Popover';
+import { Button } from '../../controls/Button';
+import { CloseButton } from '../../controls/CloseButton';
+import { Popover } from '../../misc/Popover';
 import './style.scss';
 
 export const AccountDetails = () => {

@@ -3,8 +3,8 @@ import { InputActionMeta, mergeStyles, OnChangeValue, Props } from 'react-select
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
 import { PopoverAlign } from 'react-tiny-popover';
-import { CloseButton } from '../../Controls/CloseButton';
-import { Popover } from '../../Misc/Popover';
+import { CloseButton } from '../../controls/CloseButton';
+import { Popover } from '../../misc/Popover';
 import { commonSelectStyles } from './style';
 
 export type SelectOption = {

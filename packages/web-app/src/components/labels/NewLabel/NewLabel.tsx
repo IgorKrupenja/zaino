@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { addLabel } from '../../../state/slices/labelsSlice';
 import { getRandomColor } from '../../../utils';
-import { Button } from '../../common/Controls/Button';
-import { LabelBadge } from '../../common/Misc/LabelBadge';
+import { Button } from '../../common/controls/Button';
+import { LabelBadge } from '../../common/misc/LabelBadge';
 import { LabelForm } from '../LabelForm';
 import './style.scss';
 

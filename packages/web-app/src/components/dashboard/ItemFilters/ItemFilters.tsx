@@ -12,14 +12,14 @@ import {
 } from '../../../state/slices/itemFiltersSlice';
 import { RootState } from '../../../state/store';
 import { Row } from '../../common/containers/Row';
-import { Button } from '../../common/Controls/Button';
-import { Input } from '../../common/Controls/Input';
-import { FilterReset } from '../../common/Filters/FilterReset';
-import { FiltersWrapper } from '../../common/Filters/FiltersWrapper';
-import { DropdownIcon } from '../../common/Icons/DropdownIcon';
-import { CategorySelect } from '../../common/Selects/CategorySelect';
-import { LabelSelect } from '../../common/Selects/LabelSelect';
-import { SortSelect } from '../../common/Selects/SortSelect';
+import { Button } from '../../common/controls/Button';
+import { Input } from '../../common/controls/Input';
+import { FilterReset } from '../../common/filters/FilterReset';
+import { FiltersWrapper } from '../../common/filters/FiltersWrapper';
+import { DropdownIcon } from '../../common/icons/DropdownIcon';
+import { CategorySelect } from '../../common/selects/CategorySelect';
+import { LabelSelect } from '../../common/selects/LabelSelect';
+import { SortSelect } from '../../common/selects/SortSelect';
 
 export const ItemFilters = () => {
   const dispatch = useDispatch();

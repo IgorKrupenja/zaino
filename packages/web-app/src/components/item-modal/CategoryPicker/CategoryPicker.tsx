@@ -2,10 +2,10 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
 import { Column } from '../../common/containers/Column';
 import { Row } from '../../common/containers/Row';
-import { Button } from '../../common/Controls/Button';
-import { EditIcon } from '../../common/Icons/EditIcon';
-import { CategoryImage } from '../../common/Misc/CategoryImage';
-import { CategorySelect } from '../../common/Selects/CategorySelect';
+import { Button } from '../../common/controls/Button';
+import { EditIcon } from '../../common/icons/EditIcon';
+import { CategoryImage } from '../../common/misc/CategoryImage';
+import { CategorySelect } from '../../common/selects/CategorySelect';
 import './style.scss';
 
 type CategoryPickerProps = {
