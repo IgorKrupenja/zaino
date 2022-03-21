@@ -7,7 +7,6 @@ import { ReactComponent as GithubIcon } from '../../../images/icons/github.svg';
 import './style.scss';
 
 export const LoginPage = () => {
-  const auth = getAuth();
   useTitle('Zaino');
 
   return (
@@ -20,7 +19,7 @@ export const LoginPage = () => {
         // Fix width, cannot set in SCSS as component overwrites class styles with inline styles
         style={{ width: '20rem', textAlign: 'start' }}
         type="light"
-        onClick={() => signInWithRedirect(auth, googleAuthProvider)}
+        onClick={() => signInWithRedirect(getAuth(), googleAuthProvider)}
       />
       <Link className="login-page__policies" to="/privacy">
         Privacy and cookie policy
