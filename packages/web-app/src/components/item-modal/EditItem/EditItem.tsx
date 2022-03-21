@@ -10,7 +10,7 @@ import { CloseButton } from '../../common/Controls/CloseButton';
 import { Corkscrew } from '../../common/Misc/Corkscrew';
 import { Popover } from '../../common/Misc/Popover';
 import { SectionHeader } from '../../common/Misc/SectionHeader';
-import { ItemForm } from '../ItemForm/';
+import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
 import './style.scss';
 

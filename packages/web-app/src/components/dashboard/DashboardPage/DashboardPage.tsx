@@ -3,7 +3,7 @@ import { useTitle } from '../../../hooks';
 import { DashboardRoutes } from '../../../routes';
 import { RootState } from '../../../state/store';
 import { Loader } from '../../common/Misc/Loader';
-import { Header } from '../../Header/Header';
+import { Header } from '../../header/Header';
 import { Inventory } from '../Inventory';
 import { ItemFilters } from '../ItemFilters';
 import { Pack } from '../Pack';

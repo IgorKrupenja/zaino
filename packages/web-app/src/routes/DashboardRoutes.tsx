@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import { EditItem } from '../components/ItemModal/EditItem';
-import { NewItem } from '../components/ItemModal/NewItem';
+import { EditItem } from '../components/item-modal/EditItem';
+import { NewItem } from '../components/item-modal/NewItem';
 
 export const DashboardRoutes = () => {
   return (
