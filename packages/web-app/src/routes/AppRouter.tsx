@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { CategoriesPage } from '../components/Categories/CategoriesPage';
-import { Loader } from '../components/Common/Misc/Loader';
-import { DashboardPage } from '../components/Dashboard/DashboardPage';
-import { LabelsPage } from '../components/Labels/LabelsPage';
+import { CategoriesPage } from '../components/categories/CategoriesPage';
+import { Loader } from '../components/common/Misc/Loader';
+import { DashboardPage } from '../components/dashboard/DashboardPage';
+import { LabelsPage } from '../components/labels/LabelsPage';
 import { LoginPage } from '../components/pages/LoginPage';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';

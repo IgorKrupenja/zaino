@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../../state/slices/userSlice';
 import { RootState, store } from '../../state/store';
 import { asciiLogo } from '../../utils';
-import { Loader } from '../Common/Misc/Loader';
+import { Loader } from '../common/Misc/Loader';
 
 type AuthStateHandlerProps = {
   children: ReactNode;
