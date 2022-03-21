@@ -5,18 +5,13 @@ import {
   onAuthStateChanged,
   User,
 } from 'firebase/auth';
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, logout } from '../../state/slices/userSlice';
-import { RootState, store } from '../../state/store';
-import { asciiLogo } from '../../utils';
-import { Loader } from '../common/Misc/Loader';
+import { login, logout } from '../state/slices/userSlice';
+import { RootState, store } from '../state/store';
+import { asciiLogo } from '../utils';
 
-type AuthStateHandlerProps = {
-  children: ReactNode;
-};
-
-export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
+export const useAuthState = (): boolean => {
   const isLoading = useSelector((state: RootState) => state.user.isLoading);
   const dispatch = useDispatch();
 
@@ -40,5 +35,5 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
     onAuthStateChanged(auth, (user) => void onAuthStateChangedHandler(user));
   }, [dispatch]);
 
-  return <>{isLoading ? <Loader /> : children}</>;
+  return isLoading;
 };
