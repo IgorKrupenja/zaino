@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useToggle } from '../../../hooks';
+import { useTitle, useToggle } from '../../../hooks';
 import {
   selectCategoryCount,
   selectFilteredCategories,
@@ -19,7 +19,8 @@ import { List } from '../../labels/List';
 
 // TODO: unfinished
 export const CategoriesPage = () => {
-  document.title = 'Categories | Zaino';
+  useTitle('Categories | Zaino');
+
   const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
   const categories = useSelector((state: RootState) => selectFilteredCategories(state));
   const categoryCount = categories.length;
