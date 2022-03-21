@@ -16,7 +16,6 @@ type AuthStateHandlerProps = {
   children: ReactNode;
 };
 
-// TODO: perhaps move to other location or transform into a useAuthState hook - THIS IS LAST
 export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
   const isLoading = useSelector((state: RootState) => state.user.isLoading);
   const isLoggedIn = useSelector((state: RootState) => state.user.email !== '');
@@ -42,7 +41,8 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
       }
     };
 
-    // todo do I need isLoggedIn if used as hook
+    // ntodo proper location
+    // todo remove logs
     onAuthStateChanged(auth, (user) => !isLoggedIn && void onAuthStateChangeHandler(user));
   }, [dispatch, isLoggedIn]);
 
