@@ -8,7 +8,7 @@ import {
 import { ReactNode, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../../state/slices/userSlice';
-import { RootState } from '../../state/store';
+import { RootState, store } from '../../state/store';
 import { asciiLogo } from '../../utils';
 import { Loader } from '../Common/Misc/Loader';
 
@@ -18,18 +18,14 @@ type AuthStateHandlerProps = {
 
 export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
   const isLoading = useSelector((state: RootState) => state.user.isLoading);
-  const isLoggedIn = useSelector((state: RootState) => state.user.email !== '');
-
-  console.log('AuthStateHandler: isLoading', isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('use effect!');
     const auth = getAuth();
+    const isLoggedIn = store.getState().user.email !== '';
 
-    const onAuthStateChangeHandler = async (user: User | null) => {
-      console.log('onAuthStateChangeHandler: user', user);
-      if (user) {
+    const onAuthStateChangedHandler = async (user: User | null) => {
+      if (user && !isLoggedIn) {
         const credential = await getRedirectResult(auth);
         dispatch(
           login({ user, isNew: credential ? getAdditionalUserInfo(credential)?.isNewUser : false })
@@ -41,10 +37,8 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
       }
     };
 
-    // ntodo proper location
-    // todo remove logs
-    onAuthStateChanged(auth, (user) => !isLoggedIn && void onAuthStateChangeHandler(user));
-  }, [dispatch, isLoggedIn]);
+    onAuthStateChanged(auth, (user) => void onAuthStateChangedHandler(user));
+  }, [dispatch]);
 
   return <>{isLoading ? <Loader /> : children}</>;
 };
