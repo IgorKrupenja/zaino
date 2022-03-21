@@ -15,7 +15,7 @@ type StackProps = {
 export const Stack = ({ children, className }: StackProps) => {
   return (
     // wrapper div is used in order to achieve flexible list height
-    <div className={getClassString('stack__wrapper', className)}>
+    <div className={getClassString('stack__wrapper', { extraClassNames: className })}>
       <section className="stack">{children}</section>
     </div>
   );

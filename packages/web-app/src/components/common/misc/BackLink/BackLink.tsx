@@ -13,7 +13,10 @@ export const BackLink = ({ className }: BackLinkProps) => {
   const navigate = useNavigate();
 
   return (
-    <button onClick={() => navigate(-1)} className={getClassString('back-link', className)}>
+    <button
+      onClick={() => navigate(-1)}
+      className={getClassString('back-link', { extraClassNames: className })}
+    >
       ← Back to {isAuthenticated ? 'app' : 'login page'}
     </button>
   );

@@ -8,5 +8,7 @@ type FormErrorProps = {
 };
 
 export const FormError = ({ className, children }: FormErrorProps) => {
-  return <div className={getClassString('form-error', className)}>{children}</div>;
+  return (
+    <div className={getClassString('form-error', { extraClassNames: className })}>{children}</div>
+  );
 };

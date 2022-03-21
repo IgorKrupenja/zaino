@@ -13,5 +13,9 @@ type BulletRowProps = {
  * Based on https://stackoverflow.com/a/41080934/7405507
  */
 export const BulletRow = ({ children, className }: BulletRowProps) => {
-  return <div className={getClassString('bullet-wrapper', className)}>{children}</div>;
+  return (
+    <div className={getClassString('bullet-wrapper', { extraClassNames: className })}>
+      {children}
+    </div>
+  );
 };

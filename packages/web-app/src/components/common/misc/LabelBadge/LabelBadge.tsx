@@ -30,7 +30,7 @@ export const LabelBadge = ({
 
   return (
     <button
-      className={getClassString('label-badge', className)}
+      className={getClassString('label-badge', { extraClassNames: className })}
       disabled={disabled}
       style={{
         backgroundColor: colors.find(

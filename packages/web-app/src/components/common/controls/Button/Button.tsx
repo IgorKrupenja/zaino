@@ -16,7 +16,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={getClassString('button', className)}
+        className={getClassString('button', { extraClassNames: className })}
         type={submit ? 'submit' : 'button'}
         {...rest}
       >

@@ -26,7 +26,7 @@ export const Inventory = () => {
 
   return (
     <Stack className="stack--left">
-      <SectionHeader className="section-header--large-margin">
+      <SectionHeader variant="large-margin">
         <Column>
           <SectionHeader.Title>Inventory</SectionHeader.Title>
           <Stats className="section-header__content" stats={stats} />

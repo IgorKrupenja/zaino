@@ -10,7 +10,7 @@ type FormLabelProps = {
 
 export const FormLabel = ({ className, children, ...rest }: FormLabelProps) => {
   return (
-    <label className={getClassString('form-label', className)} {...rest}>
+    <label className={getClassString('form-label', { extraClassNames: className })} {...rest}>
       {children}
     </label>
   );

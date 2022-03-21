@@ -61,7 +61,10 @@ export const LabelForm = ({
   };
 
   return (
-    <form className={getClassString('label-form', className)} onSubmit={handleSubmit}>
+    <form
+      className={getClassString('label-form', { extraClassNames: className })}
+      onSubmit={handleSubmit}
+    >
       <FormLabel className="label-form__input__label" htmlFor={label.name || 'new-name'}>
         Name
       </FormLabel>

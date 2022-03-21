@@ -11,10 +11,10 @@ type SectionHeaderProps = {
 export const SectionHeader = ({ className, children, variant }: SectionHeaderProps) => {
   return (
     <header
-      className={getClassString(
-        `section-header ${variant === 'large-margin' ? 'section_header--large-margin' : ''}`,
-        className
-      )}
+      className={getClassString('section-header', {
+        extraClassNames: className,
+        variant: variant,
+      })}
     >
       {children}
     </header>
@@ -22,7 +22,11 @@ export const SectionHeader = ({ className, children, variant }: SectionHeaderPro
 };
 
 const Title = ({ children, className }: SectionHeaderProps) => {
-  return <h2 className={getClassString('section-header__title', className)}>{children}</h2>;
+  return (
+    <h2 className={getClassString('section-header__title', { extraClassNames: className })}>
+      {children}
+    </h2>
+  );
 };
 
 const Content = ({ children }: SectionHeaderProps) => {

@@ -28,7 +28,9 @@ export const ExpandingInput = ({
     id: name,
     name,
     value,
-    className: getClassString('expanding-input' + (error ? ' input--error' : ''), className),
+    className: getClassString('expanding-input' + (error ? ' input--error' : ''), {
+      extraClassNames: className,
+    }),
     ...rest,
   };
 

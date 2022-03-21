@@ -13,11 +13,11 @@ import { RootState } from '../../../state/store';
 import { Column } from '../../common/containers/Column';
 import { Button } from '../../common/controls/Button';
 import { CollectionFilters } from '../../common/filters/CollectionFilters';
+import { List } from '../../common/misc/List';
 import { Loader } from '../../common/misc/Loader';
 import { ScrollablePage } from '../../common/misc/ScrollablePage';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { LabelDetails } from '../LabelDetails';
-import { List } from '../List';
 import { NewLabel } from '../NewLabel';
 import './style.scss';
 
@@ -47,7 +47,7 @@ export const LabelsPage = () => {
       ) : (
         <List>
           {/* header with name, count and New label button */}
-          <SectionHeader className="section-header--large-margin">
+          <SectionHeader variant="large-margin">
             <Column>
               <SectionHeader.Title>Labels</SectionHeader.Title>
               <SectionHeader.Content>
@@ -68,7 +68,7 @@ export const LabelsPage = () => {
           {labelCount > 0 ? (
             labels.map((label) => <LabelDetails key={label.id} {...label} />)
           ) : (
-            <List.Empty className={isFormOpen ? 'list--empty--border' : ''}>{`No${
+            <List.Empty variant={isFormOpen ? 'top-border' : undefined}>{`No${
               labelCount === totalLabelCount ? '' : ' matching'
             } labels`}</List.Empty>
           )}

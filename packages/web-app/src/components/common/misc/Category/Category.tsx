@@ -23,7 +23,7 @@ export const Category = ({ categoryId, className, onClick, children }: CategoryP
         dispatch(setItemCategoryFilter(categoryId));
         onClick && onClick();
       }}
-      className={getClassString('category', className)}
+      className={getClassString('category', { extraClassNames: className })}
     >
       {children}
       {categoryName ?? 'No category'}

@@ -18,7 +18,7 @@ export const Pack = () => {
 
   return (
     <Stack className="stack--right">
-      <SectionHeader className="section-header--large-margin">
+      <SectionHeader variant="large-margin">
         <Column>
           <SectionHeader.Title>Pack</SectionHeader.Title>
           <Stats className="section-header__content" stats={stats} />
