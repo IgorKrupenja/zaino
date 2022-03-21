@@ -35,6 +35,11 @@
   width: 35rem;
 }
 
+.login-page__button {
+  text-align: start !important;
+  width: 20rem !important;
+}
+
 .login-page__policies {
   color: $grey;
   margin-top: 4rem;
@@ -78,7 +83,6 @@
 .login-page__github-link__icon {
   // forwards makes animation stay on the last frame at the end
   animation: rotate-3d 0.5s linear forwards;
-  // display icon above link text animation on hover
   background-color: $off-white;
   height: 5rem;
   width: 5rem;

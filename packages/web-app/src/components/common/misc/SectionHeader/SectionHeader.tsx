@@ -1,14 +1,24 @@
 import { ReactNode } from 'react';
 import { getClassString } from '../../../../utils';
-import './style.scss';
+import './SectionHeader.scss';
 
 type SectionHeaderProps = {
   className?: string;
+  variant?: 'large-margin';
   children: ReactNode;
 };
 
-export const SectionHeader = ({ className, children }: SectionHeaderProps) => {
-  return <header className={getClassString('section-header', className)}>{children}</header>;
+export const SectionHeader = ({ className, children, variant }: SectionHeaderProps) => {
+  return (
+    <header
+      className={getClassString(
+        `section-header ${variant === 'large-margin' ? 'section_header--large-margin' : ''}`,
+        className
+      )}
+    >
+      {children}
+    </header>
+  );
 };
 
 const Title = ({ children, className }: SectionHeaderProps) => {

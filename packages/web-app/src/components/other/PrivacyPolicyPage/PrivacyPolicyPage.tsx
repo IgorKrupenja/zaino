@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { useTitle } from '../../../hooks';
 import { BackLink } from '../../common/misc/BackLink';
-import './style.scss';
+import './PrivacyPolicyPage.scss';
 
 export const PrivacyPolicyPage = () => {
   useTitle('Privacy and cookie policy | Zaino');
@@ -27,7 +27,7 @@ export const PrivacyPolicyPage = () => {
       <p className="privacy-policy__title">Zaino</p>
       <BackLink />
       <PrivacyPolicyContent />
-      <BackLink className="back-link--large-margin" />
+      <BackLink className="privacy-policy__bottom-link" />
     </main>
   );
 };
