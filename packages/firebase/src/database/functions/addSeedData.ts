@@ -32,9 +32,11 @@ export const addSeedData = functions
       });
     };
 
-    await addDeleteBatchItems(itemsPath);
-    await addDeleteBatchItems(categoriesPath);
-    await addDeleteBatchItems(labelsPath);
+    await Promise.all([
+      addDeleteBatchItems(itemsPath),
+      addDeleteBatchItems(categoriesPath),
+      addDeleteBatchItems(labelsPath),
+    ]);
 
     addSetBatchItems(seedData.items as Item[], itemsPath);
     addSetBatchItems(seedData.categories as Category[], categoriesPath);
