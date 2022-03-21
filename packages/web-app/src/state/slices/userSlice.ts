@@ -12,8 +12,6 @@ export const login = createAsyncThunk(
   async ({ user, isNew }: { user: User; isNew?: boolean }, { dispatch }) => {
     if (isNew) {
       // Currently no business logic behind email field.
-      // It is only needed to properly create a document for the user in Firestore
-      // as Firestore does not correctly create empty documents.
       await db
         .collection('users')
         .doc(user.uid)
@@ -49,7 +47,7 @@ export const logout = createAsyncThunk('user/logout', (unused, { dispatch }) => 
   });
 });
 
-const initialState = { uid: '', name: '', email: '', photoUrl: '' };
+const initialState = { uid: '', name: '', email: '', photoUrl: '', isLoading: true };
 
 const userSlice = createSlice({
   name: 'user',
@@ -57,9 +55,12 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(logout.pending, () => initialState);
+    builder.addCase(logout.fulfilled, (state, action) => ({ ...state, isLoading: false }));
     builder.addCase(login.pending, (state, action) => {
       const user = action.meta.arg.user;
+
       return {
+        isLoading: true,
         uid: user.uid,
         // Types for these are string | null but null seems to apply to anonymous sign in only
         name: user.displayName as string,
@@ -67,6 +68,7 @@ const userSlice = createSlice({
         photoUrl: user.photoURL as string,
       };
     });
+    builder.addCase(login.fulfilled, (state, action) => ({ ...state, isLoading: false }));
   },
 });
 

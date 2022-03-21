@@ -5,9 +5,10 @@ import {
   onAuthStateChanged,
   User,
 } from 'firebase/auth';
-import { ReactNode, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { ReactNode, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../../state/slices/userSlice';
+import { RootState } from '../../state/store';
 import { asciiLogo } from '../../utils';
 import { Loader } from '../Common/Misc/Loader';
 
@@ -15,9 +16,11 @@ type AuthStateHandlerProps = {
   children: ReactNode;
 };
 
-// TODO: perhaps move to other location or transform into a useAuthState hook
+// TODO: perhaps move to other location or transform into a useAuthState hook - THIS IS LAST
+// todo investigate duplicate entries on hot reload
 export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const isLoading = useSelector((state: RootState) => state.user.isLoading);
+
   console.log('AuthStateHandler: isLoading', isLoading);
   const dispatch = useDispatch();
 
@@ -37,8 +40,6 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
       } else {
         dispatch(logout());
       }
-
-      setIsLoading(false);
     };
 
     onAuthStateChanged(auth, (user) => void onAuthStateChangeHandler(user));
