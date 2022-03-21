@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { InputActionMeta, mergeStyles, OnChangeValue, Props } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
@@ -39,6 +39,9 @@ export const SelectPopover = ({
 }: SelectPopoverProps) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
+
+  // Clean up function to cancel async tasks to prevent error on Link click
+  useEffect(() => () => {}, []);
 
   const handleInputChange = (newInputValue: string, actionMeta: InputActionMeta) => {
     if (
