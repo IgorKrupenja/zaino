@@ -78,9 +78,8 @@ export const SelectPopover = ({
     ...rest,
   };
 
-  const openPopover = () => {
-    setIsPopoverOpen(true);
-  };
+  // todo fishy. can just merge two fns? and use useToggle?
+  const openPopover = () => setIsPopoverOpen(true);
 
   const closePopover = () => {
     setIsPopoverOpen(false);
@@ -102,7 +101,6 @@ export const SelectPopover = ({
         </>
       }
     >
-      {/* popover toggle container */}
       <div onClick={isPopoverOpen ? closePopover : openPopover}>{children}</div>
     </Popover>
   );
