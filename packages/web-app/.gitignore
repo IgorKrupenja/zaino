@@ -11,7 +11,7 @@
 .env.production.local
 
 # Privacy policy content
-src/components/pages/PrivacyPolicy/PrivacyPolicyContent.tsx
+src/components/other/PrivacyPolicyPage/PrivacyPolicyContent.tsx
 
 # Copyrighted images
 src/images/copyrighted/

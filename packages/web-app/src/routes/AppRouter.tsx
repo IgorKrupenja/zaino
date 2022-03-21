@@ -4,12 +4,12 @@ import { CategoriesPage } from '../components/categories/CategoriesPage';
 import { Loader } from '../components/common/Misc/Loader';
 import { DashboardPage } from '../components/dashboard/DashboardPage';
 import { LabelsPage } from '../components/labels/LabelsPage';
-import { LoginPage } from '../components/pages/LoginPage';
+import { LoginPage } from '../components/other/LoginPage';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = () => {
-  const PrivacyPolicy = lazy(() => import('../components/pages/PrivacyPolicy'));
+  const PrivacyPolicy = lazy(() => import('../components/other/PrivacyPolicyPage'));
 
   return (
     <BrowserRouter>

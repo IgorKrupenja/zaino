@@ -1,7 +1,7 @@
 import { Column } from '../../common/containers/Column';
 import { Button } from '../../common/Controls/Button';
 import { EditIcon } from '../../common/Icons/EditIcon';
-import { LabelBadgeList } from '../../common/labels/LabelBadgeList';
+import { LabelBadgeList } from '../../common/Misc/LabelBadgeList';
 import { LabelSelect } from '../../common/Selects/LabelSelect';
 import './style.scss';
 

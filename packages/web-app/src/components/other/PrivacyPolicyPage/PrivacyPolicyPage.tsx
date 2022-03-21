@@ -3,7 +3,7 @@ import { useTitle } from '../../../hooks';
 import { BackLink } from '../../common/Misc/BackLink';
 import './style.scss';
 
-export const PrivacyPolicy = () => {
+export const PrivacyPolicyPage = () => {
   useTitle('Privacy and cookie policy | Zaino');
 
   const PrivacyPolicyContent = lazy(async () => {

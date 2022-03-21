@@ -8,7 +8,7 @@ import { deleteLabel, updateLabel } from '../../../state/slices/labelsSlice';
 import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/Controls/Button';
 import { CloseButton } from '../../common/Controls/CloseButton';
-import { LabelBadge } from '../../common/labels/LabelBadge';
+import { LabelBadge } from '../../common/Misc/LabelBadge';
 import { Popover } from '../../common/Misc/Popover';
 import { LabelForm } from '../LabelForm';
 import './style.scss';
