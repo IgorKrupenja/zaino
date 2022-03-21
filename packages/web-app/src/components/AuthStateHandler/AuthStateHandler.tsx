@@ -17,15 +17,15 @@ type AuthStateHandlerProps = {
 };
 
 // TODO: perhaps move to other location or transform into a useAuthState hook - THIS IS LAST
-// todo investigate duplicate entries on hot reload
 export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
   const isLoading = useSelector((state: RootState) => state.user.isLoading);
+  const isLoggedIn = useSelector((state: RootState) => state.user.email !== '');
 
   console.log('AuthStateHandler: isLoading', isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('use effect');
+    console.log('use effect!');
     const auth = getAuth();
 
     const onAuthStateChangeHandler = async (user: User | null) => {
@@ -42,8 +42,9 @@ export const AuthStateHandler = ({ children }: AuthStateHandlerProps) => {
       }
     };
 
-    onAuthStateChanged(auth, (user) => void onAuthStateChangeHandler(user));
-  }, [dispatch]);
+    // todo do I need isLoggedIn if used as hook
+    onAuthStateChanged(auth, (user) => !isLoggedIn && void onAuthStateChangeHandler(user));
+  }, [dispatch, isLoggedIn]);
 
   return <>{isLoading ? <Loader /> : children}</>;
 };
