@@ -1,11 +1,11 @@
 import { getAuth, signOut } from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useToggle } from '../../../hooks';
-import { RootState } from '../../../state/store';
-import { Button } from '../../common/Controls/Button';
-import { CloseButton } from '../../common/Controls/CloseButton';
-import { Popover } from '../../common/Misc/Popover';
+import { useToggle } from '../../../../hooks';
+import { RootState } from '../../../../state/store';
+import { Button } from '../../Controls/Button';
+import { CloseButton } from '../../Controls/CloseButton';
+import { Popover } from '../../Misc/Popover';
 import './style.scss';
 
 export const AccountDetails = () => {

@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useToggle } from '../../../hooks';
-import { selectDemoItems } from '../../../state/selectors/itemsSelector';
-import { selectDemoDataLabels } from '../../../state/selectors/labelsSelector';
-import { addDemoData } from '../../../state/slices/demoDataSlice';
-import { batchDeleteItems } from '../../../state/slices/itemsSlice';
-import { batchDeleteLabels } from '../../../state/slices/labelsSlice';
-import { RootState } from '../../../state/store';
-import { Button } from '../../common/Controls/Button';
-import { CloseButton } from '../../common/Controls/CloseButton';
-import { Popover } from '../../common/Misc/Popover';
+import { useToggle } from '../../../../hooks';
+import { selectDemoItems } from '../../../../state/selectors/itemsSelector';
+import { selectDemoDataLabels } from '../../../../state/selectors/labelsSelector';
+import { addDemoData } from '../../../../state/slices/demoDataSlice';
+import { batchDeleteItems } from '../../../../state/slices/itemsSlice';
+import { batchDeleteLabels } from '../../../../state/slices/labelsSlice';
+import { RootState } from '../../../../state/store';
+import { Button } from '../../Controls/Button';
+import { CloseButton } from '../../Controls/CloseButton';
+import { Popover } from '../../Misc/Popover';
 import './style.scss';
 
 export const DemoData = () => {
