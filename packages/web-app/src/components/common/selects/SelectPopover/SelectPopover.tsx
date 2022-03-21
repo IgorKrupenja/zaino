@@ -10,7 +10,6 @@ import { commonSelectStyles } from './style';
 export type SelectOption = {
   value: string;
   label: string;
-  // for LabelSelect
   hexValue?: string;
 };
 
@@ -44,17 +43,7 @@ export const SelectPopover = ({
   useEffect(() => () => {}, []);
 
   const handleInputChange = (newInputValue: string, actionMeta: InputActionMeta) => {
-    if (
-      actionMeta.action === 'set-value' ||
-      actionMeta.action === 'input-blur' ||
-      actionMeta.action === 'menu-close'
-    ) {
-      // needed to prevent full option list flashes when closing menu
-      // and input getting cleared when clicking on it if has text entered
-      return;
-    } else {
-      setInputValue(newInputValue);
-    }
+    if (actionMeta.action === 'input-change') setInputValue(newInputValue);
   };
 
   const handleChange = (newValues: OnChangeValue<SelectOption, boolean>) => {
