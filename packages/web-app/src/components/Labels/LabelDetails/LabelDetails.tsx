@@ -7,7 +7,7 @@ import { resetItemFilters } from '../../../state/slices/itemFiltersSlice';
 import { deleteLabel, updateLabel } from '../../../state/slices/labelsSlice';
 import { Button } from '../../Common/Controls/Button';
 import { CloseButton } from '../../Common/Controls/CloseButton';
-import { LabelBadge } from '../../Common/LabelBadge/LabelBadge';
+import { LabelBadge } from '../../Common/labels/LabelBadge';
 import { Popover } from '../../Common/Misc/Popover';
 import { Row } from '../../Common/Wrappers/Row';
 import { LabelForm } from '../LabelForm';

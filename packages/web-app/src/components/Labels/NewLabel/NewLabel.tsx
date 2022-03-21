@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { addLabel } from '../../../state/slices/labelsSlice';
 import { getRandomColor } from '../../../utils';
 import { Button } from '../../Common/Controls/Button';
-import { LabelBadge } from '../../Common/LabelBadge/LabelBadge';
+import { LabelBadge } from '../../Common/labels/LabelBadge';
 import { LabelForm } from '../LabelForm';
 import './style.scss';
 

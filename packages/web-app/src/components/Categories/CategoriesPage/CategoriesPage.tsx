@@ -15,7 +15,7 @@ import { Loader } from '../../Common/Misc/Loader';
 import { ScrollablePage } from '../../Common/Misc/ScrollablePage';
 import { SectionHeader } from '../../Common/Misc/SectionHeader';
 import { Column } from '../../Common/Wrappers/Column';
-import { List } from '../../Labels/List/List';
+import { List } from '../../Labels/List';
 
 // TODO: unfinished
 export const CategoriesPage = () => {

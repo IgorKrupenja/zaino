@@ -1,6 +1,6 @@
 import { Button } from '../../Common/Controls/Button';
 import { EditIcon } from '../../Common/Icons/EditIcon';
-import { LabelBadgeList } from '../../Common/LabelBadge/LabelBadgeList';
+import { LabelBadgeList } from '../../Common/labels/LabelBadgeList';
 import { LabelSelect } from '../../Common/Selects/LabelSelect';
 import { Column } from '../../Common/Wrappers/Column';
 import './style.scss';
