@@ -1,0 +1,35 @@
+.popover {
+  background-color: white;
+  border: $border;
+  border-radius: $xs-size;
+  box-shadow: $shadow;
+  overflow: hidden !important;
+  z-index: 99;
+}
+
+.popover--wide {
+  width: 25rem;
+}
+
+.popover__header {
+  align-items: center;
+  border-bottom: 0.1rem solid $light-grey;
+  display: flex;
+  height: $xl-size;
+  justify-content: space-between;
+  padding-left: $m-size;
+}
+
+.popover__title {
+  font-size: $font-size-medium;
+}
+
+.popover__content {
+  display: flex;
+  flex-direction: column;
+  margin: $xs-size $s-size $s-size $s-size;
+}
+
+.popover__text {
+  margin-bottom: $xs-size;
+}

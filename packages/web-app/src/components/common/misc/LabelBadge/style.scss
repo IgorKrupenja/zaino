@@ -1,0 +1,25 @@
+.label-badge {
+  margin: 0 0.4rem 0.4rem 0;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  padding: 0 0.7rem;
+  outline: none;
+
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+
+  overflow-wrap: anywhere;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+  &:disabled {
+    cursor: unset;
+    filter: unset;
+  }
+}

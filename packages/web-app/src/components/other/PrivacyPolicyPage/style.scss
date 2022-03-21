@@ -1,0 +1,30 @@
+.privacy-policy {
+  margin: 0 auto;
+  max-width: $app-width;
+  padding: 3rem 5rem 4rem 5rem;
+}
+
+.privacy-policy__title {
+  color: $dark-green;
+  font-family: 'Righteous', cursive;
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: -0.5rem;
+}
+
+.privacy-policy__heading {
+  margin: $s-size 0;
+}
+
+.privacy-policy__paragraph {
+  margin: $s-size 0;
+}
+
+.privacy-policy__contents {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.privacy-policy__contents__item {
+  margin: 0.4rem 0;
+}

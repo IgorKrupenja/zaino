@@ -1,15 +1,15 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { CategoriesPage } from '../components/Categories/CategoriesPage';
-import { Loader } from '../components/Common/Misc/Loader';
-import { DashboardPage } from '../components/Dashboard/DashboardPage';
-import { LabelsPage } from '../components/Labels/LabelsPage';
-import { LoginPage } from '../components/pages/LoginPage';
+import { Loader } from '../components/common/misc/Loader';
+import { DashboardPage } from '../components/dashboard/DashboardPage';
+import { LabelsPage } from '../components/labels/LabelsPage';
+import { CategoriesPage } from '../components/other/CategoriesPage';
+import { LoginPage } from '../components/other/LoginPage';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = () => {
-  const PrivacyPolicy = lazy(() => import('../components/pages/PrivacyPolicy'));
+  const PrivacyPolicy = lazy(() => import('../components/other/PrivacyPolicyPage'));
 
   return (
     <BrowserRouter>

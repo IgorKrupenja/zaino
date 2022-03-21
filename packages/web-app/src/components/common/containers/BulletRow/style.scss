@@ -1,0 +1,17 @@
+// see BulletWrapper.tsx for more info on this logic
+.bullet-wrapper {
+  margin-right: 1rem;
+  overflow: hidden;
+
+  & * {
+    display: inline-block;
+    margin-right: 1.5rem;
+  }
+
+  & *::before {
+    content: '•';
+    display: inline-block;
+    margin-left: -1rem;
+    width: 1rem;
+  }
+}

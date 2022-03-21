@@ -1,0 +1,69 @@
+// wrapper div is used in order to achieve flexible list height
+.stack__wrapper {
+  flex: 1;
+  height: 100%;
+}
+
+.stack {
+  background-color: $off-white;
+  border: $border;
+  border-radius: $xs-size;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+
+.stack--left {
+  margin-left: $s-size;
+  margin-right: $xs-size;
+}
+
+.stack--right {
+  margin-left: $xs-size;
+  margin-right: $s-size;
+}
+
+.stack__list {
+  margin-bottom: $stack-margin-size;
+  // right margin to support the nice scrollbar
+  margin-right: math.div($stack-margin-size, 2);
+  overflow-y: auto;
+  padding: 0 0.5rem 0 $stack-margin-size;
+  scrollbar-color: $light-grey $extra-light-grey;
+  // scrollbars for Firefox on Windows/Linux -- less fancy as FF has limited styling support
+  scrollbar-width: thin;
+
+  // custom scrollbar for Blink and Webkit
+  // inspired by Trello and this: https://gist.github.com/spemer/a0e218bbb45433bd611e68446523a00b
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: $extra-light-grey;
+    border-radius: 0.6rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $light-grey;
+    border-radius: 0.6rem;
+    min-height: 5rem;
+
+    &:hover {
+      background-color: $mid-grey;
+    }
+  }
+}
+
+// scrollbar for Firefox on Mac
+.stack__list--firefox-mac {
+  margin-right: 0;
+  padding-right: $stack-margin-size;
+  scrollbar-width: auto;
+}
+
+.stack__list--empty {
+  align-items: center;
+  display: flex;
+  height: 11rem;
+  justify-content: center;
+  overflow: hidden;
+}
