@@ -24,7 +24,7 @@ export const CategoriesPage = () => {
   const categories = useSelector((state: RootState) => selectFilteredCategories(state));
   const categoryCount = categories.length;
   const totalCategoryCount = useSelector((state: RootState) => selectCategoryCount(state));
-  const [isFormOpen, toggleForm] = useToggle();
+  const [isFormOpen] = useToggle();
 
   return (
     <ScrollablePage>

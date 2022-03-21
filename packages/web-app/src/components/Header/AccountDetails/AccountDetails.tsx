@@ -25,7 +25,7 @@ export const AccountDetails = () => {
             <CloseButton onClick={togglePopover} />
           </Popover.Header>
           <Popover.Content className="account-details__content">
-            <img src={photoUrl} className="account-details__photo" />
+            <img src={photoUrl} className="account-details__photo" alt={name} />
             <div className="account-details__name">{name}</div>
             <div className="account-details__email">{email}</div>
             {/* render policy link if enabled in .env */}
@@ -46,6 +46,7 @@ export const AccountDetails = () => {
         src={photoUrl}
         onClick={togglePopover}
         className="account-details__photo account-details__photo--toggle"
+        alt={name}
       />
     </Popover>
   );

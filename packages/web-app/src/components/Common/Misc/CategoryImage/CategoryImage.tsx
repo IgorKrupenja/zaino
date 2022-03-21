@@ -17,6 +17,7 @@ export const CategoryImage = ({ categoryId, className }: CategoryImageProps) => 
     <img
       src={`${process.env.REACT_APP_GCP_STORAGE_URL as string}/categories/${imageFileName}`}
       className={getClassString('category-image', className)}
+      alt=""
     />
   ) : (
     <></>
