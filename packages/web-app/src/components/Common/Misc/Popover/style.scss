@@ -3,7 +3,7 @@
   border: $border;
   border-radius: $xs-size;
   box-shadow: $shadow;
-  overflow: hidden;
+  overflow: hidden !important;
   z-index: 99;
 }
 

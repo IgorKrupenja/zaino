@@ -31,6 +31,7 @@ export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = 
     ...base,
     display: isFocused ? 'none' : 'block',
     paddingTop: '0.5rem',
+    width: '100%',
   }),
   input: (base) => ({
     ...base,
