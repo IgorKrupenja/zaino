@@ -1,4 +1,5 @@
 import { getAuth, signOut } from 'firebase/auth';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useToggle } from '../../../../hooks';
@@ -11,6 +12,9 @@ import './style.scss';
 export const AccountDetails = () => {
   const { name, email, photoUrl } = useSelector((state: RootState) => state.user);
   const [isPopoverOpen, togglePopover] = useToggle();
+
+  // Clean up function to cancel async tasks to prevent error on Link click
+  useEffect(() => () => {}, []);
 
   return (
     <Popover
@@ -28,13 +32,12 @@ export const AccountDetails = () => {
             <img src={photoUrl} className="account-details__photo" alt={name} />
             <div className="account-details__name">{name}</div>
             <div className="account-details__email">{email}</div>
-            {/* render policy link if enabled in .env */}
             <Link className="account-details__policies" to="/privacy">
               Privacy and cookie policy
             </Link>
             <Button
               className="button--grey account-details__sign-out"
-              onClick={() => signOut(getAuth())}
+              onClick={async () => signOut(getAuth())}
             >
               Sign out
             </Button>
