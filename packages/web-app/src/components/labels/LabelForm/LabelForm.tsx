@@ -98,7 +98,7 @@ export const LabelForm = ({
       </Row>
       {nameError && <FormError className="label-form__input__error">{nameError}</FormError>}
       <Row className="label-form__buttons">
-        {/* todo move to parent component */}
+        {/* todo move to parent component!!! */}
         <Button
           className="button--grey label-form__cancel"
           onClick={() => {
