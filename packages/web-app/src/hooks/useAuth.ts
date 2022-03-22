@@ -11,7 +11,7 @@ import { login, logout } from '../state/slices/userSlice';
 import { RootState, store } from '../state/store';
 import { asciiLogo } from '../utils';
 
-export const useAuthState = (): boolean => {
+export const useAuth = (): boolean => {
   const isLoading = useSelector((state: RootState) => state.user.isLoading);
   const dispatch = useDispatch();
 
