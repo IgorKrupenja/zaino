@@ -19,7 +19,7 @@ export const NewLabel = ({ toggleForm }: NewLabelProps) => {
   const label: Label = {
     id: uuid(),
     name: '',
-    colorName: colorName,
+    colorName,
     itemUniqueCount: 0,
     itemTotalCount: 0,
     lastSortIndex: 0,
