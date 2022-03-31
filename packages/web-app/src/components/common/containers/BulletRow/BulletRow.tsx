@@ -14,6 +14,7 @@ type BulletRowProps = {
  */
 export const BulletRow = ({ children, className }: BulletRowProps) => {
   return (
+    // todo renaem class
     <div className={getClassString('bullet-wrapper', { extraClassNames: className })}>
       {children}
     </div>

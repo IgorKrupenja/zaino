@@ -13,7 +13,7 @@ export const SectionHeader = ({ className, children, variant }: SectionHeaderPro
     <header
       className={getClassString('section-header', {
         extraClassNames: className,
-        variant: variant,
+        variant,
       })}
     >
       {children}

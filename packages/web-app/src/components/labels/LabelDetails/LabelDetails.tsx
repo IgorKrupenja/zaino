@@ -94,7 +94,7 @@ export const LabelDetails = (label: Label) => {
             </Button>
           </Popover>
           {/* save changes button */}
-          <Button submit className="button--green label-details__save">
+          <Button submit className="button--primary label-details__save">
             Save changes
           </Button>
         </LabelForm>

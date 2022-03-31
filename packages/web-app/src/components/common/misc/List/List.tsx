@@ -12,9 +12,7 @@ export const List = ({ children }: ListProps) => {
 };
 
 const Empty = ({ children, variant }: ListProps) => {
-  return (
-    <section className={getClassString('list--empty', { variant: variant })}>{children}</section>
-  );
+  return <section className={getClassString('list--empty', { variant })}>{children}</section>;
 };
 
 List.Empty = Empty;

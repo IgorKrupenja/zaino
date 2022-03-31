@@ -19,10 +19,11 @@ import { ScrollablePage } from '../../common/misc/ScrollablePage';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { LabelDetails } from '../LabelDetails';
 import { NewLabel } from '../NewLabel';
-import './style.scss';
+import './LabelsPage.scss';
 
 export const LabelsPage = () => {
   useTitle('Labels | Zaino');
+
   const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
   const dispatch = useDispatch();
   const labels = useSelector((state: RootState) => selectFilteredLabels(state)) as Label[];
@@ -54,8 +55,9 @@ export const LabelsPage = () => {
                 {labelCount} label{labelCount !== 1 && 's'}
               </SectionHeader.Content>
             </Column>
+            {/* todo button variants */}
             <Button
-              className="button--green labels-page__new-label"
+              className="button--primary labels-page__new-label"
               disabled={isFormOpen}
               onClick={toggleForm}
             >

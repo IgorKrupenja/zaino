@@ -82,7 +82,7 @@ export const EditItem = () => {
           </Button>
         </Popover>
         {/* Save/submit button */}
-        <Button className="button--green item-form__half-width edit-item__button-right" submit>
+        <Button className="button--primary item-form__half-width edit-item__button-right" submit>
           Save changes
         </Button>
       </ItemForm>

@@ -40,7 +40,7 @@ export const NewLabel = ({ toggleForm }: NewLabelProps) => {
         setLabelBadgeText={setName}
         setLabelBadgeColor={setColorName}
       >
-        <Button submit className="button--green new-label__create">
+        <Button submit className="button--primary new-label__create">
           Create new label
         </Button>
       </LabelForm>

@@ -53,7 +53,7 @@ export const DemoData = () => {
               <Popover.Text>
                 Use this to load demo items and labels. These can be easily removed later.
               </Popover.Text>
-              <Button className="button--green" onClick={loadDemoData}>
+              <Button className="button--primary" onClick={loadDemoData}>
                 Load
               </Button>
             </Popover.Content>
