@@ -31,7 +31,7 @@ export const CategoryPicker = ({ categoryId, onChange }: CategoryPickerProps) =>
         headerText="Select category"
         onChange={onChange}
       >
-        <Button className="button--small" variant="transparent">
+        <Button variant="transparent" size="small">
           Category
           <EditIcon />
         </Button>

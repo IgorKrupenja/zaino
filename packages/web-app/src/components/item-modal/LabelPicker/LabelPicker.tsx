@@ -25,7 +25,7 @@ export const LabelPicker = ({ labelIds, onChange }: LabelPickerProps) => {
         isCreatable
         onChange={onChange}
       >
-        <Button className="button--small" variant="transparent">
+        <Button variant="transparent" size="small">
           Labels
           <EditIcon />
         </Button>

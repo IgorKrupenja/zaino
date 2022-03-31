@@ -31,7 +31,11 @@ export const Inventory = () => {
           <SectionHeader.Title>Inventory</SectionHeader.Title>
           <Stats className="section-header__content" stats={stats} />
         </Column>
-        <Link className="button button--primary inventory__new-item" to="/dashboard/new">
+        {/* todo use button instead somehow? */}
+        <Link
+          className="button button--primary button--large inventory__new-item"
+          to="/dashboard/new"
+        >
           New item
         </Link>
       </SectionHeader>

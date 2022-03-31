@@ -3,12 +3,7 @@
   border-radius: $xs-size;
   color: white;
   cursor: pointer;
-
   font-weight: 500;
-
-  height: $xl-size;
-  padding: 0 $s-size 0 $s-size;
-
   transition: 0.3s ease;
 
   &:focus {
@@ -46,7 +41,6 @@
 .button--tertiary {
   align-items: center;
   background-color: $off-white;
-
   border: 0.1rem solid $light-grey;
   color: $off-black;
   display: flex;
@@ -69,13 +63,11 @@
 
 .button--transparent {
   align-items: center;
-
   background-color: transparent;
   color: $grey;
   display: flex;
   font-weight: normal;
   justify-content: center;
-
   margin: 0;
   padding: 0 0 0 $l-size;
 
@@ -93,14 +85,12 @@
 
 .button--link {
   align-items: center;
-
   background-color: transparent;
   border-bottom: 0.2rem solid transparent;
   border-radius: 0;
   display: flex;
   font-size: 1.5rem;
   height: 2.5rem;
-
   margin: 0 $xs-size;
   padding: 0;
 
@@ -132,4 +122,9 @@
   height: 1.9rem;
   margin: 0 0 0.2rem 0.3rem;
   padding: 0;
+}
+
+.button--large {
+  height: $xl-size;
+  padding: 0 $s-size 0 $s-size;
 }
