@@ -12,7 +12,7 @@ import { FormError } from '../../common/controls/FormError';
 import { FormLabel } from '../../common/controls/FormLabel';
 import { Input } from '../../common/controls/Input';
 import { ColorSelect } from '../../common/selects/ColorSelect';
-import './style.scss';
+import './LabelForm.scss';
 
 type LabelFormProps = {
   label: Label;

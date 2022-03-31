@@ -7,7 +7,7 @@ import { getRandomColor } from '../../../utils';
 import { Button } from '../../common/controls/Button';
 import { LabelBadge } from '../../common/misc/LabelBadge';
 import { LabelForm } from '../LabelForm';
-import './style.scss';
+import './NewLabel.scss';
 
 type NewLabelProps = {
   toggleForm: () => void;

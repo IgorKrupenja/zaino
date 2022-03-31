@@ -11,7 +11,7 @@ import { CloseButton } from '../../common/controls/CloseButton';
 import { LabelBadge } from '../../common/misc/LabelBadge';
 import { Popover } from '../../common/misc/Popover';
 import { LabelForm } from '../LabelForm';
-import './style.scss';
+import './LabelDetails.scss';
 
 export const LabelDetails = (label: Label) => {
   const dispatch = useDispatch();
