@@ -85,7 +85,7 @@ export const DemoData = () => {
                 All items and labels added as demo data (even if you have made changes to them) will
                 be removed. Items and labels you created yourself will not be affected.
               </Popover.Text>
-              <Button className="button--red" onClick={removeDemoData}>
+              <Button className="button--secondary" onClick={removeDemoData}>
                 Remove
               </Button>
             </Popover.Content>

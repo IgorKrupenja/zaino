@@ -34,7 +34,7 @@ export const PackItem = (item: Item) => {
         <Row>
           Quantity in pack:
           <Button
-            className="button--grey pack-item__quantity--button"
+            className="button--tertiary pack-item__quantity--button"
             onClick={decreasePackQuantity}
           >
             -
@@ -42,7 +42,7 @@ export const PackItem = (item: Item) => {
           <span className="pack-item__quantity">{packQuantity}</span>
           <Button
             disabled={item.quantity === item.packQuantity}
-            className="button--grey pack-item__quantity--button"
+            className="button--tertiary pack-item__quantity--button"
             onClick={increasePackQuantity}
           >
             +
@@ -50,7 +50,7 @@ export const PackItem = (item: Item) => {
         </Row>
       )}
       <Button
-        className="button--grey button--medium pack-item__remove"
+        className="button--tertiary button--medium pack-item__remove"
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 0 }))}
       >
         <NoBackpackIcon className="pack-item__button-icon" />

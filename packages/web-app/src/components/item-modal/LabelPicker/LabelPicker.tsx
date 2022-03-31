@@ -27,7 +27,7 @@ export const LabelPicker = ({ labelIds, onChange }: LabelPickerProps) => {
         onChange={onChange}
       >
         {/* Select toggle button */}
-        <Button className="button--white button--small">
+        <Button className="button--transparent button--small">
           Labels
           <EditIcon />
         </Button>

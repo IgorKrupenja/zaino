@@ -9,7 +9,7 @@
     color: darken($dark-red, 10%);
   }
   // also change SVG fill when hovering over text
-  &:hover > .button--white__icon {
+  &:hover > .button--transparent__icon {
     fill: darken($dark-red, 10%);
   }
 }

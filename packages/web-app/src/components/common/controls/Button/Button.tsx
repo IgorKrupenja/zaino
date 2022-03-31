@@ -16,13 +16,13 @@ type ButtonProps = {
 
 // forwardRef needed to support Button as Popover's target
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, children, submit, variant, ...rest }: ButtonProps, ref) => {
+  ({ className, children, submit, variant = 'primary', ...rest }: ButtonProps, ref) => {
     return (
       <button
         ref={ref}
         className={getClassString('button', {
           extraClassNames: className,
-          variant: variant ?? 'primary',
+          variant,
         })}
         type={submit ? 'submit' : 'button'}
         {...rest}

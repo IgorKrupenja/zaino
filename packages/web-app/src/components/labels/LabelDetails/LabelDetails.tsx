@@ -51,7 +51,7 @@ export const LabelDetails = (label: Label) => {
           </div>
         ) : null}
         {!isFormOpen && (
-          <Button className="button--white label-details__edit" onClick={toggleForm}>
+          <Button className="button--transparent label-details__edit" onClick={toggleForm}>
             Edit
           </Button>
         )}
@@ -80,7 +80,7 @@ export const LabelDetails = (label: Label) => {
                     Deleting a label will remove it from all items. There is no undo.
                   </Popover.Text>
                   <Button
-                    className="button--red"
+                    className="button--secondary"
                     onClick={() => label && dispatch(deleteLabel(label.id))}
                   >
                     Delete
@@ -89,7 +89,7 @@ export const LabelDetails = (label: Label) => {
               </>
             }
           >
-            <Button className="button--red label-details__delete" onClick={togglePopover}>
+            <Button className="button--secondary label-details__delete" onClick={togglePopover}>
               Delete
             </Button>
           </Popover>

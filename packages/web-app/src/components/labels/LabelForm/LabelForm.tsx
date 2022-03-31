@@ -100,7 +100,7 @@ export const LabelForm = ({
       <Row className="label-form__buttons">
         {/* todo move to parent component!!! */}
         <Button
-          className="button--grey label-form__cancel"
+          className="button--tertiary label-form__cancel"
           onClick={() => {
             toggleForm();
             setLabelBadgeText(initialName);
