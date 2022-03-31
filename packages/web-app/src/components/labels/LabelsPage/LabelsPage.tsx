@@ -47,7 +47,7 @@ export const LabelsPage = () => {
         <Loader />
       ) : (
         <List>
-          {/* Header with name, count and New label button */}
+          {/* Header */}
           <SectionHeader variant="large-margin">
             <Column>
               <SectionHeader.Title>Labels</SectionHeader.Title>
@@ -61,7 +61,7 @@ export const LabelsPage = () => {
           </SectionHeader>
           {/* New label form */}
           {isFormOpen && <NewLabel toggleForm={toggleForm} />}
-          {/* List proper */}
+          {/* List */}
           {labelCount > 0 ? (
             labels.map((label) => <LabelDetails key={label.id} {...label} />)
           ) : (
