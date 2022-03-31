@@ -35,12 +35,11 @@ export const LabelDetails = (label: Label) => {
               dispatch(resetItemFilters());
               navigate('/dashboard');
             }}
-            // show live label name preview (as user is typing) if form is open
           >
             {isFormOpen ? (name.trim() ? name : 'Label preview') : undefined}
           </LabelBadge>
         </div>
-        {/* item count */}
+        {/* Item count */}
         {itemTotalCount ? (
           <div
             className={`label-details__count${
@@ -61,10 +60,10 @@ export const LabelDetails = (label: Label) => {
           label={label}
           onSubmit={(label) => dispatch(updateLabel(label))}
           toggleForm={toggleForm}
-          setLabelBadgeText={setName}
-          setLabelBadgeColor={setColorName}
+          setName={setName}
+          setColorName={setColorName}
         >
-          {/* delete button with popover */}
+          {/* Delete button with popover */}
           <Popover
             isOpen={isPopoverOpen}
             onClickOutside={togglePopover}
@@ -93,7 +92,7 @@ export const LabelDetails = (label: Label) => {
               Delete
             </Button>
           </Popover>
-          {/* save changes button */}
+          {/* Save changes button */}
           <Button submit className="label-details__save">
             Save changes
           </Button>

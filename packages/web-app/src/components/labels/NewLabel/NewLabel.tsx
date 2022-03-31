@@ -37,8 +37,8 @@ export const NewLabel = ({ toggleForm }: NewLabelProps) => {
         // lastSortIndex to keep newly-created label at the top of the list -- if sorting by name
         onSubmit={(label) => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
         toggleForm={toggleForm}
-        setLabelBadgeText={setName}
-        setLabelBadgeColor={setColorName}
+        setName={setName}
+        setColorName={setColorName}
       >
         <Button submit className="new-label__create">
           Create new label
