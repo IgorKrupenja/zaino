@@ -60,6 +60,7 @@
     border-color: $extra-light-grey;
     color: $mid-grey;
     cursor: default;
+
     &:hover {
       background-color: $off-white;
     }
@@ -90,7 +91,7 @@
   }
 }
 
-.button--underline {
+.button--link {
   align-items: center;
 
   background-color: transparent;
@@ -116,7 +117,7 @@
   }
 }
 
-.button--underline--active {
+.button--link--active {
   border-bottom: 0.2rem solid white;
 }
 

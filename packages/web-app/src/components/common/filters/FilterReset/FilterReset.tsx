@@ -12,7 +12,8 @@ type FilterResetProps = {
 export const FilterReset = ({ onClick, children, isFiltering }: FilterResetProps) => {
   return (
     <Button
-      className={`filter-reset button--transparent${isFiltering ? '' : ' filter-reset--hidden'}`}
+      className={`filter-reset ${isFiltering ? '' : ' filter-reset--hidden'}`}
+      variant="transparent"
       onClick={onClick}
     >
       <CloseIcon className="button--transparent__icon filter-reset__icon" />

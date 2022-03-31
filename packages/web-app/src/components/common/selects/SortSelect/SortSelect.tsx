@@ -58,7 +58,7 @@ export const SortSelect = ({
       }}
       styles={sortSelectStyles}
     >
-      <Button className="button--transparent">
+      <Button variant="transparent">
         Sort
         <DropdownIcon />
       </Button>

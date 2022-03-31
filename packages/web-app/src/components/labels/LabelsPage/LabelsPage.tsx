@@ -56,11 +56,7 @@ export const LabelsPage = () => {
               </SectionHeader.Content>
             </Column>
             {/* todo button variants */}
-            <Button
-              className="button--primary labels-page__new-label"
-              disabled={isFormOpen}
-              onClick={toggleForm}
-            >
+            <Button className="labels-page__new-label" disabled={isFormOpen} onClick={toggleForm}>
               New label
             </Button>
           </SectionHeader>

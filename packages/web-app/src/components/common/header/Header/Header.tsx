@@ -16,7 +16,7 @@ export const Header = () => {
   const labelSortOption = useSelector((state: RootState) => state.labelFilters.sortBy);
 
   const getLinkClassName = (isActive: boolean) =>
-    `button button--underline header__nav__link ${isActive ? 'button--underline--active' : ''}`;
+    `button button--link header__nav__link ${isActive ? 'button--link--active' : ''}`;
 
   return (
     <div className="header__container">

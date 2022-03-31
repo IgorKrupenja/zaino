@@ -36,7 +36,8 @@ export const AccountDetails = () => {
               Privacy and cookie policy
             </Link>
             <Button
-              className="button--tertiary account-details__sign-out"
+              className="account-details__sign-out"
+              variant="tertiary"
               onClick={async () => signOut(getAuth())}
             >
               Sign out

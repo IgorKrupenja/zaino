@@ -53,15 +53,13 @@ export const DemoData = () => {
               <Popover.Text>
                 Use this to load demo items and labels. These can be easily removed later.
               </Popover.Text>
-              <Button className="button--primary" onClick={loadDemoData}>
-                Load
-              </Button>
+              <Button onClick={loadDemoData}>Load</Button>
             </Popover.Content>
           </>
         }
       >
         <Button
-          className="button--underline"
+          variant="link"
           // Load button is disabled while data is present or is being loaded
           disabled={isLoading || isDemoDataPresent}
           onClick={toggleLoadPopover}
@@ -85,18 +83,14 @@ export const DemoData = () => {
                 All items and labels added as demo data (even if you have made changes to them) will
                 be removed. Items and labels you created yourself will not be affected.
               </Popover.Text>
-              <Button className="button--secondary" onClick={removeDemoData}>
+              <Button variant="secondary" onClick={removeDemoData}>
                 Remove
               </Button>
             </Popover.Content>
           </>
         }
       >
-        <Button
-          className="button--underline"
-          disabled={!isDemoDataPresent}
-          onClick={toggleRemovePopover}
-        >
+        <Button variant="link" disabled={!isDemoDataPresent} onClick={toggleRemovePopover}>
           Remove
         </Button>
       </Popover>

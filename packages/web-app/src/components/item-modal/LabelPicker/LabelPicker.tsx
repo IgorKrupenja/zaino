@@ -18,7 +18,6 @@ type LabelPickerProps = {
 export const LabelPicker = ({ labelIds, onChange }: LabelPickerProps) => {
   return (
     <Column className="label-picker">
-      {/* Select */}
       <LabelSelect
         popoverAlign="center"
         labelIds={labelIds}
@@ -26,13 +25,11 @@ export const LabelPicker = ({ labelIds, onChange }: LabelPickerProps) => {
         isCreatable
         onChange={onChange}
       >
-        {/* Select toggle button */}
-        <Button className="button--transparent button--small">
+        <Button className="button--small" variant="transparent">
           Labels
           <EditIcon />
         </Button>
       </LabelSelect>
-      {/* Label badge list */}
       <LabelBadgeList labelIds={labelIds} badgeClickDisabled />
     </Column>
   );

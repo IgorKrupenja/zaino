@@ -14,7 +14,8 @@ export const InventoryItem = (item: Item) => {
   return (
     <ItemDetails item={item} quantity={item.quantity > 1 && <span>Quantity: {item.quantity}</span>}>
       <Button
-        className="button--tertiary button--medium"
+        className="button--medium"
+        variant="tertiary"
         disabled={isInPack}
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 1 }))}
       >
