@@ -6,7 +6,6 @@ type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   submit?: boolean;
   className?: string;
-  // todo research why link has to be button???
   variant?: 'primary' | 'secondary' | 'tertiary' | 'transparent' | 'underline';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;

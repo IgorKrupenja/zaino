@@ -55,7 +55,6 @@ export const LabelsPage = () => {
                 {labelCount} label{labelCount !== 1 && 's'}
               </SectionHeader.Content>
             </Column>
-            {/* todo button variants */}
             <Button className="labels-page__new-label" disabled={isFormOpen} onClick={toggleForm}>
               New label
             </Button>
