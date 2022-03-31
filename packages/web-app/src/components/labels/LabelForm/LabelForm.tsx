@@ -38,9 +38,8 @@ export const LabelForm = ({
   const labelSortOption = useSelector((state: RootState) => state.labelFilters.sortBy);
   const [values, setValues] = useState(label);
   const [nameError, setNameError] = useState('');
-  //  todo anything better?
   const initialName = useRef(values.name).current;
-  const initialColor = useRef(values.colorName).current;
+  const initialColorName = useRef(values.colorName).current;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -106,7 +105,7 @@ export const LabelForm = ({
           onClick={() => {
             toggleForm();
             setName(initialName);
-            setColorName(initialColor);
+            setColorName(initialColorName);
           }}
         >
           Cancel

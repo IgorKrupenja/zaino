@@ -15,6 +15,7 @@ type NewLabelProps = {
 
 export const NewLabel = ({ toggleForm }: NewLabelProps) => {
   const dispatch = useDispatch();
+
   const [colorName, setColorName] = useState(getRandomColor().name);
   const label: Label = {
     id: uuid(),
@@ -34,7 +35,7 @@ export const NewLabel = ({ toggleForm }: NewLabelProps) => {
       <LabelForm
         className="new-label"
         label={label}
-        // lastSortIndex to keep newly-created label at the top of the list -- if sorting by name
+        // lastSortIndex to keep newly-created label at the top of the list if sorting by name
         onSubmit={(label) => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
         toggleForm={toggleForm}
         setName={setName}
