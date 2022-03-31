@@ -15,8 +15,9 @@ export const Header = () => {
   const dispatch = useDispatch();
   const labelSortOption = useSelector((state: RootState) => state.labelFilters.sortBy);
 
+  // todo check if there is easy way not to use btn classes
   const getLinkClassName = (isActive: boolean) =>
-    `button button--link header__nav__link ${isActive ? 'button--link--active' : ''}`;
+    `button button--underline header__nav__link ${isActive ? 'button--link--active' : ''}`;
 
   return (
     <div className="header__container">

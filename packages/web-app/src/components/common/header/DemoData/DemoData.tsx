@@ -9,7 +9,7 @@ import { RootState } from '../../../../state/store';
 import { Button } from '../../controls/Button';
 import { CloseButton } from '../../controls/CloseButton';
 import { Popover } from '../../misc/Popover';
-import './style.scss';
+import './DemoData.scss';
 
 export const DemoData = () => {
   const uid = useSelector((state: RootState) => state.user.uid);
@@ -59,8 +59,7 @@ export const DemoData = () => {
         }
       >
         <Button
-          variant="link"
-          // Load button is disabled while data is present or is being loaded
+          variant="underline"
           disabled={isLoading || isDemoDataPresent}
           onClick={toggleLoadPopover}
         >
@@ -83,14 +82,19 @@ export const DemoData = () => {
                 All items and labels added as demo data (even if you have made changes to them) will
                 be removed. Items and labels you created yourself will not be affected.
               </Popover.Text>
-              <Button variant="secondary" onClick={removeDemoData}>
+              <Button className="demo-data__button" variant="secondary" onClick={removeDemoData}>
                 Remove
               </Button>
             </Popover.Content>
           </>
         }
       >
-        <Button variant="link" disabled={!isDemoDataPresent} onClick={toggleRemovePopover}>
+        <Button
+          className="demo-data__button"
+          variant="underline"
+          disabled={!isDemoDataPresent}
+          onClick={toggleRemovePopover}
+        >
           Remove
         </Button>
       </Popover>

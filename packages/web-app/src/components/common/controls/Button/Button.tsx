@@ -7,7 +7,7 @@ type ButtonProps = {
   submit?: boolean;
   className?: string;
   // todo research why link has to be button???
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'transparent' | 'link';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'transparent' | 'underline';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   children: ReactNode;
