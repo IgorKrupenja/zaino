@@ -1,7 +1,7 @@
 rules_version = '2';
 service cloud.firestore {
 
-  // allow read and write access to user's own data
+  // Allow read and write access to user's own data
   match /databases/{database}/documents {
     match /users/{userId} {
       match /{document=**} {
@@ -10,7 +10,7 @@ service cloud.firestore {
     }
   }
 
-  // allow read access to common data for every authenticated user
+  // Allow read access to common data for every authenticated user
   match /databases/{database}/documents/common/demo-data/items {
     match /{document=**} {
       allow read: if request.auth.uid != null;

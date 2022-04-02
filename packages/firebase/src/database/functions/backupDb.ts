@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions';
 import firestore from '@google-cloud/firestore';
-import settings from '../../utils/settings';
+import { settings } from '../../utils/settings';
 
 const client = new firestore.v1.FirestoreAdminClient();
 

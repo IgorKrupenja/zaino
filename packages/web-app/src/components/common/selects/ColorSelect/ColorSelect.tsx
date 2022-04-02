@@ -44,7 +44,7 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
       onChange={handleChange}
       components={{ IndicatorSeparator: null, Control: () => null }}
     >
-      <Button className="button--white">
+      <Button variant="transparent">
         Color
         <EditIcon />
       </Button>

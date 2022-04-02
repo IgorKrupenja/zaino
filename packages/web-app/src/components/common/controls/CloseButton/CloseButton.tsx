@@ -9,7 +9,11 @@ type CloseButtonProps = {
 
 export const CloseButton = ({ onClick, className }: CloseButtonProps) => {
   return (
-    <button className={getClassString('close-button', className)} type="button" onClick={onClick}>
+    <button
+      className={getClassString('close-button', { extraClassNames: className })}
+      type="button"
+      onClick={onClick}
+    >
       <CloseIcon className="close-button__icon" />
     </button>
   );

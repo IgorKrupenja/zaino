@@ -11,5 +11,7 @@ type RowProps = {
  * Wrapper component to arrange children in a row: horizontally from left to right.
  */
 export const Row = ({ className, children }: RowProps) => {
-  return <div className={getClassString('row-wrapper', className)}>{children}</div>;
+  return (
+    <div className={getClassString('row-wrapper', { extraClassNames: className })}>{children}</div>
+  );
 };

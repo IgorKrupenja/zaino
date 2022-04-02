@@ -12,12 +12,12 @@ import {
 import { RootState } from '../../../state/store';
 import { Column } from '../../common/containers/Column';
 import { CollectionFilters } from '../../common/filters/CollectionFilters';
+import { List } from '../../common/misc/List';
 import { Loader } from '../../common/misc/Loader';
 import { ScrollablePage } from '../../common/misc/ScrollablePage';
 import { SectionHeader } from '../../common/misc/SectionHeader';
-import { List } from '../../labels/List';
 
-// TODO: unfinished
+// TODO: unfinished, see #516
 export const CategoriesPage = () => {
   useTitle('Categories | Zaino');
 
@@ -39,8 +39,7 @@ export const CategoriesPage = () => {
         <Loader />
       ) : (
         <List>
-          {/* header with name, count and New category button */}
-          <SectionHeader className="section-header--large-margin">
+          <SectionHeader variant="large-margin">
             <Column>
               <SectionHeader.Title>Categories</SectionHeader.Title>
               <SectionHeader.Content>
@@ -56,7 +55,7 @@ export const CategoriesPage = () => {
               </div>
             ))
           ) : (
-            <List.Empty className={isFormOpen ? 'list--empty--border' : ''}>{`No${
+            <List.Empty variant={isFormOpen ? 'top-border' : undefined}>{`No${
               categoryCount === totalCategoryCount ? '' : ' matching'
             } categories`}</List.Empty>
           )}

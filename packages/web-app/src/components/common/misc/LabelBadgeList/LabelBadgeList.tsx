@@ -24,7 +24,7 @@ export const LabelBadgeList = ({
   );
 
   return itemLabels && itemLabels?.length > 0 ? (
-    <div className={getClassString('label-badge-list', className)}>
+    <div className={getClassString('label-badge-list', { extraClassNames: className })}>
       {itemLabels.map((label) => (
         <LabelBadge
           onClick={onBadgeClick}

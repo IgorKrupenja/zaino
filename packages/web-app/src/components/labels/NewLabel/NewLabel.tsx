@@ -7,7 +7,7 @@ import { getRandomColor } from '../../../utils';
 import { Button } from '../../common/controls/Button';
 import { LabelBadge } from '../../common/misc/LabelBadge';
 import { LabelForm } from '../LabelForm';
-import './style.scss';
+import './NewLabel.scss';
 
 type NewLabelProps = {
   toggleForm: () => void;
@@ -15,11 +15,12 @@ type NewLabelProps = {
 
 export const NewLabel = ({ toggleForm }: NewLabelProps) => {
   const dispatch = useDispatch();
+
   const [colorName, setColorName] = useState(getRandomColor().name);
   const label: Label = {
     id: uuid(),
     name: '',
-    colorName: colorName,
+    colorName,
     itemUniqueCount: 0,
     itemTotalCount: 0,
     lastSortIndex: 0,
@@ -34,13 +35,13 @@ export const NewLabel = ({ toggleForm }: NewLabelProps) => {
       <LabelForm
         className="new-label"
         label={label}
-        // lastSortIndex to keep newly-created label at the top of the list -- if sorting by name
+        // lastSortIndex to keep newly-created label at the top of the list if sorting by name
         onSubmit={(label) => dispatch(addLabel({ ...label, lastSortIndex: 0 }))}
         toggleForm={toggleForm}
-        setLabelBadgeText={setName}
-        setLabelBadgeColor={setColorName}
+        setName={setName}
+        setColorName={setColorName}
       >
-        <Button submit className="button--green new-label__create">
+        <Button submit className="new-label__create">
           Create new label
         </Button>
       </LabelForm>

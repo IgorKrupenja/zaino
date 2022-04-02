@@ -20,7 +20,7 @@ export const Popover = ({ isOpen, children, className, ...rest }: PopoverProps) 
   return (
     <ReactTinyPopover
       isOpen={isOpen}
-      containerClassName={getClassString('popover', className)}
+      containerClassName={getClassString('popover', { extraClassNames: className })}
       align="center"
       positions={['bottom', 'right']}
       {...rest}
@@ -44,7 +44,11 @@ const Title = ({ children }: PopoverChildProps) => {
 };
 
 const Content = ({ children, className }: PopoverChildProps) => {
-  return <div className={getClassString('popover__content', className)}>{children}</div>;
+  return (
+    <div className={getClassString('popover__content', { extraClassNames: className })}>
+      {children}
+    </div>
+  );
 };
 
 const Text = ({ children }: PopoverChildProps) => {

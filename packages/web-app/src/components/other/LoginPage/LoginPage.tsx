@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { googleAuthProvider } from '../../../firebase';
 import { useTitle } from '../../../hooks';
 import { ReactComponent as GithubIcon } from '../../../images/icons/github.svg';
-import './style.scss';
+import './LoginPage.scss';
 
 export const LoginPage = () => {
   useTitle('Zaino');
@@ -16,8 +16,7 @@ export const LoginPage = () => {
         Hiking and mountaineering equipment app for the meticulous adventurer.
       </p>
       <GoogleButton
-        // Fix width, cannot set in SCSS as component overwrites class styles with inline styles
-        style={{ width: '20rem', textAlign: 'start' }}
+        className="login-page__button"
         type="light"
         onClick={() => signInWithRedirect(getAuth(), googleAuthProvider)}
       />

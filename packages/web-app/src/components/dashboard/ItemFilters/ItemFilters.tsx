@@ -80,7 +80,7 @@ export const ItemFilters = () => {
           headerText="Filter by category"
           onChange={handleCategoryChange}
         >
-          <Button className="button--white">
+          <Button variant="transparent">
             Categories
             <DropdownIcon />
           </Button>
@@ -92,7 +92,7 @@ export const ItemFilters = () => {
           // setTimeout to prevent UI freezing on slow PCs
           onChange={(labelIds) => setTimeout(() => dispatch(setItemLabelsFilter(labelIds)), 15)}
         >
-          <Button className="button--white">
+          <Button variant="transparent">
             Labels
             <DropdownIcon />
           </Button>

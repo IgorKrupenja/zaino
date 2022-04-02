@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { InputActionMeta, mergeStyles, OnChangeValue, Props } from 'react-select';
 import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
@@ -10,7 +10,6 @@ import { commonSelectStyles } from './style';
 export type SelectOption = {
   value: string;
   label: string;
-  // for LabelSelect
   hexValue?: string;
 };
 
@@ -40,18 +39,11 @@ export const SelectPopover = ({
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
+  // Clean up function to cancel async tasks to prevent error on Link click
+  useEffect(() => () => {}, []);
+
   const handleInputChange = (newInputValue: string, actionMeta: InputActionMeta) => {
-    if (
-      actionMeta.action === 'set-value' ||
-      actionMeta.action === 'input-blur' ||
-      actionMeta.action === 'menu-close'
-    ) {
-      // needed to prevent full option list flashes when closing menu
-      // and input getting cleared when clicking on it if has text entered
-      return;
-    } else {
-      setInputValue(newInputValue);
-    }
+    if (actionMeta.action === 'input-change') setInputValue(newInputValue);
   };
 
   const handleChange = (newValues: OnChangeValue<SelectOption, boolean>) => {
@@ -75,9 +67,8 @@ export const SelectPopover = ({
     ...rest,
   };
 
-  const openPopover = () => {
-    setIsPopoverOpen(true);
-  };
+  // todo fishy. can just merge two fns? and use useToggle?
+  const openPopover = () => setIsPopoverOpen(true);
 
   const closePopover = () => {
     setIsPopoverOpen(false);
@@ -99,7 +90,6 @@ export const SelectPopover = ({
         </>
       }
     >
-      {/* popover toggle container */}
       <div onClick={isPopoverOpen ? closePopover : openPopover}>{children}</div>
     </Popover>
   );

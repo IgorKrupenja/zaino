@@ -1,4 +1,4 @@
-// function deployment fails if using synthetic imports here
+// Function deployment fails if using synthetic imports here
 import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 // Should import from @zaino/shared but that is broken in Firebase, see #223

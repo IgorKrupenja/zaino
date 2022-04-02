@@ -42,7 +42,7 @@ export const NewItem = () => {
           dispatch(addItem(item));
         }}
       >
-        <Button className="button--green item-form__full-width new-item__button" submit>
+        <Button className="item-form__full-width new-item__button" submit>
           Create new item
         </Button>
       </ItemForm>

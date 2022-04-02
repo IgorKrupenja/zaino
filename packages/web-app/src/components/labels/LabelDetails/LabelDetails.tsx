@@ -11,7 +11,7 @@ import { CloseButton } from '../../common/controls/CloseButton';
 import { LabelBadge } from '../../common/misc/LabelBadge';
 import { Popover } from '../../common/misc/Popover';
 import { LabelForm } from '../LabelForm';
-import './style.scss';
+import './LabelDetails.scss';
 
 export const LabelDetails = (label: Label) => {
   const dispatch = useDispatch();
@@ -35,12 +35,11 @@ export const LabelDetails = (label: Label) => {
               dispatch(resetItemFilters());
               navigate('/dashboard');
             }}
-            // show live label name preview (as user is typing) if form is open
           >
             {isFormOpen ? (name.trim() ? name : 'Label preview') : undefined}
           </LabelBadge>
         </div>
-        {/* item count */}
+        {/* Item count */}
         {itemTotalCount ? (
           <div
             className={`label-details__count${
@@ -51,7 +50,7 @@ export const LabelDetails = (label: Label) => {
           </div>
         ) : null}
         {!isFormOpen && (
-          <Button className="button--white label-details__edit" onClick={toggleForm}>
+          <Button className="label-details__edit" variant="transparent" onClick={toggleForm}>
             Edit
           </Button>
         )}
@@ -61,10 +60,10 @@ export const LabelDetails = (label: Label) => {
           label={label}
           onSubmit={(label) => dispatch(updateLabel(label))}
           toggleForm={toggleForm}
-          setLabelBadgeText={setName}
-          setLabelBadgeColor={setColorName}
+          setName={setName}
+          setColorName={setColorName}
         >
-          {/* delete button with popover */}
+          {/* Delete button with popover */}
           <Popover
             isOpen={isPopoverOpen}
             onClickOutside={togglePopover}
@@ -80,7 +79,7 @@ export const LabelDetails = (label: Label) => {
                     Deleting a label will remove it from all items. There is no undo.
                   </Popover.Text>
                   <Button
-                    className="button--red"
+                    variant="secondary"
                     onClick={() => label && dispatch(deleteLabel(label.id))}
                   >
                     Delete
@@ -89,12 +88,12 @@ export const LabelDetails = (label: Label) => {
               </>
             }
           >
-            <Button className="button--red label-details__delete" onClick={togglePopover}>
+            <Button className="label-details__delete" variant="secondary" onClick={togglePopover}>
               Delete
             </Button>
           </Popover>
-          {/* save changes button */}
-          <Button submit className="button--green label-details__save">
+          {/* Save changes button */}
+          <Button submit className="label-details__save">
             Save changes
           </Button>
         </LabelForm>

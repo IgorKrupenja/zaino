@@ -26,12 +26,16 @@ export const Inventory = () => {
 
   return (
     <Stack className="stack--left">
-      <SectionHeader className="section-header--large-margin">
+      <SectionHeader variant="large-margin">
         <Column>
           <SectionHeader.Title>Inventory</SectionHeader.Title>
           <Stats className="section-header__content" stats={stats} />
         </Column>
-        <Link className="button button--green inventory__new-item" to="/dashboard/new">
+        {/* todo use button instead somehow? */}
+        <Link
+          className="button button--primary button--large inventory__new-item"
+          to="/dashboard/new"
+        >
           New item
         </Link>
       </SectionHeader>

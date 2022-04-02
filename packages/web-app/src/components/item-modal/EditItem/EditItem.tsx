@@ -62,7 +62,7 @@ export const EditItem = () => {
                   {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
                 </Popover.Text>
                 <Button
-                  className="button--red"
+                  variant="secondary"
                   onClick={() => {
                     closeModal();
                     dispatch(deleteItem(item));
@@ -75,14 +75,15 @@ export const EditItem = () => {
           }
         >
           <Button
-            className="button--red item-form__half-width edit-item__button-left"
+            className="item-form__half-width edit-item__button-left"
+            variant="secondary"
             onClick={togglePopover}
           >
             Delete
           </Button>
         </Popover>
         {/* Save/submit button */}
-        <Button className="button--green item-form__half-width edit-item__button-right" submit>
+        <Button className="item-form__half-width edit-item__button-right" submit>
           Save changes
         </Button>
       </ItemForm>
