@@ -11,7 +11,7 @@ import { Input } from '../../common/controls/Input';
 import { TextArea } from '../../common/controls/TextArea';
 import { CategoryPicker } from '../CategoryPicker';
 import { LabelPicker } from '../LabelPicker';
-import './style.scss';
+import './ItemForm.scss';
 
 type ItemFormProps = {
   item: Item;
@@ -23,7 +23,6 @@ type ItemFormProps = {
 export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
   const [values, setValues] = useState(item);
   const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
-  // used in onFormSubmit to set label item counts
   const initialLabelIds = useRef(values.labelIds).current;
   const dispatch = useDispatch();
 
@@ -33,9 +32,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
     e.persist();
     const propertyName = e.target.name;
     const propertyValue = e.target.value;
-    // set modal title if editing item
     if (setTitle && propertyName === 'name') setTitle(propertyValue);
-    // only allow numbers or empty string
     if (
       (propertyName === 'quantity' || propertyName === 'weight') &&
       !propertyValue.match(/^[0-9]+$|^$/g)
@@ -48,6 +45,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
   const validateForm = () => {
     let isFormValid = true;
     const errors = { name: '', weight: '', quantity: '' };
+
     if (!values.name.trim()) {
       errors.name = 'Name cannot be blank';
       isFormValid = false;
@@ -56,7 +54,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       errors.quantity = 'Quantity cannot be zero';
       isFormValid = false;
     }
-    // note that 0g weight is allowed to account for items <0.5g (e.g. micro SD cards)
+    // Note that 0g weight is allowed to account for items <0.5g (e.g. micro SD cards)
     setErrors(errors);
 
     return isFormValid;
@@ -66,7 +64,6 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
     event && event.preventDefault();
 
     if (validateForm()) {
-      // update item counts for labels
       const newLabelIds = values.labelIds;
       const addedLabelIds = getArrayDifference(newLabelIds, initialLabelIds);
       addedLabelIds?.forEach((label) =>
@@ -79,13 +76,10 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
 
       onSubmit({
         ...values,
-        // preserve empty string for weight
         weight: values.weight === '' ? '' : Number(values.weight),
-        // do not overwrite addedAt when editing item
-        addedAt: values.addedAt || new Date().toISOString(),
-        // convert to number
+        addedAt: values.addedAt ?? new Date().toISOString(),
         quantity: Number(values.quantity),
-        // lower pack quantity if it exceeds new quantity
+        // Lower pack quantity if it exceeds new quantity
         packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
       });
     }
@@ -116,7 +110,6 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
           error={errors.quantity}
           maxLength={3}
           clearError={(e) => {
-            // clear error only if user enters positive quantity (not '', '0' or e.g. '000')
             Number(e?.target.value) > 0 && setErrors({ ...errors, quantity: '' });
           }}
         />

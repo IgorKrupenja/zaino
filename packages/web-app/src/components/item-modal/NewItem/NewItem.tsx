@@ -33,8 +33,7 @@ export const NewItem = () => {
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
       <SectionHeader>
         <SectionHeader.Title>{title}</SectionHeader.Title>
-        {/* todo variant in child */}
-        <CloseButton className="close-button--large" onClick={closeModal} />
+        <CloseButton size="large" onClick={closeModal} />
       </SectionHeader>
       <ItemForm
         item={newItem}

@@ -33,7 +33,7 @@ export const EditItem = () => {
         <SectionHeader.Title className={title.trim() ? '' : 'edit-item__header--grey'}>
           {!title.trim() ? 'No name' : title === 'CORKSCREW' ? <Corkscrew /> : title}
         </SectionHeader.Title>
-        <CloseButton className="close-button--large" onClick={closeModal} />
+        <CloseButton size="large" onClick={closeModal} />
       </SectionHeader>
       {/* item form */}
       <ItemForm

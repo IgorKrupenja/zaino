@@ -4,7 +4,6 @@
   border: none;
   cursor: pointer;
   display: flex;
-  padding-right: 0.8rem;
 
   &:focus {
     outline: 0;
@@ -13,9 +12,7 @@
 
 .close-button__icon {
   fill: $mid-grey;
-  height: $l-size;
   transition: fill 0.3s ease;
-  width: $l-size;
 
   &:hover {
     fill: $off-black;
@@ -23,6 +20,15 @@
 
   &:active {
     fill: $grey;
+  }
+}
+
+.close-button--small {
+  padding-right: 0.8rem;
+
+  > .close-button__icon {
+    height: $l-size;
+    width: $l-size;
   }
 }
 
