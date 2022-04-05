@@ -22,7 +22,7 @@ export const Pack = () => {
           <Stats className="pack__stats" stats={stats} />
         </Column>
       </SectionHeader>
-      <Stack.List isEmpty={items.length > 0}>
+      <Stack.List isEmpty={items.length === 0}>
         {items.length > 0
           ? items.map((item: Item) => <PackItem key={item.id} {...item} />)
           : `No ${stats.allItemUniqueCount > 0 ? 'matching ' : ''}items in pack`}

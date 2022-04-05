@@ -36,7 +36,7 @@ export const Inventory = () => {
           New item
         </Link>
       </SectionHeader>
-      <Stack.List isEmpty={items.length > 0}>
+      <Stack.List isEmpty={items.length === 0}>
         {items.length > 0
           ? items.map((item: Item) => <InventoryItem key={item.id} {...item} />)
           : `No ${stats.allItemUniqueCount > 0 ? 'matching ' : ''}items in inventory`}
