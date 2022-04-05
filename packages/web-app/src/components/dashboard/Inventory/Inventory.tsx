@@ -9,7 +9,7 @@ import { SectionHeader } from '../../common/misc/SectionHeader';
 import { InventoryItem } from '../InventoryItem';
 import { Stack } from '../Stack';
 import { Stats } from '../Stats';
-import './style.scss';
+import './Inventory.scss';
 
 export const Inventory = () => {
   // shallowEqual prevents re-renders when items in store do not change
@@ -22,13 +22,13 @@ export const Inventory = () => {
   const stats = useSelector((state: RootState) => selectInventoryItemsStats(state), shallowEqual);
 
   return (
-    <Stack className="stack--left">
+    <Stack className="inventory">
       <SectionHeader variant="large-margin">
         <Column>
           <SectionHeader.Title>Inventory</SectionHeader.Title>
-          <Stats className="section-header__content" stats={stats} />
+          <Stats className="inventory__stats " stats={stats} />
         </Column>
-        {/* todo use button instead somehow? */}
+        {/* Using button classes here to avoid nesting button inside link */}
         <Link
           className="button button--primary button--large inventory__new-item"
           to="/dashboard/new"
@@ -36,17 +36,11 @@ export const Inventory = () => {
           New item
         </Link>
       </SectionHeader>
-      {items.length > 0 ? (
-        <Stack.List>
-          {items.map((item: Item) => (
-            <InventoryItem key={item.id} {...item} />
-          ))}
-        </Stack.List>
-      ) : (
-        <Stack.List isEmpty>
-          No {stats.allItemUniqueCount > 0 && 'matching '}items in inventory
-        </Stack.List>
-      )}
+      <Stack.List isEmpty={items.length > 0}>
+        {items.length > 0
+          ? items.map((item: Item) => <InventoryItem key={item.id} {...item} />)
+          : `No ${stats.allItemUniqueCount > 0 ? 'matching ' : ''}items in inventory`}
+      </Stack.List>
     </Stack>
   );
 };

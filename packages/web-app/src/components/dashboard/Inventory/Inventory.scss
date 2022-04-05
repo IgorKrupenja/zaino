@@ -1,0 +1,20 @@
+.inventory {
+  margin-left: $s-size;
+  margin-right: $xs-size;
+}
+
+.inventory__stats {
+  color: $grey;
+  font-size: $font-size-small;
+  line-height: 1.2;
+}
+
+.inventory__new-item {
+  align-items: center;
+  display: flex;
+
+  margin-top: 0.4rem;
+
+  text-decoration: none;
+  white-space: nowrap;
+}

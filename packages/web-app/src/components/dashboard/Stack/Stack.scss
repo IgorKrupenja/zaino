@@ -13,16 +13,6 @@
   max-height: 100%;
 }
 
-.stack--left {
-  margin-left: $s-size;
-  margin-right: $xs-size;
-}
-
-.stack--right {
-  margin-left: $xs-size;
-  margin-right: $s-size;
-}
-
 .stack__list {
   margin-bottom: $stack-margin-size;
   margin-right: math.div($stack-margin-size, 2);

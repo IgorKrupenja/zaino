@@ -3,9 +3,9 @@ import { getClassString } from '../../../../utils';
 import './SectionHeader.scss';
 
 type SectionHeaderProps = {
+  children: ReactNode;
   className?: string;
   variant?: 'large-margin';
-  children: ReactNode;
 };
 
 export const SectionHeader = ({ className, children, variant }: SectionHeaderProps) => {

@@ -6,7 +6,7 @@ import { updateItem } from '../../../state/slices/itemsSlice';
 import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/controls/Button';
 import { ItemDetails } from '../ItemDetails';
-import './style.scss';
+import './PackItem.scss';
 
 export const PackItem = (item: Item) => {
   const dispatch = useDispatch();

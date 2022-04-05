@@ -4,7 +4,7 @@ import { ReactComponent as BackpackIcon } from '../../../images/icons/backpack.s
 import { updateItem } from '../../../state/slices/itemsSlice';
 import { Button } from '../../common/controls/Button';
 import { ItemDetails } from '../ItemDetails/';
-import './style.scss';
+import './InventoryItem.scss';
 
 export const InventoryItem = (item: Item) => {
   const dispatch = useDispatch();
