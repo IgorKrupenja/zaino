@@ -12,30 +12,28 @@ import { Popover } from '../../common/misc/Popover';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
-import './style.scss';
+import './EditItem.scss';
 
 export const EditItem = () => {
   const closeModal = useCloseModal();
+  const dispatch = useDispatch();
 
   const { id } = useParams();
   const items = useSelector((state: RootState) => state.items);
   const item = items.find((item) => item.id === id);
-  const [title, setTitle] = useState(item?.name ?? '');
 
-  const dispatch = useDispatch();
+  const [title, setTitle] = useState(item?.name ?? '');
   const [isPopoverOpen, togglePopover] = useToggle();
   useTitle(`${title ? title : 'No name'} | Zaino`);
 
   return item ? (
-    <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
-      {/* header */}
+    <Modal contentLabel={title} isOpen onRequestClose={closeModal}>
       <SectionHeader>
         <SectionHeader.Title className={title.trim() ? '' : 'edit-item__header--grey'}>
           {!title.trim() ? 'No name' : title === 'CORKSCREW' ? <Corkscrew /> : title}
         </SectionHeader.Title>
-        <CloseButton size="large" onClick={closeModal} />
+        <CloseButton onClick={closeModal} size="large" />
       </SectionHeader>
-      {/* item form */}
       <ItemForm
         item={item}
         onSubmit={(item: Item) => {
@@ -44,12 +42,9 @@ export const EditItem = () => {
         }}
         setTitle={setTitle}
       >
-        {/* delete button with popover */}
         <Popover
-          isOpen={isPopoverOpen}
-          onClickOutside={togglePopover}
-          className="popover--wide"
           align="center"
+          className="popover--wide"
           content={
             <>
               <Popover.Header>
@@ -62,28 +57,25 @@ export const EditItem = () => {
                   {item.packQuantity > 0 ? ' and pack' : ''}. There is no undo.
                 </Popover.Text>
                 <Button
-                  variant="secondary"
                   onClick={() => {
                     closeModal();
                     dispatch(deleteItem(item));
                   }}
+                  variant="secondary"
                 >
                   Delete
                 </Button>
               </Popover.Content>
             </>
           }
+          isOpen={isPopoverOpen}
+          onClickOutside={togglePopover}
         >
-          <Button
-            className="item-form__half-width edit-item__button-left"
-            variant="secondary"
-            onClick={togglePopover}
-          >
+          <Button className="edit-item__button-left" onClick={togglePopover} variant="secondary">
             Delete
           </Button>
         </Popover>
-        {/* Save/submit button */}
-        <Button className="item-form__half-width edit-item__button-right" submit>
+        <Button className="edit-item__button-right" submit>
           Save changes
         </Button>
       </ItemForm>

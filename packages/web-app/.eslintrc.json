@@ -15,7 +15,10 @@
       },
       "rules": {
         "@typescript-eslint/require-await": "warn",
-        "@typescript-eslint/no-unnecessary-type-assertion": "warn"
+        "@typescript-eslint/no-unnecessary-type-assertion": "warn",
+        "react/jsx-sort-props": "warn",
+        "sort-keys": "warn"
+        // "react/sort-prop-types": "warn"
       }
     }
   ]

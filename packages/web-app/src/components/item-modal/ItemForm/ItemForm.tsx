@@ -26,6 +26,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
   const initialLabelIds = useRef(values.labelIds).current;
   const dispatch = useDispatch();
 
+  // TODO: Consider splitting into individual methods (per value)
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
@@ -40,24 +41,6 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       return;
     }
     setValues({ ...values, [propertyName]: propertyValue });
-  };
-
-  const validateForm = () => {
-    let isFormValid = true;
-    const errors = { name: '', weight: '', quantity: '' };
-
-    if (!values.name.trim()) {
-      errors.name = 'Name cannot be blank';
-      isFormValid = false;
-    }
-    if (values.quantity < 1) {
-      errors.quantity = 'Quantity cannot be zero';
-      isFormValid = false;
-    }
-    // Note that 0g weight is allowed to account for items <0.5g (e.g. micro SD cards)
-    setErrors(errors);
-
-    return isFormValid;
   };
 
   const handleSubmit = (event?: FormEvent<HTMLFormElement>) => {
@@ -83,6 +66,24 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
       });
     }
+  };
+
+  const validateForm = () => {
+    let isFormValid = true;
+    const errors = { name: '', weight: '', quantity: '' };
+
+    if (!values.name.trim()) {
+      errors.name = 'Name cannot be blank';
+      isFormValid = false;
+    }
+    if (values.quantity < 1) {
+      errors.quantity = 'Quantity cannot be zero';
+      isFormValid = false;
+    }
+    // Note that 0g weight is allowed to account for items <0.5g (e.g. micro SD cards)
+    setErrors(errors);
+
+    return isFormValid;
   };
 
   return (

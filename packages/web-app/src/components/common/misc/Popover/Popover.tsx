@@ -4,12 +4,12 @@ import { getClassString } from '../../../../utils';
 import './style.scss';
 
 type PopoverProps = {
-  isOpen: boolean;
-  onClickOutside?: ((e: MouseEvent) => void) | undefined;
-  content: JSX.Element | ContentRenderer;
+  align?: PopoverAlign;
   children: JSX.Element;
   className?: string;
-  align?: PopoverAlign;
+  content: JSX.Element | ContentRenderer;
+  isOpen: boolean;
+  onClickOutside?: ((e: MouseEvent) => void) | undefined;
 };
 
 /**
@@ -19,9 +19,9 @@ type PopoverProps = {
 export const Popover = ({ isOpen, children, className, ...rest }: PopoverProps) => {
   return (
     <ReactTinyPopover
-      isOpen={isOpen}
-      containerClassName={getClassString('popover', { extraClassNames: className })}
       align="center"
+      containerClassName={getClassString('popover', { extraClassNames: className })}
+      isOpen={isOpen}
       positions={['bottom', 'right']}
       {...rest}
     >
