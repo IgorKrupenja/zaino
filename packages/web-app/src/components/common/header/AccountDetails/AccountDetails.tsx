@@ -18,9 +18,6 @@ export const AccountDetails = () => {
 
   return (
     <Popover
-      isOpen={isPopoverOpen}
-      onClickOutside={togglePopover}
-      className="popover--wide"
       align="end"
       content={
         <>
@@ -29,7 +26,7 @@ export const AccountDetails = () => {
             <CloseButton onClick={togglePopover} />
           </Popover.Header>
           <Popover.Content className="account-details__content">
-            <img src={photoUrl} className="account-details__photo" alt={name} />
+            <img alt={name} className="account-details__photo" src={photoUrl} />
             <div className="account-details__name">{name}</div>
             <div className="account-details__email">{email}</div>
             <Link className="account-details__policies" to="/privacy">
@@ -37,20 +34,23 @@ export const AccountDetails = () => {
             </Link>
             <Button
               className="account-details__sign-out"
-              variant="tertiary"
               onClick={async () => signOut(getAuth())}
+              variant="tertiary"
             >
               Sign out
             </Button>
           </Popover.Content>
         </>
       }
+      isOpen={isPopoverOpen}
+      onClickOutside={togglePopover}
+      size="large"
     >
       <img
-        src={photoUrl}
-        onClick={togglePopover}
-        className="account-details__photo account-details__photo--toggle"
         alt={name}
+        className="account-details__photo account-details__photo--toggle"
+        onClick={togglePopover}
+        src={photoUrl}
       />
     </Popover>
   );

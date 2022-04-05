@@ -8,30 +8,19 @@ import styles from '../../../../styles/base/_export.scss';
 export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   control: (base, { isFocused }) => ({
     ...base,
-    margin: styles.xsSize,
-    borderColor: isFocused ? styles.lightBlue : styles.lightGrey,
-    boxShadow: isFocused ? styles.inputShadow : 'none',
-    borderRadius: styles.xsSize,
-    minHeight: styles.xlSize,
-    height: styles.xlSize,
-    overflow: 'hidden',
-    backgroundColor: isFocused ? 'white' : styles.offWhite,
-
     '&:hover': {
       borderColor: isFocused ? styles.lightBlue : styles.midGrey,
       boxShadow: isFocused ? styles.inputShadow : 'none',
     },
-  }),
-  valueContainer: () => ({
-    paddingLeft: styles.xsSize,
-    fontSize: styles.sSize,
-    display: 'flex',
-  }),
-  placeholder: (base, { isFocused }) => ({
-    ...base,
-    display: isFocused ? 'none' : 'block',
-    paddingTop: '0.5rem',
-    width: '100%',
+    backgroundColor: isFocused ? 'white' : styles.offWhite,
+    borderColor: isFocused ? styles.lightBlue : styles.lightGrey,
+    borderRadius: styles.xsSize,
+    boxShadow: isFocused ? styles.inputShadow : 'none',
+    height: styles.xlSize,
+    margin: styles.xsSize,
+    minHeight: styles.xlSize,
+
+    overflow: 'hidden',
   }),
   input: (base) => ({
     ...base,
@@ -42,42 +31,52 @@ export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = 
   }),
   noOptionsMessage: (base) => ({
     ...base,
-    padding: `${styles.xsSize} ${styles.sSize} 0 ${styles.sSize}`,
     height: styles.xlSize,
+    padding: `${styles.xsSize} ${styles.sSize} 0 ${styles.sSize}`,
   }),
   option: (base, { isFocused, isSelected }) => ({
     ...base,
-    backgroundImage: isSelected ? `url("${checkbox}")` : '',
-    backgroundRepeat: 'no-repeat',
-    paddingTop: styles.xsSize,
-    paddingBottom: styles.xsSize,
-    paddingLeft: styles.xlSize,
-    backgroundColor: isFocused ? styles.offWhite : 'white',
-    backgroundPositionX: '1rem',
-    backgroundPositionY: 'center',
-    backgroundSize: styles.lSize,
-    fontSize: styles.fontSizeSmall,
-    color: styles.offBlack,
-    cursor: 'pointer',
-
     ':active': {
       backgroundColor: styles.extraLightGrey,
     },
+    backgroundColor: isFocused ? styles.offWhite : 'white',
+    backgroundImage: isSelected ? `url("${checkbox}")` : '',
+    backgroundPositionX: '1rem',
+    backgroundPositionY: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: styles.lSize,
+    color: styles.offBlack,
+    cursor: 'pointer',
+    fontSize: styles.fontSizeSmall,
+    paddingBottom: styles.xsSize,
+    paddingLeft: styles.xlSize,
+    paddingTop: styles.xsSize,
+  }),
+  placeholder: (base, { isFocused }) => ({
+    ...base,
+    display: isFocused ? 'none' : 'block',
+    paddingTop: '0.5rem',
+    width: '100%',
+  }),
+  valueContainer: () => ({
+    display: 'flex',
+    fontSize: styles.sSize,
+    paddingLeft: styles.xsSize,
   }),
 };
 
 export const colorDot = (color = styles.lightGrey, marginLeft = '2.2rem') => ({
-  alignItems: 'center',
-  display: 'flex',
-
   ':before': {
     backgroundColor: color,
     borderRadius: '1rem',
     content: '" "',
     display: 'block',
+    height: '1.2rem',
     marginLeft,
     marginRight: '0.7rem',
-    height: '1.2rem',
     minWidth: '1.2rem',
   },
+  alignItems: 'center',
+
+  display: 'flex',
 });

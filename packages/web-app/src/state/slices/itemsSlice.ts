@@ -57,7 +57,7 @@ export const deleteItem = createAsyncThunk<void, Item, { state: RootState }>(
   'items/deleteItem',
   async (item, { getState, dispatch }) => {
     item.labelIds?.forEach((labelId) =>
-      dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
+      dispatch(decrementItemCount({ itemQuantity: item.quantity, labelId }))
     );
     await db.collection(`users/${getState().user.uid}/items`).doc(item.id).delete();
   }
@@ -68,7 +68,7 @@ export const batchDeleteItems = createAsyncThunk<void, Item[], { state: RootStat
   async (items, { getState, dispatch }) => {
     items.forEach((item) =>
       item.labelIds?.forEach((labelId) =>
-        dispatch(decrementItemCount({ labelId, itemQuantity: item.quantity }))
+        dispatch(decrementItemCount({ itemQuantity: item.quantity, labelId }))
       )
     );
     await deleteDocuments(
@@ -81,14 +81,6 @@ export const batchDeleteItems = createAsyncThunk<void, Item[], { state: RootStat
 const initialState: Item[] = [];
 
 const itemsSlice = createSlice({
-  name: 'items',
-  initialState,
-  reducers: {
-    addItems: (state, action: PayloadAction<Item[]>) => {
-      action.payload.forEach((item) => state.push(item));
-    },
-    resetItemsState: () => initialState,
-  },
   extraReducers: (builder) => {
     builder.addCase(addItem.pending, (state, action) => {
       state.push(action.meta.arg);
@@ -119,6 +111,14 @@ const itemsSlice = createSlice({
       });
     });
     // TODO: add rejected handling here, #78
+  },
+  initialState,
+  name: 'items',
+  reducers: {
+    addItems: (state, action: PayloadAction<Item[]>) => {
+      action.payload.forEach((item) => state.push(item));
+    },
+    resetItemsState: () => initialState,
   },
 });
 

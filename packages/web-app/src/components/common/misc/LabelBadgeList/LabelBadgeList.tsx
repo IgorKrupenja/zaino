@@ -27,10 +27,10 @@ export const LabelBadgeList = ({
     <div className={getClassString('label-badge-list', { extraClassNames: className })}>
       {itemLabels.map((label) => (
         <LabelBadge
-          onClick={onBadgeClick}
+          disabled={badgeClickDisabled}
           key={label.id}
           label={label}
-          disabled={badgeClickDisabled}
+          onClick={onBadgeClick}
         />
       ))}
     </div>

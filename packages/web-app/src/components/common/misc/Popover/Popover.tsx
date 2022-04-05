@@ -1,27 +1,24 @@
 import { ReactNode } from 'react';
 import { ContentRenderer, Popover as ReactTinyPopover, PopoverAlign } from 'react-tiny-popover';
 import { getClassString } from '../../../../utils';
-import './style.scss';
+import './Popover.scss';
 
 type PopoverProps = {
-  isOpen: boolean;
-  onClickOutside?: ((e: MouseEvent) => void) | undefined;
-  content: JSX.Element | ContentRenderer;
+  align?: PopoverAlign;
   children: JSX.Element;
   className?: string;
-  align?: PopoverAlign;
+  content: JSX.Element | ContentRenderer;
+  isOpen: boolean;
+  onClickOutside?: ((e: MouseEvent) => void) | undefined;
+  size?: 'small' | 'large';
 };
 
-/**
- * Compound popover component used throughout the UI.
- * Used with specific sub-components, see below.
- */
-export const Popover = ({ isOpen, children, className, ...rest }: PopoverProps) => {
+export const Popover = ({ children, className, isOpen, size, ...rest }: PopoverProps) => {
   return (
     <ReactTinyPopover
-      isOpen={isOpen}
-      containerClassName={getClassString('popover', { extraClassNames: className })}
       align="center"
+      containerClassName={getClassString('popover', { extraClassNames: className, variant: size })}
+      isOpen={isOpen}
       positions={['bottom', 'right']}
       {...rest}
     >

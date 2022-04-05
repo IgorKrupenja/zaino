@@ -35,17 +35,17 @@ export const PackItem = (item: Item) => {
           Quantity in pack:
           <Button
             className="pack-item__quantity--button"
-            variant="tertiary"
             onClick={decreasePackQuantity}
+            variant="tertiary"
           >
             -
           </Button>
           <span className="pack-item__quantity">{packQuantity}</span>
           <Button
-            disabled={item.quantity === item.packQuantity}
             className="pack-item__quantity--button"
-            variant="tertiary"
+            disabled={item.quantity === item.packQuantity}
             onClick={increasePackQuantity}
+            variant="tertiary"
           >
             +
           </Button>
@@ -53,9 +53,9 @@ export const PackItem = (item: Item) => {
       )}
       <Button
         className="pack-item__remove"
-        variant="tertiary"
-        size="medium"
         onClick={() => dispatch(updateItem({ ...item, id: item.id, packQuantity: 0 }))}
+        size="medium"
+        variant="tertiary"
       >
         <NoBackpackIcon className="pack-item__button-icon" />
         Remove from pack

@@ -8,12 +8,12 @@ export const categorySelectStyles: Partial<StylesConfig<SelectOption, boolean>> 
     ...base,
     width: '16.8rem',
   }),
-  menu: () => ({
-    borderTop: styles.border,
-    width: '18rem',
-  }),
   input: (base) => ({
     ...base,
     width: '15rem',
+  }),
+  menu: () => ({
+    borderTop: styles.border,
+    width: '18rem',
   }),
 };

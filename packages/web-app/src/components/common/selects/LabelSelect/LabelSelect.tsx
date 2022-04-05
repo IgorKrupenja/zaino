@@ -31,9 +31,9 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
   const prepareOptions = (labels: Label[]) =>
     labels
       .map((label) => ({
-        value: label.id,
-        label: label.name,
         hexValue: colors.find((color) => color.name === label.colorName)?.hexValue,
+        label: label.name,
+        value: label.id,
       }))
       .sort(sortSelectOptionsByName);
   const [options, setOptions] = useState(prepareOptions(labels));
@@ -68,19 +68,19 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
     const color = getRandomColor();
     dispatch(
       addLabel({
-        id,
-        name: inputValue,
         colorName: color.name,
-        itemUniqueCount: 0,
+        id,
         itemTotalCount: 0,
+        itemUniqueCount: 0,
         lastSortIndex: 0,
+        name: inputValue,
       })
     );
 
     const newOption = {
+      hexValue: color.hexValue,
       label: inputValue,
       value: id,
-      hexValue: color.hexValue,
     };
     setOptions([...options, newOption]);
 
@@ -91,10 +91,10 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
     <SelectPopover
       formatCreateLabel={(inputValue: string) => `Create label "${inputValue}"`}
       isMulti={true}
-      styles={labelSelectStyles}
       onChange={handleChange}
       onCreateOption={handleCreate}
       options={options}
+      styles={labelSelectStyles}
       value={values}
       {...rest}
       noOptionsMessage={() => `No${options.length > 0 ? ' matching' : ''} labels`}

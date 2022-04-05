@@ -30,9 +30,9 @@ export const CategoriesPage = () => {
   return (
     <ScrollablePage>
       <CollectionFilters
+        resetFilters={resetCategoryFilters}
         setTextFilter={setCategoryTextFilter}
         sort={sortCategoriesBy}
-        resetFilters={resetCategoryFilters}
         textFilterPlaceholder="Search categories"
       />
       {isLoading ? (

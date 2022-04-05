@@ -20,7 +20,7 @@ export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
 
   return (
     <article className="item-details">
-      <CategoryImage className="item-details__category-image" categoryId={categoryId} />
+      <CategoryImage categoryId={categoryId} className="item-details__category-image" />
       <h3 className="item-details--image-margin">
         <Link className="item-details__name" to={`/dashboard/edit/${id}`}>
           {name === 'CORKSCREW' ? <Corkscrew /> : name}

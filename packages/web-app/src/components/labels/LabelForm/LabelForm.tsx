@@ -81,32 +81,32 @@ export const LabelForm = ({
       </FormLabel>
       <Row>
         <Input
-          name={label.name || 'new-name'}
-          className="label-form__input"
-          value={values.name}
-          error={nameError}
           autoFocus
-          onChange={(e) => handleNameChange(e)}
+          className="label-form__input"
           clearError={() => setNameError('')}
+          error={nameError}
+          name={label.name || 'new-name'}
+          onChange={(e) => handleNameChange(e)}
+          value={values.name}
         />
         <ColorSelect
-          selectedColorName={values.colorName}
           onChange={(colorName) => {
             setColorName(colorName);
             setValues({ ...values, colorName });
           }}
+          selectedColorName={values.colorName}
         />
       </Row>
       {nameError && <FormError className="label-form__input__error">{nameError}</FormError>}
       <Row className="label-form__buttons">
         <Button
           className="label-form__cancel"
-          variant="tertiary"
           onClick={() => {
             toggleForm();
             setName(initialName);
             setColorName(initialColorName);
           }}
+          variant="tertiary"
         >
           Cancel
         </Button>

@@ -24,13 +24,14 @@ export const ExpandingInput = ({
   ...rest
 }: ExpandingInputProps) => {
   const elementProps = {
-    // id needed to focus input on label click
-    id: name,
-    name,
-    value,
+    
     className: getClassString('expanding-input' + (error ? ' input--error' : ''), {
       extraClassNames: className,
     }),
+    // id needed to focus input on label click
+id: name,
+    name,
+    value,
     ...rest,
   };
 
@@ -45,12 +46,11 @@ export const ExpandingInput = ({
   return (
     <ReactExpandingTextarea
       {...elementProps}
-      value={String(value)}
+      autoFocus
       onChange={(e) => {
         clearError && clearError();
         onChange && onChange(e);
       }}
-      autoFocus
       onFocus={(e) => {
         // puts cursor at the end on focus
         const value = e.target.value;
@@ -58,6 +58,7 @@ export const ExpandingInput = ({
         e.target.value = value;
       }}
       onKeyPress={handleKeyPress}
+      value={String(value)}
     />
   );
 };

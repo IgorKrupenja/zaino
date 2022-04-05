@@ -205,6 +205,5 @@ To start a development server running locally against a deployed development Fir
 ## Acknowledgements
 
 - Dmitri Shastin for his ideas and sharing his inventory data with me.
-- Patrick Gillespie for his [Text to ASCII Art Generator](http://patorjk.com/software/taag/).
-- Astigmatic for the cool (and free) [Righteous font](https://fonts.google.com/specimen/Righteous?preview.text=Zaino&preview.text_type=custom).
 - All the people proving me with feedback.
+- Icons purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/).

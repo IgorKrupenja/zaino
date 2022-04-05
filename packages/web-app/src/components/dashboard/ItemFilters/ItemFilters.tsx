@@ -67,18 +67,18 @@ export const ItemFilters = () => {
         {/* Name */}
         <Input
           className="input--grow input--search"
-          placeholder="Search items"
           onChange={(e) => {
             e.persist();
             setFilters({ ...filters, text: e.target.value });
           }}
+          placeholder="Search items"
           value={filters.text}
         />
         {/* Category */}
         <CategorySelect
-          selectedCategoryId={filters.categoryId}
           headerText="Filter by category"
           onChange={handleCategoryChange}
+          selectedCategoryId={filters.categoryId}
         >
           <Button variant="transparent">
             Categories
@@ -87,8 +87,8 @@ export const ItemFilters = () => {
         </CategorySelect>
         {/* Labels */}
         <LabelSelect
-          labelIds={filters.labels}
           headerText="Filter by label"
+          labelIds={filters.labels}
           // setTimeout to prevent UI freezing on slow PCs
           onChange={(labelIds) => setTimeout(() => dispatch(setItemLabelsFilter(labelIds)), 15)}
         >
@@ -99,10 +99,10 @@ export const ItemFilters = () => {
         </LabelSelect>
         {/* Sort */}
         <SortSelect
-          sortOptions={ItemSortOption}
+          hiddenOption={CollectionSortOption.lastSortOrder}
           onChange={handleSortChange}
           selectedOption={filters.sortBy}
-          hiddenOption={CollectionSortOption.lastSortOrder}
+          sortOptions={ItemSortOption}
         />
       </Row>
       {/* Clear filters */}

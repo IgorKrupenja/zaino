@@ -26,29 +26,29 @@ export const Header = () => {
           <Logo className="header__logo" />
         </Link>
         <nav className="header__nav">
-          <NavLink to="/dashboard" className={({ isActive }) => getLinkClassName(isActive)}>
+          <NavLink className={({ isActive }) => getLinkClassName(isActive)} to="/dashboard">
             <DashboardIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Dashboard</span>
           </NavLink>
           {process.env.REACT_APP_SHOW_CATEGORIES_PAGE === 'true' && (
             <NavLink
-              to="/categories"
-              // TODO: re-sort categories on page change, see labels below
               className={({ isActive }) => getLinkClassName(isActive)}
+              // TODO: re-sort categories on page change, see labels below
+              to="/categories"
             >
               <CategoryIcon className="header__nav__link__icon" />
               <span className="header__nav__link__text">Categories</span>
             </NavLink>
           )}
           <NavLink
-            to="/labels"
+            className={({ isActive }) => getLinkClassName(isActive)}
             // re-sort labels by name after in-place edit and switching back to Labels page
             // see slices/labels for more details
             onClick={() =>
               labelSortOption === CollectionSortOption.lastSortOrder &&
               dispatch(sortLabelsBy(CollectionSortOption.name))
             }
-            className={({ isActive }) => getLinkClassName(isActive)}
+            to="/labels"
           >
             <LabelIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Labels</span>

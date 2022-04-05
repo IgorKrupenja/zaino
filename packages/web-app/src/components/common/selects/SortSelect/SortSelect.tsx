@@ -25,8 +25,8 @@ export const SortSelect = ({
   const options = useRef(
     Object.entries(sortOptions)
       .map(([key, value]: [string, string]) => ({
-        value: key,
         label: value,
+        value: key,
       }))
       .filter((option) => option.label !== hiddenOption)
   ).current;
@@ -48,15 +48,15 @@ export const SortSelect = ({
 
   return (
     <SelectPopover
-      headerText="Sort by"
-      value={value}
-      name="sortBy"
-      options={options}
-      onChange={handleChange}
       components={{
         Control: () => null,
       }}
+      headerText="Sort by"
+      name="sortBy"
+      onChange={handleChange}
+      options={options}
       styles={sortSelectStyles}
+      value={value}
     >
       <Button variant="transparent">
         Sort

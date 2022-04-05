@@ -40,9 +40,6 @@ export const DemoData = () => {
       <div className="demo-data__title">Demo data</div>
       {/* Load */}
       <Popover
-        isOpen={isLoadPopoverOpen}
-        onClickOutside={toggleLoadPopover}
-        className="popover--wide"
         content={
           <>
             <Popover.Header>
@@ -57,20 +54,21 @@ export const DemoData = () => {
             </Popover.Content>
           </>
         }
+        isOpen={isLoadPopoverOpen}
+        onClickOutside={toggleLoadPopover}
+        size="large"
       >
         <Button
-          variant="underline"
+          className="demo-data__button"
           disabled={isLoading || isDemoDataPresent}
           onClick={toggleLoadPopover}
+          variant="underline"
         >
           Load
         </Button>
       </Popover>
       {/*  Remove */}
       <Popover
-        isOpen={isRemovePopoverOpen}
-        onClickOutside={toggleRemovePopover}
-        className="popover--wide"
         content={
           <>
             <Popover.Header>
@@ -82,18 +80,21 @@ export const DemoData = () => {
                 All items and labels added as demo data (even if you have made changes to them) will
                 be removed. Items and labels you created yourself will not be affected.
               </Popover.Text>
-              <Button className="demo-data__button" variant="secondary" onClick={removeDemoData}>
+              <Button onClick={removeDemoData} variant="secondary">
                 Remove
               </Button>
             </Popover.Content>
           </>
         }
+        isOpen={isRemovePopoverOpen}
+        onClickOutside={toggleRemovePopover}
+        size="large"
       >
         <Button
           className="demo-data__button"
-          variant="underline"
           disabled={!isDemoDataPresent}
           onClick={toggleRemovePopover}
+          variant="underline"
         >
           Remove
         </Button>

@@ -9,7 +9,7 @@ import { CloseButton } from '../../common/controls/CloseButton';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
-import './style.scss';
+import './NewItem.scss';
 
 export const NewItem = () => {
   const dispatch = useDispatch();
@@ -17,23 +17,23 @@ export const NewItem = () => {
   const categories = useSelector((state: RootState) => state.categories);
 
   const newItem: Item = {
+    addedAt: '',
+    categoryId: categories.find((category) => category.isDefault)?.id ?? categories[0].id,
     id: uuid(),
     name: '',
-    categoryId: categories.find((category) => category.isDefault)?.id ?? categories[0].id,
-    weight: '',
-    quantity: 1,
     packQuantity: 0,
-    addedAt: '',
+    quantity: 1,
+    weight: '',
   };
 
   const title = 'New item';
   useTitle(`${title} | Zaino`);
 
   return (
-    <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
+    <Modal contentLabel={title} isOpen onRequestClose={closeModal}>
       <SectionHeader>
         <SectionHeader.Title>{title}</SectionHeader.Title>
-        <CloseButton className="close-button--large" onClick={closeModal} />
+        <CloseButton onClick={closeModal} size="large" />
       </SectionHeader>
       <ItemForm
         item={newItem}
@@ -42,7 +42,7 @@ export const NewItem = () => {
           dispatch(addItem(item));
         }}
       >
-        <Button className="item-form__full-width new-item__button" submit>
+        <Button className="new-item__button" submit>
           Create new item
         </Button>
       </ItemForm>

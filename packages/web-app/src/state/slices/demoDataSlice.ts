@@ -25,16 +25,13 @@ export const addDemoData = createAsyncThunk<void, string, { state: RootState }>(
 
     batch(() => {
       dispatch(addItems(items));
-      dispatch(addLabels({ labels, items }));
+      dispatch(addLabels({ items, labels }));
     });
   }
 );
 
 // TODO: similar approach should also be used to address #117 in the future.
 const demoDataSlice = createSlice({
-  name: 'demoData',
-  initialState: { isLoading: false },
-  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(addDemoData.pending, (state) => {
       state.isLoading = true;
@@ -43,6 +40,9 @@ const demoDataSlice = createSlice({
       state.isLoading = false;
     });
   },
+  initialState: { isLoading: false },
+  name: 'demoData',
+  reducers: {},
 });
 
 export const demoDataReducer = demoDataSlice.reducer;

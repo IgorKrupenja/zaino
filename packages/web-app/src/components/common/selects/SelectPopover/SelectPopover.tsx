@@ -52,17 +52,17 @@ export const SelectPopover = ({
   };
 
   const mergedProps: Props<SelectOption, boolean> = {
-    placeholder: `Search${isCreatable ? ' or create new' : ''}`,
     autoFocus: true,
-    hideSelectedOptions: false,
-    controlShouldRenderValue: false,
-    components: { IndicatorSeparator: null, DropdownIndicator: null },
-    menuIsOpen: true,
-    isClearable: false,
     backspaceRemovesValue: false,
-    onInputChange: handleInputChange,
+    components: { DropdownIndicator: null, IndicatorSeparator: null },
+    controlShouldRenderValue: false,
+    hideSelectedOptions: false,
     inputValue,
+    isClearable: false,
+    menuIsOpen: true,
     onChange: handleChange,
+    onInputChange: handleInputChange,
+    placeholder: `Search${isCreatable ? ' or create new' : ''}`,
     styles: styles ? mergeStyles(commonSelectStyles, styles) : commonSelectStyles,
     ...rest,
   };
@@ -78,8 +78,6 @@ export const SelectPopover = ({
   return (
     <Popover
       align={popoverAlign ?? 'end'}
-      isOpen={isPopoverOpen}
-      onClickOutside={closePopover}
       content={
         <>
           <Popover.Header>
@@ -89,6 +87,8 @@ export const SelectPopover = ({
           {isCreatable ? <CreatableSelect {...mergedProps} /> : <Select {...mergedProps} />}
         </>
       }
+      isOpen={isPopoverOpen}
+      onClickOutside={closePopover}
     >
       <div onClick={isPopoverOpen ? closePopover : openPopover}>{children}</div>
     </Popover>

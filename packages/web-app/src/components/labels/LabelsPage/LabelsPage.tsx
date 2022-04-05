@@ -38,9 +38,9 @@ export const LabelsPage = () => {
   return (
     <ScrollablePage>
       <CollectionFilters
+        resetFilters={resetLabelFilters}
         setTextFilter={setLabelTextFilter}
         sort={sortLabelsBy}
-        resetFilters={resetLabelFilters}
         textFilterPlaceholder="Search labels"
       />
       {isLoading ? (

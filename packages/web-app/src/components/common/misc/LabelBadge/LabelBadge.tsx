@@ -32,17 +32,17 @@ export const LabelBadge = ({
     <button
       className={getClassString('label-badge', { extraClassNames: className })}
       disabled={disabled}
-      style={{
-        backgroundColor: colors.find(
-          (labelColor) => labelColor.name === (colorName ?? label?.colorName)
-        )?.hexValue,
-      }}
       onClick={() => {
         if (!disabled && label) {
           // execute extra actions if onClick was passed
           onClick && onClick();
           dispatch(setItemLabelsFilter([label.id]));
         }
+      }}
+      style={{
+        backgroundColor: colors.find(
+          (labelColor) => labelColor.name === (colorName ?? label?.colorName)
+        )?.hexValue,
       }}
     >
       {children ? children : label?.name}

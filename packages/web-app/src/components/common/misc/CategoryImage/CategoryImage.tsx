@@ -15,9 +15,9 @@ export const CategoryImage = ({ categoryId, className }: CategoryImageProps) => 
 
   return categoryId ? (
     <img
-      src={`${process.env.REACT_APP_GCP_STORAGE_URL as string}/categories/${imageFileName}`}
-      className={getClassString('category-image', { extraClassNames: className })}
       alt=""
+      className={getClassString('category-image', { extraClassNames: className })}
+      src={`${process.env.REACT_APP_GCP_STORAGE_URL as string}/categories/${imageFileName}`}
     />
   ) : (
     <></>

@@ -23,7 +23,7 @@ export const useAuth = (): boolean => {
       if (user && !isLoggedIn) {
         const credential = await getRedirectResult(auth);
         dispatch(
-          login({ user, isNew: credential ? getAdditionalUserInfo(credential)?.isNewUser : false })
+          login({ isNew: credential ? getAdditionalUserInfo(credential)?.isNewUser : false, user })
         );
 
         console.log(asciiLogo);

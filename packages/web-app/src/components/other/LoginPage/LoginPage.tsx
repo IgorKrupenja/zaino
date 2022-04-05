@@ -17,8 +17,8 @@ export const LoginPage = () => {
       </p>
       <GoogleButton
         className="login-page__button"
-        type="light"
         onClick={() => signInWithRedirect(getAuth(), googleAuthProvider)}
+        type="light"
       />
       <Link className="login-page__policies" to="/privacy">
         Privacy and cookie policy
