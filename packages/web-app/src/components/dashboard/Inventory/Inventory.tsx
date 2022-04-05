@@ -11,9 +11,6 @@ import { Stack } from '../Stack';
 import { Stats } from '../Stats';
 import './style.scss';
 
-/**
- * Component that holds inventory items state and passes these as InventoryItems to Stack.
- */
 export const Inventory = () => {
   // shallowEqual prevents re-renders when items in store do not change
   // (i.e. new filter conditions result in the same matching items).

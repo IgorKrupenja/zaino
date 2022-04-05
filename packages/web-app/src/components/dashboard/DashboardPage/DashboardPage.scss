@@ -14,7 +14,7 @@
 
 .dashboard-page__stacks {
   display: flex;
-  // needed for List overflow to work correctly
+  // Needed for List overflow to work correctly
   height: calc(100vh - #{$header-height} - #{$list-filters-height});
   padding-bottom: $s-size;
   width: 100%;

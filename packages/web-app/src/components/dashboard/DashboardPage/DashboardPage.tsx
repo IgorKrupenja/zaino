@@ -7,7 +7,7 @@ import { Loader } from '../../common/misc/Loader';
 import { Inventory } from '../Inventory';
 import { ItemFilters } from '../ItemFilters';
 import { Pack } from '../Pack';
-import './style.scss';
+import './DashboardPage.scss';
 
 export const DashboardPage = () => {
   const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
@@ -28,7 +28,7 @@ export const DashboardPage = () => {
         )}
       </main>
 
-      {/* routes for item modals specific to Dashboard page */}
+      {/* Routes for item modals specific to Dashboard page */}
       <DashboardRoutes />
     </>
   );
