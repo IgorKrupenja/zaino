@@ -17,23 +17,23 @@ export const NewItem = () => {
   const categories = useSelector((state: RootState) => state.categories);
 
   const newItem: Item = {
+    addedAt: '',
+    categoryId: categories.find((category) => category.isDefault)?.id ?? categories[0].id,
     id: uuid(),
     name: '',
-    categoryId: categories.find((category) => category.isDefault)?.id ?? categories[0].id,
-    weight: '',
-    quantity: 1,
     packQuantity: 0,
-    addedAt: '',
+    quantity: 1,
+    weight: '',
   };
 
   const title = 'New item';
   useTitle(`${title} | Zaino`);
 
   return (
-    <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
+    <Modal contentLabel={title} isOpen onRequestClose={closeModal}>
       <SectionHeader>
         <SectionHeader.Title>{title}</SectionHeader.Title>
-        <CloseButton size="large" onClick={closeModal} />
+        <CloseButton onClick={closeModal} size="large" />
       </SectionHeader>
       <ItemForm
         item={newItem}

@@ -19,11 +19,11 @@ export const Category = ({ categoryId, className, onClick, children }: CategoryP
 
   return (
     <div
+      className={getClassString('category', { extraClassNames: className })}
       onClick={() => {
         dispatch(setItemCategoryFilter(categoryId));
         onClick && onClick();
       }}
-      className={getClassString('category', { extraClassNames: className })}
     >
       {children}
       {categoryName ?? 'No category'}

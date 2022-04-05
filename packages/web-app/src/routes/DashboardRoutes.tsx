@@ -5,8 +5,8 @@ import { NewItem } from '../components/item-modal/NewItem';
 export const DashboardRoutes = () => {
   return (
     <Routes>
-      <Route path="new" element={<NewItem />} />
-      <Route path="edit/:id" element={<EditItem />} />
+      <Route element={<NewItem />} path="new" />
+      <Route element={<EditItem />} path="edit/:id" />
     </Routes>
   );
 };

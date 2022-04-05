@@ -3,9 +3,9 @@ import { getClassString } from '../../../../utils';
 import './Button.scss';
 
 type ButtonProps = {
-  disabled?: boolean;
   children: ReactNode;
   className?: string;
+  disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   size?: 'small' | 'medium' | 'large';
   submit?: boolean;

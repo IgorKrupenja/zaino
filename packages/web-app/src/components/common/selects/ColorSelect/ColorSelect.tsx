@@ -21,9 +21,9 @@ type ColorSelectProps = {
 export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {
   const options = useRef(
     colors.map((color) => ({
-      value: color.name,
-      label: color.fancyName,
       hexValue: color.hexValue,
+      label: color.fancyName,
+      value: color.name,
     }))
   ).current;
   const [value, setValue] = useState(options.find((color) => color.value === selectedColorName));
@@ -36,13 +36,13 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
 
   return (
     <SelectPopover
+      components={{ Control: () => null, IndicatorSeparator: null }}
       headerText="Select color"
-      value={value}
       name="categoryName"
+      onChange={handleChange}
       options={options}
       styles={colorSelectStyles}
-      onChange={handleChange}
-      components={{ IndicatorSeparator: null, Control: () => null }}
+      value={value}
     >
       <Button variant="transparent">
         Color

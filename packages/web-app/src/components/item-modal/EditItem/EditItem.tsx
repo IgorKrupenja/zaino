@@ -44,7 +44,6 @@ export const EditItem = () => {
       >
         <Popover
           align="center"
-          className="popover--wide"
           content={
             <>
               <Popover.Header>
@@ -70,6 +69,7 @@ export const EditItem = () => {
           }
           isOpen={isPopoverOpen}
           onClickOutside={togglePopover}
+          size="large"
         >
           <Button className="edit-item__button-left" onClick={togglePopover} variant="secondary">
             Delete

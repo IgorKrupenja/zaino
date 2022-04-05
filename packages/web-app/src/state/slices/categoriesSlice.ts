@@ -4,8 +4,8 @@ import { Category, Item } from '@zaino/shared';
 const initialState: Category[] = [];
 
 const categoriesSlice = createSlice({
-  name: 'items',
   initialState,
+  name: 'items',
   reducers: {
     addCategories: (state, action: PayloadAction<{ categories: Category[]; items: Item[] }>) => {
       const categories = action.payload.categories;

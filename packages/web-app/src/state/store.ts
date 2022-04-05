@@ -10,14 +10,14 @@ import { userReducer } from './slices/userSlice';
 
 export const store = configureStore({
   reducer: {
-    user: userReducer,
-    items: itemsReducer,
-    labels: labelsReducer,
     categories: categoriesReducer,
-    itemFilters: itemFiltersReducer,
-    labelFilters: labelFiltersReducer,
     categoryFilters: categoryFiltersReducer,
     demoData: demoDataReducer,
+    itemFilters: itemFiltersReducer,
+    items: itemsReducer,
+    labelFilters: labelFiltersReducer,
+    labels: labelsReducer,
+    user: userReducer,
   },
 });
 

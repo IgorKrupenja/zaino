@@ -3,16 +3,16 @@ import { collectionFiltersInitialState } from '../constants';
 import { CollectionSortOption } from '../enums';
 
 const labelFiltersSlice = createSlice({
-  name: 'label-filters',
   initialState: collectionFiltersInitialState,
+  name: 'label-filters',
   reducers: {
+    resetLabelFilters: () => collectionFiltersInitialState,
     setLabelTextFilter(state, action: PayloadAction<string>) {
       state.text = action.payload;
     },
     sortLabelsBy(state, action: PayloadAction<CollectionSortOption>) {
       state.sortBy = action.payload;
     },
-    resetLabelFilters: () => collectionFiltersInitialState,
   },
 });
 

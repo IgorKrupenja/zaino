@@ -67,18 +67,18 @@ export const CollectionFilters = ({
       <Row className="row-wrapper--full-width">
         <Input
           className="input--grow input--search"
-          placeholder={textFilterPlaceholder}
           onChange={(e) => {
             e.persist();
             setFilters({ ...filters, text: e.target.value });
           }}
+          placeholder={textFilterPlaceholder}
           value={filters.text}
         />
         <SortSelect
-          sortOptions={CollectionSortOption}
-          selectedOption={filters.sortBy}
           hiddenOption={CollectionSortOption.lastSortOrder}
           onChange={handleSortChange}
+          selectedOption={filters.sortBy}
+          sortOptions={CollectionSortOption}
         />
       </Row>
       <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetFilters())}>

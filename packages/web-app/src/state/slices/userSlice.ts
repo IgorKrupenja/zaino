@@ -15,7 +15,7 @@ export const login = createAsyncThunk(
       await db
         .collection('users')
         .doc(user.uid)
-        .set({ firstLoginAt: new Date().toISOString(), email: user.email });
+        .set({ email: user.email, firstLoginAt: new Date().toISOString() });
       await copyCollection('common/defaults/categories', `users/${user.uid}/categories`);
     }
 
@@ -33,7 +33,7 @@ export const login = createAsyncThunk(
 
     batch(() => {
       dispatch(addItems(items));
-      dispatch(addLabels({ labels, items }));
+      dispatch(addLabels({ items, labels }));
       dispatch(addCategories({ categories, items }));
     });
   }
@@ -47,12 +47,9 @@ export const logout = createAsyncThunk('user/logout', (unused, { dispatch }) => 
   });
 });
 
-const initialState = { uid: '', name: '', email: '', photoUrl: '', isLoading: true };
+const initialState = { email: '', isLoading: true, name: '', photoUrl: '', uid: '' };
 
 const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(logout.pending, () => initialState);
     builder.addCase(logout.fulfilled, (state, action) => ({ ...state, isLoading: false }));
@@ -60,16 +57,21 @@ const userSlice = createSlice({
       const user = action.meta.arg.user;
 
       return {
-        isLoading: true,
-        uid: user.uid,
-        // Types for these are string | null but null seems to apply to anonymous sign in only
-        name: user.displayName as string,
         email: user.email as string,
+        
+isLoading: true,
+        
+        // Types for these are string | null but null seems to apply to anonymous sign in only
+name: user.displayName as string,
         photoUrl: user.photoURL as string,
+        uid: user.uid,
       };
     });
     builder.addCase(login.fulfilled, (state, action) => ({ ...state, isLoading: false }));
   },
+  initialState,
+  name: 'user',
+  reducers: {},
 });
 
 export const userReducer = userSlice.reducer;

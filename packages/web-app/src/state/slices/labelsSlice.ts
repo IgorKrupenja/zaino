@@ -15,7 +15,7 @@ export const addLabel = createAsyncThunk<
   await db
     .collection(`users/${getState().user.uid}/labels`)
     .doc(label.id)
-    .set({ name: label.name, colorName: label.colorName });
+    .set({ colorName: label.colorName, name: label.name });
 });
 
 export const updateLabel = createAsyncThunk<void, Label, { state: RootState }>(
@@ -24,7 +24,7 @@ export const updateLabel = createAsyncThunk<void, Label, { state: RootState }>(
     await db
       .collection(`users/${getState().user.uid}/labels`)
       .doc(label.id)
-      .update({ name: label.name, colorName: label.colorName });
+      .update({ colorName: label.colorName, name: label.name });
   }
 );
 
@@ -58,71 +58,6 @@ export const batchDeleteLabels = createAsyncThunk<void, Label[], { state: RootSt
 const initialState: Label[] = [];
 
 const labelsSlice = createSlice({
-  name: 'labels',
-  initialState,
-  reducers: {
-    addLabels: (state, action: PayloadAction<{ labels: Label[]; items: Item[] }>) => {
-      const labels = action.payload.labels;
-      action.payload.items.forEach((item) => {
-        item.labelIds?.forEach((labelId) => {
-          const label = labels.find((label) => label.id === labelId);
-          if (label) {
-            label.itemUniqueCount = label.itemUniqueCount ? (label.itemUniqueCount += 1) : 1;
-            label.itemTotalCount = label.itemTotalCount
-              ? label.itemTotalCount + item.quantity
-              : item.quantity;
-          }
-        });
-      });
-
-      labels.forEach((label) => {
-        if (!label.itemTotalCount) label.itemTotalCount = 0;
-        if (!label.itemUniqueCount) label.itemUniqueCount = 0;
-        state.push(label);
-      });
-    },
-    incrementItemCount: (
-      state,
-      action: PayloadAction<{ labelId: string; itemQuantity: number }>
-    ) => {
-      const itemQuantity = action.payload.itemQuantity;
-      const index = state.findIndex((label) => label.id === action.payload.labelId);
-      const itemUniqueCount = state[index].itemUniqueCount;
-      const itemTotalCount = state[index].itemTotalCount;
-
-      state[index].itemUniqueCount = itemUniqueCount ? itemUniqueCount + 1 : 1;
-      state[index].itemTotalCount = itemTotalCount ? itemTotalCount + itemQuantity : itemQuantity;
-    },
-    decrementItemCount: (
-      state,
-      action: PayloadAction<{ labelId: string; itemQuantity: number }>
-    ) => {
-      const index = state.findIndex((label) => label.id === action.payload.labelId);
-      const itemUniqueCount = state[index].itemUniqueCount;
-      const itemTotalCount = state[index].itemTotalCount;
-
-      if (itemUniqueCount && itemTotalCount) {
-        state[index].itemUniqueCount = itemUniqueCount - 1;
-        state[index].itemTotalCount = itemTotalCount - action.payload.itemQuantity;
-      } else {
-        throw new Error(
-          'decrementItemCount: attempting to decrement item counts' +
-            `for label ${action.payload.labelId} that has no items`
-        );
-      }
-    },
-    // Allows to save existing sort order of labels on LabelsPage.
-    // This order is used in sortLabelsBy(lastSortOrder) of slices/labelsFilters.
-    // sortLabelsBy(lastSortOrder) prevents re-sorting the list of labels by name after edit.
-    // This is needed to prevent labels jumping around if name change affects name sort order.
-    saveSortOrder: (state, action: PayloadAction<Label[]>) => {
-      action.payload.forEach((filteredLabel, filteredIndex) => {
-        const index = state.findIndex((label) => label.id === filteredLabel.id);
-        state[index].lastSortIndex = filteredIndex;
-      });
-    },
-    resetLabelsState: () => initialState,
-  },
   extraReducers: (builder) => {
     builder.addCase(addLabel.pending, (state, action) => {
       state.push(action.meta.arg);
@@ -147,6 +82,75 @@ const labelsSlice = createSlice({
       });
     });
     // TODO: possibly add rejected handling here, #78
+  },
+  initialState,
+  name: 'labels',
+  reducers: {
+    addLabels: (state, action: PayloadAction<{ labels: Label[]; items: Item[] }>) => {
+      const labels = action.payload.labels;
+      action.payload.items.forEach((item) => {
+        item.labelIds?.forEach((labelId) => {
+          const label = labels.find((label) => label.id === labelId);
+          if (label) {
+            label.itemUniqueCount = label.itemUniqueCount ? (label.itemUniqueCount += 1) : 1;
+            label.itemTotalCount = label.itemTotalCount
+              ? label.itemTotalCount + item.quantity
+              : item.quantity;
+          }
+        });
+      });
+
+      labels.forEach((label) => {
+        if (!label.itemTotalCount) label.itemTotalCount = 0;
+        if (!label.itemUniqueCount) label.itemUniqueCount = 0;
+        state.push(label);
+      });
+    },
+    decrementItemCount: (
+      state,
+      action: PayloadAction<{ labelId: string; itemQuantity: number }>
+    ) => {
+      const index = state.findIndex((label) => label.id === action.payload.labelId);
+      const itemUniqueCount = state[index].itemUniqueCount;
+      const itemTotalCount = state[index].itemTotalCount;
+
+      if (itemUniqueCount && itemTotalCount) {
+        state[index].itemUniqueCount = itemUniqueCount - 1;
+        state[index].itemTotalCount = itemTotalCount - action.payload.itemQuantity;
+      } else {
+        throw new Error(
+          'decrementItemCount: attempting to decrement item counts' +
+            `for label ${action.payload.labelId} that has no items`
+        );
+      }
+    },
+    incrementItemCount: (
+      state,
+      action: PayloadAction<{ labelId: string; itemQuantity: number }>
+    ) => {
+      const itemQuantity = action.payload.itemQuantity;
+      const index = state.findIndex((label) => label.id === action.payload.labelId);
+      const itemUniqueCount = state[index].itemUniqueCount;
+      const itemTotalCount = state[index].itemTotalCount;
+
+      state[index].itemUniqueCount = itemUniqueCount ? itemUniqueCount + 1 : 1;
+      state[index].itemTotalCount = itemTotalCount ? itemTotalCount + itemQuantity : itemQuantity;
+    },
+    
+    
+    
+    
+    resetLabelsState: () => initialState,
+    // Allows to save existing sort order of labels on LabelsPage.
+// This order is used in sortLabelsBy(lastSortOrder) of slices/labelsFilters.
+// sortLabelsBy(lastSortOrder) prevents re-sorting the list of labels by name after edit.
+// This is needed to prevent labels jumping around if name change affects name sort order.
+saveSortOrder: (state, action: PayloadAction<Label[]>) => {
+      action.payload.forEach((filteredLabel, filteredIndex) => {
+        const index = state.findIndex((label) => label.id === filteredLabel.id);
+        state[index].lastSortIndex = filteredIndex;
+      });
+    },
   },
 });
 

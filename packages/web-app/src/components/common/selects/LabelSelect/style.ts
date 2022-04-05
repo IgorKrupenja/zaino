@@ -9,15 +9,15 @@ export const labelSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
     ...base,
     width: '21.8rem',
   }),
-  menu: () => ({
-    borderTop: styles.border,
-    overflowWrap: 'anywhere',
-    width: '23rem',
-  }),
   input: (base) => ({
     ...base,
     // TODO: breaks placeholder text,
     width: '22rem',
+  }),
+  menu: () => ({
+    borderTop: styles.border,
+    overflowWrap: 'anywhere',
+    width: '23rem',
   }),
   option: (base, props) => ({
     ...base,

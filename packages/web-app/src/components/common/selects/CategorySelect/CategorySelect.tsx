@@ -28,8 +28,8 @@ export const CategorySelect = ({
   const [options] = useState(
     categories
       .map((category) => ({
-        value: category.id,
         label: category.name,
+        value: category.id,
       }))
       .sort(sortSelectOptionsByName)
   );
@@ -52,12 +52,12 @@ export const CategorySelect = ({
 
   return (
     <SelectPopover
-      value={value}
-      styles={categorySelectStyles}
       name="categoryName"
-      options={options}
-      onChange={handleChange}
       noOptionsMessage={() => 'No matching categories'}
+      onChange={handleChange}
+      options={options}
+      styles={categorySelectStyles}
+      value={value}
       {...rest}
     >
       {children}

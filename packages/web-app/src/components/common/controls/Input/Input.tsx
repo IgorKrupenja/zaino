@@ -16,12 +16,13 @@ type InputProps = {
 
 export const Input = ({ className, name, error, onChange, clearError, ...rest }: InputProps) => {
   const elementProps = {
-    // id needed to focus input on label click
-    id: name,
-    name,
+    
     className: getClassString('input' + (error ? ' input--error' : ''), {
       extraClassNames: className,
     }),
+    // id needed to focus input on label click
+id: name,
+    name,
     ...rest,
   };
 

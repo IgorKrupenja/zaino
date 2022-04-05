@@ -16,9 +16,9 @@ export const TextArea = ({ name, className, children, ...rest }: TextAreaProps) 
       {children}
       {/* id needed to focus textarea on label click */}
       <textarea
+        className={getClassString('textarea', { extraClassNames: className })}
         id={name}
         name={name}
-        className={getClassString('textarea', { extraClassNames: className })}
         onFocus={(e) => {
           // puts cursor at the end on focus
           const value = e.target.value;

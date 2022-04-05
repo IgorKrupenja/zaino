@@ -13,8 +13,8 @@ export const FilterReset = ({ onClick, children, isFiltering }: FilterResetProps
   return (
     <Button
       className={`filter-reset ${isFiltering ? '' : ' filter-reset--hidden'}`}
-      variant="transparent"
       onClick={onClick}
+      variant="transparent"
     >
       <CloseIcon className="button--transparent__icon filter-reset__icon" />
       {children}

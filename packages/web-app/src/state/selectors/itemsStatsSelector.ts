@@ -25,11 +25,11 @@ const getItemStats = (filteredItems: Item[], allItems: Item[], isPack?: boolean)
     isPack
   );
   return {
-    weight,
-    percentageOfTotal: isNaN(percentage) ? 0 : percentage,
     allItemUniqueCount: getItemCounts(allItems, isPack).unique,
     filteredItemTotalCount,
     filteredItemUniqueCount,
+    percentageOfTotal: isNaN(percentage) ? 0 : percentage,
+    weight,
   };
 };
 
@@ -42,10 +42,12 @@ const getWeight = (items: Item[], isPack?: boolean) => {
 
 const getItemCounts = (items: Item[], isPack?: boolean) => {
   const itemCounts = {
-    // Unique item count, each item counts as one regardless of quantity
-    unique: items.length,
+    
     // Total items count, taking quantity into consideration
-    total: 0,
+total: 0,
+    
+    // Unique item count, each item counts as one regardless of quantity
+unique: items.length,
   };
   itemCounts.total = items.reduce((sum, item) => {
     return (sum += isPack ? item.packQuantity : item.quantity);

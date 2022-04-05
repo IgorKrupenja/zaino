@@ -22,7 +22,7 @@ type ItemFormProps = {
 
 export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
   const [values, setValues] = useState(item);
-  const [errors, setErrors] = useState({ name: '', weight: '', quantity: '' });
+  const [errors, setErrors] = useState({ name: '', quantity: '', weight: '' });
   const initialLabelIds = useRef(values.labelIds).current;
   const dispatch = useDispatch();
 
@@ -50,27 +50,29 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       const newLabelIds = values.labelIds;
       const addedLabelIds = getArrayDifference(newLabelIds, initialLabelIds);
       addedLabelIds?.forEach((label) =>
-        dispatch(incrementItemCount({ labelId: label, itemQuantity: values.quantity }))
+        dispatch(incrementItemCount({ itemQuantity: values.quantity, labelId: label }))
       );
       const removedLabelIds = getArrayDifference(initialLabelIds, newLabelIds);
       removedLabelIds?.forEach((label) =>
-        dispatch(decrementItemCount({ labelId: label, itemQuantity: values.quantity }))
+        dispatch(decrementItemCount({ itemQuantity: values.quantity, labelId: label }))
       );
 
       onSubmit({
         ...values,
-        weight: values.weight === '' ? '' : Number(values.weight),
         addedAt: values.addedAt ?? new Date().toISOString(),
-        quantity: Number(values.quantity),
         // Lower pack quantity if it exceeds new quantity
-        packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
+packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
+        
+quantity: Number(values.quantity),
+        
+        weight: values.weight === '' ? '' : Number(values.weight),
       });
     }
   };
 
   const validateForm = () => {
     let isFormValid = true;
-    const errors = { name: '', weight: '', quantity: '' };
+    const errors = { name: '', quantity: '', weight: '' };
 
     if (!values.name.trim()) {
       errors.name = 'Name cannot be blank';
@@ -87,17 +89,17 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
   };
 
   return (
-    <form onSubmit={handleSubmit} className="item-form">
+    <form className="item-form" onSubmit={handleSubmit}>
       {/* Name */}
       <Column className="item-form__full-width">
         <FormLabel htmlFor="name">Name</FormLabel>
         <ExpandingInput
-          name="name"
-          value={values.name}
-          onChange={handleChange}
-          error={errors.name}
-          onSubmit={handleSubmit}
           clearError={() => setErrors({ ...errors, name: '' })}
+          error={errors.name}
+          name="name"
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          value={values.name}
         />
         {errors.name && <FormError>{errors.name}</FormError>}
       </Column>
@@ -105,14 +107,14 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       <Column>
         <FormLabel htmlFor="quantity">Quantity</FormLabel>
         <Input
-          name="quantity"
-          value={values.quantity}
-          onChange={(e) => handleChange(e)}
-          error={errors.quantity}
-          maxLength={3}
           clearError={(e) => {
             Number(e?.target.value) > 0 && setErrors({ ...errors, quantity: '' });
           }}
+          error={errors.quantity}
+          maxLength={3}
+          name="quantity"
+          onChange={(e) => handleChange(e)}
+          value={values.quantity}
         />
         {errors.quantity && <FormError>{errors.quantity}</FormError>}
       </Column>
@@ -120,11 +122,11 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       <Column>
         <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
         <Input
-          name="weight"
-          value={values.weight}
-          onChange={(e) => handleChange(e)}
           error={errors.weight}
           maxLength={5}
+          name="weight"
+          onChange={(e) => handleChange(e)}
+          value={values.weight}
         />
       </Column>
       {/* Category */}
@@ -140,7 +142,7 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
       {/* Notes */}
       <Column className="item-form__full-width item-form__notes">
         <FormLabel htmlFor="notes">Notes</FormLabel>
-        <TextArea name="notes" value={values.notes} onChange={handleChange} />
+        <TextArea name="notes" onChange={handleChange} value={values.notes} />
       </Column>
       {/* Buttons */}
       {children}

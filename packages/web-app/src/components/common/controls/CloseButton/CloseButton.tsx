@@ -12,8 +12,8 @@ export const CloseButton = ({ onClick, className, size = 'small' }: CloseButtonP
   return (
     <button
       className={getClassString('close-button', { extraClassNames: className, variant: size })}
-      type="button"
       onClick={onClick}
+      type="button"
     >
       <CloseIcon className="close-button__icon" />
     </button>

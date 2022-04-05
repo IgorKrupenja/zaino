@@ -9,29 +9,29 @@ type ItemFilters = {
 };
 
 export const itemFiltersInitialState: ItemFilters = {
-  text: '',
   categoryId: undefined,
   labels: [],
   sortBy: ItemSortOption.addedLatest,
+  text: '',
 };
 
 const itemFiltersSlice = createSlice({
-  name: 'item-filters',
   initialState: itemFiltersInitialState,
+  name: 'item-filters',
   reducers: {
-    setItemTextFilter(state, action: PayloadAction<string>) {
-      state.text = action.payload;
-    },
+    resetItemFilters: () => itemFiltersInitialState,
     setItemCategoryFilter(state, action: PayloadAction<string | undefined>) {
       state.categoryId = action.payload;
     },
     setItemLabelsFilter(state, action: PayloadAction<string[]>) {
       state.labels = action.payload;
     },
+    setItemTextFilter(state, action: PayloadAction<string>) {
+      state.text = action.payload;
+    },
     sortItemsBy(state, action: PayloadAction<ItemSortOption>) {
       state.sortBy = action.payload;
     },
-    resetItemFilters: () => itemFiltersInitialState,
   },
 });
 

@@ -28,8 +28,8 @@ export const LabelDetails = (label: Label) => {
         <div className="label-details__badge__container">
           <LabelBadge
             className="label-details__badge"
-            disabled={isFormOpen}
             colorName={colorName}
+            disabled={isFormOpen}
             label={label}
             onClick={() => {
               dispatch(resetItemFilters());
@@ -50,7 +50,7 @@ export const LabelDetails = (label: Label) => {
           </div>
         ) : null}
         {!isFormOpen && (
-          <Button className="label-details__edit" variant="transparent" onClick={toggleForm}>
+          <Button className="label-details__edit" onClick={toggleForm} variant="transparent">
             Edit
           </Button>
         )}
@@ -59,15 +59,13 @@ export const LabelDetails = (label: Label) => {
         <LabelForm
           label={label}
           onSubmit={(label) => dispatch(updateLabel(label))}
-          toggleForm={toggleForm}
-          setName={setName}
           setColorName={setColorName}
+          setName={setName}
+          toggleForm={toggleForm}
         >
           {/* Delete button with popover */}
           <Popover
-            isOpen={isPopoverOpen}
-            onClickOutside={togglePopover}
-            className="popover--wide"
+            size="large"
             content={
               <>
                 <Popover.Header>
@@ -79,21 +77,23 @@ export const LabelDetails = (label: Label) => {
                     Deleting a label will remove it from all items. There is no undo.
                   </Popover.Text>
                   <Button
-                    variant="secondary"
                     onClick={() => label && dispatch(deleteLabel(label.id))}
+                    variant="secondary"
                   >
                     Delete
                   </Button>
                 </Popover.Content>
               </>
             }
+            isOpen={isPopoverOpen}
+            onClickOutside={togglePopover}
           >
-            <Button className="label-details__delete" variant="secondary" onClick={togglePopover}>
+            <Button className="label-details__delete" onClick={togglePopover} variant="secondary">
               Delete
             </Button>
           </Popover>
           {/* Save changes button */}
-          <Button submit className="label-details__save">
+          <Button className="label-details__save" submit>
             Save changes
           </Button>
         </LabelForm>

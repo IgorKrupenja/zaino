@@ -15,54 +15,54 @@ export const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/privacy"
           element={
             <Suspense fallback={<Loader />}>
               <PrivacyPolicy />
             </Suspense>
           }
+          path="/privacy"
         ></Route>
         <Route
-          path="/dashboard/*"
           element={
             <PrivateRoute>
               <DashboardPage />
             </PrivateRoute>
           }
+          path="/dashboard/*"
         ></Route>
         {process.env.REACT_APP_SHOW_CATEGORIES_PAGE === 'true' && (
           <Route
-            path="/categories"
             element={
               <PrivateRoute>
                 <CategoriesPage />
               </PrivateRoute>
             }
+            path="/categories"
           ></Route>
         )}
         <Route
-          path="/labels"
           element={
             <PrivateRoute>
               <LabelsPage />
             </PrivateRoute>
           }
+          path="/labels"
         ></Route>
         <Route
-          path="/"
           element={
             <PublicRoute>
               <LoginPage />
             </PublicRoute>
           }
+          path="/"
         ></Route>
         <Route
-          path="*"
           element={
             <PublicRoute>
               <Navigate to="/" />
             </PublicRoute>
           }
+          path="*"
         ></Route>
       </Routes>
     </BrowserRouter>

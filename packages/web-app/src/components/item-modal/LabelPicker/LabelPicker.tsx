@@ -14,18 +14,18 @@ export const LabelPicker = ({ labelIds, onChange }: LabelPickerProps) => {
   return (
     <Column className="label-picker">
       <LabelSelect
-        popoverAlign="center"
-        labelIds={labelIds}
         headerText="Select labels"
         isCreatable
+        labelIds={labelIds}
         onChange={onChange}
+        popoverAlign="center"
       >
-        <Button variant="transparent" size="small">
+        <Button size="small" variant="transparent">
           Labels
           <EditIcon />
         </Button>
       </LabelSelect>
-      <LabelBadgeList labelIds={labelIds} badgeClickDisabled />
+      <LabelBadgeList badgeClickDisabled labelIds={labelIds} />
     </Column>
   );
 };
