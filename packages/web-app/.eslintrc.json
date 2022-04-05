@@ -2,11 +2,12 @@
   "extends": ["react-app", "react-app/jest"],
   "rules": {
     "no-return-await": "warn",
-    "react/jsx-sort-props": "warn"
+    "sort-keys-fix/sort-keys-fix": "warn"
   },
   "plugins": ["sort-keys-fix"],
   "overrides": [
     {
+      // TypeScript only
       "files": ["**/*.ts?(x)"],
       "extends": [
         "plugin:@typescript-eslint/eslint-recommended",
@@ -19,7 +20,6 @@
         "@typescript-eslint/require-await": "warn",
         "@typescript-eslint/no-unnecessary-type-assertion": "warn",
         "react/jsx-sort-props": "warn",
-        "sort-keys-fix/sort-keys-fix": "warn",
         // TODO: consider enabling for TSX only
         "@typescript-eslint/member-ordering": ["warn", { "default": { "order": "alphabetically" } }]
       }
