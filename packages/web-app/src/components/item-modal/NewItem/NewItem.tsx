@@ -9,7 +9,7 @@ import { CloseButton } from '../../common/controls/CloseButton';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
-import './style.scss';
+import './NewItem.scss';
 
 export const NewItem = () => {
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ export const NewItem = () => {
     <Modal isOpen onRequestClose={closeModal} contentLabel={title}>
       <SectionHeader>
         <SectionHeader.Title>{title}</SectionHeader.Title>
+        {/* todo variant in child */}
         <CloseButton className="close-button--large" onClick={closeModal} />
       </SectionHeader>
       <ItemForm
@@ -42,7 +43,7 @@ export const NewItem = () => {
           dispatch(addItem(item));
         }}
       >
-        <Button className="item-form__full-width new-item__button" submit>
+        <Button className="new-item__button" submit>
           Create new item
         </Button>
       </ItemForm>

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import ReactModal from 'react-modal';
-import './style.scss';
+import './Modal.scss';
 
 type ModalProps = {
   isOpen: boolean;
@@ -9,15 +9,12 @@ type ModalProps = {
   children: ReactNode;
 };
 
-/**
- * Modal component with custom styling.
- */
 export const Modal = ({ children, ...rest }: ModalProps) => {
   ReactModal.setAppElement('#root');
 
   return (
+    // Extra container div is needed to achieve proper scrolling when viewport height < modal height
     <ReactModal className="modal__container" overlayClassName="modal__overlay" {...rest}>
-      {/* extra div is needed to achieve proper scrolling when viewport height < modal height */}
       <section className="modal">{children}</section>
     </ReactModal>
   );

@@ -7,12 +7,10 @@
   overflow-y: scroll;
   position: fixed;
   top: 0px;
-  // for scrolling
   width: 100%;
   z-index: 20;
 }
 
-// technical div, for scrolling
 .modal__container {
   margin: auto;
   outline: none;
@@ -25,6 +23,6 @@
   border-radius: $xs-size;
   margin: $s-size;
   padding: $s-size;
-  // to match Stack width
+  // To match Stack width
   width: 40.5rem;
 }
