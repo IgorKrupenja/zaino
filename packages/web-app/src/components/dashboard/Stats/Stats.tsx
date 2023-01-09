@@ -1,5 +1,6 @@
-import { BulletRow } from '../../common/containers/BulletRow';
 import './Stats.scss';
+
+import { BulletRow } from '../../common/containers/BulletRow';
 
 type StatsProps = {
   className: string;

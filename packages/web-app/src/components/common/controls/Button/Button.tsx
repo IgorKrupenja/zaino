@@ -1,6 +1,8 @@
-import { forwardRef, ReactNode } from 'react';
-import { getClassString } from '../../../../utils';
 import './Button.scss';
+
+import { forwardRef, ReactNode } from 'react';
+
+import { getClassString } from '../../../../utils';
 
 type ButtonProps = {
   children: ReactNode;

@@ -1,4 +1,5 @@
 import { StylesConfig } from 'react-select';
+
 import styles from '../../../../styles/base/_export.scss';
 import { SelectOption } from '../SelectPopover';
 import { colorDot } from '../SelectPopover/style';

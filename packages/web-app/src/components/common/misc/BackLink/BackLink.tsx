@@ -1,8 +1,10 @@
+import './BackLink.scss';
+
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { RootState } from '../../../../state/store';
 import { getClassString } from '../../../../utils';
-import './BackLink.scss';
 
 type BackLinkProps = {
   className?: string;

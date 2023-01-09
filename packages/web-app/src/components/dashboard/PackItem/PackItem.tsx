@@ -1,12 +1,14 @@
+import './PackItem.scss';
+
 import { Item } from '@zaino/shared';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { ReactComponent as NoBackpackIcon } from '../../../images/icons/no-backpack.svg';
 import { updateItem } from '../../../state/slices/itemsSlice';
 import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/controls/Button';
 import { ItemDetails } from '../ItemDetails';
-import './PackItem.scss';
 
 export const PackItem = (item: Item) => {
   const dispatch = useDispatch();

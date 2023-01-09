@@ -1,4 +1,7 @@
+import './DemoData.scss';
+
 import { useDispatch, useSelector } from 'react-redux';
+
 import { useToggle } from '../../../../hooks';
 import { selectDemoItems } from '../../../../state/selectors/itemsSelector';
 import { selectDemoDataLabels } from '../../../../state/selectors/labelsSelector';
@@ -9,7 +12,6 @@ import { RootState } from '../../../../state/store';
 import { Button } from '../../controls/Button';
 import { CloseButton } from '../../controls/CloseButton';
 import { Popover } from '../../misc/Popover';
-import './DemoData.scss';
 
 export const DemoData = () => {
   const uid = useSelector((state: RootState) => state.user.uid);

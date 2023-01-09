@@ -1,9 +1,11 @@
+import './style.scss';
+
 import { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { setItemCategoryFilter } from '../../../../state/slices/itemFiltersSlice';
 import { RootState } from '../../../../state/store';
 import { getClassString } from '../../../../utils';
-import './style.scss';
 
 type CategoryProps = {
   categoryId?: string;

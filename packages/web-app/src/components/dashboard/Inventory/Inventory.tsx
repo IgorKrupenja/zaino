@@ -1,6 +1,9 @@
+import './Inventory.scss';
+
 import { Item } from '@zaino/shared';
 import { shallowEqual, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { selectFilteredInventoryItems } from '../../../state/selectors/itemsSelector';
 import { selectInventoryItemsStats } from '../../../state/selectors/itemsStatsSelector';
 import { RootState } from '../../../state/store';
@@ -9,7 +12,6 @@ import { SectionHeader } from '../../common/misc/SectionHeader';
 import { InventoryItem } from '../InventoryItem';
 import { Stack } from '../Stack';
 import { Stats } from '../Stats';
-import './Inventory.scss';
 
 export const Inventory = () => {
   // shallowEqual prevents re-renders when items in store do not change

@@ -1,4 +1,7 @@
+import './CategoryPicker.scss';
+
 import { useSelector } from 'react-redux';
+
 import { RootState } from '../../../state/store';
 import { Column } from '../../common/containers/Column';
 import { Row } from '../../common/containers/Row';
@@ -6,7 +9,6 @@ import { Button } from '../../common/controls/Button';
 import { EditIcon } from '../../common/icons/EditIcon';
 import { CategoryImage } from '../../common/misc/CategoryImage';
 import { CategorySelect } from '../../common/selects/CategorySelect';
-import './CategoryPicker.scss';
 
 type CategoryPickerProps = {
   categoryId?: string;

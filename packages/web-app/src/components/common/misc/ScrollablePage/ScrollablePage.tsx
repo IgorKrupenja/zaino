@@ -1,8 +1,10 @@
+import './style.scss';
+
 import { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
+
 import { RootState } from '../../../../state/store';
 import { Header } from '../../header/Header';
-import './style.scss';
 
 type ScrollablePageProps = {
   children: ReactNode;

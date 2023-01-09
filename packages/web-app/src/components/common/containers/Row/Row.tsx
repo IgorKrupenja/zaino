@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
-import { getClassString } from '../../../../utils';
 import './style.scss';
+
+import { ReactNode } from 'react';
+
+import { getClassString } from '../../../../utils';
 
 type RowProps = {
   className?: string;

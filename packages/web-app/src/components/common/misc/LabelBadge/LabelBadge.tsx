@@ -1,9 +1,11 @@
+import './style.scss';
+
 import { ColorName, Label } from '@zaino/shared';
 import { useDispatch } from 'react-redux';
+
 import { colors } from '../../../../constants';
 import { setItemLabelsFilter } from '../../../../state/slices/itemFiltersSlice';
 import { getClassString } from '../../../../utils';
-import './style.scss';
 
 type LabelBadgeProps = {
   label?: Label;

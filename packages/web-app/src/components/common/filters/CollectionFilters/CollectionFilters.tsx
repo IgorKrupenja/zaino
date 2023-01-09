@@ -2,6 +2,7 @@ import { ActionCreatorWithoutPayload, ActionCreatorWithPayload } from '@reduxjs/
 import deepEqual from 'fast-deep-equal/react';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { collectionFiltersInitialState } from '../../../../state/constants';
 import { CollectionSortOption } from '../../../../state/enums';
 import { RootState } from '../../../../state/store';

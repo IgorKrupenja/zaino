@@ -1,7 +1,10 @@
+import './LabelDetails.scss';
+
 import { Label } from '@zaino/shared';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { useToggle } from '../../../hooks';
 import { resetItemFilters } from '../../../state/slices/itemFiltersSlice';
 import { deleteLabel, updateLabel } from '../../../state/slices/labelsSlice';
@@ -11,7 +14,6 @@ import { CloseButton } from '../../common/controls/CloseButton';
 import { LabelBadge } from '../../common/misc/LabelBadge';
 import { Popover } from '../../common/misc/Popover';
 import { LabelForm } from '../LabelForm';
-import './LabelDetails.scss';
 
 export const LabelDetails = (label: Label) => {
   const dispatch = useDispatch();
@@ -65,7 +67,6 @@ export const LabelDetails = (label: Label) => {
         >
           {/* Delete button with popover */}
           <Popover
-            size="large"
             content={
               <>
                 <Popover.Header>
@@ -87,6 +88,7 @@ export const LabelDetails = (label: Label) => {
             }
             isOpen={isPopoverOpen}
             onClickOutside={togglePopover}
+            size="large"
           >
             <Button className="label-details__delete" onClick={togglePopover} variant="secondary">
               Delete

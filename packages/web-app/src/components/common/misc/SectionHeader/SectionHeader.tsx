@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
-import { getClassString } from '../../../../utils';
 import './SectionHeader.scss';
+
+import { ReactNode } from 'react';
+
+import { getClassString } from '../../../../utils';
 
 type SectionHeaderProps = {
   children: ReactNode;

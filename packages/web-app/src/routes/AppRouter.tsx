@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+
 import { Loader } from '../components/common/misc/Loader';
 import { DashboardPage } from '../components/dashboard/DashboardPage';
 import { LabelsPage } from '../components/labels/LabelsPage';

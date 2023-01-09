@@ -1,6 +1,7 @@
+import './Modal.scss';
+
 import { ReactNode } from 'react';
 import ReactModal from 'react-modal';
-import './Modal.scss';
 
 type ModalProps = {
   isOpen: boolean;

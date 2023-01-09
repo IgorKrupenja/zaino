@@ -1,6 +1,8 @@
-import { ChangeEvent, ReactNode } from 'react';
-import { getClassString } from '../../../../utils';
 import './style.scss';
+
+import { ChangeEvent, ReactNode } from 'react';
+
+import { getClassString } from '../../../../utils';
 
 type TextAreaProps = {
   value: string | undefined;

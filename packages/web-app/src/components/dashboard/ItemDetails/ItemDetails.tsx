@@ -1,13 +1,15 @@
+import './style.scss';
+
 import { Item } from '@zaino/shared';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+
 import { ReactComponent as CategoryIcon } from '../../../images/icons/category.svg';
 import { BulletRow } from '../../common/containers/BulletRow';
 import { Category } from '../../common/misc/Category';
 import { CategoryImage } from '../../common/misc/CategoryImage';
 import { Corkscrew } from '../../common/misc/Corkscrew';
 import { LabelBadgeList } from '../../common/misc/LabelBadgeList';
-import './style.scss';
 
 type ItemDetailsProps = {
   item: Item;

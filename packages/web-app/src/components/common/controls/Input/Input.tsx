@@ -1,6 +1,8 @@
-import { ChangeEvent } from 'react';
-import { getClassString } from '../../../../utils';
 import './style.scss';
+
+import { ChangeEvent } from 'react';
+
+import { getClassString } from '../../../../utils';
 
 type InputProps = {
   className?: string;

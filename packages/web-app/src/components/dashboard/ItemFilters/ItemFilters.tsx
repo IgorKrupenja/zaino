@@ -1,6 +1,7 @@
 import deepEqual from 'fast-deep-equal/react';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { CollectionSortOption, ItemSortOption } from '../../../state/enums';
 import {
   itemFiltersInitialState,

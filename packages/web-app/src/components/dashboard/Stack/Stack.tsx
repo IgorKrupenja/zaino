@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
-import { getClassString } from '../../../utils';
 import './Stack.scss';
+
+import { ReactNode } from 'react';
+
+import { getClassString } from '../../../utils';
 
 type StackProps = {
   children: ReactNode;

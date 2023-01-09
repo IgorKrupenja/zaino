@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Item, Label } from '@zaino/shared';
 import { batch } from 'react-redux';
+
 import { copyCollection, db, getObjectsFromSnapshots } from '../../firebase';
 import { RootState } from '../store';
 import { addItems } from './itemsSlice';

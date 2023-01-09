@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import './style.scss';
+
+import { useEffect, useState } from 'react';
 
 export const Loader = () => {
   const [isShown, setIsShown] = useState(false);

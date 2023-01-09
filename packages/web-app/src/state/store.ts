@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { categoriesReducer } from './slices/categoriesSlice';
 import { categoryFiltersReducer } from './slices/categoryFiltersSlice';
 import { demoDataReducer } from './slices/demoDataSlice';

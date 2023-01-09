@@ -7,6 +7,7 @@ import {
 } from 'firebase/auth';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { login, logout } from '../state/slices/userSlice';
 import { RootState, store } from '../state/store';
 import { asciiLogo } from '../utils';

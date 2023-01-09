@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+
 import { RootState } from '../state/store';
 
 type PublicRouteProps = {

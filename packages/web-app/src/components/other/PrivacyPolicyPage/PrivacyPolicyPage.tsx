@@ -1,7 +1,9 @@
+import './PrivacyPolicyPage.scss';
+
 import { lazy } from 'react';
+
 import { useTitle } from '../../../hooks';
 import { BackLink } from '../../common/misc/BackLink';
-import './PrivacyPolicyPage.scss';
 
 export const PrivacyPolicyPage = () => {
   useTitle('Privacy and cookie policy | Zaino');

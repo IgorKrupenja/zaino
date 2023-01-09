@@ -1,9 +1,11 @@
+import './style.scss';
+
 import { Label } from '@zaino/shared';
 import { useSelector } from 'react-redux';
+
 import { RootState } from '../../../../state/store';
 import { getClassString } from '../../../../utils';
 import { LabelBadge } from '../LabelBadge';
-import './style.scss';
 
 type LabelBadgeListProps = {
   labelIds: string[] | undefined;

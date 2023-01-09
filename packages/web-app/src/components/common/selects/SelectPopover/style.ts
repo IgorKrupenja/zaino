@@ -1,7 +1,8 @@
 import { StylesConfig } from 'react-select';
-import { SelectOption } from '.';
+
 import checkbox from '../../../../images/icons/check-mark.svg';
 import styles from '../../../../styles/base/_export.scss';
+import { SelectOption } from '.';
 
 // CSS-in-JS is used here as this is the recommended method for react-select.
 

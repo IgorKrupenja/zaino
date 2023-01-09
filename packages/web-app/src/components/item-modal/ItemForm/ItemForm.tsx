@@ -1,6 +1,9 @@
+import './ItemForm.scss';
+
 import { Item } from '@zaino/shared';
 import { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labelsSlice';
 import { getArrayDifference } from '../../../utils';
 import { Column } from '../../common/containers/Column';
@@ -11,7 +14,6 @@ import { Input } from '../../common/controls/Input';
 import { TextArea } from '../../common/controls/TextArea';
 import { CategoryPicker } from '../CategoryPicker';
 import { LabelPicker } from '../LabelPicker';
-import './ItemForm.scss';
 
 type ItemFormProps = {
   item: Item;

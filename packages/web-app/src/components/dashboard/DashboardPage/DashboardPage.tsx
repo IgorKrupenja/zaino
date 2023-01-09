@@ -1,4 +1,7 @@
+import './DashboardPage.scss';
+
 import { useSelector } from 'react-redux';
+
 import { useTitle } from '../../../hooks';
 import { DashboardRoutes } from '../../../routes';
 import { RootState } from '../../../state/store';
@@ -7,7 +10,6 @@ import { Loader } from '../../common/misc/Loader';
 import { Inventory } from '../Inventory';
 import { ItemFilters } from '../ItemFilters';
 import { Pack } from '../Pack';
-import './DashboardPage.scss';
 
 export const DashboardPage = () => {
   const isLoading = useSelector((state: RootState) => state.demoData.isLoading);

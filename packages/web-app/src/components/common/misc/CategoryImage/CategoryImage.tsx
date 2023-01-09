@@ -1,7 +1,9 @@
+import './style.scss';
+
 import { useSelector } from 'react-redux';
+
 import { RootState } from '../../../../state/store';
 import { getClassString } from '../../../../utils';
-import './style.scss';
 
 type CategoryImageProps = {
   categoryId?: string;

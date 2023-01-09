@@ -1,5 +1,8 @@
+import './style.scss';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+
 import { ReactComponent as CategoryIcon } from '../../../../images/icons/category.svg';
 import { ReactComponent as DashboardIcon } from '../../../../images/icons/dashboard.svg';
 import { ReactComponent as LabelIcon } from '../../../../images/icons/label.svg';
@@ -9,7 +12,6 @@ import { sortLabelsBy } from '../../../../state/slices/labelFiltersSlice';
 import { RootState } from '../../../../state/store';
 import { AccountDetails } from '../AccountDetails';
 import { DemoData } from '../DemoData';
-import './style.scss';
 
 export const Header = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,9 @@
+import './LabelForm.scss';
+
 import { ColorName, Label } from '@zaino/shared';
 import { ReactNode, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { CollectionSortOption } from '../../../state/enums';
 import { selectAllLabels } from '../../../state/selectors/labelsSelector';
 import { sortLabelsBy } from '../../../state/slices/labelFiltersSlice';
@@ -12,7 +15,6 @@ import { FormError } from '../../common/controls/FormError';
 import { FormLabel } from '../../common/controls/FormLabel';
 import { Input } from '../../common/controls/Input';
 import { ColorSelect } from '../../common/selects/ColorSelect';
-import './LabelForm.scss';
 
 type LabelFormProps = {
   label: Label;
