@@ -1,4 +1,4 @@
-import './style.scss';
+import './AccountDetails.scss';
 
 import { getAuth, signOut } from 'firebase/auth';
 import { useEffect } from 'react';

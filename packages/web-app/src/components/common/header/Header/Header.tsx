@@ -1,7 +1,7 @@
 import './Header.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as CategoryIcon } from '../../../../images/icons/category.svg';
 import { ReactComponent as DashboardIcon } from '../../../../images/icons/dashboard.svg';

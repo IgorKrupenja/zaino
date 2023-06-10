@@ -4,8 +4,8 @@ import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg'
 import { getClassString } from '../../../../utils';
 
 type CloseButtonProps = {
-  onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
   className?: string;
+  onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
   size?: 'small' | 'large';
 };
 
