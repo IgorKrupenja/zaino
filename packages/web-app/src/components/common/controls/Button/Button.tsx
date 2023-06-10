@@ -8,6 +8,7 @@ type ButtonProps = {
   children: ReactNode;
   className?: string;
   disabled?: boolean;
+  navLinkTo?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   size?: 'small' | 'medium' | 'large';
   submit?: boolean;

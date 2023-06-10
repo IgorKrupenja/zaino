@@ -30,7 +30,6 @@ export const DashboardPage = () => {
         )}
       </main>
 
-      {/* Routes for item modals specific to Dashboard page */}
       <DashboardRoutes />
     </>
   );

@@ -45,7 +45,6 @@
     "mini-css-extract-plugin": "^2.4.5",
     "nodemon": "^2.0.15",
     "normalize.css": "^8.0.1",
-    "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^6.2.1",
     "postcss-normalize": "^10.0.1",
@@ -170,5 +169,14 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "postcss": "^8.4.24",
+    "postcss-scss": "^4.0.6",
+    "stylelint": "^15.6.2",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^5.0.1"
   }
 }
