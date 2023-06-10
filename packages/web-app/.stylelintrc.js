@@ -1,6 +1,6 @@
 module.exports = {
-  extends: ['stylelint-config-standard'],
-  plugins: ['stylelint-order', 'stylelint-scss'],
+  extends: ['stylelint-config-standard-scss'],
+  plugins: ['stylelint-order'],
   rules: {
     'at-rule-no-unknown': null,
     'declaration-no-important': true,
@@ -14,10 +14,4 @@ module.exports = {
     ],
     'scss/at-rule-no-unknown': true,
   },
-  overrides: [
-    {
-      files: ['**/*.scss'],
-      customSyntax: 'postcss-scss',
-    },
-  ],
 };
