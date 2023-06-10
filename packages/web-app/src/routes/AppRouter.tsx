@@ -4,13 +4,13 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Loader } from '../components/common/misc/Loader';
 import { DashboardPage } from '../components/dashboard/DashboardPage';
 import { LabelsPage } from '../components/labels/LabelsPage';
-import { CategoriesPage } from '../components/other/CategoriesPage';
-import { LoginPage } from '../components/other/LoginPage';
+import { CategoriesPage } from '../components/pages/CategoriesPage';
+import { LoginPage } from '../components/pages/LoginPage';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = () => {
-  const PrivacyPolicy = lazy(() => import('../components/other/PrivacyPolicyPage'));
+  const PrivacyPolicy = lazy(() => import('../components/pages/PrivacyPolicyPage'));
 
   return (
     <BrowserRouter>

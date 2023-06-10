@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2046,SC2005,SC2002
 
 # Get variables from .env files
 export $(echo $(cat .env | sed 's/#.*//g' | sed 's/\r//g' | xargs) | envsubst)
