@@ -13,10 +13,10 @@ import { FilterReset } from '../FilterReset';
 import { FiltersWrapper } from '../FiltersWrapper';
 
 type CollectionFiltersProps = {
-  textFilterPlaceholder: string;
+  resetFilters: ActionCreatorWithoutPayload<string>;
   setTextFilter: ActionCreatorWithPayload<string, string>;
   sort: ActionCreatorWithPayload<CollectionSortOption, string>;
-  resetFilters: ActionCreatorWithoutPayload<string>;
+  textFilterPlaceholder: string;
 };
 
 export const CollectionFilters = ({
@@ -65,7 +65,7 @@ export const CollectionFilters = ({
 
   return (
     <FiltersWrapper>
-      <Row className="row-wrapper--full-width">
+      <Row variant="full-width">
         <Input
           className="input--grow input--search"
           onChange={(e) => {

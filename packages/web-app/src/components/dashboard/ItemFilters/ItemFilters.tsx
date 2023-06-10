@@ -64,7 +64,7 @@ export const ItemFilters = () => {
 
   return (
     <FiltersWrapper>
-      <Row className="row-wrapper--full-width">
+      <Row variant="full-width">
         {/* Name */}
         <Input
           className="input--grow input--search"
