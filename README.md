@@ -31,7 +31,7 @@ So far, the following features have been implemented.
 - React, React Router, Redux
 - Some React UI components: [React Select](https://react-select.com/home), [react-modal](https://github.com/reactjs/react-modal), [react-tiny-popover](https://github.com/alexkatz/react-tiny-popover)
 - SCSS (no frameworks)
-- Yarn workspaces
+- npm workspaces
 - Webpack
 - Cloud Firestore, Firebase Authentication, Firebase Functions, Google Cloud Storage, Firebase Hosting
 
@@ -116,23 +116,23 @@ Main web app, code structure highlights:
 
 ### Setup
 
-Please note that the development environment works completely fine on macOS and Linux only. There are a couple of minor issues on Windows, see [#521](https://github.com/igor-krupenja/zaino/issues/521) and [#522](https://github.com/igor-krupenja/zaino/issues/522).
+Before starting, make sure that you have Node 16 installed or use [nvm](https://github.com/nvm-sh/nvm).
 
 #### Common
 
 1. [Install Google's Cloud SDK](https://cloud.google.com/sdk/docs/install) and run `gcloud auth login` to log in.
 2. Run `npm install -g firebase-tools` to install Firebase CLI and run `firebase login` to log in.
-3. Run `npm install` in the *root* directory of the cloned/forked repo. Running in the root directory is required because this repo uses [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces).
+3. Run `npm install` in the *root* directory of the cloned/forked repo.
 4. Go to [Firebase console](https://console.firebase.google.com/u/0/) and create two projects, one for **development** environment and one for **production** environment.
 5. In Firebase console, create *Web* apps for the two projects you created. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
-6. In Firebase console, open Project Settings and note the Project IDs for the project you created.
-7. Create a `.firebaserc` file in the *root* of this repo and add the Project IDs there like this:
+6. In Firebase console, open Project Settings and note the Project IDs for the projects you created.
+7. Create a `.firebaserc` file in the *root* of this repo and add the Project IDs there like this (dummy values):
 
 ```json
 {
   "projects": {
-    "development": "...",
-    "production": "..."
+    "development": "zaino-dev-3ea56",
+    "production": "zaino-prod-236c2"
   }
 }
 ```
@@ -141,22 +141,22 @@ Please note that the development environment works completely fine on macOS and 
 
 1. Go to Firebase console and open Project Settings for your projects.
 2. Scroll down to Your Apps section and locate the code snippet with `firebaseConfig`.
-3. Go to `packages/web-app` and create `.env.development` and `.env.production` files with the variables from `firebaseConfig`. The file format should be like this:
+3. Go to `packages/web-app` and create `.env.development` and `.env.production` files with the variables from `firebaseConfig`. The file format should be like this (dummy values):
 
 ```shell
-REACT_APP_FIREBASE_API_KEY="..."
-REACT_APP_FIREBASE_AUTH_DOMAIN="..."
-REACT_APP_FIREBASE_DATABASE_URL="..."
-REACT_APP_FIREBASE_PROJECT_ID="..."
-REACT_APP_FIREBASE_STORAGE_BUCKET="..."
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID="..."
-REACT_APP_FIREBASE_APP_ID="..."
-REACT_APP_FIREBASE_MEASUREMENT_ID="..."
+REACT_APP_FIREBASE_API_KEY="AIzaSkR_FfdseFcsE3fgg7pdjjjof6jhDSA-dTM"
+REACT_APP_FIREBASE_AUTH_DOMAIN="zaino-dev-3ea56.firebaseapp.com"
+REACT_APP_FIREBASE_DATABASE_URL="https://zaino-dev-3ea56.firebaseio.com"
+REACT_APP_FIREBASE_PROJECT_ID="zaino-dev-3ea56"
+REACT_APP_FIREBASE_STORAGE_BUCKET="zaino-dev-3ea56.appspot.com"
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID="550657824795"
+REACT_APP_FIREBASE_APP_ID="1:550657824795:web:29da52b66934c3ea494f74"
+REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 ```
 
 ##### Caveats ⚠️
 
-- Most of the images used in the [live demo](#live-demo) were purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/) and cannot be made part of this repo due to copyright restrictions. To get images in the app, you can add your own to `packages/web-app/src/images/copyrighted` directory using the following structure:
+- Most of the images used in the [live demo](#live-demo) were purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/) and cannot be made part of this repo due to copyright restrictions. To get images in the app, you can add your own to `packages/web-app/src/images/copyrighted` directory with the following structure:
 
 ```shell
 ├── categories
@@ -175,10 +175,12 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="..."
 │   ├── socks.svg
 │   ├── stove.svg
 │   └── tent.svg
-└── mountain.svg <--- page loading indicator image
+└── mountain.svg <--- loader image
 ```
 
 <!-- TODO: Privacy policy location might require update -->
+
+<!-- todo check live demo links -->
 
 - Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicy/PrivacyPolicyContent.tsx`.
 
@@ -188,7 +190,7 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="..."
 2. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the variables for your Project IDs. The file format should be like this:
 
 ```shell
-FIREBASE_PROJECT_ID="..."
+FIREBASE_PROJECT_ID="zaino-dev-3ea56"
 ```
 
 Note: You can change additional settings like regions and Cloud Storage bucket name in [the `.env` file](packages/firebase/.env).

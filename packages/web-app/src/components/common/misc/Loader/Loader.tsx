@@ -16,6 +16,7 @@ export const Loader = () => {
     timeout = setTimeout(() => {
       setIsShown(true);
     }, 100);
+
     return () => {
       if (timeout) clearTimeout(timeout);
     };
