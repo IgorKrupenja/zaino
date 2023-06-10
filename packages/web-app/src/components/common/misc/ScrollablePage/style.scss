@@ -8,11 +8,8 @@
 }
 
 .scrollable-page__container {
-  bottom: 0;
-  left: 0;
+  inset: $header-height 0 0 0;
   overflow-y: scroll;
   position: absolute;
-  right: 0;
-  top: $header-height;
   width: 100%;
 }

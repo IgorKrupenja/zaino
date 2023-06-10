@@ -2,7 +2,7 @@
 
 // Main app colors, used for labels
 $light-blue: #00bdfe;
-$grey: #666666;
+$grey: #666;
 $blue: #0052cc;
 $red: #ff5630;
 $orange: #f89228;
@@ -17,32 +17,35 @@ $dark-blue: #253858;
 $off-white: #f6f6f6;
 $extra-light-grey: #e9e9e9;
 $off-black: #333;
+
 // E.g. for borders
 $light-grey: #ccc;
 $mid-grey: #aaa;
+
 // Delete buttons etc.
 $bright-red: #e20000;
 $dark-red: #ca1e2d;
-
 $shadow: 0 0.7rem 2rem rgba($grey, 0.2);
 $border: 0.1rem $light-grey solid;
 $input-shadow: 0 0 0 0.1rem $light-blue;
-
 $xs-size: 0.6rem;
 $s-size: 1.3rem;
 $m-size: 1.4rem;
 $l-size: 1.8rem;
 $xl-size: 3.3rem;
+
 // Dashboard stacks and related
 $stack-margin-size: 1rem;
+
 // General maximum app width
 $app-width: 85rem;
+
 // Labels page maximum width
 $labels-width: 65rem;
+
 // Both used in Dashboard List height calculation
 $header-height: 2 * $xl-size;
 $list-filters-height: 2 * $xl-size + 1.5rem;
-
 $font-size-small: $s-size;
 $font-size-medium: $m-size;
 $font-size-large: $l-size;

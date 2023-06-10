@@ -1,4 +1,5 @@
 .expanding-input {
   @include editable-text-control;
+
   height: auto;
 }
