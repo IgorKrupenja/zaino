@@ -18,11 +18,11 @@
     outline: 0;
   }
 
-  &::input-placeholder {
+  &::-webkit-input-placeholder {
     color: $grey;
   }
 
-  &::placeholder {
+  &::-moz-placeholder {
     color: $grey;
     opacity: 1;
   }

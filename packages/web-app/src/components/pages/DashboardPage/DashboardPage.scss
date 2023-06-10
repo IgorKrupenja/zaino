@@ -1,8 +1,11 @@
 .dashboard-page {
-  inset: $header-height 0 0 0;
+  bottom: 0;
+  left: 0;
   margin: 0 auto;
   max-width: $app-width;
   position: absolute;
+  right: 0;
+  top: $header-height;
 }
 
 .dashboard-page--loading {
@@ -11,7 +14,6 @@
 
 .dashboard-page__stacks {
   display: flex;
-
   // Needed for List overflow to work correctly
   height: calc(100vh - #{$header-height} - #{$list-filters-height});
   padding-bottom: $s-size;

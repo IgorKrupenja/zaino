@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Righteous&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 * {
   box-sizing: border-box;
@@ -23,8 +23,8 @@ html {
 
 body {
   color: $off-black;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', Helvetica, Arial, sans-serif;
   font-size: $font-size-medium;
   line-height: 1.4;
 }

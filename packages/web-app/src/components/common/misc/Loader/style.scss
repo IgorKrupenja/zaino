@@ -4,7 +4,6 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-
   // prevent scrollbar from showing when header and filters are shown (i.e.e when loading demo data)
   height: calc(100% - #{$header-height} - 1.5rem);
   justify-content: center;
@@ -23,7 +22,6 @@
   animation-timing-function: ease;
   background-image: url('#{$gcp-storage-url}/mountain.svg');
   height: 8rem;
-
   // slightly better positioning with negative margin
   margin-top: -2.5%;
   transform-origin: bottom;
@@ -38,27 +36,21 @@
   0% {
     transform: scale(1, 1) translateY(0);
   }
-
   14% {
     transform: scale(1.1, 0.9) translateY(0);
   }
-
   42% {
     transform: scale(0.9, 1.1) translateY(-4rem);
   }
-
   70% {
     transform: scale(1.05, 0.95) translateY(0);
   }
-
   80% {
     transform: scale(1, 1) translateY(-0.7rem);
   }
-
   90% {
     transform: scale(1, 1) translateY(0);
   }
-
   100% {
     transform: scale(1, 1) translateY(0);
   }
