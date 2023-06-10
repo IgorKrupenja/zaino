@@ -25,13 +25,13 @@ export const Header = () => {
           <Logo className="header__logo" />
         </Link>
         <nav className="header__nav">
-          <Button className="header__nav__link" navLinkTo="/dashboard" variant="underline">
+          <Button className="header__nav__link" to="/dashboard" variant="underline">
             <DashboardIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Dashboard</span>
           </Button>
           {process.env.REACT_APP_SHOW_CATEGORIES_PAGE === 'true' && (
             // TODO: re-sort categories on page change, see labels below
-            <Button className="header__nav__link" navLinkTo="/categories" variant="underline">
+            <Button className="header__nav__link" to="/categories" variant="underline">
               <CategoryIcon className="header__nav__link__icon" />
               <span className="header__nav__link__text">Categories</span>
             </Button>
@@ -40,11 +40,11 @@ export const Header = () => {
             className="header__nav__link"
             // re-sort labels by name after in-place edit and switching back to Labels page
             // see slices/labels for more details
-            navLinkTo="/labels"
             onClick={() =>
               labelSortOption === CollectionSortOption.lastSortOrder &&
               dispatch(sortLabelsBy(CollectionSortOption.name))
             }
+            to="/labels"
             variant="underline"
           >
             <LabelIcon className="header__nav__link__icon" />
