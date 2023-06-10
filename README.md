@@ -202,7 +202,8 @@ Note: You can change additional settings like regions and Cloud Storage bucket n
 
 ### Running
 
-To start a development server running locally against a deployed development Firestore DB, go to `packages/web-app` and run `npm start`. Note that for this to work, you first need to perform steps in [Setup](#setup) and [Deployment](#deployment).
+1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment).
+2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will run against a deployed **development** Firebase project.
 
 ## Acknowledgements
 
