@@ -1,4 +1,4 @@
-import './style.scss';
+import './FilterReset.scss';
 
 import { ReactNode } from 'react';
 
@@ -18,8 +18,7 @@ export const FilterReset = ({ onClick, children, isFiltering }: FilterResetProps
       onClick={onClick}
       variant="transparent"
     >
-      {/* todo bad button class */}
-      <CloseIcon className="button--transparent__icon filter-reset__icon" />
+      <CloseIcon className="filter-reset__icon filter-reset__icon" />
       {children}
     </Button>
   );

@@ -66,13 +66,13 @@ export const ItemFilters = () => {
     <FiltersWrapper>
       <Row variant="full-width">
         <Input
-          className="input--grow input--search"
           onChange={(e) => {
             e.persist();
             setFilters({ ...filters, text: e.target.value });
           }}
           placeholder="Search items"
           value={filters.text}
+          variant="search"
         />
 
         <CategorySelect

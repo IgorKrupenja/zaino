@@ -14,12 +14,22 @@ type InputProps = {
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   placeholder?: string;
   value: string | number;
+  variant?: 'search';
 };
 
-export const Input = ({ className, name, error, onChange, clearError, ...rest }: InputProps) => {
+export const Input = ({
+  className,
+  name,
+  error,
+  onChange,
+  clearError,
+  variant,
+  ...rest
+}: InputProps) => {
   const props = {
     className: getClassString('input' + (error ? ' input--error' : ''), {
       extraClassNames: className,
+      variant,
     }),
     // id needed to focus input on label click
     id: name,

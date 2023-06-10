@@ -41,12 +41,11 @@ export const CollectionFilters = ({
     );
   }, [filters]);
 
-  // set filters if changed externally in FilterReset
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
   const firstUpdate = useRef(true);
   useEffect(() => {
-    // this is needed to prevent setCategoryTextFilter running uselessly when component mounts
+    // Needed to prevent setCategoryTextFilter running uselessly when component mounts
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
@@ -67,13 +66,13 @@ export const CollectionFilters = ({
     <FiltersWrapper>
       <Row variant="full-width">
         <Input
-          className="input--grow input--search"
           onChange={(e) => {
             e.persist();
             setFilters({ ...filters, text: e.target.value });
           }}
           placeholder={textFilterPlaceholder}
           value={filters.text}
+          variant="search"
         />
         <SortSelect
           hiddenOption={CollectionSortOption.lastSortOrder}

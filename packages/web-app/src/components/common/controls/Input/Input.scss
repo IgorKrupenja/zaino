@@ -6,12 +6,9 @@
   @include input-error;
 }
 
-.input--grow {
-  flex-grow: 1;
-}
-
 .input--search {
   background: $off-white url('../../../../images/icons/search.svg') no-repeat 0.6rem center;
+  flex-grow: 1;
   padding-left: 3rem;
 
   &:focus {
