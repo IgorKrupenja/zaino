@@ -19,7 +19,7 @@ export const Header = () => {
 
   // todo check if there is easy way not to use btn classes
   const getLinkClassName = (isActive: boolean) =>
-    `button button--underline header__nav__link ${isActive ? 'button--link--active' : ''}`;
+    `button button--underline header__nav__link ${isActive ? 'button--underline--active' : ''}`;
 
   return (
     <div className="header__container">
