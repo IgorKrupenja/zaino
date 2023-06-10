@@ -6,9 +6,9 @@ import { ReactComponent as CloseIcon } from '../../../../images/icons/close.svg'
 import { Button } from '../../controls/Button';
 
 type FilterResetProps = {
-  onClick?: () => void;
   children: ReactNode;
   isFiltering: boolean;
+  onClick?: () => void;
 };
 
 export const FilterReset = ({ onClick, children, isFiltering }: FilterResetProps) => {
