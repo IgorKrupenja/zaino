@@ -1,4 +1,4 @@
-import './style.scss';
+import './CategoryImage.scss';
 
 import { useSelector } from 'react-redux';
 

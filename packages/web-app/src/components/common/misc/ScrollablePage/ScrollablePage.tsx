@@ -1,4 +1,4 @@
-import './style.scss';
+import './ScrollablePage.scss';
 
 import { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
@@ -10,10 +10,6 @@ type ScrollablePageProps = {
   children: ReactNode;
 };
 
-/**
- * Page container that displays a fixed header and scrollable content below.
- * If loading, displays loader.
- */
 export const ScrollablePage = ({ children }: ScrollablePageProps) => {
   const isLoading = useSelector((state: RootState) => state.demoData.isLoading);
 

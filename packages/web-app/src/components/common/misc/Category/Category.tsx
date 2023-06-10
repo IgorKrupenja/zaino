@@ -1,4 +1,4 @@
-import './style.scss';
+import './Category.scss';
 
 import { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,8 +9,8 @@ import { getClassString } from '../../../../utils';
 
 type CategoryProps = {
   categoryId?: string;
-  className?: string;
   children?: ReactNode;
+  className?: string;
   onClick?: () => void;
 };
 
