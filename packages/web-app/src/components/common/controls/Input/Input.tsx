@@ -1,29 +1,28 @@
-import './style.scss';
+import './Input.scss';
 
 import { ChangeEvent } from 'react';
 
 import { getClassString } from '../../../../utils';
 
 type InputProps = {
+  autoFocus?: boolean;
   className?: string;
-  value: string | number;
+  clearError?: (e: ChangeEvent<HTMLInputElement>) => void;
+  error?: string;
+  maxLength?: number;
   name?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  error?: string;
-  autoFocus?: boolean;
-  clearError?: (e: ChangeEvent<HTMLInputElement>) => void;
-  maxLength?: number;
   placeholder?: string;
+  value: string | number;
 };
 
 export const Input = ({ className, name, error, onChange, clearError, ...rest }: InputProps) => {
-  const elementProps = {
-    
+  const props = {
     className: getClassString('input' + (error ? ' input--error' : ''), {
       extraClassNames: className,
     }),
     // id needed to focus input on label click
-id: name,
+    id: name,
     name,
     ...rest,
   };
@@ -31,7 +30,7 @@ id: name,
   return (
     <input
       type="text"
-      {...elementProps}
+      {...props}
       onChange={(e) => {
         clearError && clearError(e);
         onChange && onChange(e);

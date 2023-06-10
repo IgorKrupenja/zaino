@@ -1,4 +1,4 @@
-import './style.scss';
+import './FormError.scss';
 
 import { ReactNode } from 'react';
 

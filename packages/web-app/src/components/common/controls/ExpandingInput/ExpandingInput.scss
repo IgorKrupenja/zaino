@@ -3,3 +3,7 @@
 
   height: auto;
 }
+
+.expanding-input--error {
+  @include input-error;
+}

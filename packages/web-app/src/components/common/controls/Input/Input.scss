@@ -3,13 +3,7 @@
 }
 
 .input--error {
-  border: 0.1rem solid $bright-red;
-  box-shadow: 0 0 0 0.1rem $bright-red;
-
-  &:focus {
-    border: 0.1rem solid $bright-red;
-    box-shadow: 0 0 0 0.1rem $bright-red;
-  }
+  @include input-error;
 }
 
 .input--grow {

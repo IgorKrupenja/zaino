@@ -65,7 +65,6 @@ export const ItemFilters = () => {
   return (
     <FiltersWrapper>
       <Row variant="full-width">
-        {/* Name */}
         <Input
           className="input--grow input--search"
           onChange={(e) => {
@@ -75,7 +74,7 @@ export const ItemFilters = () => {
           placeholder="Search items"
           value={filters.text}
         />
-        {/* Category */}
+
         <CategorySelect
           headerText="Filter by category"
           onChange={handleCategoryChange}
@@ -86,7 +85,7 @@ export const ItemFilters = () => {
             <DropdownIcon />
           </Button>
         </CategorySelect>
-        {/* Labels */}
+
         <LabelSelect
           headerText="Filter by label"
           labelIds={filters.labels}
@@ -98,7 +97,7 @@ export const ItemFilters = () => {
             <DropdownIcon />
           </Button>
         </LabelSelect>
-        {/* Sort */}
+
         <SortSelect
           hiddenOption={CollectionSortOption.lastSortOrder}
           onChange={handleSortChange}
@@ -106,7 +105,7 @@ export const ItemFilters = () => {
           sortOptions={ItemSortOption}
         />
       </Row>
-      {/* Clear filters */}
+
       <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetItemFilters())}>
         Clear search, filters and sort
       </FilterReset>

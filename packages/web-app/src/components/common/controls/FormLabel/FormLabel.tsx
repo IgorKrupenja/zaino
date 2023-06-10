@@ -1,13 +1,13 @@
-import './style.scss';
+import './FormLabel.scss';
 
 import { ReactNode } from 'react';
 
 import { getClassString } from '../../../../utils';
 
 type FormLabelProps = {
-  htmlFor: string;
   children: ReactNode;
   className?: string;
+  htmlFor: string;
 };
 
 export const FormLabel = ({ className, children, ...rest }: FormLabelProps) => {
