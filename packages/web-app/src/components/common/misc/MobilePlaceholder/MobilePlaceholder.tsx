@@ -1,4 +1,4 @@
-import './style.scss';
+import './MobilePlaceholder.scss';
 
 export const MobilePlaceholder = () => {
   return (

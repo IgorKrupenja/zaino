@@ -1,23 +1,21 @@
+import './LabelBadge.scss';
+
 import { ColorName, Label } from '@zaino/shared';
 import { useDispatch } from 'react-redux';
+
 import { colors } from '../../../../constants';
 import { setItemLabelsFilter } from '../../../../state/slices/itemFiltersSlice';
 import { getClassString } from '../../../../utils';
-import './style.scss';
 
 type LabelBadgeProps = {
-  label?: Label;
+  children?: string;
   className?: string;
   colorName?: ColorName;
-  onClick?: () => void;
-  children?: string;
   disabled?: boolean;
+  label?: Label;
+  onClick?: () => void;
 };
 
-/**
- * Component that shows fancy label badges.
- * Used both inside LabelBadgeList and on their own on Labels page.
- */
 export const LabelBadge = ({
   label,
   colorName,
@@ -34,7 +32,6 @@ export const LabelBadge = ({
       disabled={disabled}
       onClick={() => {
         if (!disabled && label) {
-          // execute extra actions if onClick was passed
           onClick && onClick();
           dispatch(setItemLabelsFilter([label.id]));
         }

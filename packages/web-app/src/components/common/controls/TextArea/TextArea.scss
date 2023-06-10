@@ -1,0 +1,5 @@
+.textarea {
+  @include editable-text-control;
+
+  height: 14rem;
+}

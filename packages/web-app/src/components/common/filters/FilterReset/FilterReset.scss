@@ -1,0 +1,28 @@
+.filter-reset {
+  color: $dark-red;
+  font-size: $font-size-small;
+  height: auto;
+  margin-top: 0.2rem;
+  padding-left: 0.2rem;
+
+  &:hover {
+    color: darken($dark-red, 10%);
+  }
+
+  // also change SVG fill when hovering over text
+  &:hover > .filter-reset__icon {
+    fill: darken($dark-red, 10%);
+  }
+}
+
+.filter-reset--hidden {
+  visibility: hidden;
+}
+
+.filter-reset__icon {
+  fill: $dark-red;
+
+  &:hover {
+    fill: darken($dark-red, 10%);
+  }
+}

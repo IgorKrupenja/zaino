@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
-import { getClassString } from '../../../../utils';
 import './List.scss';
+
+import { ReactNode } from 'react';
+
+import { getClassString } from '../../../../utils';
 
 type ListProps = {
   children: ReactNode;

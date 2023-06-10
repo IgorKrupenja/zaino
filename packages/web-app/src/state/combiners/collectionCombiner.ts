@@ -1,4 +1,5 @@
 import { Collection } from '@zaino/shared';
+
 import { CollectionSortOption } from '../enums';
 import { CollectionFilters } from '../types';
 

@@ -1,9 +1,10 @@
+import './LabelPicker.scss';
+
 import { Column } from '../../common/containers/Column';
 import { Button } from '../../common/controls/Button';
 import { EditIcon } from '../../common/icons/EditIcon';
 import { LabelBadgeList } from '../../common/misc/LabelBadgeList';
 import { LabelSelect } from '../../common/selects/LabelSelect';
-import './LabelPicker.scss';
 
 type LabelPickerProps = {
   labelIds: string[] | undefined;

@@ -1,4 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
+
 import { useAuth } from '../../hooks';
 import { AppRouter } from '../../routes';
 import { Loader } from '../common/misc/Loader';

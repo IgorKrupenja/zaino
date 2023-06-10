@@ -1,5 +1,6 @@
+import './Loader.scss';
+
 import { useEffect, useState } from 'react';
-import './style.scss';
 
 export const Loader = () => {
   const [isShown, setIsShown] = useState(false);
@@ -8,13 +9,12 @@ export const Loader = () => {
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout> | null = null;
 
-    if (timeout) {
-      clearTimeout(timeout);
-    }
+    if (timeout) clearTimeout(timeout);
 
     timeout = setTimeout(() => {
       setIsShown(true);
     }, 100);
+
     return () => {
       if (timeout) clearTimeout(timeout);
     };

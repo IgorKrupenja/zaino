@@ -1,4 +1,5 @@
 import { ColorName } from '@zaino/shared';
+
 import styles from '../styles/base/_export.scss';
 
 type Color = {

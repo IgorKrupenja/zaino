@@ -1,6 +1,8 @@
+import './FormError.scss';
+
 import { ReactNode } from 'react';
+
 import { getClassString } from '../../../../utils';
-import './style.scss';
 
 type FormErrorProps = {
   children?: ReactNode;

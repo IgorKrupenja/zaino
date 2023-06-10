@@ -30,6 +30,7 @@
     "dotenv-expand": "^5.1.0",
     "eslint": "^8.3.0",
     "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-webpack-plugin": "^3.1.1",
     "favicons-webpack-plugin": "^5.0.2",
@@ -44,7 +45,6 @@
     "mini-css-extract-plugin": "^2.4.5",
     "nodemon": "^2.0.15",
     "normalize.css": "^8.0.1",
-    "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^6.2.1",
     "postcss-normalize": "^10.0.1",
@@ -84,6 +84,7 @@
   "scripts": {
     "start": "nodemon --exec 'node scripts/start.js'",
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "test": "node scripts/test.js",
     "build": "node scripts/build.js",
     "analyze": "node scripts/build.js -- --stats && npx webpack-bundle-analyzer ./build/bundle-stats.json",
@@ -168,5 +169,11 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "postcss": "^8.4.24",
+    "stylelint": "^15.7.0",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "stylelint-order": "^6.0.3"
   }
 }

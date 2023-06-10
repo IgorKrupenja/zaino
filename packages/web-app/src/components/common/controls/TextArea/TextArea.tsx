@@ -1,13 +1,15 @@
+import './TextArea.scss';
+
 import { ChangeEvent, ReactNode } from 'react';
+
 import { getClassString } from '../../../../utils';
-import './style.scss';
 
 type TextAreaProps = {
-  value: string | undefined;
+  children?: ReactNode;
+  className?: string;
   name: string;
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  className?: string;
-  children?: ReactNode;
+  value: string | undefined;
 };
 
 export const TextArea = ({ name, className, children, ...rest }: TextAreaProps) => {
@@ -20,7 +22,7 @@ export const TextArea = ({ name, className, children, ...rest }: TextAreaProps) 
         id={name}
         name={name}
         onFocus={(e) => {
-          // puts cursor at the end on focus
+          // Puts cursor at the end on focus
           const value = e.target.value;
           e.target.value = '';
           e.target.value = value;

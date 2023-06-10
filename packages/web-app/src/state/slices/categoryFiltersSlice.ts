@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { collectionFiltersInitialState } from '../constants';
 import { CollectionSortOption } from '../enums';
 

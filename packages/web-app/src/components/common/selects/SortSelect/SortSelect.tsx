@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { OnChangeValue } from 'react-select';
+
 import { CollectionSortOption, ItemSortOption } from '../../../../state/enums';
 import { Button } from '../../controls/Button';
 import { DropdownIcon } from '../../icons/DropdownIcon';

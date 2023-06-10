@@ -1,20 +1,21 @@
+import './Stack.scss';
+
 import { ReactNode } from 'react';
+
 import { getClassString } from '../../../utils';
-import './style.scss';
 
 type StackProps = {
-  className?: string;
   children: ReactNode;
+  className?: string;
 };
 
 /**
  * Compound component used to display stacks on the dashboard.
- * Consists of a stack wrapper component and a List subcomponent.
- * Currently used by Inventory and Pack.
+ * Consists of a Stack wrapper component and a List subcomponent.
+ * Currently used for Inventory and Pack.
  */
 export const Stack = ({ children, className }: StackProps) => {
   return (
-    // wrapper div is used in order to achieve flexible list height
     <div className={getClassString('stack__wrapper', { extraClassNames: className })}>
       <section className="stack">{children}</section>
     </div>

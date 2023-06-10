@@ -1,15 +1,17 @@
+import './LabelBadgeList.scss';
+
 import { Label } from '@zaino/shared';
 import { useSelector } from 'react-redux';
+
 import { RootState } from '../../../../state/store';
 import { getClassString } from '../../../../utils';
 import { LabelBadge } from '../LabelBadge';
-import './style.scss';
 
 type LabelBadgeListProps = {
-  labelIds: string[] | undefined;
-  className?: string;
-  onBadgeClick?: () => void;
   badgeClickDisabled?: boolean;
+  className?: string;
+  labelIds: string[] | undefined;
+  onBadgeClick?: () => void;
 };
 
 export const LabelBadgeList = ({

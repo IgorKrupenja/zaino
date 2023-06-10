@@ -1,6 +1,9 @@
+import './ItemForm.scss';
+
 import { Item } from '@zaino/shared';
 import { ChangeEvent, FormEvent, ReactNode, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { decrementItemCount, incrementItemCount } from '../../../state/slices/labelsSlice';
 import { getArrayDifference } from '../../../utils';
 import { Column } from '../../common/containers/Column';
@@ -11,7 +14,6 @@ import { Input } from '../../common/controls/Input';
 import { TextArea } from '../../common/controls/TextArea';
 import { CategoryPicker } from '../CategoryPicker';
 import { LabelPicker } from '../LabelPicker';
-import './ItemForm.scss';
 
 type ItemFormProps = {
   item: Item;
@@ -61,10 +63,10 @@ export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) 
         ...values,
         addedAt: values.addedAt ?? new Date().toISOString(),
         // Lower pack quantity if it exceeds new quantity
-packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
-        
-quantity: Number(values.quantity),
-        
+        packQuantity: values.packQuantity > values.quantity ? values.quantity : values.packQuantity,
+
+        quantity: Number(values.quantity),
+
         weight: values.weight === '' ? '' : Number(values.weight),
       });
     }
@@ -90,7 +92,6 @@ quantity: Number(values.quantity),
 
   return (
     <form className="item-form" onSubmit={handleSubmit}>
-      {/* Name */}
       <Column className="item-form__full-width">
         <FormLabel htmlFor="name">Name</FormLabel>
         <ExpandingInput
@@ -103,7 +104,7 @@ quantity: Number(values.quantity),
         />
         {errors.name && <FormError>{errors.name}</FormError>}
       </Column>
-      {/* Quantity */}
+
       <Column>
         <FormLabel htmlFor="quantity">Quantity</FormLabel>
         <Input
@@ -118,7 +119,7 @@ quantity: Number(values.quantity),
         />
         {errors.quantity && <FormError>{errors.quantity}</FormError>}
       </Column>
-      {/* Weight */}
+
       <Column>
         <FormLabel htmlFor="weight">Weight (grams)</FormLabel>
         <Input
@@ -129,22 +130,22 @@ quantity: Number(values.quantity),
           value={values.weight}
         />
       </Column>
-      {/* Category */}
+
       <CategoryPicker
         categoryId={values.categoryId}
         onChange={(categoryId) => setValues({ ...values, categoryId })}
       />
-      {/* Labels */}
+
       <LabelPicker
         labelIds={values.labelIds}
         onChange={(labelIds) => setValues({ ...values, labelIds })}
       />
-      {/* Notes */}
+
       <Column className="item-form__full-width item-form__notes">
         <FormLabel htmlFor="notes">Notes</FormLabel>
         <TextArea name="notes" onChange={handleChange} value={values.notes} />
       </Column>
-      {/* Buttons */}
+
       {children}
     </form>
   );

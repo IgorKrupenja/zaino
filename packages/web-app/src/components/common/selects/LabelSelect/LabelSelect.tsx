@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 import { v4 as uuid } from 'uuid';
+
 import { colors } from '../../../../constants';
 import { addLabel } from '../../../../state/slices/labelsSlice';
 import { RootState } from '../../../../state/store';

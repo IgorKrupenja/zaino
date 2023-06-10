@@ -1,16 +1,15 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
+import './Stats.scss';
 
 import { BulletRow } from '../../common/containers/BulletRow';
-import './style.scss';
 
 type StatsProps = {
   className: string;
   stats: {
-    weight: number;
-    percentageOfTotal: number;
     allItemUniqueCount: number;
     filteredItemTotalCount: number;
     filteredItemUniqueCount: number;
+    percentageOfTotal: number;
+    weight: number;
   };
 };
 
@@ -24,25 +23,22 @@ export const Stats = ({ stats, className }: StatsProps) => {
   } = stats;
 
   const countString =
-    // total count
-    filteredItemTotalCount +
-    // word "item" or "itemS" depending on count
+    filteredItemTotalCount.toString() +
     ` item${filteredItemTotalCount > 1 ? 's' : ''}` +
-    // unique count
     ` (${filteredItemUniqueCount} unique)`;
 
   const kilos = Math.floor(weight / 1000);
   const grams = weight % 1000;
   const weightString =
     weight > 0
-      ? (kilos > 0 ? `${kilos}kg ` : '') + // kilograms if applicable
-        (grams > 0 ? `${grams}g` : '') + // grams if applicable
-        // only show percentage if some of the items are filtered out
-        // and percentage is not 0 to account for 0-weight items
+      ? (kilos > 0 ? `${kilos}kg ` : '') +
+        (grams > 0 ? `${grams}g` : '') +
+        // Only show percentage if some of the items are filtered out
+        // and percentage is not 0 to account for 0-weight items.
         (allItemUniqueCount > filteredItemUniqueCount && percentageOfTotal > 0
           ? `, ${percentageOfTotal}% of total`
           : '')
-      : '0g'; // also show 0g if total weight is 0 (i.e. there are only 0-weight items in list)
+      : '0g'; // Also show 0g if total weight is 0 (i.e. there are only 0-weight items in list)
 
   return (
     <BulletRow className={className}>

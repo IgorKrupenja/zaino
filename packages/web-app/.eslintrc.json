@@ -2,9 +2,11 @@
   "extends": ["react-app", "react-app/jest"],
   "rules": {
     "no-return-await": "warn",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "sort-keys-fix/sort-keys-fix": "warn"
   },
-  "plugins": ["sort-keys-fix"],
+  "plugins": ["simple-import-sort", "sort-keys-fix"],
   "overrides": [
     {
       // TypeScript only

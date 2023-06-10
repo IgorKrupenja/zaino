@@ -1,7 +1,9 @@
+import './Popover.scss';
+
 import { ReactNode } from 'react';
 import { ContentRenderer, Popover as ReactTinyPopover, PopoverAlign } from 'react-tiny-popover';
+
 import { getClassString } from '../../../../utils';
-import './Popover.scss';
 
 type PopoverProps = {
   align?: PopoverAlign;

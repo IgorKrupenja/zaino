@@ -1,4 +1,4 @@
-import './style.scss';
+import './DropdownIcon.scss';
 
 export const DropdownIcon = () => {
   return (

@@ -1,7 +1,10 @@
+import './EditItem.scss';
+
 import { Item } from '@zaino/shared';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useParams } from 'react-router-dom';
+
 import { useCloseModal, useTitle, useToggle } from '../../../hooks';
 import { deleteItem, updateItem } from '../../../state/slices/itemsSlice';
 import { RootState } from '../../../state/store';
@@ -12,7 +15,6 @@ import { Popover } from '../../common/misc/Popover';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { ItemForm } from '../ItemForm';
 import { Modal } from '../Modal';
-import './EditItem.scss';
 
 export const EditItem = () => {
   const closeModal = useCloseModal();

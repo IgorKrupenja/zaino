@@ -1,17 +1,17 @@
+import './Row.scss';
+
 import { ReactNode } from 'react';
+
 import { getClassString } from '../../../../utils';
-import './style.scss';
 
 type RowProps = {
-  className?: string;
   children: ReactNode;
+  className?: string;
+  variant?: 'full-width';
 };
 
-/**
- * Wrapper component to arrange children in a row: horizontally from left to right.
- */
-export const Row = ({ className, children }: RowProps) => {
+export const Row = ({ children, className, variant }: RowProps) => {
   return (
-    <div className={getClassString('row-wrapper', { extraClassNames: className })}>{children}</div>
+    <div className={getClassString('row', { extraClassNames: className, variant })}>{children}</div>
   );
 };

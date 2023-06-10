@@ -1,0 +1,17 @@
+.input {
+  @include editable-text-control;
+}
+
+.input--error {
+  @include input-error;
+}
+
+.input--search {
+  background: $off-white url('../../../../images/icons/search.svg') no-repeat 0.6rem center;
+  flex-grow: 1;
+  padding-left: 3rem;
+
+  &:focus {
+    background: white url('../../../../images/icons/search.svg') no-repeat 0.6rem center;
+  }
+}

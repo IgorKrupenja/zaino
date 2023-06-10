@@ -6,7 +6,7 @@
   justify-content: center;
   overflow-y: scroll;
   position: fixed;
-  top: 0px;
+  top: 0;
   width: 100%;
   z-index: 20;
 }
@@ -23,6 +23,7 @@
   border-radius: $xs-size;
   margin: $s-size;
   padding: $s-size;
+
   // To match Stack width
   width: 40.5rem;
 }

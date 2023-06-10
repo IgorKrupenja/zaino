@@ -1,11 +1,13 @@
-import { ReactNode } from 'react';
-import { getClassString } from '../../../../utils';
 import './SectionHeader.scss';
 
+import { ReactNode } from 'react';
+
+import { getClassString } from '../../../../utils';
+
 type SectionHeaderProps = {
+  children: ReactNode;
   className?: string;
   variant?: 'large-margin';
-  children: ReactNode;
 };
 
 export const SectionHeader = ({ className, children, variant }: SectionHeaderProps) => {

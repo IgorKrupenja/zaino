@@ -1,6 +1,7 @@
 import deepEqual from 'fast-deep-equal/react';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { CollectionSortOption, ItemSortOption } from '../../../state/enums';
 import {
   itemFiltersInitialState,
@@ -35,7 +36,7 @@ export const ItemFilters = () => {
   // Update filters if changed externally e.g. by clicking on label/category inside ItemDetails
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
-  // TODO: simple boolean?
+  // TODO: Simple boolean?
   const firstUpdate = useRef(true);
   // useEffect to prevent UI freezes when typing in name filter
   useEffect(() => {
@@ -63,18 +64,17 @@ export const ItemFilters = () => {
 
   return (
     <FiltersWrapper>
-      <Row className="row-wrapper--full-width">
-        {/* Name */}
+      <Row variant="full-width">
         <Input
-          className="input--grow input--search"
           onChange={(e) => {
             e.persist();
             setFilters({ ...filters, text: e.target.value });
           }}
           placeholder="Search items"
           value={filters.text}
+          variant="search"
         />
-        {/* Category */}
+
         <CategorySelect
           headerText="Filter by category"
           onChange={handleCategoryChange}
@@ -85,7 +85,7 @@ export const ItemFilters = () => {
             <DropdownIcon />
           </Button>
         </CategorySelect>
-        {/* Labels */}
+
         <LabelSelect
           headerText="Filter by label"
           labelIds={filters.labels}
@@ -97,7 +97,7 @@ export const ItemFilters = () => {
             <DropdownIcon />
           </Button>
         </LabelSelect>
-        {/* Sort */}
+
         <SortSelect
           hiddenOption={CollectionSortOption.lastSortOrder}
           onChange={handleSortChange}
@@ -105,7 +105,7 @@ export const ItemFilters = () => {
           sortOptions={ItemSortOption}
         />
       </Row>
-      {/* Clear filters */}
+
       <FilterReset isFiltering={isFiltering} onClick={() => dispatch(resetItemFilters())}>
         Clear search, filters and sort
       </FilterReset>

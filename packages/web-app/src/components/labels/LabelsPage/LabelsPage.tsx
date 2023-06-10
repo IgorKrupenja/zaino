@@ -1,6 +1,9 @@
+import './LabelsPage.scss';
+
 import { Label } from '@zaino/shared';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { useTitle, useToggle } from '../../../hooks';
 import { selectFilteredLabels, selectLabelCount } from '../../../state/selectors/labelsSelector';
 import {
@@ -19,7 +22,6 @@ import { ScrollablePage } from '../../common/misc/ScrollablePage';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { LabelDetails } from '../LabelDetails';
 import { NewLabel } from '../NewLabel';
-import './LabelsPage.scss';
 
 export const LabelsPage = () => {
   useTitle('Labels | Zaino');

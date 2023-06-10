@@ -1,0 +1,9 @@
+.expanding-input {
+  @include editable-text-control;
+
+  height: auto;
+}
+
+.expanding-input--error {
+  @include input-error;
+}

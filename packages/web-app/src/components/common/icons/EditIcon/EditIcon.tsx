@@ -1,4 +1,4 @@
-import './style.scss';
+import './EditIcon.scss';
 
 export const EditIcon = () => {
   return (

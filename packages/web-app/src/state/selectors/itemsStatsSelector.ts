@@ -1,5 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { Item } from '@zaino/shared';
+
 import {
   selectAllInventoryItems,
   selectAllPackItems,
@@ -42,12 +43,11 @@ const getWeight = (items: Item[], isPack?: boolean) => {
 
 const getItemCounts = (items: Item[], isPack?: boolean) => {
   const itemCounts = {
-    
     // Total items count, taking quantity into consideration
-total: 0,
-    
+    total: 0,
+
     // Unique item count, each item counts as one regardless of quantity
-unique: items.length,
+    unique: items.length,
   };
   itemCounts.total = items.reduce((sum, item) => {
     return (sum += isPack ? item.packQuantity : item.quantity);
