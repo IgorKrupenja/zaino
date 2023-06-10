@@ -1,4 +1,4 @@
-import './style.scss';
+import './ItemDetails.scss';
 
 import { Item } from '@zaino/shared';
 import { ReactNode } from 'react';
@@ -12,9 +12,9 @@ import { Corkscrew } from '../../common/misc/Corkscrew';
 import { LabelBadgeList } from '../../common/misc/LabelBadgeList';
 
 type ItemDetailsProps = {
+  children?: ReactNode;
   item: Item;
   quantity?: ReactNode;
-  children?: ReactNode;
 };
 
 export const ItemDetails = ({ item, quantity, children }: ItemDetailsProps) => {
