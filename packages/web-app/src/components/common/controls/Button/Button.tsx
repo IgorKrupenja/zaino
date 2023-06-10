@@ -21,16 +21,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     { className, children, submit, variant = 'primary', size = 'large', ...rest }: ButtonProps,
     ref
   ) => {
+    const classNames = getClassString('button', {
+      extraClassNames: className,
+      variant: [variant, size],
+    });
+
     return (
-      <button
-        className={getClassString('button', {
-          extraClassNames: className,
-          variant: [variant, size],
-        })}
-        ref={ref}
-        type={submit ? 'submit' : 'button'}
-        {...rest}
-      >
+      <button className={classNames} ref={ref} type={submit ? 'submit' : 'button'} {...rest}>
         {children}
       </button>
     );
