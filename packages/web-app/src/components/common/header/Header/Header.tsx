@@ -25,13 +25,13 @@ export const Header = () => {
           <Logo className="header__logo" />
         </Link>
         <nav className="header__nav">
-          <Button className="header__nav__link" to="/dashboard" variant="underline">
+          <Button className="header__nav__link" navLinkTo="/dashboard" variant="underline">
             <DashboardIcon className="header__nav__link__icon" />
             <span className="header__nav__link__text">Dashboard</span>
           </Button>
           {process.env.REACT_APP_SHOW_CATEGORIES_PAGE === 'true' && (
             // TODO: re-sort categories on page change, see labels below
-            <Button className="header__nav__link" to="/categories" variant="underline">
+            <Button className="header__nav__link" navLinkTo="/categories" variant="underline">
               <CategoryIcon className="header__nav__link__icon" />
               <span className="header__nav__link__text">Categories</span>
             </Button>
@@ -44,7 +44,7 @@ export const Header = () => {
               labelSortOption === CollectionSortOption.lastSortOrder &&
               dispatch(sortLabelsBy(CollectionSortOption.name))
             }
-            to="/labels"
+            navLinkTo="/labels"
             variant="underline"
           >
             <LabelIcon className="header__nav__link__icon" />

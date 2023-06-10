@@ -1,7 +1,7 @@
 import './Button.scss';
 
 import { forwardRef, ReactNode } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { getClassString } from '../../../../utils';
 
@@ -9,17 +9,27 @@ type ButtonProps = {
   children: ReactNode;
   className?: string;
   disabled?: boolean;
+  linkTo?: string;
+  navLinkTo?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   size?: 'small' | 'medium' | 'large';
   submit?: boolean;
-  to?: string;
   variant?: 'primary' | 'secondary' | 'tertiary' | 'transparent' | 'underline';
 };
 
 // forwardRef needed to support Button as Popover's target
 export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, ButtonProps>(
   (
-    { className, children, submit, to, variant = 'primary', size = 'large', ...rest }: ButtonProps,
+    {
+      className,
+      children,
+      linkTo,
+      navLinkTo,
+      submit,
+      variant = 'primary',
+      size = 'large',
+      ...rest
+    }: ButtonProps,
     ref
   ) => {
     const classNames = getClassString('button', {
@@ -27,13 +37,17 @@ export const Button = forwardRef<HTMLAnchorElement & HTMLButtonElement, ButtonPr
       variant: [variant, size],
     });
 
-    return to ? (
+    return linkTo ? (
+      <Link className={classNames} ref={ref} to={linkTo}>
+        {children}
+      </Link>
+    ) : navLinkTo ? (
       <NavLink
         className={({ isActive }) =>
           `${classNames} ${isActive ? `button--${variant}--active` : ''}`
         }
         ref={ref}
-        to={to}
+        to={navLinkTo}
       >
         {children}
       </NavLink>

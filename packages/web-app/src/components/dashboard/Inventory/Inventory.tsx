@@ -8,6 +8,7 @@ import { selectFilteredInventoryItems } from '../../../state/selectors/itemsSele
 import { selectInventoryItemsStats } from '../../../state/selectors/itemsStatsSelector';
 import { RootState } from '../../../state/store';
 import { Column } from '../../common/containers/Column';
+import { Button } from '../../common/controls/Button';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { InventoryItem } from '../InventoryItem';
 import { Stack } from '../Stack';
@@ -30,13 +31,14 @@ export const Inventory = () => {
           <SectionHeader.Title>Inventory</SectionHeader.Title>
           <Stats className="inventory__stats " stats={stats} />
         </Column>
-        {/* Using button classes here to avoid nesting button inside link */}
-        <Link
-          className="button button--primary button--large inventory__new-item"
-          to="/dashboard/new"
+        <Button
+          className="inventory__new-item"
+          linkTo="/dashboard/new"
+          size="large"
+          variant="primary"
         >
           New item
-        </Link>
+        </Button>
       </SectionHeader>
       <Stack.List isEmpty={items.length === 0}>
         {items.length > 0

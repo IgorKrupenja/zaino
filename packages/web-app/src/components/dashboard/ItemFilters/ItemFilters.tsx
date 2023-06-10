@@ -36,7 +36,7 @@ export const ItemFilters = () => {
   // Update filters if changed externally e.g. by clicking on label/category inside ItemDetails
   useEffect(() => setFilters(selectedFilters), [selectedFilters]);
 
-  // TODO: simple boolean?
+  // TODO: Simple boolean?
   const firstUpdate = useRef(true);
   // useEffect to prevent UI freezes when typing in name filter
   useEffect(() => {
