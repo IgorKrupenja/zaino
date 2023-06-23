@@ -1,3 +1,11 @@
 {
-  "recommendations": ["davidanson.vscode-markdownlint"]
+  "recommendations": [
+    "chflick.firecode",
+    "davidanson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "gencer.html-slim-scss-css-class-completion",
+    "timonwong.shellcheck"
+  ]
 }

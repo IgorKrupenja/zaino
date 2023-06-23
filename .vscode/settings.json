@@ -1,0 +1,18 @@
+{
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "editor.formatOnSave": true,
+  "[javascript][typescript][typescriptreact][json][jsonc][html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "stylelint.snippet": ["scss"],
+  "stylelint.validate": ["scss"],
+  "scss.validate": false
+}
