@@ -4,6 +4,7 @@
     "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
     "foxundermoon.shell-format",
     "gencer.html-slim-scss-css-class-completion",
     "timonwong.shellcheck"

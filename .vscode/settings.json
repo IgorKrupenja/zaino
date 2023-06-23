@@ -14,5 +14,6 @@
   },
   "stylelint.snippet": ["scss"],
   "stylelint.validate": ["scss"],
-  "scss.validate": false
+  "scss.validate": false,
+  "material-icon-theme.activeIconPack": "react_redux"
 }
