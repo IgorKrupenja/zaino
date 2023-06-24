@@ -40,11 +40,11 @@ export const Header = () => {
             className="header__nav__link"
             // re-sort labels by name after in-place edit and switching back to Labels page
             // see slices/labels for more details
+            navLinkTo="/labels"
             onClick={() =>
               labelSortOption === CollectionSortOption.lastSortOrder &&
               dispatch(sortLabelsBy(CollectionSortOption.name))
             }
-            navLinkTo="/labels"
             variant="underline"
           >
             <LabelIcon className="header__nav__link__icon" />

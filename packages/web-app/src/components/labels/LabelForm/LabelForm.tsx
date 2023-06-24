@@ -17,13 +17,13 @@ import { Input } from '../../common/controls/Input';
 import { ColorSelect } from '../../common/selects/ColorSelect';
 
 type LabelFormProps = {
-  label: Label;
-  onSubmit: (label: Label) => void;
-  toggleForm: () => void;
-  setName: (labelName: string) => void;
-  setColorName: (colorName: ColorName) => void;
   children: ReactNode;
   className?: string;
+  label: Label;
+  onSubmit: (label: Label) => void;
+  setColorName: (colorName: ColorName) => void;
+  setName: (labelName: string) => void;
+  toggleForm: () => void;
 };
 
 export const LabelForm = ({

@@ -16,10 +16,10 @@ import { CategoryPicker } from '../CategoryPicker';
 import { LabelPicker } from '../LabelPicker';
 
 type ItemFormProps = {
+  children: ReactNode;
   item: Item;
   onSubmit: (item: Item) => void;
   setTitle?: (title: string) => void;
-  children: ReactNode;
 };
 
 export const ItemForm = ({ item, onSubmit, setTitle, children }: ItemFormProps) => {
