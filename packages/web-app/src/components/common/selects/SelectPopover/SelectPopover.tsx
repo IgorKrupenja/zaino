@@ -4,24 +4,19 @@ import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
 import { PopoverAlign } from 'react-tiny-popover';
 
+import { SelectOption } from '../../../../types';
 import { CloseButton } from '../../controls/CloseButton';
 import { Popover } from '../../misc/Popover';
-import { commonSelectStyles } from './style';
-
-export type SelectOption = {
-  value: string;
-  label: string;
-  hexValue?: string;
-};
+import { commonSelectStyle } from './SelectPopover.style';
 
 type SelectPopoverProps = {
-  headerText: string;
-  onChange: (value: OnChangeValue<SelectOption, boolean>) => void;
-  popoverAlign?: PopoverAlign;
-  isCreatable?: boolean;
-  onCreateOption?: (value: string) => void;
-  formatCreateLabel?: (value: string) => string;
   children: ReactNode;
+  formatCreateLabel?: (value: string) => string;
+  headerText: string;
+  isCreatable?: boolean;
+  onChange: (value: OnChangeValue<SelectOption, boolean>) => void;
+  onCreateOption?: (value: string) => void;
+  popoverAlign?: PopoverAlign;
 } & Props<SelectOption, boolean>;
 
 /**
@@ -64,11 +59,10 @@ export const SelectPopover = ({
     onChange: handleChange,
     onInputChange: handleInputChange,
     placeholder: `Search${isCreatable ? ' or create new' : ''}`,
-    styles: styles ? mergeStyles(commonSelectStyles, styles) : commonSelectStyles,
+    styles: styles ? mergeStyles(commonSelectStyle, styles) : commonSelectStyle,
     ...rest,
   };
 
-  // todo fishy. can just merge two fns? and use useToggle?
   const openPopover = () => setIsPopoverOpen(true);
 
   const closePopover = () => {

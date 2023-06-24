@@ -4,21 +4,19 @@ import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 
 import { RootState } from '../../../../state/store';
+import { SelectOption } from '../../../../types';
 import { sortSelectOptionsByName } from '../../../../utils';
-import { SelectOption, SelectPopover } from '../SelectPopover';
-import { categorySelectStyles } from './style';
+import { SelectPopover } from '../SelectPopover';
+import { categorySelectStyle } from './CategorySelect.style';
 
 type CategorySelectProps = {
-  selectedCategoryId?: string;
-  onChange: (categoryName: string) => void;
-  headerText: string;
   children: ReactNode;
+  headerText: string;
+  onChange: (categoryName: string) => void;
   popoverAlign?: PopoverAlign;
+  selectedCategoryId?: string;
 };
 
-/**
- * Category select. Used in both ItemForm and DashboardFilters.
- */
 export const CategorySelect = ({
   selectedCategoryId,
   onChange,
@@ -44,11 +42,10 @@ export const CategorySelect = ({
   const [value, setValue] = useState(prepareValue(selectedCategoryId));
 
   const handleChange = (newValue: OnChangeValue<SelectOption, boolean>) => {
-    const selectedOption = newValue as SelectOption;
-    onChange(selectedOption?.value);
+    onChange((newValue as SelectOption)?.value);
   };
 
-  // update selected category when clicking on a category inside ItemDetails
+  // Update selected category when clicking on a category inside ItemDetails
   useEffect(() => setValue(prepareValue(selectedCategoryId)), [selectedCategoryId, prepareValue]);
 
   return (
@@ -57,7 +54,7 @@ export const CategorySelect = ({
       noOptionsMessage={() => 'No matching categories'}
       onChange={handleChange}
       options={options}
-      styles={categorySelectStyles}
+      styles={categorySelectStyle}
       value={value}
       {...rest}
     >

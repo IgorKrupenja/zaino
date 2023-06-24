@@ -1,10 +1,10 @@
 import { StylesConfig } from 'react-select';
 
 import styles from '../../../../styles/base/_export.scss';
-import { SelectOption } from '../SelectPopover';
-import { colorDot } from '../SelectPopover/style';
+import { SelectOption } from '../../../../types';
+import { colorDotStyle } from '../ColorDot/ColorDot.style';
 
-export const labelSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
+export const labelSelectStyle: Partial<StylesConfig<SelectOption, boolean>> = {
   // Setting widths manually is a workaround to prevent control text overflow issues
   control: (base) => ({
     ...base,
@@ -12,7 +12,7 @@ export const labelSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   }),
   input: (base) => ({
     ...base,
-    // TODO: breaks placeholder text,
+    // TODO: breaks placeholder text, see #269
     width: '22rem',
   }),
   menu: () => ({
@@ -22,7 +22,7 @@ export const labelSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   }),
   option: (base, props) => ({
     ...base,
-    ...colorDot(props.data.hexValue),
+    ...colorDotStyle(props.data.hexValue),
     color: props.data.hexValue,
     paddingLeft: styles.sSize,
   }),

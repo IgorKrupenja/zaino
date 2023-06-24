@@ -2,21 +2,19 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { OnChangeValue } from 'react-select';
 
 import { CollectionSortOption, ItemSortOption } from '../../../../state/enums';
+import { SelectOption } from '../../../../types';
 import { Button } from '../../controls/Button';
 import { DropdownIcon } from '../../icons/DropdownIcon';
-import { SelectOption, SelectPopover } from '../SelectPopover';
-import { sortSelectStyles } from './style';
+import { SelectPopover } from '../SelectPopover';
+import { sortSelectStyle } from './SortSelect.style';
 
 type SortSelectProps = {
-  sortOptions: typeof CollectionSortOption | typeof ItemSortOption;
-  selectedOption: CollectionSortOption | ItemSortOption;
   hiddenOption?: CollectionSortOption | ItemSortOption;
   onChange: (sortBy: string) => void;
+  selectedOption: CollectionSortOption | ItemSortOption;
+  sortOptions: typeof CollectionSortOption | typeof ItemSortOption;
 };
 
-/**
- * Sort select. Used in both LabelFilters and DashboardFilters.
- */
 export const SortSelect = ({
   sortOptions,
   onChange,
@@ -31,7 +29,7 @@ export const SortSelect = ({
       }))
       .filter((option) => option.label !== hiddenOption)
   ).current;
-  // logic similar to LabelSelect
+  // Logic similar to LabelSelect
   const prepareValue = useCallback(
     (selectedOption: string | undefined) => {
       return options.find((option) => option.label === selectedOption);
@@ -40,7 +38,6 @@ export const SortSelect = ({
   );
   const [value, setValue] = useState(prepareValue(selectedOption));
 
-  // display proper sort options when sorting is reset in FilterReset
   useEffect(() => setValue(prepareValue(selectedOption)), [selectedOption, prepareValue]);
 
   const handleChange = (newValue: OnChangeValue<SelectOption, boolean>) => {
@@ -49,14 +46,12 @@ export const SortSelect = ({
 
   return (
     <SelectPopover
-      components={{
-        Control: () => null,
-      }}
+      components={{ Control: () => null }}
       headerText="Sort by"
       name="sortBy"
       onChange={handleChange}
       options={options}
-      styles={sortSelectStyles}
+      styles={sortSelectStyle}
       value={value}
     >
       <Button variant="transparent">

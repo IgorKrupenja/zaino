@@ -3,20 +3,21 @@ import { useRef, useState } from 'react';
 import { OnChangeValue } from 'react-select';
 
 import { colors } from '../../../../constants';
+import { SelectOption } from '../../../../types';
 import { Button } from '../../controls/Button';
 import { EditIcon } from '../../icons/EditIcon';
-import { SelectOption, SelectPopover } from '../SelectPopover';
-import { colorSelectStyles } from './style';
+import { SelectPopover } from '../SelectPopover';
+import { colorSelectStyle } from './ColorSelect.style';
 
 type ColorSelectOption = {
-  value: ColorName;
-  label: string;
   hexValue: string;
+  label: string;
+  value: ColorName;
 };
 
 type ColorSelectProps = {
-  selectedColorName: ColorName;
   onChange: (colorName: ColorName) => void;
+  selectedColorName: ColorName;
 };
 
 export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {
@@ -42,7 +43,7 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
       name="categoryName"
       onChange={handleChange}
       options={options}
-      styles={colorSelectStyles}
+      styles={colorSelectStyle}
       value={value}
     >
       <Button variant="transparent">
