@@ -20,8 +20,8 @@ import { List } from '../../common/misc/List';
 import { Loader } from '../../common/misc/Loader';
 import { ScrollablePage } from '../../common/misc/ScrollablePage';
 import { SectionHeader } from '../../common/misc/SectionHeader';
-import { LabelDetails } from '../LabelDetails';
-import { NewLabel } from '../NewLabel';
+import { LabelDetails } from '../../labels/LabelDetails';
+import { NewLabel } from '../../labels/NewLabel';
 
 export const LabelsPage = () => {
   useTitle('Labels | Zaino');
