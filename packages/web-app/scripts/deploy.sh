@@ -6,7 +6,7 @@ export $(echo $(cat .env."$1" | sed 's/#.*//g' | sed 's/\r//g' | xargs) | envsub
 
 node scripts/build.js
 
-gcloud config set project "$REACT_APP_FB_PROJECT_ID"
+gcloud config set project "$REACT_APP_FIREBASE_PROJECT_ID"
 gsutil -m cp -r "src/images/copyrighted/*" gs://"$REACT_APP_FIREBASE_STORAGE_BUCKET"/
 gsutil -m acl set -R -a public-read gs://"$REACT_APP_FIREBASE_STORAGE_BUCKET"/
 
