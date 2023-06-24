@@ -49,9 +49,7 @@ export const SortSelect = ({
 
   return (
     <SelectPopover
-      components={{
-        Control: () => null,
-      }}
+      components={{ Control: () => null }}
       headerText="Sort by"
       name="sortBy"
       onChange={handleChange}

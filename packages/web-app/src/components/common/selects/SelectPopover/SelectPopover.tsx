@@ -9,19 +9,19 @@ import { Popover } from '../../misc/Popover';
 import { commonSelectStyles } from './style';
 
 export type SelectOption = {
-  value: string;
-  label: string;
   hexValue?: string;
+  label: string;
+  value: string;
 };
 
 type SelectPopoverProps = {
-  headerText: string;
-  onChange: (value: OnChangeValue<SelectOption, boolean>) => void;
-  popoverAlign?: PopoverAlign;
-  isCreatable?: boolean;
-  onCreateOption?: (value: string) => void;
-  formatCreateLabel?: (value: string) => string;
   children: ReactNode;
+  formatCreateLabel?: (value: string) => string;
+  headerText: string;
+  isCreatable?: boolean;
+  onChange: (value: OnChangeValue<SelectOption, boolean>) => void;
+  onCreateOption?: (value: string) => void;
+  popoverAlign?: PopoverAlign;
 } & Props<SelectOption, boolean>;
 
 /**
@@ -68,7 +68,6 @@ export const SelectPopover = ({
     ...rest,
   };
 
-  // todo fishy. can just merge two fns? and use useToggle?
   const openPopover = () => setIsPopoverOpen(true);
 
   const closePopover = () => {
