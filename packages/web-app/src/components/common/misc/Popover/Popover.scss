@@ -3,6 +3,7 @@
   border: $border;
   border-radius: $xs-size;
   box-shadow: $shadow;
+  // stylelint-disable-next-line declaration-no-important
   overflow: hidden !important;
   z-index: 99;
 }

@@ -1,3 +1,4 @@
+@use "sass:color";
 @import 'https://fonts.googleapis.com/css2?family=Righteous&display=swap';
 
 * {
@@ -41,5 +42,5 @@ a {
 }
 
 ::selection {
-  background: lighten($light-blue, 40%);
+  background: color.adjust($light-blue, $lightness: 40%);
 }
