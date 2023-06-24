@@ -44,7 +44,7 @@ export const CategorySelect = ({
     onChange((newValue as SelectOption)?.value);
   };
 
-  // update selected category when clicking on a category inside ItemDetails
+  // Update selected category when clicking on a category inside ItemDetails
   useEffect(() => setValue(prepareValue(selectedCategoryId)), [selectedCategoryId, prepareValue]);
 
   return (

@@ -13,21 +13,18 @@ import { SelectOption, SelectPopover } from '../SelectPopover';
 import { labelSelectStyles } from './LabelSelect.style';
 
 type LabelSelectProps = {
+  children: ReactNode;
+  headerText: string;
+  isCreatable?: boolean;
   labelIds?: string[];
   onChange: (labelIds: string[]) => void;
-  isCreatable?: boolean;
-  headerText: string;
   popoverAlign?: PopoverAlign;
-  children: ReactNode;
 };
 
-/**
- * Label select. Used in both ItemForm and DashboardFilters.
- */
 export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSelectProps) => {
   const dispatch = useDispatch();
 
-  // labels and prepareOptions need to be separate to prevent exceeding max depth with ItemForm
+  // Labels and prepareOptions need to be separate to prevent exceeding max depth with ItemForm
   const labels = useSelector((state: RootState) => state.labels);
   const prepareOptions = (labels: Label[]) =>
     labels
@@ -39,9 +36,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
       .sort(sortSelectOptionsByName);
   const [options, setOptions] = useState(prepareOptions(labels));
 
-  // prepare select values based on passed selected labelIds
-  // had to use useCallback to prevent prepareValues running on every re-render
-  // (as prepareValues is a dependency of an useEffect hook below)
+  // Prepare select values based on passed selected labelIds
   const prepareValues = useCallback(
     (labelIds: string[] | undefined) => {
       return labelIds ? options.filter((label) => labelIds.includes(label.value)) : [];
@@ -50,16 +45,13 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
   );
   const [values, setValues] = useState(prepareValues(labelIds));
 
-  // update selected labels when clicking on a label inside ItemDetails
+  // Update selected labels when clicking on a label inside ItemDetails
   useEffect(() => setValues(prepareValues(labelIds)), [labelIds, prepareValues]);
-  // update labels in DashboardFilters select when new ones are created in ItemForm
-  useEffect(() => {
-    setOptions(prepareOptions(labels));
-  }, [labels]);
+  // Update labels in DashboardFilters select when new ones are created in ItemForm
+  useEffect(() => setOptions(prepareOptions(labels)), [labels]);
 
   const handleChange = (newValues: OnChangeValue<SelectOption, boolean>) => {
     const newValueArray = newValues as SelectOption[] | null;
-    // turn values into labelIds
     const labelIds = newValueArray ? newValueArray.map((label) => label.value) : [];
     onChange(labelIds);
   };
