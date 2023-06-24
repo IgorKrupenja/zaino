@@ -7,7 +7,7 @@ import { RootState } from '../../../../state/store';
 import { SelectOption } from '../../../../types';
 import { sortSelectOptionsByName } from '../../../../utils';
 import { SelectPopover } from '../SelectPopover';
-import { categorySelectStyles } from './CategorySelect.style';
+import { categorySelectStyle } from './CategorySelect.style';
 
 type CategorySelectProps = {
   children: ReactNode;
@@ -54,7 +54,7 @@ export const CategorySelect = ({
       noOptionsMessage={() => 'No matching categories'}
       onChange={handleChange}
       options={options}
-      styles={categorySelectStyles}
+      styles={categorySelectStyle}
       value={value}
       {...rest}
     >

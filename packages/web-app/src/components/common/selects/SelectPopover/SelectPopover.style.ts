@@ -6,7 +6,7 @@ import { SelectOption } from '../../../../types';
 
 // CSS-in-JS is used for selects as this is the recommended method for react-select.
 
-export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
+export const commonSelectStyle: Partial<StylesConfig<SelectOption, boolean>> = {
   control: (base, { isFocused }) => ({
     ...base,
     '&:hover': {
@@ -64,18 +64,3 @@ export const commonSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = 
     paddingLeft: styles.xsSize,
   }),
 };
-
-export const colorDot = (color = styles.lightGrey, marginLeft = '2.2rem') => ({
-  ':before': {
-    backgroundColor: color,
-    borderRadius: '1rem',
-    content: '" "',
-    display: 'block',
-    height: '1.2rem',
-    marginLeft,
-    marginRight: '0.7rem',
-    minWidth: '1.2rem',
-  },
-  alignItems: 'center',
-  display: 'flex',
-});

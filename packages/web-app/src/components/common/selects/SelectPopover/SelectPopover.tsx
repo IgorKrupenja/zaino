@@ -7,7 +7,7 @@ import { PopoverAlign } from 'react-tiny-popover';
 import { SelectOption } from '../../../../types';
 import { CloseButton } from '../../controls/CloseButton';
 import { Popover } from '../../misc/Popover';
-import { commonSelectStyles } from './SelectPopover.style';
+import { commonSelectStyle } from './SelectPopover.style';
 
 type SelectPopoverProps = {
   children: ReactNode;
@@ -59,7 +59,7 @@ export const SelectPopover = ({
     onChange: handleChange,
     onInputChange: handleInputChange,
     placeholder: `Search${isCreatable ? ' or create new' : ''}`,
-    styles: styles ? mergeStyles(commonSelectStyles, styles) : commonSelectStyles,
+    styles: styles ? mergeStyles(commonSelectStyle, styles) : commonSelectStyle,
     ...rest,
   };
 

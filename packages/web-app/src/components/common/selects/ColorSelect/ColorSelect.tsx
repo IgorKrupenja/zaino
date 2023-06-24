@@ -7,7 +7,7 @@ import { SelectOption } from '../../../../types';
 import { Button } from '../../controls/Button';
 import { EditIcon } from '../../icons/EditIcon';
 import { SelectPopover } from '../SelectPopover';
-import { colorSelectStyles } from './ColorSelect.style';
+import { colorSelectStyle } from './ColorSelect.style';
 
 type ColorSelectOption = {
   hexValue: string;
@@ -43,7 +43,7 @@ export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) =
       name="categoryName"
       onChange={handleChange}
       options={options}
-      styles={colorSelectStyles}
+      styles={colorSelectStyle}
       value={value}
     >
       <Button variant="transparent">

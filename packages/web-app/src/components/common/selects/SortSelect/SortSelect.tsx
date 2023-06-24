@@ -6,7 +6,7 @@ import { SelectOption } from '../../../../types';
 import { Button } from '../../controls/Button';
 import { DropdownIcon } from '../../icons/DropdownIcon';
 import { SelectPopover } from '../SelectPopover';
-import { sortSelectStyles } from './SortSelect.style';
+import { sortSelectStyle } from './SortSelect.style';
 
 type SortSelectProps = {
   hiddenOption?: CollectionSortOption | ItemSortOption;
@@ -51,7 +51,7 @@ export const SortSelect = ({
       name="sortBy"
       onChange={handleChange}
       options={options}
-      styles={sortSelectStyles}
+      styles={sortSelectStyle}
       value={value}
     >
       <Button variant="transparent">

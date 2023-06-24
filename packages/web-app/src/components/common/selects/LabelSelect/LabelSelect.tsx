@@ -11,7 +11,7 @@ import { RootState } from '../../../../state/store';
 import { SelectOption } from '../../../../types';
 import { getRandomColor, sortSelectOptionsByName } from '../../../../utils';
 import { SelectPopover } from '../SelectPopover';
-import { labelSelectStyles } from './LabelSelect.style';
+import { labelSelectStyle } from './LabelSelect.style';
 
 type LabelSelectProps = {
   children: ReactNode;
@@ -88,7 +88,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
       onChange={handleChange}
       onCreateOption={handleCreate}
       options={options}
-      styles={labelSelectStyles}
+      styles={labelSelectStyle}
       value={values}
       {...rest}
       noOptionsMessage={() => `No${options.length > 0 ? ' matching' : ''} labels`}

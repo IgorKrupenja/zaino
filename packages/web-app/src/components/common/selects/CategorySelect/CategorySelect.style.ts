@@ -3,7 +3,7 @@ import { StylesConfig } from 'react-select';
 import styles from '../../../../styles/base/_export.scss';
 import { SelectOption } from '../../../../types';
 
-export const categorySelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
+export const categorySelectStyle: Partial<StylesConfig<SelectOption, boolean>> = {
   // setting widths manually is a workaround to prevent control text overflow issues
   control: (base) => ({
     ...base,

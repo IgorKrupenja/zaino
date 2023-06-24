@@ -1,15 +1,15 @@
 import { StylesConfig } from 'react-select';
 
 import { SelectOption } from '../../../../types';
-import { colorDot } from '../SelectPopover/SelectPopover.style';
+import { colorDotStyle } from '../ColorDot/ColorDot.style';
 
-export const colorSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
+export const colorSelectStyle: Partial<StylesConfig<SelectOption, boolean>> = {
   menu: () => ({
     borderTop: 'none',
     width: '14rem',
   }),
   option: (base, props) => ({
     ...base,
-    ...colorDot(props.data.hexValue, '0.2rem'),
+    ...colorDotStyle(props.data.hexValue, '0.2rem'),
   }),
 };
