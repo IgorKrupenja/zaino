@@ -7,7 +7,7 @@ import { v4 as uuid } from 'uuid';
 
 import { colors } from '../../../../constants';
 import { addLabel } from '../../../../state/slices/labelsSlice';
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { SelectOption } from '../../../../types';
 import { getRandomColor, sortSelectOptionsByName } from '../../../../utils';
 import { SelectPopover } from '../SelectPopover';

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-import { RootState } from '../state/store';
+import { RootState } from '../state/types';
 
 type PublicRouteProps = {
   children: JSX.Element;

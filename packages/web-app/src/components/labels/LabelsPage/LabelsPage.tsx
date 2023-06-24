@@ -12,7 +12,7 @@ import {
   sortLabelsBy,
 } from '../../../state/slices/labelFiltersSlice';
 import { saveSortOrder } from '../../../state/slices/labelsSlice';
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { Column } from '../../common/containers/Column';
 import { Button } from '../../common/controls/Button';
 import { CollectionFilters } from '../../common/filters/CollectionFilters';

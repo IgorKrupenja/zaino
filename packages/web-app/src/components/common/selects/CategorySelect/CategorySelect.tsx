@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { SelectOption } from '../../../../types';
 import { sortSelectOptionsByName } from '../../../../utils';
 import { SelectPopover } from '../SelectPopover';

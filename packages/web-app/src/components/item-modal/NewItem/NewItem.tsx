@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 
 import { useCloseModal, useTitle } from '../../../hooks';
 import { addItem } from '../../../state/slices/itemsSlice';
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { Button } from '../../common/controls/Button';
 import { CloseButton } from '../../common/controls/CloseButton';
 import { SectionHeader } from '../../common/misc/SectionHeader';

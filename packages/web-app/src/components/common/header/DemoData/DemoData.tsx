@@ -8,7 +8,7 @@ import { selectDemoDataLabels } from '../../../../state/selectors/labelsSelector
 import { addDemoData } from '../../../../state/slices/demoDataSlice';
 import { batchDeleteItems } from '../../../../state/slices/itemsSlice';
 import { batchDeleteLabels } from '../../../../state/slices/labelsSlice';
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { Button } from '../../controls/Button';
 import { CloseButton } from '../../controls/CloseButton';
 import { Popover } from '../../misc/Popover';

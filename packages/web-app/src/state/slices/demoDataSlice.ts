@@ -3,7 +3,7 @@ import { Item, Label } from '@zaino/shared';
 import { batch } from 'react-redux';
 
 import { copyCollection, db, getObjectsFromSnapshots } from '../../firebase';
-import { RootState } from '../store';
+import { RootState } from '../types';
 import { addItems } from './itemsSlice';
 import { addLabels } from './labelsSlice';
 

@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { collectionCombiner } from '../combiners';
-import { RootState } from '../store';
+import { RootState } from '../types';
 
 const selectFilters = (state: RootState) => state.labelFilters;
 

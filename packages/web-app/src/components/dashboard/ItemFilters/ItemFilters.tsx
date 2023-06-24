@@ -11,7 +11,7 @@ import {
   setItemTextFilter,
   sortItemsBy,
 } from '../../../state/slices/itemFiltersSlice';
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/controls/Button';
 import { Input } from '../../common/controls/Input';

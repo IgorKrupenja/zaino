@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { useTitle } from '../../../hooks';
 import { DashboardRoutes } from '../../../routes';
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { Header } from '../../common/header/Header';
 import { Loader } from '../../common/misc/Loader';
 import { Inventory } from '../../dashboard/Inventory';
