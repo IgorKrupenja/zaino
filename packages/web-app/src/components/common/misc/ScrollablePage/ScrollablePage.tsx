@@ -3,7 +3,7 @@ import './ScrollablePage.scss';
 import { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
 
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { Header } from '../../header/Header';
 
 type ScrollablePageProps = {

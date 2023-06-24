@@ -2,7 +2,7 @@ import './CategoryPicker.scss';
 
 import { useSelector } from 'react-redux';
 
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { Column } from '../../common/containers/Column';
 import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/controls/Button';

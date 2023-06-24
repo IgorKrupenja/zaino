@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Item, Label } from '@zaino/shared';
 
 import { db, deleteDocuments } from '../../firebase';
-import { RootState } from '../store';
+import { RootState } from '../types';
 import { batchUpdateItems } from './itemsSlice';
 
 export const addLabel = createAsyncThunk<
@@ -137,16 +137,13 @@ const labelsSlice = createSlice({
       state[index].itemUniqueCount = itemUniqueCount ? itemUniqueCount + 1 : 1;
       state[index].itemTotalCount = itemTotalCount ? itemTotalCount + itemQuantity : itemQuantity;
     },
-    
-    
-    
-    
+
     resetLabelsState: () => initialState,
     // Allows to save existing sort order of labels on LabelsPage.
-// This order is used in sortLabelsBy(lastSortOrder) of slices/labelsFilters.
-// sortLabelsBy(lastSortOrder) prevents re-sorting the list of labels by name after edit.
-// This is needed to prevent labels jumping around if name change affects name sort order.
-saveSortOrder: (state, action: PayloadAction<Label[]>) => {
+    // This order is used in sortLabelsBy(lastSortOrder) of slices/labelsFilters.
+    // sortLabelsBy(lastSortOrder) prevents re-sorting the list of labels by name after edit.
+    // This is needed to prevent labels jumping around if name change affects name sort order.
+    saveSortOrder: (state, action: PayloadAction<Label[]>) => {
       action.payload.forEach((filteredLabel, filteredIndex) => {
         const index = state.findIndex((label) => label.id === filteredLabel.id);
         state[index].lastSortIndex = filteredIndex;

@@ -3,7 +3,7 @@ import './LabelBadgeList.scss';
 import { Label } from '@zaino/shared';
 import { useSelector } from 'react-redux';
 
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { getClassString } from '../../../../utils';
 import { LabelBadge } from '../LabelBadge';
 

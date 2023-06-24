@@ -9,7 +9,7 @@ import { ReactComponent as LabelIcon } from '../../../../images/icons/label.svg'
 import { ReactComponent as Logo } from '../../../../images/logo.svg';
 import { CollectionSortOption } from '../../../../state/enums';
 import { sortLabelsBy } from '../../../../state/slices/labelFiltersSlice';
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { Button } from '../../controls/Button';
 import { AccountDetails } from '../AccountDetails';
 import { DemoData } from '../DemoData';

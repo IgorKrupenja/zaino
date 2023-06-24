@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CollectionSortOption } from '../../../state/enums';
 import { selectAllLabels } from '../../../state/selectors/labelsSelector';
 import { sortLabelsBy } from '../../../state/slices/labelFiltersSlice';
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { getClassString } from '../../../utils';
 import { Row } from '../../common/containers/Row';
 import { Button } from '../../common/controls/Button';

@@ -10,7 +10,7 @@ import {
   setCategoryTextFilter,
   sortCategoriesBy,
 } from '../../../state/slices/categoryFiltersSlice';
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { Column } from '../../common/containers/Column';
 import { CollectionFilters } from '../../common/filters/CollectionFilters';
 import { List } from '../../common/misc/List';

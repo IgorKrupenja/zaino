@@ -5,7 +5,7 @@ import { shallowEqual, useSelector } from 'react-redux';
 
 import { selectFilteredInventoryItems } from '../../../state/selectors/itemsSelector';
 import { selectInventoryItemsStats } from '../../../state/selectors/itemsStatsSelector';
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { Column } from '../../common/containers/Column';
 import { Button } from '../../common/controls/Button';
 import { SectionHeader } from '../../common/misc/SectionHeader';

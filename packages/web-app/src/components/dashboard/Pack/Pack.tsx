@@ -5,7 +5,7 @@ import { shallowEqual, useSelector } from 'react-redux';
 
 import { selectFilteredPackItems } from '../../../state/selectors/itemsSelector';
 import { selectPackItemsStats } from '../../../state/selectors/itemsStatsSelector';
-import { RootState } from '../../../state/store';
+import { RootState } from '../../../state/types';
 import { Column } from '../../common/containers/Column';
 import { SectionHeader } from '../../common/misc/SectionHeader';
 import { PackItem } from '../PackItem';

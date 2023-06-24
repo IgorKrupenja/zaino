@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { Item } from '@zaino/shared';
 
 import { ItemSortOption } from '../enums';
-import { RootState } from '../store';
+import { RootState } from '../types';
 
 const getPackItems = (items: Item[]) => items.filter((item) => item.packQuantity > 0);
 

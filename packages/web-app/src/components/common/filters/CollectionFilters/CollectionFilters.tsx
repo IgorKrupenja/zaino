@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { collectionFiltersInitialState } from '../../../../state/constants';
 import { CollectionSortOption } from '../../../../state/enums';
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { Row } from '../../containers/Row';
 import { Input } from '../../controls/Input';
 import { SortSelect } from '../../selects/SortSelect';

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { useToggle } from '../../../../hooks';
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { Button } from '../../controls/Button';
 import { CloseButton } from '../../controls/CloseButton';
 import { Popover } from '../../misc/Popover';

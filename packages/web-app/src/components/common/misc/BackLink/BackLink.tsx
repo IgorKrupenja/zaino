@@ -3,7 +3,7 @@ import './BackLink.scss';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { RootState } from '../../../../state/store';
+import { RootState } from '../../../../state/types';
 import { getClassString } from '../../../../utils';
 
 type BackLinkProps = {
