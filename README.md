@@ -147,7 +147,7 @@ Before starting, make sure that you have Node 16 installed or use [nvm](https://
 REACT_APP_FIREBASE_API_KEY="AIzaSkR_FfdseFcsE3fgg7pdjjjof6jhDSA-dTM"
 REACT_APP_FIREBASE_AUTH_DOMAIN="zaino-dev-3ea56.firebaseapp.com"
 REACT_APP_FIREBASE_DATABASE_URL="https://zaino-dev-3ea56.firebaseio.com"
-REACT_APP_FB_PROJECT_ID="zaino-dev-3ea56"
+REACT_APP_FIREBASE_PROJECT_ID="zaino-dev-3ea56"
 REACT_APP_FIREBASE_STORAGE_BUCKET="zaino-dev-3ea56.appspot.com"
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID="550657824795"
 REACT_APP_FIREBASE_APP_ID="1:550657824795:web:29da52b66934c3ea494f74"
