@@ -1,3 +1,5 @@
+// stylelint-disable selector-pseudo-class-no-unknown
+// stylelint-disable property-no-unknown 
 @import './settings';
 
 // These are in a separate file to prevent sass-resources-loader appending exports several times.

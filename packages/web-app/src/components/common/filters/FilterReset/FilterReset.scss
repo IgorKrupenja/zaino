@@ -1,3 +1,12 @@
+.filter-reset__icon {
+  fill: $dark-red;
+
+  &:hover {
+    fill: darken($dark-red, 10%);
+  }
+}
+
+
 .filter-reset {
   color: $dark-red;
   font-size: $font-size-small;
@@ -19,10 +28,3 @@
   visibility: hidden;
 }
 
-.filter-reset__icon {
-  fill: $dark-red;
-
-  &:hover {
-    fill: darken($dark-red, 10%);
-  }
-}

@@ -37,7 +37,9 @@
 }
 
 .login-page__button {
+  // stylelint-disable-next-line declaration-no-important
   text-align: start !important;
+  // stylelint-disable-next-line declaration-no-important
   width: 20rem !important;
 }
 
@@ -48,26 +50,6 @@
 
   &:hover {
     color: $off-black;
-  }
-}
-
-.login-page__github-link {
-  align-items: center;
-  bottom: $s-size;
-  display: flex;
-  font-size: 1.5rem;
-  position: absolute;
-  right: $s-size;
-  text-decoration: none;
-
-  &:hover .login-page__github-link__text {
-    max-width: 12rem;
-    opacity: 1;
-    transform: translateX(0%);
-  }
-
-  &:hover .login-page__github-link__icon {
-    animation: rotate-3d-reverse 0.5s linear forwards;
   }
 }
 
@@ -95,6 +77,28 @@
     transition: 0.3s ease;
   }
 }
+
+.login-page__github-link {
+  align-items: center;
+  bottom: $s-size;
+  display: flex;
+  font-size: 1.5rem;
+  position: absolute;
+  right: $s-size;
+  text-decoration: none;
+
+  &:hover .login-page__github-link__text {
+    max-width: 12rem;
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  &:hover .login-page__github-link__icon {
+    animation: rotate-3d-reverse 0.5s linear forwards;
+  }
+}
+
+
 
 @keyframes rotate-3d {
   0% {
