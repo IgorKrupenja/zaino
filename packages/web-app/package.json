@@ -85,6 +85,8 @@
     "start": "nodemon --exec 'node scripts/start.js'",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
+    "stylelint": "stylelint '**/*.scss'",
+    "format": "prettier --write \"**/*.{ts,tsx,md,js}\" --ignore-path .gitignore",
     "test": "node scripts/test.js",
     "build": "node scripts/build.js",
     "analyze": "node scripts/build.js -- --stats && npx webpack-bundle-analyzer ./build/bundle-stats.json",
@@ -172,6 +174,7 @@
   },
   "devDependencies": {
     "postcss": "^8.4.24",
+    "prettier": "^2.8.8",
     "stylelint": "^15.7.0",
     "stylelint-config-standard-scss": "^9.0.0",
     "stylelint-order": "^6.0.3"
