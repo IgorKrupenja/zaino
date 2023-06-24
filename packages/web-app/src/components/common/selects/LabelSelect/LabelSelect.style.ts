@@ -1,8 +1,8 @@
 import { StylesConfig } from 'react-select';
 
 import styles from '../../../../styles/base/_export.scss';
-import { SelectOption } from '../SelectPopover';
-import { colorDot } from '../SelectPopover/style';
+import { SelectOption } from '../../../../types';
+import { colorDot } from '../SelectPopover/SelectPopover.style';
 
 export const labelSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   // Setting widths manually is a workaround to prevent control text overflow issues

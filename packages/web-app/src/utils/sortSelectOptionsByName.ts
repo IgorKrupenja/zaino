@@ -1,4 +1,4 @@
-import { SelectOption } from '../components/common/selects/SelectPopover';
+import { SelectOption } from '../types';
 
 // Should also be used when implementing #331.
 export const sortSelectOptionsByName = (a: SelectOption, b: SelectOption) => {

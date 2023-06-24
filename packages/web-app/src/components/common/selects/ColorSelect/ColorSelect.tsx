@@ -3,9 +3,10 @@ import { useRef, useState } from 'react';
 import { OnChangeValue } from 'react-select';
 
 import { colors } from '../../../../constants';
+import { SelectOption } from '../../../../types';
 import { Button } from '../../controls/Button';
 import { EditIcon } from '../../icons/EditIcon';
-import { SelectOption, SelectPopover } from '../SelectPopover';
+import { SelectPopover } from '../SelectPopover';
 import { colorSelectStyles } from './ColorSelect.style';
 
 type ColorSelectOption = {

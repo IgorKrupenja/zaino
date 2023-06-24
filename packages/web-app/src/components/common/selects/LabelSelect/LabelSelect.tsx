@@ -8,8 +8,9 @@ import { v4 as uuid } from 'uuid';
 import { colors } from '../../../../constants';
 import { addLabel } from '../../../../state/slices/labelsSlice';
 import { RootState } from '../../../../state/store';
+import { SelectOption } from '../../../../types';
 import { getRandomColor, sortSelectOptionsByName } from '../../../../utils';
-import { SelectOption, SelectPopover } from '../SelectPopover';
+import { SelectPopover } from '../SelectPopover';
 import { labelSelectStyles } from './LabelSelect.style';
 
 type LabelSelectProps = {

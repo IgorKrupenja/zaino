@@ -1,6 +1,6 @@
 import { StylesConfig } from 'react-select';
 
-import { SelectOption } from '../SelectPopover';
+import { SelectOption } from '../../../../types';
 
 export const sortSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   menu: () => ({

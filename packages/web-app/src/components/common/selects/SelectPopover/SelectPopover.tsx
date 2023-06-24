@@ -4,15 +4,10 @@ import Select from 'react-select/';
 import CreatableSelect from 'react-select/creatable';
 import { PopoverAlign } from 'react-tiny-popover';
 
+import { SelectOption } from '../../../../types';
 import { CloseButton } from '../../controls/CloseButton';
 import { Popover } from '../../misc/Popover';
-import { commonSelectStyles } from './style';
-
-export type SelectOption = {
-  hexValue?: string;
-  label: string;
-  value: string;
-};
+import { commonSelectStyles } from './SelectPopover.style';
 
 type SelectPopoverProps = {
   children: ReactNode;

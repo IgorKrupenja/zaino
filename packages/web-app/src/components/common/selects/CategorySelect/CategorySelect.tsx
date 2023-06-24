@@ -4,8 +4,9 @@ import { OnChangeValue } from 'react-select';
 import { PopoverAlign } from 'react-tiny-popover';
 
 import { RootState } from '../../../../state/store';
+import { SelectOption } from '../../../../types';
 import { sortSelectOptionsByName } from '../../../../utils';
-import { SelectOption, SelectPopover } from '../SelectPopover';
+import { SelectPopover } from '../SelectPopover';
 import { categorySelectStyles } from './CategorySelect.style';
 
 type CategorySelectProps = {

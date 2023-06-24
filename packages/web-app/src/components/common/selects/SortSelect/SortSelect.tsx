@@ -2,9 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { OnChangeValue } from 'react-select';
 
 import { CollectionSortOption, ItemSortOption } from '../../../../state/enums';
+import { SelectOption } from '../../../../types';
 import { Button } from '../../controls/Button';
 import { DropdownIcon } from '../../icons/DropdownIcon';
-import { SelectOption, SelectPopover } from '../SelectPopover';
+import { SelectPopover } from '../SelectPopover';
 import { sortSelectStyles } from './style';
 
 type SortSelectProps = {
