@@ -6,19 +6,16 @@ import { PopoverAlign } from 'react-tiny-popover';
 import { RootState } from '../../../../state/store';
 import { sortSelectOptionsByName } from '../../../../utils';
 import { SelectOption, SelectPopover } from '../SelectPopover';
-import { categorySelectStyles } from './style';
+import { categorySelectStyles } from './CategorySelect.style';
 
 type CategorySelectProps = {
-  selectedCategoryId?: string;
-  onChange: (categoryName: string) => void;
-  headerText: string;
   children: ReactNode;
+  headerText: string;
+  onChange: (categoryName: string) => void;
   popoverAlign?: PopoverAlign;
+  selectedCategoryId?: string;
 };
 
-/**
- * Category select. Used in both ItemForm and DashboardFilters.
- */
 export const CategorySelect = ({
   selectedCategoryId,
   onChange,
@@ -44,8 +41,7 @@ export const CategorySelect = ({
   const [value, setValue] = useState(prepareValue(selectedCategoryId));
 
   const handleChange = (newValue: OnChangeValue<SelectOption, boolean>) => {
-    const selectedOption = newValue as SelectOption;
-    onChange(selectedOption?.value);
+    onChange((newValue as SelectOption)?.value);
   };
 
   // update selected category when clicking on a category inside ItemDetails

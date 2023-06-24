@@ -10,7 +10,7 @@ import { addLabel } from '../../../../state/slices/labelsSlice';
 import { RootState } from '../../../../state/store';
 import { getRandomColor, sortSelectOptionsByName } from '../../../../utils';
 import { SelectOption, SelectPopover } from '../SelectPopover';
-import { labelSelectStyles } from './style';
+import { labelSelectStyles } from './LabelSelect.style';
 
 type LabelSelectProps = {
   labelIds?: string[];
@@ -58,7 +58,7 @@ export const LabelSelect = ({ labelIds, onChange, children, ...rest }: LabelSele
   }, [labels]);
 
   const handleChange = (newValues: OnChangeValue<SelectOption, boolean>) => {
-    const newValueArray = newValues as SelectOption[];
+    const newValueArray = newValues as SelectOption[] | null;
     // turn values into labelIds
     const labelIds = newValueArray ? newValueArray.map((label) => label.value) : [];
     onChange(labelIds);

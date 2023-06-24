@@ -6,17 +6,17 @@ import { colors } from '../../../../constants';
 import { Button } from '../../controls/Button';
 import { EditIcon } from '../../icons/EditIcon';
 import { SelectOption, SelectPopover } from '../SelectPopover';
-import { colorSelectStyles } from './style';
+import { colorSelectStyles } from './ColorSelect.style';
 
 type ColorSelectOption = {
-  value: ColorName;
-  label: string;
   hexValue: string;
+  label: string;
+  value: ColorName;
 };
 
 type ColorSelectProps = {
-  selectedColorName: ColorName;
   onChange: (colorName: ColorName) => void;
+  selectedColorName: ColorName;
 };
 
 export const ColorSelect = ({ selectedColorName, onChange }: ColorSelectProps) => {

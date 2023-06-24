@@ -1,7 +1,7 @@
 import { StylesConfig } from 'react-select';
 
 import { SelectOption } from '../SelectPopover';
-import { colorDot } from '../SelectPopover/style';
+import { colorDot } from '../SelectPopover/SelectPopover.style';
 
 export const colorSelectStyles: Partial<StylesConfig<SelectOption, boolean>> = {
   menu: () => ({
