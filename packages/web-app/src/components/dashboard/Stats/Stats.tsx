@@ -52,5 +52,4 @@ export const Stats = ({ stats, className }: StatsProps) => {
       )}
     </BulletRow>
   );
-  // }
 };
