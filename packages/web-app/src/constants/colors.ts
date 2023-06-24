@@ -3,9 +3,9 @@ import { ColorName } from '@zaino/shared';
 import styles from '../styles/base/_export.scss';
 
 type Color = {
-  name: ColorName;
   fancyName: string;
   hexValue: string;
+  name: ColorName;
 };
 
 export const colors: Color[] = [

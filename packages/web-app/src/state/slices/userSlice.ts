@@ -10,7 +10,7 @@ import { addLabels, resetLabelsState } from './labelsSlice';
 
 export const login = createAsyncThunk(
   'user/login',
-  async ({ user, isNew }: { user: User; isNew?: boolean }, { dispatch }) => {
+  async ({ user, isNew }: { isNew?: boolean; user: User }, { dispatch }) => {
     if (isNew) {
       // Currently no business logic behind email field.
       await db
@@ -59,11 +59,11 @@ const userSlice = createSlice({
 
       return {
         email: user.email as string,
-        
-isLoading: true,
-        
+
+        isLoading: true,
+
         // Types for these are string | null but null seems to apply to anonymous sign in only
-name: user.displayName as string,
+        name: user.displayName as string,
         photoUrl: user.photoURL as string,
         uid: user.uid,
       };

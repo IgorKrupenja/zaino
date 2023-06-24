@@ -34,6 +34,14 @@
   }
 }
 
+.item-details__category-icon {
+  fill: $grey;
+  height: $s-size;
+  margin-right: 0;
+  transition: 0.3s ease;
+  width: $s-size;
+}
+
 .item-details__category {
   &:hover .item-details__category-icon {
     fill: $off-black;
@@ -44,14 +52,6 @@
   align-items: center;
   display: inline-flex;
   margin-right: 0.2rem;
-}
-
-.item-details__category-icon {
-  fill: $grey;
-  height: $s-size;
-  margin-right: 0;
-  transition: 0.3s ease;
-  width: $s-size;
 }
 
 .item-details__label-list {

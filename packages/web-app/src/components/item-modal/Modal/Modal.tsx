@@ -4,10 +4,10 @@ import { ReactNode } from 'react';
 import ReactModal from 'react-modal';
 
 type ModalProps = {
+  children: ReactNode;
+  contentLabel: string;
   isOpen: boolean;
   onRequestClose: () => void;
-  contentLabel: string;
-  children: ReactNode;
 };
 
 export const Modal = ({ children, ...rest }: ModalProps) => {

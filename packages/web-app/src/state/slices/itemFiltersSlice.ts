@@ -3,10 +3,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ItemSortOption } from '../enums';
 
 type ItemFilters = {
-  text: string;
   categoryId?: string;
   labels: string[];
   sortBy: ItemSortOption;
+  text: string;
 };
 
 export const itemFiltersInitialState: ItemFilters = {

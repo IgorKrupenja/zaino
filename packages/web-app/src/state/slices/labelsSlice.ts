@@ -87,7 +87,7 @@ const labelsSlice = createSlice({
   initialState,
   name: 'labels',
   reducers: {
-    addLabels: (state, action: PayloadAction<{ labels: Label[]; items: Item[] }>) => {
+    addLabels: (state, action: PayloadAction<{ items: Item[]; labels: Label[] }>) => {
       const labels = action.payload.labels;
       action.payload.items.forEach((item) => {
         item.labelIds?.forEach((labelId) => {
@@ -109,7 +109,7 @@ const labelsSlice = createSlice({
     },
     decrementItemCount: (
       state,
-      action: PayloadAction<{ labelId: string; itemQuantity: number }>
+      action: PayloadAction<{ itemQuantity: number; labelId: string }>
     ) => {
       const index = state.findIndex((label) => label.id === action.payload.labelId);
       const itemUniqueCount = state[index].itemUniqueCount;
@@ -127,7 +127,7 @@ const labelsSlice = createSlice({
     },
     incrementItemCount: (
       state,
-      action: PayloadAction<{ labelId: string; itemQuantity: number }>
+      action: PayloadAction<{ itemQuantity: number; labelId: string }>
     ) => {
       const itemQuantity = action.payload.itemQuantity;
       const index = state.findIndex((label) => label.id === action.payload.labelId);
