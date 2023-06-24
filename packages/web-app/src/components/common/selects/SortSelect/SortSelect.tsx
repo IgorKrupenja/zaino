@@ -6,18 +6,15 @@ import { SelectOption } from '../../../../types';
 import { Button } from '../../controls/Button';
 import { DropdownIcon } from '../../icons/DropdownIcon';
 import { SelectPopover } from '../SelectPopover';
-import { sortSelectStyles } from './style';
+import { sortSelectStyles } from './SortSelect.style';
 
 type SortSelectProps = {
-  sortOptions: typeof CollectionSortOption | typeof ItemSortOption;
-  selectedOption: CollectionSortOption | ItemSortOption;
   hiddenOption?: CollectionSortOption | ItemSortOption;
   onChange: (sortBy: string) => void;
+  selectedOption: CollectionSortOption | ItemSortOption;
+  sortOptions: typeof CollectionSortOption | typeof ItemSortOption;
 };
 
-/**
- * Sort select. Used in both LabelFilters and DashboardFilters.
- */
 export const SortSelect = ({
   sortOptions,
   onChange,
@@ -32,7 +29,7 @@ export const SortSelect = ({
       }))
       .filter((option) => option.label !== hiddenOption)
   ).current;
-  // logic similar to LabelSelect
+  // Logic similar to LabelSelect
   const prepareValue = useCallback(
     (selectedOption: string | undefined) => {
       return options.find((option) => option.label === selectedOption);
@@ -41,7 +38,6 @@ export const SortSelect = ({
   );
   const [value, setValue] = useState(prepareValue(selectedOption));
 
-  // display proper sort options when sorting is reset in FilterReset
   useEffect(() => setValue(prepareValue(selectedOption)), [selectedOption, prepareValue]);
 
   const handleChange = (newValue: OnChangeValue<SelectOption, boolean>) => {
