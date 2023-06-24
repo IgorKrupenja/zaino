@@ -122,11 +122,11 @@ Before starting, make sure that you have Node 16 installed or use [nvm](https://
 
 1. [Install Google's Cloud SDK](https://cloud.google.com/sdk/docs/install) and run `gcloud auth login` to log in.
 2. Run `npm install -g firebase-tools` to install Firebase CLI and run `firebase login` to log in.
-3. Run `npm install` in the *root* directory of the cloned/forked repo.
+3. Run `npm install` in the _root_ directory of the cloned/forked repo.
 4. Go to [Firebase console](https://console.firebase.google.com/u/0/) and create two projects, one for **development** environment and one for **production** environment.
-5. In Firebase console, create *Web* apps for the two projects you created. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
+5. In Firebase console, create _Web_ apps for the two projects you created. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
 6. In Firebase console, open Project Settings and note the Project IDs for the projects you created.
-7. Create a `.firebaserc` file in the *root* of this repo and add the Project IDs there like this (dummy values):
+7. Create a `.firebaserc` file in the _root_ of this repo and add the Project IDs there like this (dummy values):
 
 ```json
 {
@@ -147,7 +147,7 @@ Before starting, make sure that you have Node 16 installed or use [nvm](https://
 REACT_APP_FIREBASE_API_KEY="AIzaSkR_FfdseFcsE3fgg7pdjjjof6jhDSA-dTM"
 REACT_APP_FIREBASE_AUTH_DOMAIN="zaino-dev-3ea56.firebaseapp.com"
 REACT_APP_FIREBASE_DATABASE_URL="https://zaino-dev-3ea56.firebaseio.com"
-REACT_APP_FIREBASE_PROJECT_ID="zaino-dev-3ea56"
+REACT_APP_FB_PROJECT_ID="zaino-dev-3ea56"
 REACT_APP_FIREBASE_STORAGE_BUCKET="zaino-dev-3ea56.appspot.com"
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID="550657824795"
 REACT_APP_FIREBASE_APP_ID="1:550657824795:web:29da52b66934c3ea494f74"
@@ -190,7 +190,7 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 2. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the variables for your Project IDs. The file format should be like this:
 
 ```shell
-FIREBASE_PROJECT_ID="zaino-dev-3ea56"
+FB_PROJECT_ID="zaino-dev-3ea56"
 ```
 
 Note: You can change additional settings like regions and Cloud Storage bucket name in [the `.env` file](packages/firebase/.env).
