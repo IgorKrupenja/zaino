@@ -1,6 +1,6 @@
 import './LoginPage.scss';
 
-import { getAuth, signInWithRedirect } from 'firebase/auth';
+import { getAuth, signInWithPopup } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,8 @@ export const LoginPage = () => {
       </p>
       <GoogleButton
         className="login-page__button"
-        onClick={() => signInWithRedirect(getAuth(), googleAuthProvider)}
+        // TODO: Previously used signInWithRedirect but this broke prod recently, see #666
+        onClick={() => signInWithPopup(getAuth(), googleAuthProvider)}
         type="light"
       />
       <Link className="login-page__policies" to="/privacy">
