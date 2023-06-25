@@ -9,6 +9,8 @@
   <a href="https://zaino.cc">Live demo</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/issues">Issues</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/blob/master/CHANGELOG.md">Changelog</a>
 </h4>
 
+<div align="center">Built with Typescript, React and Firebase.</div>
+
 <br />
 
 <div align="center">🚨 This was an early first-year uni project so some things could have been done better. It is no longer maintained but <a href="https://zaino.cc">live demo</a> is up. Running the app is also possible after completing <a href="#setup">setup</a>.</div>
