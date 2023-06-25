@@ -114,24 +114,20 @@ Note: You can change additional settings like regions and Cloud Storage bucket n
 
 ## Deployment
 
-1. Go to `packages/web-app` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
-2. Go to `packages/firebase` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
+1. Make sure you did everything in [Setup](#setup) above.
+2. Go to `packages/web-app` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
+3. Go to `packages/firebase` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
 
-Doing this will also enable periodic Firestore backups and seed with demo data.
+Doing this will also enable periodic Firestore backups and seed it with demo data.
 
 ## Running locally
 
 1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment) above.
 2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will _run against a deployed **development** Firebase project_.
 
-<!-- TODO stuff below needs update -->
-
 ## Code structure
 
-<!-- TODO re-write para below -->
-
-<!-- Note that this will also deploy the [backupDb.ts](packages/cloud-functions/src/backupDb.ts) function which saves a backup of Firestore data very 24 hours to `GCP_STORAGE_URL` bucket you specify in your `.env.development` file. This can be disabled by simply removing the relevant export [here](packages/cloud-functions/src/index.ts). -->
-
+<!-- TODO ONLY this section needs update -->
 <!-- todo clean and shorten -->
 <!-- todo mention workspaces -->
 
@@ -210,13 +206,14 @@ Main web app, code structure highlights:
 
 ## Changelog
 
-<!-- TODO likely remove? or leave only 2021 entries? -->
+### 0.1.1 (4th November 2020)
 
-### 0.2.0 (22nd January 2022)
-
-- Add proper app logo.
-- Made preliminary changes to support custom categories. This functionality is not yet exposed in the app, will be added in [0.4.0](#roadmap).
-- Minor bugfixes.
+- Added privacy and cookie policy.
+- Fixed usability issue with accidentally closing New item modal on clicking category or labels.
+- Fixed incorrect input being occasionally focused when clicking on a label in Edit label form.
+- Fixed minor styling issues with New label form.
+- Made text selection color less bright.
+- Updated README with a better screenshot.
 
 [See full changelog](CHANGELOG.md).
 
