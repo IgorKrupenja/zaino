@@ -11,6 +11,8 @@
 
 ## Overview
 
+<!-- todo I think add ToC -->
+
 🚧🚧🚧 **Please note that Zaino is a work in progress.** 🚧🚧🚧
 
 For instance, the app does not have a mobile version yet.
@@ -178,11 +180,9 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 └── mountain.svg <--- loader image
 ```
 
-<!-- TODO: Privacy policy location might require update -->
-
 <!-- todo check live demo links -->
 
-- Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicy/PrivacyPolicyContent.tsx`.
+- Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder is going to be shown.
 
 #### Firebase
 
