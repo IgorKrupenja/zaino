@@ -140,7 +140,7 @@ A bit of shared code (types).
 - [src/routes/](packages/web-app/src/routes) React Router config and routes.
 - [src/state/](packages/web-app/src/state) State management with Redux.
 - [src/styles/](packages/web-app/src/styles) Style variables and settings that apply to the whole app.
-- [config](packages/web-app/config) and [scripts](packages/web-app/scripts) have some JS files. These is because the app started as a Create React App but was then [ejected](https://create-react-app.dev/docs/available-scripts/#npm-run-eject).
+- [config](packages/web-app/config) and [scripts](packages/web-app/scripts) have some JS files, mostly for Webpack, build and dev server. These is because the app started as a Create React App but was then [ejected](https://create-react-app.dev/docs/available-scripts/#npm-run-eject).
 
 ## Technologies
 
