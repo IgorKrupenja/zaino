@@ -19,7 +19,6 @@ export const LoginPage = () => {
       </p>
       <GoogleButton
         className="login-page__button"
-        // TODO: Previously used signInWithRedirect but this broke prod recently, see #666
         onClick={() => signInWithRedirect(getAuth(), googleAuthProvider)}
         type="light"
       />
