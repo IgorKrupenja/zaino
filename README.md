@@ -6,14 +6,14 @@
 <div align="center">🚨 This was my early first-year university project so some things could have been done better. 😉 It is <strong>no longer maintained</strong> but <a href="https://zaino.cc">live demo</a> is up. Running the app and self-hosting it is also possible after completing <a href="#setup">setup</a>.</div>
 
 <h4 align="center">
-  <a href="https://zaino.cc">Live demo</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/issues">Issues</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/blob/master/CHANGELOG.md">Changelog</a>
+  <a href="https://zaino.cc">Live demo</a> ᐧ <a href="#setup">Setup</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/blob/master/CHANGELOG.md">Changelog</a>
 </h4>
 
 <div align="center">Built with Typescript, React and Firebase.</div>
 
 <!-- todo new screen -->
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.webp)
 
 ## Contents <!-- omit from toc -->
 
