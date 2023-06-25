@@ -15,7 +15,7 @@ export const PrivacyPolicyContent = () => {
         <a href="mailto:igor.krupenja@gmail.com">igor.krupenja@gmail.com</a>.
       </p>
       <p className="privacy-policy__paragraph">
-        When you visit our website <a href="http://www.zaino.io">http://www.zaino.io</a>, and use
+        When you visit our website <a href="http://www.zaino.cc">http://www.zaino.cc</a>, and use
         our services, you trust us with your personal information. We take your privacy very
         seriously. In this privacy notice, we describe our privacy policy. We seek to explain to you
         in the clearest way possible what information we collect, how we use it and what rights you
@@ -25,7 +25,7 @@ export const PrivacyPolicyContent = () => {
       </p>
       <p className="privacy-policy__paragraph">
         This privacy policy applies to all information collected through our website (such as{' '}
-        <a href="http://www.zaino.io">http://www.zaino.io</a>), and/or any related services, sales,
+        <a href="http://www.zaino.cc">http://www.zaino.cc</a>), and/or any related services, sales,
         marketing or events (we refer to them collectively in this privacy policy as the
         &quot;Sites&quot;).
       </p>
