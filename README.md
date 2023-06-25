@@ -186,7 +186,7 @@ Main web app, code structure highlights:
 
 ## Possible improvements
 
-<!-- todo shorten -->
+<!-- todo clean up -->
 
 ### 0.4.0
 
