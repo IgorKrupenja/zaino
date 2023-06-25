@@ -3,11 +3,115 @@
   Hiking and mountaineering equipment app for the meticulous adventurer.
 </h3>
 
+<!-- todo which links? -->
+
 <h4 align="center">
   <a href="https://zaino.cc">Live demo</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/issues">Issues</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/blob/master/CHANGELOG.md">Changelog</a>
 </h4>
 
+<br />
+
+<div align="center">🚨 This was my early first-year uni project so some things could have been done better. It is no longer maintained but <a href="https://zaino.cc">live demo</a> is up. Running the app is also possible after completing <a href="#setup">setup</a>.</div>
+
+<br />
+
 ![Screenshot](screenshot.png)
+
+<!-- TODO stuff above needs update -->
+
+### Setup
+
+Before starting, make sure that you have Node 16 installed or use [nvm](https://github.com/nvm-sh/nvm).
+
+#### Common
+
+1. [Install Google's Cloud SDK](https://cloud.google.com/sdk/docs/install) and run `gcloud auth login` to log in.
+2. Run `npm install -g firebase-tools` to install Firebase CLI and run `firebase login` to log in.
+3. Run `npm install` in the _root_ directory of the cloned/forked repo.
+4. Go to [Firebase console](https://console.firebase.google.com/u/0/) and create two projects, one for **development** environment and one for **production** environment.
+5. In Firebase console, create _Web_ apps for the two projects you created. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
+6. In Firebase console, open Project Settings and note the Project IDs for the projects you created.
+7. Create a `.firebaserc` file in the _root_ of this repo and add the Project IDs there like this (dummy values):
+
+```json
+{
+  "projects": {
+    "development": "zaino-dev-3ea56",
+    "production": "zaino-prod-236c2"
+  }
+}
+```
+
+#### Web app
+
+1. Go to Firebase console and open Project Settings for your projects.
+2. Scroll down to Your Apps section and locate the code snippet with `firebaseConfig`.
+3. Go to `packages/web-app` and create `.env.development` and `.env.production` files with the variables from `firebaseConfig`. The file format should be like this (dummy values):
+
+```shell
+REACT_APP_FIREBASE_API_KEY="AIzaSkR_FfdseFcsE3fgg7pdjjjof6jhDSA-dTM"
+REACT_APP_FIREBASE_AUTH_DOMAIN="zaino-dev-3ea56.firebaseapp.com"
+REACT_APP_FIREBASE_DATABASE_URL="https://zaino-dev-3ea56.firebaseio.com"
+REACT_APP_FIREBASE_PROJECT_ID="zaino-dev-3ea56"
+REACT_APP_FIREBASE_STORAGE_BUCKET="zaino-dev-3ea56.appspot.com"
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID="550657824795"
+REACT_APP_FIREBASE_APP_ID="1:550657824795:web:29da52b66934c3ea494f74"
+REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
+```
+
+##### Caveats ⚠️
+
+- Most of the images used in the [live demo](#live-demo) were purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/) and cannot be made part of this repo due to copyright restrictions. To get images in the app, you can add your own to `packages/web-app/src/images/copyrighted` directory with the following structure:
+
+```shell
+├── categories
+│   ├── backpack.svg
+│   ├── boots.svg
+│   ├── compass.svg
+│   ├── gloves.svg
+│   ├── gps.svg
+│   ├── hat.svg
+│   ├── hook.svg
+│   ├── jacket.svg
+│   ├── knife.svg
+│   ├── pickaxe.svg
+│   ├── poles.svg
+│   ├── shorts.svg
+│   ├── socks.svg
+│   ├── stove.svg
+│   └── tent.svg
+└── mountain.svg <--- loader image
+```
+
+- Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder will be shown.
+
+#### Firebase
+
+1. Create Firestore database in Firebase console for your projects, a detailed guide is available [here](https://firebase.google.com/docs/firestore/quickstart#create).
+2. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the variables for your Project IDs. The file format should be like this:
+
+```shell
+FB_PROJECT_ID="zaino-dev-3ea56"
+```
+
+Note: You can change additional settings like regions and Cloud Storage bucket name in [the `.env` file](packages/firebase/.env).
+
+### Deployment
+
+1. Go to `packages/web-app` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
+2. Go to `packages/firebase` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
+
+### Running locally
+
+1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment).
+2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will run against a deployed **development** Firebase project.
+
+## Acknowledgements
+
+- Dmitri Shastin for his ideas and sharing his inventory data with me.
+- All the people proving me with feedback.
+
+<!-- TODO stuff below needs update -->
 
 ## Overview
 
@@ -117,95 +221,3 @@ Main web app, code structure highlights:
 - [src/routes/](packages/web-app/src/routes) React Router config and routes.
 - [src/state/](packages/web-app/src/state) State management with Redux.
 - [src/styles/](packages/web-app/src/styles) Style variables and settings that apply to the whole app.
-
-### Setup
-
-Before starting, make sure that you have Node 16 installed or use [nvm](https://github.com/nvm-sh/nvm).
-
-#### Common
-
-1. [Install Google's Cloud SDK](https://cloud.google.com/sdk/docs/install) and run `gcloud auth login` to log in.
-2. Run `npm install -g firebase-tools` to install Firebase CLI and run `firebase login` to log in.
-3. Run `npm install` in the _root_ directory of the cloned/forked repo.
-4. Go to [Firebase console](https://console.firebase.google.com/u/0/) and create two projects, one for **development** environment and one for **production** environment.
-5. In Firebase console, create _Web_ apps for the two projects you created. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
-6. In Firebase console, open Project Settings and note the Project IDs for the projects you created.
-7. Create a `.firebaserc` file in the _root_ of this repo and add the Project IDs there like this (dummy values):
-
-```json
-{
-  "projects": {
-    "development": "zaino-dev-3ea56",
-    "production": "zaino-prod-236c2"
-  }
-}
-```
-
-#### Web app
-
-1. Go to Firebase console and open Project Settings for your projects.
-2. Scroll down to Your Apps section and locate the code snippet with `firebaseConfig`.
-3. Go to `packages/web-app` and create `.env.development` and `.env.production` files with the variables from `firebaseConfig`. The file format should be like this (dummy values):
-
-```shell
-REACT_APP_FIREBASE_API_KEY="AIzaSkR_FfdseFcsE3fgg7pdjjjof6jhDSA-dTM"
-REACT_APP_FIREBASE_AUTH_DOMAIN="zaino-dev-3ea56.firebaseapp.com"
-REACT_APP_FIREBASE_DATABASE_URL="https://zaino-dev-3ea56.firebaseio.com"
-REACT_APP_FIREBASE_PROJECT_ID="zaino-dev-3ea56"
-REACT_APP_FIREBASE_STORAGE_BUCKET="zaino-dev-3ea56.appspot.com"
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID="550657824795"
-REACT_APP_FIREBASE_APP_ID="1:550657824795:web:29da52b66934c3ea494f74"
-REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
-```
-
-##### Caveats ⚠️
-
-- Most of the images used in the [live demo](#live-demo) were purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/) and cannot be made part of this repo due to copyright restrictions. To get images in the app, you can add your own to `packages/web-app/src/images/copyrighted` directory with the following structure:
-
-```shell
-├── categories
-│   ├── backpack.svg
-│   ├── boots.svg
-│   ├── compass.svg
-│   ├── gloves.svg
-│   ├── gps.svg
-│   ├── hat.svg
-│   ├── hook.svg
-│   ├── jacket.svg
-│   ├── knife.svg
-│   ├── pickaxe.svg
-│   ├── poles.svg
-│   ├── shorts.svg
-│   ├── socks.svg
-│   ├── stove.svg
-│   └── tent.svg
-└── mountain.svg <--- loader image
-```
-
-- Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder will be shown.
-
-#### Firebase
-
-1. Create Firestore database in Firebase console for your projects, a detailed guide is available [here](https://firebase.google.com/docs/firestore/quickstart#create).
-2. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the variables for your Project IDs. The file format should be like this:
-
-```shell
-FB_PROJECT_ID="zaino-dev-3ea56"
-```
-
-Note: You can change additional settings like regions and Cloud Storage bucket name in [the `.env` file](packages/firebase/.env).
-
-### Deployment
-
-1. Go to `packages/web-app` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
-2. Go to `packages/firebase` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
-
-### Running
-
-1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment).
-2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will run against a deployed **development** Firebase project.
-
-## Acknowledgements
-
-- Dmitri Shastin for his ideas and sharing his inventory data with me.
-- All the people proving me with feedback.
