@@ -63,6 +63,8 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 
 ## Changelog
 
+<!-- TODO likely remove? or leave only 2021 entries? -->
+
 ### 0.2.0 (22nd January 2022)
 
 - Add proper app logo.
@@ -180,9 +182,7 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 └── mountain.svg <--- loader image
 ```
 
-<!-- todo check live demo links -->
-
-- Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder is going to be shown.
+- Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder will be shown.
 
 #### Firebase
 
@@ -209,4 +209,3 @@ Note: You can change additional settings like regions and Cloud Storage bucket n
 
 - Dmitri Shastin for his ideas and sharing his inventory data with me.
 - All the people proving me with feedback.
-- Icons purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/).
