@@ -13,27 +13,29 @@
 
 <br />
 
-<div align="center">🚨 This was an early first-year uni project so some things could have been done better. It is no longer maintained but <a href="https://zaino.cc">live demo</a> is up. Running the app is also possible after completing <a href="#setup">setup</a>.</div>
+<div align="center">🚨 This was my early first-year university project so some things could have been done better. It is no longer maintained but <a href="https://zaino.cc">live demo</a> is up. Running the app is also possible after completing <a href="#setup">setup</a>.</div>
 
 <br />
 
+<!-- todo new screen -->
+
 ![Screenshot](screenshot.png)
 
-<!-- TODO stuff above needs update -->
+<!-- todo I think add ToC -->
 
 ### Setup
 
-Before starting, make sure that you have Node 16 installed or use [nvm](https://github.com/nvm-sh/nvm).
+Before starting, make sure that you have Node 16 installed — or use something like [nvm](https://github.com/nvm-sh/nvm).
 
 #### Common
 
 1. [Install Google's Cloud SDK](https://cloud.google.com/sdk/docs/install) and run `gcloud auth login` to log in.
-2. Run `npm install -g firebase-tools` to install Firebase CLI and run `firebase login` to log in.
+2. Run `npm install -g firebase-tools` to install Firebase CLI globally and run `firebase login` to log in.
 3. Run `npm install` in the _root_ directory of the cloned/forked repo.
 4. Go to [Firebase console](https://console.firebase.google.com/u/0/) and create two projects, one for **development** environment and one for **production** environment.
 5. In Firebase console, create _Web_ apps for the two projects you created. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
 6. In Firebase console, open Project Settings and note the Project IDs for the projects you created.
-7. Create a `.firebaserc` file in the _root_ of this repo and add the Project IDs there like this (dummy values):
+7. Create a `.firebaserc` file in the _root_ of this repo and add the Project IDs there. Example with dummy values below:
 
 ```json
 {
@@ -48,7 +50,7 @@ Before starting, make sure that you have Node 16 installed or use [nvm](https://
 
 1. Go to Firebase console and open Project Settings for your projects.
 2. Scroll down to Your Apps section and locate the code snippet with `firebaseConfig`.
-3. Go to `packages/web-app` and create `.env.development` and `.env.production` files with the variables from `firebaseConfig`. The file format should be like this (dummy values):
+3. Go to `packages/web-app` and create `.env.development` and `.env.production` files with the variables from `firebaseConfig`. Example with correct format and dummy values below:
 
 ```shell
 REACT_APP_FIREBASE_API_KEY="AIzaSkR_FfdseFcsE3fgg7pdjjjof6jhDSA-dTM"
@@ -89,8 +91,8 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 
 #### Firebase
 
-1. Create Firestore database in Firebase console for your projects, a detailed guide is available [here](https://firebase.google.com/docs/firestore/quickstart#create).
-2. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the variables for your Project IDs. The file format should be like this:
+1. Create a Firestore database in Firebase console for your projects, a detailed guide is available [here](https://firebase.google.com/docs/firestore/quickstart#create).
+2. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the variables for your Project IDs. Example with dummy values below:
 
 ```shell
 FB_PROJECT_ID="zaino-dev-3ea56"
@@ -105,14 +107,12 @@ Note: You can change additional settings like regions and Cloud Storage bucket n
 
 ### Running locally
 
-1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment).
-2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will run against a deployed **development** Firebase project.
+1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment) above.
+2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will _run against a deployed **development** Firebase project_.
+
+## Functionality
 
 <!-- TODO stuff below needs update -->
-
-## Overview
-
-<!-- todo I think add ToC -->
 
 🚧🚧🚧 **Please note that Zaino is a work in progress.** 🚧🚧🚧
 
