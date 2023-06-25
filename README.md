@@ -1,23 +1,17 @@
 <!-- Todo add icon here? -->
 
-<h1 align="center">️🎒 Zaino</h1>
+<h1 align="center">️<img src="packages/web-app/src/images/logo.svg" height="26px" /> Zaino</h1>
 <h3 align="center">
   Hiking and mountaineering equipment app for the meticulous adventurer.
 </h3>
 
-<!-- todo which links? -->
+<div align="center">🚨 This was my early first-year university project so some things could have been done better. It is <strong>no longer maintained</strong> but <a href="https://zaino.cc">live demo</a> is up. Running the app and self-hosting it is also possible after completing <a href="#setup">setup</a>.</div>
 
 <h4 align="center">
   <a href="https://zaino.cc">Live demo</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/issues">Issues</a> ᐧ <a href="https://github.com/igor-krupenja/zaino/blob/master/CHANGELOG.md">Changelog</a>
 </h4>
 
 <div align="center">Built with Typescript, React and Firebase.</div>
-
-<br />
-
-<div align="center">🚨 This was my early first-year university project so some things could have been done better. It is no longer maintained but <a href="https://zaino.cc">live demo</a> is up. Running the app is also possible after completing <a href="#setup">setup</a>.</div>
-
-<br />
 
 <!-- todo new screen -->
 
@@ -28,7 +22,7 @@
 - [Setup](#setup)
 - [Deployment](#deployment)
 - [Running locally](#running-locally)
-- [Code structure](#code-structure)
+- [Project structure](#project-structure)
 - [Technologies](#technologies)
 - [Functionality](#functionality)
 - [Possible improvements](#possible-improvements)
@@ -118,52 +112,39 @@ Note: You can change additional settings like regions and Cloud Storage bucket n
 2. Go to `packages/web-app` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
 3. Go to `packages/firebase` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
 
-Doing this will also enable periodic Firestore backups and seed it with demo data.
+Doing this will also enable periodic Firestore backups and seed the database with demo data, see [firebase](#firebase-1) below.
 
 ## Running locally
 
 1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment) above.
 2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will _run against a deployed **development** Firebase project_.
 
-## Code structure
+## Project structure
 
-<!-- TODO ONLY this section needs update -->
-<!-- todo clean and shorten -->
-<!-- todo mention workspaces -->
+The project is a monorepo. I suggest to open the root folder in editor, it has some root-level config, including [shared VSCode settings](.vscode).
 
-The project code is split into several [packages](packages). Each package is a separate [yarn workspace](https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/) to facilitate easier imports, e.g. `import { Labels, Colors } from '@zaino/shared'`. This is the reason why yarn was chosen over npm for this project as npm's workspace support is [only in beta at the moment](https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major).
-
-In the future, this structure can be used to accomodate additional sub-projects (like a landing page or a React Native app) as separate packages. At the moment, the packages are are:
+Code is split into several [packages](packages). Each package is a separate [npm workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces). These are:
 
 ### [shared](packages/shared)
 
-A small (for the time being) amount of shared code (types). It also includes the demo data used in the app. The original in the CSV format is in [input-data.csv](packages/shared/src/demo-data/input-data.csv). It has been processed with a node script [processDemoData.ts](packages/shared/src/demo-data/processDemoData.ts), which can be modified and re-run with `yarn run process-demo-data`. Output data is in JSON format ([output-data.json](packages/shared/src/demo-data/output-data.json)) and is used by a Firebase function, see [below](####demo-data-and-firebase-functions).
+A bit of shared code (types).
 
-### [cloud-functions](packages/web-app)
+### [firebase](packages/firebase)
 
-A couple of Firebase cloud functions including the function that populates Firestore with the demo data.
+- A config file with Firestore rules: [firestore.rules](packages/firebase/firestore.rules).
+- A [cloud function](packages/firebase/src/database/functions/addSeedData.ts) that seeds the Firestore with demo data from JSON, [seed-data.json](packages/firebase/src/seed-data/seed-data.json). The original [was provided to me by Dmitri](#acknowledgements) as an Excel file.
+- Another [function](packages/firebase/src/database/functions/backupDb.ts) for periodic DB backups.
 
 ### [web-app](packages/web-app)
 
-Main web app, code structure highlights:
+Web app.
 
-- [src/components/](packages/web-app/src/components) App components and pages, along with per-component styles. Styles are mostly in SCSS and follow the BEM convention.
-  - `Controls` Various reusable controls and form elements.
-  - `Dashboard` Dashboard page components.
-  - `Header` App header, including demo data loader.
-  - `Icons` Several commonly re-used icons with applied styles.
-  - `ItemModal` New/edit item modal components.
-  - `LabelBadge` Fancy label badge components used throughout Dashboard and Labels pages.
-  - `Labels` Labels page components.
-  - `Misc` Various smaller components used throughout the app.
-  - `Pages` App pages and temporary mobile placeholder.
-  - `Selects` Core select component and re-useable and actual selects that use it. Note that the code is ugly here and needs refactoring, see [#346](https://github.com/igor-krupenja/zaino/issues/346).
-  - `Wrappers` Various wrapper components used purely to align and style child components.
-- [src/constants/](packages/web-app/src/constants) Built-in label colors and categories, will be moved to Firestore when customisation of these is implemented.
-- [src/firebase/](packages/web-app/src/firebase) Firebase initialisation and a couple of functions to work with Firestore data.
+- [src/components/](packages/web-app/src/components) App components and [pages](packages/web-app/src/components/pages), along with per-component styles. Styles are mostly in SCSS and follow the BEM convention.
+- [src/firebase/](packages/web-app/src/firebase) Firebase initialisation and a couple of util functions to work with Firestore data.
 - [src/routes/](packages/web-app/src/routes) React Router config and routes.
 - [src/state/](packages/web-app/src/state) State management with Redux.
 - [src/styles/](packages/web-app/src/styles) Style variables and settings that apply to the whole app.
+- [config](packages/web-app/config) and [scripts](packages/web-app/scripts) have some JS files. These is because the app started as a Create React App but was then [ejected](https://create-react-app.dev/docs/available-scripts/#npm-run-eject).
 
 ## Technologies
 
@@ -186,23 +167,15 @@ Main web app, code structure highlights:
 
 ## Possible improvements
 
-<!-- todo clean up -->
+Most of the code was written as a summer project after my first year in uni. So there are quite a few areas for improvement indeed:
 
-### 0.4.0
-
-- Add custom categories.
-- Add infinite scroll pagination.
-
-### 0.3.0
-
-- Improve inventory and pack management UX.
+- The app needs tests.
+- Custom categories would make a nice feature.
+- There is no infinite scroll.
+- State management with Redux is a bit convoluted and could be simpler.
+- The overall inventory and pack management UX could be better.
+- There is no support for mobile screens, narrower than 600px.
 - Add support for multiple packs.
-
-### 0.2.1
-
-- Add unit tests for functionality that is ready.
-- Improve code structure and maintainability.
-- Streamlined and fully automated the deployment process.
 
 ## Changelog
 
