@@ -1,6 +1,6 @@
 <!-- Todo add icon here? -->
 
-<h1 align="center">️<img src="packages/web-app/src/images/logo.svg" height="26px" /> Zaino</h1>
+<h1 align="center">️<img src="packages/web-app/src/images/logo.svg" height="26px" vertical-align="text-top" /> Zaino</h1>
 <h3 align="center">
   Hiking and mountaineering equipment app for the meticulous adventurer.
 </h3>
