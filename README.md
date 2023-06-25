@@ -23,7 +23,7 @@
 
 ![Screenshot](screenshot.png)
 
-<!-- todo update and clean up ToC -->
+## Contents <!-- omit from toc -->
 
 - [Setup](#setup)
 - [Deployment](#deployment)
