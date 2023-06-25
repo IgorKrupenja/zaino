@@ -91,7 +91,7 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 └── mountain.svg <--- loader image
 ```
 
-- Privacy policy content used in the [live demo](https://zaino.cc) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder will be shown.
+- Privacy policy content used in the [live demo](https://zaino.cc) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, it shows a placeholder.
 
 ### Firebase
 
