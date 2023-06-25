@@ -21,13 +21,34 @@
 
 ![Screenshot](screenshot.png)
 
-<!-- todo I think add ToC -->
+<!-- todo update and clean up ToC -->
 
-### Setup
+- [Setup](#setup)
+  - [Common](#common)
+  - [Web app](#web-app)
+    - [Caveats ⚠️](#caveats-️)
+  - [Firebase](#firebase)
+- [Deployment](#deployment)
+- [Running locally](#running-locally)
+- [Code structure](#code-structure)
+  - [shared](#shared)
+  - [cloud-functions](#cloud-functions)
+  - [web-app](#web-app-1)
+- [Technologies](#technologies)
+- [Functionality](#functionality)
+- [Roadmap](#roadmap)
+  - [0.4.0](#040)
+  - [0.3.0](#030)
+  - [0.2.1](#021)
+- [Changelog](#changelog)
+  - [0.2.0 (22nd January 2022)](#020-22nd-january-2022)
+- [Acknowledgements](#acknowledgements)
+
+## Setup
 
 Before starting, make sure that you have Node 16 installed — or use something like [nvm](https://github.com/nvm-sh/nvm).
 
-#### Common
+### Common
 
 1. [Install Google's Cloud SDK](https://cloud.google.com/sdk/docs/install) and run `gcloud auth login` to log in.
 2. Run `npm install -g firebase-tools` to install Firebase CLI globally and run `firebase login` to log in.
@@ -46,7 +67,7 @@ Before starting, make sure that you have Node 16 installed — or use something 
 }
 ```
 
-#### Web app
+### Web app
 
 1. Go to Firebase console and open Project Settings for your projects.
 2. Scroll down to Your Apps section and locate the code snippet with `firebaseConfig`.
@@ -63,7 +84,7 @@ REACT_APP_FIREBASE_APP_ID="1:550657824795:web:29da52b66934c3ea494f74"
 REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 ```
 
-##### Caveats ⚠️
+#### Caveats ⚠️
 
 - Most of the images used in the [live demo](#live-demo) were purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/) and cannot be made part of this repo due to copyright restrictions. To get images in the app, you can add your own to `packages/web-app/src/images/copyrighted` directory with the following structure:
 
@@ -89,7 +110,7 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 
 - Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder will be shown.
 
-#### Firebase
+### Firebase
 
 1. Create a Firestore database in Firebase console for your projects, a detailed guide is available [here](https://firebase.google.com/docs/firestore/quickstart#create).
 2. Go to `packages/firebase` and create `.env.development` and `.env.production` files with the variables for your Project IDs. Example with dummy values below:
@@ -100,19 +121,71 @@ FB_PROJECT_ID="zaino-dev-3ea56"
 
 Note: You can change additional settings like regions and Cloud Storage bucket name in [the `.env` file](packages/firebase/.env).
 
-### Deployment
+## Deployment
 
 1. Go to `packages/web-app` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
 2. Go to `packages/firebase` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
 
-### Running locally
+## Running locally
 
 1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment) above.
 2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will _run against a deployed **development** Firebase project_.
 
-## Functionality
-
 <!-- TODO stuff below needs update -->
+
+## Code structure
+
+<!-- TODO re-write para below -->
+
+<!-- Note that this will also deploy the [backupDb.ts](packages/cloud-functions/src/backupDb.ts) function which saves a backup of Firestore data very 24 hours to `GCP_STORAGE_URL` bucket you specify in your `.env.development` file. This can be disabled by simply removing the relevant export [here](packages/cloud-functions/src/index.ts). -->
+
+<!-- todo clean and shorten -->
+<!-- todo mention workspaces -->
+
+The project code is split into several [packages](packages). Each package is a separate [yarn workspace](https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/) to facilitate easier imports, e.g. `import { Labels, Colors } from '@zaino/shared'`. This is the reason why yarn was chosen over npm for this project as npm's workspace support is [only in beta at the moment](https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major).
+
+In the future, this structure can be used to accomodate additional sub-projects (like a landing page or a React Native app) as separate packages. At the moment, the packages are are:
+
+### [shared](packages/shared)
+
+A small (for the time being) amount of shared code (types). It also includes the demo data used in the app. The original in the CSV format is in [input-data.csv](packages/shared/src/demo-data/input-data.csv). It has been processed with a node script [processDemoData.ts](packages/shared/src/demo-data/processDemoData.ts), which can be modified and re-run with `yarn run process-demo-data`. Output data is in JSON format ([output-data.json](packages/shared/src/demo-data/output-data.json)) and is used by a Firebase function, see [below](####demo-data-and-firebase-functions).
+
+### [cloud-functions](packages/web-app)
+
+A couple of Firebase cloud functions including the function that populates Firestore with the demo data.
+
+### [web-app](packages/web-app)
+
+Main web app, code structure highlights:
+
+- [src/components/](packages/web-app/src/components) App components and pages, along with per-component styles. Styles are mostly in SCSS and follow the BEM convention.
+  - `Controls` Various reusable controls and form elements.
+  - `Dashboard` Dashboard page components.
+  - `Header` App header, including demo data loader.
+  - `Icons` Several commonly re-used icons with applied styles.
+  - `ItemModal` New/edit item modal components.
+  - `LabelBadge` Fancy label badge components used throughout Dashboard and Labels pages.
+  - `Labels` Labels page components.
+  - `Misc` Various smaller components used throughout the app.
+  - `Pages` App pages and temporary mobile placeholder.
+  - `Selects` Core select component and re-useable and actual selects that use it. Note that the code is ugly here and needs refactoring, see [#346](https://github.com/igor-krupenja/zaino/issues/346).
+  - `Wrappers` Various wrapper components used purely to align and style child components.
+- [src/constants/](packages/web-app/src/constants) Built-in label colors and categories, will be moved to Firestore when customisation of these is implemented.
+- [src/firebase/](packages/web-app/src/firebase) Firebase initialisation and a couple of functions to work with Firestore data.
+- [src/routes/](packages/web-app/src/routes) React Router config and routes.
+- [src/state/](packages/web-app/src/state) State management with Redux.
+- [src/styles/](packages/web-app/src/styles) Style variables and settings that apply to the whole app.
+
+## Technologies
+
+- Typescript
+- React, React Router, Redux
+- Some React UI components: [React Select](https://react-select.com/home), [react-modal](https://github.com/reactjs/react-modal), [react-tiny-popover](https://github.com/alexkatz/react-tiny-popover)
+- SCSS (no frameworks)
+- npm workspaces
+- Cloud Firestore, Firebase Authentication, Firebase Functions, Google Cloud Storage, Firebase Hosting
+
+## Functionality
 
 🚧🚧🚧 **Please note that Zaino is a work in progress.** 🚧🚧🚧
 
@@ -128,23 +201,9 @@ So far, the following features have been implemented.
 - **Demo data**. Want to try the app without entering your own data first? Click Load under Demo data in header to populate your inventory with a comprehensive set of sample items. These can be easily removed later.
 - **Self-hosting support**. Concerned about privacy and want to completely self-host your data? This is possible and I have provided a detailed guide in the [Setup](#setup) section below.
 
-### Technologies used
-
-- Typescript
-- React, React Router, Redux
-- Some React UI components: [React Select](https://react-select.com/home), [react-modal](https://github.com/reactjs/react-modal), [react-tiny-popover](https://github.com/alexkatz/react-tiny-popover)
-- SCSS (no frameworks)
-- npm workspaces
-- Webpack
-- Cloud Firestore, Firebase Authentication, Firebase Functions, Google Cloud Storage, Firebase Hosting
-
-## Live Demo
-
-A fully-functional live demo is available at [zaino.cc](https://zaino.cc). It uses a separate production Firebase project so your data is safe from me breaking something in development. 😅 Regular backups are also run there just in case.
-
-Already have some document or spreadsheet with your hiking/climbing gear and want to try the app with your own data? Get in touch with with me at [igor.krupenja@gmail.com](mailto:igor.krupenja@gmail.com) and I will try to get a way to import your data into the app.
-
 ## Roadmap
+
+<!-- todo rename and shorten -->
 
 ### 0.4.0
 
@@ -173,51 +232,6 @@ Already have some document or spreadsheet with your hiking/climbing gear and wan
 - Minor bugfixes.
 
 [See full changelog](CHANGELOG.md).
-
-## Development
-
-### Code structure
-
-<!-- TODO re-write para below -->
-
-<!-- Note that this will also deploy the [backupDb.ts](packages/cloud-functions/src/backupDb.ts) function which saves a backup of Firestore data very 24 hours to `GCP_STORAGE_URL` bucket you specify in your `.env.development` file. This can be disabled by simply removing the relevant export [here](packages/cloud-functions/src/index.ts). -->
-
-<!-- todo clean and shorten -->
-<!-- todo mention workspaces -->
-
-The project code is split into several [packages](packages). Each package is a separate [yarn workspace](https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/) to facilitate easier imports, e.g. `import { Labels, Colors } from '@zaino/shared'`. This is the reason why yarn was chosen over npm for this project as npm's workspace support is [only in beta at the moment](https://blog.npmjs.org/post/626173315965468672/npm-v7-series-beta-release-and-semver-major).
-
-In the future, this structure can be used to accomodate additional sub-projects (like a landing page or a React Native app) as separate packages. At the moment, the packages are are:
-
-#### [shared](packages/shared)
-
-A small (for the time being) amount of shared code (types). It also includes the demo data used in the app. The original in the CSV format is in [input-data.csv](packages/shared/src/demo-data/input-data.csv). It has been processed with a node script [processDemoData.ts](packages/shared/src/demo-data/processDemoData.ts), which can be modified and re-run with `yarn run process-demo-data`. Output data is in JSON format ([output-data.json](packages/shared/src/demo-data/output-data.json)) and is used by a Firebase function, see [below](####demo-data-and-firebase-functions).
-
-#### [cloud-functions](packages/web-app)
-
-A couple of Firebase cloud functions including the function that populates Firestore with the demo data.
-
-#### [web-app](packages/web-app)
-
-Main web app, code structure highlights:
-
-- [src/components/](packages/web-app/src/components) App components and pages, along with per-component styles. Styles are mostly in SCSS and follow the BEM convention.
-  - `Controls` Various reusable controls and form elements.
-  - `Dashboard` Dashboard page components.
-  - `Header` App header, including demo data loader.
-  - `Icons` Several commonly re-used icons with applied styles.
-  - `ItemModal` New/edit item modal components.
-  - `LabelBadge` Fancy label badge components used throughout Dashboard and Labels pages.
-  - `Labels` Labels page components.
-  - `Misc` Various smaller components used throughout the app.
-  - `Pages` App pages and temporary mobile placeholder.
-  - `Selects` Core select component and re-useable and actual selects that use it. Note that the code is ugly here and needs refactoring, see [#346](https://github.com/igor-krupenja/zaino/issues/346).
-  - `Wrappers` Various wrapper components used purely to align and style child components.
-- [src/constants/](packages/web-app/src/constants) Built-in label colors and categories, will be moved to Firestore when customisation of these is implemented.
-- [src/firebase/](packages/web-app/src/firebase) Firebase initialisation and a couple of functions to work with Firestore data.
-- [src/routes/](packages/web-app/src/routes) React Router config and routes.
-- [src/state/](packages/web-app/src/state) State management with Redux.
-- [src/styles/](packages/web-app/src/styles) Style variables and settings that apply to the whole app.
 
 ## Acknowledgements
 
