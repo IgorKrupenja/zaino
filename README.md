@@ -11,7 +11,7 @@
 
 <br />
 
-<div align="center">🚨 This was my early first-year uni project so some things could have been done better. It is no longer maintained but <a href="https://zaino.cc">live demo</a> is up. Running the app is also possible after completing <a href="#setup">setup</a>.</div>
+<div align="center">🚨 This was an early first-year uni project so some things could have been done better. It is no longer maintained but <a href="https://zaino.cc">live demo</a> is up. Running the app is also possible after completing <a href="#setup">setup</a>.</div>
 
 <br />
 
@@ -105,11 +105,6 @@ Note: You can change additional settings like regions and Cloud Storage bucket n
 
 1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment).
 2. Go to `packages/web-app`, run `npm start` and open [localhost:4200](http://localhost:4200). This will run against a deployed **development** Firebase project.
-
-## Acknowledgements
-
-- Dmitri Shastin for his ideas and sharing his inventory data with me.
-- All the people proving me with feedback.
 
 <!-- TODO stuff below needs update -->
 
@@ -221,3 +216,8 @@ Main web app, code structure highlights:
 - [src/routes/](packages/web-app/src/routes) React Router config and routes.
 - [src/state/](packages/web-app/src/state) State management with Redux.
 - [src/styles/](packages/web-app/src/styles) Style variables and settings that apply to the whole app.
+
+## Acknowledgements
+
+- Dmitri Shastin for his ideas and sharing his inventory data with me.
+- All the people proving me with feedback.
