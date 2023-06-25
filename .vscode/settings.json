@@ -5,7 +5,7 @@
     }
   ],
   "editor.formatOnSave": true,
-  "[javascript][typescript][typescriptreact][json][jsonc][html]": {
+  "[javascript][typescript][typescriptreact][json][jsonc][html][markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.codeActionsOnSave": {
@@ -15,5 +15,6 @@
   "stylelint.snippet": ["scss"],
   "stylelint.validate": ["scss"],
   "scss.validate": false,
-  "material-icon-theme.activeIconPack": "react_redux"
+  "material-icon-theme.activeIconPack": "react_redux",
+  "markdown.extension.toc.levels": "1..2"
 }
