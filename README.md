@@ -1,5 +1,3 @@
-<!-- Todo add icon here? -->
-
 <h1 align="center">️<img src="packages/web-app/src/images/logo.svg" height="26px" /> Zaino</h1>
 <h3 align="center">
   Hiking and mountaineering equipment app for the meticulous adventurer.
@@ -39,7 +37,7 @@ Before starting, make sure that you have Node 16 installed — or use something 
 2. Run `npm install -g firebase-tools` to install Firebase CLI globally and run `firebase login` to log in.
 3. Run `npm install` in the _root_ directory of the cloned/forked repo.
 4. Go to [Firebase console](https://console.firebase.google.com/u/0/) and create two projects, one for **development** environment and one for **production** environment.
-5. In Firebase console, create _Web_ apps for the two projects you created. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
+5. In Firebase console, create _Web_ apps for the two projects you just made. Refer to this [article](https://support.google.com/firebase/answer/9326094) for additional information.
 6. In Firebase console, open Project Settings and note the Project IDs for the projects you created.
 7. Create a `.firebaserc` file in the _root_ of this repo and add the Project IDs there. Example with dummy values below:
 
@@ -71,7 +69,7 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 
 #### Caveats ⚠️
 
-- Most of the images used in the [live demo](#live-demo) were purchased from [GraphicRiver](https://graphicriver.net/) and [Freepik](https://www.freepik.com/) and cannot be made part of this repo due to copyright restrictions. To get images in the app, you can add your own to `packages/web-app/src/images/copyrighted` directory with the following structure:
+- Most of the images used in the [live demo](https://zaino.cc) were purchased from [GraphicRiver](https://zaino.cc) and [Freepik](https://www.freepik.com/) and cannot be made part of this repo due to copyright restrictions. To get images in the app, you can add your own to `packages/web-app/src/images/copyrighted` directory with the following structure:
 
 ```shell
 ├── categories
@@ -93,7 +91,7 @@ REACT_APP_FIREBASE_MEASUREMENT_ID="G-EWJOIOADSK"
 └── mountain.svg <--- loader image
 ```
 
-- Privacy policy content used in the [live demo](#live-demo) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder will be shown.
+- Privacy policy content used in the [live demo](https://zaino.cc) is not part of the repo. You can add your own to `packages/web-app/src/components/pages/PrivacyPolicyPage/PrivacyPolicyContent.tsx`. Otherwise, a placeholder will be shown.
 
 ### Firebase
 
@@ -121,7 +119,7 @@ Doing this will also enable periodic Firestore backups and seed the database wit
 
 ## Project structure
 
-The project is a monorepo. I suggest to open the root folder in editor, it has some root-level config, including [shared VSCode settings](.vscode).
+The project is a monorepo. I suggest to open the root folder in editor. It has some root-level config, including [shared VSCode settings](.vscode).
 
 Code is split into several [packages](packages). Each package is a separate [npm workspace](https://docs.npmjs.com/cli/v7/using-npm/workspaces). These are:
 
@@ -132,14 +130,12 @@ A bit of shared code (types).
 ### [firebase](packages/firebase)
 
 - A config file with Firestore rules: [firestore.rules](packages/firebase/firestore.rules).
-- A [cloud function](packages/firebase/src/database/functions/addSeedData.ts) that seeds the Firestore with demo data from JSON, [seed-data.json](packages/firebase/src/seed-data/seed-data.json). The original [was provided to me by Dmitri](#acknowledgements) as an Excel file.
+- A [cloud function](packages/firebase/src/database/functions/addSeedData.ts) that seeds the Firestore with demo data from JSON, [seed-data.json](packages/firebase/src/seed-data/seed-data.json). The original [was provided to me by Dmitri](#acknowledgements) as an Excel file. Kudos!
 - Another [function](packages/firebase/src/database/functions/backupDb.ts) for periodic DB backups.
 
 ### [web-app](packages/web-app)
 
-Web app.
-
-- [src/components/](packages/web-app/src/components) App components and [pages](packages/web-app/src/components/pages), along with per-component styles. Styles are mostly in SCSS and follow the BEM convention.
+- [src/components/](packages/web-app/src/components) App components and [pages](packages/web-app/src/components/pages), along with per-component styles. Styles are in SCSS and follow the BEM convention.
 - [src/firebase/](packages/web-app/src/firebase) Firebase initialisation and a couple of util functions to work with Firestore data.
 - [src/routes/](packages/web-app/src/routes) React Router config and routes.
 - [src/state/](packages/web-app/src/state) State management with Redux.
@@ -158,7 +154,7 @@ Web app.
 ## Functionality
 
 - **Log-in with Google account**. Fast and secure log in with your Google account.
-- **Data storage with Firestore**. Your data is safely stored in a Cloud Firestore database both with live demo and if you self-host Zaino.
+- **Data storage with Firestore**. Your data is safely stored in a Cloud Firestore database both with [live demo](https://zaino.cc) and if you self-host Zaino.
 - **Robust search and filtering**. Easily filter and sort your items by name, category, label, weight, etc.
 - **Efficient packing for your next adventure**. Pack list offers a convenient overview of the items you want to take with you, including weight.
 - **Flexible label system**. Organise your items in any way you want with custom labels.
@@ -167,7 +163,7 @@ Web app.
 
 ## Possible improvements
 
-Most of the code was written as a summer project after my first year in uni. So there are quite a few areas for improvement indeed:
+Most of the code was written as a summer project after my first year in uni. So there are quite a few areas for possible improvement:
 
 - The app needs tests.
 - Custom categories would make a nice feature.
