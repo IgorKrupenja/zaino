@@ -1,3 +1,5 @@
+<!-- Todo add icon here? -->
+
 <h1 align="center">️🎒 Zaino</h1>
 <h3 align="center">
   Hiking and mountaineering equipment app for the meticulous adventurer.
@@ -24,24 +26,13 @@
 <!-- todo update and clean up ToC -->
 
 - [Setup](#setup)
-  - [Common](#common)
-  - [Web app](#web-app)
-    - [Caveats ⚠️](#caveats-️)
-  - [Firebase](#firebase)
 - [Deployment](#deployment)
 - [Running locally](#running-locally)
 - [Code structure](#code-structure)
-  - [shared](#shared)
-  - [cloud-functions](#cloud-functions)
-  - [web-app](#web-app-1)
 - [Technologies](#technologies)
 - [Functionality](#functionality)
-- [Roadmap](#roadmap)
-  - [0.4.0](#040)
-  - [0.3.0](#030)
-  - [0.2.1](#021)
+- [Possible improvements](#possible-improvements)
 - [Changelog](#changelog)
-  - [0.2.0 (22nd January 2022)](#020-22nd-january-2022)
 - [Acknowledgements](#acknowledgements)
 
 ## Setup
@@ -126,6 +117,8 @@ Note: You can change additional settings like regions and Cloud Storage bucket n
 1. Go to `packages/web-app` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
 2. Go to `packages/firebase` and run `npm run deploy` to deploy **production** or `npm run deploy-dev` to deploy **development**.
 
+Doing this will also enable periodic Firestore backups and seed with demo data.
+
 ## Running locally
 
 1. Make sure you did everything in [Setup](#setup) and [Deployment](#deployment) above.
@@ -187,12 +180,6 @@ Main web app, code structure highlights:
 
 ## Functionality
 
-🚧🚧🚧 **Please note that Zaino is a work in progress.** 🚧🚧🚧
-
-For instance, the app does not have a mobile version yet.
-
-So far, the following features have been implemented.
-
 - **Log-in with Google account**. Fast and secure log in with your Google account.
 - **Data storage with Firestore**. Your data is safely stored in a Cloud Firestore database both with live demo and if you self-host Zaino.
 - **Robust search and filtering**. Easily filter and sort your items by name, category, label, weight, etc.
@@ -201,9 +188,9 @@ So far, the following features have been implemented.
 - **Demo data**. Want to try the app without entering your own data first? Click Load under Demo data in header to populate your inventory with a comprehensive set of sample items. These can be easily removed later.
 - **Self-hosting support**. Concerned about privacy and want to completely self-host your data? This is possible and I have provided a detailed guide in the [Setup](#setup) section below.
 
-## Roadmap
+## Possible improvements
 
-<!-- todo rename and shorten -->
+<!-- todo shorten -->
 
 ### 0.4.0
 

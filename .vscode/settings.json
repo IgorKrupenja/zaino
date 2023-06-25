@@ -15,5 +15,6 @@
   "stylelint.snippet": ["scss"],
   "stylelint.validate": ["scss"],
   "scss.validate": false,
-  "material-icon-theme.activeIconPack": "react_redux"
+  "material-icon-theme.activeIconPack": "react_redux",
+  "markdown.extension.toc.levels": "1..2"
 }
