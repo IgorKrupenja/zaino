@@ -172,6 +172,7 @@ Most of the code was written as a summer project after my first year in uni. So 
 - The overall inventory and pack management UX could be better.
 - There is no support for mobile screens, narrower than 600px.
 - Add support for multiple packs.
+- Improve accesibility
 
 ## Changelog
 
